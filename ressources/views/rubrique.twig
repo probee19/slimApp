@@ -1,0 +1,94 @@
+{% extends 'templates/layout.twig' %}
+{% block title %}{{interface_ui.title_home | capitalize}}{% endblock %}
+{% block googletagmanager %}
+<script>
+  dataLayer = [{
+    'pageCategory': 'rubrique'
+  }];
+</script>
+{% endblock %}
+{% block banner_mobile_top %}
+    {% include 'banners/banner_320x100_top.twig' %}
+{% endblock %}
+{% block content %}
+    <!-- /New Test Button -->
+    <div class="col-lg-12">
+            {{ flash.getMessage('invalid_test')[0] }}
+    </div>
+    {% if pagecount > 1 %}
+        <div class="row text-center">
+            <ul class="text-center pager" style="margin-bottom: 0; margin-top:15px;">
+                {% if pageid == 1 %}
+                    <li class="btn-next" style="margin-bottom: 20px">
+                        <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid + 1 }}" class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                    </li>
+                {% elseif pageid == pagecount %}
+                    <li class="btn-prev" style="margin-bottom: 20px">
+                        <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid - 1 }}" class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                    </li>
+                    <li style="margin-bottom: 20px">
+                        <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid + 1 }}" class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                    </li>
+                {% else %}
+                    <li class="btn-prev" style="margin-bottom: 20px">
+                      <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid - 1 }}" class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                    </li>
+                    <li style="margin-bottom: 20px">
+                        <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid + 1 }}" class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+    {% set i = 0 %}
+    <div class="row">
+    {% for test in tests %}
+        <div class="col-sm-6 col-md-4 portfolio-item">
+            <div class="border">
+                <img class="img-responsive" src="{{ base_url }}/creation-test{{ test.url_image_test |trim('.', 'left') }}" alt="image du test">
+                <span class="mobile-layer"></span>
+                <!-- <a href="{{ path_for('single', { 'id': test.id_test, 'name': test.titre_test | twig_clean_url }) }}" class="test__link" data-btn="btn-test"></a> -->
+                <a href="{{ base_url() }}/test/{{test.titre_test | twig_title_url(test.id_test, lang)}}/{{test.id_test}}" class="test__link" data-btn="btn-test"></a>
+                <h3 class="test-title">{{ test.titre_test }}</h3>
+                <div class="test__next"><a href="{{ path_for('single', { 'id': test.id_test, 'name': test.titre_test | twig_title_url(test.id_test, lang) }) }}" class="btn btn-primary col-sm-8 col-sm-offset-2" data-btn="btn-test">{{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
+            </div>
+        </div>
+        {% set i = i+1 %}
+        {% if i == 3 %}
+            </div>
+            <div class="row">
+        {% endif %}
+    {% endfor %}
+            </div>
+    {% if pagecount > 1 %}
+        <div class="text-center">
+            <ul class="text-center pager" style="margin-top:15px;">
+                {% if pageid == 1 %}
+                    <li class="btn-next">
+                        <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                    </li>
+                {% elseif pageid == pagecount %}
+                    <li class="btn-prev">
+                        <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                    </li>
+                    <li>
+                        <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                    </li>
+                {% else %}
+                    <li class="btn-prev">
+                        <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                    </li>
+                    <li>
+                        <a href="{{ domain_url }}/rubrique/{{rubrique_name | twig_clean_url }}/{{rubrique}}/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    {% endif %}
+    {% if is_mobile() or is_tablet()  %}
+        <div class="" style="margin:-15px auto 10px">
+            {% set banner = random(['banners/banner_360x300_responsive_bottom.twig', 'banners/banner_300x250_bottom.twig']) %}
+            {% include  banner %}
+        </div>
+    {% endif %}
+{% endblock %}

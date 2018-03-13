@@ -1,0 +1,35 @@
+
+{% set i = begin + 1 %}
+{% for test in dataTest %}
+  <tr>
+    <td class="center"> {{i}} </td>
+    <td class="center"> <img src="{{ base_url()}}/src/img/statut/{{test.statut}}.png" >  </td>
+    <td><h5 class=""><a href="{{base_url()}}/test/{{test.id_test}}" > {{test.titre_test}} </a></h5></td>
+    <td> {{test.nb_played}}</td>
+    <td> {{test.nb_partage}}</td>
+    <td> {{test.taux_partage}} %</td>
+    <td> {{test.nb_showned_discover}} </td>
+    <td>
+      <a href="{{base_url()}}/tests/{{test.id_test}}/edit"  data-toggle="tooltip" title="Modifier le test" ><button type="button" id="btn_modify" class="btn btn-info btn-xs" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+      {% if test.statut == 0 %}
+        <button type="button"  data-toggle="tooltip" title="Activer le test" id="act_{{test.id_test}}" onClick="activeTest({{test.id_test}})" class="btn btn-success btn-xs"  > <span class="glyphicon glyphicon-ok-sign"></span> </button>
+        <span data-toggle="modal"  data-target="#modalDelete" ><button type="button" data-toggle="tooltip" title="Supprimer le test" id="{{test.id_test}}" onClick="prepareDelete({{test.id_test}});" class="btn btn-danger btn-xs" > <span class="glyphicon glyphicon-trash"></span> </button></span>
+      {% elseif test.statut == 1 %}
+        <button type="button"  data-toggle="tooltip" title="Désactiver le test" id="del{{test.id_test}}" onClick="desactiveTest({{test.id_test}});" class="btn btn-warning btn-xs" > <span class="glyphicon glyphicon-remove-sign"></span> </button>
+      {% endif %}
+
+      <a class="btn btn-default btn-xs" href="{{test.url_test}}" title="Voir le test" target="_blank"> <span class="glyphicon glyphicon-eye-open"></span> </a>
+
+      {% if test.btn_delete_test_admin %}
+        <button type="button" id="btn_del_resultl_{{test.id_test}}" title="Supprimer le test déjà effectué" onClick="deleteResult({{user_admin_id}}, {{test.id_test}});" class="btn btn-danger btn-xs"  > <span class="glyphicon glyphicon-remove"></span> </button>
+      {% endif %}
+
+      {% if test.highlight == 0 %}
+        <button type="button"  data-toggle="tooltip" title="Mettre en avant le test" id="highlight_{{test.id_test}}" onclick="highlight({{test.id_test}})" class="btn btn-success btn-xs"  > <i class="fa fa-level-up" aria-hidden="true"></i> </button>
+      {% else %}
+        <button type="button"  data-toggle="tooltip" title="Ne plus mettre en avant le test" id="highlight_{{test.id_test}}" onclick="moveHighlight({{test.id_test}})" class="btn btn-danger btn-xs"  > <i class="fa fa-level-down" aria-hidden="true"></i> </button>
+      {% endif %}
+    </td>
+  </tr>
+  {% set i = i + 1%}
+{% endfor %}

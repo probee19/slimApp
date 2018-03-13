@@ -1,0 +1,42 @@
+
+@media screen and (min-width: 768px){
+  .container-funizi{
+      width: 750px;
+  }
+  .gallery{
+    *width: 410px;
+    width: 750px;
+  }
+  .aside-right{
+    *width: 300px;
+    width: 0;
+  }
+}
+@media screen and (min-width: 992px){
+  .container-funizi{
+      width: 970px;
+  }
+  .gallery{
+    width: 630px;
+  }
+  .aside-right{
+    width: 300px;
+  }
+}
+@media screen and (min-width: 1200px){
+  .container-funizi{
+      width: 1170px;
+  }
+  .gallery{
+    width: 830px;
+  }
+  .aside-right{
+    width: 300px;
+  }
+}
+.container-funizi{
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+}

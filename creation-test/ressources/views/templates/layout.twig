@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <title>{% block title %}{% endblock %} | Funizi</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ base_url() }}/src/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="{{ base_url() }}/src/css/DataTables/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="{{ base_url() }}/src/css/DataTables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="{{ base_url() }}/src/css/datepicker/bootstrap-datepicker3.css" rel="stylesheet" type="text/css">
+    <link href="{{ base_url() }}/src/css/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ base_url() }}/src/css/select2.css?v=1.00006" rel="stylesheet" type="text/css"/>
+    <link href="{{ base_url() }}/src/css/DateRangePicker/daterangepicker.css?v=1.0003" rel="stylesheet" type="text/css" media="all"  />
+
+    <!-- CDN CSS -->
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ base_url() }}/src/css/added-style.css?v=1.003" rel="stylesheet">
+    <link href="{{ base_url() }}/src/css/dashboard.css?v=1.1467" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body style="margin-top:60px">
+{% include 'templates/partials/menu.twig' %}
+<!-- Page Content -->
+<div class="container">
+  <div class="row ">
+
+         <!-- Menu -->
+         <div class="col-sm-2 nopadding" >
+                 <div class="nav-side-menu nopadding">
+                     <!--i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i-->
+                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu-content">
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                     </button>
+                     <div class="menu-list">
+
+                         <ul id="menu-content" class="menu-content collapse out">
+                             <li class="active" onclick="showHome($(this));" id="btn_for_global_stats">
+                               <a > Accueil </a>
+                             </li>
+                             <li onclick="showForTests($(this));" id="btn_for_tests_stats">
+                               <a > Tests </a>
+                             </li>
+                             <li onclick="showForContries($(this));" id="btn_for_contries_stats">
+                               <a > Données géographiques </a>
+                             </li>
+                             <li onclick="showForUsers($(this));" id="btn_for_users_stats">
+                               <a > Utilisateurs </a>
+                             </li>
+                             <li onclick="showStatsForBestTests($(this));" id="btn_for_best_tests_stats">
+                               <a > Meilleurs tests (P > 25%) </a>
+                             </li>
+                             <li onclick="showStatsForSomeTests($(this));" id="btn_for_some_tests_stats" style="display:none;">
+                               <a > Tests promus </a>
+                             </li>
+                         </ul>
+                     </div>
+
+                 </div>
+         </div>
+
+         <!-- Statistiques -->
+         {% block content %}{% endblock %}
+
+
+ </div>
+</div>
+<!-- /.container -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script> 
+<!-- Bootstrap Core JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script src="{{ base_url() }}/src/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/src/js/DateRangePicker/moment.js"></script>
+<script type="text/javascript" src="{{ base_url() }}/src/js/DateRangePicker/daterangepicker.js"></script>
+<script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/dataTables.bootstrap.js"></script>
+<script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/datepicker/bootstrap-datepicker.min.js"></script>
+<!-- Custom JavaScript -->
+<script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/dashboard.js?v=1.0293"></script>
+
+
+
+<!-- Others scripts-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+</body>
+</html>

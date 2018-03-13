@@ -3,7 +3,6 @@
 namespace Illuminate\Support;
 
 use ArrayAccess;
-use InvalidArgumentException;
 use Illuminate\Support\Traits\Macroable;
 
 class Arr
@@ -69,23 +68,13 @@ class Arr
      */
     public static function crossJoin(...$arrays)
     {
-        $results = [[]];
-
-        foreach ($arrays as $index => $array) {
-            $append = [];
-
-            foreach ($results as $product) {
-                foreach ($array as $item) {
-                    $product[$index] = $item;
-
-                    $append[] = $product;
-                }
-            }
-
-            $results = $append;
-        }
-
-        return $results;
+        return array_reduce($arrays, function ($results, $array) {
+            return static::collapse(array_map(function ($parent) use ($array) {
+                return array_map(function ($item) use ($parent) {
+                    return array_merge($parent, [$item]);
+                }, $array);
+            }, $results));
+        }, [[]]);
     }
 
     /**
@@ -390,10 +379,6 @@ class Arr
             } else {
                 $itemKey = data_get($item, $key);
 
-                if (is_object($itemKey) && method_exists($itemKey, '__toString')) {
-                    $itemKey = (string) $itemKey;
-                }
-
                 $results[$itemKey] = $itemValue;
             }
         }
@@ -451,46 +436,6 @@ class Arr
         static::forget($array, $key);
 
         return $value;
-    }
-
-    /**
-     * Get one or a specified number of random values from an array.
-     *
-     * @param  array  $array
-     * @param  int|null  $number
-     * @return mixed
-     *
-     * @throws \InvalidArgumentException
-     */
-    public static function random($array, $number = null)
-    {
-        $requested = is_null($number) ? 1 : $number;
-
-        $count = count($array);
-
-        if ($requested > $count) {
-            throw new InvalidArgumentException(
-                "You requested {$requested} items, but there are only {$count} items available."
-            );
-        }
-
-        if (is_null($number)) {
-            return $array[array_rand($array)];
-        }
-
-        if ((int) $number === 0) {
-            return [];
-        }
-
-        $keys = array_rand($array, $number);
-
-        $results = [];
-
-        foreach ((array) $keys as $key) {
-            $results[] = $array[$key];
-        }
-
-        return $results;
     }
 
     /**

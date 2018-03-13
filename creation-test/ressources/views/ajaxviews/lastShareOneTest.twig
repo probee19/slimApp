@@ -1,0 +1,38 @@
+<table id="shares" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th ></th>
+      <th width="50%">Résultats</th>
+      <th>Partagé par </th>
+      <th>Date de partage</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% set i = 1 %}
+    {% for share in data_share %}
+      <tr>
+        <td> {{i}} </td>
+        <td><h5 class="">{% if theme == 3 or theme == 4 %} {{share.titre_test}} {% else %} {% if share.titre_resultat %}{{share.titre_resultat}} {% else %} {{share.texte_resultat}} {% endif %}{% endif %} </h5> </td>
+        <td><a href="http://www.facebook.com/{{share.facebook_id}}" target="_blank"> {{share.first_name}} {{share.last_name}} </a></td>
+        <td>{{share.created_at|date("d/m/Y H:i:s")}}</td> 
+      </tr>
+    {% set i = i + 1 %}
+    {% endfor %}
+
+  </tbody>
+</table>
+<script type="text/javascript" language="javascript" class="init">
+$(document).ready(function() {
+  $('#shares').DataTable( {
+    "language": {
+    "lengthMenu": "Afficher  _MENU_  partages par page",
+    "zeroRecords": "Aucun partage trouvé ! ",
+    "info": "Voir page _PAGE_ à _PAGES_ ( partage _START_ à _END_ sur _TOTAL_ )",
+    "infoEmpty": "Aucun partage trouvé",
+    "infoFiltered": "(recherche effectuée sur _MAX_ partages)"
+  }
+  } );
+//	$('#myTab').tabCollapse();
+} );
+
+</script>

@@ -1,0 +1,14 @@
+{% for data in data_users_tests %}
+  <div class="col-xs-6 col-sm-3 col-md-3 filtr-item" data-category="{{data.theme}}" data-sort="{{data.titre_test}}">
+    <img class="img-responsive" src="http://fr.funizi.com/{{data.img_url}}" alt="sample image">
+                    {% if data.shared %}
+                       <span style="z-index: 3; position:absolute; bottom: 1.5rem; left: 1.5rem;"><a href="http://www.facebook.com/{{data.facebook_id}}" target="_blank"> <img src="https://icon-icons.com/icons2/642/PNG/32/facebook_icon-icons.com_59205.png" /></a> </span>
+                       <span class="stat"> <i class="fa fa-mouse-pointer" aria-hidden="true"></i> {{data.nb_clics}}  </span>
+                   {% endif %}
+                    <span class="item-desc">
+                       {{data.titre_test}}
+                       <br />{{data.day}} {{data.hour}}
+                    </span>
+    <span style="clear:both;"></span>
+  </div>
+{% endfor %}

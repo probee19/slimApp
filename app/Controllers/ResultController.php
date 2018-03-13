@@ -1,0 +1,115 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Helpers\Helper;
+use App\Models\DailyStat;
+use App\Models\Resultat;
+use App\Models\Share;
+use App\Models\Language;
+use App\Models\Test;
+use App\Models\User;
+use App\Models\UserTest;
+use App\Models\BotTests;
+
+class ResultController extends Controller
+{
+    public function index($request, $response, $args){
+
+        $url = $this->helper->detectLang($request, $response);
+        if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
+
+        $helper = new Helper();
+        $lang = $this->helper->getLangSubdomain($request);
+
+        if($_GET['pays'] && $_GET['pays'] !=''){
+            $country_code = strtoupper($_GET['pays']);
+        }else{
+            $country_code = $helper->getCountryCode();
+        }
+        $code = $args['code'];
+        $new = $args['new'];
+        $is_result = true;
+        $date = date('Y-m-d');
+        $test = UserTest::where('uuid', "$code")->with('testInfo')->first();
+        //$testInfo = Test::where('id_test', $test->testInfo->id_test)->first();
+        $testInfo = Test::selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.unique_result AS unique_result, tests.id_theme AS id_theme, tests.id_test AS id_test')
+          ->join('test_info','test_info.id_test','tests.id_test')
+          ->Where([['tests.id_test', '=', $test->testInfo->id_test],['test_info.lang','=',$lang]])->first();
+        if($test)
+            $result_description = $test->result_description;
+        if(!$test){
+            $test = BotTests::where('uuid', "$code")->with('testInfo')->first();
+            $result_description = "<strong>N’oublie pas de PARTAGER ça maintenant avec tes amis et tes proches !</strong>";
+        }
+        $img_url = $test->img_url;
+
+        if($_GET['utm'] && $_GET['utm'] !='')
+            $helper->setUTM($_GET['utm'], "test", $test->testInfo->id_test);
+
+        if($_GET['ref'] && $_GET['ref'] === 'fb' && $test != null){
+            $result_url = $this->router->pathFor('single', [
+                'id'      =>  $test->test_id,
+                'name'    =>  $this->helper->cleanUrl($test->testInfo->titre_test)
+            ], ['ref' => $code] );
+            $_SESSION['referal'] = $code;
+
+            return $response->withStatus(302)->withHeader('Location', $result_url );
+
+        }else{
+            $titre_test = $testInfo->titre_test;
+            $test_id = $test->test_id;
+            $title_url = $this->helper->getUrlTest($titre_test, $test_id, $lang);
+            $titre_url = $this->helper->cleanUrl($title_url);
+            $url_redirect_share = "";
+            $url_to_share = "";
+            //$url_to_share = urlencode("http://www.funizi.com/result/".$titre_url."/".$code."?ref=fb");
+            $url_to_share = urlencode($request->getUri()->getBaseUrl()."/test/".$titre_url."/".$test_id."/ref/".$code);
+            //$url_redirect_share = urlencode("http://www.funizi.com/result/".$titre_url."/".$code."/new");
+            $url_redirect_share = urlencode($request->getUri()->getBaseUrl()."/result/".$titre_url."/".$code."/new");
+
+            if(!$test){
+                $is_result = false;
+            }
+
+            if($test->testInfo->codes_countries !=''){
+                $exclude = [$test->test_id];
+                if(!empty($_SESSION['uid'])){
+                    //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
+                    $testUser = User::where('facebook_id', '=', $_SESSION['uid'])
+                        ->with('usertests')->first();
+                    foreach($testUser->usertests as $user){
+                        $exclude [] = $user->test_id;
+                    }
+                }
+                $top_tests = $this->helper->getLovedTests($country_code, $exclude, $lang);
+                foreach ($top_tests as $top_test) {
+                  $exclude [] = $top_test["id_test"];
+                }
+                $all_test = $helper->relatedTests($country_code, $exclude, $lang);
+            }
+            else{
+                $exclude = [$test->test_id];
+                if(!empty($_SESSION['uid'])){
+                    //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
+                    $testUser = User::where('facebook_id', '=', $_SESSION['uid'])
+                        ->with('usertests')->first();
+                    foreach($testUser->usertests as $user){
+                        $exclude [] = $user->test_id;
+                    }
+                }
+                $top_tests = $this->helper->getLovedTests($country_code, $exclude, $lang);
+                foreach ($top_tests as $top_test) {
+                  $exclude [] = $top_test["id_test"];
+                }
+                $all_test = $helper->relatedTests($country_code, $exclude, $lang);
+            }
+            $testId = $test->test_id;
+            $unique_result = $test->testInfo->unique_result;
+
+            $interface_ui = $this->helper->getUiLabels($lang);
+            $all_lang = $this->helper->getActivatedLanguages();
+            return $this->view->render($response, 'result.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'test_owner', 'testId', 'unique_result', 'img_url', 'result_description', 'url_to_share', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
+        }
+    }
+}

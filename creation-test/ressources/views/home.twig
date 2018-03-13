@@ -1,0 +1,48 @@
+{% extends 'templates/layout.twig' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+
+<div class="col-sm-10 nopadding" >
+    <div class=" options-date">
+        <div class="col-sm-12">
+
+            <div class="select2-block">
+                    <select class="autocomplete one-input " style="width: 200px" id="search_test" name="search_test">
+                        <option value=""></option>
+                        <option value="0">Tous les tests</option>
+                        {% for test in tests %}
+                          <option value="{{test.id_test}}" id="{{test.id_test}}">{{test.titre_test}}</option>;
+                        {% endfor %}
+                    </select>
+
+                    <select class="autocomplete one-input " multiple="multiple" style="width: 300px"  id="search_country" name="search_country[]">
+                      {% for country in countries %}
+                        <option value="{{country.alpha2}}" id="{{country.alpha2}}">{{country.langFR}}</option>;
+                      {% endfor %}
+                    </select>
+
+                    <select class="autocomplete one-input " style="width: 150px"  id="search_lang" name="search_lang">
+                      <option value=""></option>
+                      <option value="0">Toutes les langues</option>
+                      {% for lang in langs %}
+                        <option value="{{lang.code}}" id="{{lang.code}}">{{lang.name}}</option>;
+                      {% endfor %}
+                    </select>
+            </div>
+            <div class="other-block pull-right">
+                <input type="text" name="daterange" id="daterange"  value="" class="one-input"/>
+                <button id="btn_go" name="btn_go" type="button" class="btn btn-success btn-sm"> Actualiser </button>
+            </div>
+        </div>
+    </div>
+    <div class="spacer"></div>
+
+
+    <div class="col-sm-12" id="stats_for_one_range">
+
+    </div>
+    <div class="col-sm-12">
+
+    </div>
+</div>
+{% endblock %}

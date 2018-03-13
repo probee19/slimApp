@@ -1,0 +1,70 @@
+{% extends 'templates/layoutCreationTest.twig' %}
+{% block title %} Tous les tests {% endblock %}
+{% block additionalstyle %}
+  <style>
+    .hidden_{
+        display: none;
+  }
+  #liste_test{
+      font-size: 12px;
+  }
+  </style>
+{% endblock %}
+
+{%block content%}
+
+
+<div class="hidden-xs">
+
+</div>
+
+<div style="width:500px">
+  <canvas id="myChart" ></canvas>
+</div>
+<script type="text/javascript" src="{{ base_url() }}/src/js/DateRangePicker/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+
+
+
+
+<script>
+    var ctx = document.getElementById("myChart").getContext('2d');
+    data = {
+        datasets: [{
+            data: [{% for data in data_pie %}{{data.nb_test_done}}, {% endfor %}],
+            backgroundColor: [
+                "#009688","#E91E63","#2196F3","#795548",
+            ]
+        }],
+
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+          {% for data in data_pie %}'{{data.lang}}', {% endfor %}
+
+        ]
+    };
+
+    options = {
+            responsive: true
+        };
+
+    // For a pie chart
+    var myPieChart = new Chart(ctx,{
+        type: 'doughnut',
+        data: data,
+        options: options
+    });
+
+
+</script>
+
+
+{% endblock %}
+
+
+
+{% block additionalfooter %}
+
+  <script src="{{ base_url() }}/src/js/alltest.js?v=1.0002"></script>
+
+{%endblock%}

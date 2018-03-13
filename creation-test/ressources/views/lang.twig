@@ -1,0 +1,389 @@
+{% extends 'templates/layoutCreationTest.twig' %}
+{% block title %}Gestion des langues{% endblock %}
+{% block additionalstyle %}
+  <style>
+    .langues{
+    }
+    .lang{
+      font-size: 18px;
+      margin-bottom: 10px;
+      padding: 5px;
+      border-radius: 4px;
+      color:#FFF;
+      background: #607D8B;
+    }
+    .ui_list {
+      #border:1px solid #F5F5F5;
+      border-radius:4px;
+      padding: 0 ;
+    }
+    .input_lang_base, .input_lang_translation{
+      margin-bottom:10px;
+      border-radius:3px;
+      border:1px solid #616161;
+      width:100%;
+    }
+
+  </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" id="notif_block" style="display:none;">
+   <div class="alert alert-success alert-dismissable " >
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+     Les modifications ont été sauvegardées avec succès !
+   </div>
+ </div>
+
+
+  <div class="panel panel-default" style="clear: both;">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Gestion des langues </div>
+      <div class="panel-body">
+        <div class="row langues">
+          <form class="col-lg-12 " id="add_language" name="add_language" enctype="multipart/form-data">
+              <div class="form-group">
+                  <label class="control-label" for="localtite">Ajoutez des langues à la plateforme en choisissant parmi la liste suivante  :</label>
+                  <select class="select-lang form-control" multiple="multiple" id="langs" name="langs[]" class="col-md-12">
+                      {% for lang in all_langs %}
+                        <option value="{{lang.code}}"   {% if lang.status == 1 %} selected {% endif %}> {{lang.name}}  ({{lang.fr_name}})</option>
+                      {% endfor %}
+                  </select>
+
+              </div>
+          </form>
+        </div>
+
+        <div class="row" >
+            <div class="form-group col-lg-12 center">
+                <button type="button"  id="btn_save_lang_options" class="form-control btn btn-success" style="width: auto; margin-bottom:-20px"><span class="glyphicon glyphicon-floppy-save"></span> Enregistrer </button>
+            </div>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="panel panel-default" style="clear: both;">
+    <!-- Default panel contents -->
+    <div class="panel-heading" onclick="$('.btn_collapse').click();" style=" cursor:pointer;">
+      Gestion des traductions
+      <span class="btn_collapse" data-toggle="collapse" data-target="#panel_update_translation" style="float:right; cursor:pointer;"><i class="fa fa-arrow-down" aria-hidden="true"></i></span>
+   </div>
+      <div class="panel-body collapse" id="panel_update_translation">
+        <div class="row" >
+          <form class="col-sm-12 " id="update_translation" name="update_translation" enctype="multipart/form-data">
+            <input type="hidden" name="saved" id="saved" value="1"/>
+            <div class="ui_list col-md-5">
+                <div class="lang_header">
+                   <div class="alert alert-info alert-dismissable " >
+                     Français
+                   </div>
+                 </div>
+                 <div id="ui_translations_base_lang">
+                   {% for translation in ui_translations %}
+                    <div class="form-group">
+                        <input type="text" name="base_{{translation.interface_ui_code}}" id="base_{{translation.interface_ui_code}}" value="{{translation.interface_ui}}" class="input_lang_base col-xs-12" disabled/>
+                    </div>
+                  {% endfor %}
+                  </div>
+                <button type="button" data-toggle="modal" data-target="#add_ui_modal" id="btn_add_ui" class="btn btn-info btn-sm" style="width: auto; float:right;" > <i class="fa fa-plus" aria-hidden="true"></i> Ajouter </button>
+
+
+            </div>
+            <div class="col-sm-2 hidden-xs" style="text-align:center; font-size:20px; padding-top:20px">
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </div>
+
+            <div class="ui_list col-sm-5">
+                <div class="lang_header">
+                     {% if active_langs %}
+                       <div class="alert alert-info" style="padding: 8px;" id="activated_lang_section">
+                         <select id="active_lang" name="active_lang" class="active_lang form-control"  style="display:inline; width:80%">
+                          <option value="0"> Choisissez une langue</option>
+                          {% for lang in active_langs %}
+                            <option value="{{lang.code}}"> {{lang.name}} ({{lang.fr_name}})</option>
+                          {% endfor %}
+                         </select>
+                       </div>
+                     {% else %}
+                       <div class="alert alert-warning alert-dismissable " >
+                        Aucune autre langue n'a été activée !
+                       </div>
+                     {% endif %}
+                 </div>
+                <div id="ui_translations_activated_lang">
+
+                </div>
+            </div>
+
+            <div class="row" >
+                <div class="form-group col-lg-12 center">
+                    <button type="button"  id="btn_save_lang_translations" class="form-control btn btn-success" style="width: auto; margin-bottom:-20px; {% if not active_langs %} color:#000; {%endif%} " {% if not active_langs %} disabled {%endif%} ><span class="glyphicon glyphicon-floppy-save"></span> Sauvegarder </button>
+                </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+
+
+
+    <!-- Modal  -->
+    	<div id="alert_modal" class="modal fade" role="dialog">
+    	    <div class="modal-dialog">
+
+    	        <div class="modal-content">
+    	            <div class="modal-header" style="background-color: #1C304F;">
+                        <img class="img-responsive" src="{{ base_url() }}/src/img/funizi.png" style="height:20px; margin: 0 auto; " alt="Funizi">
+    	            </div>
+    	            <div class="modal-body text-center">
+                    <p>
+                      Les modifications apportées ne seront pas sauvegardées.<br/>
+                      Voulez-vous sauvegarder les changements ?
+                    </p>
+    				      </div>
+    	            <div class="row modal-button center" style="height:auto; margin: 0 auto; padding-bottom:10px" >
+                          <button type="button"  id="modal_btn_cancel_lang_translations" class="form-control btn btn-default" style="width: auto;">Annuler les changements</button>
+                          <button type="button"  id="modal_btn_save_lang_translations" class="form-control btn btn-success" style="width: auto; "><span class="glyphicon glyphicon-floppy-save"></span> Sauvegarder </button>
+    	           </div>
+    	        </div>
+    	    </div>
+    	</div>
+
+      <div id="add_ui_modal" class="modal fade" role="dialog">
+    	    <div class="modal-dialog">
+
+    	        <div class="modal-content">
+    	            <div class="modal-header" style="background-color: #1C304F;">
+                        <img class="img-responsive" src="{{ base_url() }}/src/img/funizi.png" style="height:20px; margin: 0 auto; " alt="Funizi">
+    	            </div>
+    	            <div class="modal-body text-center">
+                    <p>
+                    Ajouter les informations sur l'élément ?
+                    </p>
+                    <form >
+                        <div class="form-group col-sm-6">
+                          <label for="formGroupExampleInput">Code</label>
+                          <input type="text" class="form-control" id="new_label_code" placeholder="Ex : menu_home ...">
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label for="formGroupExampleInput2">Label (en français)</label>
+                          <input type="text" class="form-control" id="new_default_label_name" placeholder="Ex : accueil ...">
+                        </div>
+                    </form>
+    				      </div>
+    	            <div class="row modal-button center" style="height:auto; margin: 0 auto; padding-bottom:10px" >
+                      <button type="button"  id="modal_btn_cancel_add_ui" class="form-control btn btn-default" data-dismiss="modal"  style="width: auto;">Annuler</button>
+                      <button type="button"  id="modal_btn_save_new_ui" class="form-control btn btn-success" style="width: auto; "><span class="glyphicon glyphicon-floppy-save"></span> Sauvegarder </button>
+    	           </div>
+    	        </div>
+    	    </div>
+    	</div>
+    <!-- /Modal  -->
+
+{% endblock %}
+
+{% block additionalfooter %}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+      <script type="text/javascript">
+        $(".select-lang").select2();
+        jQuery(document).ready(function($) {
+          var prevSelectedLang = '', selectedLang = '';
+
+            //$('.btn_collapse').click();
+
+            $('#btn_save_lang_options').on("click",function(){
+                  var langs = [];
+                  var formData = new FormData();
+                  var other_data = $('#langs').serializeArray();
+                  $.each(other_data,function(key,input){
+                      langs.push(input.value);
+                  });
+                  formData.append('langs', JSON.stringify(langs));
+                  $.ajax({
+                      url: "config/lang/update",
+                      type: "POST",
+                      data: formData,
+                      processData: false,
+                      contentType: false,
+                      beforeSend: function(){
+                        doLoader(true, "#btn_save_lang_options", "Enregistrement en cours");
+                      }
+                  }).done(function( data ) {
+                    doLoader(false, "#btn_save_lang_options", "Enregistrer");
+                    location.reload(true);
+                  });
+            });
+
+            $('#active_lang').on('change', function(){
+              selectedLang = $(this).val();
+              if(ifSaved()){
+                showTranslations($(this).val());
+              }
+              else{
+                $("#alert_modal").modal('show');
+                $('#active_lang').val(prevSelectedLang);
+              }
+            });
+
+            $('.btn_collapse').on('click', function(){
+              if($(this).html() == '<i class="fa fa-arrow-down" aria-hidden="true"></i>')
+                  $(this).html('<i class="fa fa-arrow-up" aria-hidden="true"></i>');
+              else
+                  $(this).html('<i class="fa fa-arrow-down" aria-hidden="true"></i>');
+
+              $('#panel_update_translation').collapse("toggle");
+            });
+
+            $('#btn_save_lang_translations').on('click', function(){
+              saveTranslations($('#active_lang').val());
+            });
+
+            $('#modal_btn_save_lang_translations').on('click', function(){
+              $("#alert_modal").modal("toggle");
+              saveTranslations($('#active_lang').val());
+              $('#active_lang').val(selectedLang);
+              showTranslations(selectedLang);
+            });
+
+            $('#modal_btn_cancel_lang_translations').on('click', function(){
+              $("#alert_modal").modal("toggle");
+              cancelTranslationsUpdate();
+            });
+
+            $('#modal_btn_save_new_ui').on('click', function(){
+              if($('#new_label_code').val() != '' && $('#new_default_label_name').val() != '')
+                addUi( $('#new_label_code').val() , $('#new_default_label_name').val() );
+              else
+                alert('Les informations sont manquantes ! ');
+            });
+
+            function cancelTranslationsUpdate(){
+              $('#active_lang').val(selectedLang);
+              showTranslations(selectedLang);
+              $('#saved').val(1);
+            }
+
+            function showTranslations(lang){
+                if(lang != 0 ){
+                    $.ajax({
+                        url: "config/lang/showUi?code="+lang,
+                        type: "GET",
+                        processData: false,
+                        contentType: false,
+                        beforeSend: function(){
+                          disableInputs(true);
+                          $("#activated_lang_section").append("<img src='http://creation.funizi.com/src/img/loader_spin.gif' id='loading_img' style='margin-left:20px'>");
+                      }
+                    }).done(function( data ) {
+                      disableInputs(false);
+                      $("#loading_img").remove();
+                      $("#ui_translations_activated_lang").html(data);
+                      prevSelectedLang = lang ;
+                      initFlag();
+                    });
+                }
+            }
+
+            function saveTranslations(lang){
+                var toSave = new FormData();
+                var translations = {};
+
+                $('.input_lang_translation').each(function(){
+                    translations[$(this).attr('id')] = $(this).val();
+                });
+
+                toSave.append('lang',lang);
+                toSave.append('translations', JSON.stringify(translations));
+                $.ajax({
+                    url: "config/lang/translations/update",
+                    type: "POST",
+                    data: toSave,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function(){
+                      doLoader(true, "#btn_save_lang_translations", "sauvegarde en cours");
+                      disableInputs(true);
+                    }
+                }).done(function( data ) {
+                  doLoader(false, "#btn_save_lang_translations", "Sauvegarder");
+                  disableInputs(false);
+                  $('#saved').val(1);
+                  doNotif();
+                });
+            }
+
+            // Flag pour savoir si la traduction en cours d'édition a été sauvegardée
+            function initFlag(){
+                $('.input_lang_translation').each(function(){
+                    $(this).on('change', function(){
+                      $('#saved').val(0);
+                    });
+                });
+            }
+
+            function ifSaved(){
+              if($('#saved').val() == 1)
+                return true;
+              else
+                return false;
+            }
+
+            function doLoader(state, id, labelText, colorText){
+              $(id).prop("disabled", state);
+              if(state == true)
+                $(id).html("<img src='http://creation.funizi.com/src/img/loader_spin.gif' > "+labelText).css("color", "#000");
+              else
+                $(id).html('<span class="glyphicon glyphicon-floppy-save"></span> '+labelText).css("color", "#FFF");
+            }
+
+            function doNotif(notification=""){
+              $("#notif_block").fadeIn("slow");
+              $("html, body").animate({ scrollTop: 0 }, 600);
+              setTimeout(function(){ $("#notif_block").fadeOut("slow"); }, 7000);
+            }
+
+            function disableInputs(state){
+                $('.input_lang_translation').each(function(){
+                    $(this).prop('disabled', state);
+                });
+                $('#active_lang').prop('disabled', state);
+                $('#langs').prop('disabled', state);
+            }
+
+            function disableModalInputs(state){
+                $('.modal input').each(function(){
+                    $(this).prop('disabled', state);
+                });
+            }
+
+            function addUi(label_code, default_label_name){
+                var toSave = new FormData();
+
+                toSave.append('label_code', label_code);
+                toSave.append('default_label_name', default_label_name);
+
+                $.ajax({
+                    url: "config/lang/ui/add",
+                    type: "POST",
+                    data: toSave,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function(){
+                      doLoader(true, "#modal_btn_save_new_ui", "sauvegarde en cours");
+                      disableModalInputs(true);
+                    }
+                }).done(function( data ) {
+                  console.log(data);
+                  doLoader(false, "#modal_btn_save_new_ui", "Sauvegarder");
+                  disableModalInputs(false);
+                  $("#add_ui_modal").modal("toggle");
+                  location.reload(true);
+                });
+            }
+        });
+      </script>
+
+{% endblock %}

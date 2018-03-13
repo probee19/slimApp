@@ -1,0 +1,141 @@
+{% extends 'templates/layout.twig' %}
+{% block title %}{{ test.titre_test }}{% endblock %}
+
+    {% block graph %}
+        {% if code !='' %}
+            <!--FACEBOOK-->
+            <link rel="canonical" href="{{ base_url() }}/result/{{ test.titre_test | twig_clean_url }}/{{ code }}?ref=fb">
+            <meta property="og:title" content="{{ test.titre_test }}" />
+            <meta property="og:site_name" content="Funizi.com" />
+            <meta property="og:url" content="{{ base_url() }}/result/{{ test.titre_test | twig_clean_url }}/{{ code }}?ref=fb" >
+            <meta property="og:description" content="Clique vite pour découvrir: {{ test.titre_test | lower }}" />
+            <meta property="og:image" content="{{ base_url() }}{{ img_url }}" />
+            <meta property="og:image:width" content="800"/>
+            <meta property="og:image:height" content="420"/>
+            <meta property="og:image:type" content="image/jpeg" />
+            <meta property="og:type" content="website">
+            <meta property="fb:app_id" content="348809548888116">
+
+        {% else %}
+            <!--FACEBOOK-->
+            <link rel="canonical" href="{{ base_url() }}/test/{{ test.titre_test | twig_clean_url }}/{{ test.id_test }}">
+            <meta property="og:title" content="{{ test.titre_test }}" />
+            <meta property="og:site_name" content="Funizi.com" />
+            <meta property="og:url" content="{{ base_url() }}/test/{{ test.titre_test | twig_clean_url }}/{{ test.id_test }}" >
+            <meta property="og:description" content="Clique vite pour découvrir: {{ test.titre_test | lower }}" />
+            <meta property="og:image" content="{{ base_url }}/creation-test{{ test.url_image_test |trim('.', 'left') }}" />
+            <meta property="og:type" content="website">
+            <meta property="fb:app_id" content="348809548888116">
+
+        {% endif %}
+    {% endblock %}
+{% block banner_mobile_top %}
+    {% include 'banners/banner_320x100_top.twig' %}
+{% endblock %}
+{% block content %}
+    {% set i = 0 %}
+    {% set j = 0 %}
+    <div class="row">
+        {% if flash.message('fberror') %}
+            <div class="col-sm-12" style=" margin-top: 20px;" id="div_erreur_aut">
+            <div class="alert alert-warning col-xs-12 col-sm-10 col-sm-offset-1" id="erreur_aut">
+                {{ flash.message('fberror')[0] }}
+            </div>
+            </div>
+        {% endif %}
+        <div class="col-sm-12">
+            <div  id="div_test" class="col-xs-12 col-sm-10 col-sm-offset-1 back_layer">
+                <h1 class="t__title text-center">{{ test.titre_test }}</h1>
+                {% if session.name == '' %}
+                <span class="info-test text-center">Merci de te connecter à Facebook pour voir ton résultat</span>
+                {% endif %}
+                <!--div class="test-image text-center col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0"></div-->
+                <div  class="col-xs-12 btn-action text-center" style="margin-top:1em; margin-bottom: 2em; padding:0">
+                    {% if session.name %}
+                        {% if (permission == 0) or (session.accepted == true)  %}
+                    <a id="btn-result" href="{{ base_url() }}/start?ref={{ test.id_test }}" onclick="loader()" class="btn btn-primary btn-lg btn_to_track" data-btn="process" style="">
+                        <i class="fa fa-facebook-square"></i>
+                            Continuer en tant que {{ session.name | capitalize }}
+                    </a>
+                        {% else %}
+                            <a id="btn-result" href="{{ loginUrl }}"  onclick="loader()" class="btn btn-primary btn-lg btn_to_track" data-btn="process" style="">
+                                <i class="fa fa-facebook-square"></i>
+                                Continuer en tant que {{ session.name | capitalize }}
+                            </a>
+                        {% endif %}
+                    {% else %}
+                        <a id="btn-result" href="{{ loginUrl }}"  onclick="loader()" class="btn btn-primary btn-lg btn_to_track" data-btn="process" style="">
+                            <i class="fa fa-facebook-square"></i>
+                            Connecte-toi sur Facebook
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+
+            <div id="div_loader" class="col-xs-12 col-sm-10 col-sm-offset-1" style="display:none; margin-top: 30px; ">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 " >
+                    <img src="{{ base_url() }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
+                    <div style="font-weight: 500; font-size:1.2em; ">Calcul du résultat en cours </div>
+                    <div id="div_tasks" style="display:block; font-weight: 500; margin-top:0px; clear: both; font-size:1em;" >Traitement en cours </div>
+                    <span class="info-partage text-center" style="display:block; clear: both; margin-top:8px; font-family: 'Helvetica Neue';color: #2e5085; font-weight: 500; font-size:1.1em; ">On t'aime {{ session.name }} ! <br> ! Aime-nous en retour !</span>
+                    <div style="width:250px; margin: 5px auto;  position: relative;">
+                        <div class="div_left_hand"> <img src="{{ base_url() }}/src/img/hand_left.png" class="left_hand"/> </div>
+
+                        <div class="fb-like" data-href="https://www.facebook.com/funizi/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+                        <div class="div_right_hand"> <img src="{{ base_url() }}/src/img/hand_right.png"  class="right_hand"/></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% if test_owner%}
+            <div class="col-sm-12" style="margin-top: 5px; font-size: 10px;">
+                Avertissement : Ce test a été créé et publié par <a href="https://facebook.com/{{ test_owner.facebook_id}}" target="_blank">{{ test_owner.first_name}} {{ test_owner.last_name}} </a>
+            </div>
+        {% endif %}
+    </div>
+    {% if is_mobile() or is_tablet() %}
+        {% set banner = random(['banners/banner_320x50_middle_top_mobile.twig', 'banners/banner_300x250_middle_top_mobile.twig']) %}
+        <div class="row text-center" style="margin-top:1.5em">
+            {% include banner %}
+        </div>
+    {% endif %}
+    <div class="row text-center" style="margin-top:0.5em">
+    <h3 style="margin:.5em auto 1em;">Découvre également</h3>
+    {% if all_test %}
+        {% for single_test in all_test %}
+            <div class="col-md-4 portfolio-item">
+                <div class="border">
+                    <img class="img-responsive" src="{{ base_url }}/creation-test{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test">
+                    <span class="mobile-layer"></span>
+                    <a class="test__link btn_to_track" href="{{ path_for('singledis', { 'from': 'discover', 'id': single_test.id_test, 'name': single_test.titre_test | twig_clean_url }) }}" data-btn="btn-test"></a>
+                    <h3 class="test-title">{{ single_test.titre_test }}</h3>
+                    <div class="test__next"><a href="{{ path_for('singledis', { 'from': 'discover', 'id': single_test.id_test, 'name': single_test.titre_test | twig_clean_url }) }}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track"  data-btn="btn-test">Faire le test <i class="fa fa-arrow-right"></i></a></div>
+                </div>
+            </div> 
+            {% set i = i+1 %}
+            {% if i is divisible by(3) %}
+                {% set j = j + 1 %}
+                </div>
+                {% if j == 1 %}
+                    {% if is_mobile() or is_tablet() %}
+                        <div class="" style="margin:5px auto 10px">
+                            {% set banner = random(['banners/banner_360x300_responsive_bottom.twig', 'banners/banner_300x250_bottom.twig']) %}
+                            {% include  banner %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+                <div class="row text-center">
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    </div>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top:1em; margin-bottom:2em; display:none">
+        <a id="btn-result2" href="{{ loginUrl2 }}" onclick="loader()" class="btn btn-primary btn-lg" style="">
+            <i class="fa fa-facebook-square"></i>
+                Continuer en tant que {{ session.name | capitalize }}
+        </a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top:1em; margin-bottom:2em"><a class="btn btn-default btn-lg btn-accueil" href="{{ path_for('accueil') }}"><i class="fa fa-home"></i> Tous les tests</a></div>
+{% endblock %}

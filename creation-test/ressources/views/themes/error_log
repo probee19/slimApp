@@ -1,0 +1,718 @@
+[19-Oct-2017 12:01:42 UTC] PHP Parse error:  syntax error, unexpected 'énergie' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084145011815667808451001.php on line 15
+[19-Oct-2017 12:01:44 UTC] PHP Parse error:  syntax error, unexpected 'énergie' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084145011815667808451001.php on line 15
+[19-Oct-2017 13:45:38 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084207371815667808451001.php on line 22
+[19-Oct-2017 13:45:40 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084207371815667808451001.php on line 22
+[19-Oct-2017 14:05:47 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084219461815667808451001.php on line 22
+[19-Oct-2017 14:05:48 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084219461815667808451001.php on line 22
+[19-Oct-2017 14:07:44 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/funizi/public_html/ressources/views/tempfiles/15084220631815667808451001.php on line 22
+[19-Oct-2017 14:07:46 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/funizi/public_html/ressources/views/tempfiles/15084220631815667808451001.php on line 22
+[19-Oct-2017 14:10:10 UTC] PHP Parse error:  syntax error, unexpected '$_GET' (T_VARIABLE), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084222051815667808451001.php on line 22
+[19-Oct-2017 14:10:12 UTC] PHP Parse error:  syntax error, unexpected '$_GET' (T_VARIABLE), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084222051815667808451001.php on line 22
+[19-Oct-2017 16:31:40 UTC] PHP Parse error:  syntax error, unexpected 'on' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084306981815667808451001.php on line 24
+[19-Oct-2017 16:31:40 UTC] PHP Parse error:  syntax error, unexpected 'on' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084306981815667808451001.php on line 24
+[19-Oct-2017 16:31:42 UTC] PHP Parse error:  syntax error, unexpected 'on' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084306981815667808451001.php on line 24
+[20-Oct-2017 10:10:29 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/funizi/public_html/ressources/views/tempfiles/15084942281815667808451001.php on line 29
+[20-Oct-2017 10:10:30 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/funizi/public_html/ressources/views/tempfiles/15084942281815667808451001.php on line 29
+[20-Oct-2017 10:10:32 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/funizi/public_html/ressources/views/tempfiles/15084942281815667808451001.php on line 29
+[20-Oct-2017 10:12:04 UTC] PHP Parse error:  syntax error, unexpected 'user_gender' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15084943231815667808451001.php on line 29
+[20-Oct-2017 10:12:04 UTC] PHP Parse error:  syntax error, unexpected 'user_gender' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15084943231815667808451001.php on line 29
+[20-Oct-2017 10:12:06 UTC] PHP Parse error:  syntax error, unexpected 'user_gender' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15084943231815667808451001.php on line 29
+[20-Oct-2017 11:43:41 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084998211815667808451001.php on line 28
+[20-Oct-2017 11:43:42 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084998211815667808451001.php on line 28
+[20-Oct-2017 11:43:43 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/15084998211815667808451001.php on line 28
+[21-Oct-2017 00:02:18 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/1508544137487084501666165.php on line 12
+[21-Oct-2017 00:02:19 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/1508544137487084501666165.php on line 12
+[21-Oct-2017 00:02:20 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/1508544137487084501666165.php on line 12
+[21-Oct-2017 00:09:34 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/15085445731912665938951025.php on line 12
+[21-Oct-2017 00:09:34 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/15085445731912665938951025.php on line 12
+[21-Oct-2017 00:09:36 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/15085445731912665938951025.php on line 12
+[21-Oct-2017 00:09:59 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/15085445981815667808451001.php on line 12
+[21-Oct-2017 00:09:59 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/15085445981815667808451001.php on line 12
+[21-Oct-2017 00:10:01 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/15085445981815667808451001.php on line 12
+[21-Oct-2017 00:17:09 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/15085450281815667808451001.php on line 12
+[21-Oct-2017 00:17:10 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/15085450281815667808451001.php on line 12
+[21-Oct-2017 00:17:11 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/15085450281815667808451001.php on line 12
+[21-Oct-2017 00:59:25 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150854756410156560323997678.php on line 16
+[21-Oct-2017 00:59:25 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150854756410156560323997678.php on line 16
+[21-Oct-2017 00:59:27 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150854756410156560323997678.php on line 16
+[21-Oct-2017 01:07:17 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/150854803610156560323997678.php on line 21
+[21-Oct-2017 01:07:17 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/150854803610156560323997678.php on line 21
+[21-Oct-2017 01:07:19 UTC] PHP Parse error:  syntax error, unexpected 'else' (T_ELSE) in /home/funizi/public_html/ressources/views/tempfiles/150854803610156560323997678.php on line 21
+[21-Oct-2017 01:09:02 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150854814110156560323997678.php on line 26
+[21-Oct-2017 01:09:02 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150854814110156560323997678.php on line 26
+[21-Oct-2017 01:09:04 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150854814110156560323997678.php on line 26
+[21-Oct-2017 11:52:29 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/150858674810156560323997678.php on line 13
+[21-Oct-2017 11:52:29 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/150858674810156560323997678.php on line 13
+[21-Oct-2017 12:21:37 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15085884961929292877390863.php on line 13
+[21-Oct-2017 12:21:37 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15085884961929292877390863.php on line 13
+[21-Oct-2017 12:37:18 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15085894371815667808451001.php on line 13
+[21-Oct-2017 12:37:19 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15085894371815667808451001.php on line 13
+[21-Oct-2017 13:50:11 UTC] PHP Parse error:  syntax error, unexpected 'friend_name_1' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150859381010156560323997678.php on line 13
+[21-Oct-2017 13:50:11 UTC] PHP Parse error:  syntax error, unexpected 'friend_name_1' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150859381010156560323997678.php on line 13
+[21-Oct-2017 13:50:13 UTC] PHP Parse error:  syntax error, unexpected 'friend_name_1' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150859381010156560323997678.php on line 13
+[21-Oct-2017 13:51:46 UTC] PHP Parse error:  syntax error, unexpected 'friend_name_1' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150859390510156560323997678.php on line 13
+[21-Oct-2017 13:51:46 UTC] PHP Parse error:  syntax error, unexpected 'friend_name_1' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150859390510156560323997678.php on line 13
+[21-Oct-2017 13:51:48 UTC] PHP Parse error:  syntax error, unexpected 'friend_name_1' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150859390510156560323997678.php on line 13
+[21-Oct-2017 13:53:51 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508594030387842694966361.php on line 13
+[21-Oct-2017 13:53:51 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508594030387842694966361.php on line 13
+[21-Oct-2017 14:43:24 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508597003515975148752596.php on line 13
+[21-Oct-2017 14:43:24 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508597003515975148752596.php on line 13
+[21-Oct-2017 16:14:43 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508602482140910299989090.php on line 13
+[21-Oct-2017 16:14:43 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508602482140910299989090.php on line 13
+[21-Oct-2017 20:27:29 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508617648740973252780594.php on line 13
+[21-Oct-2017 20:27:29 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508617648740973252780594.php on line 13
+[21-Oct-2017 20:46:00 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508618759681862368675468.php on line 13
+[21-Oct-2017 20:46:01 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508618759681862368675468.php on line 13
+[21-Oct-2017 22:12:04 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508623923480261325690249.php on line 13
+[21-Oct-2017 22:12:05 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508623923480261325690249.php on line 13
+[21-Oct-2017 22:24:58 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086246981961869147401336.php on line 13
+[21-Oct-2017 22:24:59 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086246981961869147401336.php on line 13
+[21-Oct-2017 23:51:00 UTC] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER), expecting ']' in /home/funizi/public_html/ressources/views/tempfiles/150862985910156560323997678.php on line 5
+[21-Oct-2017 23:51:00 UTC] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER), expecting ']' in /home/funizi/public_html/ressources/views/tempfiles/150862985910156560323997678.php on line 5
+[21-Oct-2017 23:51:02 UTC] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER), expecting ']' in /home/funizi/public_html/ressources/views/tempfiles/150862985910156560323997678.php on line 5
+[21-Oct-2017 23:57:15 UTC] PHP Parse error:  syntax error, unexpected 'px' (T_STRING), expecting ',' or ';' in /home/funizi/public_html/ressources/views/tempfiles/150863023410156560323997678.php on line 9
+[21-Oct-2017 23:57:15 UTC] PHP Parse error:  syntax error, unexpected 'px' (T_STRING), expecting ',' or ';' in /home/funizi/public_html/ressources/views/tempfiles/150863023410156560323997678.php on line 9
+[21-Oct-2017 23:57:17 UTC] PHP Parse error:  syntax error, unexpected 'px' (T_STRING), expecting ',' or ';' in /home/funizi/public_html/ressources/views/tempfiles/150863023410156560323997678.php on line 9
+[21-Oct-2017 23:58:42 UTC] PHP Parse error:  syntax error, unexpected 'px' (T_STRING), expecting ',' or ';' in /home/funizi/public_html/ressources/views/tempfiles/150863032110156560323997678.php on line 9
+[21-Oct-2017 23:58:42 UTC] PHP Parse error:  syntax error, unexpected 'px' (T_STRING), expecting ',' or ';' in /home/funizi/public_html/ressources/views/tempfiles/150863032110156560323997678.php on line 9
+[21-Oct-2017 23:58:44 UTC] PHP Parse error:  syntax error, unexpected 'px' (T_STRING), expecting ',' or ';' in /home/funizi/public_html/ressources/views/tempfiles/150863032110156560323997678.php on line 9
+[22-Oct-2017 07:00:56 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086556551248009918678349.php on line 13
+[22-Oct-2017 07:00:56 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086556551248009918678349.php on line 13
+[22-Oct-2017 10:11:31 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086670901988720004705984.php on line 13
+[22-Oct-2017 10:11:31 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086670901988720004705984.php on line 13
+[22-Oct-2017 12:30:32 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086754311387705964690003.php on line 13
+[22-Oct-2017 12:30:32 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086754311387705964690003.php on line 13
+[22-Oct-2017 16:25:35 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086895341312061018921529.php on line 13
+[22-Oct-2017 16:25:35 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15086895341312061018921529.php on line 13
+[22-Oct-2017 21:00:26 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087060251481981405222934.php on line 13
+[22-Oct-2017 21:00:26 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087060251481981405222934.php on line 13
+[23-Oct-2017 07:01:21 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508742080137003943716748.php on line 13
+[23-Oct-2017 07:01:22 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508742080137003943716748.php on line 13
+[23-Oct-2017 09:22:19 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508750538495814057451845.php on line 13
+[23-Oct-2017 09:22:19 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508750538495814057451845.php on line 13
+[23-Oct-2017 10:34:26 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087548651842207096090481.php on line 13
+[23-Oct-2017 10:34:27 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087548651842207096090481.php on line 13
+[23-Oct-2017 13:39:32 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087659711437790319670299.php on line 13
+[23-Oct-2017 13:39:32 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087659711437790319670299.php on line 13
+[23-Oct-2017 15:54:23 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/150877406210213589696477431.php on line 13
+[23-Oct-2017 15:54:23 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/150877406210213589696477431.php on line 13
+[23-Oct-2017 19:20:23 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087864221870945673221068.php on line 13
+[23-Oct-2017 19:20:24 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087864221870945673221068.php on line 13
+[23-Oct-2017 20:38:13 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087910921694362837271529.php on line 13
+[23-Oct-2017 20:38:13 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087910921694362837271529.php on line 13
+[23-Oct-2017 20:39:11 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087911501500274210048159.php on line 13
+[23-Oct-2017 20:39:11 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15087911501500274210048159.php on line 13
+[23-Oct-2017 20:44:00 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508791439351468088638535.php on line 13
+[23-Oct-2017 20:44:00 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508791439351468088638535.php on line 13
+[23-Oct-2017 21:42:30 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508794949684306685104102.php on line 13
+[23-Oct-2017 21:42:30 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508794949684306685104102.php on line 13
+[24-Oct-2017 05:20:52 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/150882245210215143678732238.php on line 13
+[24-Oct-2017 05:20:53 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/150882245210215143678732238.php on line 13
+[24-Oct-2017 08:26:56 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508833615133077540748797.php on line 13
+[24-Oct-2017 08:26:56 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508833615133077540748797.php on line 13
+[24-Oct-2017 08:36:24 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088341832010942779142085.php on line 13
+[24-Oct-2017 08:36:24 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088341832010942779142085.php on line 13
+[24-Oct-2017 09:13:27 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088364062019956368288610.php on line 13
+[24-Oct-2017 09:13:27 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088364062019956368288610.php on line 13
+[24-Oct-2017 09:28:57 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088373361639365966150248.php on line 13
+[24-Oct-2017 09:28:57 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088373361639365966150248.php on line 13
+[24-Oct-2017 09:32:06 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088375251943279925923798.php on line 13
+[24-Oct-2017 09:32:06 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088375251943279925923798.php on line 13
+[24-Oct-2017 09:32:14 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088375331943279925923798.php on line 13
+[24-Oct-2017 09:32:14 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088375331943279925923798.php on line 13
+[24-Oct-2017 09:32:22 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088375411943279925923798.php on line 13
+[24-Oct-2017 09:32:23 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088375411943279925923798.php on line 13
+[24-Oct-2017 09:32:33 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088375521943279925923798.php on line 13
+[24-Oct-2017 09:32:33 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088375521943279925923798.php on line 13
+[24-Oct-2017 09:37:13 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508837830474978346214195.php on line 13
+[24-Oct-2017 09:37:13 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508837830474978346214195.php on line 13
+[24-Oct-2017 10:02:47 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088393661924095964507198.php on line 13
+[24-Oct-2017 10:02:47 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088393661924095964507198.php on line 13
+[24-Oct-2017 10:07:10 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088396291653467951372310.php on line 13
+[24-Oct-2017 10:07:10 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088396291653467951372310.php on line 13
+[24-Oct-2017 11:06:15 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508843175252280618631775.php on line 13
+[24-Oct-2017 11:06:16 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508843175252280618631775.php on line 13
+[24-Oct-2017 11:19:35 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088439731731554127139316.php on line 13
+[24-Oct-2017 11:19:36 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088439731731554127139316.php on line 13
+[24-Oct-2017 11:24:45 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508844280860155097495907.php on line 13
+[24-Oct-2017 11:24:45 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508844280860155097495907.php on line 13
+[24-Oct-2017 11:26:18 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508844377131278297596553.php on line 13
+[24-Oct-2017 11:26:19 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508844377131278297596553.php on line 13
+[24-Oct-2017 11:26:25 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508844384131278297596553.php on line 13
+[24-Oct-2017 11:26:25 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508844384131278297596553.php on line 13
+[24-Oct-2017 11:26:33 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508844392131278297596553.php on line 13
+[24-Oct-2017 11:26:33 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508844392131278297596553.php on line 13
+[24-Oct-2017 12:27:59 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508848078531406883871017.php on line 13
+[24-Oct-2017 12:27:59 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508848078531406883871017.php on line 13
+[24-Oct-2017 12:49:04 UTC] PHP Parse error:  syntax error, unexpected '%' in /home/funizi/public_html/ressources/views/tempfiles/150884934210156560323997678.php on line 16
+[24-Oct-2017 12:49:04 UTC] PHP Parse error:  syntax error, unexpected '%' in /home/funizi/public_html/ressources/views/tempfiles/150884934210156560323997678.php on line 16
+[24-Oct-2017 12:49:06 UTC] PHP Parse error:  syntax error, unexpected '%' in /home/funizi/public_html/ressources/views/tempfiles/150884934210156560323997678.php on line 16
+[24-Oct-2017 13:11:02 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/funizi/public_html/ressources/views/tempfiles/150885065610156560323997678.php on line 17
+[24-Oct-2017 13:11:02 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/funizi/public_html/ressources/views/tempfiles/150885065610156560323997678.php on line 17
+[24-Oct-2017 13:11:04 UTC] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/funizi/public_html/ressources/views/tempfiles/150885065610156560323997678.php on line 17
+[24-Oct-2017 13:13:10 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088507891343165939125555.php on line 13
+[24-Oct-2017 13:13:10 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088507891343165939125555.php on line 13
+[24-Oct-2017 13:13:54 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088508331343165939125555.php on line 13
+[24-Oct-2017 13:13:54 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088508331343165939125555.php on line 13
+[24-Oct-2017 13:30:25 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088518252042305962655429.php on line 13
+[24-Oct-2017 13:30:26 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088518252042305962655429.php on line 13
+[24-Oct-2017 13:55:28 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508853327776740912498163.php on line 13
+[24-Oct-2017 13:55:28 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508853327776740912498163.php on line 13
+[24-Oct-2017 14:15:47 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508854546299915387159430.php on line 13
+[24-Oct-2017 14:15:47 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508854546299915387159430.php on line 13
+[24-Oct-2017 15:28:14 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088588931926731774259486.php on line 13
+[24-Oct-2017 15:28:14 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088588931926731774259486.php on line 13
+[24-Oct-2017 15:36:25 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508859384128182507809440.php on line 13
+[24-Oct-2017 15:36:25 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508859384128182507809440.php on line 13
+[24-Oct-2017 16:12:59 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088615781739134379444188.php on line 13
+[24-Oct-2017 16:12:59 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088615781739134379444188.php on line 13
+[24-Oct-2017 16:23:45 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088622231504217469672383.php on line 13
+[24-Oct-2017 16:23:45 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088622231504217469672383.php on line 13
+[24-Oct-2017 16:37:24 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088630411709086125830858.php on line 13
+[24-Oct-2017 16:37:24 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088630411709086125830858.php on line 13
+[24-Oct-2017 16:56:09 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508864168488757728173791.php on line 13
+[24-Oct-2017 16:56:10 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508864168488757728173791.php on line 13
+[24-Oct-2017 16:56:51 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508864210488757728173791.php on line 13
+[24-Oct-2017 16:56:51 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508864210488757728173791.php on line 13
+[24-Oct-2017 16:56:57 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508864216488757728173791.php on line 13
+[24-Oct-2017 16:56:57 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508864216488757728173791.php on line 13
+[24-Oct-2017 16:57:05 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508864224488757728173791.php on line 13
+[24-Oct-2017 16:57:05 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508864224488757728173791.php on line 13
+[24-Oct-2017 17:29:31 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088661701661218313899223.php on line 13
+[24-Oct-2017 17:29:31 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088661701661218313899223.php on line 13
+[24-Oct-2017 17:52:46 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508867566912232505594762.php on line 13
+[24-Oct-2017 17:52:47 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508867566912232505594762.php on line 13
+[24-Oct-2017 17:52:54 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508867573912232505594762.php on line 13
+[24-Oct-2017 17:52:54 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508867573912232505594762.php on line 13
+[24-Oct-2017 18:08:32 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088685111133203833478968.php on line 13
+[24-Oct-2017 18:08:33 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088685111133203833478968.php on line 13
+[24-Oct-2017 23:19:47 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088871861929233190676079.php on line 13
+[24-Oct-2017 23:19:47 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15088871861929233190676079.php on line 13
+[25-Oct-2017 07:22:53 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089161732027084817578477.php on line 13
+[25-Oct-2017 07:22:54 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089161732027084817578477.php on line 13
+[25-Oct-2017 08:07:38 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089188581735876229787043.php on line 13
+[25-Oct-2017 08:07:39 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089188581735876229787043.php on line 13
+[25-Oct-2017 08:26:24 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508919983696851273853847.php on line 13
+[25-Oct-2017 08:26:24 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508919983696851273853847.php on line 13
+[25-Oct-2017 09:32:14 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089239331767528963275575.php on line 13
+[25-Oct-2017 09:32:14 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089239331767528963275575.php on line 13
+[25-Oct-2017 09:40:22 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089244161500819596666905.php on line 13
+[25-Oct-2017 09:40:22 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089244161500819596666905.php on line 13
+[25-Oct-2017 09:44:52 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089246911987686668111213.php on line 13
+[25-Oct-2017 09:44:52 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089246911987686668111213.php on line 13
+[25-Oct-2017 10:01:15 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508925671635294443469218.php on line 13
+[25-Oct-2017 10:01:15 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508925671635294443469218.php on line 13
+[25-Oct-2017 10:04:15 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508925854181505412411998.php on line 13
+[25-Oct-2017 10:04:15 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508925854181505412411998.php on line 13
+[25-Oct-2017 10:04:25 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508925864181505412411998.php on line 13
+[25-Oct-2017 10:04:25 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508925864181505412411998.php on line 13
+[25-Oct-2017 10:04:46 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508925885342965696177092.php on line 13
+[25-Oct-2017 10:04:46 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508925885342965696177092.php on line 13
+[25-Oct-2017 10:19:58 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508926797516206885390073.php on line 13
+[25-Oct-2017 10:19:58 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/1508926797516206885390073.php on line 13
+[25-Oct-2017 10:24:53 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089270921918768998385039.php on line 13
+[25-Oct-2017 10:24:53 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089270921918768998385039.php on line 13
+[25-Oct-2017 10:28:28 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089273061815667808451001.php on line 13
+[25-Oct-2017 10:28:28 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089273061815667808451001.php on line 13
+[25-Oct-2017 10:28:45 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089273241815667808451001.php on line 13
+[25-Oct-2017 10:28:45 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089273241815667808451001.php on line 13
+[25-Oct-2017 10:29:03 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089273421815667808451001.php on line 13
+[25-Oct-2017 10:29:03 UTC] PHP Warning:  mt_rand(): max(0) is smaller than min(3) in /home/funizi/public_html/ressources/views/tempfiles/15089273421815667808451001.php on line 13
+[26-Oct-2017 00:22:20 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150897733910156560323997678.php on line 24
+[26-Oct-2017 00:22:20 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150897733910156560323997678.php on line 24
+[26-Oct-2017 00:22:22 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150897733910156560323997678.php on line 24
+[26-Oct-2017 00:22:53 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150897737210156560323997678.php on line 24
+[26-Oct-2017 00:22:54 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150897737210156560323997678.php on line 24
+[26-Oct-2017 00:22:55 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150897737210156560323997678.php on line 24
+[26-Oct-2017 00:25:39 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150897753810156560323997678.php on line 24
+[26-Oct-2017 00:25:39 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150897753810156560323997678.php on line 24
+[26-Oct-2017 00:25:41 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/150897753810156560323997678.php on line 24
+[30-Oct-2017 11:58:20 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936469910156560323997678.php on line 9
+[30-Oct-2017 11:58:21 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936469910156560323997678.php on line 9
+[30-Oct-2017 11:58:23 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936469910156560323997678.php on line 9
+[30-Oct-2017 12:02:34 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936495310156560323997678.php on line 9
+[30-Oct-2017 12:02:34 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936495310156560323997678.php on line 9
+[30-Oct-2017 12:02:36 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936495310156560323997678.php on line 9
+[30-Oct-2017 12:08:31 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936530710156560323997678.php on line 9
+[30-Oct-2017 12:08:31 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936530710156560323997678.php on line 9
+[30-Oct-2017 12:08:33 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936530710156560323997678.php on line 9
+[30-Oct-2017 12:14:02 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936564110156560323997678.php on line 9
+[30-Oct-2017 12:14:02 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936564110156560323997678.php on line 9
+[30-Oct-2017 12:14:04 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936564110156560323997678.php on line 9
+[30-Oct-2017 12:23:27 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936620510156560323997678.php on line 9
+[30-Oct-2017 12:23:27 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936620510156560323997678.php on line 9
+[30-Oct-2017 12:23:29 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150936620510156560323997678.php on line 9
+[30-Oct-2017 12:58:28 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093683071815667808451001.php on line 9
+[30-Oct-2017 12:58:28 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093683071815667808451001.php on line 9
+[30-Oct-2017 12:58:30 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093683071815667808451001.php on line 9
+[30-Oct-2017 13:02:58 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093685491815667808451001.php on line 9
+[30-Oct-2017 13:08:11 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093688081815667808451001.php on line 9
+[30-Oct-2017 13:11:09 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093688081815667808451001.php on line 9
+[30-Oct-2017 13:24:33 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093698671815667808451001.php on line 9
+[30-Oct-2017 18:05:49 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093867471815667808451001.php on line 9
+[30-Oct-2017 18:05:49 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093867471815667808451001.php on line 9
+[30-Oct-2017 18:05:51 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15093867471815667808451001.php on line 9
+[30-Oct-2017 23:24:21 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094058602242420755984295.php on line 21
+[30-Oct-2017 23:24:21 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094058602242420755984295.php on line 21
+[30-Oct-2017 23:24:23 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094058602242420755984295.php on line 21
+[30-Oct-2017 23:46:44 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094072031404936809604944.php on line 21
+[30-Oct-2017 23:46:44 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094072031404936809604944.php on line 21
+[30-Oct-2017 23:46:46 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094072031404936809604944.php on line 21
+[30-Oct-2017 23:49:48 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150940738710156560323997678.php on line 13
+[30-Oct-2017 23:49:48 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150940738710156560323997678.php on line 13
+[30-Oct-2017 23:49:50 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/150940738710156560323997678.php on line 13
+[30-Oct-2017 23:52:42 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/funizi/public_html/ressources/views/tempfiles/150940756210156560323997678.php on line 11
+[30-Oct-2017 23:52:43 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/funizi/public_html/ressources/views/tempfiles/150940756210156560323997678.php on line 11
+[30-Oct-2017 23:52:45 UTC] PHP Parse error:  syntax error, unexpected '=' in /home/funizi/public_html/ressources/views/tempfiles/150940756210156560323997678.php on line 11
+[30-Oct-2017 23:54:02 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150940764110156560323997678.php on line 12
+[30-Oct-2017 23:54:02 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150940764110156560323997678.php on line 12
+[30-Oct-2017 23:54:04 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150940764110156560323997678.php on line 12
+[30-Oct-2017 23:58:19 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150940789810156560323997678.php on line 10
+[30-Oct-2017 23:58:19 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150940789810156560323997678.php on line 10
+[30-Oct-2017 23:58:21 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150940789810156560323997678.php on line 10
+[31-Oct-2017 00:02:50 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150940816910156560323997678.php on line 10
+[31-Oct-2017 00:02:51 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150940816910156560323997678.php on line 10
+[31-Oct-2017 00:02:52 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING), expecting ')' in /home/funizi/public_html/ressources/views/tempfiles/150940816910156560323997678.php on line 10
+[31-Oct-2017 00:06:23 UTC] PHP Fatal error:  Function name must be a string in /home/funizi/public_html/ressources/views/tempfiles/150940838210156560323997678.php on line 12
+[31-Oct-2017 00:06:23 UTC] PHP Fatal error:  Function name must be a string in /home/funizi/public_html/ressources/views/tempfiles/150940838210156560323997678.php on line 12
+[31-Oct-2017 00:06:25 UTC] PHP Fatal error:  Function name must be a string in /home/funizi/public_html/ressources/views/tempfiles/150940838210156560323997678.php on line 12
+[31-Oct-2017 03:48:40 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094217191528634493892022.php on line 21
+[31-Oct-2017 03:48:40 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094217191528634493892022.php on line 21
+[31-Oct-2017 03:48:42 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094217191528634493892022.php on line 21
+[31-Oct-2017 06:13:53 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094304321563596520355426.php on line 21
+[31-Oct-2017 06:13:54 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094304321563596520355426.php on line 21
+[31-Oct-2017 06:13:56 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094304321563596520355426.php on line 21
+[31-Oct-2017 07:08:57 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094337361877364878945008.php on line 21
+[31-Oct-2017 07:08:57 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094337361877364878945008.php on line 21
+[31-Oct-2017 07:08:59 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094337361877364878945008.php on line 21
+[31-Oct-2017 09:05:43 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094407421232935473518656.php on line 21
+[31-Oct-2017 09:05:43 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094407421232935473518656.php on line 21
+[31-Oct-2017 09:05:45 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094407421232935473518656.php on line 21
+[31-Oct-2017 09:22:36 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094417551815667808451001.php on line 21
+[31-Oct-2017 09:22:37 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094417551815667808451001.php on line 21
+[31-Oct-2017 09:22:38 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094417551815667808451001.php on line 21
+[31-Oct-2017 09:26:12 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094419711815667808451001.php on line 26
+[31-Oct-2017 09:26:12 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094419711815667808451001.php on line 26
+[31-Oct-2017 09:26:14 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094419711815667808451001.php on line 26
+[31-Oct-2017 09:26:34 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094419931815667808451001.php on line 26
+[31-Oct-2017 09:26:34 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094419931815667808451001.php on line 26
+[31-Oct-2017 09:26:36 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094419931815667808451001.php on line 26
+[31-Oct-2017 11:25:51 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094491511976783719270879.php on line 13
+[31-Oct-2017 11:25:52 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094491511976783719270879.php on line 13
+[31-Oct-2017 11:25:53 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094491511976783719270879.php on line 13
+[31-Oct-2017 11:26:16 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094491751976783719270879.php on line 13
+[31-Oct-2017 11:26:17 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094491751976783719270879.php on line 13
+[31-Oct-2017 11:26:18 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094491751976783719270879.php on line 13
+[31-Oct-2017 11:27:21 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094492401815667808451001.php on line 13
+[31-Oct-2017 11:27:21 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094492401815667808451001.php on line 13
+[31-Oct-2017 11:27:23 UTC] PHP Parse error:  syntax error, unexpected '' (T_ENCAPSED_AND_WHITESPACE), expecting identifier (T_STRING) or variable (T_VARIABLE) or number (T_NUM_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15094492401815667808451001.php on line 13
+[08-Nov-2017 18:20:21 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/151016522110156560323997678.php on line 18
+[08-Nov-2017 18:20:22 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/151016522110156560323997678.php on line 18
+[08-Nov-2017 18:20:24 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/funizi/public_html/ressources/views/tempfiles/151016522110156560323997678.php on line 18
+[13-Nov-2017 16:31:11 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15105906701815667808451001.php on line 16
+[13-Nov-2017 16:31:11 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15105906701815667808451001.php on line 16
+[13-Nov-2017 16:31:13 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15105906701815667808451001.php on line 16
+[13-Nov-2017 16:35:20 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15105909191815667808451001.php on line 16
+[13-Nov-2017 16:35:21 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15105909191815667808451001.php on line 16
+[13-Nov-2017 16:35:23 UTC] PHP Parse error:  syntax error, unexpected 'user_name' (T_STRING) in /home/funizi/public_html/ressources/views/tempfiles/15105909191815667808451001.php on line 16
+[14-Nov-2017 14:05:28 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/funizi/public_html/ressources/views/tempfiles/1510668327101647973947108.php on line 32
+[14-Nov-2017 14:05:28 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/funizi/public_html/ressources/views/tempfiles/1510668327101647973947108.php on line 32
+[14-Nov-2017 14:05:30 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/funizi/public_html/ressources/views/tempfiles/1510668327101647973947108.php on line 32
+[14-Nov-2017 14:06:44 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/funizi/public_html/ressources/views/tempfiles/1510668402101647973947108.php on line 32
+[14-Nov-2017 14:06:44 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/funizi/public_html/ressources/views/tempfiles/1510668402101647973947108.php on line 32
+[14-Nov-2017 14:06:46 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/funizi/public_html/ressources/views/tempfiles/1510668402101647973947108.php on line 32
+[14-Nov-2017 14:07:00 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/funizi/public_html/ressources/views/tempfiles/15106684191815667808451001.php on line 32
+[14-Nov-2017 14:07:00 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/funizi/public_html/ressources/views/tempfiles/15106684191815667808451001.php on line 32
+[14-Nov-2017 14:07:02 UTC] PHP Parse error:  syntax error, unexpected 'foreach' (T_FOREACH) in /home/funizi/public_html/ressources/views/tempfiles/15106684191815667808451001.php on line 32
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 42
+[30-Nov-2017 10:09:52 UTC] PHP Warning:  strpos(): Empty needle in /home/funizi/public_html/api/ressources/views/tempfiles/15120365910.php on line 44

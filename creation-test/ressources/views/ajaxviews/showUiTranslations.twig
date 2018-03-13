@@ -1,0 +1,5 @@
+{% for translation in ui_translations %}
+ <div class="form-group">
+     <input type="text" name="{{translation.interface_ui_code}}" id="{{translation.interface_ui_code}}" value="{{translation.interface_ui}}" class="input_lang_translation col-md-12"/>
+ </div>
+{% endfor %}

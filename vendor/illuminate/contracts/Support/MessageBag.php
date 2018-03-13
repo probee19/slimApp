@@ -2,7 +2,7 @@
 
 namespace Illuminate\Contracts\Support;
 
-interface MessageBag extends Arrayable
+interface MessageBag
 {
     /**
      * Get the keys present in the message bag.
@@ -90,4 +90,11 @@ interface MessageBag extends Arrayable
      * @return int
      */
     public function count();
+
+    /**
+     * Get the instance as an array.
+     *
+     * @return array
+     */
+    public function toArray();
 }

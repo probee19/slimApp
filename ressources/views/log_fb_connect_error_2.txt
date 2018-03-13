@@ -1,0 +1,12 @@
+Erreur : Graph returned an error: This authorization code has been used.
+Langue : fr
+Test : 253
+Heure : 17:18:50
+Erreur : Graph returned an error: This authorization code has been used.
+Langue : fr
+Test : 253
+Heure : 17:18:50
+Erreur : Graph returned an error: This authorization code has been used.
+Langue : fr
+Test : 240
+Heure : 18:03:19

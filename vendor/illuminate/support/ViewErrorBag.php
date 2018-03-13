@@ -5,9 +5,6 @@ namespace Illuminate\Support;
 use Countable;
 use Illuminate\Contracts\Support\MessageBag as MessageBagContract;
 
-/**
- * @mixin \Illuminate\Contracts\Support\MessageBag
- */
 class ViewErrorBag implements Countable
 {
     /**

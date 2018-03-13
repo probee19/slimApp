@@ -1,0 +1,32 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+	  <a class="navbar-brand" href="http://funizi.com" target="_blank"><img src="{{base_url}}/src/img/funizi.png" height="100%"/></a>
+	</div>
+	<div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="nav navbar-nav">
+            <li class=""><a href="{{ base_url() }}">ACCUEIL</a></li>
+            <li class=""><a href="{{base_url()}}/tests">TOUS LES TESTS</a></li>
+            <li class=""><a href="http://creation.funizi.com/results">DERNIERS RESULTATS</a></li>
+            <!--li><a href="http://creation.funizi.com/create-test.php?theme=1">NOUVEAU TEST</a></li-->
+            <li><a href="{{ base_url() }}/choosetheme">NOUVEAU TEST</a></li>
+            <li><a href="{{ base_url() }}/lang">GESTION DES LANGUES</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"  style="height: 50px;padding-top: 5px;">
+                    <img src="{{cookie_img_user}}" style=" height: 40px; border-radius: 50%;"/> <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                        <li><a href="{{ base_url() }}/logout">Se déconnecter</a></li>
+                </ul>
+            </li>
+        </ul>
+	</div>
+  </div>
+</nav>

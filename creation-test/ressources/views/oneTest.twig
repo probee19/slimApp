@@ -1,0 +1,150 @@
+{% extends 'templates/layoutCreationTest.twig' %}
+{% block title %} Tous les tests {% endblock %}
+{% block additionalstyle %}
+  <style>
+    .hidden_{
+        display: none;
+  }
+  #liste_test{
+      font-size: 12px;
+  }
+  </style>
+{% endblock %}
+
+{%block content%}
+
+  <div class="row">
+      <h5 class="titre_stat"> {{this_test.titre_test}}</h5>
+  </div>
+
+  <div class="row">
+    <table id="" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th width="16%">Tests</th>
+                <th width="12%">Partages directs</th>
+                <th width="16%">Taux de partage</th>
+                <th width="10%">Clics</th>
+                <th width="20%">Partages depuis Facebook</th>
+                <th width="10%">Réactions</th>
+                <th width="16%">Commentaires</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> {{data_test.nb_played}}   </td>
+            <td> {{data_test.partages_count}} </td>
+            <td> {{data_test.taux_share}} % </td>
+            <td> {{data_test.clicks_count}} </td>
+            <td> {{data_test.shares_count}} </td>
+            <td> {{data_test.reactions_count}} </td>
+            <td> {{data_test.comments_count}} </td>
+          </tr>
+        </tbody>
+    </table>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Statistiques détaillées </div>
+        <div class="panel-body">
+          <div role="tabpanel">
+
+            <!-- Nav tabs -->
+            <ul id="myTab" class="nav nav-tabs" role="tablist" style="margin-bottom: 15px;">
+              <li role="presentation" class="active">
+                  <a href="#global_stats" id="btn_global" aria-controls="global_stats" role="tab" data-toggle="tab">
+                      Statistiques générales
+                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="global-refresh-btn" onclick="charger(this,'global',{{this_test.id_test}},'#global_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                  </a>
+              </li>
+              <li role="presentation">
+                  <a href="#daily_stats" onclick="charger(this,'daily',{{this_test.id_test}},'#daily_stats',0,{{this_test.id_theme}})" id="btn_daily" aria-controls="daily_stats" role="tab" data-toggle="tab">
+                      Statistiques journalières
+                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="daily-refresh-btn" onclick="charger(this,'daily',{{this_test.id_test}},'#daily_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                  </a>
+              </li>
+              <li role="presentation">
+                  <a href="#weekly_stats" onclick="charger(this,'weekly',{{this_test.id_test}},'#weekly_stats',0,{{this_test.id_theme}})" id="btn_weekly" aria-controls="weekly_stats" role="tab" data-toggle="tab">
+                      Statistiques hebdomadaires
+                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="weekly-refresh-btn" onclick="charger(this,'weekly',{{this_test.id_test}},'#weekly_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                  </a>
+              </li>
+              <li role="presentation">
+                  <a href="#monthly_stats" onclick="" aria-controls="monthly_stats" role="tab" data-toggle="tab">
+                      Statistiques mensuelles
+                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="monthly-refresh-btn" onclick="charger(this,'monthly',{{this_test.id_test}},'#monthly_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                  </a>
+              </li>
+              <li role="presentation">
+                  <a href="#last_shares" onclick="charger(this,'last_share',{{this_test.id_test}},'#last_shares',0,{{this_test.id_theme}})" id="btn_last_share"  aria-controls="last_shares" role="tab" data-toggle="tab">
+                      Derniers partages
+                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="last_share-refresh-btn" onclick="charger(this,'last_share',{{this_test.id_test}},'#last_shares',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                  </a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="global_stats"></div>
+              <div role="tabpanel" class="tab-pane" id="daily_stats"></div>
+              <div role="tabpanel" class="tab-pane" id="weekly_stats"></div>
+              <div role="tabpanel" class="tab-pane" id="monthly_stats"></div>
+              <div role="tabpanel" class="tab-pane" id="last_shares"></div>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+
+  <!-- Bouton enregistrer un test-->
+  <div class="row">
+      <div class="form-group col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-4 col-md-4 col-sm-4">
+          <a href="{{ base_url() }}/choosetheme"><button type="button" id="btn_add_test" class="form-control btn btn-success" ><span class="glyphicon glyphicon-plus-sign"></span> Créer un nouveau test</button></a>
+      </div>
+  </div>
+
+{%endblock%}
+
+
+
+{% block additionalfooter %}
+
+	<script type="text/javascript" language="javascript" src="{{base_url()}}/src/js/DataTables/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="{{base_url()}}/src/js/DataTables/dataTables.bootstrap.js"></script>
+  <script type="text/javascript" language="javascript" class="init">
+        $(document).ready(function() {
+            charger(' ','global',{{this_test.id_test}},'#global_stats',1,{{this_test.id_theme}});
+
+    //	$('#myTab').tabCollapse();
+        } );
+        function charger(button,tab,id,target,action,theme) {
+            if(action == 0) {
+                $(button).attr('onclick','');
+                $idd = '#'+$(button).attr('id');
+            }else {
+                $idd = '#btn_'+tab;
+            }
+            $.ajax({
+               url : '{{base_url()}}/test/load/stats',
+               type : 'GET',
+               data : 'tab='+tab+'&id='+id+'&theme='+theme,
+               dataType : 'html',
+               beforeSend : function () {
+                   $('.'+tab+'-refresh-btn').attr('src','{{base_url()}}/src/img/3.gif').fadeIn('fast');
+                   $(target).prepend('<div class="alert alert-info" style="text-align:center;"> Chargement en cours ...</div>');
+               },
+               success : function(code_html, statut){
+                   console.log(code_html);
+                   setTimeout(function() {
+                       $(target).html(code_html);
+                   }, 1000);
+                   $(target).fadeIn('slow');
+                   $('.'+tab+'-refresh-btn').attr('src','{{base_url()}}/src/img/refresh.png').fadeIn('slow');
+
+                }
+           });
+
+        }
+  </script>
+{%endblock%}

@@ -55,7 +55,7 @@ interface Application extends Container
      * Register a deferred provider and service.
      *
      * @param  string  $provider
-     * @param  string|null  $service
+     * @param  string  $service
      * @return void
      */
     public function registerDeferredProvider($provider, $service = null);

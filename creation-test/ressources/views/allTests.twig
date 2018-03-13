@@ -1,0 +1,203 @@
+{% extends 'templates/layoutCreationTest.twig' %}
+{% block title %} Tous les tests {% endblock %}
+{% block additionalstyle %}
+  <style>
+    .hidden_{
+        display: none;
+  }
+  #liste_test{
+      font-size: 12px;
+  }
+  </style>
+{% endblock %}
+
+{%block content%}
+
+  <div class="row">
+    <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8">
+       <div class="alert alert-success alert-dismissable " style="display:none;">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         Votre test a été enregistré avec succès !
+       </div>
+     </div>
+   </div>
+  <div class="row" id="notif_del_result" style="display:none;">
+    <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8">
+       <div class="alert alert-success alert-dismissable " >
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+                 <span id="texte_notif_del_result">
+             Votre résultat a été supprimé avec succès. Vous pouvez effectuer maintenant un nouveau test !
+                </span>
+       </div>
+     </div>
+   </div>
+    <!-- Informations générales sur le test  -->
+    <!--div class="row">
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8">
+         <div class="alert alert-warning alert-dismissable " >
+                   <span id="texte_notif_del_result">
+             La page affiche les 60 derniers tests créés !
+                  </span>
+         </div>
+       </div>
+    </div-->
+
+    <div class="row">
+         <table id="liste_test" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>N</th>
+                    <th>Statut</th>
+                    <th width="40%">Titre</th>
+                    <th>Langue</th>
+                    <th>Traduction</th>
+                    <th width="17%">Outils</th>
+                </tr>
+            </thead>
+            <tbody id="more">
+              {% set i = 1 %}
+              {% for test in dataTest%}
+              <tr>
+                <td class="center"> {{i}} </td>
+                <td class="center"> <img src="{{ base_url()}}/src/img/statut/{{test.statut}}.png" >  </td>
+                  <td><h5 class=""><a href="{{base_url()}}/test/{{test.id_test}}" > {{test.titre_test}} </a></h5></td>
+                  <td> {{test.lang}}</td>
+                  <td> {{test.if_translated}}</td>
+                  <td>
+                    <a href="{{base_url()}}/tests/{{test.id_test}}/edit"  data-toggle="tooltip" title="Modifier le test" ><button type="button" id="btn_modify" class="btn btn-info btn-xs" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+                    {% if test.statut == 0 %}
+                      <button type="button"  data-toggle="tooltip" title="Activer le test" id="act_{{test.id_test}}" onClick="activeTest({{test.id_test}})" class="btn btn-success btn-xs"  > <span class="glyphicon glyphicon-ok-sign"></span> </button>
+                      <span data-toggle="modal"  data-target="#modalDelete" ><button type="button" data-toggle="tooltip" title="Supprimer le test" id="{{test.id_test}}" onClick="prepareDelete({{test.id_test}});" class="btn btn-danger btn-xs" > <span class="glyphicon glyphicon-trash"></span> </button></span>
+                    {% elseif test.statut == 1 %}
+                      <button type="button"  data-toggle="tooltip" title="Désactiver le test" id="del{{test.id_test}}" onClick="desactiveTest({{test.id_test}});" class="btn btn-warning btn-xs" > <span class="glyphicon glyphicon-remove-sign"></span> </button>
+                    {% endif %}
+
+                    <a class="btn btn-default btn-xs" href="{{test.url_test}}" title="Voir le test" target="_blank"> <span class="glyphicon glyphicon-eye-open"></span> </a>
+
+                    {% if test.btn_delete_test_admin %}
+                      <button type="button" id="btn_del_resultl_{{test.id_test}}" title="Supprimer le test déjà effectué" onClick="deleteResult({{user_admin_id}}, {{test.id_test}});" class="btn btn-danger btn-xs"  > <span class="glyphicon glyphicon-remove"></span> </button>
+                    {% endif %}
+
+                    {% if test.highlight == 0 %}
+                      <button type="button"  data-toggle="tooltip" title="Mettre en avant le test" id="highlight_{{test.id_test}}" onclick="highlight({{test.id_test}})" class="btn btn-success btn-xs"  > <i class="fa fa-level-up" aria-hidden="true"></i> </button>
+                    {% else %}
+                      <button type="button"  data-toggle="tooltip" title="Ne plus mettre en avant le test" id="highlight_{{test.id_test}}" onclick="moveHighlight({{test.id_test}})" class="btn btn-danger btn-xs"  > <i class="fa fa-level-down" aria-hidden="true"></i> </button>
+
+                    {% endif %}
+
+
+                  </td>
+
+                </tr>
+                {% set i = i + 1%}
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal pour confirmation de supréssion du test -->
+    <div id="modalDelete" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Êtes-vous sur de vouloir supprimer ce test ?</p>
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" value="" name="id_to_delete" id="id_to_delete"/>
+            <button type="button" class="btn btn-danger" id="confirmDelete" onclick="deleteTest()" data-dismiss="modal">Supprimer</button><button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+      <!-- Bouton enregistrer un test-->
+      <div class="row">
+          <div class="form-group col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-4 col-md-4 col-sm-4">
+              <a href="{{ base_url() }}/choosetheme"><button type="button" id="btn_add_test" class="form-control btn btn-success" ><span class="glyphicon glyphicon-plus-sign"></span> Créer un nouveau test</button></a>
+          </div>
+      </div>
+
+
+
+      <!-- Bouton charger plus de tests -->
+      <div class="row" style="display:none">
+          <div class="form-group col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-4 col-md-4 col-sm-4">
+              <button type="button" id="btn_show_more" class="form-control btn btn-info" ><span class="glyphicon glyphicon-refresh"></span> Voir plus de tests </button>
+          </div>
+      </div>
+
+  </div>
+
+
+{%endblock%}
+
+
+
+{% block additionalfooter %}
+
+  <script src="{{ base_url() }}/src/js/alltest.js?v=1.0010"></script>
+
+  <script src="{{ base_url() }}/src/js/added-default-script.js?v=1.292"></script>
+  <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/jquery.dataTables.js"></script>
+  <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/dataTables.bootstrap.js"></script>
+
+
+
+  <script type="text/javascript" language="javascript" class="init">
+    $(document).ready(function() {
+        $('#liste_test').DataTable( {
+            "order": [[ 0, "asc" ]],
+            "language": {
+               "lengthMenu": "Afficher  _MENU_  tests par page",
+               "zeroRecords": "Aucun test trouvé ! ",
+               "info": "Voir page _PAGE_ à _PAGES_ ( test _START_ à _END_ sur _TOTAL_ )",
+               "infoEmpty": "Aucun test trouvé",
+               "infoFiltered": "(recherche effectuée sur _MAX_ tests)"
+             }
+        } );
+        $('[data-toggle="tooltip"]').tooltip();
+
+        var lastTestSeen = 20;
+        var numberOfTest = 4;
+
+
+    		$("#btn_show_more").on("click",function () {
+              $.ajax({
+                  url: "/tests/showmore?begin="+lastTestSeen+"&nb_to_show="+numberOfTest,
+                  type: "GET",
+                  processData: false,
+                  contentType: false,
+                  beforeSend: function(){
+    				          $("#btn_show_more").prop("disabled", true);
+                      $("#btn_show_more").html("<img src='{{base_url()}}/src/img/91.gif' > Chargement en cours ");
+                      $("#btn_show_more").css("color","#000");
+      				        $("#btn_show_more").css("color","#000");
+                  }
+                  }).done(function( data ) {
+                      console.log(data);
+                      $("#btn_show_more").html("<span class='glyphicon glyphicon-refresh'></span> Voir plus de tests");
+                      $("#btn_show_more").css("color","#FFF");
+                      $("#btn_show_more").prop("disabled", false);
+                      lastTestSeen = lastTestSeen + 4;
+                      //$("#more").append(data);
+
+                      //$('#liste_test').DataTable().destroy();
+
+                      $('#liste_test').DataTable().rows.add(data).draw();
+
+
+
+                  });
+  		});
+
+    } );
+
+
+
+  </script>
+{%endblock%}

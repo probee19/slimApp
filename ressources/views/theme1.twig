@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Theme 1</title>
+    <style>
+        body{
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+        .name, .title_test{
+            position: absolute;
+            background: #1C304F;;
+            width: 100%;
+            height: 40px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #ffffff;
+            white-space: nowrap;
+        }
+        .theme_result > .title_test {
+            color: #ffffff;
+            background-color: #000;
+        }
+        .user_img{
+            margin-top: 20px;
+        }
+        .main{
+            padding:0;
+            margin:0;
+            width: 800px;
+            height:420px;
+            position: relative;
+            overflow: hidden;
+        }
+        .name > span, .title_test > span {
+            display: inline-block;
+            padding-top: 2px;
+        }
+    </style>
+    <script src="{{ base_url() }}/src/js/jquery.js"></script>
+    <script>
+        $(document).ready(function(){
+            var name = $(".name");
+            var title = $(".title_test");
+            while(name.find("span").width() > name.width() - 5) {
+                var currentFontSizename = parseInt(name.find("span").css("font-size"));
+                console.log(currentFontSizename);
+                name.find("span").css("font-size",currentFontSizename-1);
+            }
+            while(title.find("span").width() > title.width() - 5) {
+                var currentFontSize = parseInt(title.find("span").css("font-size"));
+                console.log(currentFontSize);
+                title.find("span").css("font-size",currentFontSize-1);
+            }
+        });
+    </script>
+</head>
+<body style="margin:0; padding:0; overflow: hidden;">
+<div class="main">
+    <div class="theme_user" style="position: relative; float: left; width: 50%;">
+        <div class="name"><span>{{ name }}</span></div>
+        <div class="user_img"><img src="https://graph.facebook.com/{{ user_id }}/picture/?width=275&height=275" alt="" style="width: 400px;"></div>
+    </div>
+    <div class="theme_result" style="position: relative; float: left; width: 50%;">
+        <div class="title_test"><span>{{ title }}</span></div>
+        <div class="user_img"><img src="{{ base_url }}/creation-test/images-tests/{{ img_url }}" alt="" style="width:400px"></div>
+    </div>
+</div>
+</body>
+</html>

@@ -10,10 +10,9 @@ use Illuminate\Filesystem\Filesystem;
 class Storage extends Facade
 {
     /**
-     * Replace the given disk with a local testing disk.
+     * Replace the given disk with a local, testing disk.
      *
      * @param  string  $disk
-     *
      * @return void
      */
     public static function fake($disk)
@@ -23,19 +22,6 @@ class Storage extends Facade
         );
 
         static::set($disk, self::createLocalDriver(['root' => $root]));
-    }
-
-    /**
-     * Replace the given disk with a persistent local testing disk.
-     *
-     * @param  string  $disk
-     * @return void
-     */
-    public static function persistentFake($disk)
-    {
-        static::set($disk, self::createLocalDriver([
-            'root' => storage_path('framework/testing/disks/'.$disk),
-        ]));
     }
 
     /**
