@@ -15,8 +15,8 @@ class HomeController extends Controller
     public function index($request, $response)
     {
        $alltest = Test::all();
-        var_dump($alltest);
-
+        echo GZIT_KEY . '<br>';
+        echo GZIT_SECRET;
         return $this->view->render($response, 'home.twig', compact('alltest'));
     }
 }
