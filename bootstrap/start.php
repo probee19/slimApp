@@ -17,7 +17,7 @@ require __DIR__ . '/../vendor/autoload.php';
 
 $app = new App([
     'settings' => [
-        'displayErrorDetails'   =>  true,
+        'displayErrorDetails'   =>  false,
         'db'        =>  [
             'driver'    =>  'mysql',
             'host'      =>  RDS_HOSTNAME,
