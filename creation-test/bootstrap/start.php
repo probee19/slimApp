@@ -36,6 +36,14 @@ use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 
 session_start();
+// RDS CONST
+define('RDS_HOSTNAME', $_SERVER['RDS_HOSTNAME']);
+define('RDS_USERNAME', $_SERVER['RDS_USERNAME']);
+define('RDS_PASSWORD', $_SERVER['RDS_PASSWORD']);
+define('RDS_DB_NAME',  $_SERVER['RDS_DB_NAME']);
+define('GZIT_KEY', $_SERVER['GZIT_KEY']);
+define('GZIT_SECRET', $_SERVER['GZIT_SECRET']);
+define('FB_SECRET_KET', $_SERVER['FB_SECRET_KET']);
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -43,17 +51,16 @@ $config = [
     'displayErrorDetails'   =>  true,
     'db'        =>  [
         'driver'    =>  'mysql',
-        'host'      =>  'localhost',
-        'database'  =>  'funizi_store',
-        'username'  =>  'funizi_user',
-        'password'  =>  'R$46Wm1tM0-)',
-        'charset'   =>  'utf8',
-        'collation' =>  'utf8_unicode_ci',
+        'host'      =>  RDS_HOSTNAME,
+        'database'  =>  RDS_DB_NAME,
+        'username'  =>  RDS_USERNAME,
+        'password'  =>  RDS_PASSWORD,
+        'charset'   =>  'utf8mb4',
+        'collation' =>  'utf8mb4_unicode_ci',
         'prefix'    =>  '',
     ],
-    'grabzit_key'       => "MDliYmY0OTM1OTI3NDk5OTkwOWYyZjY5MDZlZTJkZTU=",
-    'grabzit_secret'    => "H2s/Dj8/Pzk/P1ZmbDk/bT8/Sz8/Pz9BPz8/Pz8/Pz8=",
-    'test_per_page'     =>  15,
+    'test_per_page'     =>  12,
+    'default_lang'      =>  "en",
 ];
 date_default_timezone_set('Etc/GMT');
 
@@ -184,9 +191,7 @@ $container['LangController'] = function ($container) {
 $container['JsonController'] = function ($container) {
     return new JsonController($container);
 };
-$container['grabzit'] = function ($container) {
-    return new GrabzItClient("N2U3YTNkZGYxNGUzNDA0OWFjODRmYzYzZjk0ZDAxZmU=", "CD8/PzIJP2shZz8/Pz8rBj8LET8/P0M/aBcsc1gQGT8=");
-};
+
 $container['helper'] = function ($container){
     return new Helper();
 };

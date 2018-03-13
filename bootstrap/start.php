@@ -38,7 +38,7 @@ define('RDS_PASSWORD', $_SERVER['RDS_PASSWORD']);
 define('RDS_DB_NAME',  $_SERVER['RDS_DB_NAME']);
 define('GZIT_KEY', $_SERVER['GZIT_KEY']);
 define('GZIT_SECRET', $_SERVER['GZIT_SECRET']);
-define('FB_SECRET_KET', $_SERVER['FB_SECRET_KET']);
+define('FB_SECRET_KEY', $_SERVER['FB_SECRET_KEY']);
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -115,7 +115,7 @@ $container['view'] = function ($container){
 $container['fb'] = function($container){
     return new Facebook([
         'app_id' => '348809548888116',
-        'app_secret' => FB_SECRET_KET,
+        'app_secret' => FB_SECRET_KEY,
         'default_graph_version' => 'v2.5',
     ]);
 };
