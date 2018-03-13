@@ -44,7 +44,7 @@ class HomeController extends Controller
 
       $cookie = $helper->createCookie();
       $pagecount = $this->test_per_page;
-        $this->helper->debug($lang);
+
       // Récuperation des tests pour langue $lang;
       $tests_from_json = $this->helper->getAllTestJson($lang);
 
@@ -121,8 +121,7 @@ class HomeController extends Controller
       // Traduction des éléments de l'interface
       $interface_ui = $this->helper->getUiLabels($lang);
       $all_lang = $this->helper->getActivatedLanguages();
-        $this->helper->debug($tests);
-        $this->helper->debug($pagecount);
+
       return $this->view->render($response, 'home.twig', compact('tests_on_top', 'lang', 'tests', 'pagecount', 'pageid', 'mode', 'interface_ui', 'all_lang'));
 
     }
