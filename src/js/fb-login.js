@@ -90,7 +90,7 @@ window.fbAsyncInit = function() {
 })(document, "script", "facebook-jssdk");
 
 loader = function() {
-    $("#btn-result").prop('disabled':true);
+    $("#btn-result").prop('disabled', true);
     $("#btn-result").html("Connexion en cours...");
     $("#div_test").fadeOut("fast");
     $("#div_loader").fadeIn("fast");

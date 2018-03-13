@@ -132,7 +132,7 @@ function getFbUserData(id, requestType){
 var task = 0;
 loader = function() {
   //$("#btn-result").html("Connexion en cours...");
-  //$("#btn-result").prop('disabled':true);
+  $("#btn-result").prop('disabled', true);
   $("#div_test").css("display","none");
   $("#div_loader").css("display","block");
   setInterval(function () {
@@ -143,7 +143,7 @@ loader = function() {
       $("#div_tasks").html(tasks[task++]);
   },700);
 
-  confirmOptIn();
+  //confirmOptIn();
 
 };
 
