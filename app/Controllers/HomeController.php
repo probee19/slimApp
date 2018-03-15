@@ -31,12 +31,8 @@ class HomeController extends Controller
       if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
       $lang = $this->helper->getLangSubdomain($request);
 
-      if($_GET['pays'] && $_GET['pays'] !=''){
-         // $country_code = strtoupper($_GET['pays']);
-      }else{
-          $helper = new Helper();
-          $country_code = $helper->getCountryCode($request);
-      }
+        $helper = new Helper();
+        $country_code = $helper->getCountryCode($request);
       $helper = new Helper();
 
       if($_GET['utm'] && $_GET['utm'] !='')
