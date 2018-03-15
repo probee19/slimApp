@@ -189,7 +189,7 @@ class Helper
         $HTTP_X_FORWARDED_FOR = getenv('HTTP_X_FORWARDED_FOR');
         //$HTTP_CLIENT_IP = getenv('HTTP_CLIENT_IP');
         //$HTTP_CF_CONNECTING_IP = getenv('HTTP_CF_CONNECTING_IP');
-        $REMOTE_ADDR = isset($_SERVER)?$_SERVER["REMOTE_ADDR"]:getenv('REMOTE_ADDR');
+        $REMOTE_ADDR = getenv('REMOTE_ADDR');
 
         $all_ips = explode(",", "$HTTP_X_FORWARDED_FOR,$REMOTE_ADDR");
         foreach ($all_ips as $ip) {
