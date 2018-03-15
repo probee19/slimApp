@@ -104,7 +104,7 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
-    $view->getEnvironment()->addGlobal('defined_base_url', "http://weasily.com");
+    $view->getEnvironment()->addGlobal('defined_base_url', "https://weasily.com");
     $view->getEnvironment()->addGlobal('domain_url', $container->request->getUri()->getBaseUrl());
     $view->getEnvironment()->addGlobal('request_uri', $container->request->getUri()->getPath());
 

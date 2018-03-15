@@ -32,7 +32,7 @@ class HomeController extends Controller
       $lang = $this->helper->getLangSubdomain($request);
 
       if($_GET['pays'] && $_GET['pays'] !=''){
-          $country_code = strtoupper($_GET['pays']);
+         // $country_code = strtoupper($_GET['pays']);
       }else{
           $helper = new Helper();
           $country_code = $helper->getCountryCode($request);
