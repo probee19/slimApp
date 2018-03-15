@@ -260,7 +260,6 @@ class StartController extends Controller
                 if($save)
                     $user_test = UserTest::create($data);
             }
-            //die();
             $result_url = $this->router->pathFor('resultat', [
                 'name'      => $this->helper->cleanUrl($test_name),
                 'code'      =>  $user_test->uuid
