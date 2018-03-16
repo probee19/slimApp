@@ -26,6 +26,8 @@ use App\Models\TestInfo;
 class Helper
 {
     public static function getCountry($ip){
+        echo $ip;
+        self::debug($ip);
         if(isset($_COOKIE['countryCode']) && isset($_COOKIE['countryName'])){
             $country = [
                 'countryName'   =>  $_COOKIE['countryName'],
