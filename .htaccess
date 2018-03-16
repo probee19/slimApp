@@ -1,4 +1,11 @@
 RewriteEngine On
+RewriteBase /
+
+
+RewriteCond %{HTTPS} off
+RewriteCond %{REQUEST_URI} !^/health/index.html
+RewriteRule (.*) https://%{HTTP_HOST}/$1 [R=301,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
