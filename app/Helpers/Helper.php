@@ -38,36 +38,45 @@ class Helper
 
         // Instanciate a new DBIP object with the database connection
         // Instanciate a new DBIP object with the database connection
-        $db = new \PDO("mysql:host=". $_SERVER['RDS_HOSTNAME'] .";dbname=". $_SERVER['RDS_DB_NAME'], $_SERVER['RDS_USERNAME'], $_SERVER['RDS_PASSWORD']);
-        $dbip = new DBIP($db);
+        try{
+            $db = new \PDO("mysql:host=". $_SERVER['RDS_HOSTNAME'] .";dbname=". $_SERVER['RDS_DB_NAME'], $_SERVER['RDS_USERNAME'], $_SERVER['RDS_PASSWORD']);
+            $dbip = new DBIP($db);
 
 
 
-        $inf = $dbip->Lookup($ip);
-        //self::debug($inf);
+            $inf = $dbip->Lookup($ip);
+            //self::debug($inf);
 
-        if($inf){
-            $countryBD = Countries::where('alpha2', '=', "$inf->country")->first();
-            $countryCode = $inf->country;
-            $countryname = $countryBD->langFR;
-            setcookie("countryCode", $countryCode, time()+3600*24*30);
-            setcookie("countryName", $countryname, time()+3600*24*30);
-        }
-        else {
-            $data = json_decode(file_get_contents('http://geoplugin.net/json.gp?ip='.$ip));
-            $countryname = $data->geoplugin_countryName;
-            $countryCode = $data->geoplugin_countryCode;
-            if($data){
+            if($inf){
+                $countryBD = Countries::where('alpha2', '=', "$inf->country")->first();
+                $countryCode = $inf->country;
+                $countryname = $countryBD->langFR;
                 setcookie("countryCode", $countryCode, time()+3600*24*30);
                 setcookie("countryName", $countryname, time()+3600*24*30);
             }
+            else {
+                $data = json_decode(file_get_contents('http://geoplugin.net/json.gp?ip='.$ip));
+                $countryname = $data->geoplugin_countryName;
+                $countryCode = $data->geoplugin_countryCode;
+                if($data){
+                    setcookie("countryCode", $countryCode, time()+3600*24*30);
+                    setcookie("countryName", $countryname, time()+3600*24*30);
+                }
+            }
+            $country = [
+                'countryName'   =>  $countryname,
+                'countryCode'   =>  $countryCode
+            ];
+        }catch (\Exception $e){
+            self::debug($ip);
+            echo $e->getMessage();
+            $country = [
+                'countryName'   =>  'JAPN',
+                'countryCode'   =>  'JP'
+            ];
         }
 
 
-        $country = [
-            'countryName'   =>  $countryname,
-            'countryCode'   =>  $countryCode
-        ];
         //self::debug($country);
 
         return $country;
