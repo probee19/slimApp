@@ -186,17 +186,17 @@ class Helper
     }
 
     public function getRealUserIp($default = NULL, $filter_options = 12582912) {
-        //$HTTP_X_FORWARDED_FOR = getenv('HTTP_X_FORWARDED_FOR');
-        //$HTTP_CLIENT_IP = getenv('HTTP_CLIENT_IP');
-        //$HTTP_CF_CONNECTING_IP = getenv('HTTP_CF_CONNECTING_IP');
+        $HTTP_X_FORWARDED_FOR = isset($_SERVER)?$_SERVER["HTTP_X_FORWARDED_FOR"]:getenv('HTTP_X_FORWARDED_FOR');
+        $HTTP_CLIENT_IP = isset($_SERVER)?$_SERVER["HTTP_CLIENT_IP"]:getenv('HTTP_CLIENT_IP');
+        $HTTP_CF_CONNECTING_IP = isset($_SERVER)?$_SERVER["REMOTE_ADDR"]:getenv('HTTP_CF_CONNECTING_IP');
         $REMOTE_ADDR = isset($_SERVER)?$_SERVER["REMOTE_ADDR"]:getenv('REMOTE_ADDR');
-        $ip = filter_var($REMOTE_ADDR, FILTER_VALIDATE_IP, $filter_options);
+        //$ip = filter_var($REMOTE_ADDR, FILTER_VALIDATE_IP, $filter_options);
 
-        /*$all_ips = explode(",", "$HTTP_X_FORWARDED_FOR,$REMOTE_ADDR");
+        $all_ips = explode(",", "$HTTP_X_FORWARDED_FOR,$HTTP_CLIENT_IP,$HTTP_CF_CONNECTING_IP,$REMOTE_ADDR");
         foreach ($all_ips as $ip) {
             if ($ip = filter_var($ip, FILTER_VALIDATE_IP, $filter_options))
                 break;
-        }*/
+        }
         return $ip?$ip:$default;
     }
 
