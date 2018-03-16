@@ -1,8 +1,8 @@
 RewriteEngine On
 
-RewriteCond %{HTTP:X-Forwarded-SSL} !on
-RewriteCond %{REQUEST_URI} !^\/health
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{SERVER_PORT} 80
+RewriteCond %{REQUEST_URI} !^\/health/index.html
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
