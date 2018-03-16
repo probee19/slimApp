@@ -26,8 +26,6 @@ use App\Models\TestInfo;
 class Helper
 {
     public static function getCountry($ip){
-        echo $ip;
-        self::debug($ip);
         if(isset($_COOKIE['countryCode']) && isset($_COOKIE['countryName'])){
             $country = [
                 'countryName'   =>  $_COOKIE['countryName'],
@@ -38,45 +36,36 @@ class Helper
 
         // Instanciate a new DBIP object with the database connection
         // Instanciate a new DBIP object with the database connection
-        try{
-            $db = new \PDO("mysql:host=". $_SERVER['RDS_HOSTNAME'] .";dbname=". $_SERVER['RDS_DB_NAME'], $_SERVER['RDS_USERNAME'], $_SERVER['RDS_PASSWORD']);
-            $dbip = new DBIP($db);
+        $db = new \PDO("mysql:host=". $_SERVER['RDS_HOSTNAME'] .";dbname=". $_SERVER['RDS_DB_NAME'], $_SERVER['RDS_USERNAME'], $_SERVER['RDS_PASSWORD']);
+        $dbip = new DBIP($db);
 
 
 
-            $inf = $dbip->Lookup($ip);
-            //self::debug($inf);
+        $inf = $dbip->Lookup($ip);
+        //self::debug($inf);
 
-            if($inf){
-                $countryBD = Countries::where('alpha2', '=', "$inf->country")->first();
-                $countryCode = $inf->country;
-                $countryname = $countryBD->langFR;
+        if($inf){
+            $countryBD = Countries::where('alpha2', '=', "$inf->country")->first();
+            $countryCode = $inf->country;
+            $countryname = $countryBD->langFR;
+            setcookie("countryCode", $countryCode, time()+3600*24*30);
+            setcookie("countryName", $countryname, time()+3600*24*30);
+        }
+        else {
+            $data = json_decode(file_get_contents('http://geoplugin.net/json.gp?ip='.$ip));
+            $countryname = $data->geoplugin_countryName;
+            $countryCode = $data->geoplugin_countryCode;
+            if($data){
                 setcookie("countryCode", $countryCode, time()+3600*24*30);
                 setcookie("countryName", $countryname, time()+3600*24*30);
             }
-            else {
-                $data = json_decode(file_get_contents('http://geoplugin.net/json.gp?ip='.$ip));
-                $countryname = $data->geoplugin_countryName;
-                $countryCode = $data->geoplugin_countryCode;
-                if($data){
-                    setcookie("countryCode", $countryCode, time()+3600*24*30);
-                    setcookie("countryName", $countryname, time()+3600*24*30);
-                }
-            }
-            $country = [
-                'countryName'   =>  $countryname,
-                'countryCode'   =>  $countryCode
-            ];
-        }catch (\Exception $e){
-            self::debug($ip);
-            echo $e->getMessage();
-            $country = [
-                'countryName'   =>  'JAPN',
-                'countryCode'   =>  'JP'
-            ];
         }
 
 
+        $country = [
+            'countryName'   =>  $countryname,
+            'countryCode'   =>  $countryCode
+        ];
         //self::debug($country);
 
         return $country;
@@ -197,11 +186,17 @@ class Helper
     }
 
     public function getRealUserIp($default = NULL, $filter_options = 12582912) {
-
+        $HTTP_X_FORWARDED_FOR = getenv('HTTP_X_FORWARDED_FOR');
+        $HTTP_CLIENT_IP = getenv('HTTP_CLIENT_IP');
+        $HTTP_CF_CONNECTING_IP = getenv('HTTP_CF_CONNECTING_IP');
         $REMOTE_ADDR = isset($_SERVER)?$_SERVER["REMOTE_ADDR"]:getenv('REMOTE_ADDR');
-        var_dump($REMOTE_ADDR);
-        $ip = filter_var($REMOTE_ADDR, FILTER_VALIDATE_IP, $filter_options);
+        //$ip = filter_var($REMOTE_ADDR, FILTER_VALIDATE_IP, $filter_options);
 
+        $all_ips = explode(",", "$HTTP_X_FORWARDED_FOR,$HTTP_CLIENT_IP,$HTTP_CF_CONNECTING_IP,$REMOTE_ADDR");
+        foreach ($all_ips as $ip) {
+            if ($ip = filter_var($ip, FILTER_VALIDATE_IP, $filter_options))
+                break;
+        }
         return $ip?$ip:$default;
     }
 
