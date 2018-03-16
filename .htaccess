@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
 RewriteCond %{REQUEST_URI} !^\/health
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
