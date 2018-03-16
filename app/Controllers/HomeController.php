@@ -31,14 +31,14 @@ class HomeController extends Controller
       if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
       $lang = $this->helper->getLangSubdomain($request);
 
-        $helper = new Helper();
-        $country_code = $helper->getCountryCode($request);
-      $helper = new Helper();
+
+        $country_code = $this->helper->getCountryCode();
+
 
       if($_GET['utm'] && $_GET['utm'] !='')
-          $helper->setUTM($_GET['utm'],"home");
+          $this->helper->setUTM($_GET['utm'],"home");
 
-      $cookie = $helper->createCookie();
+      $cookie = $this->helper->createCookie();
       $pagecount = $this->test_per_page;
 
       // Récuperation des tests pour langue $lang;

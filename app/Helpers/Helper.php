@@ -188,6 +188,7 @@ class Helper
     public function getRealUserIp($default = NULL, $filter_options = 12582912) {
 
         $REMOTE_ADDR = isset($_SERVER)?$_SERVER["REMOTE_ADDR"]:getenv('REMOTE_ADDR');
+        var_dump($REMOTE_ADDR);
         $ip = filter_var($REMOTE_ADDR, FILTER_VALIDATE_IP, $filter_options);
 
         return $ip?$ip:$default;
