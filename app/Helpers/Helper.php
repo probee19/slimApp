@@ -587,7 +587,8 @@ class Helper
       if($lang == ""){
         $lang = self::getLangBrowser();
 
-        $url = $request->getUri()->getScheme()."://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
+        //$url = $request->getUri()->getScheme()."://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
+        $url = "https://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
         return $url;
       }
       return "";
