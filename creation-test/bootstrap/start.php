@@ -67,11 +67,11 @@ date_default_timezone_set('Etc/GMT');
 
 $app = new App(["settings" => $config]);
 $https = new Https(true);
+$app->add($https->maxAge(315360000)->includeSubdomains());
 $checkProxyHeaders = true; // Note: Never trust the IP address for security processes!
 $trustedProxies = ['10.0.0.1', '10.0.0.2']; // Note: Never trust the IP address for security processes!
 $app->add(new \RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies))
     ->add(new TrailingSlash(false))
-    ->add($https->redirect(302)->maxAge(315360000)->includeSubdomains())
     ->add(new Middleware\ClientIp());
 
 $container = $app->getContainer();
