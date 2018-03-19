@@ -66,7 +66,7 @@
                             {% if session.uid %}
                                 <img src="https://graph.facebook.com/{{ session.uid }}/picture?type=large&w‌​idth=40&height=40" alt="" class="img-responsive img-circle" style="display: inline;width:40px; height: 40px;">
                             {% else %}
-                                <img src="{{ base_url() }}/src/img/default_profile.jpg" alt="" class="img-responsive img-circle" style="display: inline;width:40px">
+                                <img src="{{ domain_url }}/src/img/default_profile.jpg" alt="" class="img-responsive img-circle" style="display: inline;width:40px">
                             {% endif %}
                         <span class="caret"></span>
                     </a>
