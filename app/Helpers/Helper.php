@@ -582,7 +582,7 @@ class Helper
     }
 
     public static function detectLang($request, $response){
-      $host = $request->getUri()->getHost();
+      //$host = $request->getUri()->getHost();
       $server = $_SERVER["HTTP_X_FORWARDED_PROTO"];
       $lang = self::getLangSubdomain($request);
       if($lang == "" || $server === 'http'){
