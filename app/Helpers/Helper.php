@@ -583,11 +583,12 @@ class Helper
 
     public static function detectLang($request, $response){
       $host = $request->getUri()->getHost();
+      $server = $_SERVER["HTTP_X_FORWARDED_PROTO"];
       $lang = self::getLangSubdomain($request);
-      if($lang == ""){
+      if($lang == "" || $server === 'http'){
         $lang = self::getLangBrowser();
 
-        $url = $request->getUri()->getScheme()."://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
+        $url = "https://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
         //$url = "https://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
         return $url;
       }
