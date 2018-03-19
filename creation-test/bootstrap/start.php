@@ -120,7 +120,8 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addGlobal('cookie_prenom_user', $_COOKIE['prenom_user']);
     $view->getEnvironment()->addGlobal('cookie_img_user', $_COOKIE['url_photo_user']);
     $view->getEnvironment()->addGlobal('now', date('d/m/Y H:i:s'));
-    $view->getEnvironment()->addGlobal('domain_url', $container->request->getUri()->getBaseUrl());
+    $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
+    $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
 
     return $view;
 };
