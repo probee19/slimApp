@@ -88,6 +88,7 @@ $capsule->bootEloquent();
 $container['flash'] = function ($container) {
     return new Messages;
 };
+var_dump($container->request->getUri()->getBaseUrl());
 $container['view'] = function ($container){
     $view = new Twig(__DIR__ . '/../ressources/views', [
         'cache'   =>  false,
