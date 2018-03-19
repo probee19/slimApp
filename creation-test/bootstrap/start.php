@@ -67,12 +67,6 @@ date_default_timezone_set('Etc/GMT');
 
 $app = new App(["settings" => $config]);
 $https = new Https(true);
-$middlewares = [
-
-    Middleware::Https(true)   //(optional) True to force https, false to force http (true by default)
-    ->maxAge(1000000)     //(optional) max-age directive for the Strict-Transport-Security header. By default is 31536000 (1 year)
-    ->includeSubdomains() //(optional) To add the "includeSubDomains" attribute to the Strict-Transport-Security header.
-];
 $checkProxyHeaders = true; // Note: Never trust the IP address for security processes!
 $trustedProxies = ['10.0.0.1', '10.0.0.2']; // Note: Never trust the IP address for security processes!
 $app->add(new \RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies))
