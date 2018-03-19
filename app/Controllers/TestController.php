@@ -16,12 +16,12 @@ class TestController extends Controller
         $this->helper->debug($url);
         if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 
-        $sandbox = new Helper();
+
         $lang = $this->helper->getLangSubdomain($request);
         $interface_ui = $this->helper->getUiLabels($lang);
 
         $id = (int) $args['id'];
-        $country_code = $sandbox->getCountryCode();
+        $country_code = $this->helper->getCountryCode();
 
         $code = $request->getParam('ref');
         if($args['code'])
@@ -40,7 +40,7 @@ class TestController extends Controller
         }
 
         if($_GET['utm'] && $_GET['utm'] !='')
-            $sandbox->setUTM($_GET['utm'], "test", $id);
+            $this->helper->setUTM($_GET['utm'], "test", $id);
 
         $exclude = [$id];
         if(!empty($_SESSION['uid'])){
@@ -52,7 +52,7 @@ class TestController extends Controller
             }
         }
 
-        $all_test = $sandbox->relatedTests($country_code, $exclude, $lang);
+        $all_test = $this->helper->relatedTests($country_code, $exclude, $lang);
         // For Facebook connect
         $helper = $this->fb->getRedirectLoginHelper();
         if($permission == 1){
