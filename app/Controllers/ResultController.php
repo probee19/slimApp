@@ -17,6 +17,7 @@ class ResultController extends Controller
     public function index($request, $response, $args){
 
         $url = $this->helper->detectLang($request, $response);
+        $this->helper->debug($_SERVER['REQUEST_URI']);
         if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 
         $helper = new Helper();
