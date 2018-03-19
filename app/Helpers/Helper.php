@@ -586,6 +586,7 @@ class Helper
       $lang = self::getLangSubdomain($request);
       if($lang == ""){
         $lang = self::getLangBrowser();
+
         $url = $request->getUri()->getScheme()."://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
         return $url;
       }

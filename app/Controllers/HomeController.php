@@ -28,7 +28,8 @@ class HomeController extends Controller
     public function index($request, $response, $arg)
     {
       $url = $this->helper->detectLang($request, $response);
-
+      $this->helper->debug($_SERVER['REQUEST_URI']);
+      $this->helper->debug($url);
       if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
       $lang = $this->helper->getLangSubdomain($request);
 
