@@ -66,6 +66,7 @@ $config = [
 date_default_timezone_set('Etc/GMT');
 
 $app = new App(["settings" => $config]);
+$https = new Https(true);
 $middlewares = [
 
     Middleware::Https(true)   //(optional) True to force https, false to force http (true by default)
@@ -76,7 +77,7 @@ $checkProxyHeaders = true; // Note: Never trust the IP address for security proc
 $trustedProxies = ['10.0.0.1', '10.0.0.2']; // Note: Never trust the IP address for security processes!
 $app->add(new \RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies))
     ->add(new TrailingSlash(false))
-    ->add(new Https(true))
+    ->add($https->redirect(302)->maxAge(315360000)->includeSubdomains())
     ->add(new Middleware\ClientIp());
 
 $container = $app->getContainer();
