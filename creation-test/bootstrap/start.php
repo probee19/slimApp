@@ -88,7 +88,7 @@ $capsule->bootEloquent();
 $container['flash'] = function ($container) {
     return new Messages;
 };
-var_dump($container->request->getUri()->getBaseUrl());
+
 $container['view'] = function ($container){
     $view = new Twig(__DIR__ . '/../ressources/views', [
         'cache'   =>  false,
@@ -122,8 +122,7 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addGlobal('cookie_img_user', $_COOKIE['url_photo_user']);
     $view->getEnvironment()->addGlobal('now', date('d/m/Y H:i:s'));
     $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
-
-    $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
+    $view->getEnvironment()->addGlobal('domain_url', 'https://weasily.com');
 
     return $view;
 };
