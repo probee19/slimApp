@@ -75,15 +75,6 @@ $app->add(new \RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies))
     ->add(new Middleware\ClientIp());
 
 $container = $app->getContainer();
-/*$container['db'] = function (ContainerInterface $container) {
-    $settings = $container->get('database');
-    $capsule = new \Illuminate\Database\Capsule\Manager;
-    $capsule->addConnection($settings);
-    $capsule->setAsGlobal();
-    $capsule->bootEloquent();
-
-    return $capsule;
-};*/
 
 $capsule = new Capsule;
 $capsule->addConnection($config['db']);
