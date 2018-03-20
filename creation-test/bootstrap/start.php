@@ -25,7 +25,6 @@ use Illuminate\Container\Container;
 use Illuminate\Events\Dispatcher;
 
 use Psr7Middlewares\Middleware;
-use Psr7Middlewares\Middleware\Https;
 use Psr7Middlewares\Middleware\EncodingNegotiator;
 use Psr7Middlewares\Middleware\Gzip;
 use Psr7Middlewares\Middleware\TrailingSlash;
@@ -45,6 +44,7 @@ define('RDS_DB_NAME',  $_SERVER['RDS_DB_NAME']);
 define('GZIT_KEY', $_SERVER['GZIT_KEY']);
 define('GZIT_SECRET', $_SERVER['GZIT_SECRET']);
 define('FB_SECRET_KEY', $_SERVER['FB_SECRET_KEY']);
+define('FB_APP_ID', $_SERVER['FB_APP_ID']);
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -60,14 +60,12 @@ $config = [
         'collation' =>  'utf8mb4_unicode_ci',
         'prefix'    =>  '',
     ],
-    'test_per_page'     =>  12,
-    'default_lang'      =>  "en",
+    'test_per_page'     =>  15,
 ];
 date_default_timezone_set('Etc/GMT');
 
 $app = new App(["settings" => $config]);
-$https = new Https(true);
-$app->add($https->maxAge(315360000)->includeSubdomains());
+
 $checkProxyHeaders = true; // Note: Never trust the IP address for security processes!
 $trustedProxies = ['10.0.0.1', '10.0.0.2']; // Note: Never trust the IP address for security processes!
 $app->add(new \RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies))
@@ -75,6 +73,15 @@ $app->add(new \RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies))
     ->add(new Middleware\ClientIp());
 
 $container = $app->getContainer();
+/*$container['db'] = function (ContainerInterface $container) {
+    $settings = $container->get('database');
+    $capsule = new \Illuminate\Database\Capsule\Manager;
+    $capsule->addConnection($settings);
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    return $capsule;
+};*/
 
 $capsule = new Capsule;
 $capsule->addConnection($config['db']);
@@ -88,7 +95,6 @@ $capsule->bootEloquent();
 $container['flash'] = function ($container) {
     return new Messages;
 };
-
 $container['view'] = function ($container){
     $view = new Twig(__DIR__ . '/../ressources/views', [
         'cache'   =>  false,
@@ -120,7 +126,7 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addGlobal('cookie_id_user', $_COOKIE['id_user']);
     $view->getEnvironment()->addGlobal('cookie_prenom_user', $_COOKIE['prenom_user']);
     $view->getEnvironment()->addGlobal('cookie_img_user', $_COOKIE['url_photo_user']);
-    $view->getEnvironment()->addGlobal('now', date('d/m/Y H:i:s'));
+    $view->getEnvironment()->addGlobal('now', date());
     $view->getEnvironment()->addGlobal('domain_url', $container->request->getUri()->getBaseUrl());
 
     return $view;
@@ -129,7 +135,7 @@ $container['view'] = function ($container){
 //Facebook app config
 $container['fb'] = function($container){
     return new Facebook([
-        'app_id' => '348809548888116',
+        'app_id' => FB_APP_ID,
         'app_secret' => FB_SECRET_KEY,
         'default_graph_version' => 'v2.5',
     ]);
@@ -143,7 +149,15 @@ $container['HomeController'] = function ($container) {
 $container['TestController'] = function ($container) {
     return new TestController($container);
 };
-
+$container['StartController'] = function ($container) {
+    return new StartController($container);
+};
+$container['ClickController'] = function ($container) {
+    return new StartController($container);
+};
+$container['GrabzitController'] = function ($container) {
+    return new GrabzitController($container);
+};
 $container['AllResultsController'] = function ($container) {
     return new AllResultsController($container);
 };
@@ -177,7 +191,9 @@ $container['LangController'] = function ($container) {
 $container['JsonController'] = function ($container) {
     return new JsonController($container);
 };
-
+$container['grabzit'] = function ($container) {
+    return new GrabzItClient(GZIT_KEY, GZIT_SECRET);
+};
 $container['helper'] = function ($container){
     return new Helper();
 };
