@@ -121,8 +121,7 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addGlobal('cookie_prenom_user', $_COOKIE['prenom_user']);
     $view->getEnvironment()->addGlobal('cookie_img_user', $_COOKIE['url_photo_user']);
     $view->getEnvironment()->addGlobal('now', date('d/m/Y H:i:s'));
-    $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
-    $view->getEnvironment()->addGlobal('domain_url', 'https://weasily.com');
+    $view->getEnvironment()->addGlobal('domain_url', $container->request->getUri()->getBaseUrl());
 
     return $view;
 };
@@ -144,15 +143,7 @@ $container['HomeController'] = function ($container) {
 $container['TestController'] = function ($container) {
     return new TestController($container);
 };
-$container['StartController'] = function ($container) {
-    return new StartController($container);
-};
-$container['ClickController'] = function ($container) {
-    return new StartController($container);
-};
-$container['GrabzitController'] = function ($container) {
-    return new GrabzitController($container);
-};
+
 $container['AllResultsController'] = function ($container) {
     return new AllResultsController($container);
 };
