@@ -1,23 +1,5 @@
 RewriteEngine On
 
-#RewriteCond %{HTTP} on
-#RewriteCond %{HTTP} on
-#RewriteRule ^((?!\/(health/index.html)).*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-#RedirectMatch ((?!\/(health/index.html)).*) https://%{HTTP_HOST}%{REQUEST_URI}
-
-# Go to https if not on /your-page-url/
-
-#RewriteCond %{SERVER_PORT} =80
-#RewriteCond %{THE_REQUEST} !/health/index.html [NC]
-#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Go to http if on /your-page-url/
-
-#RewriteCond %{SERVER_PORT} !=80
-#RewriteCond %{THE_REQUEST} /health/index.html [NC]
-#RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
