@@ -21,9 +21,9 @@ class HomeController extends Controller
 {
   public function index($request, $response, $arg){
     //$list_countries = array();
-    if(!isset($_COOKIE['id_user'])){
+    /*if(!isset($_COOKIE['id_user'])){
         return $this->view->render($response, 'login.twig');
-    }
+    }*/
 
     $tests = Test::where('statut', 1)->get();
     $countries = Countries::selectRaw('alpha2, langFR')
