@@ -1,5 +1,9 @@
 RewriteEngine On
 
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^(www\.)?dashboard.weasily\.com.*$
+RewriteRule (.*) creation-test/$1 [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]

@@ -8,13 +8,17 @@ class ComposerStaticInit2c7167b12cdab949727ada7d93adb18e
 {
     public static $files = array (
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Watson\\Rememberable\\' => 20,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -73,6 +77,10 @@ class ComposerStaticInit2c7167b12cdab949727ada7d93adb18e
     );
 
     public static $prefixDirsPsr4 = array (
+        'Watson\\Rememberable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/watson/rememberable/src',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
