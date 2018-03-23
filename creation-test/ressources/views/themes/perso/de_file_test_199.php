@@ -78,7 +78,7 @@
             $max_key = 4; $key = mt_rand(0,$max_key); setlocale(LC_ALL, 'fr_FR'); $min_1 = mt_rand(10,32); $min_2 = $min_1 + 11; $min_3 = $min_1 + 17;
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509666315.png" id="background">
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" >Das Jahr des<?php echo $_GET['user_name']; ?> :</div>
 <div class="" id="nouvelle" ><?php echo $message_1[$key]; ?></div>
 <div class="" id="nouvelle_bottom" ><?php echo $message_2[$key]; ?></div>

@@ -71,7 +71,7 @@ ol li{height:55px;}
 <?php
   if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-            $texte = array(''.$_GET['user_name'].' sarà un padre eccellente!', 'Con '.$_GET['User_name'].' Non ci annoiamo mai!', ''.$_GET['user_name'].' è semplicemente l&#39;uomo ideale!', ''.$_GET['user_name'].' può dare tutto per amore!',
+            $texte = array(''.$_GET['user_name'].' sarà un padre eccellente!', 'Con '.$_GET['User_name'].' Non ci annoiamo mai!', ''.$_GET['user_name'].' è semplicemente l\'uomo ideale!', ''.$_GET['user_name'].' può dare tutto per amore!',
             ''.$_GET['user_name'].' è un bravo ragazzo!', ''.$_GET['user_name'].' prepara meravigliose sorprese!',''.$_GET['user_name'].' sa come rendere la vita più bella!', ''.$_GET['user_name'].' è una lealtà irreprensibile!',''.$_GET['user_name'].' è divertente e intelligente');
   }
             else{ 
@@ -82,7 +82,7 @@ shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1510165729.png" id="background"> 
 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div id="titretest" >Il <span style="color:#D90000">5 motivi</span> sposare <br><?php echo $_GET['full_user_name']; ?></div>
 
 <ol>

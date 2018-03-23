@@ -26,7 +26,7 @@
 #fb_id_user{position: absolute; z-index:1; left: 20px; top: 20px; width:150px ; border-radius:100px; max-width:800px; max-height:420px; border:3px solid #BC8CBE;}
 #name_user{position:absolute; z-index:1; left: 200px; top: 50px; font-size:50px; color:#FFF;font-family: 'Bree Serif', serif;} 
 #resultat1 {position:absolute; z-index:1; left: 170px; top: 150px; font-size:30px; color:#333;}
-#resultat1 div {margin-bottom:30px;}
+#resultat1 div {margin-bottom:20px;}
 #titre_bottom{ position:absolute; min-height:70px; width:800px; left:0px; bottom:0px; background:#BC8CBE; color:#FFF; font-size:25px; text-align:center; line-height:26px; padding-top:15px;padding-bottom:15px;font-family: 'Bree Serif', serif; }
               </style>
               <script src='../../../src/js/jquery.js'></script>
@@ -72,17 +72,17 @@
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
            $texte = array('Is extremely loyal','Renders one after the other','Love to party!','Smiles even when he wants to cry','Hate injustices','Always have time to spend with family','Always surprised people', 'Never let down his friends' );
-$texte1 = array(''.$_GET[' user_name'].' sees opportunities in all the problems he faces. He is very insightful and can project himself into the future.',
-'&quot;'.$_GET[' user_name'].' is always there for his friends, he understands the importance of the support and love he has for them, he has a heart of gold&quot;',
-'&quot;'.$_GET[' user_name'].' loved and lost, but he has lost none of his passion and joy.&quot;',
-'&quot;'.$_GET[' user_name'].' always has the solution to all problems, and her optimism and wisdom are second to none.&quot;');
+$texte1 = array(''.$_GET['user_name'].' sees opportunities in all the problems he faces. He is very insightful and can project himself into the future.',
+'\"'.$_GET['user_name'].' is always there for his friends, he understands the importance of the support and love he has for them, he has a heart of gold\"',
+'\"'.$_GET['user_name'].' loved and lost, but he has not lost the passion and joy that characterizes him.\"',
+'\"'.$_GET['user_name'].' always has the solution to all problems, and her optimism and wisdom are second to none.\"');
    }
             else{ 
            $texte = array('Is extremely loyal','makes one shot after another','Love to party!','Smiles even when she wants to cry','Hate injustices','Always have time to spend with family','Always surprised people', 'Never let down his friends' );
-$texte1 = array(''.$_GET[' user_name'].' sees opportunities in every problem she faces. She is very insightful and can project herself into the future.',
-'"'.$_GET[' user_name'].' is still there for his friends. She understands the importance of support and love for them. She has a heart of gold"',
-'&quot;'.$_GET[' user_name'].' loved and lost, but she has lost none of the passion and joy that characterize her.&quot;',
-'&quot;'.$_GET[' user_name'].' always has the solution to all problems, and her optimism and wisdom are second to none.&quot;');
+$texte1 = array(''.$_GET['user_name'].' sees opportunities in every problem she faces. She is very insightful and can project herself into the future.',
+'"'.$_GET['user_name'].' is still there for his friends. She understands the importance of support and love for them. She has a heart of gold"',
+'\"'.$_GET['user_name'].' loved and lost, but she has lost none of the passion and joy that characterize her.\"',
+'\"'.$_GET['user_name'].' always has the solution to all problems, and her optimism and wisdom are second to none.\"');
   
             }
         

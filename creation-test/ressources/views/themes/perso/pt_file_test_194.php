@@ -26,7 +26,7 @@
 #fb_id_user{position: absolute; z-index:1; left: 20px; top: 20px; width:150px ; border-radius:100px; max-width:800px; max-height:420px; border:3px solid #BC8CBE;}
 #name_user{position:absolute; z-index:1; left: 200px; top: 50px; font-size:50px; color:#FFF;font-family: 'Bree Serif', serif;} 
 #resultat1 {position:absolute; z-index:1; left: 170px; top: 150px; font-size:30px; color:#333;}
-#resultat1 div {margin-bottom:30px;}
+#resultat1 div {margin-bottom:20px;}
 #titre_bottom{ position:absolute; min-height:70px; width:800px; left:0px; bottom:0px; background:#BC8CBE; color:#FFF; font-size:25px; text-align:center; line-height:26px; padding-top:15px;padding-bottom:15px;font-family: 'Bree Serif', serif; }
               </style>
               <script src='../../../src/js/jquery.js'></script>
@@ -71,18 +71,18 @@
 <?php
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-           $texte = array('É extremamente leal','Renders um após o outro','Adoro festejar!','Sorria mesmo quando ele quer chorar','Injustiças injustiças','Sempre tenha tempo para passar com a família','Pessoas sempre surpreendidas', 'Nunca decepcione seus amigos' );
-$texte1 = array(''.$_GET[' user_name'].' vê oportunidades em todos os problemas que ele enfrenta. Ele é muito perspicaz e pode projetar-se no futuro.',
-'&quot;'.$_GET[' user_name'].' está sempre lá para seus amigos, ele entende a importância do apoio e do amor que ele tem para eles, ele tem um coração de ouro&quot;',
-'&quot;'.$_GET[' user_name'].' amado e perdido, mas ele não perdeu sua paixão e alegria&quot;.',
-'&quot;'.$_GET[' user_name'].' sempre tem a solução para todos os problemas, e seu otimismo e sabedoria são inigualáveis&quot;.');
+           $texte = array('É extremamente leal','Renderiza um após o outro','Adoro festejar!','Sorri mesmo quando ele quer chorar','Odeio injustiças','Sempre tem tempo para passar com a família','Sempre surpreso pessoas', 'Nunca decepcione seus amigos' );
+$texte1 = array(''.$_GET['user_name'].' vê oportunidades em todos os problemas que enfrenta. Ele é muito perspicaz e pode projetar-se no futuro.',
+'\"{user_name'].' está sempre lá para seus amigos, ele entende a importância do apoio e amor que ele tem para eles, ele tem um coração de ouro\"',
+'\"{user_name'].' amado e perdido, mas ele não perdeu a paixão e alegria que o caracteriza.\"',
+'\"{user_name'].' sempre tem a solução para todos os problemas, e seu otimismo e sabedoria são incomparáveis\".');
    }
             else{ 
-           $texte = array('É extremamente leal','faz um tiro depois do outro','Adoro festejar!','Sorria mesmo quando ela quer chorar','Injustiças injustiças','Sempre tenha tempo para passar com a família','Pessoas sempre surpreendidas', 'Nunca decepcione seus amigos' );
-$texte1 = array(''.$_GET[' user_name'].' vê oportunidades em todos os problemas que ela enfrenta. Ela é muito perspicaz e pode projetar-se no futuro.',
-'"'.$_GET[' user_name'].' ainda está lá para seus amigos. Ela entende a importância do apoio e do amor por eles. Ela tem um coração de ouro"',
-'&quot;'.$_GET[' user_name'].' amado e perdido, mas não perdeu nenhuma paixão e alegria que a caracterizam&quot;.',
-'&quot;'.$_GET[' user_name'].' sempre tem a solução para todos os problemas, e seu otimismo e sabedoria são inigualáveis&quot;.');
+           $texte = array('É extremamente leal','faz um tiro após o outro','Adoro festejar!','Sorri mesmo quando ela quer chorar','Odeio injustiças','Sempre tem tempo para passar com a família','Sempre surpreso pessoas', 'Nunca decepcione seus amigos' );
+$texte1 = array(''.$_GET['user_name'].' vê oportunidades em todos os problemas que ela enfrenta. Ela é muito perspicaz e pode se projetar para o futuro.',
+'"'.$_GET['user_name'].' ainda está lá para seus amigos. Ela entende a importância do apoio e amor por eles. Ela tem um coração de ouro"',
+'\"{user_name'].' amada e perdida, mas ela não perdeu nada da paixão e alegria que a caracterizam.\"',
+'\"{user_name'].' sempre tem a solução para todos os problemas, e seu otimismo e sabedoria são incomparáveis\".');
   
             }
         

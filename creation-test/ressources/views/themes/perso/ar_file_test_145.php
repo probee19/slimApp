@@ -85,7 +85,7 @@
   
   <img src="http://creation.funizi.com/images-theme-perso/1508526452.jpg" id='background'>
       <div id='titre_test'>ما هي الكلمات الثلاث التي تصفك؟</div>
-      <img src='https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275'class='img_profile' id='fb_id_user'>
+      <img src='<?php echo $_GET['url_img_profile_user']; ?>'class='img_profile' id='fb_id_user'>
       <div class='name texte' id='name_user' ><span><?php echo $_GET['user_name']; ?> </span></div>
       <div id='resultat' ><span id='mot1'><?php echo $mot[0]; ?></span>
       <span id='mot2'><?php echo $mot[1]; ?></span>

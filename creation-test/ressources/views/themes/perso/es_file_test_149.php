@@ -68,7 +68,7 @@
           <div class='main'>
       
 <img src="http://creation.funizi.com/images-theme-perso/1508535126.jpg" id="background">
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?>, vas a tener <span style="color:#C03A2B; font-weight:normal; font-size:40px; ">
           <?php echo rand(5,35) ?></span> relaciones en tu vida!<br><br><span>Precisión <?php echo rand(95,99) ?>.<?php echo rand(1,9) ?>%</span></div>
 

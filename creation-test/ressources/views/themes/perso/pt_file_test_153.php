@@ -93,7 +93,7 @@
                 shuffle($recherche);
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508544962.png" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 <div  id="zone_search" >Por que <?php echo $_GET['user_name']; ?> é ...</div>
 <div  id="result1" ><?php echo $recherche[0] ?></div>

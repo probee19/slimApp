@@ -75,7 +75,7 @@ $date = array('22. Dezember um 22:53 Uhr','11. März um 20.03 Uhr','13. Juni um 
 $max_key = 1; $key = mt_rand(0,$max_key); setlocale(LC_ALL, 'fr_FR'); $min_1 = mt_rand(10,32); $min_2 = $min_1 + 11; $min_3 = $min_1 + 17;
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508635181.png" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ><?php echo $_GET['full_user_name']; ?></div>
 <div class="" id="date" style="position:absolute; z-index:2; left: 150px; top: 40px;font-size:15px; color:#999"  ><?php echo $date[0]; ?></div>
 <div  id="statut"><?php echo $message_1[$key]; ?></div>

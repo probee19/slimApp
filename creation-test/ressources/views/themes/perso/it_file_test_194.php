@@ -26,7 +26,7 @@
 #fb_id_user{position: absolute; z-index:1; left: 20px; top: 20px; width:150px ; border-radius:100px; max-width:800px; max-height:420px; border:3px solid #BC8CBE;}
 #name_user{position:absolute; z-index:1; left: 200px; top: 50px; font-size:50px; color:#FFF;font-family: 'Bree Serif', serif;} 
 #resultat1 {position:absolute; z-index:1; left: 170px; top: 150px; font-size:30px; color:#333;}
-#resultat1 div {margin-bottom:30px;}
+#resultat1 div {margin-bottom:20px;}
 #titre_bottom{ position:absolute; min-height:70px; width:800px; left:0px; bottom:0px; background:#BC8CBE; color:#FFF; font-size:25px; text-align:center; line-height:26px; padding-top:15px;padding-bottom:15px;font-family: 'Bree Serif', serif; }
               </style>
               <script src='../../../src/js/jquery.js'></script>
@@ -71,18 +71,18 @@
 <?php
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-           $texte = array('È estremamente fedele','Rende uno dopo l&#39;altro','Adoro fare festa!','Sorride anche quando vuole piangere','Odio le ingiustizie','Avere sempre tempo da trascorrere con la famiglia','Sempre sorpreso le persone', 'Non deludere mai i suoi amici' );
-$texte1 = array(''.$_GET[' user_name'].' vede opportunità in tutti i problemi che deve affrontare. È molto perspicace e può proiettarsi nel futuro.',
-'&quot;'.$_GET[' user_name'].' è sempre lì per i suoi amici, capisce l&#39;importanza del supporto e dell&#39;amore che ha per loro, ha un cuore d&#39;oro&quot;',
-'&quot;'.$_GET[' user_name'].' amato e perso, ma non ha perso nulla della sua passione e gioia&quot;.',
-'&quot;'.$_GET[' user_name'].' ha sempre la soluzione a tutti i problemi, e il suo ottimismo e saggezza non sono secondi a nessuno.&quot;');
+           $texte = array('È estremamente fedele','Rende uno dopo l\'altro','Adoro fare festa!','Sorride anche quando vuole piangere','Odio le ingiustizie','Avere sempre tempo da trascorrere con la famiglia','Sempre sorpreso le persone', 'Non deludere mai i suoi amici' );
+$texte1 = array(''.$_GET['user_name'].' vede opportunità in tutti i problemi che deve affrontare. È molto perspicace e può proiettarsi nel futuro.',
+'\"'.$_GET['user_name'].' è sempre lì per i suoi amici, capisce l\'importanza del supporto e dell\'amore che ha per loro, ha un cuore d\'oro\"',
+'\"'.$_GET['user_name'].' amato e perso, ma non ha perso la passione e la gioia che lo caratterizzano\".',
+'\"'.$_GET['user_name'].' ha sempre la soluzione a tutti i problemi, e il suo ottimismo e saggezza non sono secondi a nessuno.\"');
    }
             else{ 
-           $texte = array('È estremamente fedele','fa uno sparo dopo l&#39;altro','Adoro fare festa!','Sorride anche quando lei vuole piangere','Odio le ingiustizie','Avere sempre tempo da trascorrere con la famiglia','Sempre sorpreso le persone', 'Non deludere mai i suoi amici' );
-$texte1 = array(''.$_GET[' user_name'].' vede le opportunità in ogni problema che affronta. È molto perspicace e può proiettarsi nel futuro.',
-'"'.$_GET[' user_name'].' è ancora lì per i suoi amici. Comprende l&#39;importanza del supporto e dell&#39;amore per loro. Lei ha un cuore d&#39;oro"',
-'&quot;'.$_GET[' user_name'].' amato e perso, ma non ha perso la passione e la gioia che la caratterizzano&quot;.',
-'&quot;'.$_GET[' user_name'].' ha sempre la soluzione a tutti i problemi, e il suo ottimismo e saggezza non sono secondi a nessuno.&quot;');
+           $texte = array('È estremamente fedele','fa uno sparo dopo l\'altro','Adoro fare festa!','Sorride anche quando lei vuole piangere','Odio le ingiustizie','Avere sempre tempo da trascorrere con la famiglia','Sempre sorpreso le persone', 'Non deludere mai i suoi amici' );
+$texte1 = array(''.$_GET['user_name'].' vede le opportunità in ogni problema che affronta. È molto perspicace e può proiettarsi nel futuro.',
+'"'.$_GET['user_name'].' è ancora lì per i suoi amici. Comprende l\'importanza del supporto e dell\'amore per loro. Lei ha un cuore d\'oro"',
+'\"'.$_GET['user_name'].' amato e perso, ma non ha perso la passione e la gioia che la caratterizzano\".',
+'\"'.$_GET['user_name'].' ha sempre la soluzione a tutti i problemi, e il suo ottimismo e saggezza non sono secondi a nessuno.\"');
   
             }
         

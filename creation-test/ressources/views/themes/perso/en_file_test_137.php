@@ -75,7 +75,7 @@
 <!DOCTYPE HTML>
 <div id="titre">Who will go to prison with you?</div>
 <img src="http://creation.funizi.com/images-theme-perso/1508433666.png" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <img src="http://creation.funizi.com/images-theme-perso/1508433933.png" id="barreau200_user">
 <div class="redim" id="name_user" ><span class="name"> <?php echo $_GET['user_name']; ?></span></div>
 

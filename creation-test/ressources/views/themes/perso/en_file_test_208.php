@@ -66,7 +66,7 @@
           <div class='main'>
       
 <img src="http://creation.funizi.com/images-theme-perso/1510838214.png" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" width="193" height="193" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" width="193" height="193" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ><span style="font-size:30px">Me <span style="color:#EF372C"><?php echo $_GET['user_name']; ?></span></span>,<br> I say <span style="color:#EF372C">STOP</span><br> at the auction in<span style="color:#EF372C">Libya</span> migrants like <span style="color:#EF372C">slaves</span> !</div>
 
 

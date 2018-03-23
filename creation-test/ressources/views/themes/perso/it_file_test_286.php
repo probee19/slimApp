@@ -90,13 +90,13 @@
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
                     $amour = array('Sposato','Sposato, 2 children','Sposato, 3 children','Sposato, 2 twins','Sposato, 1 child');
                     $carriere = array('Scienziato','Star agente','Vlogger famoso','Fotografo di stelle','Poeta famoso');
-                    $argent = array('2 conti bancari con milioni di dollari','$ 2,000,000 all&#39;anno','$ 2.500.000 all&#39;anno','Proprietario di 3 case di fortuna','Milionario. Proprietario di 5 grandi ville. ');
+                    $argent = array('2 conti bancari con milioni di dollari','$ 2,000,000 all\'anno','$ 2.500.000 all\'anno','Proprietario di 3 case di fortuna','Milionario. Proprietario di 5 grandi ville. ');
                     $accomplissement = array('dottorato di Ricerca','Creare la propria azienda','Aiuto di molte organizzazioni benefiche','Proprietario di un importante marchio automobilistico','Amico delle celebrità','Proprietario di una discoteca glamour');
           }
           else{
                     $amour = array('Sposato','Sposa, 2 bambini','Sposa, 3 bambini','Sposa, 2 gemelli','Sposa, 1 figlio');
                     $carriere = array('Scienziato','Star agente','Famoso vlogger','Fotografo di stelle','Poeta famoso');
-                    $argent = array('2 conti bancari con milioni di dollari','$ 2,000,000 all&#39;anno','$ 2.500.000 all&#39;anno','Proprietario di 3 case di fortuna','Milionario. Proprietario di 5 grandi ville. ');
+                    $argent = array('2 conti bancari con milioni di dollari','$ 2,000,000 all\'anno','$ 2.500.000 all\'anno','Proprietario di 3 case di fortuna','Milionario. Proprietario di 5 grandi ville. ');
                     $accomplissement = array('dottorato di Ricerca','Creare la propria azienda','Aiuto di molte organizzazioni benefiche','Proprietario di un importante marchio automobilistico','Amico delle celebrità','Proprietario di una discoteca glamour');
           
           

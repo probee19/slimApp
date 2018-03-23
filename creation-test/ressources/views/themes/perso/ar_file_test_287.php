@@ -76,7 +76,7 @@
           <div class='main'>
       
 <?php 
-          $forces = array('شجاعته','ذكائه','لطفه','له بارد','طريقه في الكلام','إحساسه بالاحترام','إحساسه بالواجب');
+          $forces = array('شجاعته','ذكائه','لطفه','رائع','طريقة تحدثه','احساسه باحترام','احساسه بالواجب');
           shuffle($forces);
 ?>
 <!DOCTYPE HTML>
@@ -86,7 +86,7 @@
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
 
 <div class="texte" id="force">  
-          <div  id="force_1"> القوة الرئيسية <?php echo $_GET['user_name']; ?> هي</div>
+          <div  id="force_1"> القوة الرئيسية لـ <?php echo $_GET['user_name']; ?> هي</div>
           <div  id="force_2"> <?= $forces[0];?>  </div>
 </div>
 

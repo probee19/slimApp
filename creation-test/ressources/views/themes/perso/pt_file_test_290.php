@@ -82,13 +82,13 @@
                     $images = array('1519661677','1519662644','1519662729','1519663067','1519663366','1519663616','1519663857');
                     $details = array('Você é um verdadeiro vigilante e capaz de tudo para proteger o seu.','Você é amado, respeitado e capaz de manter segredos que ameaçam a estabilidade do seu país.',
                     'Você é um lutador formidável com inteligência extraordinária','','Você é um cientista de alto nível e possui força e resistência sobre-humanas',
-                    'Você é um grande líder e você possui habilidades super-humanas.','Você é um conselheiro fiel, um homem de confiança.');
+                    'Você é um grande líder e tem habilidades sobre-humanas.','Você é um conselheiro fiel, um homem de confiança.');
                     $ind = mt_rand(0,6);
           }
           else{
                     $personnages = array('Ramonda','Nakia','Okoye','Shuri');
                     $images = array('1519662856','1519662954','1519663017','1519663589');
-                    $details = array('Você é um conselheiro discreto, uma mãe-rainha.',
+                    $details = array('Você é um conselheiro discreto, uma rainha-mãe.',
                     'Você é um verdadeiro guerreiro capaz de liderar qualquer missão para libertar os oprimidos.','Você é um general leal e dedicado.',
                     'Você é uma princesa, um gênio capaz de ser responsável por várias inovações tecnológicas.');
                     $ind = mt_rand(0,3);

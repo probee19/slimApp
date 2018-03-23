@@ -67,7 +67,7 @@
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
       
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 <div id="fidele" >دائما</div>
 <div id="pourcentage" ><?php echo mt_rand(100,130)?>%</div>

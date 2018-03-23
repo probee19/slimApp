@@ -76,7 +76,7 @@ $message_2 = array('Du sorgst dich so sehr um deine Freunde, dass du Angst hast,
 $max_key = 3; $key = mt_rand(0,$max_key);                
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508586242.jpg" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
  <span class="texte" id="message_1"> <?php echo $message_1[$key]; ?> </span>
   <span class="texte" id="message_2"> <?php echo $message_2[$key]; ?> </span>
 

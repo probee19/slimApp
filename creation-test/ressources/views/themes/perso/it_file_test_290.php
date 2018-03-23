@@ -89,7 +89,7 @@
                     $personnages = array('Ramonda','Nakia','Okoye','Shuri');
                     $images = array('1519662856','1519662954','1519663017','1519663589');
                     $details = array('Sei un consigliere discreto, una regina madre.',
-                    'Sei un vero guerriero capace di condurre qualsiasi missione per liberare gli oppressi.','Sei un generale leale e dedicato.',
+                    'Sei un vero guerriero capace di guidare qualsiasi missione per liberare gli oppressi.','Sei un generale leale e dedicato.',
                     'Sei una principessa, un genio capace di essere responsabile di diverse innovazioni tecnologiche.');
                     $ind = mt_rand(0,3);
           }

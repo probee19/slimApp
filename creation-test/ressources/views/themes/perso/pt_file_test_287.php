@@ -76,7 +76,7 @@
           <div class='main'>
       
 <?php 
-          $forces = array('sua coragem','sua inteligência','sua bondade','é legal','seu modo de falar','seu senso de respeito','seu senso de dever');
+          $forces = array('sua coragem','sua inteligência','sua bondade','sua legal','seu modo de falar','seu senso de respeito','seu senso de dever');
           shuffle($forces);
 ?>
 <!DOCTYPE HTML>

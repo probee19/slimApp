@@ -26,7 +26,7 @@
 #fb_id_user{position: absolute; z-index:1; left: 20px; top: 20px; width:150px ; border-radius:100px; max-width:800px; max-height:420px; border:3px solid #BC8CBE;}
 #name_user{position:absolute; z-index:1; left: 200px; top: 50px; font-size:50px; color:#FFF;font-family: 'Bree Serif', serif;} 
 #resultat1 {position:absolute; z-index:1; left: 170px; top: 150px; font-size:30px; color:#333;}
-#resultat1 div {margin-bottom:30px;}
+#resultat1 div {margin-bottom:20px;}
 #titre_bottom{ position:absolute; min-height:70px; width:800px; left:0px; bottom:0px; background:#BC8CBE; color:#FFF; font-size:25px; text-align:center; line-height:26px; padding-top:15px;padding-bottom:15px;font-family: 'Bree Serif', serif; }
               </style>
               <script src='../../../src/js/jquery.js'></script>
@@ -71,18 +71,18 @@
 <?php
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-           $texte = array('Est extrèmement loyal','Coup d&#39;État sur coup','Adore faire la fête!','Sourit même quand il y a une envie de pleurer','Déteste les injustices','Toujours du temps à consacrer à sa famille','Surprends toujours les gens', 'Ne laisse jamais tomber ses amis' );
-$texte1 = array(''.$_GET[' user_name'].' voit des opportunités dans tous les problèmes il fait face à face. Il est très perspicace et peut se projeter dans le futur.',
-'&quot;'.$_GET[' user_name'].' est toujours là pour ses amis.&quot; Il est un coeur en ou &quot;',
-'&quot;'.$_GET[' nom_utilisateur'].' a aimé, il s&#39;est perdu.&quot; Il s&#39;est assagi mais n&#39;a jamais perdu la passion et la joie qui caractérisent. &quot;',
-'&quot;'.$_GET[' user_name'].' a toujours la solution à tous les problèmes.&quot; Son optimisme et sa sagesse sont inégalables. &quot;');
+           $texte = array(' Est extrèmement loyal ',' Rend coup sur coup ',' Adore faire la fête ! ',' Sourit même quand il a envie de pleurer ',' Déteste les injustices ',' A toujours du temps à consacrer à sa famille ',' Surprend toujours les gens ', ' Ne laisse jamais tomber ses amis ' );
+$texte1 = array(' '.$_GET['user_name'].' voit des opportunités dans tous les problème auxquels il fait face. Il est très perspicace et peut se projeter dans le futur. ',
+' "'.$_GET['user_name'].' est toujours là pour ses amis. Il comprend l\'importance du soutien et de l\'amour qu\'il leur porte. Il a un coeur en or" ',
+' "'.$_GET['user_name'].' a aimé et perdu. Il s\'est assagi mais n\'a jamais perdu la passion et la joie qui le caractérisent." ',
+' "'.$_GET['user_name'].' a toujours la solution à tous les problèmes. Son optimisme et sa sagesse sont inégalables." ');
    }
             else{ 
-           $texte = array('Est extrèmement loyal','coup de coup sur coup','Adore faire la fête!','Sourit même quand elle a envie de pleurer','Déteste les injustices','Toujours du temps à consacrer à sa famille','Surprends toujours les gens', 'Ne laisse jamais tomber ses amis' );
-$texte1 = array(''.$_GET[' user_name'].' voit des opportunités dans tous les cas de figure. Elle est très perspicace et peut se projeter dans le futur.',
-'"'.$_GET[' user_name'].' est toujours là pour ses amis. Elle comprend l&#39;importance du soutien et de l&#39;amour qu&#39;elle leur porte. Elle a un coeur en or"',
-'&quot;Elle s&#39;est assagie mais n&#39;a jamais perdu la passion et la joie qui le caractérise.&quot;',
-'&quot;'.$_GET[' user_name'].' a toujours la solution à tous les problèmes.&quot; Son optimisme et sa sagesse sont inégalables. &quot;');
+           $texte = array(' Est extrèmement loyal ',' rend coup sur coup ',' Adore faire la fête ! ',' Sourit même quand elle a envie de pleurer ',' Déteste les injustices ',' A toujours du temps à consacrer à sa famille ',' Surprend toujours les gens ', ' Ne laisse jamais tomber ses amis ' );
+$texte1 = array(' '.$_GET['user_name'].' voit des opportunités dans tous les problème auxquels elle fait face. Elle est très perspicace et peut se projeter dans le futur. ',
+'" '.$_GET['user_name'].' est toujours là pour ses amis. Elle comprend l\'importance du soutien et de l\'amour qu\'elle leur porte. Elle a un coeur en or "',
+' "'.$_GET['user_name'].' a aimé et perdu. Elle s\'est assagie mais n\'a jamais perdu la passion et la joie qui le caractérisent." ',
+' "'.$_GET['user_name'].' a toujours la solution à tous les problèmes. Son optimisme et sa sagesse sont inégalables." ');
   
             }
         

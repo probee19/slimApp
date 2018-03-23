@@ -71,7 +71,7 @@ align-items: center; /* align vertical */ }
           <div class='main'>
       
 <img src="http://creation.funizi.com/images-theme-perso/1508847761.jpg" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="img_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="img_user">
 <span id="name_user" class="name"> <?php echo $_GET['user_name']; ?> </span>
 <div style="position:absolute; left:290px;top:180px;z-index:2; width:180px;text-align:center; font-size:20px;font-family: 'Paytone One', sans-serif; color:#666"> 
            <?php
