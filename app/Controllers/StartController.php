@@ -155,6 +155,8 @@ class StartController extends Controller
                     $args_for_grabzit =array('theme' => $theme, 'fb_id_user' => $user_id, 'user_name' => urlencode($name), 'nb_friends' => $nb_friends_fb );
 
                     $url = '?user_gender='.$genre.'&fb_id_user='.$user_id.'&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
+                    $url_img_profile_user = '&url_img_profile_user='.urlencode('https://graph.facebook.com/'.$user_id.'/picture/?width=275&height=275');
+                    $url .= $url_img_profile_user;
 
 
                     if($nb_friends_fb > 0){
@@ -162,7 +164,7 @@ class StartController extends Controller
                         $user_friends =  (array) $_SESSION['friends'];
                         $user_photos = (array) $_SESSION['photos'];
 
-                        if(!empty($user_posts)){
+                        if(count($user_posts) > 0){
 
                             $volume = [];
                             foreach ($user_posts as $key => $row) {
