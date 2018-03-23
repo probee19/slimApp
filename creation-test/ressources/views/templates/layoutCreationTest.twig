@@ -10,14 +10,14 @@
 
     <title>{% block title %}{% endblock %} | Funizi Administration</title>
     <!-- Bootstrap Core CSS -->
-    <link href="{{ base_url() }}/src/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <link href="{{ base_url() }}/src/css/DataTables/jquery.dataTables.css" rel="stylesheet" type="text/css">
-    <link href="{{ base_url() }}/src/css/DataTables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
-    <link href="{{ base_url() }}/src/css/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="{{ base_url() }}/src/css/select2.css?v=1.00006" rel="stylesheet" type="text/css"/>
+    <link href="{{ domain_url }}/src/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="{{ domain_url }}/src/css/DataTables/jquery.dataTables.css" rel="stylesheet" type="text/css">
+    <link href="{{ domain_url }}/src/css/DataTables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css">
+    <link href="{{ domain_url }}/src/css/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ domain_url }}/src/css/select2.css?v=1.00006" rel="stylesheet" type="text/css"/>
 
     <!-- Custom CSS -->
-    <link href="{{ base_url() }}/src/css/added-style.css?v=1.009" rel="stylesheet">
+    <link href="{{ domain_url }}/src/css/added-style.css?v=1.009" rel="stylesheet">
     {% block additionalstyle %} {% endblock %}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -51,7 +51,7 @@
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <!-- Bootstrap Core JavaScript -->
-<script src="{{ base_url() }}/src/js/bootstrap.min.js"></script>
+<script src="{{ domain_url }}/src/js/bootstrap.min.js"></script>
 
 <!-- Custom JavaScript -->
 {% block additionalfooter %} {% endblock %}

@@ -1,7 +1,7 @@
 RewriteEngine On
 
 RewriteBase /
-RewriteCond %{HTTP_HOST} ^(www\.)?dashboard.weasily\.com.*$
+RewriteCond %{HTTP_HOST} ^(www\.)?dashboard.funizi\.com.*$
 RewriteRule (.*) creation-test/$1 [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
