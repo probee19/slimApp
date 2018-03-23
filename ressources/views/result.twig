@@ -7,7 +7,7 @@
      <meta property="og:site_name" content="Funizi.com" />
      <meta property="og:url" content="{{ domain_url }}/result/{{ titre_url }}/{{ code }}?ref=fb" >
      <meta property="og:description" content="{{interface_ui.label_share_prefixe | capitalize}} : {{ titre_test }}" />
-     <meta property="og:image" content="{{ base_url() }}{{ img_url }}" />
+     <meta property="og:image" content="{{ domain_url }}{{ img_url }}" />
      <meta property="og:image:width" content="800" />
      <meta property="og:image:height" content="420" />
      <meta property="og:image:type" content="image/jpeg" />
@@ -35,7 +35,7 @@
                     <a class="btn btn-primary btn-lg btn_to_track" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "top")'  style="cursor:pointer;" data-btn="share-top"><i class="fa fa-facebook-square" aria-hidden="true"></i> {{interface_ui.btn_share}}</a>
                 </div>
                 <div class="col-sm-10 col-sm-offset-1" style="clear: both; position: relative;">
-                    <img src="{{ base_url() }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="margin:15px auto">
+                    <img src="{{ domain_url }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="margin:15px auto">
                     <a href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
 
                     <div class="overlay-share">
@@ -87,15 +87,15 @@
 
         <div id="div_loader" class="col-xs-12 col-sm-10 col-sm-offset-1" style="display:none; margin-top: 30px; ">
             <div class="col-xs-12 col-sm-10 col-sm-offset-1 " >
-                <img src="{{ base_url() }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
+                <img src="{{ domain_url }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
                 <div style="font-weight: 500; font-size:1.2em; ">{{ interface_ui.label_loading_fixed | capitalize }} </div>
                 <div id="div_tasks" style="display:block; font-weight: 500; margin-top:0px; clear: both; font-size:1em;" >{{ interface_ui.label_loading_1 }} </div>
                 <span class="info-partage text-center" style="display:block; clear: both; margin-top:8px; font-family: 'Helvetica Neue';color: #2e5085; font-weight: 500; font-size:1.1em; ">{{interface_ui.label_like_1}} {{ session.name }} ! <br> ! {{interface_ui.label_like_2}} !</span>
                 <div style="width:250px; margin: 5px auto;  position: relative;">
-                    <div class="div_left_hand"> <img src="{{ base_url() }}/src/img/hand_left.png" class="left_hand"/> </div>
+                    <div class="div_left_hand"> <img src="{{ domain_url }}/src/img/hand_left.png" class="left_hand"/> </div>
 
                     <div class="fb-like" data-href="https://www.facebook.com/funizi/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
-                    <div class="div_right_hand"> <img src="{{ base_url() }}/src/img/hand_right.png"  class="right_hand"/></div>
+                    <div class="div_right_hand"> <img src="{{ domain_url }}/src/img/hand_right.png"  class="right_hand"/></div>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
 
                   <div class="modal-content">
                       <div class="modal-header">
-                            <img class="img-responsive" src="{{ base_url() }}/creation-test/src/img/funizi.png" style="height:30px; margin: 0 auto;" alt="Funizi">
+                            <img class="img-responsive" src="{{ domain_url }}/creation-test/src/img/funizi.png" style="height:30px; margin: 0 auto;" alt="Funizi">
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                       </div>
                       <div class="modal-body text-center">
@@ -122,7 +122,7 @@
                           {% for test in top_tests %}
                               <div class="col-sm-6 col-md-4 portfolio-item">
                                   <div class="border">
-                                      <img class="img-responsive" src="{{ base_url }}/creation-test{{ test.url_image_test |trim('.', 'left') }}" alt="image du test">
+                                      <img class="img-responsive" src="{{ domain_url }}/creation-test{{ test.url_image_test |trim('.', 'left') }}" alt="image du test">
                                       <span class="mobile-layer"></span>
                                       <a href="{{ path_for('single', { 'id': test.id_test, 'name': test.titre_test | twig_title_url(test.id_test, lang) }) }}?utm=d_test" class="test__link" data-btn="btn-test"></a>
                                       <h3 class="test-title">{{ test.titre_test }}</h3>
@@ -146,7 +146,7 @@
     {% for single_test in all_test %}
         <div class="col-md-4 portfolio-item">
             <div class="border" data-test-id="{{single_test.id_test}}">
-                <img class="img-responsive" src="{{ base_url }}/creation-test{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test">
+                <img class="img-responsive" src="{{ domain_url }}/creation-test{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test">
                 <span class="mobile-layer"></span>
                 <a class="test__link " href="{{ path_for('singledis', { 'from':'discover', 'id': single_test.id_test, 'name': single_test.titre_test | twig_title_url(single_test.id_test, lang) }) }}"  data-btn="btn-test"></a>
                 <h3 class="test-title">{{ single_test.titre_test }}</h3>
