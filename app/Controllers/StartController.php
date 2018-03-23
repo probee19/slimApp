@@ -223,11 +223,12 @@ class StartController extends Controller
 
                 $url = $request->getUri()->getBaseUrl().$url;
                 //$url = "http://".$lang.".funizi.com" . $url;
-	            /*
-                if($name == 'Pedre'){
-                  //echo $url;
-                  //exit;
-                }*/
+
+              if($user_id == '1815667808451001'){
+                echo $url;
+                exit;
+              }
+
                 //Generate unique code string for the test result
                 $stringen = new RandomStringGenerator();
                 $code = $stringen->generate(15);
