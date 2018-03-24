@@ -71,7 +71,7 @@
       
 <img src="http://creation.funizi.com/images-theme-perso/1508592637.png" id="background">
 <div id="titre" class="titre">¿Quién es tu amigo perfecto para tomar una copa?</div>
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
 <div class="name texte" id="name_friend_1" ><?php echo substr($_GET['friend_name_1'], 0, strpos($_GET['friend_name_1'], ' ')); ?></div>

@@ -90,7 +90,7 @@
           <div  id="force_2"> <?= $forces[0];?>  </div>
 </div>
 
-<div class="texte" id="texte_bottom">Qual&#39;è la tua più grande forza?</div>
+<div class="texte" id="texte_bottom">Qual\'è la tua più grande forza?</div>
 
 
         </div>

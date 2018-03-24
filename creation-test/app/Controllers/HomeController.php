@@ -97,14 +97,68 @@ class HomeController extends Controller
 
   public function chunk($request, $response, $args){
     //Helper::setFileTest();
-    Helper::setHighlightsJSON();
+    //Helper::setHighlightsJSON();
+    $photos = $this->helper->getPhotosProfile();
     //Helper::UpdateTranslationTest();
     //Helper::debug($data_line_chart);
     //exit;
     exit;
 
-    return $this->view->render($response, 'chunk.twig', compact('data_pie'));
+    return $this->view->render($response, 'chunk.twig', compact('photos'));
 
+
+  }
+
+
+  public function updateUrlImgProfile($request, $response, $arg)
+  {
+      $test_id = 2;
+
+      $tests = Test::where([['id_theme','=','4']])->orderBy('id_test','DESC')->get();
+      Helper::debug(count($tests));
+
+      $langs = Language::where('status','=',1)->get();
+      $nb_done = 0;
+
+      foreach ($tests as $test) {
+        //Helper::debug($test->titre_test);
+
+        foreach ($langs as $lang) {
+          $test_infos = TestInfo::where([['id_test','=',$test->id_test],['lang','=',$lang->code]])->get();
+          foreach ($test_infos as $test_info) {
+            //Helper::debug($test_info->lang);
+
+
+              $file = "ressources/views/themes/perso/".$test_info->lang."_file_test_".$test->id_test.".php";
+          	  $content_file = file_get_contents($file);
+
+              $texte = "Le test ". $test->id_test ." a été mis à jour pour le ". $test_info->lang;
+
+              if($file){
+                Helper::debug($texte);
+
+                $old_url_1 = "http://creation.funizi.com";
+                $new_url = "https://dashboard.funizi.com";
+                $content_file = str_replace($old_url_1, $new_url, $content_file);
+
+                $url_temp_file_php = 'ressources/views/themes/perso/'.$test_info->lang.'_file_test_'.$test->id_test;
+                $temp_file_php = fopen($url_temp_file_php.".php", "w+");
+                if($temp_file_php==false)
+                die("La création du fichier a échoué");
+
+                fputs($temp_file_php, $content_file);
+
+
+                $nb_done++;
+
+              }
+
+          }
+        }
+      }
+      Helper::debug($nb_done);
+
+      exit;
 
   }
 }

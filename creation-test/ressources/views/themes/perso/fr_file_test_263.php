@@ -119,7 +119,7 @@ else
  $font_size -= 5;
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1516205059.png" id="drapeau"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" width="200" height="200" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" width="200" height="200" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 <img src="http://creation.funizi.com/images-theme-perso/1516203822.png" id="crochet">
 

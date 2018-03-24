@@ -120,7 +120,7 @@
 <img src="http://creation.funizi.com/images-theme-perso/1519303423.png" class="img_ico" id="money">  
 <div class="texte res" id="res_money"> <?php echo $argent[0]; ?> </div>
 
-<div class="texte box" id="box_done"> Accomplishment </div>
+<div class="texte box" id="box_done"> accomplishment </div>
 <img src="http://creation.funizi.com/images-theme-perso/1519303519.png" class="img_ico" id="done">  
 <div class="texte res" id="res_done_1"> - <?php echo $accomplissement[0]; ?> </div> 
 <div class="texte res" id="res_done_2"> - <?php echo $accomplissement[1]; ?> </div> 

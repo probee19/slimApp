@@ -83,7 +83,7 @@
                 shuffle($aime); shuffle($couleur); shuffle($force); shuffle($deteste); shuffle($personnalite); shuffle($tondefaut);
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508763145.png" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div id="aime"><span class="titre_rubrique">Ti piace</span><div class="result"><?php echo $nature[0] ?><?php echo $aime[0] ?></div></div>
 <div id="couleur"><span class="titre_rubrique">Colore</span><div class="result" style="font-size:30px"><?php echo $couleur[0] ?></div></div>
 <div id="force"><span class="titre_rubrique">La tua forza</span><div class="result"><?php echo $force[0] ?> </div></div>

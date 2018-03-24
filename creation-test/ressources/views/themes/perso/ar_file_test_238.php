@@ -80,7 +80,7 @@ shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1512742548.png" id="background"> 
 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div id="titretest" ><span style=\"color:#EFA200\">تروثس 5</span> اكتشفت عنك في عام 2017<br> <?php echo $_GET['full_user_name']; ?> 
          </div>
 

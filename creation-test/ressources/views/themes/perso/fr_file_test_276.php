@@ -82,7 +82,7 @@ shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1510165729.png" id="background"> 
 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div id="titretest" >Les <span style="color:#D90000">5 raisons</span> de se marier avec <br><?php echo $_GET['full_user_name']; ?></div>
 
 <ol>

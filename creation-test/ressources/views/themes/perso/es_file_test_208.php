@@ -66,7 +66,7 @@
           <div class='main'>
       
 <img src="http://creation.funizi.com/images-theme-perso/1510838214.png" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" width="193" height="193" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" width="193" height="193" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ><span style="font-size:30px">Yo <span style="color:#EF372C"><?php echo $_GET['user_name']; ?></span></span>,<br> yo digo <span style="color:#EF372C">STOP</span><br> en la subasta en<span style="color:#EF372C">Libia</span> a los migrantes les gusta <span style="color:#EF372C">esclavos</span> !</div>
 
 

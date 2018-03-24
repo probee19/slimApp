@@ -73,7 +73,7 @@ align-items: center; /* align vertical */ }
  $nom_explication = array('onestà','sincerità','amore','franchigia','lealtà', 'autenticità','pazienza','coraggio', 'sensibilità','generosità','saggezza');
  shuffle($nom_explication);
 ?>
-<img src="http://creation.funizi.com/images-theme-perso/1508771127.jpg" id="background"> <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="http://creation.funizi.com/images-theme-perso/1508771127.jpg" id="background"> <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ></div>
 <div id="message"> 
 <div style="font-family: 'Lobster', cursive; color:#FFFF00"><?php echo $_GET['user_name']; ?>

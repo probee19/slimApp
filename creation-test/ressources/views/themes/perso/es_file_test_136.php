@@ -83,7 +83,7 @@
 <div id="" style="witdh:800px; Height:420px; background:#000"></div>
 <div id="ahora_name"><?php echo $_GET['user_name']; ?> ahora</div>
 <div id="then_name"><?php echo $_GET['user_name']; ?> en 2023</div>
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <img src="<?php echo $result_image[0]; ?>" id="result_image">
 
 

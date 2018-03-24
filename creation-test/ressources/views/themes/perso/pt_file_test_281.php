@@ -81,7 +81,7 @@
           shuffle($phrases);
 ?>
 <!DOCTYPE HTML>
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <img src="http://creation.funizi.com/images-theme-perso/1518796079.png" id="backg"> 
 
 <div class="texte" id="head_temp"> O que o seu biscoito chinês conta?</div>

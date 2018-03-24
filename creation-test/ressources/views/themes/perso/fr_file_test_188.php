@@ -75,7 +75,7 @@ $texte = array("ne dit que des choses intÃ©ressantes","est gracieuse","est mystÃ
  shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509234528.jpg" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ></div>
 <div id="titretest" >Pourquoi <?php echo $_GET['user_name']; ?> est une Femme Parfaite?</div>
 <div class="name texte" id="name_user" ></div>

@@ -71,11 +71,11 @@ align-items: center; /* align vertical */ }
 <?php
       if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-               $type = array('Você é um verdadeiro marselhês','Um verdadeiro fanático');
-               $message = array('Você está com sua equipe na vitória como na derrota','Aqui está Marselha','Para sempre primeiro','Sem piedade para o Clasico');          }
+               $type = array('Você é uma verdadeira Marseillais','Um verdadeiro fanático');
+               $message = array('Você está com o seu time na vitória como na derrota','Aqui é Marselha','Para sempre primeiro','Sem piedade para o Clasico');          }
             else{ 
-               $type = array('Você é um verdadeiro marselhêse','Um verdadeiro fanático');
-              $message = array('Você está com sua equipe na vitória como na derrota','Aqui está Marselha','Para sempre primeiro','Sem piedade para o Clasico'); 
+               $type = array('Você é uma verdadeira Marseillaise','Um verdadeiro fanático');
+              $message = array('Você está com o seu time na vitória como na derrota','Aqui é Marselha','Para sempre primeiro','Sem piedade para o Clasico'); 
             }
 
 shuffle($message);

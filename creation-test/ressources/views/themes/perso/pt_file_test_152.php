@@ -77,7 +77,7 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508541310.jpg" id="background">
             <span id="titre" class="titre">Que segredos se escondam atrás da sua foto de perfil?</span>
-            <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="img_user">
+            <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="img_user">
             <span id="name_user" class="name"> <?php echo $_GET['user_name']; ?> </span>
             <span id="texte_1" class="texte"> <b> Aparência:</b> <?php echo $apparence[0] ?></span>
             <span id="texte_2" class="texte"> <b> Alma:</b> <?php echo $ame[0] ?></span>

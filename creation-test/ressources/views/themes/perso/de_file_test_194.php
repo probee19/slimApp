@@ -26,7 +26,7 @@
 #fb_id_user{position: absolute; z-index:1; left: 20px; top: 20px; width:150px ; border-radius:100px; max-width:800px; max-height:420px; border:3px solid #BC8CBE;}
 #name_user{position:absolute; z-index:1; left: 200px; top: 50px; font-size:50px; color:#FFF;font-family: 'Bree Serif', serif;} 
 #resultat1 {position:absolute; z-index:1; left: 170px; top: 150px; font-size:30px; color:#333;}
-#resultat1 div {margin-bottom:30px;}
+#resultat1 div {margin-bottom:20px;}
 #titre_bottom{ position:absolute; min-height:70px; width:800px; left:0px; bottom:0px; background:#BC8CBE; color:#FFF; font-size:25px; text-align:center; line-height:26px; padding-top:15px;padding-bottom:15px;font-family: 'Bree Serif', serif; }
               </style>
               <script src='../../../src/js/jquery.js'></script>
@@ -72,17 +72,17 @@
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
            $texte = array('Ist extrem loyal','Rendern nacheinander','Liebe Party!','Lächelt, auch wenn er weinen will','Hass Ungerechtigkeiten','Haben Sie immer Zeit mit der Familie zu verbringen','Immer überraschte Leute', 'Lass niemals seine Freunde im Stich' );
-$texte1 = array(''.$_GET[' user_name'].' sieht Chancen in allen Problemen, denen er gegenübersteht. Er ist sehr aufschlussreich und kann sich in die Zukunft projizieren.',
-'&quot;'.$_GET[' user_name'].' ist immer für seine Freunde da, er versteht die Wichtigkeit der Unterstützung und Liebe, die er für sie hat, er hat ein Herz aus Gold&quot;',
-'&quot;'.$_GET[' user_name'].' geliebt und verloren, aber er hat nichts von seiner Leidenschaft und Freude verloren.&quot;',
-'&quot;'.$_GET[' user_name'].' hat immer die Lösung für alle Probleme, und ihr Optimismus und ihre Weisheit sind unübertroffen.&quot;');
+$texte1 = array(''.$_GET['user_name'].' sieht Chancen in allen Problemen, denen er gegenübersteht. Er ist sehr aufschlussreich und kann sich in die Zukunft projizieren.',
+'\"'.$_GET['user_name'].' ist immer für seine Freunde da, er versteht die Wichtigkeit der Unterstützung und Liebe, die er für sie hat, er hat ein Herz aus Gold\"',
+'\"'.$_GET['user_name'].' geliebt und verloren, aber er hat nicht die Leidenschaft und Freude verloren, die ihn auszeichnet.\"',
+'\"'.$_GET['user_name'].' hat immer die Lösung für alle Probleme, und ihr Optimismus und ihre Weisheit sind unübertroffen.\"');
    }
             else{ 
            $texte = array('Ist extrem loyal','macht einen Schuss nach dem anderen','Liebe Party!','Lächelt, auch wenn sie weinen will','Hass Ungerechtigkeiten','Haben Sie immer Zeit mit der Familie zu verbringen','Immer überraschte Leute', 'Lass niemals seine Freunde im Stich' );
-$texte1 = array(''.$_GET[' user_name'].' sieht Chancen in jedem Problem, dem sie gegenübersteht. Sie ist sehr einsichtig und kann sich in die Zukunft projizieren.',
-'"'.$_GET[' user_name'].' ist immer noch für seine Freunde da. Sie versteht die Wichtigkeit von Unterstützung und Liebe für sie. Sie hat ein Herz aus Gold"',
-'&quot;'.$_GET[' user_name'].' geliebt und verloren, aber sie hat nichts von der Leidenschaft und Freude verloren, die sie auszeichnen.&quot;',
-'&quot;'.$_GET[' user_name'].' hat immer die Lösung für alle Probleme, und ihr Optimismus und ihre Weisheit sind unübertroffen.&quot;');
+$texte1 = array(''.$_GET['user_name'].' sieht Chancen in jedem Problem, dem sie gegenübersteht. Sie ist sehr einsichtig und kann sich in die Zukunft projizieren.',
+'"'.$_GET['user_name'].' ist immer noch für seine Freunde da. Sie versteht die Wichtigkeit von Unterstützung und Liebe für sie. Sie hat ein Herz aus Gold"',
+'\"'.$_GET['user_name'].' geliebt und verloren, aber sie hat nichts von der Leidenschaft und Freude verloren, die sie auszeichnen.\"',
+'\"'.$_GET['user_name'].' hat immer die Lösung für alle Probleme, und ihr Optimismus und ihre Weisheit sind unübertroffen.\"');
   
             }
         

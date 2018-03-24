@@ -77,7 +77,7 @@
 ?>
 
 <div class="conteneur rouge" style="top:0;left:0">
- <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile blanc_border" id="fb_id_user">          
+ <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile blanc_border" id="fb_id_user">          
 <div class='texte blanc_texte'><?php echo $texte[0]; ?></div>
 </div>
 <div class="conteneur blanc" style="top:0;left:200px">

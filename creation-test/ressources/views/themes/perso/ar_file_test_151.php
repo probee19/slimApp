@@ -70,7 +70,7 @@
           <div class='main'>
       
 <div id='titre_test'><?php echo $_GET['user_name']; ?> يكرهك:</div>
-<img src='https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275'class='img_profile' id='fb_id_user'>
+<img src='<?php echo $_GET['url_img_profile_user']; ?>'class='img_profile' id='fb_id_user'>
 <div id='resultat' ><?php echo rand (50,499);?> <div style="font-size:25px;">اشخاص</div>
 </div>
 
