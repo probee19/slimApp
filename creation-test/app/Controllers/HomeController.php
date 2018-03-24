@@ -137,19 +137,19 @@ class HomeController extends Controller
               if($file){
                 Helper::debug($texte);
 
-              $old_url_1 = "creation.funizi.com";
-              $new_url = "dashboard.funizi.com";
-              $content_file = str_replace($old_url_1, $new_url, $content_file);
+                $old_url_1 = "http://creation.funizi.com";
+                $new_url = "https://dashboard.funizi.com";
+                $content_file = str_replace($old_url_1, $new_url, $content_file);
 
-              $url_temp_file_php = 'ressources/views/themes/perso/'.$test_info->lang.'_file_test_'.$test->id_test;
-              $temp_file_php = fopen($url_temp_file_php.".php", "w+");
-              if($temp_file_php==false)
-              die("La création du fichier a échoué");
+                $url_temp_file_php = 'ressources/views/themes/perso/'.$test_info->lang.'_file_test_'.$test->id_test;
+                $temp_file_php = fopen($url_temp_file_php.".php", "w+");
+                if($temp_file_php==false)
+                die("La création du fichier a échoué");
 
-              fputs($temp_file_php, $content_file);
+                fputs($temp_file_php, $content_file);
 
 
-              $nb_done++;
+                $nb_done++;
 
               }
 
