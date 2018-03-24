@@ -112,7 +112,6 @@ class HomeController extends Controller
 
   public function updateUrlImgProfile($request, $response, $arg)
   {
-      $test_id = 2;
 
       $tests = Test::where([['id_theme','=','4']])->orderBy('id_test','DESC')->get();
       Helper::debug(count($tests));
@@ -131,6 +130,7 @@ class HomeController extends Controller
 
               $file = "ressources/views/themes/perso/".$test_info->lang."_file_test_".$test->id_test.".php";
           	  $content_file = file_get_contents($file);
+              Helper::debug($file);
 
               $texte = "Le test ". $test->id_test ." a été mis à jour pour le ". $test_info->lang;
 
