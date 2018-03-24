@@ -44,7 +44,7 @@ define('FB_APP_ID', $_SERVER['FB_APP_ID']);
 require __DIR__ . '/../vendor/autoload.php';
 
 $config = [
-    'displayErrorDetails'   =>  true,
+    'displayErrorDetails'   =>  false,
     'db'        =>  [
         'driver'    =>  'mysql',
         'host'      =>  RDS_HOSTNAME,
