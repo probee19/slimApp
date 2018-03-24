@@ -120,17 +120,18 @@ class HomeController extends Controller
       $nb_done = 0;
 
       foreach ($tests as $test) {
-        //Helper::debug($test->titre_test);
+        Helper::debug($test->titre_test);
 
         foreach ($langs as $lang) {
           $test_infos = TestInfo::where([['id_test','=',$test->id_test],['lang','=',$lang->code]])->get();
+
           foreach ($test_infos as $test_info) {
-            //Helper::debug($test_info->lang);
+            Helper::debug($test_info->lang);
 
 
               $file = "ressources/views/themes/perso/".$test_info->lang."_file_test_".$test->id_test.".php";
           	  $content_file = file_get_contents($file);
-              Helper::debug($file);
+              $this->helper->debugg($file);
 
               $texte = "Le test ". $test->id_test ." a été mis à jour pour le ". $test_info->lang;
 
