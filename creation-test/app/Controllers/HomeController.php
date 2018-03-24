@@ -96,7 +96,22 @@ class HomeController extends Controller
 
 
   public function chunk($request, $response, $args){
+    //Helper::setFileTest();
+    //Helper::setHighlightsJSON();
+    $photos = $this->helper->getPhotosProfile();
+    //Helper::UpdateTranslationTest();
+    //Helper::debug($data_line_chart);
+    //exit;
+    exit;
 
+    return $this->view->render($response, 'chunk.twig', compact('photos'));
+
+
+  }
+
+
+  public function updateUrlImgProfile($request, $response, $arg)
+  {
       $test_id = 2;
 
       $tests = Test::where([['id_theme','=','4']])->orderBy('id_test','DESC')->get();
