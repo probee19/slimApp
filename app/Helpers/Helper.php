@@ -586,8 +586,8 @@ class Helper
       $server = $_SERVER["HTTP_X_FORWARDED_PROTO"];
       $lang = self::getLangSubdomain($request);
       if($lang == "" || $server === 'http'){
-        $lang = self::getLangBrowser();
-
+          if($lang == "")
+            $lang = self::getLangBrowser();
         $url = "https://".$lang.".funizi.com".$_SERVER['REQUEST_URI'];
         //$url = "https://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
         return $url;
