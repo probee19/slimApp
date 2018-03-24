@@ -139,7 +139,7 @@ class HomeController extends Controller
                 Helper::debug($texte);
 
                 $old_url_1 = "http://creation.funizi.com";
-                $new_url = "https://dashboard.funizi.com";
+                $new_url = "https://funizi.com/creation-test/";
                 $content_file = str_replace($old_url_1, $new_url, $content_file);
 
                 $url_temp_file_php = 'ressources/views/themes/perso/'.$test_info->lang.'_file_test_'.$test->id_test;
