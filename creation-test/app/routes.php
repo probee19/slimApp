@@ -36,7 +36,7 @@ $app->get('/action/deleteResult', 'ActionTestController:DeleteResultTest');
 $app->get('/action/changeTheme', 'ActionTestController:ChangeThemeTest');
 $app->get('/action/showmoreresults', 'ActionTestController:ShowMoreResult');
 $app->get('/action/updatejsonalltests', 'JsonController:setTestsJSON');
-$app->get('/action/updatejsonhighlightedtests', 'JsonController:setHighlightsJSON'); 
+$app->get('/action/updatejsonhighlightedtests', 'JsonController:setHighlightsJSON');
 
 
 $app->get('/load/days', 'LoadStatsController:loadStatForDays');
@@ -77,3 +77,4 @@ $app->get('/chunk', 'HomeController:chunk');
 $app->get('/upgradelang', 'LangController:upgradeLang');
 $app->get('/upgradejsonfile', 'LangController:UpgradeJsonFile');
 $app->get('/chunk/jsonalltests', 'JsonController:setTestsJSON');
+$app->get('/chunk/updateimgurl', 'HomeController:updateUrlImgProfile');
