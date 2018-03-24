@@ -63,8 +63,7 @@ class TestController extends Controller
             $permissions = ['public_profile'];
             $loginUrl = $helper->getLoginUrl($request->getUri()->getBaseUrl().'/connect_user2?id='.$id.'&permission='.$permission, $permissions);
         }// Optional permissions
-        //$helper = new Helper();
-        //$sandbox->createCookie();
+        
         $id_user = 0;
         if(isset($_SESSION['uid']))
           $id_user = $_SESSION['uid'];
