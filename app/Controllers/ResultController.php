@@ -22,11 +22,7 @@ class ResultController extends Controller
         $helper = new Helper();
         $lang = $this->helper->getLangSubdomain($request);
 
-        if($_GET['pays'] && $_GET['pays'] !=''){
-            $country_code = strtoupper($_GET['pays']);
-        }else{
-            $country_code = $helper->getCountryCode();
-        }
+	    $country_code = $helper->getCountryCode();
         $code = $args['code'];
         $new = $args['new'];
         $is_result = true;

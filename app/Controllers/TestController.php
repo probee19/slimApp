@@ -38,7 +38,7 @@ class TestController extends Controller
             return $response->withStatus(302)->withHeader('Location', $result_url );
         }
 
-        if($_GET['utm'] && $_GET['utm'] !='')
+        if(!empty($_GET['utm']))
             $this->helper->setUTM($_GET['utm'], "test", $id);
 
         $exclude = [$id];
