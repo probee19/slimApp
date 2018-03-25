@@ -26,7 +26,8 @@ class TestController extends Controller
         if($args['code'])
             $code = $args['code'];
         $user_test = UserTest::where('uuid', '=', "$code")->first();
-        $img_url = $user_test->img_url;
+        if(!empty($user_test))
+            $img_url = $user_test->img_url;
         $test = Test::selectRaw('tests.titre_test AS titre_test_fr, tests.permissions AS permissions, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
               ->join('test_info','test_info.id_test','tests.id_test')
               ->where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
@@ -63,7 +64,7 @@ class TestController extends Controller
             $permissions = ['public_profile'];
             $loginUrl = $helper->getLoginUrl($request->getUri()->getBaseUrl().'/connect_user2?id='.$id.'&permission='.$permission, $permissions);
         }// Optional permissions
-        
+
         $id_user = 0;
         if(isset($_SESSION['uid']))
           $id_user = $_SESSION['uid'];

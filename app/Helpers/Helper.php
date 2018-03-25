@@ -488,6 +488,7 @@ class Helper
     // Obtention des tests locaux
     public static function getLocalTests($countryCode, $exclude, $lang, $total = 5)
     {
+    	$tests = [];
       // Récuperation des tests pour langue $lang;
       $tests_from_json = self::getAllTestJson($lang);
       //krsort($tests_from_json);
