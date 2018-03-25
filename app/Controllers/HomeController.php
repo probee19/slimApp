@@ -35,7 +35,7 @@ class HomeController extends Controller
         $country_code = $this->helper->getCountryCode();
 
 
-      if($_GET['utm'] && $_GET['utm'] !='')
+      if(isset($_GET['utm']) && !empty($_GET['utm']))
           $this->helper->setUTM($_GET['utm'],"home");
 
       $cookie = $this->helper->createCookie();
@@ -204,7 +204,6 @@ class HomeController extends Controller
         return $response->withStatus(201)
             ->withHeader('Content-Type', 'application/json')
             ->write(json_encode($data));
-
     }
 
     private function saveOrUpdate($id, $name, $lastname, $genre, $ip){

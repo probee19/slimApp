@@ -538,7 +538,7 @@ class Helper
       }
 
       $language_info = Language::selectRaw("status")->where("code",$language)->first();
-      if($language_info->status == 0)
+      if(isset($language_info->status) &&  $language_info->status == 0)
         $language = "en";
       return $language;
     }

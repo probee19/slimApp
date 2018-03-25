@@ -27,9 +27,13 @@ class ResultController extends Controller
         }else{
 	        $country_code = $helper->getCountryCode();
         }
+		if(isset($args['code'])){
+			$code = $args['code'];
+		}
+		if(isset($args['new'])){
+			$new = $args['new'];
+		}
 
-        $code = $args['code'];
-        $new = $args['new'];
         $is_result = true;
         $date = date('Y-m-d');
         $test = UserTest::where('uuid', "$code")->with('testInfo')->first();
