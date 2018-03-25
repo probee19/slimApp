@@ -59,7 +59,7 @@ class HomeController extends Controller
       // Nombre de pages
       $pagecount = intval(ceil($alltest/$pagecount));
 
-      if($arg['pageid'])
+      if(!empty($arg['pageid']))
         $pageid = $arg['pageid'];
       else
         $pageid = 1;
@@ -91,7 +91,9 @@ class HomeController extends Controller
         $tests = array_replace(array_flip($include), $tests);
       }
       else {// Si cette page n'est pas en session
-        if($alltest == count($_SESSION["seen"]) || $alltest <= count($_SESSION["seen"])) $_SESSION["seen"] = array();
+
+        if($alltest == count($_SESSION["seen"]) || $alltest <= count($_SESSION["seen"]))
+        	$_SESSION["seen"] = array();
         $exclude = array();
         if(isset($_SESSION['seen']))
           $exclude = $_SESSION['seen'];

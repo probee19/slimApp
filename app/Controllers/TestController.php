@@ -23,7 +23,7 @@ class TestController extends Controller
         $country_code = $this->helper->getCountryCode();
 
         $code = $request->getParam('ref');
-        if($args['code'])
+        if(isset($args['code']))
             $code = $args['code'];
         $user_test = UserTest::where('uuid', '=', "$code")->first();
         if(!empty($user_test))
