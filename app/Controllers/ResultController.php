@@ -41,18 +41,18 @@ class ResultController extends Controller
         $testInfo = Test::selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.unique_result AS unique_result, tests.id_theme AS id_theme, tests.id_test AS id_test')
           ->join('test_info','test_info.id_test','tests.id_test')
           ->Where([['tests.id_test', '=', $test->testInfo->id_test],['test_info.lang','=',$lang]])->first();
-        if($test)
+        if(isset($test))
             $result_description = $test->result_description;
-        if(!$test){
+        if(!isset($test)){
             $test = BotTests::where('uuid', "$code")->with('testInfo')->first();
             $result_description = "<strong>N’oublie pas de PARTAGER ça maintenant avec tes amis et tes proches !</strong>";
         }
         $img_url = $test->img_url;
 
-        if($_GET['utm'] && $_GET['utm'] !='')
+        if(isset($_GET['utm']) && !empty($_GET['utm']))
             $helper->setUTM($_GET['utm'], "test", $test->testInfo->id_test);
 
-        if($_GET['ref'] && $_GET['ref'] === 'fb' && $test != null){
+        if(isset($_GET['ref']) && $_GET['ref'] === 'fb' && $test != null){
             $result_url = $this->router->pathFor('single', [
                 'id'      =>  $test->test_id,
                 'name'    =>  $this->helper->cleanUrl($test->testInfo->titre_test)
