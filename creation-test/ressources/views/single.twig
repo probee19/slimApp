@@ -4,12 +4,12 @@
     {% block graph %}
         {% if code !='' %}
             <!--FACEBOOK-->
-            <link rel="canonical" href="{{ base_url() }}/result/{{ test.titre_test | twig_clean_url }}/{{ code }}?ref=fb">
+            <link rel="canonical" href="{{ domain_url }}/result/{{ test.titre_test | twig_clean_url }}/{{ code }}?ref=fb">
             <meta property="og:title" content="{{ test.titre_test }}" />
             <meta property="og:site_name" content="Funizi.com" />
-            <meta property="og:url" content="{{ base_url() }}/result/{{ test.titre_test | twig_clean_url }}/{{ code }}?ref=fb" >
+            <meta property="og:url" content="{{ domain_url }}/result/{{ test.titre_test | twig_clean_url }}/{{ code }}?ref=fb" >
             <meta property="og:description" content="Clique vite pour découvrir: {{ test.titre_test | lower }}" />
-            <meta property="og:image" content="{{ base_url() }}{{ img_url }}" />
+            <meta property="og:image" content="{{ domain_url }}{{ img_url }}" />
             <meta property="og:image:width" content="800"/>
             <meta property="og:image:height" content="420"/>
             <meta property="og:image:type" content="image/jpeg" />
@@ -18,10 +18,10 @@
 
         {% else %}
             <!--FACEBOOK-->
-            <link rel="canonical" href="{{ base_url() }}/test/{{ test.titre_test | twig_clean_url }}/{{ test.id_test }}">
+            <link rel="canonical" href="{{ domain_url }}/test/{{ test.titre_test | twig_clean_url }}/{{ test.id_test }}">
             <meta property="og:title" content="{{ test.titre_test }}" />
             <meta property="og:site_name" content="Funizi.com" />
-            <meta property="og:url" content="{{ base_url() }}/test/{{ test.titre_test | twig_clean_url }}/{{ test.id_test }}" >
+            <meta property="og:url" content="{{ domain_url }}/test/{{ test.titre_test | twig_clean_url }}/{{ test.id_test }}" >
             <meta property="og:description" content="Clique vite pour découvrir: {{ test.titre_test | lower }}" />
             <meta property="og:image" content="{{ base_url }}/creation-test{{ test.url_image_test |trim('.', 'left') }}" />
             <meta property="og:type" content="website">
@@ -53,7 +53,7 @@
                 <div  class="col-xs-12 btn-action text-center" style="margin-top:1em; margin-bottom: 2em; padding:0">
                     {% if session.name %}
                         {% if (permission == 0) or (session.accepted == true)  %}
-                    <a id="btn-result" href="{{ base_url() }}/start?ref={{ test.id_test }}" onclick="loader()" class="btn btn-primary btn-lg btn_to_track" data-btn="process" style="">
+                    <a id="btn-result" href="{{ domain_url }}/start?ref={{ test.id_test }}" onclick="loader()" class="btn btn-primary btn-lg btn_to_track" data-btn="process" style="">
                         <i class="fa fa-facebook-square"></i>
                             Continuer en tant que {{ session.name | capitalize }}
                     </a>
@@ -75,15 +75,15 @@
 
             <div id="div_loader" class="col-xs-12 col-sm-10 col-sm-offset-1" style="display:none; margin-top: 30px; ">
                 <div class="col-xs-12 col-sm-10 col-sm-offset-1 " >
-                    <img src="{{ base_url() }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
+                    <img src="{{ domain_url }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
                     <div style="font-weight: 500; font-size:1.2em; ">Calcul du résultat en cours </div>
                     <div id="div_tasks" style="display:block; font-weight: 500; margin-top:0px; clear: both; font-size:1em;" >Traitement en cours </div>
                     <span class="info-partage text-center" style="display:block; clear: both; margin-top:8px; font-family: 'Helvetica Neue';color: #2e5085; font-weight: 500; font-size:1.1em; ">On t'aime {{ session.name }} ! <br> ! Aime-nous en retour !</span>
                     <div style="width:250px; margin: 5px auto;  position: relative;">
-                        <div class="div_left_hand"> <img src="{{ base_url() }}/src/img/hand_left.png" class="left_hand"/> </div>
+                        <div class="div_left_hand"> <img src="{{ domain_url }}/src/img/hand_left.png" class="left_hand"/> </div>
 
                         <div class="fb-like" data-href="https://www.facebook.com/funizi/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
-                        <div class="div_right_hand"> <img src="{{ base_url() }}/src/img/hand_right.png"  class="right_hand"/></div>
+                        <div class="div_right_hand"> <img src="{{ domain_url }}/src/img/hand_right.png"  class="right_hand"/></div>
                     </div>
                 </div>
             </div>
@@ -113,7 +113,7 @@
                     <h3 class="test-title">{{ single_test.titre_test }}</h3>
                     <div class="test__next"><a href="{{ path_for('singledis', { 'from': 'discover', 'id': single_test.id_test, 'name': single_test.titre_test | twig_clean_url }) }}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track"  data-btn="btn-test">Faire le test <i class="fa fa-arrow-right"></i></a></div>
                 </div>
-            </div> 
+            </div>
             {% set i = i+1 %}
             {% if i is divisible by(3) %}
                 {% set j = j + 1 %}
