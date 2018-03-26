@@ -10,4 +10,5 @@ RewriteRule (.*) creation-test/$1 [L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/db_admin
 RewriteRule ^ index.php [QSA,L]
