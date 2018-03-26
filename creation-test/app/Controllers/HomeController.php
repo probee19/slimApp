@@ -91,7 +91,7 @@ class HomeController extends Controller
           }
       }
       $disconnected = true;
-      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com/" );
+      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
   }
 
 

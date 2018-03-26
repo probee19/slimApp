@@ -26,7 +26,7 @@ class CreateTestController extends Controller
 
     //Helper::checkCookies();
     if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
+      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
     }
     return $this->view->render($response, 'chooseTheme.twig');
 
@@ -36,7 +36,7 @@ class CreateTestController extends Controller
   {
     //Helper::checkCookies();
     if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
+      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
     }
     $theme = $arg['theme'];
     $rubriques = Rubrique::all();
@@ -51,7 +51,7 @@ class CreateTestController extends Controller
   {
     //Helper::checkCookies();
     if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
+      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
     }
     $id_test = $arg['test'];
 

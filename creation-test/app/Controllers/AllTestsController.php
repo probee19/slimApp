@@ -19,7 +19,7 @@ class AllTestsController extends Controller
   public function index($request, $response, $arg){
     //Helper::checkCookies();
     if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
+      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
     }
     $test_owner = $_COOKIE['id_user'];
     $btn_delete_test_admin = 0;

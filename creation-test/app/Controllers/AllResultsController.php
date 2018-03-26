@@ -18,7 +18,7 @@ class AllResultsController extends Controller
     public function index($request, $response, $args){
       //Helper::checkCookies();
       if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-        return $response->withStatus(302)->withHeader('Location', "http://www.creation.funizi.com" );
+        return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
       }
         $data_users_tests = array();  $shared = false;
         $themes = Theme::all();
