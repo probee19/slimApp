@@ -1,6 +1,7 @@
 RewriteEngine On
 
-RewriteBase /
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule . https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
 
 RewriteCond %{HTTP_HOST} ^(www\.)?dashboard.funizi\.com.*$
 RewriteRule (.*) creation-test/$1 [L]
