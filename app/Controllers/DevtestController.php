@@ -60,7 +60,7 @@ class DevtestController extends Controller
                 array(
                     'Bucket'=>$bucketName,
                     'Key' =>  $keyName,
-                    'SourceFile' => $fileURL,
+                    'SourceFile' => $tempFilePath,
                     'StorageClass' => 'REDUCED_REDUNDANCY',
                 )
             );
