@@ -17,6 +17,8 @@ class DevtestController extends Controller
         $bucketName = 'funiziuploads';
         $IAM_KEY = $_SERVER['FUNUPLOADER_KEY'];
         $IAM_SECRET = $_SERVER['FUNUPLOADER_SECRET'];
+
+        echo $IAM_KEY . '<br>' . $IAM_SECRET;
         // Connect to AWS
         try {
             // You may need to change the region. It will say in the URL when the bucket is open
