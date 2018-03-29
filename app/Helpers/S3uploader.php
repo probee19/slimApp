@@ -27,14 +27,17 @@ $IAM_SECRET = $_SERVER['FUNUPLOADER_SECRET'];
 try {
     // You may need to change the region. It will say in the URL when the bucket is open
     // and on creation. us-east-2 is Ohio, us-east-1 is North Virgina
-    $s3 = new S3Client([
-        'credentials' => [
-            'key' => $IAM_KEY,
-            'secret' => $IAM_SECRET
-        ],
-        'version' => 'latest',
-        'region'  => 'us-east-2'
-    ]);
+
+    $s3 = S3Client::factory(
+        array(
+            'credentials' => array(
+                'key' => $IAM_KEY,
+                'secret' => $IAM_SECRET
+            ),
+            'version' => 'latest',
+            'region'  => 'us-east-2'
+        )
+    );
 } catch (Exception $e) {
     // We use a die, so if this fails. It stops here. Typically this is a REST call so this would
     // return a json object.
