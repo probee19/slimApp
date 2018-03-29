@@ -62,8 +62,6 @@ class DevtestController extends Controller
                     'Key' =>  $keyName,
                     'SourceFile' => $tempFilePath,
                     'StorageClass' => 'REDUCED_REDUNDANCY',
-                    'ACL'    => 'public-read',
-
                 )
             );
             var_dump($res);
