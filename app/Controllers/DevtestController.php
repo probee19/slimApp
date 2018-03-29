@@ -42,7 +42,7 @@ class DevtestController extends Controller
 
         $fileURL = 'https://weasily.com/uploads/0A0LnEXT0srtQ3F.jpg'; // Change this
 // For this, I would generate a unqiue random string for the key name. But you can do whatever.
-        $keyName = 'test_example/' . basename($fileURL);
+        $keyName = 'uploads/' . basename($fileURL);
         $pathInS3 = 'https://s3.us-east-2.amazonaws.com/' . $bucketName . '/' . $keyName;
 // Add it to S3
         try {
@@ -61,7 +61,8 @@ class DevtestController extends Controller
                     'Bucket'=>$bucketName,
                     'Key' =>  $keyName,
                     'SourceFile' => $tempFilePath,
-                    'StorageClass' => 'REDUCED_REDUNDANCY'
+                    'StorageClass' => 'REDUCED_REDUNDANCY',
+
                 )
             );
             var_dump($res);
