@@ -35,7 +35,7 @@ class DevtestController extends Controller
             die("Error: " . $e->getMessage());
         }
 
-        $fileURL = '/uploads/0A0LnEXT0srtQ3F.jpg'; // Change this
+        $fileURL = 'https://weasily.com/uploads/0A0LnEXT0srtQ3F.jpg'; // Change this
         // For this, I would generate a unqiue random string for the key name. But you can do whatever.
         $keyName = 'uploads/' . basename($fileURL);
         $pathInS3 = 'https://s3.us-east-2.amazonaws.com/' . $bucketName . '/' . $keyName;
