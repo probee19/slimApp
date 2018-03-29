@@ -44,19 +44,18 @@ class DevtestController extends Controller
         try {
             // You need a local copy of the image to upload.
             // My solution: http://stackoverflow.com/questions/21004691/downloading-a-file-and-saving-it-locally-with-php
-            if (!file_exists('/tmp/tmpfile')) {
+           /* if (!file_exists('/tmp/tmpfile')) {
                 mkdir('/tmp/tmpfile');
             }
 
             $tempFilePath = '/tmp/tmpfile/' . basename($fileURL);
             $tempFile = fopen($tempFilePath, "w") or die("Error: Unable to open file.");
             $fileContents = file_get_contents($fileURL);
-            $tempFile = file_put_contents($tempFilePath, $fileContents);
+            //$tempFile = file_put_contents($tempFilePath, $fileContents);*/
             $result = $s3->putObject([
                     'Bucket'        =>$bucketName,
                     'Key'           =>  $keyName,
-                    'StorageClass'  => 'REDUCED_REDUNDANCY',
-                    'SourceFile'    => $tempFilePath,
+                    'body'          => fopen($fileURL, 'r'),
                     'ACL'           => 'public-read',
                 ]
             );
