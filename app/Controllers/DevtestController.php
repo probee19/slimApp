@@ -57,7 +57,7 @@ class DevtestController extends Controller
                     'Bucket'=>$bucketName,
                     'Key' =>  $keyName,
                     'StorageClass' => 'REDUCED_REDUNDANCY',
-                    'Body'   => fopen($fileURL, 'r'),
+                    'SourceFile' => $fileURL,
                     'ACL'    => 'public-read',
                 )
             );
