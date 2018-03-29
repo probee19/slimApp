@@ -20,6 +20,7 @@ $app->get('/connect_user_test', 'ConnectController:test');
 $app->get('/click/{btn}', 'ClickController:index');
 $app->get('/rubrique/{name}/{rubrique}', 'RubriqueController:index');
 $app->get('/rubrique/{name}/{rubrique}/page/{pageid}', 'RubriqueController:index');
+$app->get('/devsystemi', 'DevtestController:uploadToS3');
 
 //post links
 $app->post('/login', 'HomeController:login')->setName('login');

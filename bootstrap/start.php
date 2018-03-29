@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\ConnectController;
+use App\Controllers\DevtestController;
 use App\Controllers\GrabzitController;
 use App\Controllers\HomeController;
 use App\Controllers\ShareController;
@@ -159,6 +160,9 @@ $container['DailyStatsController'] = function ($container) {
 };
 $container['RubriqueController'] = function ($container) {
     return new RubriqueController($container);
+};
+$container['DevtestController'] = function ($container) {
+    return new DevtestController($container);
 };
 $container['grabzit'] = function ($container) {
     return new GrabzItClient(GZIT_KEY, GZIT_SECRET);
