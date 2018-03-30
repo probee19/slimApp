@@ -22,6 +22,8 @@ use App\Models\Language;
 use App\Models\InterfaceUi;
 use App\Models\InterfaceUiTranslations;
 use App\Models\TestInfo;
+use Aws\S3\Exception\S3Exception;
+use Aws\S3\S3Client;
 
 class Helper
 {
@@ -665,5 +667,76 @@ class Helper
        }
 
        return $alltest;
+    }
+    public function uploadToS3($fileURL, $folder){
+        // AWS Info
+
+        $bucketName = 'funiziuploads';
+        $IAM_KEY = $_SERVER['FUNUPLOADER_KEY'];
+        $IAM_SECRET = $_SERVER['FUNUPLOADER_SECRET'];
+
+        echo $IAM_KEY . '<br>' . $IAM_SECRET;
+        // Connect to AWS
+        try {
+            // You may need to change the region. It will say in the URL when the bucket is open
+            // and on creation. us-east-2 is Ohio, us-east-1 is North Virgina
+
+            $s3 = new S3Client(
+                array(
+                    'credentials' => array(
+                        'key' => $IAM_KEY,
+                        'secret' => $IAM_SECRET
+                    ),
+                    'version' => 'latest',
+                    'region'  => 'us-east-2'
+                )
+            );
+        } catch (\Exception $e) {
+            // We use a die, so if this fails. It stops here. Typically this is a REST call so this would
+            // return a json object.
+            //die("Error: " . $e->getMessage());
+            $res['error'] = $e->getMessage();
+            return $res;
+        }
+
+          // Change this
+// For this, I would generate a unqiue random string for the key name. But you can do whatever.
+        $keyName = $folder . basename($fileURL);
+        $pathInS3 = 'https://s3.us-east-2.amazonaws.com/' . $bucketName . '/' . $keyName;
+// Add it to S3
+        try {
+            // You need a local copy of the image to upload.
+            // My solution: http://stackoverflow.com/questions/21004691/downloading-a-file-and-saving-it-locally-with-php
+            if (!file_exists('/tmp/tmpfile')) {
+                mkdir('/tmp/tmpfile');
+            }
+
+            $tempFilePath = '/tmp/tmpfile/' . basename($fileURL);
+            $tempFile = fopen($tempFilePath, "w") or die("Error: Unable to open file.");
+            $fileContents = file_get_contents($fileURL);
+            $tempFile = file_put_contents($tempFilePath, $fileContents);
+            $res = $s3->putObject(
+                array(
+                    'Bucket'=>$bucketName,
+                    'Key' =>  $keyName,
+                    'SourceFile' => $tempFilePath,
+                    'StorageClass' => 'REDUCED_REDUNDANCY',
+                    'ACL'           => 'public-read',
+
+                )
+            );
+            return $res;
+            // WARNING: You are downloading a file to your local server then uploading
+            // it to the S3 Bucket. You should delete it from this server.
+            // $tempFilePath - This is the local file path.
+        } catch (S3Exception $e) {
+            //die('Error:' . $e->getMessage());
+            $res['error'] = $e->getMessage();
+        } catch (\Exception $e) {
+            //die('Error:' . $e->getMessage());
+            $res['error'] = $e->getMessage();
+        }
+        return $res;
+
     }
 }

@@ -25,7 +25,7 @@ class StartController extends Controller
         $url = $this->helper->detectLang($request, $response);
         //if($url != "" ) return $response->withStatus(302)->withHeader('Location', $url );
 
-        $lang =$this->helper->getLangSubdomain($request);
+        $lang = $this->helper->getLangSubdomain($request);
 
         //Helper::debug($_COOKIE);
         if(isset($_GET['next']) && $_GET['next'] == 'on'){
@@ -230,7 +230,7 @@ class StartController extends Controller
                 $code = $stringen->generate(15);
 
                 // Path of the saved image result
-                $filepath = "uploads/". $code . '.jpg';
+                $filepath = "https://weasily.com/uploads/". $code . '.jpg';
 
                 //Grabzit Options
                 $options = new GrabzItImageOptions();
@@ -252,12 +252,21 @@ class StartController extends Controller
                     'result_id'             => $result_id,
                     'shared_link'           => $code,
                     'result_description'    => $result_description,
-                    'img_url'               => "/$filepath",
                     'test_from'             => $_SESSION['referal'],
                     'lang'                  => $lang
                 ];
                 if($save)
+                    $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
+                if(!empty($resultUrl['ObjectURL'])){
+                    $data['img_url'] = "/uploads/$code.jpg";
                     $user_test = UserTest::create($data);
+                }else{
+                    echo "Une erreur inattendue s'est produite, veuillez réessayer encore";
+                    exit;
+                }
+
+
+
             }
             $result_url = $this->router->pathFor('resultat', [
                 'name'      => $this->helper->cleanUrl($test_name),
