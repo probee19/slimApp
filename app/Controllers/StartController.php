@@ -230,7 +230,7 @@ class StartController extends Controller
                 $code = $stringen->generate(15);
 
                 // Path of the saved image result
-                $filepath = "https://weasily.com/uploads/". $code . '.jpg';
+                $filepath = "uploads/". $code . '.jpg';
 
                 //Grabzit Options
                 $options = new GrabzItImageOptions();
@@ -255,8 +255,11 @@ class StartController extends Controller
                     'test_from'             => $_SESSION['referal'],
                     'lang'                  => $lang
                 ];
-                if($save)
+                if($save){
+                    $filepath = "https://weasily.com/uploads/". $code . '.jpg';
                     $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
+                }
+
                 if(!empty($resultUrl['ObjectURL'])){
                     $data['img_url'] = "/uploads/$code.jpg";
                     $user_test = UserTest::create($data);
