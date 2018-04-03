@@ -21,6 +21,7 @@ $app->get('/click/{btn}', 'ClickController:index');
 $app->get('/rubrique/{name}/{rubrique}', 'RubriqueController:index');
 $app->get('/rubrique/{name}/{rubrique}/page/{pageid}', 'RubriqueController:index');
 $app->get('/devsystemi', 'DevtestController:uploadToS3');
+$app->get('/phantomtest', 'DevtestController:phantomTest');
 
 //post links
 $app->post('/login', 'HomeController:login')->setName('login');

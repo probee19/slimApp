@@ -6,6 +6,7 @@ namespace App\Controllers;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 use Exception;
+use JonnyW\PhantomJs\Client;
 
 class DevtestController extends Controller
 {
@@ -76,5 +77,30 @@ class DevtestController extends Controller
             die('Error:' . $e->getMessage());
         }
         echo 'Done';
+    }
+    public function phantomTest($request, $response){
+
+        $client = Client::getInstance();
+        $width  = 800;
+        $height = 600;
+        $top    = 0;
+        $left   = 0;
+
+        /**
+         * @see JonnyW\PhantomJs\Http\CaptureRequest
+         **/
+        $req = $client->getMessageFactory()->createCaptureRequest('http://jonnyw.me', 'GET');
+        $req->setOutputFile('uploads/capturedfile.jpg');
+        $req->setViewportSize($width, $height);
+        $req->setCaptureDimensions($width, $height, $top, $left);
+
+        /**
+         * @see JonnyW\PhantomJs\Http\Response
+         **/
+        $res = $client->getMessageFactory()->createResponse();
+
+        // Send the request
+        $save = $client->send($req, $res);
+         var_dump($save);
     }
 }
