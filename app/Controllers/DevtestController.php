@@ -81,6 +81,7 @@ class DevtestController extends Controller
     public function phantomTest($request, $response){
 
         $client = Client::getInstance();
+        $client->getEngine()->debug(true);
         $width  = 800;
         $height = 600;
         $top    = 0;
@@ -101,6 +102,7 @@ class DevtestController extends Controller
 
         // Send the request
         $save = $client->send($req, $res);
+        echo  $client->getLog();
          var_dump($save);
     }
 }
