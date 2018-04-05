@@ -81,7 +81,7 @@ class DevtestController extends Controller
     public function phantomTest($request, $response){
 
         $client = Client::getInstance();
-        $client->getEngine()->setPath(dirname(__FILE__).'/bin/phantomjs.exe');
+        $client->getEngine()->setPath('bin' . DIRECTORY_SEPARATOR . 'phantomjs.exe');
         $client->getEngine()->debug(true);
         $width  = 800;
         $height = 600;
