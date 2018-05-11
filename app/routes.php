@@ -20,8 +20,11 @@ $app->get('/connect_user_test', 'ConnectController:test');
 $app->get('/click/{btn}', 'ClickController:index');
 $app->get('/rubrique/{name}/{rubrique}', 'RubriqueController:index');
 $app->get('/rubrique/{name}/{rubrique}/page/{pageid}', 'RubriqueController:index');
+$app->get('/start/1/{id}', 'AdditionnalInfoController:index');
+$app->get('/get-notification', 'NotificationPushController:getNotification');
 $app->get('/devsystemi', 'DevtestController:uploadToS3');
 $app->get('/phantomtest', 'DevtestController:phantomTest');
+
 
 //post links
 $app->post('/login', 'HomeController:login')->setName('login');
@@ -30,12 +33,15 @@ $app->post('/share/{btn}/{lang}', 'ShareController:index');
 $app->post('/grabimage', 'GrabzitController:getImageFromUrl');
 $app->post('/setsession', 'HomeController:createSession');
 $app->post('/connect_user', 'ConnectController:index');
-$app->post('/chunk/loadMore/{bloc}', 'HomeController:chunk2');
-
+$app->post('/setSessionVar', 'HomeController:setSessionVar');
+$app->post('/register-to-notification', 'NotificationPushController:registerToNotification');
+$app->post('/save-error-notification', 'NotificationPushController:saveErrorNotification');
+$app->post('/save-subscription-to-newsletter', 'HomeController:saveSubNewsletter');
 
 
 // chunk
 $app->get('/json', 'HomeController:setTestsJSON');
 $app->get('/chunk', 'HomeController:chunk');
+$app->post('/chunk/loadMore/{bloc}', 'HomeController:chunk2');
 $app->get('/chunk/page/{pageid}', 'HomeController:chunk');
 //$app->get('/chunk/{name}/{id}', 'HomeController:chunk');
