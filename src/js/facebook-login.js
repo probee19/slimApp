@@ -1,6 +1,6 @@
 window.fbAsyncInit = function() {
     FB.init({
-        appId            : "<?php echo $_SESSION['fb_access_token]; ?>",
+        appId            : "<?php echo $_SESSION['fb_access_token']; ?>",
         autoLogAppEvents : true,
         xfbml            : true,
         version          : 'v2.12',
@@ -133,8 +133,9 @@ var task = 0;
 loader = function() {
   //$("#btn-result").html("Connexion en cours...");
   $("#btn-result").prop('disabled', true);
-  $("#div_test").css("display","none");
-  $("#div_loader").css("display","block");
+  $("#div_test").css("display", "none");
+  $("#div_loader").css("display", "block");
+  $("html, body").animate({ scrollTop: 0 }, 600);
   setInterval(function () {
       //$("#div_tasks").html(tasks[Math.floor(Math.random() * tasks.length)]);
       if( task >= tasks.length){

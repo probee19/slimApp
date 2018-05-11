@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     window.fbAsyncInit = function() {
         FB.init({
-            appId: "<?php echo $_SESSION['fb_access_token]; ?>",
+            appId: "<?php echo $_SESSION['fb_access_token']; ?>",
             cookie: true, // enable cookies to allow the server to access the session
             autoLogAppEvents: true,
             xfbml: true, // parse social plugins on this page
@@ -82,8 +82,51 @@ $(document).ready(function () {
         console.log('Test en cours');
     });
 
+    // Click event on pressing enter key from additionnal_input_text
+
+
+    $('#additionnal_input_text').keypress(function (e) {
+        var additionnalInputText = $('#additionnal_input_text').val();
+        var n = additionnalInputText.length + 1;
+
+        var key = e.which;
+        if(key === 13 && n >= 1 ) // the enter key code
+        {
+          $('#btn-result').click();
+         return false;
+        }
+        else {
+          console.log(n);
+        if(n >= 1 )
+          $('#btn-result').fadeIn('fast');
+        else
+          $('#btn-result').fadeOut('fast');
+        }
+    });
+
 
 });
+
+
+function setSessionVar (varName, value, id, loader_on = false){
+
+  if(loader_on == true) loader();
+  $.ajax({
+      url: domain+'/setSessionVar',
+      type: 'post',
+      data: {'varName': varName, 'value': value},
+      success:function(data){
+          //console.log(data);
+          window.location.replace(domain+"/start/" + id);
+      },
+      error:function(response){
+          //console.log(response);
+      }
+  });
+
+}
+
+
 
 function changeLang(lang) {
   var uri = $('#domain').data('resquest-uri');
@@ -134,3 +177,49 @@ function clickButton(btn) {
         console.log(msg);
 	});
 }
+
+
+
+
+
+// Design / Dribbble by:
+// Oleg Frolov
+// URL: https://dribbble.com/shots/3072293-Notify-me
+
+$(".cta ").click(function(){
+  $(".cta:not(.sent)").addClass("active");
+  $(".inputsubnewsletter > input").focus();
+});
+
+var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+$(".inputsubnewsletter > input").on('input', function(){
+  if(regex.test($(this).val())) {
+    $(".buttonsubnewsletter > button").removeAttr("disabled"); }
+  else {
+    $(".buttonsubnewsletter > button").attr("disabled", "disabled"); }
+});
+
+$("form").submit(function(x){
+  x.preventDefault();
+  if(regex.test($(".inputsubnewsletter > input").val())) {
+
+    email = $(".inputsubnewsletter > input").val();
+
+    $.ajax({
+      url: domain+"/save-subscription-to-newsletter",
+      type: "post",
+      cache: false,
+      data:{ 'email' : email},
+      beforeSend: function(){
+          thank = $("#sign_up_newsletter_thank").val();
+          $(".cta span").text(thank);
+          $(".cta").removeClass("active").addClass("sent");
+          console.log(thank);
+      }
+    }).done(function( msg ) {
+        console.log(msg);
+    });
+
+  }
+});

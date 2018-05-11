@@ -4,6 +4,7 @@ body{
   overflow-x: hidden !important;
   padding-top:60px;
   font-family: 'Source Sans Pro', sans-serif;
+  letter-spacing: 0.5px;
 }
 .border{
     position: relative;
@@ -100,7 +101,27 @@ body{
   opacity: 0.85;
 }
 /** END Style for overlay sharing block **/
-
+/* Gallery Profile Pictures */
+.gallery-fb{
+  cursor: pointer;
+  width: calc(100% * 0.243);
+  height: 13rem;
+  border: 1px solid #FFF;
+  margin: 0 0.2rem 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  overflow: hidden;
+  padding: 0;
+}
+.gallery-fb img{
+  object-fit:contain;
+}
+.gallery-fb:hover{
+  opacity: 0.7;
+}
+/* /Gallery Profile Pictures */
 /* Footer*/
 
 .footer {
@@ -479,6 +500,18 @@ body{
 @media(max-width: 360px){
     #btn-result {
         font-size: 1em;
+    }
+    .gallery-fb{
+      width: calc(100% * 0.48);
+      height: 10rem;
+      border: 1px solid #FFF;
+      margin: 0 0.2rem 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF;
+      overflow: hidden;
+      padding: 0;
     }
 
     .link_footer{

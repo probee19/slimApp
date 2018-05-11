@@ -73,7 +73,7 @@ window.fbAsyncInit = function() {
     cookie: true, // enable cookies to allow the server to access the session
     autoLogAppEvents: true,
     xfbml: true, // parse social plugins on this page
-    version: "v2.5" // use any version
+    version: "v2.6" // use any version
   });
 
 };
@@ -90,7 +90,7 @@ window.fbAsyncInit = function() {
 })(document, "script", "facebook-jssdk");
 
 loader = function() {
-    $("#btn-result").prop('disabled', true);
+    $("#btn-result").prop('disabled':true);
     $("#btn-result").html("Connexion en cours...");
     $("#div_test").fadeOut("fast");
     $("#div_loader").fadeIn("fast");

@@ -1,29 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400');
 body{
   background: #f9f9f9;
   overflow-x: hidden !important;
   padding-top:60px;
+  font-family: 'Source Sans Pro', sans-serif;
+  letter-spacing: 0.5px;
 }
 .border{
     position: relative;
-    width: 235px;
-    height: 235px;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
 }
-
 .border_top{
     position: relative;
     width: 100%;
     height: 300px;
     margin: 0 auto;
 }
-
 .border_top_right{
     position: relative;
     width: 100%;
     height: 145px;
     margin: 0 auto;
 }
-
+.border_gallery{
+    position: relative;
+    width: 100%;
+    height: 105px;
+    margin: 0 auto;
+}
 .privacy_content{
   font-style: 1.3em;
   text-align: justify;
@@ -95,7 +101,27 @@ body{
   opacity: 0.85;
 }
 /** END Style for overlay sharing block **/
-
+/* Gallery Profile Pictures */
+.gallery-fb{
+  cursor: pointer;
+  width: calc(100% * 0.243);
+  height: 13rem;
+  border: 1px solid #FFF;
+  margin: 0 0.2rem 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  overflow: hidden;
+  padding: 0;
+}
+.gallery-fb img{
+  object-fit:contain;
+}
+.gallery-fb:hover{
+  opacity: 0.7;
+}
+/* /Gallery Profile Pictures */
 /* Footer*/
 
 .footer {
@@ -164,15 +190,16 @@ body{
     font-size: 16px;
     display: inline-block;
 }
-
-
 .test-title{
     position: absolute;
     top: 0;
     width: 100%;
     height: 100%;
     margin-top: 0;
-    padding: 32% 10px;
+    padding: 0.6em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: transparent;
     text-shadow: 0 -2px 0 rgba(59,79,131,.5);
     background-image: linear-gradient(rgba(0,0,0,.65),transparent);
@@ -180,7 +207,19 @@ body{
     text-align: center;
     *font-size: 1.6em;
 }
-
+.test-title-gallery{
+  width: 100%;
+  height: 45px;
+  margin-bottom: 0;
+  padding: 8px;
+  background-color: #337ab7;
+  color: #FFF;
+  text-align: left;
+  font-size: 14px;
+  line-height: 14px;
+  display: flex;
+  align-items: center;
+}
 .test-title-top{
     position: absolute;
     bottom: 0;
@@ -219,8 +258,8 @@ body{
 .border div{
     position: absolute;
     width: 100%;
-    top: 184px;
-    *bottom: 6%;
+    *top: 184px;
+    bottom: 0.6em;
 }
 
 
@@ -389,6 +428,13 @@ body{
     border: none;
 }
 
+@media screen and (min-width: 769) {
+  .border{
+    max-width: 235px;
+    max-height: 235px;
+  }
+
+}
 @media screen and (max-width: 769px) {
     .border, #discovery-tests-modal .border{
         position: relative;
@@ -430,6 +476,9 @@ body{
         font-size: 1.65rem;
         width: 60%;
         float: left;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
     }
     .border div, #discovery-tests-modal .border div {
         position: absolute;
@@ -440,6 +489,7 @@ body{
     }
     .mobile-layer {
         display:block;
+        display:none;
         position: absolute;
         width:35%;
         height:100%;
@@ -451,6 +501,18 @@ body{
     #btn-result {
         font-size: 1em;
     }
+    .gallery-fb{
+      width: calc(100% * 0.48);
+      height: 10rem;
+      border: 1px solid #FFF;
+      margin: 0 0.2rem 0.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #FFF;
+      overflow: hidden;
+      padding: 0;
+    }
 
     .link_footer{
       display: block;
@@ -458,3 +520,157 @@ body{
       text-transform: capitalize;
     }
 }
+
+
+
+/* Notification Newsletter From */
+
+.subscrip_newltr_block{
+  position: relative;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 15px 0;
+  background: rgba(28, 48, 79, 0.4);
+}
+.centerMe {
+  position: relative;
+  /*
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  */
+}
+.label_notif_block{
+  position: relative;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+::-webkit-input-placeholder {
+  color: #000;
+}
+
+.cta {
+  background: #337ab7;
+  font-weight: bold;
+  border-radius: 25px;
+  line-height: 40px;
+  /*height: 50px;*/
+  /*width: 170px;*/
+  width: auto;
+  width: 200px;
+  padding:0 15px;
+  margin: 0 auto;
+  text-align: center;
+  transition: width .2s ease-in-out;
+  cursor: pointer;
+}
+.cta .hide {
+  display: none;
+}
+.cta form {
+  display: flex;
+}
+.cta span {
+  color: #FFF;
+  opacity: 0;
+  width: 100%;
+  text-align: center;
+  -webkit-animation: fadeIn .3s ease-in-out;
+          animation: fadeIn .3s ease-in-out;
+  -webkit-animation-delay: .2s;
+          animation-delay: .2s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.cta .inputsubnewsletter {
+  display: none;
+  opacity: 0;
+  flex: 3;
+  text-align: left;
+}
+.cta .inputsubnewsletter input {
+  border: 0;
+  /*width: 240px;*/
+  width: 120px;
+  height: 50px;
+  margin: 0 0 0 10px;
+  outline: none;
+  /*color: #FF7B73;*/
+  color: #000;
+}
+.cta .buttonsubnewsletter {
+  display: none;
+  margin-right: -15px;
+  opacity: 0;
+  flex: 1;
+  color: #FFF;
+}
+.cta .buttonsubnewsletter button {
+  outline: none;
+  float: right;
+  padding: 0 15px;
+  height: 40px;
+  background: #337ab7;
+  border-radius: 25px;
+  color: #fff;
+  border: 0;
+  margin: 5px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+.cta .buttonsubnewsletter button:disabled {
+  color: #CFD8DC;
+  opacity: .8;
+}
+.cta.sent {
+  cursor: default;
+}
+.cta.active {
+  background: #FFF;
+  width: 233px;
+  text-align: left;
+  transition: width .2s ease-in-out;
+  cursor: default;
+}
+.cta.active span {
+  display: none;
+}
+.cta.active .inputsubnewsletter, .cta.active .buttonsubnewsletter {
+  display: block;
+  -webkit-animation: fadeIn .3s ease-in-out;
+          animation: fadeIn .3s ease-in-out;
+  -webkit-animation-delay: .1s;
+          animation-delay: .1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+/*  End */
