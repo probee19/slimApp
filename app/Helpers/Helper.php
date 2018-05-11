@@ -576,7 +576,7 @@ class Helper
 
     public static function getLangSubdomain($request){
       $host = $request->getUri()->getHost();
-      //  Helper::debug($_SERVER['REQUEST_URI']);
+      Helper::debug($_SERVER['REQUEST_URI']);
 
       $lang = str_replace("www","",$host);
       $lang = str_replace("weasily.com","",$lang);
