@@ -11,6 +11,8 @@ use App\Controllers\ResultController;
 use App\Controllers\ClickController;
 use App\Controllers\DailyStatsController;
 use App\Controllers\RubriqueController;
+use App\Controllers\NotificationPushController;
+use App\Controllers\AdditionnalInfoController;
 
 use App\Helpers\Helper;
 use Bes\Twig\Extension\MobileDetectExtension;
@@ -161,6 +163,12 @@ $container['DailyStatsController'] = function ($container) {
 };
 $container['RubriqueController'] = function ($container) {
     return new RubriqueController($container);
+};
+$container['AdditionnalInfoController'] = function ($container) {
+    return new AdditionnalInfoController($container);
+};
+$container['NotificationPushController'] = function ($container) {
+    return new NotificationPushController($container);
 };
 $container['DevtestController'] = function ($container) {
     return new DevtestController($container);
