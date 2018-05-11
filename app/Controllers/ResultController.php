@@ -67,9 +67,9 @@ class ResultController extends Controller
             $title_url = $this->helper->getUrlTest($titre_test, $test_id, $lang);
             $titre_url = $this->helper->cleanUrl($title_url);
             $url_redirect_share = "";
-            $url_to_share = "";
+            //$url_to_share = "";
             //$url_to_share = urlencode("http://www.funizi.com/result/".$titre_url."/".$code."?ref=fb");
-            $url_to_share = urlencode($request->getUri()->getBaseUrl()."/test/".$titre_url."/".$test_id."/ref/".$code);
+            $url_to_share = urlencode($request->getUri()->getBaseUrl()."/test/".$titre_url."/".$test_id."/ref/".$code."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_".date('Y-m-d')."&utm_content=test_".$test_id);
             //$url_redirect_share = urlencode("http://www.funizi.com/result/".$titre_url."/".$code."/new");
             $url_redirect_share = urlencode($request->getUri()->getBaseUrl()."/result/".$titre_url."/".$code."/new");
 
@@ -111,10 +111,11 @@ class ResultController extends Controller
             }
             $testId = $test->test_id;
             $unique_result = $test->testInfo->unique_result;
+            $if_additionnal_info = $test->testInfo->if_additionnal_info;
 
             $interface_ui = $this->helper->getUiLabels($lang);
             $all_lang = $this->helper->getActivatedLanguages();
-            return $this->view->render($response, 'result.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'test_owner', 'testId', 'unique_result', 'img_url', 'result_description', 'url_to_share', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
+            return $this->view->render($response, 'result.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'img_url', 'result_description', 'url_to_share', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
         }
     }
 }

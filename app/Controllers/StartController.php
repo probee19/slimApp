@@ -36,7 +36,7 @@ class StartController extends Controller
         $ipadd = $this->helper->getRealUserIp();
         $test_id = $arg['ref'];
         if(isset($_GET['ref']))
-          $test_id = intval($_GET['ref']);
+          $test_id = (int)$_GET['ref'];
         //$country = $arg['country'];
         if($_SESSION['name'] && $_SESSION['name'] !='')
             $name = $_SESSION['name'];
@@ -63,7 +63,7 @@ class StartController extends Controller
           $log = fopen("ressources/views/log_start_error.txt", "a+");
           $data_log = "\n".date('d/m/Y H:i:s')." Erreur : Données manquantes \nTest : ".$test_id. " - lang : ".$lang."\n";
           $data_log .= "UID : " .$user_id."\n";
-          fputs($log, $data_log);
+          fwrite($log, $data_log);
         }
 
         $user = $this->saveOrUpdate($user_id, $name,$last_name, $genre, $ipadd);
@@ -73,7 +73,7 @@ class StartController extends Controller
             $log = fopen("ressources/views/log_start_error.txt", "a+");
             $data_log = "\n".date('H:i:s')." Erreur: Redirection obtenue vers l'accueil \nTest : ".$test_id. " - url : ".$result_url."\n";
             $data_log .= "UID : " .$user_id."\n";
-            fputs($log, $data_log);
+            fwrite($log, $data_log);
 
             return $response->withStatus(302)->withHeader('Location', $result_url );
         }elseif ($test_id == -1){
@@ -81,13 +81,16 @@ class StartController extends Controller
             return $response->withStatus(302)->withHeader('Location', $result_url );
         }else{
 
-          $test = Test::selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.unique_result AS unique_result, tests.id_theme AS id_theme, tests.id_test AS id_test')
+          $test = Test::selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.has_treatment AS has_treatment, tests.unique_result AS unique_result, tests.if_additionnal_info AS if_additionnal_info, tests.id_theme AS id_theme, tests.id_test AS id_test')
             ->join('test_info','test_info.id_test','tests.id_test')
             ->Where([['tests.id_test', '=', $test_id],['test_info.lang','=',$lang]])->first();
 
             $test_name = $test->titre_test;
             $theme = $test->id_theme;
             $result_description = $test->test_description;
+            $if_additionnal_info = $test->if_additionnal_info;
+            $has_treatment = $test->has_treatment;
+
 
             try{
                 if($test->unique_result == 1) {
@@ -154,17 +157,58 @@ class StartController extends Controller
                     $best_friends =  $theme_perso_info->best_friends;
                     $args_for_grabzit =array('theme' => $theme, 'fb_id_user' => $user_id, 'user_name' => urlencode($name), 'nb_friends' => $nb_friends_fb );
 
+
+
                     $url = '?user_gender='.$genre.'&fb_id_user='.$user_id.'&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
-                    $url_img_profile_user = '&url_img_profile_user='.urlencode('https://graph.facebook.com/'.$user_id.'/picture/?width=275&height=275');
-                    $url .= $url_img_profile_user;
+                    //
+                    $url_img_profile = 'https://graph.facebook.com/'.$user_id.'/picture/?width=400&height=400';
+                    /*
+                    if(isset($_SESSION['url_pic_profile']))
+                      $url_img_profile = $_SESSION['url_pic_profile'];
+                    else{
+                      $url_img_profile = SandBox::getProfilePic($user_id, $_SESSION['fb_access_token']);
+                      $_SESSION['url_pic_profile'] = $url_img_profile;
+                    }
+                    */
 
 
+                    //$url_img_profile_user = '&url_img_profile_user='.urlencode('https://graph.facebook.com/'.$user_id.'/picture/?width=275&height=275');
+                    $url_img_profile_user = '&url_img_profile_user='.urlencode($url_img_profile);
+
+                    if( $if_additionnal_info == 1){
+                       $additionnal_input_text = '';
+                      if(isset($_SESSION['url_img_profile_user']) && $_SESSION['url_img_profile_user'] != 'unset'){
+                        $url_img_profile_user = '&url_img_profile_user='.urlencode($_SESSION['url_img_profile_user']);
+                        $url_img_profile = $_SESSION['url_img_profile_user'];
+                        $_SESSION['url_img_profile_user'] = 'unset';
+                      }
+
+                      if(isset($_SESSION['additionnal_input_text']))
+                        $additionnal_input_text = '&additionnal_input_text='.urlencode($_SESSION['additionnal_input_text']);
+                    }
+
+                    if($has_treatment == 1 ) {
+                      $result_cmf = $this->helper->cmfTreatmentImg($url_img_profile);
+                      if($result_cmf[0] == 1)
+                        $url_img_profile_user = '&url_img_profile_user='.urlencode($result_cmf[1]).'&url_img_profile_user0='.urlencode($url_img_profile);
+                      else{
+                        $this->flash->addMessage('imgface', $result_cmf[1]);
+                        $url_back = $request->getUri()->getBaseUrl()."/start/1/".$test_id;
+                        return $response->withStatus(302)->withHeader('Location', $url_back );
+                        exit;
+                      }
+
+                    }
+
+                    $url .= $url_img_profile_user . $additionnal_input_text;
+
+                    //
                     if($nb_friends_fb > 0){
                         $user_posts =  (array) $_SESSION['posts'];
                         $user_friends =  (array) $_SESSION['friends'];
                         $user_photos = (array) $_SESSION['photos'];
 
-                        if(count($user_posts) > 0){
+                        if(!empty($user_posts)){
 
                             $volume = [];
                             foreach ($user_posts as $key => $row) {
@@ -267,9 +311,6 @@ class StartController extends Controller
                     echo "Une erreur inattendue s'est produite, veuillez réessayer encore";
                     exit;
                 }
-
-
-
             }
             $result_url = $this->router->pathFor('resultat', [
                 'name'      => $this->helper->cleanUrl($test_name),

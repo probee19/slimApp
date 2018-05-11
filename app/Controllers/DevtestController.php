@@ -50,7 +50,9 @@ class DevtestController extends Controller
             // You need a local copy of the image to upload.
             // My solution: http://stackoverflow.com/questions/21004691/downloading-a-file-and-saving-it-locally-with-php
             if (!file_exists('/tmp/tmpfile')) {
-                mkdir('/tmp/tmpfile');
+                if (!mkdir('/tmp/tmpfile') && !is_dir('/tmp/tmpfile')) {
+                    throw new \RuntimeException(sprintf('Directory "%s" was not created', '/tmp/tmpfile'));
+                }
             }
 
             $tempFilePath = '/tmp/tmpfile/' . basename($fileURL);
