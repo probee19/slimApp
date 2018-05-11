@@ -8,17 +8,6 @@ class ThemePerso extends Eloquent
 
     protected $table = 'themes_perso';
 
-    protected $fillable = [
-      'id_test',
-      'code_php',
-      'code_css',
-      'code_js',
-      'code_head',
-      'code_bottom',
-      'nb_friends_fb',
-      'max_friends',
-      'best_friends',
-      'lang'
-    ];
+    protected $fillable = [];
 
 }

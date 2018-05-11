@@ -8,9 +8,6 @@ class Highlights extends Eloquent
 
     protected $table = 'highlights';
 
-    protected $fillable = [
-      'id_test',
-      'statut'
-    ];
+    protected $fillable = [];
 
 }

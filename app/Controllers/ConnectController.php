@@ -26,9 +26,6 @@ class ConnectController extends Controller
         $_SESSION['name'] = $name;
         $_SESSION['last_name'] = $lastname;
 
-
-
-
         if($friends != ''){
             $_SESSION['friends'] = $friends;
         }
@@ -53,7 +50,7 @@ class ConnectController extends Controller
         //$photos_json[0]->from->name
         //$_SESSION['email'] = $email;
         $_SESSION['gender'] = $gender;
-        $data = [$id, $name, $lastname, $gender, $_SESSION['friends'], $_SESSION['photos'], $_SESSION['posts'] ];
+        $data = [$id, $name, $lastname, $gender, $_SESSION['friends'], $_SESSION['photos'], $_SESSION['posts'], $_SESSION['fb_access_token'] ];
         return $response->withStatus(201)
             ->withHeader('Content-Type', 'application/json')
             ->write(json_encode($data));
@@ -63,15 +60,19 @@ class ConnectController extends Controller
     {
         $help = new Helper();
         $id = $request->getParam('id');
+        //$lang = $request->getParam('lang');
+        $lang = Helper::getLangSubdomain($request);
 
         $helper = $this->fb->getRedirectLoginHelper();
 
         $_SESSION['FBRLH_state'] = $_GET['state'];
 
         $maxFriends_per_list = 30;
-        $user = ''; $name = ''; $accessToken = '';
+        $name = '';
         $error = ''; $permissions_Ok = true;
-        $test = Test::where('id_test', '=', $id)->first();
+        $test = Test::selectRaw('test_info.titre_test AS titre_test, tests.permissions AS permissions, tests.id_test AS id_test')
+          ->join('test_info','test_info.id_test','tests.id_test')
+          ->Where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
         $permisions_test = $test->permissions;
         $result_url = $this->router->pathFor('single', [ 'id' => $test->id_test, 'name' => Helper::cleanUrl($test->titre_test)  ] );
         try {
@@ -79,31 +80,32 @@ class ConnectController extends Controller
 
         } catch(FacebookResponseException $e) {
           // When Graph returns an error
-          //$error .= 'Graph returned an error: ' . $e->getMessage();
+          $error .= 'Graph returned an error: ' . $e->getMessage();
           //exit;
+          $log = fopen("ressources/views/log_fb_connect_error.txt", "a+");
+          $data_log = "\n".date('d/m/Y H:i:s')." -> Erreur : ".$error."\n";
+          $data_log .= "Langue : ".$lang."\n";
+          $data_log .= "Test : ".$test->id_test."\n";
+          fputs($log, $data_log);
+
         } catch(FacebookSDKException $e) {
           // When validation fails or other local issues
-          //$error .= 'Facebook SDK returned an error: ' . $e->getMessage();
+          $error .= 'Facebook SDK returned an error: ' . $e->getMessage();
           //exit;
+          $log = fopen("ressources/views/log_fb_connect_error.txt", "a+");
+          $data_log = "Erreur : ".$error."\n";
+          fputs($log, $data_log);
         }
-        if (! isset($accessToken)) {
-            //echo 'No cookie set or no OAuth data could be obtained from cookie.';
-            //$this->flash->addMessage('fberror','Une erreur ');
-            //$test = Test::where('id_test', '=', $id)->first();
-            //$url = $this->router->path_for('single', [ 'id' => test.id_test, 'name' => test.titre_test | twig_clean_url ]);
-            //return $response->withStatus(302)->withHeader('Location', $url  );
-
-
-            $this->flash->addMessage('fberror', 'La connexion à Facebook est necessaire pour effectuer ce test. Veuillez accorder les autorisations pour continuer.');
-            return $response->withStatus(302)->withHeader('Location', $result_url );
-            //$help->debug($result_url);
-            exit;
-        }
-        if (isset($accessToken)) {
+        if(isset($accessToken)) {
             //$help->debug($accessToken->getValue());
+
+            // Logged in!
             $this->fb->setDefaultAccessToken($accessToken);
             try {
               // Returns a `Facebook\FacebookResponse` object
+
+
+              //$accessToken->getValue()
               $response_fb_user = $this->fb->get('/me?fields=id,name,first_name,last_name,gender', $accessToken->getValue());
 
             } catch(FacebookResponseException $e) {
@@ -242,11 +244,17 @@ class ConnectController extends Controller
                   exit;
                 }
             }
-            $url = 'http://www.funizi.com/start?ref='.$id;
+            $url = 'http://'.$lang.'.funizi.com/start/'.$id;
 
             $_SESSION['fb_access_token'] = (string) $accessToken;
 
         }
+        elseif ($helper->getError()) {
+           // The user denied the request
+           $this->flash->addMessage('fberror', 'La connexion à Facebook est necessaire pour effectuer ce test. Veuillez accorder les autorisations pour continuer.');
+           return $response->withStatus(302)->withHeader('Location', $result_url );
+           exit;
+          }
         //$help->debug($url);
 
         return $response->withStatus(302)->withHeader('Location', $url  );
