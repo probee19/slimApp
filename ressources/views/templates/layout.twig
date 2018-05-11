@@ -2,25 +2,22 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
 
-    <title>{{interface_ui.title_home | capitalize}} | Funizi</title>
-            {% block graph %}{% endblock %}
+    <title>{% block title %}{% endblock %} | Funizi</title>
+    {% block graph %}{% endblock %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ base_url() }}/src/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-            <!-- Custom CSS -->
-    <link href="{{ domain_url }}/src/css/3-col-portfolio.css?v=0.0006" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ base_url() }}/src/css/3-col-portfolio.css?v=0.0006" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ domain_url }}/src/css/app-chunk.css?v=1.295">
-    <link rel="stylesheet" href="{{ domain_url }}/src/css/container.css?v=0.0008">
+    <link rel="stylesheet" href="{{ base_url() }}/src/css/app.css?v=1.318">
+    <link rel="stylesheet" href="{{ base_url() }}/src/css/container.css?v=0.0008">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -28,7 +25,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- Google Adwords code -->
+     <!-- Google Adwords code -->
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({
@@ -58,7 +55,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/{{interface_ui.lang}}/sdk.js#xfbml=1&version=v2.10&appId=348809548888116";
+        js.src = "//connect.facebook.net/{{interface_ui.lang}}/sdk.js#xfbml=1&version=v2.12&appId=348809548888116";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
@@ -116,7 +113,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           {% set banner = random(['banners/banner_300x250_bottom.twig']) %}
           {% include  banner %}
 
-        {% endif %}  
+        {% endif %}
       </div>
     </div>
 
@@ -171,16 +168,91 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 <!--/.Footer-->
 <!-- jQuery -->
-<script src="{{ domain_url }}/src/js/jquery.js"></script>
+<script src="{{ base_url() }}/src/js/jquery.js"></script>
 <script class="init">
   $(document).ready(function () {
     tasks = Array('{{interface_ui.label_loading_1}}','{{interface_ui.label_loading_2}}','{{interface_ui.label_loading_3}}','{{interface_ui.label_loading_4}}','{{interface_ui.label_loading_5}}');
   });
 
 </script>
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="{{ domain_url }}/src/js/scripts.js?v=1.258"></script>
-<script src="{{ domain_url }}/src/js/facebook-login.js?v=1.251"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ base_url() }}/src/js/bootstrap.min.js"></script>
+<script src="{{ base_url() }}/src/js/scripts.js?v=1.286"></script>
+<script src="{{ base_url() }}/src/js/facebook-login.js?v=1.252"></script>
+
+
+
+{% if session.count_seen_page  and session.count_seen_page > 3  %}
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-messaging.js"></script>
+
+<script>
+   // Initialize Firebase
+   var config = {
+     apiKey: "AIzaSyC1yX4eovtBb8VHwOUnaiDxk-JYpfwHBXs",
+     authDomain: "labfunizi.firebaseapp.com",
+     databaseURL: "https://labfunizi.firebaseio.com",
+     projectId: "labfunizi",
+     storageBucket: "labfunizi.appspot.com",
+     messagingSenderId: "560296542050"
+   };
+   firebase.initializeApp(config);
+
+   const messaging = firebase.messaging();
+   messaging
+       .requestPermission()
+       .then(function () {
+           console.log("Notification permission granted.");
+           // get the token in the form of promise
+           return messaging.getToken()
+       })
+       .then(function(token) {
+           sendSubscriptionToBackEnd(token) ;
+           console.log(token);
+       })
+       .catch(function (err) {
+           saveError(JSON.stringify(err));
+           console.log("Unable to get permission to notify.", err);
+       });
+
+   messaging.onMessage(function(payload) {
+       console.log("Message received. ", JSON.stringify(payload));
+   });
+
+   function sendSubscriptionToBackEnd(subscription) {
+       $.ajax({
+           url: '{{base_url()}}/register-to-notification',
+           type: 'post',
+           data: {'subscription': subscription},
+           success:function(data){
+               console.log(data);
+           },
+           error:function(response){
+               console.log(response);
+           }
+        });
+     }
+
+     function saveError(error) {
+       $.ajax({
+           url: '{{base_url()}}/save-error-notification',
+           type: 'post',
+           data: {'err': error},
+           success:function(data){
+               console.log(data);
+           },
+           error:function(response){
+               console.log(response);
+           }
+        });
+     }
+
+
+</script>
+{% endif %}
+
+
+
 </body>
 </html>
