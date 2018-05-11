@@ -71,7 +71,7 @@
             </div>
                 {% if unique_result == 1 %}
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-top:.8em;">
-                    <a id="btn-redo" class="btn btn-default btn_to_track" href="{{ domain_url }}/start/{{ testId }}" onclick="loaderReTest();" style="cursor:pointer;"  data-btn="re-process"><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_retest | capitalize}}</a>
+                    <a id="btn-redo" class="btn btn-default btn_to_track" href="{{ domain_url }}/start{% if if_additionnal_info == 1 %}/1{% endif %}/{{ testId }}" onclick="loaderReTest();" style="cursor:pointer;"  data-btn="re-process"><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_retest | capitalize}}</a>
                 </div>
                     {% endif %}
             {% if test_owner %}
@@ -139,6 +139,30 @@
           <!-- /Modal top 3 tests -->
 
     {% endif %}
+
+
+
+    <div class="col-sm-10 col-sm-offset-1 subscrip_newltr_block">
+      <div class="row label_notif_block"> {{interface_ui.sign_up_newsletter_label}} </div>
+        <div class='row centerMe'>
+          <div class='cta'>
+            <span>{{interface_ui.sign_up_newsletter_btn_1}}</span>
+            <form >
+              <div class='inputsubnewsletter'>
+                <input placeholder='{{interface_ui.sign_up_newsletter_place_holder}}' type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+              </div>
+              <div class='buttonsubnewsletter'>
+                <button disabled='disabled' type='submit' >{{interface_ui.sign_up_newsletter_btn_2}}</button>
+              </div>
+              <input type="hidden" name="sign_up_newsletter_thank"  id="sign_up_newsletter_thank" value="{{interface_ui.sign_up_newsletter_thank}}">
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
     {% set i = 0 %}
     {% set j = 0 %}
     <div class="row text-center" style="margin-top:1.5em">
