@@ -1,9 +1,7 @@
 RewriteEngine On
-#RewriteCond %{HTTP_HOST} !^www\.
-#RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 
-#RewriteCond %{SERVER_PORT} 80
-#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule (.*) https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
