@@ -9,11 +9,12 @@ class DailyStat extends Eloquent
 
     protected $fillable = [
         'result_code',
-        'clicks_count',
-        'partages_count',
         'shares_count',
         'comments_count',
-        'reactions_count'
+        'reactions_count',
+        'clicks_count',
+        'partages_count',
+        'lang'
     ];
 
 }

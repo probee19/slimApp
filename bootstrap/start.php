@@ -1,16 +1,20 @@
 <?php
 
 use App\Controllers\ConnectController;
-use App\Controllers\DevtestController;
 use App\Controllers\GrabzitController;
 use App\Controllers\HomeController;
 use App\Controllers\ShareController;
 use App\Controllers\TestController;
 use App\Controllers\StartController;
-use App\Controllers\ResultController;
+use App\Controllers\AllResultsController;
 use App\Controllers\ClickController;
-use App\Controllers\DailyStatsController;
-use App\Controllers\RubriqueController;
+use App\Controllers\CronController;
+use App\Controllers\LoadStatsController;
+use App\Controllers\CreateTestController;
+use App\Controllers\ActionTestController;
+use App\Controllers\AllTestsController;
+use App\Controllers\LangController;
+use App\Controllers\JsonController;
 
 use App\Helpers\Helper;
 use Bes\Twig\Extension\MobileDetectExtension;
@@ -56,10 +60,8 @@ $config = [
         'collation' =>  'utf8mb4_unicode_ci',
         'prefix'    =>  '',
     ],
-    'test_per_page'     =>  12,
-    'default_lang'      =>  "en",
+    'test_per_page'     =>  15,
 ];
-
 date_default_timezone_set('Etc/GMT');
 
 $app = new App(["settings" => $config]);
@@ -71,12 +73,24 @@ $app->add(new \RKA\Middleware\IpAddress($checkProxyHeaders, $trustedProxies))
     ->add(new Middleware\ClientIp());
 
 $container = $app->getContainer();
+/*$container['db'] = function (ContainerInterface $container) {
+    $settings = $container->get('database');
+    $capsule = new \Illuminate\Database\Capsule\Manager;
+    $capsule->addConnection($settings);
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    return $capsule;
+};*/
 
 $capsule = new Capsule;
 $capsule->addConnection($config['db']);
 $capsule->setEventDispatcher(new Dispatcher(new Container));
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
+
+
+
 
 $container['flash'] = function ($container) {
     return new Messages;
@@ -87,8 +101,8 @@ $container['view'] = function ($container){
     ]);
 
     $view->addExtension(new TwigExtension(
-        $container->router,
-        $container->request->getUri()
+            $container->router,
+            $container->request->getUri()
     ));
     $view->addExtension(new MobileDetectExtension());
 
@@ -96,21 +110,25 @@ $container['view'] = function ($container){
         //$data = iconv('UTF-8', 'ASCII//TRANSLIT', $data);
         return Helper::cleanUrl($data);
     });
-    $twigTitleUrl = new Twig_SimpleFilter('twig_title_url', function ($title, $id, $lang){
-        $title_url = Helper::getUrlTest($title, $id, $lang);
-        return Helper::cleanUrl($title_url);
-    });
+
     // Adding created custom filter to twig envirnment
+    $view->getEnvironment()->addFilter(new Twig_SimpleFilter('addslashes', 'addslashes'));
+    $view->getEnvironment()->addFilter(new Twig_SimpleFilter('htmlspecialchars', 'htmlspecialchars'));
+    $view->getEnvironment()->addFilter(new Twig_SimpleFilter('html_entity_decode', 'html_entity_decode'));
+    $view->getEnvironment()->addFilter(new Twig_SimpleFilter('date("d/m/Y")', 'date("d/m/Y")'));
+    $view->getEnvironment()->addFilter(new Twig_SimpleFilter('date("d/m/Y H:i:s")', 'date("d/m/Y H:i:s")'));
+    $view->getEnvironment()->addFilter(new Twig_SimpleFilter('date("d/m/Y à H:i:s")', 'date("d/m/Y à H:i:s")'));
+    $view->getEnvironment()->addFilter(new Twig_SimpleFilter('date("H:i:s")', 'date("H:i:s")'));
     $view->getEnvironment()->addFilter($twigCleanUrl);
-    $view->getEnvironment()->addFilter($twigTitleUrl);
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     $view->getEnvironment()->addGlobal('session', $_SESSION);
-    //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
-    $view->getEnvironment()->addGlobal('defined_base_url', "https://weasily.com");
+    $view->getEnvironment()->addGlobal('cookie', $_COOKIE);
+    $view->getEnvironment()->addGlobal('cookie_id_user', $_COOKIE['id_user']);
+    $view->getEnvironment()->addGlobal('cookie_prenom_user', $_COOKIE['prenom_user']);
+    $view->getEnvironment()->addGlobal('cookie_img_user', $_COOKIE['url_photo_user']);
+    $view->getEnvironment()->addGlobal('now', new DateTime());
     $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
     $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
-    $view->getEnvironment()->addGlobal('storage_base', "https://funiziuploads.s3.us-east-2.amazonaws.com");
-    $view->getEnvironment()->addGlobal('request_uri', $container->request->getUri()->getPath());
 
     return $view;
 };
@@ -125,9 +143,6 @@ $container['fb'] = function($container){
 };
 $container['test_per_page'] = function ($container) {
     return $container['settings']['test_per_page'];
-};
-$container['default_lang'] = function ($container) {
-    return $container['settings']['default_lang'];
 };
 $container['HomeController'] = function ($container) {
     return new HomeController($container);
@@ -144,8 +159,8 @@ $container['ClickController'] = function ($container) {
 $container['GrabzitController'] = function ($container) {
     return new GrabzitController($container);
 };
-$container['ResultController'] = function ($container) {
-    return new ResultController($container);
+$container['AllResultsController'] = function ($container) {
+    return new AllResultsController($container);
 };
 $container['ShareController'] = function ($container) {
     return new ShareController($container);
@@ -156,14 +171,26 @@ $container['ClickController'] = function ($container) {
 $container['ConnectController'] = function ($container) {
     return new ConnectController($container);
 };
-$container['DailyStatsController'] = function ($container) {
-    return new DailyStatsController($container);
+$container['CronController'] = function ($container) {
+    return new CronController($container);
 };
-$container['RubriqueController'] = function ($container) {
-    return new RubriqueController($container);
+$container['LoadStatsController'] = function ($container) {
+    return new LoadStatsController($container);
 };
-$container['DevtestController'] = function ($container) {
-    return new DevtestController($container);
+$container['CreateTestController'] = function ($container) {
+    return new CreateTestController($container);
+};
+$container['ActionTestController'] = function ($container) {
+    return new ActionTestController($container);
+};
+$container['AllTestsController'] = function ($container) {
+    return new AllTestsController($container);
+};
+$container['LangController'] = function ($container) {
+    return new LangController($container);
+};
+$container['JsonController'] = function ($container) {
+    return new JsonController($container);
 };
 $container['grabzit'] = function ($container) {
     return new GrabzItClient(GZIT_KEY, GZIT_SECRET);
@@ -178,5 +205,6 @@ $container['notFoundHandler'] = function($container)
         return $container['view']->render($response->withStatus(404), 'errors/404.twig');
     };
 };
+
 
 require_once __DIR__ . '/../app/routes.php';

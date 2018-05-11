@@ -1,292 +1,12 @@
 [
     {
-        "id_test": 346,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Quais s\u00e3o as 5 palavras que descrevem voc\u00ea perfeitamente?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525802455_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 345,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Como ser\u00e1 sua futura casa?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525783829_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 344,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Quais s\u00e3o as 5 coisas que fazem voc\u00ea ser \u00fanico?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525707739_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 343,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Qual \u00e9 a sua melhor qualidade e pior defeito?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525693234_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 342,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Qual \u00e9 a inicial do seu verdadeiro amigo?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525356286_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 341,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Qu\u00e3o real \u00e9 voc\u00ea?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525349053_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 340,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Como as pessoas se sentem em sua presen\u00e7a?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525283679_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 339,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Como o seu cora\u00e7\u00e3o \u00e9 \u00fanico?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_1525141822_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 338,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Quem mais te manteve nos olhos em abril?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525113098_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 337,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Qual \u00e9 a primeira letra do nome do seu grande amor?",
-        "unique_result": 0,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525103614_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 336,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Quais s\u00e3o as suas 3 melhores qualidades, de acordo com o seu nome?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_1525091052_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 335,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "O que o seu nome realmente significa?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525040565_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 334,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Voc\u00ea sabe quais s\u00e3o suas qualidades de tr\u00eas estrelas?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011525022295_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 333,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Que mudan\u00e7a voc\u00ea tem mais medo em sua vida?",
-        "unique_result": 0,
-        "url_image_test": ".\/images-tests\/test_18156678084510011524964541_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 332,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Qual \u00e9 a qualidade que melhor descreve voc\u00ea?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011524831647_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 331,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "O que pode ser dito sobre o seu lindo personagem?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011524763182_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 330,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "O que o m\u00eas de maio reserva para voc\u00ea?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011524658688_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 329,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Descubra o que est\u00e1 por tr\u00e1s do seu nome?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011524592116_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 328,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Qual \u00e9 o seu sentido de vida?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011524503919_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 327,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Quem \u00e9 Voc\u00ea ?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011524489757_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 326,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Quantas pessoas visitaram seu perfil hoje?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011524331146_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 325,
-        "id_theme": 4,
-        "id_rubrique": 6,
-        "statut": 1,
-        "titre_test": "Como ser\u00e1 o seu pr\u00f3ximo boletim?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011524229551_6.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 324,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Qual \u00e9 o verdadeiro significado do seu nome?",
-        "unique_result": 0,
-        "url_image_test": ".\/images-tests\/test_1524145398_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 323,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "O que voc\u00ea gosta, o que voc\u00ea odeia e o que faz voc\u00ea diferente dos outros?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_1523984433_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 318,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Qual \u00e9 o seu certificado de sucesso? Clique aqui para descobrir!",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011521738939_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 317,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Quais s\u00e3o as duas palavras que melhor descrevem sua personalidade?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011521722753_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 316,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Quais s\u00e3o as 6 verdades que resumem sua vida?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011521632171_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 315,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "O que o seu sobrenome significa?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011521215108_1.jpeg",
-        "codes_countries": ""
-    },
-    {
         "id_test": 306,
         "id_theme": 4,
         "id_rubrique": 1,
         "statut": 1,
-        "titre_test": "O que sua foto de perfil revela sobre voc\u00ea?",
+        "titre_test": "O que sua imagem de perfil revela sobre voc\u00ea?",
         "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_1521564862_1.jpeg",
+        "url_image_test": ".\/images-tests\/test_18156678084510011520422967_1.jpeg",
         "codes_countries": ""
     },
     {
@@ -296,17 +16,7 @@
         "statut": 1,
         "titre_test": "Qual \u00e9 a sua melhor qualidade?",
         "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_1521565663_1.jpeg",
-        "codes_countries": ""
-    },
-    {
-        "id_test": 303,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "titre_test": "Qu\u00e3o honesto voc\u00ea \u00e9?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011519990062_1.jpeg",
+        "url_image_test": ".\/images-tests\/test_101565603239976781520002445_1.jpeg",
         "codes_countries": ""
     },
     {
@@ -374,9 +84,9 @@
         "id_theme": 4,
         "id_rubrique": 1,
         "statut": 1,
-        "titre_test": "Que personagem da Pantera Negra \u00e9 voc\u00ea?",
+        "titre_test": "Qual personagem de Black Panther \u00e9 voc\u00ea?",
         "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_1521564278_1.jpeg",
+        "url_image_test": ".\/images-tests\/test_18156678084510011519686893_1.jpeg",
         "codes_countries": ""
     },
     {
@@ -386,7 +96,7 @@
         "statut": 1,
         "titre_test": "qual o seu ponto mais forte?",
         "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_1521564997_1.jpeg",
+        "url_image_test": ".\/images-tests\/test_18156678084510011519645365_1.jpeg",
         "codes_countries": ""
     },
     {
@@ -394,9 +104,9 @@
         "id_theme": 4,
         "id_rubrique": 6,
         "statut": 1,
-        "titre_test": "Qual ser\u00e1 a sua situa\u00e7\u00e3o daqui a 10 anos?",
+        "titre_test": "Qual ser\u00e1 a sua situa\u00e7\u00e3o em 10 anos?",
         "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_1521565437_6.jpeg",
+        "url_image_test": ".\/images-tests\/test_18156678084510011519316811_6.jpeg",
         "codes_countries": ""
     },
     {
@@ -404,7 +114,7 @@
         "id_theme": 4,
         "id_rubrique": 2,
         "statut": 1,
-        "titre_test": "Qual torcedor do Olympique de Marseille voc\u00ea \u00e9?",
+        "titre_test": "Qual adepto do Olympique de Marseille \u00e9 voc\u00ea?",
         "unique_result": 1,
         "url_image_test": ".\/images-tests\/test_101565603239976781519308248_2.jpeg",
         "codes_countries": ""
@@ -734,7 +444,7 @@
         "id_theme": 4,
         "id_rubrique": 1,
         "statut": 1,
-        "titre_test": "Aqui est\u00e3o seus 3 principais tra\u00e7os de car\u00e1ter!",
+        "titre_test": "Aqui est\u00e3o os seus 3 tra\u00e7os de personagem principais!",
         "unique_result": 1,
         "url_image_test": ".\/images-tests\/test_101565603239976781510102204_1.jpeg",
         "codes_countries": ""
@@ -954,7 +664,7 @@
         "id_theme": 4,
         "id_rubrique": 1,
         "statut": 1,
-        "titre_test": "Descubra a cita\u00e7\u00e3o que combina com voc\u00ea!",
+        "titre_test": "Descubra as cita\u00e7\u00f5es que melhor se adequam a voc\u00ea!",
         "unique_result": 1,
         "url_image_test": ".\/images-tests\/test_101565603239976781508776879_1.jpeg",
         "codes_countries": ""
@@ -965,7 +675,7 @@
         "id_rubrique": 1,
         "statut": 1,
         "titre_test": "O que seu nome significa?",
-        "unique_result": 1,
+        "unique_result": 0,
         "url_image_test": ".\/images-tests\/test_101565603239976781508773523_1.jpeg",
         "codes_countries": ""
     },
@@ -1084,7 +794,7 @@
         "id_theme": 4,
         "id_rubrique": 1,
         "statut": 1,
-        "titre_test": "Quais s\u00e3o as 4 coisas que as pessoas est\u00e3o procurando em voc\u00ea?",
+        "titre_test": "Quais s\u00e3o as coisas que as pessoas est\u00e3o procurando por voc\u00ea?",
         "unique_result": 1,
         "url_image_test": ".\/images-tests\/test_101565603239976781508547535_1.jpeg",
         "codes_countries": ""

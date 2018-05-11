@@ -24,4 +24,8 @@ class UserTest extends Eloquent
     public function testInfo(){
         return $this->belongsTo('App\Models\Test', 'test_id', 'id_test');
     }
+
+    public function userInfo(){
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
 }

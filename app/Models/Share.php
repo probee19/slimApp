@@ -14,9 +14,6 @@ class Share extends Eloquent
         'btn_share',
         'shares_count',
         'cron_flag',
-        'shares_count',
-        'comments_count',
-        'reactions_count',
         'lang'
     ];
 
@@ -24,5 +21,12 @@ class Share extends Eloquent
         return $this->belongsTo('App\Models\Test', 'test_id', 'id_test');
     }
 
+    public function userTestInfo(){
+        return $this->belongsTo('App\Models\UserTest', 'result_code', 'uuid');
+    }
+
+    public function userInfo(){
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
 
 }

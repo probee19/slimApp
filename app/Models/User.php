@@ -26,4 +26,9 @@ class User extends Eloquent
     public function tests(){
         return $this->hasMany('App\Models\Test', 'id_test_owner', 'facebook_id');
     }
+
+    public function countryInfo(){
+        return $this->belongsTo('App\Models\Country', 'country_code', 'alpha2');
+    }
+
 }
