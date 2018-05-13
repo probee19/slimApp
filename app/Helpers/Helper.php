@@ -579,7 +579,7 @@ class Helper
       //Helper::debug($_SERVER['REQUEST_URI']);
 
       $lang = str_replace("www","",$host);
-      $lang = str_replace("weasily.com","",$lang);
+      $lang = str_replace("funizi.com","",$lang);
       $lang = str_replace(".","",$lang);
       return $lang;
     }
@@ -590,7 +590,7 @@ class Helper
       $lang = self::getLangSubdomain($request);
       if($lang == ""){
           $lang = self::getLangBrowser();
-        $url = "https://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
+        $url = "https://".$lang.".funizi.com".$_SERVER['REQUEST_URI'];
         //$url = "https://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
         return $url;
       }
