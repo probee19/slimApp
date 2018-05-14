@@ -112,7 +112,7 @@ $container['view'] = function ($container){
     $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
     $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
     $view->getEnvironment()->addGlobal('storage_base', "https://funiziuploads.s3.us-east-2.amazonaws.com");
-    $view->getEnvironment()->addGlobal('request_uri', $container->request->getUri()->getPath());
+    $view->getEnvironment()->addGlobal('request_uri', str_replace( 'http://', 'https://', $container->request->getUri()->getPath()));
 
     return $view;
 };
