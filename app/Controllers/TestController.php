@@ -61,7 +61,7 @@ class TestController extends Controller
         }else
         {
             $permissions = ['public_profile'];
-            $loginUrl = $helper->getLoginUrl($request->getUri()->getBaseUrl().'/connect_user2?id='.$id.'&permission='.$permission, $permissions);
+            $loginUrl = $helper->getLoginUrl($baseDomain .'/connect_user2?id='.$id.'&permission='.$permission, $permissions);
         }// Optional permissions
         $id_user = 0;
         if(isset($_SESSION['uid']))

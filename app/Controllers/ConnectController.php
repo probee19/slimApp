@@ -94,7 +94,7 @@ class ConnectController extends Controller
           //exit;
           $log = fopen("ressources/views/log_fb_connect_error.txt", "a+");
           $data_log = "Erreur : ".$error."\n";
-          fputs($log, $data_log);
+          fwrite($log, $data_log);
         }
         if(isset($accessToken)) {
             //$help->debug($accessToken->getValue());
@@ -132,7 +132,7 @@ class ConnectController extends Controller
                     $response_fb = $this->fb->get('me/permissions', $accessToken->getValue());
                     $permissions = $response_fb->getDecodedBody();
                     $all_permissions = $permissions['data'];
-                    for ($i=0; $i < sizeof($all_permissions); $i++) {
+                    for ($i=0, $iMax = count($all_permissions); $i < $iMax; $i++) {
                         if(($all_permissions[$i]['permission'] == 'user_friends' || $all_permissions[$i]['permission'] == 'user_photos' || $all_permissions[$i]['permission'] == 'user_posts' ) && $all_permissions[$i]['status'] == 'declined' ){
                            $permissions_Ok = false;
                        }
