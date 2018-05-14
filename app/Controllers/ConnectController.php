@@ -94,7 +94,7 @@ class ConnectController extends Controller
           //exit;
           $log = fopen("ressources/views/log_fb_connect_error.txt", "a+");
           $data_log = "Erreur : ".$error."\n";
-          fwrite($log, $data_log);
+          fputs($log, $data_log);
         }
         if(isset($accessToken)) {
             //$help->debug($accessToken->getValue());
