@@ -300,7 +300,7 @@ class StartController extends Controller
                     'lang'                  => $lang
                 ];
                 if($save){
-                    $filepath = "https://weasily.com/uploads/". $code . '.jpg';
+                    $filepath = "https://funizi.com/uploads/". $code . '.jpg';
                     $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
                 }
 
