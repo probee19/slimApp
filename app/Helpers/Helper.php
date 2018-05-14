@@ -580,7 +580,7 @@ class Helper
       //Helper::debug($_SERVER['REQUEST_URI']);
 
       $lang = str_replace("www","",$host);
-      $lang = str_replace($this->base_domain,"",$lang);
+      $lang = str_replace("weasily","",$lang);
       $lang = str_replace(".","",$lang);
       return $lang;
     }
