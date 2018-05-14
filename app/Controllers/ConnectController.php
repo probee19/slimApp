@@ -59,7 +59,9 @@ class ConnectController extends Controller
     public function connexionForTest($request, $response, $arg)
     {
         $help = new Helper();
-        $id = $request->getParam('id');
+        $state = json_decode($_GET['state']);
+        $permission_test = $state->permission;
+        $id = $state->id;
         //$lang = $request->getParam('lang');
         $lang = Helper::getLangSubdomain($request);
 
@@ -126,7 +128,7 @@ class ConnectController extends Controller
 
 
             // Obtention des permissions
-            if($_GET['permission'] == 1 && $permisions_test == 1){
+            if($permission_test == 1 && $permisions_test == 1){
                 try {
                     // Check permissions
                     $response_fb = $this->fb->get('me/permissions', $accessToken->getValue());
