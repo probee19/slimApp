@@ -4,8 +4,8 @@ RewriteCond %{HTTP:X-Forwarded-Proto} =http
 RewriteRule (.*) https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
 
 
-RewriteCond %{HTTP_HOST} ^creation\.weasily\.com$ [NC]
-RewriteRule ^(.*) https://funizi.com.com/creation-test/$1 [L,P]
+RewriteCond %{HTTP_HOST} ^creation\.weasily\.com$
+RewriteRule ^(.*) https://funizi.com.com/creation-test/$1 [P]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
