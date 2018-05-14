@@ -244,7 +244,7 @@ class ConnectController extends Controller
                   exit;
                 }
             }
-            $url = 'http://'.$lang.'.funizi.com/start/'.$id;
+            $url = 'https://'.$lang.'.funizi.com/start/'.$id;
 
             $_SESSION['fb_access_token'] = (string) $accessToken;
 
