@@ -118,7 +118,7 @@ $container['view'] = function ($container){
 };
 //Domain App
 $container['base_domain'] = function ($container) {
-    return 'weasily';
+    return 'weasily.com';
 };
 //Facebook app config
 $container['fb'] = function($container){
