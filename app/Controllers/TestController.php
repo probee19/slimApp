@@ -17,7 +17,7 @@ class TestController extends Controller
         $sandbox = new Helper();
         $lang = $this->helper->getLangSubdomain($request);
         $interface_ui = $this->helper->getUiLabels($lang);
-        $baseDomain = "https://" . $lang . "funizi.com";
+        $baseDomain = "https://" . $lang . ".".$this->base_domain.".com";
         $id = (int)$args['id'];
         $country_code = $sandbox->getCountryCode();
 

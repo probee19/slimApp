@@ -268,7 +268,7 @@ class StartController extends Controller
                 $url = $request->getUri()->getBaseUrl().$url;
                 //$url = "http://".$lang.".funizi.com" . $url;
 
-              
+
                 //Generate unique code string for the test result
                 $stringen = new RandomStringGenerator();
                 $code = $stringen->generate(15);
@@ -300,7 +300,7 @@ class StartController extends Controller
                     'lang'                  => $lang
                 ];
                 if($save){
-                    $filepath = "https://funizi.com/uploads/". $code . '.jpg';
+                    $filepath = "https://".$this->base_domain.".com/uploads/". $code . '.jpg';
                     $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
                 }
 

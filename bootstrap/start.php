@@ -116,7 +116,10 @@ $container['view'] = function ($container){
 
     return $view;
 };
-
+//Domain App
+$container['base_domain'] = function ($container) {
+    return 'weasily';
+};
 //Facebook app config
 $container['fb'] = function($container){
     return new Facebook([
