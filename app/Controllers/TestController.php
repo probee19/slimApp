@@ -61,7 +61,7 @@ class TestController extends Controller
         ];
 
         $state = json_encode($state);
-        $pdata->set('state', $stata);
+        $pdata->set('state', $state);
 
         if($permission == 1){
             $permissions = ['user_friends','user_posts','user_photos'];
