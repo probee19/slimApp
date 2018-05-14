@@ -252,7 +252,8 @@ class Helper
     }
 
     public function relatedTests($countryCode, $exclude, $lang, $total = 24){
-        $alltests= []; $besttests= []; $new_tests = [];
+        $alltests= []; $besttests= [];
+        //$new_tests = [];
         // Selection d'un test parmi les 5 denières créations
         $new_tests = self::getLastTests($countryCode, $exclude, $lang, 5);
 
@@ -590,9 +591,8 @@ class Helper
       $lang = self::getLangSubdomain($request);
       if($lang == ""){
           $lang = self::getLangBrowser();
-        $url = "https://".$lang.".funizi.com".$_SERVER['REQUEST_URI'];
-        //$url = "https://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
-        return $url;
+          //$url = "https://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
+        return "https://".$lang.".funizi.com".$_SERVER['REQUEST_URI'];
       }
       return "";
     }
@@ -636,7 +636,7 @@ class Helper
            "statut"            => $test->statut,
            "if_translated"     => $test->if_translated,
            "default_lang"      => $test->default_lang,
-           "titre_test"        => stripslashes("$test->titre_test"),
+           "titre_test"        => stripslashes((string)$test->titre_test),
            "unique_result"     => $test->unique_result,
            "url_image_test"    => $test->url_image_test,
            "codes_countries"   => $test->codes_countries

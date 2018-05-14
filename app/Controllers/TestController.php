@@ -17,7 +17,7 @@ class TestController extends Controller
         $sandbox = new Helper();
         $lang = $this->helper->getLangSubdomain($request);
         $interface_ui = $this->helper->getUiLabels($lang);
-
+        $baseDomain = "https://" . $lang . "funizi.com";
         $id = (int)$args['id'];
         $country_code = $sandbox->getCountryCode();
 
@@ -56,8 +56,8 @@ class TestController extends Controller
         $helper = $this->fb->getRedirectLoginHelper();
         if($permission == 1){
             $permissions = ['user_friends','user_posts','user_photos'];
-            $loginUrl  = $helper->getReRequestUrl($request->getUri()->getBaseUrl().'/connect_user2?id='.$id.'&permission='.$permission, $permissions);
-            $loginUrl2 = $helper->getReRequestUrl($request->getUri()->getBaseUrl().'/connect_user_test?id='.$id.'&permission='.$permission, $permissions);
+            $loginUrl  = $helper->getReRequestUrl($baseDomain .'/connect_user2?id='.$id.'&permission='.$permission, $permissions);
+            $loginUrl2 = $helper->getReRequestUrl($baseDomain .'/connect_user_test?id='.$id.'&permission='.$permission, $permissions);
         }else
         {
             $permissions = ['public_profile'];
