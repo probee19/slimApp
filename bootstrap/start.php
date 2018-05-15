@@ -35,6 +35,7 @@ use Slim\Views\TwigExtension;
 
 session_start();
 // RDS CONST
+
 define('RDS_HOSTNAME', $_SERVER['RDS_HOSTNAME']);
 define('RDS_USERNAME', $_SERVER['RDS_USERNAME']);
 define('RDS_PASSWORD', $_SERVER['RDS_PASSWORD']);
@@ -43,6 +44,7 @@ define('GZIT_KEY', $_SERVER['GZIT_KEY']);
 define('GZIT_SECRET', $_SERVER['GZIT_SECRET']);
 define('FB_SECRET_KEY', $_SERVER['FB_SECRET_KEY']);
 define('FB_APP_ID', $_SERVER['FB_APP_ID']);
+define('SERVER_DOMAIN', $_SERVER['SERVER_DOMAIN']);
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -108,8 +110,8 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
-    $view->getEnvironment()->addGlobal('defined_base_url', "https://funizi.com");
-    $view->getEnvironment()->addGlobal('defined_base_domain', "weasily.com");
+    $view->getEnvironment()->addGlobal('defined_base_url', "https://".SERVER_DOMAIN);
+    $view->getEnvironment()->addGlobal('defined_base_domain', SERVER_DOMAIN);
     $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
     $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
     $view->getEnvironment()->addGlobal('storage_base', "https://funiziuploads.s3.us-east-2.amazonaws.com");
@@ -118,7 +120,7 @@ $container['view'] = function ($container){
     return $view;
 };
 //Domain App
-$container['base_domain'] = 'weasily.com';
+$container['base_domain'] = SERVER_DOMAIN;
 
 //Facebook app config
 $container['fb'] = function($container){
