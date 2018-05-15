@@ -130,10 +130,11 @@ function setSessionVar (varName, value, id, loader_on = false){
 
 function changeLang(lang) {
   var uri = $('#domain').data('resquest-uri');
+  var definedDomain = $('#domain').data('defined_base_domain');
   if (uri.indexOf('?') >= 0)
-    window.location.replace('https://'+lang+'.funizi.com'+uri+'&utm_source=funizi&utm_medium=select&utm_campaign=select_lang');
+    window.location.replace('https://' + lang + '.' + definedDomain + uri + '&utm_source=funizi&utm_medium=select&utm_campaign=select_lang');
   else
-    window.location.replace('https://'+lang+'.funizi.com'+uri+'?utm_source=funizi&utm_medium=select&utm_campaign=select_lang');
+    window.location.replace('https://' + lang + '.' + definedDomain + uri + '?utm_source=funizi&utm_medium=select&utm_campaign=select_lang');
 
 }
 

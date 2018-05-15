@@ -109,6 +109,7 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
     $view->getEnvironment()->addGlobal('defined_base_url', "https://funizi.com");
+    $view->getEnvironment()->addGlobal('defined_base_domain', "weasily.com");
     $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
     $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
     $view->getEnvironment()->addGlobal('storage_base', "https://funiziuploads.s3.us-east-2.amazonaws.com");
