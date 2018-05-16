@@ -184,7 +184,7 @@ class HomeController extends Controller
 
               fputs($temp_file_php, $content_file);
 
-
+              Helper::debug($content_file);
               $nb_done++;
 
             }
