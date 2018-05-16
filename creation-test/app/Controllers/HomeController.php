@@ -152,7 +152,7 @@ class HomeController extends Controller
   {
     $test_id = 2;
 
-    $tests = Test::where([['id_theme','=','4']])->orderBy('id_test','DESC')->get();
+    $tests = Test::where([['id_theme','=','4'],['id_test','=','207']])->orderBy('id_test','DESC')->get();
     Helper::debug(count($tests));
 
     $langs = Language::where('status','=',1)->get();
@@ -184,7 +184,7 @@ class HomeController extends Controller
 
               fputs($temp_file_php, $content_file);
 
-              //Helper::debug($content_file);
+              Helper::debug($content_file);
               $nb_done++;
 
             }
