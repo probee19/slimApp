@@ -104,6 +104,10 @@ ExpiresDefault A2592000
 RewriteCond %{HTTP:X-Forwarded-Proto} =http
 RewriteRule (.*) https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
 
+
+RewriteCond %{HTTP_HOST} ^(www\.)?creation.funizi\.com.*$
+RewriteRule (.*) creation-test/$1 [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
