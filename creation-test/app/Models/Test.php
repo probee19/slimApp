@@ -26,7 +26,9 @@ class Test extends Eloquent
         'test_description',
         'highlight',
         'default_lang',
-        'if_translated'
+        'if_translated',
+        'has_treatment',
+        'if_additionnal_info'
     ];
 
     public function testInfoLang(){

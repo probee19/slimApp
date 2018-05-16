@@ -316,7 +316,6 @@ class LoadStatsController extends Controller
         "comment_count_all"                         =>    $counts_stats->comments_count   ,
         "reaction_count_all"                        =>    $counts_stats->reactions_count
       ];
-
       return $data_global;
     }
 
@@ -338,7 +337,7 @@ class LoadStatsController extends Controller
                 ->where([['created_at',">=","$last_day_start"],['created_at',"<=","$last_day_end"], ['lang','LIKE',"%$lang%"] ])
                 ->first();
         if($counts_wt->nb_test_done > $counts_wty->nb_test_done)
-          $taux_diff_test   = round((($counts_wt->nb_test_done - $counts_wty->nb_test_done) / $counts_wt->nb_test_done)*100, 2);
+          $taux_diff_test   = round((($counts_wt->nb_test_done - $counts_wty->nb_test_done) / $counts_wty->nb_test_done)*100, 2);
         else
           $taux_diff_test   = round((($counts_wt->nb_test_done - $counts_wty->nb_test_done) / $counts_wty->nb_test_done)*100, 2);
 
@@ -1308,9 +1307,12 @@ $nbnb = 0;
           "nb_new_users"                          =>    $counts_new_users    ,
           "taux_test_per_user"                    =>    round($taux_test_per_user_all, 2)    ,
           "share_count"                           =>    intval($counts_stats->shares_count )   ,
-          "click_count"                           =>    $counts_stats->clicks_count    ,
-          "comment_count"                         =>    $counts_stats->comments_count   ,
-          "reaction_count"                        =>    $counts_stats->reactions_count,
+          "click_count"                           =>    0    ,
+          "comment_count"                         =>    0   ,
+          "reaction_count"                        =>    0,
+          //"click_count"                           =>    $counts_stats->clicks_count    ,
+          //"comment_count"                         =>    $counts_stats->comments_count   ,
+          //"reaction_count"                        =>    $counts_stats->reactions_count,
           "created_at"                            =>    \date("Y-m-d H:i:s"), # \Datetime()
           "updated_at"                            =>    \date("Y-m-d H:i:s")  # \Datetime()
         ];

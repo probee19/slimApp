@@ -75,7 +75,7 @@ class JsonController extends Controller
             }
           }
         $data_best_tests = Helper::array_msort($best_tests, array('taux_share'=>SORT_DESC, 'nb_test_done'=>SORT_DESC));
-        $json = fopen("../ressources/views/json_files/".$lang->code."_best_tests.json", "w+");
+        $json = fopen("../ressources/views/json_files/best_tests/".$lang->code."_best_tests.json", "w+");
         $data_json = json_encode($data_best_tests, JSON_PRETTY_PRINT);
         fputs($json, $data_json);
 
@@ -148,7 +148,7 @@ class JsonController extends Controller
   public function setTestsJSON($request, $response, $arg){
     $langs = Language::where([['status','=','1'],['translated','=','1']])->get();
     foreach ($langs as $lang) {
-      $tests = Test::selectRaw('tests.id_test AS id_test, tests.id_theme AS id_theme, tests.default_lang AS default_lang, tests.if_translated AS if_translated, tests.id_rubrique AS id_rubrique, tests.statut AS statut, test_info.titre_test AS titre_test, tests.unique_result AS unique_result, tests.url_image_test AS url_image_test, tests.codes_countries AS codes_countries')
+      $tests = Test::selectRaw('tests.id_test AS id_test, tests.if_additionnal_info AS if_additionnal_info, tests.has_treatment AS has_treatment, tests.id_theme AS id_theme, tests.default_lang AS default_lang, tests.if_translated AS if_translated, tests.id_rubrique AS id_rubrique, tests.statut AS statut, test_info.titre_test AS titre_test, tests.unique_result AS unique_result, tests.url_image_test AS url_image_test, tests.codes_countries AS codes_countries')
             ->join('test_info','test_info.id_test','tests.id_test')
             ->where([['tests.statut','=',1],['test_info.lang','=',$lang->code]])
             ->orderBy('tests.id_test','DESC')
@@ -156,16 +156,18 @@ class JsonController extends Controller
       $all_tests = array();
       foreach ($tests as $test) {
         $all_tests[] = [
-          "id_test"           => $test->id_test,
-          "id_theme"          => $test->id_theme,
-          "id_rubrique"       => $test->id_rubrique,
-          "statut"            => $test->statut,
-          "if_translated"     => $test->if_translated,
-          "default_lang"      => $test->default_lang,
-          "titre_test"        => stripslashes("$test->titre_test"),
-          "unique_result"     => $test->unique_result,
-          "url_image_test"    => $test->url_image_test,
-          "codes_countries"   => $test->codes_countries
+          "id_test"               => $test->id_test,
+          "id_theme"              => $test->id_theme,
+          "id_rubrique"           => $test->id_rubrique,
+          "statut"                => $test->statut,
+          "if_translated"         => $test->if_translated,
+          "if_additionnal_info"   => $test->if_additionnal_info,
+          "has_treatment"         => $test->has_treatment,
+          "default_lang"          => $test->default_lang,
+          "titre_test"            => stripslashes("$test->titre_test"),
+          "unique_result"         => $test->unique_result,
+          "url_image_test"        => $test->url_image_test,
+          "codes_countries"       => $test->codes_countries
         ];
       }
       $all_tests = json_encode($all_tests, JSON_PRETTY_PRINT);

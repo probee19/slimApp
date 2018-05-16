@@ -97,6 +97,7 @@ class Helper
       $language = $language{0}.$language{1};
       return $language;
     }
+
     // Traduction de $text en la langue $lang en utilisant l'API Google Translation
     public static function GoogleTranslate($lang, $text, $source = "fr")
     {
@@ -114,9 +115,17 @@ class Helper
       $response = curl_exec($handle);
       $data = json_decode($response);
         //Helper::debug($data->data->translations[0]->translatedText);
+        $text_translated = $data->data->translations[0]->translatedText;
+        $text_translated = str_replace('&quot;','"',$text_translated) ;
+        $text_translated = str_replace('\u00e0','à',$text_translated) ;
+        $text_translated = str_replace('\u00e8','è',$text_translated) ;
+        $text_translated = str_replace('\u00e9','é',$text_translated) ;
+        $text_translated = str_replace('\u00c0','À',$text_translated) ;
+        $text_translated = str_replace('&#39;','\'',$text_translated) ;
 
-      return $data->data->translations[0]->translatedText;
+      return $text_translated;
     }
+
     // TEST Création du fichier du test pour une langue donnnée
     public function setFileTest($lang, $php )
     {
@@ -137,6 +146,7 @@ class Helper
               //echo $m[1][$i] . '<br/>';
           //}
     }
+
     // Traduit le texte entres les tags {%t t%} dans $text dans la langue $lang puis retourne sans les tags
     public static function translateWithTags($lang, $text)
     {
@@ -152,6 +162,7 @@ class Helper
       $text = str_replace(" ?}", "?}",$text);
       return $text;
     }
+
     // Traduit le titre et le texte de pargate du test en toutes les langues activées puis effectue la sauvegarde dans la BD
     public static function translateInfoTestAndSave($id_test, $titre, $test_description, $default_lang, $if_translated, $lang_to_update="")
     {
@@ -251,6 +262,7 @@ class Helper
 
 
     }
+
     // Traduit le texte $texte en anglais (avec ou sans tags)
     public static function toEn($texte, $tags = true)
     {
@@ -276,6 +288,9 @@ class Helper
       if($temp_file_php==false)
       die("La création du fichier a échoué");
 
+      //
+      $php = str_replace('{%additionnal_input_text%}', '$_GET[\'additionnal_input_text\']', $php );
+      //
       // Traduction dans la langue $lang
       //if($lang != 'fr')
         $php = self::translateWithTags($lang, $php);
