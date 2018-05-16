@@ -76,6 +76,7 @@ class ConnectController extends Controller
           ->join('test_info','test_info.id_test','tests.id_test')
           ->Where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
         $permisions_test = $test->permissions;
+        $if_additionnal_info = $test->if_additionnal_info;
         $result_url = $this->router->pathFor('single', [ 'id' => $test->id_test, 'name' => Helper::cleanUrl($test->titre_test)  ] );
         try {
           $accessToken = $helper->getAccessToken();
@@ -246,7 +247,13 @@ class ConnectController extends Controller
                   exit;
                 }
             }
-            $url = 'https://'.$lang.'.'.$this->base_domain.'/start/'.$id;
+
+            if($if_additionnal_info == 0)
+              $url = 'https://'.$lang.'.'.$this->base_domain.'/start/'.$id;
+            else
+              $url = 'https://'.$lang.'.'.$this->base_domain.'/start/1/'.$id;
+
+
 
             $_SESSION['fb_access_token'] = (string) $accessToken;
 
