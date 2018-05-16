@@ -161,7 +161,7 @@ class StartController extends Controller
 
                     $url = '?user_gender='.$genre.'&fb_id_user='.$user_id.'&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
                     //
-                    $url_img_profile = 'https://graph.facebook.com/'.$user_id.'/picture/?width=400&height=400';
+                    $url_img_profile = 'https://graph.facebook.com/'.$user_id.'/picture/?width=250&height=250';
                     /*
                     if(isset($_SESSION['url_pic_profile']))
                       $url_img_profile = $_SESSION['url_pic_profile'];
