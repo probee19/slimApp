@@ -83,4 +83,4 @@ $app->get('/chunk', 'HomeController:chunk');
 $app->get('/upgradelang', 'LangController:upgradeLang');
 $app->get('/upgradejsonfile', 'LangController:UpgradeJsonFile');
 $app->get('/chunk/jsonalltests', 'JsonController:setTestsJSON');
-$app->get('/chunk/updateimgurl', 'HomeController:updateUrlImgProfile');
+$app->get('/chunk/updatevar', 'HomeController:updateVarTestFile');
