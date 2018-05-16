@@ -72,7 +72,7 @@ class ConnectController extends Controller
         $maxFriends_per_list = 30;
         $name = '';
         $error = ''; $permissions_Ok = true;
-        $test = Test::selectRaw('test_info.titre_test AS titre_test, tests.permissions AS permissions, tests.id_test AS id_test')
+        $test = Test::selectRaw('test_info.titre_test AS titre_test, tests.if_additionnal_info AS if_additionnal_info,  tests.permissions AS permissions, tests.id_test AS id_test')
           ->join('test_info','test_info.id_test','tests.id_test')
           ->Where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
         $permisions_test = $test->permissions;
