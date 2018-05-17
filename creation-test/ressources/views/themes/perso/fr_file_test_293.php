@@ -116,8 +116,8 @@ curl_close($request);
  
 if ($face_analyse) $age=$face_attr['age']; else $age=mt_rand(23,43);
 ?>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
 <div id="fidele" > tu as  </div>
 <div id="pourcentage" ><?php echo $age ?> ans</div>
 <div id="fidele1" > selon ton visage </div>

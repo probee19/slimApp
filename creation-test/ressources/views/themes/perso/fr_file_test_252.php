@@ -71,13 +71,13 @@
       
 <?php
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
-                    $attentes = array(''.$_GET['user_name'].', 2018 sera une de tes années! Tu as été toujours présent pour tes proches et tu en seras comblé de récompenses.',
-                              ''.$_GET['user_name'].', tu as fait beaucoup de sacrifices jusqu&#39;ici. 2018 sera une année d&#39;accomplissement de tous vos projets. Une année de bonheur pour toi.',
-                              ''.$_GET['user_name'].', tes proches sont vraiment fiers de toi cette année. 2018 SERA pour toi une année pétillante de bonheur, explosive d&#39;humour et resplendissante de santé.');
+                    $attentes = array(''.urldecode($_GET['user_name']).', 2018 sera une de tes années! Tu as été toujours présent pour tes proches et tu en seras comblé de récompenses.',
+                              ''.urldecode($_GET['user_name']).', tu as fait beaucoup de sacrifices jusqu&#39;ici. 2018 sera une année d&#39;accomplissement de tous vos projets. Une année de bonheur pour toi.',
+                              ''.urldecode($_GET['user_name']).', tes proches sont vraiment fiers de toi cette année. 2018 SERA pour toi une année pétillante de bonheur, explosive d&#39;humour et resplendissante de santé.');
           else
-                     $attentes = array(''.$_GET['user_name'].', 2018 sera une de tes années! Tu as été toujours présente pour tes proches et tu en seras comblée de récompenses.',
-                              ''.$_GET['user_name'].', tu as fait beaucoup de sacrifices jusqu&#39;ici. 2018 sera une année d&#39;accomplissement de tous vos projets. Une année de bonheur pour toi.',
-                              ''.$_GET['user_name'].', tes proches sont vraiment fiers de toi cette année. 2018 SERA pour toi une année pétillante de bonheur, explosive d&#39;humour et resplendissante de santé.');
+                     $attentes = array(''.urldecode($_GET['user_name']).', 2018 sera une de tes années! Tu as été toujours présente pour tes proches et tu en seras comblée de récompenses.',
+                              ''.urldecode($_GET['user_name']).', tu as fait beaucoup de sacrifices jusqu&#39;ici. 2018 sera une année d&#39;accomplissement de tous vos projets. Une année de bonheur pour toi.',
+                              ''.urldecode($_GET['user_name']).', tes proches sont vraiment fiers de toi cette année. 2018 SERA pour toi une année pétillante de bonheur, explosive d&#39;humour et resplendissante de santé.');
           
           shuffle($attentes);
 ?>
@@ -85,8 +85,8 @@
 
 <img src="http://creation.funizi.com/images-theme-perso/1514282076.jpg" id="backgound"> 
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
 
 <div class="texte" id="attente"> <?php echo $attentes[0]; ?> </div>
 

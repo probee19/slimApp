@@ -87,7 +87,7 @@
 <img src="https://creation.funizi.com/images-theme-perso/1524758800.png" id="back"> 
 <div class="overlay"></div>
 
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
 <div class="texte" id="caractere"><?=$caracteres[0]?></div>
 
 

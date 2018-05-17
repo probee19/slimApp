@@ -79,7 +79,7 @@
 ?>
 <!DOCTYPE HTML>
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
 <div id="back_white" ></div>
 <div class="back" id="back_blue" > أفضل جودة : <span class="res" id="qualite"><?=$qualites[0]?></span></div>
 <div class="back" id="back_red" > أسوأ عيب : <span class="res" id="defaut"><?=$defauts[0]?></span></div> 

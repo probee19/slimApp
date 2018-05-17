@@ -79,7 +79,7 @@ $message = array('Uzuri','Akili','Nzuri','Dhati','Jasiri','Mgonjwa');
 shuffle($message);
 
 ?>
-<div id="message0"> <?php echo ''.$_GET['user_name'].'' ?></div>
+<div id="message0"> <?php echo ''.urldecode($_GET['user_name']).'' ?></div>
 <div id="message"> <?php echo 'your swahili word is:<br>- '.$message[0].' -'; ?></div>
 
         </div>

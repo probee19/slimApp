@@ -68,17 +68,17 @@
       
 <?php
 if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
-          $lois = array(''.$_GET['user_name'].' é nomeado chefe de gabinete.',
-          'Até 31 de maio de 2020, '.$_GET['Friend_first_name_1'].' Deve pagar o '.$_GET['User_name'].' Aluguel. ',
-          ''.$_GET['user_name'].' é muito bom, eu ordeno que ele receba uma promoção.',
-          'Eu ordeno que o salário de '.$_GET['User_name'].' Seja dobrado.',
-          'Declaro este feriado em homenagem a '.$_GET['User_name'].'.');
+          $lois = array(''.urldecode($_GET['user_name']).' é nomeado chefe de gabinete.',
+          'Até 31 de maio de 2020, '.urldecode($_GET['friend_first_name_1']).' Deve pagar o '.urldecode($_GET['user_name']).' Aluguel. ',
+          ''.urldecode($_GET['user_name']).' é muito bom, eu ordeno que ele receba uma promoção.',
+          'Eu ordeno que o salário de '.urldecode($_GET['user_name']).' Seja dobrado.',
+          'Declaro este feriado em homenagem a '.urldecode($_GET['user_name']).'.');
 else 
-       $lois = array(''.$_GET['user_name'].' é nomeado chefe de gabinete',
-          'Até 31 de maio de 2020, '.$_GET['Friend_first_name_1'].' Deve pagar o '.$_GET['User_name'].' Aluguel. ',
-          ''.$_GET['user_name'].' é muito legal, eu ordeno que ela receba uma promoção.',
-          'Eu ordeno que o salário de '.$_GET['User_name'].' Seja dobrado.',
-          'Declaro este feriado em homenagem a '.$_GET['User_name'].'.');   
+       $lois = array(''.urldecode($_GET['user_name']).' é nomeado chefe de gabinete',
+          'Até 31 de maio de 2020, '.urldecode($_GET['friend_first_name_1']).' Deve pagar o '.urldecode($_GET['user_name']).' Aluguel. ',
+          ''.urldecode($_GET['user_name']).' é muito legal, eu ordeno que ela receba uma promoção.',
+          'Eu ordeno que o salário de '.urldecode($_GET['user_name']).' Seja dobrado.',
+          'Declaro este feriado em homenagem a '.urldecode($_GET['user_name']).'.');   
           
           shuffle($lois);
 ?>

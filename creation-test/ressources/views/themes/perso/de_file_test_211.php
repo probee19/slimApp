@@ -92,13 +92,13 @@ shuffle($mots);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1511805425.jpg" id="back"> 
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
 
 
-<div class="texte" id="entete"> Sehr geehrter <?php echo $_GET['user_name']; ?>, </div>
+<div class="texte" id="entete"> Sehr geehrter <?php echo urldecode($_GET['user_name']); ?>, </div>
 <div class="texte" id="texte"> <?php echo $mots[0];?> </div>
-<div class="texte" id="footer"> <?php echo $_GET['friend_first_name_1']; ?> </div>
+<div class="texte" id="footer"> <?php echo urldecode($_GET['friend_first_name_1']); ?> </div>
 
 
         </div>

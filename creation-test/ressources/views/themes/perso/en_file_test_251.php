@@ -86,8 +86,8 @@ line-height:40px; width:480px; height:220px; display:flex; justify-content:cente
 <!DOCTYPE HTML>
 <img src="http://creation.funizi.com/images-theme-perso/1513949055.jpg" id="background"> 
 <div id="year">2018</div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
 
 <img src="http://creation.funizi.com/images-theme-perso/1513948643.png" id="cadre"> 
 <div id="surprise"><?php echo $surprises[0]; ?></div>

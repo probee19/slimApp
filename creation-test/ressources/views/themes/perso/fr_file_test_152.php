@@ -77,8 +77,8 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508541310.jpg" id="background">
             <span id="titre" class="titre">Quels secrets se cachent derrière ta photo de profil?</span>
-            <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="img_user">
-            <span id="name_user" class="name"> <?php echo $_GET['user_name']; ?> </span>
+            <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="img_user">
+            <span id="name_user" class="name"> <?php echo urldecode($_GET['user_name']); ?> </span>
             <span id="texte_1" class="texte"> <b> Apparence</b> <?php echo $apparence[0] ?></span>
             <span id="texte_2" class="texte"> <b> Âme:</b> <?php echo $ame[0] ?></span>
             <span id="texte_3" class="texte"> <b> Personnalité:</b> <?php echo $personnalite[0] ?></span>

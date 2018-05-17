@@ -78,8 +78,8 @@
 ?>
 <!DOCTYPE HTML>
 <img src="<?php echo $_GET['url_img_profile_user0']; ?>" class="img_profile" id="fb_id_user_act">
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user1" ><?php echo $_GET['user_name']; ?> maintenant</div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user1" ><?php echo urldecode($_GET['user_name']); ?> maintenant</div>
 
 <div class="name texte" id="name_user2" ><?=$texte[0];?></div>
 

@@ -67,7 +67,7 @@
           <div class='main'>
       
 <div class='photo' style="top:0;left:0">
- <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+ <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 </div>
 <div class='photo' style="top:0;left:100px">
  <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">

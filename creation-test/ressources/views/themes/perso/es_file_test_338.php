@@ -76,9 +76,9 @@
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
 <div class="overlay"></div>
-<div class="texte" id="name_friend_1" ><?php echo $_GET['friend_first_name_1']; ?></div>
+<div class="texte" id="name_friend_1" ><?php echo urldecode($_GET['friend_first_name_1']); ?></div>
 <div class="texte" id="texte1" >echó un vistazo a</div>
-<div class="texte" id="name_user" > <?php echo $_GET['user_name']; ?> </div>
+<div class="texte" id="name_user" > <?php echo urldecode($_GET['user_name']); ?> </div>
 <div class="texte" id="count" > <?=mt_rand(60,218)?> hora</div>
 <div class="texte" id="mois" > en abril. </div>
 

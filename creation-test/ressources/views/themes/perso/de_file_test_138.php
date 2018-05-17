@@ -71,7 +71,7 @@
 <!DOCTYPE HTML>
 
 <img src="http://creation.funizi.com/images-theme-perso/1508438185.jpg" id="background"> 
-<div class="name texte" id="name_user" ><?php echo $_GET['full_user_name']; ?></div>
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['full_user_name']); ?></div>
 <div id="recherche" >Du wurdest durchsucht ...</div>
 <div id="nombre_recherche" ><?php echo number_format(rand(30000,500000), 0, ',', ' '); ?> fois !</div>
 <div id="commentaire_recherche" >Du bist eine echte Berühmtheit!</div>

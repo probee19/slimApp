@@ -68,17 +68,17 @@
       
 <?php
 if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
-          $lois = array(' '.$_GET['user_name'].' est nommé chef de l\'Etat Major. ',
-          ' Jusqu\'au 31 mai 2020, '.$_GET['friend_first_name_1'].' devra payer le loyer de '.$_GET['user_name'].'.  ',
-          ' '.$_GET['user_name'].' est trop génial, j\'ordonne qu\'il reçoive une promotion. ',
-          ' J\'ordonne par la présente que le salaire de '.$_GET['user_name'].' soit doublé. ',
-          ' Je déclare cette journée fériée en l\'honneur de '.$_GET['user_name'].'. ');
+          $lois = array(' '.urldecode($_GET['user_name']).' est nommé chef de l\'Etat Major. ',
+          ' Jusqu\'au 31 mai 2020, '.urldecode($_GET['friend_first_name_1']).' devra payer le loyer de '.urldecode($_GET['user_name']).'.  ',
+          ' '.urldecode($_GET['user_name']).' est trop génial, j\'ordonne qu\'il reçoive une promotion. ',
+          ' J\'ordonne par la présente que le salaire de '.urldecode($_GET['user_name']).' soit doublé. ',
+          ' Je déclare cette journée fériée en l\'honneur de '.urldecode($_GET['user_name']).'. ');
 else 
-       $lois = array(' '.$_GET['user_name'].' est nommé chef de l\'Etat Major ',
-          ' Jusqu\'au 31 mai 2020, '.$_GET['friend_first_name_1'].' devra payer le loyer de '.$_GET['user_name'].'.  ',
-          ' '.$_GET['user_name'].' est trop géniale, j\'ordonne qu\'elle reçoive une promotion. ',
-          ' J\'ordonne par la présente que le salaire de '.$_GET['user_name'].' soit doublé. ',
-          ' Je déclare cette journée fériée en l\'honneur de '.$_GET['user_name'].'. ');   
+       $lois = array(' '.urldecode($_GET['user_name']).' est nommé chef de l\'Etat Major ',
+          ' Jusqu\'au 31 mai 2020, '.urldecode($_GET['friend_first_name_1']).' devra payer le loyer de '.urldecode($_GET['user_name']).'.  ',
+          ' '.urldecode($_GET['user_name']).' est trop géniale, j\'ordonne qu\'elle reçoive une promotion. ',
+          ' J\'ordonne par la présente que le salaire de '.urldecode($_GET['user_name']).' soit doublé. ',
+          ' Je déclare cette journée fériée en l\'honneur de '.urldecode($_GET['user_name']).'. ');   
           
           shuffle($lois);
 ?>

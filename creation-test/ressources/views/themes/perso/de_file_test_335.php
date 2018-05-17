@@ -77,7 +77,7 @@
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1525038725.jpg" id="back"> 
  
-<div class="texte" id="name"> <?php echo $_GET['user_name']; ?>  </div>
+<div class="texte" id="name"> <?php echo urldecode($_GET['user_name']); ?>  </div>
 
 <div class="texte" id="mean"> meint </div>
 

@@ -85,9 +85,9 @@ ol li{height:55px;}
  shuffle($texte);
 ?>
 <div id="background" ></div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ></div>
-<div id="titretest" >What are the 5 things that <?php echo $_GET['user_name']; ?> hate the most?</div>
+<div id="titretest" >What are the 5 things that <?php echo urldecode($_GET['user_name']); ?> hate the most?</div>
 <div class="name texte" id="name_user" ></div>
 
 <ol>

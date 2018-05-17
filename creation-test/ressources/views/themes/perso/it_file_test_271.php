@@ -69,26 +69,26 @@
 <?php
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-               $message_1 = array(''.$_GET['user_name'].' è stato eletto Presidente del suo paese con il 98,9% dei voti',''.$_GET['user_name'].' è stato appena votato come il più bel ragazzo dell&#39;universo',
-               ''.$_GET['user_name'].' diventa la seconda fortuna mondiale dietro Bill Gates',
-               ''.$_GET['user_name'].' ha appena comprato il suo paese',
-               ''.$_GET['user_name'].' scopre una cura per il cancro',
-               ''.$_GET['user_name'].' previene un&#39;invasione aliena',
-               ''.$_GET['user_name'].' fa pace nel mondo');
+               $message_1 = array(''.urldecode($_GET['user_name']).' è stato eletto Presidente del suo paese con il 98,9% dei voti',''.urldecode($_GET['user_name']).' è stato appena votato come il più bel ragazzo dell&#39;universo',
+               ''.urldecode($_GET['user_name']).' diventa la seconda fortuna mondiale dietro Bill Gates',
+               ''.urldecode($_GET['user_name']).' ha appena comprato il suo paese',
+               ''.urldecode($_GET['user_name']).' scopre una cura per il cancro',
+               ''.urldecode($_GET['user_name']).' previene un&#39;invasione aliena',
+               ''.urldecode($_GET['user_name']).' fa pace nel mondo');
      }
             else{ 
-           $message_1 = array(''.$_GET['user_name'].' è stato eletto Presidente del suo paese con il 96,9% dei voti', ''.$_GET['user_name'].' è stata eletta la donna più bella dell&#39;universo',
-           ''.$_GET['user_name'].' diventa la seconda fortuna mondiale dietro Bill Gates',
-               ''.$_GET['user_name'].' ha appena comprato il suo paese',
-               ''.$_GET['user_name'].' scopre una cura per il cancro',
-               ''.$_GET['user_name'].' previene un&#39;invasione aliena',
-               ''.$_GET['user_name'].' fa pace nel mondo');
+           $message_1 = array(''.urldecode($_GET['user_name']).' è stato eletto Presidente del suo paese con il 96,9% dei voti', ''.urldecode($_GET['user_name']).' è stata eletta la donna più bella dell&#39;universo',
+           ''.urldecode($_GET['user_name']).' diventa la seconda fortuna mondiale dietro Bill Gates',
+               ''.urldecode($_GET['user_name']).' ha appena comprato il suo paese',
+               ''.urldecode($_GET['user_name']).' scopre una cura per il cancro',
+               ''.urldecode($_GET['user_name']).' previene un&#39;invasione aliena',
+               ''.urldecode($_GET['user_name']).' fa pace nel mondo');
  
             }
 $max_key = 5; $key = mt_rand(0,$max_key);    
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1518111094.png" id="back"> 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <div class="" id="message" ><?php echo $message_1[$key] ?></div>
 
 

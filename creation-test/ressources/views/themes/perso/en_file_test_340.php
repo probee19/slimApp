@@ -95,7 +95,7 @@
 <div id="back_layer" style="background:<?=$couleurs[$ind]?>"></div>
 <div class="texte" id="head"> </div>
 <div class="texte" id="head_text">Here\'s how people feel in your presence</div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 
 <div class="texte" id="sentiment"><?=$sentiments[$ind]?> </div>
 

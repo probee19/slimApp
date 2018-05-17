@@ -83,7 +83,7 @@
                 shuffle($aime); shuffle($couleur); shuffle($force); shuffle($deteste); shuffle($personnalite); shuffle($tondefaut);
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508763145.png" id="background"> 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <div id="aime"><span class="titre_rubrique">تحب</span><div class="result"><?php echo $nature[0] ?><?php echo $aime[0] ?></div></div>
 <div id="couleur"><span class="titre_rubrique">اللون</span><div class="result" style="font-size:30px"><?php echo $couleur[0] ?></div></div>
 <div id="force"><span class="titre_rubrique">قوتك</span><div class="result"><?php echo $force[0] ?> </div></div>

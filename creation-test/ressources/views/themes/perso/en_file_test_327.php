@@ -86,7 +86,7 @@
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1524487058.png" id="back"> 
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
  
 <div class="texte bloc" id="bloc1"><span class="title">Color</span><span class="body"><?=ucfirst($couleurs[0])?></span></div>
 <div class="texte bloc" id="bloc2"><span class="title">You like</span><span class="body"><?=$aimes[0]?></span></div>

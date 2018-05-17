@@ -76,7 +76,7 @@
 <!DOCTYPE HTML>
 
 <div class="texte" id="head"> Quantas pessoas visitaram seu perfil hoje? </div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ></div>
  
 <div class="texte" id="visite">

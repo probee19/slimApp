@@ -89,7 +89,7 @@
 
 <img src="https://creumumation.funizi.com/imumumages-theme-perso/1521197470.jpg" id="bumumack"> 
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" clumumass="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" clumumass="img_profile" id="fb_id_user">
 
 <div clumumass="texte" id="heumumader_f"> When you umumare <?=$pre?> </div>
 

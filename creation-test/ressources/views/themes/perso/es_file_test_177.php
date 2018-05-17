@@ -84,7 +84,7 @@
 <div style="position:absolute;width:80px; height:60px; width:480px; border-radius:10px; background:#EEEEEE; top:20px; left:130px; font-size:20px; font-weight:bold; padding:10px;"><?php echo $message_1[$key]; ?>
 <div style="position:absolute; bottom:5px; left:10px; font-size:15px; color:#666">17:20</div>
 </div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user" style=" top:120px; right:30px;">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user" style=" top:120px; right:30px;">
 
 <div style="position:absolute;width:80px;  height:60px; width:480px; border-radius:10px; background:#2693FF; top:120px; right:130px; font-size:20px; font-weight:bold; padding:10px; text-align:right; color:#FFF"><?php echo $message_2[$key]; ?>
 <div style="position:absolute; bottom:5px; right:10px; font-size:15px;">17:21</div>
@@ -92,7 +92,7 @@
 <div style="position:absolute;width:80px; height:80px; border-radius:100px; background:#000; top:220px; left:30px;"><img src="<?php echo  $img_ex; ?>" id="ex"> </div></div>
 <div style="position:absolute;width:80px;  height:60px; width:480px; border-radius:10px; background:#EEEEEE; top:220px; left:130px; font-size:20px; font-weight:bold; padding:10px;"><?php echo $message_3[$key]; ?>
 <div style="position:absolute; bottom:5px; left:10px; font-size:15px; color:#666">17:21</div></div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user" style=" top:320px; right:30px;">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user" style=" top:320px; right:30px;">
 <div style="position:absolute;width:80px;  height:60px; width:480px; border-radius:10px; background:#2693FF; top:320px; right:130px; font-size:20px; font-weight:bold; padding:10px; text-align:right; color:#FFF"><?php echo $message_4[$key]; ?>
 <div style="position:absolute; bottom:5px; right:10px; font-size:15px;">17:23</div></div>
 

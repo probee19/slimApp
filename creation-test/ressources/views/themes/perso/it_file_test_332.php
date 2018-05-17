@@ -80,10 +80,10 @@
 ?>
 <!DOCTYPE HTML>
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
 <div class="mask"></div>
 
-<div class="texte" id="header"><?php echo $_GET['user_name']; ?>, in base alla nostra analisi approfondita, la qualità che ti descrive meglio è:</div>
+<div class="texte" id="header"><?php echo urldecode($_GET['user_name']); ?>, in base alla nostra analisi approfondita, la qualità che ti descrive meglio è:</div>
 
 <div class="texte" id="quality"><?=$qualites[0]?></div>
 

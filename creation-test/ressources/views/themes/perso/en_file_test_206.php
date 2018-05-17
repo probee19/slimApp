@@ -72,11 +72,11 @@
 <img src="http://creation.funizi.com/images-theme-perso/1510169321.png" id="back"> 
 <div style=" position:absolute; width:800px; top:80px; text-align:center; z-index:2; font-size:30px; font-weight:bold"><?php echo $texte[0]; ?></div>
 <div style=" position:absolute; width:800px; top:115px; text-align:center; z-index:2; font-size:20px; font-weight:bold; color:#0C6CFF">Today</div>
-<div style=" position:absolute; width:800px; top:140px; text-align:center; z-index:2; font-size:20px; font-weight:bold; color:#999"><?php echo $_GET['full_user_name']; ?></div>
+<div style=" position:absolute; width:800px; top:140px; text-align:center; z-index:2; font-size:20px; font-weight:bold; color:#999"><?php echo urldecode($_GET['full_user_name']); ?></div>
 
 <div style=" position:absolute; width:800px; top:295px; text-align:center; z-index:2; font-size:30px; font-weight:bold"><?php echo $texte1[0]; ?></div>
 <div style=" position:absolute; width:800px; top:330px; text-align:center; z-index:2; font-size:20px; font-weight:bold; color:#0C6CFF">In 6 months</div>
-<div style=" position:absolute; width:800px; top:355px; text-align:center; z-index:2; font-size:20px; font-weight:bold; color:#999"><?php echo $_GET['full_user_name']; ?></div>
+<div style=" position:absolute; width:800px; top:355px; text-align:center; z-index:2; font-size:20px; font-weight:bold; color:#999"><?php echo urldecode($_GET['full_user_name']); ?></div>
 
 
         </div>

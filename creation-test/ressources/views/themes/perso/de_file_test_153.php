@@ -76,13 +76,13 @@
 
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-                      $recherche = array('Warum tut '.$_GET['User_name'].' Lache niemals über meine Ohrfeigen?','Warum ist '.$_GET['Benutzername'].' Schöner als ich?'
+                      $recherche = array('Warum tut '.urldecode($_GET['user_name']).' Lache niemals über meine Ohrfeigen?','Warum ist '.$_GET['Benutzername'].' Schöner als ich?'
                 ,'Warum ist '.$_GET['Benutzername'].' So reich?','Warum '.$_GET['Benutzername'].' Ist das schlaueste?'
                 ,'Warum '.$_GET['Benutzername'].' Ist so majestätisch?','Warum hat '.$_GET['Benutzername'].' Treffen Sie Präsident Obama?'
                 ,'Warum '.$_GET['Benutzername'].' Ist so glücklich?');
                 }
             else{ 
-                $recherche = array('Warum tut '.$_GET['User_name'].' Lache niemals über meine Witze?','Warum ist '.$_GET['Benutzername'].' Schöner als ich?'
+                $recherche = array('Warum tut '.urldecode($_GET['user_name']).' Lache niemals über meine Witze?','Warum ist '.$_GET['Benutzername'].' Schöner als ich?'
                 ,'Warum tut '.$_GET['Benutzername'].' Haben Sie so viel Unterricht?','Warum '.$_GET['Benutzername'].' Ist das schlaueste?'
                 ,'Warum '.$_GET['Benutzername'].' Ist so majestätisch?','Warum hat '.$_GET['Benutzername'].' Treffen Sie Michelle Obama?'
                 ,'Warum '.$_GET['Benutzername'].' Ist so glücklich?');
@@ -93,9 +93,9 @@
                 shuffle($recherche);
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508544962.png" id="background"> 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
-<div  id="zone_search" >Warum <?php echo $_GET['user_name']; ?> ist ...</div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<div  id="zone_search" >Warum <?php echo urldecode($_GET['user_name']); ?> ist ...</div>
 <div  id="result1" ><?php echo $recherche[0] ?></div>
 <div  id="result2" ><?php echo $recherche[1] ?></div>
 <div  id="result3" ><?php echo $recherche[2] ?></div>

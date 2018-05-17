@@ -66,7 +66,7 @@
           <div class='main'>
       
 <img src="https://res.cloudinary.com/funizi/image/facebook/e_ordered_dither:0/e_cartoonify/<?php echo $_GET['fb_id_user']; ?>.jpg" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
  
 
         </div>

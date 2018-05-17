@@ -74,7 +74,7 @@ shuffle($expression);
 &lt;img src=&quot;http://creation.funizi.com/images-theme-perso/1508498520.png&quot; id='background'&gt; 
 &lt;div id='titre_test'&gt;Quelle expression Camerounaise te correspond le mieux ?&lt;/div&gt; 
 &lt;img src='https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&amp;height=275'class='img_profile' id='fb_id_user'&gt; 
-&lt;div class='name texte' id='name_user' &gt;&lt;span&gt;<?php echo $_GET['user_name']; ?>&lt;/span&gt;&lt;/div&gt; 
+&lt;div class='name texte' id='name_user' &gt;&lt;span&gt;<?php echo urldecode($_GET['user_name']); ?>&lt;/span&gt;&lt;/div&gt; 
 &lt;div id='resultat' &gt;&lt;?php echo $expression[0]; ?&gt; &lt;/div&gt;
 
         </div>

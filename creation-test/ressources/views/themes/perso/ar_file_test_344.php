@@ -78,7 +78,7 @@
           shuffle($textes);
 ?>
 <!DOCTYPE HTML>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
 <div class="back" id="back_blue" ><span class="res" id="qualite1"><?=$textes[0]?></span></div>
 <div class="back" id="back_orange" ><span class="res" id="qualite2"><?=$textes[1]?></span></div>
 <div class="back" id="back_red" ><span class="res" id="qualite3"><?=$textes[2]?></span></div>

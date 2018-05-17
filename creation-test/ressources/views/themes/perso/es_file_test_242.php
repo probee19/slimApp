@@ -98,27 +98,27 @@
                     $adject = "DESAPARECIDO";
 ?>
 <!DOCTYPE HTML>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <div class="name" id="name_user" ><?php echo $adject; ?></div>
 <div id="background_white_left"></div>
 <div id="background_white_right"></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile img_profile_friend" id="fb_id_friend_1">
-<div class="texte" id="texte1"> <?php echo $_GET['friend_name_1']; ?> <?php echo $actions[0];?> </div>
+<div class="texte" id="texte1"> <?php echo urldecode($_GET['friend_name_1']); ?> <?php echo $actions[0];?> </div>
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275" class="img_profile img_profile_friend" id="fb_id_friend_2">
-<div class="texte" id="texte2"> <?php echo $_GET['friend_name_2']; ?> <?php echo $actions[1];?> </div>
+<div class="texte" id="texte2"> <?php echo urldecode($_GET['friend_name_2']); ?> <?php echo $actions[1];?> </div>
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_3']; ?>/picture/?width=275&height=275" class="img_profile img_profile_friend" id="fb_id_friend_3">
-<div class="texte" id="texte3"> <?php echo $_GET['friend_name_3']; ?> <?php echo $actions[2];?> </div>
+<div class="texte" id="texte3"> <?php echo urldecode($_GET['friend_name_3']); ?> <?php echo $actions[2];?> </div>
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_4']; ?>/picture/?width=275&height=275" class="img_profile img_profile_friend" id="fb_id_friend_4">
-<div class="texte" id="texte4"> <?php echo $_GET['friend_name_4']; ?> <?php echo $actions[3];?> </div>
+<div class="texte" id="texte4"> <?php echo urldecode($_GET['friend_name_4']); ?> <?php echo $actions[3];?> </div>
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_5']; ?>/picture/?width=275&height=275" class="img_profile img_profile_friend" id="fb_id_friend_5">
-<div class="texte" id="texte5"> <?php echo $_GET['friend_name_5']; ?> <?php echo $actions[4];?> </div>
+<div class="texte" id="texte5"> <?php echo urldecode($_GET['friend_name_5']); ?> <?php echo $actions[4];?> </div>
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_6']; ?>/picture/?width=275&height=275" class="img_profile img_profile_friend" id="fb_id_friend_6">
-<div class="texte" id="texte6"> <?php echo $_GET['friend_name_6']; ?> <?php echo $actions[5];?> </div>
+<div class="texte" id="texte6"> <?php echo urldecode($_GET['friend_name_6']); ?> <?php echo $actions[5];?> </div>
 
 
         </div>

@@ -71,7 +71,7 @@
           <div class='main'>
       
 <?php     
-          $nom = $_GET['full_user_name'];
+          $nom = urldecode($_GET['full_user_name']);
           $chaine = trim($nom);
           $chaine = str_replace("###antiSlashe###t", " ", $chaine);
           $chaine = eregi_replace("[ ]+", " ", $chaine);

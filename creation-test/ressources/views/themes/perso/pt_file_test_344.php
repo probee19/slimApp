@@ -72,13 +72,13 @@
           <div class='main'>
       
 <?php
-          $textes = array(''.$_GET['user_name'].' sempre dá conselhos.',''.$_GET['user_name'].' mostra seu amor a todos.',''.$_GET['user_name'].' ama incondicionalmente.',''.$_GET['user_name'].' faria qualquer coisa por sua família.',
-          ''.$_GET['user_name'].' é sempre um modelo para os outros.',''.$_GET['user_name'].' iria para o fim do mundo com seus amigos.',''.$_GET['user_name'].' espalha alegria e felicidade',''.$_GET['user_name'].' nunca desista.',
-          ''.$_GET['user_name'].' é sempre corajoso.',''.$_GET['user_name'].' ainda é otimista.',''.$_GET['user_name'].' sabe como perdoar.',''.$_GET['user_name'].' nunca irá enganar seus amigos.');
+          $textes = array(''.urldecode($_GET['user_name']).' sempre dá conselhos.',''.urldecode($_GET['user_name']).' mostra seu amor a todos.',''.urldecode($_GET['user_name']).' ama incondicionalmente.',''.urldecode($_GET['user_name']).' faria qualquer coisa por sua família.',
+          ''.urldecode($_GET['user_name']).' é sempre um modelo para os outros.',''.urldecode($_GET['user_name']).' iria para o fim do mundo com seus amigos.',''.urldecode($_GET['user_name']).' espalha alegria e felicidade',''.urldecode($_GET['user_name']).' nunca desista.',
+          ''.urldecode($_GET['user_name']).' é sempre corajoso.',''.urldecode($_GET['user_name']).' ainda é otimista.',''.urldecode($_GET['user_name']).' sabe como perdoar.',''.urldecode($_GET['user_name']).' nunca irá enganar seus amigos.');
           shuffle($textes);
 ?>
 <!DOCTYPE HTML>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
 <div class="back" id="back_blue" ><span class="res" id="qualite1"><?=$textes[0]?></span></div>
 <div class="back" id="back_orange" ><span class="res" id="qualite2"><?=$textes[1]?></span></div>
 <div class="back" id="back_red" ><span class="res" id="qualite3"><?=$textes[2]?></span></div>

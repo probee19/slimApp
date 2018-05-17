@@ -74,7 +74,7 @@
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509119642.jpg" id="bacground"> 
 <img src="http://creation.funizi.com/images-theme-perso/1509121676.jpg" id="top_image"> 
-<div id='titre'><span style="font-size:40px;"><?php echo $_GET['user_name']; ?>,</span><br>ستملك <br><?php echo $nb_enfants;?> الأطفال)</div>
+<div id='titre'><span style="font-size:40px;"><?php echo urldecode($_GET['user_name']); ?>,</span><br>ستملك <br><?php echo $nb_enfants;?> الأطفال)</div>
 <div id='boys'><?php echo $garcon ?>أولاد)</div>
 <div id='girls'><?php echo $fille?> ابنة (ابنة)</div>
 

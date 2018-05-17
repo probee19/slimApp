@@ -75,17 +75,17 @@ $texte = array("فقط يقول أشياء مثيرة للاهتمام","هو ر
  shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509234528.jpg" id="background"> 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ></div>
-<div id="titretest" >لماذا هو <?php echo $_GET['user_name']; ?> امرأة مثالية؟</div>
+<div id="titretest" >لماذا هو <?php echo urldecode($_GET['user_name']); ?> امرأة مثالية؟</div>
 <div class="name texte" id="name_user" ></div>
 
 <ul class='liste_reponse'>
-<li> <?php echo $_GET['user_name']; ?> <?php echo $texte[0]; ?> </li> 
-<li><?php echo $_GET['user_name']; ?> <?php echo $texte[1]; ?> </li> 
-<li><?php echo $_GET['user_name']; ?> <?php echo $texte[2]; ?> </li> 
-<li><?php echo $_GET['user_name']; ?> <?php echo $texte[3]; ?> </li> 
-<li><?php echo $_GET['user_name']; ?> <?php echo $texte[4]; ?> </li> 
+<li> <?php echo urldecode($_GET['user_name']); ?> <?php echo $texte[0]; ?> </li> 
+<li><?php echo urldecode($_GET['user_name']); ?> <?php echo $texte[1]; ?> </li> 
+<li><?php echo urldecode($_GET['user_name']); ?> <?php echo $texte[2]; ?> </li> 
+<li><?php echo urldecode($_GET['user_name']); ?> <?php echo $texte[3]; ?> </li> 
+<li><?php echo urldecode($_GET['user_name']); ?> <?php echo $texte[4]; ?> </li> 
 </ul>
 
 
