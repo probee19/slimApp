@@ -105,12 +105,12 @@ RewriteCond %{HTTP:X-Forwarded-Proto} =http
 RewriteRule (.*) https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
 
 
-<<<<<<< HEAD
-=======
+#<<<<<<< HEAD
+#=======
 RewriteCond %{HTTP_HOST} ^(www\.)?creation.funizi\.com.*$
 RewriteRule (.*) creation-test/$1 [L]
 
->>>>>>> b5a60b7a7251fa44aa09c5fc1dc34798194fed7a
+#>>>>>>> b5a60b7a7251fa44aa09c5fc1dc34798194fed7a
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
