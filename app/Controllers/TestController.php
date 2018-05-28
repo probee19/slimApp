@@ -54,14 +54,23 @@ class TestController extends Controller
         $all_test = $sandbox->relatedTests($country_code, $exclude, $lang);
         // For Facebook connect
         $helper = $this->fb->getRedirectLoginHelper();
+        $pdata = $helper->getPersistentDataHandler();
+        $state = [
+          "id"          => $id,
+          "permission"  => $permission
+        ];
+
+        $state = json_encode($state);
+        $pdata->set('state', $state);
+
         if($permission == 1){
             $permissions = ['user_friends','user_posts','user_photos'];
-            $loginUrl  = $helper->getReRequestUrl($baseDomain .'/connect_user2?id='.$id.'&permission='.$permission, $permissions);
-            $loginUrl2 = $helper->getReRequestUrl($baseDomain .'/connect_user_test?id='.$id.'&permission='.$permission, $permissions);
+            $loginUrl  = $helper->getReRequestUrl($baseDomain .'/connect_user2', $permissions);
+            $loginUrl2 = $helper->getReRequestUrl($baseDomain .'/connect_user_test', $permissions);
         }else
         {
             $permissions = ['public_profile'];
-            $loginUrl = $helper->getLoginUrl($baseDomain .'/connect_user2?id='.$id.'&permission='.$permission, $permissions);
+            $loginUrl = $helper->getLoginUrl($baseDomain .'/connect_user2', $permissions);
         }// Optional permissions
         $id_user = 0;
         if(isset($_SESSION['uid']))

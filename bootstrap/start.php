@@ -177,7 +177,7 @@ $container['grabzit'] = function ($container) {
     return new GrabzItClient(GZIT_KEY, GZIT_SECRET);
 };
 $container['helper'] = function ($container){
-    return new Helper();
+    return new Helper($container);
 };
 $container['notFoundHandler'] = function($container)
 {
