@@ -70,15 +70,15 @@
           <div class='main'>
       
 <?php
-$motifs = array('wanted to break through the mysteries of the beauty of '.$_GET['user_name'].' ','revealed too many secrets to '.$_GET['user_name'].' ','Jealousy towards the elegance of '.$_GET['user_name'].'  ','Jealousy towards the popularity of '.$_GET['user_name'].' ','Jealousy towards the beauty of '.$_GET['user_name'].' ','Jealousy towards the charism of '.$_GET['user_name'].' ');
+$motifs = array('wanted to break through the mysteries of the beauty of '.urldecode($_GET['user_name']).' ','revealed too many secrets to '.urldecode($_GET['user_name']).' ','Jealousy towards the elegance of '.urldecode($_GET['user_name']).'  ','Jealousy towards the popularity of '.urldecode($_GET['user_name']).' ','Jealousy towards the beauty of '.urldecode($_GET['user_name']).' ','Jealousy towards the charism of '.urldecode($_GET['user_name']).' ');
 shuffle($motifs);
 
 ?>
 <div class="texte" id="texte_top">Wanted poster </div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
 <div class="name texte" id="name_friend_1" ></div>
-<div class="texte" id="phrase_1"> <?php echo $_GET['friend_first_name_1']; ?> removed <?php echo $_GET['user_name']; ?> </div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div class="texte" id="phrase_1"> <?php echo urldecode($_GET['friend_first_name_1']); ?> removed <?php echo urldecode($_GET['user_name']); ?> </div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <div class="texte" id="motif"> Reason: <?php echo $motifs[0]; ?> </div>
 
 

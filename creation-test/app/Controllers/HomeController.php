@@ -1,14 +1,13 @@
 <?php
 
-
 namespace App\Controllers;
-
 
 use App\Helpers\DBIP;
 use App\Helpers\Helper;
 use App\Controllers\LoadStatsController;
 use App\Models\Admin;
 use App\Models\TestOwner;
+use App\Models\TestInfo;
 use App\Models\Test;
 use App\Models\User;
 use App\Models\UserTest;
@@ -21,9 +20,9 @@ class HomeController extends Controller
 {
   public function index($request, $response, $arg){
     //$list_countries = array();
-    /*if(!isset($_COOKIE['id_user'])){
+    if(!isset($_COOKIE['id_user'])){
         return $this->view->render($response, 'login.twig');
-    }*/
+    }
 
     $tests = Test::where('statut', 1)->get();
     $countries = Countries::selectRaw('alpha2, langFR')
@@ -91,75 +90,110 @@ class HomeController extends Controller
           }
       }
       $disconnected = true;
-      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
+      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com/" );
   }
 
 
   public function chunk($request, $response, $args){
-    //Helper::setFileTest();
-    //Helper::setHighlightsJSON();
-    $photos = $this->helper->getPhotosProfile();
-    //Helper::UpdateTranslationTest();
-    //Helper::debug($data_line_chart);
-    //exit;
-    exit;
 
-    return $this->view->render($response, 'chunk.twig', compact('photos'));
+      $url_api_cmf = 'https://api.cmfapp.co.uk/api2/';
+      $url_img = 'https://scontent.fdkr1-1.fna.fbcdn.net/v/t1.0-9/10433155_802047553146370_3916300256747549866_n.jpg?_nc_cat=0&oh=83558d7c92123337f7b094e310a162be&oe=5B6CC8EA';
+
+      $temp_file = "./uploads/output".time().".jpg";
+      // Dowloading img in a temp folder
+      file_put_contents($temp_file, file_get_contents($url_img));
+
+      // Create a CURLFile object
+      $cfile = new \CURLFile($temp_file, 'image/jpeg', 'image');
+      //Helper::debug($cfile);
+
+      // Assign POST data
+      $data = array(
+        "action"      => "upload_image",
+        "api_key"     => "4Y8QUjSW1gKu05KxUpNq2N25faD85WRN",
+        'image'       => $cfile
+      );
+
+      $response_cmf = self::curlCmf($url_api_cmf, $data);
+      $session_id = $response_cmf->session_id;
+
+      Helper::debug($response_cmf);
+
+      //
+      $data = array(
+          "action"                => "apply_effects",
+          "api_key"               => "4Y8QUjSW1gKu05KxUpNq2N25faD85WRN",
+          "session_id"            => $session_id,
+          "effects[effect_id]"    => 100,
+          "effects[age]"          => 80,
+          "effects[dont_cache]"   => true
+      );
+      //Helper::debug($data);
+      $response_cmf_final = self::curlCmf($url_api_cmf, $data);
+
+      Helper::debug($response_cmf_final->data->effect_results[0]->output_file);
+
 
 
   }
-
-
-  public function updateUrlImgProfile($request, $response, $arg)
+  public static function curlCmf($url_api, $data)
   {
-
-      $tests = Test::where([['id_theme','=','4']])->orderBy('id_test','DESC')->get();
-      Helper::debug(count($tests));
-
-      $langs = Language::where('status','=',1)->get();
-      $nb_done = 0;
-
-      foreach ($tests as $test) {
-        Helper::debug($test->titre_test);
-
-        foreach ($langs as $lang) {
-          $test_infos = TestInfo::where([['id_test','=',$test->id_test],['lang','=',$lang->code]])->get();
-
-          foreach ($test_infos as $test_info) {
-            Helper::debug($test_info->lang);
+      $curl = curl_init($url_api);
+      curl_setopt($curl, CURLOPT_POST,1);
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+      $resp = curl_exec($curl);
+      curl_close($curl);
+      return json_decode($resp);
+  }
 
 
-              $file = "ressources/views/themes/perso/".$test_info->lang."_file_test_".$test->id_test.".php";
-          	  $content_file = file_get_contents($file);
-              $this->helper->debugg($file);
+  public function updateVarTestFile($request, $response, $arg)
+  {
+    $test_id = 2;
 
-              $texte = "Le test ". $test->id_test ." a été mis à jour pour le ". $test_info->lang;
+    $tests = Test::where([['id_theme','=','4'],['id_test','=','207']])->orderBy('id_test','DESC')->get();
+    Helper::debug(count($tests));
 
-              if($file){
-                Helper::debug($texte);
+    $langs = Language::where('status','=',1)->get();
+    $nb_done = 0;
 
-                $old_url_1 = "http://creation.funizi.com";
-                $new_url = "https://funizi.com/creation-test/";
-                $content_file = str_replace($old_url_1, $new_url, $content_file);
+    foreach ($tests as $test) {
+      Helper::debug($test->titre_test);
 
-                $url_temp_file_php = 'ressources/views/themes/perso/'.$test_info->lang.'_file_test_'.$test->id_test;
-                $temp_file_php = fopen($url_temp_file_php.".php", "w+");
-                if($temp_file_php==false)
-                die("La création du fichier a échoué");
+      foreach ($langs as $lang) {
+        $test_infos = TestInfo::where([['id_test','=',$test->id_test],['lang','=',$lang->code]])->get();
+        foreach ($test_infos as $test_info) {
+          Helper::debug($test_info->lang);
 
-                fputs($temp_file_php, $content_file);
+            $file = "ressources/views/themes/perso/".$test_info->lang."_file_test_".$test->id_test.".php";
+        	  $content_file = file_get_contents($file);
 
+            $texte = "Le test ". $test->id_test ." a été mis à jour pour le ". $test_info->lang;
 
-                $nb_done++;
+            if($file){
+              Helper::debug($texte);
+              $old_var_1 = '';
+              $content_file = str_replace('$_GET[', 'urldecode($_GET[', $content_file);
+              $content_file = str_replace('];', ']);', $content_file);
 
-              }
+              $url_temp_file_php = 'ressources/views/themes/perso/'.$test_info->lang.'_file_test_'.$test->id_test;
+              $temp_file_php = fopen($url_temp_file_php.".php", "w+");
+              if($temp_file_php==false)
+              die("La création du fichier a échoué");
 
-          }
+              fputs($temp_file_php, $content_file);
+
+              Helper::debug($content_file);
+              $nb_done++;
+
+            }
+
         }
       }
-      Helper::debug($nb_done);
+    }
+    Helper::debug($nb_done);
 
-      exit;
-
+    exit;
   }
 }

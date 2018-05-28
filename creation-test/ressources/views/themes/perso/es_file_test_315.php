@@ -89,7 +89,7 @@
 
 <img src="https://creuntion.funizi.com/imunges-theme-perso/1521197470.jpg" id="bunck"> 
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" clunss="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" clunss="img_profile" id="fb_id_user">
 
 <div clunss="texte" id="heunder_f"> When you unre <?=$pre?> </div>
 

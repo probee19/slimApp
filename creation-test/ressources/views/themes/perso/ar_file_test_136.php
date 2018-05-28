@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              
+
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -25,7 +25,7 @@
             #then_name{position: absolute; width: 400px; height: 50px; left:400px; top:50px; color:#FFFFFF; text-align:center; font-size:1.8em; font-weight:bold;}
             #fb_id_user{position: absolute; z-index:1; width:300px ; border-radius:10px; top:100px;left:50px;}
             #result_image{position: absolute; z-index:1; width:300px ; border-radius:10px; top:100px;right:50px;}
-        
+
               </style>
               <script src='../../../src/js/jquery.js'></script>
               <script>
@@ -65,7 +65,7 @@
           </head>
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
-      
+
 <!DOCTYPE HTML>
 
 <?php
@@ -73,22 +73,21 @@
             {
                $result_image = array('http://creation.funizi.com/images-theme-perso/1508431072.jpg','http://creation.funizi.com/images-theme-perso/1508431170.jpg','http://creation.funizi.com/images-theme-perso/1508431189.jpg','http://creation.funizi.com/images-theme-perso/1508860694.jpg');
      }
-            else{ 
+            else{
               $result_image = array('http://creation.funizi.com/images-theme-perso/1508860173.jpg','http://creation.funizi.com/images-theme-perso/1508860292.jpg','http://creation.funizi.com/images-theme-perso/1508860509.jpg');
 
             }
- 
+
   shuffle($result_image);
 ?>
 <div id="" style="witdh:800px; Height:420px; background:#000"></div>
-<div id="الآن_name"><?php echo $_GET['user_name']; ?> الآن</div>
-<div id="then_name"><?php echo $_GET['user_name']; ?> في عام 2023</div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div id="الآن_name"><?php echo urldecode($_GET['user_name']); ?> الآن</div>
+<div id="then_name"><?php echo urldecode($_GET['user_name']); ?> في عام 2023</div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <img src="<?php echo $result_image[0]; ?>" id="result_image">
 
 
         </div>
-        
+
         </body>
         </html>
-      

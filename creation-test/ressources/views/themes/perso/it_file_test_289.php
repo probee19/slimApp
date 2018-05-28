@@ -83,7 +83,7 @@ shuffle($expression);
 <img src="http://creation.funizi.com/images-theme-perso/1519685557.png" id="background"> 
 <div id="titre_test">Quelle expression Lingala te correspond le mieux ?</div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><span><?php echo $_GET['user_name']; ?></span></div>
+<div class="name texte" id="name_user" ><span><?php echo urldecode($_GET['user_name']); ?></span></div>
 <div id="resultat" ><?php echo $expression[0]; ?> </div>
 
 

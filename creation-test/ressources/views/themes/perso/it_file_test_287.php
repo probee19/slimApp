@@ -86,7 +86,7 @@
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
 
 <div class="texte" id="force">  
-          <div  id="force_1"> La forza principale di <?php echo $_GET['user_name']; ?> è</div>
+          <div  id="force_1"> La forza principale di <?php echo urldecode($_GET['user_name']); ?> è</div>
           <div  id="force_2"> <?= $forces[0];?>  </div>
 </div>
 

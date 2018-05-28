@@ -81,8 +81,8 @@
 
 <img src="http://creation.funizi.com/images-theme-perso/1513874780.jpg" id="background"> 
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div id="texte_surprise" >Durant l&#39;année 2018, <?php echo $_GET['user_name']; ?> <?php echo $surprises[$index]; ?></div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div id="texte_surprise" >Durant l&#39;année 2018, <?php echo urldecode($_GET['user_name']); ?> <?php echo $surprises[$index]; ?></div>
 
 <img src="http://creation.funizi.com/images-theme-perso/<?php echo $images[$index]; ?>" id="surprise"> 
 

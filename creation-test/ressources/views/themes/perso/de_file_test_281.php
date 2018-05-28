@@ -81,7 +81,7 @@
           shuffle($phrases);
 ?>
 <!DOCTYPE HTML>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <img src="http://creation.funizi.com/images-theme-perso/1518796079.png" id="backg"> 
 
 <div class="texte" id="head_temp"> Was sagt dein chinesischer Keks?</div>

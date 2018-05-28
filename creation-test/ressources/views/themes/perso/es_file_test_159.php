@@ -75,16 +75,16 @@ $date = array('22 de diciembre a las 22:53','11 de marzo a las 8:03 p.m.','13 de
 $max_key = 1; $key = mt_rand(0,$max_key); setlocale(LC_ALL, 'fr_FR'); $min_1 = mt_rand(10,32); $min_2 = $min_1 + 11; $min_3 = $min_1 + 17;
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508635181.png" id="background"> 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['full_user_name']; ?></div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['full_user_name']); ?></div>
 <div class="" id="date" style="position:absolute; z-index:2; left: 150px; top: 40px;font-size:15px; color:#999"  ><?php echo $date[0]; ?></div>
 <div  id="statut"><?php echo $message_1[$key]; ?></div>
-<div  id="like">Toi, <?php echo substr($_GET['friend_name_1'], 0, strpos($_GET['friend_name_1'], ' ')); ?>, <?php echo substr($_GET['friend_name_2'], 0, strpos($_GET['friend_name_2'], ' ')); ?>  et 364 autres</div>
+<div  id="like">Toi, <?php echo substr(urldecode($_GET['friend_name_1']), 0, strpos(urldecode($_GET['friend_name_1']), ' ')); ?>, <?php echo substr(urldecode($_GET['friend_name_2']), 0, strpos(urldecode($_GET['friend_name_2']), ' ')); ?>  et 364 autres</div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_3']; ?>/picture/?width=275&height=275" class="img_profile" style="position:absolute; left:86px; top:237px; z-index:1; width:48px">
-<div style="position:absolute; left:146px; top:242px; z-index:2; width:48px; color:#425B9B; font-size:17px; width:300px;"><?php echo $_GET['friend_name_3']; ?></div>
+<div style="position:absolute; left:146px; top:242px; z-index:2; width:48px; color:#425B9B; font-size:17px; width:300px;"><?php echo urldecode($_GET['friend_name_3']); ?></div>
 <div  style="position:absolute; left:146px; top:262px; z-index:2; width:48px; color:#000; font-size:16px; width:450px;" id="comment1"><?php echo $message_2[$key]; ?></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_4']; ?>/picture/?width=275&height=275" class="img_profile" style="position:absolute; left:86px; top:318px; z-index:1; width:48px">
-<div style="position:absolute; left:146px; top:323px; z-index:2; width:48px; color:#425B9B; font-size:17px; width:200px;"><?php echo $_GET['friend_name_4']; ?></div>
+<div style="position:absolute; left:146px; top:323px; z-index:2; width:48px; color:#425B9B; font-size:17px; width:200px;"><?php echo urldecode($_GET['friend_name_4']); ?></div>
 <div  style="position:absolute; left:146px; top:343px; z-index:2; width:48px; color:#000; font-size:16px; width:450px;" id="comment2"> <?php echo $message_3[$key]; ?></div>
 
         </div>

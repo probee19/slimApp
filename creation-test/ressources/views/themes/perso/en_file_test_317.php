@@ -86,7 +86,7 @@
 
 <div class="texte" id="header_t"> What are the two words that best describe your personality? </div>
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 
 <div class="texte" id="mot_1"><?=$mots_1[$ind];?></div>
 <div class="texte" id="mot_2"><?=$mots_2[$ind];?></div>

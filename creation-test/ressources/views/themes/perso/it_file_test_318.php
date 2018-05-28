@@ -90,7 +90,7 @@
 
 <div class="texte" id="header_t_2"> orgogliosamente rilasciato a </div>
 
-<div class="name texte" id="name_user" ><?php echo $_GET['full_user_name']; ?></div>
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['full_user_name']); ?></div>
 
 <div class="texte" id="pour" ><?=$pour[$ind];?></div>
 
@@ -98,9 +98,9 @@
 
 <div class="texte" id="deliv" >Riconoscimento emesso e riconosciuto da:</div>
 
-<div class="name texte" id="friend_1" > <?php echo $_GET['friend_name_1']; ?> </div>
-<div class="name texte" id="friend_2" > <?php echo $_GET['friend_name_2']; ?> </div>
-<div class="name texte" id="friend_3" > <?php echo $_GET['friend_name_3']; ?> </div>
+<div class="name texte" id="friend_1" > <?php echo urldecode($_GET['friend_name_1']); ?> </div>
+<div class="name texte" id="friend_2" > <?php echo urldecode($_GET['friend_name_2']); ?> </div>
+<div class="name texte" id="friend_3" > <?php echo urldecode($_GET['friend_name_3']); ?> </div>
 
 
 

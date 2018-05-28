@@ -71,8 +71,8 @@
  shuffle($message);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1512677052.jpg" id="background"> 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?>, tu es :</div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?>, tu es :</div>
 <div  id="message" ><?php echo $message[0]; ?></div>
 
 

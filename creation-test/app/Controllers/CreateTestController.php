@@ -17,6 +17,8 @@ use App\Models\Rubrique;
 use App\Models\Theme;
 use App\Models\Language;
 use App\Models\ThemePerso;
+use App\Models\AdditionnalInfos;
+use App\Models\TestAdditionnalInfos;
 use Psr7Middlewares\Middleware\ClientIp;
 use GrabzItImageOptions;
 
@@ -26,7 +28,7 @@ class CreateTestController extends Controller
 
     //Helper::checkCookies();
     if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
+      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
     }
     return $this->view->render($response, 'chooseTheme.twig');
 
@@ -36,7 +38,7 @@ class CreateTestController extends Controller
   {
     //Helper::checkCookies();
     if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
+      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
     }
     $theme = $arg['theme'];
     $rubriques = Rubrique::all();
@@ -44,14 +46,16 @@ class CreateTestController extends Controller
     $countries = Countries::all();
     $langs = Language::selectRaw('code, name, fr_name')->where('status',1)->orderByRaw('fr_name')->get();
 
-    return $this->view->render($response, 'createTest.twig', compact('theme','rubriques','countries','langs'));
+    $additionnal_infos = AdditionnalInfos::all();
+
+    return $this->view->render($response, 'createTest.twig', compact('theme', 'rubriques', 'countries', 'langs', 'additionnal_infos'));
   }
 
   public function editTest($request, $response, $arg)
   {
     //Helper::checkCookies();
     if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
+      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
     }
     $id_test = $arg['test'];
 
@@ -77,9 +81,11 @@ class CreateTestController extends Controller
         ->orderByRaw('fr_name')
         ->get();
 
+    $additionnal_infos = AdditionnalInfos::all();
+    $test_additionnal_infos = TestAdditionnalInfos::selectRaw('id_additionnal_info, label')->where([['id_test','=',$id_test],['lang','=',$test->default_lang]])->first();
 
     $themes = Theme::where([['id','!=',3],['id','!=',4]])->get();
-    return $this->view->render($response, 'editTest.twig', compact('test','liste_des_pays','all_resultats','first_resultat','rubriques','countries','themes', 'langs','themePersoInfo'));
+    return $this->view->render($response, 'editTest.twig', compact('test','liste_des_pays','all_resultats','first_resultat','rubriques','countries','themes', 'langs','themePersoInfo','additionnal_infos','test_additionnal_infos'));
   }
 
   public function debugOnFile($data)
@@ -108,6 +114,9 @@ class CreateTestController extends Controller
       $permissions = 0;
       $unique_result = 0;
       $if_translated = 0;
+      $if_additionnal_info = 0;
+      $has_treatment = 0;
+      $test_to_translate = false;
       $statut = 0; $save_done = true;
       $error_message = ''; $target_dir = './images-tests/'; $target_file = ""; $end = false;
       $localite = ""; $id_test = 0;
@@ -132,8 +141,16 @@ class CreateTestController extends Controller
         if(isset($_POST['permissions']))
             $permissions = 1;
 
-        if(isset($_POST['if_translated']))
-            $if_translated = 1;
+        if(isset($_POST['if_translated'])){
+          $test_to_translate = true;
+          $if_translated = 1;
+        }
+
+        if(isset($_POST['add_additionnal_infos_test']))
+            $if_additionnal_info = 1;
+
+        if(isset($_POST['add_img_treatment']))
+            $has_treatment = $_POST['treatments'];
 
         $data_test = [
           "id_test_owner"       =>  $test_owner,
@@ -144,6 +161,8 @@ class CreateTestController extends Controller
           "statut"              =>  $statut,
           "default_lang"        =>  $_POST['default_lang'],
           "if_translated"       =>  $if_translated,
+          "if_additionnal_info" =>  $if_additionnal_info,
+          "has_treatment"       =>  $has_treatment,
           "permissions"         =>  $permissions,
           "unique_result"       =>  $unique_result,
           "date_creation_test"  =>  \date("Y-m-d H:i:s"),
@@ -155,6 +174,7 @@ class CreateTestController extends Controller
           "updated_at"          =>  \date("Y-m-d H:i:s")  # \Datetime()
         ];
 
+
         // Sauvegarde des informations générales du test (titre, rubrique, image, zones sélectionnées)
         $id_test = Test::insertGetId($data_test);
 
@@ -163,6 +183,10 @@ class CreateTestController extends Controller
             // Traduction des informations générales du test dans toutes les langues activées
             //if($_POST['if_translated'] == 1)
               Helper::translateInfoTestAndSave($id_test, $_POST['titre'], $_POST['texte_for_share'], $_POST['default_lang'], $if_translated);
+
+              // Sauvegarde des additions additionnelles du test
+              if(isset($_POST['add_additionnal_infos_test']))
+                self::saveAdditionalInfos($id_test, $_POST['additional_infos'], $_POST['additional_info_label'], $_POST['default_lang'], $_POST['default_lang'], $test_to_translate);
 
             // Enregitrement des résultats
             $nb_resultats = 0; // Nombre de résultats traités
@@ -196,21 +220,19 @@ class CreateTestController extends Controller
             // Enregistrement des informations du test effectué avec succès
             // Mise à jour du nombre de test de la rubrique choisie
             //$update_rubrique = Rubrique::where('id_rubrique',$_POST['rubrique'])->increment('nb_test');
-
           }
          else
           $save_done = false;
       }
-
       if($save_done == true)
           echo $id_test;
-
   }
 
   public function updateTest($request, $response, $arg)
   {
       //Helper::checkCookies();
-      $titre_resultat = ' '; $texte_resultat = ' '; $permissions = 0; $unique_result = 0; $genre = 'all'; $if_translated = 0;
+      $titre_resultat = ' '; $texte_resultat = ' '; $permissions = 0; $unique_result = 0; $genre = 'all'; $if_translated = 0; $has_treatment = 0;
+      $if_additionnal_info = 0; $test_to_translate = false;
     	$id_theme = $_POST['theme']; $error_message = ''; $target_dir = './images-tests/'; $target_file = ""; $end = false;
     	$localite = "";
 
@@ -227,8 +249,16 @@ class CreateTestController extends Controller
   		if(isset($_POST['permissions']))
   			$permissions = 1;
 
-      if(isset($_POST['if_translated']))
-          $if_translated = 1;
+      if(isset($_POST['if_translated'])){
+        $if_translated = 1;
+        $test_to_translate = true;
+      }
+
+      if(isset($_POST['add_additionnal_infos_test']))
+          $if_additionnal_info = 1;
+
+      if(isset($_POST['add_img_treatment']))
+          $has_treatment = $_POST['treatments'];
 
   		//$_POST['titre'] = addslashes($_POST['titre']);
   		$_POST['texte_for_share'] = $_POST['texte_for_share'];
@@ -243,57 +273,68 @@ class CreateTestController extends Controller
   			self::decode($_POST['img_test_base_64'], $uploadPath);
         if($_POST['default_lang'] == $_POST['langs_edit'])
             $new_data = [
-              "titre_test"        =>  $_POST['titre'],
-              "id_rubrique"       =>  $_POST['rubrique'],
-              "url_image_test"    =>  "$uploadPath",
-              "permissions"       =>  $permissions,
-              "unique_result"     =>  $unique_result,
-              "codes_countries"   =>  $localite,
-              "test_description"  =>  $_POST['texte_for_share'],
-              "default_lang"      =>  $_POST['default_lang'],
-              "if_translated"     =>  $if_translated
+              "titre_test"              =>  $_POST['titre'],
+              "id_rubrique"             =>  $_POST['rubrique'],
+              "url_image_test"          =>  "$uploadPath",
+              "permissions"             =>  $permissions,
+              "has_treatment"           =>  $has_treatment,
+              "unique_result"           =>  $unique_result,
+              "codes_countries"         =>  $localite,
+              "test_description"        =>  $_POST['texte_for_share'],
+              "default_lang"            =>  $_POST['default_lang'],
+              "if_translated"           =>  $if_translated,
+              "if_additionnal_info"     =>  $if_additionnal_info
             ];
         else
           $new_data = [
-            "id_rubrique"       =>  $_POST['rubrique'],
-            "url_image_test"    =>  "$uploadPath",
-            "permissions"       =>  $permissions,
-            "unique_result"     =>  $unique_result,
-            "codes_countries"   =>  $localite,
-            "default_lang"      =>  $_POST['default_lang'],
-            "if_translated"     =>  $if_translated
+            "id_rubrique"             =>  $_POST['rubrique'],
+            "url_image_test"          =>  "$uploadPath",
+            "permissions"             =>  $permissions,
+            "has_treatment"           =>  $has_treatment,
+            "unique_result"           =>  $unique_result,
+            "codes_countries"         =>  $localite,
+            "default_lang"            =>  $_POST['default_lang'],
+            "if_translated"           =>  $if_translated,
+            "if_additionnal_info"     =>  $if_additionnal_info
           ];
   		}
   		else
       {
         if($_POST['default_lang'] == $_POST['langs_edit'])
           $new_data = [
-            "titre_test"        =>  $_POST['titre'],
-            "id_rubrique"       =>  intval($_POST['rubrique']),
-            "permissions"       =>  $permissions,
-            "unique_result"     =>  $unique_result,
-            "codes_countries"   =>  $localite,
-            "test_description"  =>  $_POST['texte_for_share'],
-            "default_lang"      =>  $_POST['default_lang'],
-            "if_translated"     =>  $if_translated
+            "titre_test"              =>  $_POST['titre'],
+            "id_rubrique"             =>  intval($_POST['rubrique']),
+            "permissions"             =>  $permissions,
+            "has_treatment"           =>  $has_treatment,
+            "unique_result"           =>  $unique_result,
+            "codes_countries"         =>  $localite,
+            "test_description"        =>  $_POST['texte_for_share'],
+            "default_lang"            =>  $_POST['default_lang'],
+            "if_translated"           =>  $if_translated,
+            "if_additionnal_info"     =>  $if_additionnal_info
           ];
         else
           $new_data = [
-            "id_rubrique"       =>  intval($_POST['rubrique']),
-            "permissions"       =>  $permissions,
-            "unique_result"     =>  $unique_result,
-            "codes_countries"   =>  $localite,
-            "default_lang"      =>  $_POST['default_lang'],
-            "if_translated"     =>  $if_translated
+            "id_rubrique"             =>  intval($_POST['rubrique']),
+            "permissions"             =>  $permissions,
+            "has_treatment"           =>  $has_treatment,
+            "unique_result"           =>  $unique_result,
+            "codes_countries"         =>  $localite,
+            "default_lang"            =>  $_POST['default_lang'],
+            "if_translated"           =>  $if_translated,
+            "if_additionnal_info"     =>  $if_additionnal_info
           ];
       }
 
-
-  		// Mise à jour des informations générales du test
+      // Mise à jour des informations générales du test
       $update_test = Test::where('id_test',$_POST['idTest'])->update($new_data);
 
       //if($_POST['if_translated'] == 1)
-        Helper::translateInfoTestAndSave($_POST['idTest'], $_POST['titre'], $_POST['texte_for_share'], $_POST['default_lang'], $if_translated, $_POST['langs_edit']);
+      Helper::translateInfoTestAndSave($_POST['idTest'], $_POST['titre'], $_POST['texte_for_share'], $_POST['default_lang'], $if_translated, $_POST['langs_edit']);
+
+      // Sauvegarde des additions additionnelles du test
+      if(isset($_POST['add_additionnal_infos_test']))
+        self::saveAdditionalInfos($_POST['idTest'], $_POST['additional_infos'], $_POST['additional_info_label'], $_POST['default_lang'], $_POST['langs_edit'], $test_to_translate, true);
 
   		// Mise à jour des résultats des résultats
   		$nb_resultats = 0; // Nombre de résultats traités
@@ -389,4 +430,104 @@ class CreateTestController extends Controller
 	    file_put_contents($pathname, $code);
 		return true;
 	}
+
+
+  public static function saveAdditionalInfos($test, $info, $label, $default_lang, $lang_to_edit, $to_all_langs, $update = false)
+  {
+      $data_infos = array();
+      $info_info = AdditionnalInfos::where('id','=',$info)->first();
+      //$label = $info_info->label_front;
+      $typeinput = $info_info->typeinput;
+
+      if($update){
+        //$additionnal_infos_test = TestAdditionnalInfos::where('id_test','=',$test);
+
+        if(!$to_all_langs || $default_lang != $lang_to_edit){
+          $data_infos = [
+            'id_additionnal_info'   =>  $info,
+            'label'                 =>  $label,
+            'typeinput'             =>  $typeinput
+          ];
+
+          $req_update = TestAdditionnalInfos::where([['id_test','=',$test],['lang','=',$lang_to_edit]])->update($data_infos);
+
+          if(!$req_update || $req_update == 0)
+             self::saveAdditionalInfos($test, $info, $label, $default_lang, $lang_to_edit, $to_all_langs, false);
+
+        }
+        else {
+            $label_en = Helper::toEn($label, false);
+            $langs = Language::selectRaw('code')->where('status',1)->get();
+            foreach ($langs as $lang) {
+              if($lang->code == $default_lang){
+                $data_infos = [
+                  'id_additionnal_info'   =>  $info,
+                  'label'                 =>  $label,
+                  'typeinput'             =>  $typeinput
+                ];
+              }
+              else {
+                $new_label = addslashes(Helper::GoogleTranslate($lang->code, stripslashes($label_en), "en"));
+                $data_infos = [
+                  'id_additionnal_info'   =>  $info,
+                  'label'                 =>  $new_label,
+                  'typeinput'             =>  $typeinput
+                ];
+              }
+              $req_update = TestAdditionnalInfos::where([['id_test','=',$test],['lang','=',$lang->code]])->update($data_infos);
+
+              if(!$req_update || $req_update == 0)
+                 self::saveAdditionalInfos($test, $info, $data_infos['label'], $default_lang, $lang->code, $to_all_langs, false);
+            }
+        }
+      }
+      else {
+
+        if(!$to_all_langs)
+          $data_infos[] = [
+            'id_test'               =>  $test,
+            'id_additionnal_info'   =>  $info,
+            'label'                 =>  $label,
+            'lang'                  =>  $default_lang,
+            'typeinput'             =>  $typeinput,
+            "created_at"            =>  \date("Y-m-d H:i:s"), # \Datetime()
+            "updated_at"            =>  \date("Y-m-d H:i:s")  # \Datetime()
+          ];
+        else {
+          $label_en = Helper::toEn($label, false);
+          $langs = Language::selectRaw('code')->where('status',1)->get();
+          foreach ($langs as $lang) {
+            if($lang->code == $default_lang){
+              $data_infos[] = [
+                'id_test'               =>  $test,
+                'id_additionnal_info'   =>  $info,
+                'label'                 =>  $label,
+                'lang'                  =>  $default_lang,
+                'typeinput'             =>  $typeinput,
+                "created_at"            =>  \date("Y-m-d H:i:s"), # \Datetime()
+                "updated_at"            =>  \date("Y-m-d H:i:s")  # \Datetime()
+              ];
+            }
+            else {
+              $new_label = addslashes(Helper::GoogleTranslate($lang->code, stripslashes($label_en), "en"));
+              $data_infos[] = [
+                'id_test'               =>  $test,
+                'id_additionnal_info'   =>  $info,
+                'label'                 =>  $new_label,
+                'lang'                  =>  $lang->code,
+                'typeinput'             =>  $typeinput,
+                "created_at"            =>  \date("Y-m-d H:i:s"), # \Datetime()
+                "updated_at"            =>  \date("Y-m-d H:i:s")  # \Datetime()
+              ];
+            }
+          }
+        }
+        TestAdditionnalInfos::insert($data_infos);
+      }
+      //TestAdditionnalInfos::where('id_test','=',$test)->delete();
+
+
+  }
+
+
 }

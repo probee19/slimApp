@@ -87,11 +87,11 @@
  $max_key = 2; $key = mt_rand(0,$max_key);    
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508537456.jpg" id="background"> 
-<div class="name texte" id="position1_name_friend_1" ><?php echo $_GET['friend_name_1']; ?> <span>Agora mesmo</span></div>
+<div class="name texte" id="position1_name_friend_1" ><?php echo urldecode($_GET['friend_name_1']); ?> <span>Agora mesmo</span></div>
 <div  id="message1" ><?php echo $message_1[$key]; ?></div>
-<div class="name texte" id="position2_name_friend_1" ><?php echo $_GET['friend_name_1']; ?> <span>4 minutos atrás</span></div>
+<div class="name texte" id="position2_name_friend_1" ><?php echo urldecode($_GET['friend_name_1']); ?> <span>4 minutos atrás</span></div>
 <div  id="message2" ><?php echo $message_2[$key]; ?></div>
-<div class="name texte" id="position3_name_friend_1" ><?php echo $_GET['friend_name_1']; ?> <span>Há 6 minutos</span></div>
+<div class="name texte" id="position3_name_friend_1" ><?php echo urldecode($_GET['friend_name_1']); ?> <span>Há 6 minutos</span></div>
 <div  id="message3" ><?php echo $message_3[$key]; ?></div>
 
 

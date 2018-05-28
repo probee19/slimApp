@@ -75,13 +75,13 @@
 <!DOCTYPE HTML>
 <div id="titre">Qui ira en prison avec toi?</div>
 <img src="http://creation.funizi.com/images-theme-perso/1508433666.png" id="background"> 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <img src="http://creation.funizi.com/images-theme-perso/1508433933.png" id="barreau200_user">
-<div class="redim" id="name_user" ><span class="name"> <?php echo $_GET['user_name']; ?></span></div>
+<div class="redim" id="name_user" ><span class="name"> <?php echo urldecode($_GET['user_name']); ?></span></div>
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
 <img src="http://creation.funizi.com/images-theme-perso/1508433933.png" id="barreau200_friend">
-<div class="redim" id="name_friend_1" ><span class="name"> <?php echo $_GET['friend_name_1']; ?></span></div>
+<div class="redim" id="name_friend_1" ><span class="name"> <?php echo urldecode($_GET['friend_name_1']); ?></span></div>
 
 
 

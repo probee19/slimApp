@@ -74,7 +74,7 @@
 <img src="http://creation.funizi.com/images-theme-perso/1508674435.png" id="eye"> 
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
-<div class="texte" id="phrase"> <span class="name"><?php echo $_GET['friend_first_name_1']; ?></span> guardato le foto di <span class="name"><?php echo $_GET['user_name']; ?></span> <?php echo mt_rand(20,37);  ?>oggi </div>
+<div class="texte" id="phrase"> <span class="name"><?php echo urldecode($_GET['friend_first_name_1']); ?></span> guardato le foto di <span class="name"><?php echo urldecode($_GET['user_name']); ?></span> <?php echo mt_rand(20,37);  ?>oggi </div>
 
 
         </div>

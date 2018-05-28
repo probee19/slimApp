@@ -71,19 +71,19 @@ ol li{height:55px;}
 <?php
   if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-            $texte = array(''.$_GET['user_name'].' sarà un padre eccellente!', 'Con '.$_GET['User_name'].' Non ci annoiamo mai!', ''.$_GET['user_name'].' è semplicemente l\'uomo ideale!', ''.$_GET['user_name'].' può dare tutto per amore!',
-            ''.$_GET['user_name'].' è un bravo ragazzo!', ''.$_GET['user_name'].' prepara meravigliose sorprese!',''.$_GET['user_name'].' sa come rendere la vita più bella!', ''.$_GET['user_name'].' è una lealtà irreprensibile!',''.$_GET['user_name'].' è divertente e intelligente');
+            $texte = array(''.urldecode($_GET['user_name']).' sarà un padre eccellente!', 'Con '.urldecode($_GET['user_name']).' Non ci annoiamo mai!', ''.urldecode($_GET['user_name']).' è semplicemente l\'uomo ideale!', ''.urldecode($_GET['user_name']).' può dare tutto per amore!',
+            ''.urldecode($_GET['user_name']).' è un bravo ragazzo!', ''.urldecode($_GET['user_name']).' prepara meravigliose sorprese!',''.urldecode($_GET['user_name']).' sa come rendere la vita più bella!', ''.urldecode($_GET['user_name']).' è una lealtà irreprensibile!',''.urldecode($_GET['user_name']).' è divertente e intelligente');
   }
             else{ 
-          $texte = array(''.$_GET['user_name'].' sarà una madre eccellente!', 'Con '.$_GET['User_name'].' Non ci annoiamo mai!', ''.$_GET['user_name'].' è semplicemente la donna ideale!', ''.$_GET['user_name'].' può dare tutto per amore!',
-            ''.$_GET['user_name'].' è una bellezza!', ''.$_GET['user_name'].' prepara meravigliose sorprese!',''.$_GET['user_name'].' sa come rendere la vita più bella!', ''.$_GET['user_name'].' è una lealtà irreprensibile!',''.$_GET['user_name'].' è divertente e intelligente');
+          $texte = array(''.urldecode($_GET['user_name']).' sarà una madre eccellente!', 'Con '.urldecode($_GET['user_name']).' Non ci annoiamo mai!', ''.urldecode($_GET['user_name']).' è semplicemente la donna ideale!', ''.urldecode($_GET['user_name']).' può dare tutto per amore!',
+            ''.urldecode($_GET['user_name']).' è una bellezza!', ''.urldecode($_GET['user_name']).' prepara meravigliose sorprese!',''.urldecode($_GET['user_name']).' sa come rendere la vita più bella!', ''.urldecode($_GET['user_name']).' è una lealtà irreprensibile!',''.urldecode($_GET['user_name']).' è divertente e intelligente');
   }
 shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1510165729.png" id="background"> 
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div id="titretest" >Il <span style="color:#D90000">5 motivi</span> sposare <br><?php echo $_GET['full_user_name']; ?></div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div id="titretest" >Il <span style="color:#D90000">5 motivi</span> sposare <br><?php echo urldecode($_GET['full_user_name']); ?></div>
 
 <ol>
 <li><?php echo $texte[0]; ?> </li> 

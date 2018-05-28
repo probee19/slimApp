@@ -86,7 +86,7 @@
 
 <img src="http://creation.funizi.com/images-theme-perso/1515157095.jpg" id="background">
 <div id="label_passenger"> Passagier : </div>
-<div id="passenger"> <?php echo $_GET['full_user_name']; ?> </div>
+<div id="passenger"> <?php echo urldecode($_GET['full_user_name']); ?> </div>
 <div id="date"> <?=  mt_rand(1,28).' '.$mois[0].' 2018 zu '.mt_rand(12,23).':'.mt_rand(11,59); ?></div>
 
 <div id="label_to">BEIM : </div>

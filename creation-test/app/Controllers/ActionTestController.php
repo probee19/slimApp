@@ -19,6 +19,7 @@ use App\Models\ThemePerso;
 use App\Models\Share;
 use App\Models\Language;
 use App\Models\TestInfo;
+use App\Models\TestAdditionnalInfos;
 use App\Models\InterfaceUi;
 use App\Models\InterfaceUiTranslations;
 use Psr7Middlewares\Middleware\ClientIp;
@@ -396,9 +397,12 @@ class ActionTestController extends Controller
   {
     $info_test = TestInfo::where([["id_test", $_POST['id_test']],["lang",$_POST['lang']]])->first();
 
+    $test_additionnal_infos = TestAdditionnalInfos::where([['id_test','=',$_POST['id_test']],['lang','=', $_POST['lang'] ]])->first();
+
     $data = [
-      "titre_test"        =>  $info_test->titre_test,
-      "test_description"  =>  $info_test->test_description
+      "titre_test"              =>  $info_test->titre_test,
+      "test_description"        =>  $info_test->test_description,
+      "label_additionnal_info"  =>  $test_additionnal_infos->label
     ];
     return json_encode($data);
   }

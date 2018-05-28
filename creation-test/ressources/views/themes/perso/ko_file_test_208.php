@@ -67,7 +67,7 @@
       
 <img src="http://creation.funizi.com/images-theme-perso/1510838214.png" id="background"> 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" width="193" height="193" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><span style="font-size:30px">나를 <span style="color:#EF372C"><?php echo $_GET['user_name']; ?></span></span>,<br> 내가 말하다 <span style="color:#EF372C">STOP</span><br> 에있는 경매에서<span style="color:#EF372C">리비아</span> 이민자들이 좋아하는 <span style="color:#EF372C">노예</span> !</div>
+<div class="name texte" id="name_user" ><span style="font-size:30px">나를 <span style="color:#EF372C"><?php echo urldecode($_GET['user_name']); ?></span></span>,<br> 내가 말하다 <span style="color:#EF372C">STOP</span><br> 에있는 경매에서<span style="color:#EF372C">리비아</span> 이민자들이 좋아하는 <span style="color:#EF372C">노예</span> !</div>
 
 
         </div>

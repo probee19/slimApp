@@ -27,7 +27,7 @@ class LangController extends Controller
 
     //Helper::checkCookies();
     if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl());
+      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
     }
     $all_langs = Language::selectRaw('code, name, fr_name, status, translated')->orderByRaw('fr_name')->get();
     $active_langs = array();

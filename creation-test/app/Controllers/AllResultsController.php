@@ -17,14 +17,14 @@ class AllResultsController extends Controller
 {
     public function index($request, $response, $args){
       //Helper::checkCookies();
-      if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-        return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
-      }
-        $data_users_tests = array();  $shared = false;
+      if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL)
+        return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
+
+        $data_users_tests = array();
         $themes = Theme::all();
         $users_tests = UserTest::with('testInfo')->with('userInfo')->orderBy('id','DESC')->take(40)->get();
         foreach ($users_tests as $user_test) {
-          $nb_clics = 0;
+          $nb_clics = 0; $shared = false;
           $share = Share::where('result_code','=',$user_test->uuid)->first();
           if($share){
             $shared = true;

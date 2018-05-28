@@ -68,15 +68,15 @@
       
 <?php
 if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
-          $lois = array(''.$_GET['user_name'].' wird zum Stabschef ernannt.',
-          'Bis zum 31. Mai 2020, '.$_GET['Friend_first_name_1'].' Muss die '.$_GET['Benutzername'].' Miete. ',
-          ''.$_GET['user_name'].' ist zu groß, ich befehle, dass er eine Beförderung erhält.',
+          $lois = array(''.urldecode($_GET['user_name']).' wird zum Stabschef ernannt.',
+          'Bis zum 31. Mai 2020, '.urldecode($_GET['friend_first_name_1']).' Muss die '.$_GET['Benutzername'].' Miete. ',
+          ''.urldecode($_GET['user_name']).' ist zu groß, ich befehle, dass er eine Beförderung erhält.',
           'Ich bestelle hiermit, dass das Gehalt von '.$_GET['Benutzername'].' Verdoppelt werden.',
           'Ich erkläre diesen Feiertag zu Ehren von '.$_GET['Nutzername'].'.');
 else 
-       $lois = array(''.$_GET['user_name'].' wird zum Stabschef ernannt',
-          'Bis zum 31. Mai 2020, '.$_GET['Friend_first_name_1'].' Muss die '.$_GET['Benutzername'].' Miete. ',
-          ''.$_GET['user_name'].' ist zu cool, ich befehle ihr eine Promotion zu erhalten.',
+       $lois = array(''.urldecode($_GET['user_name']).' wird zum Stabschef ernannt',
+          'Bis zum 31. Mai 2020, '.urldecode($_GET['friend_first_name_1']).' Muss die '.$_GET['Benutzername'].' Miete. ',
+          ''.urldecode($_GET['user_name']).' ist zu cool, ich befehle ihr eine Promotion zu erhalten.',
           'Ich bestelle hiermit, dass das Gehalt von '.$_GET['Benutzername'].' Verdoppelt werden.',
           'Ich erkläre diesen Feiertag zu Ehren von '.$_GET['Nutzername'].'.');   
           

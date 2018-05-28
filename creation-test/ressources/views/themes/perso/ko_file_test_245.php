@@ -81,7 +81,7 @@
 ?>
 <!DOCTYPE HTML>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
 
 
 <div class="texte mot" id="mot1"><?php echo $mots[0]; ?> </div>

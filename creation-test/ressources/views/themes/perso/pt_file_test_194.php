@@ -72,15 +72,15 @@
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
            $texte = array('É extremamente leal','Renderiza um após o outro','Adoro festejar!','Sorri mesmo quando ele quer chorar','Odeio injustiças','Sempre tem tempo para passar com a família','Sempre surpreso pessoas', 'Nunca decepcione seus amigos' );
-$texte1 = array(''.$_GET['user_name'].' vê oportunidades em todos os problemas que enfrenta. Ele é muito perspicaz e pode projetar-se no futuro.',
+$texte1 = array(''.urldecode($_GET['user_name']).' vê oportunidades em todos os problemas que enfrenta. Ele é muito perspicaz e pode projetar-se no futuro.',
 '\"{user_name'].' está sempre lá para seus amigos, ele entende a importância do apoio e amor que ele tem para eles, ele tem um coração de ouro\"',
 '\"{user_name'].' amado e perdido, mas ele não perdeu a paixão e alegria que o caracteriza.\"',
 '\"{user_name'].' sempre tem a solução para todos os problemas, e seu otimismo e sabedoria são incomparáveis\".');
    }
             else{ 
            $texte = array('É extremamente leal','faz um tiro após o outro','Adoro festejar!','Sorri mesmo quando ela quer chorar','Odeio injustiças','Sempre tem tempo para passar com a família','Sempre surpreso pessoas', 'Nunca decepcione seus amigos' );
-$texte1 = array(''.$_GET['user_name'].' vê oportunidades em todos os problemas que ela enfrenta. Ela é muito perspicaz e pode se projetar para o futuro.',
-'"'.$_GET['user_name'].' ainda está lá para seus amigos. Ela entende a importância do apoio e amor por eles. Ela tem um coração de ouro"',
+$texte1 = array(''.urldecode($_GET['user_name']).' vê oportunidades em todos os problemas que ela enfrenta. Ela é muito perspicaz e pode se projetar para o futuro.',
+'"'.urldecode($_GET['user_name']).' ainda está lá para seus amigos. Ela entende a importância do apoio e amor por eles. Ela tem um coração de ouro"',
 '\"{user_name'].' amada e perdida, mas ela não perdeu nada da paixão e alegria que a caracterizam.\"',
 '\"{user_name'].' sempre tem a solução para todos os problemas, e seu otimismo e sabedoria são incomparáveis\".');
   
@@ -90,7 +90,7 @@ shuffle($texte);shuffle($texte1);
 ?>
 <div id="titre"></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?> :</div>
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?> :</div>
 <div class="" id="resultat1" ><div>- <?php echo $texte[0]; ?></div><div>- <?php echo $texte[1]; ?></div><div>- <?php echo $texte[2]; ?></div></div>
 <div id="titre_bottom"><?php echo $texte1[0]; ?></div>
 

@@ -73,10 +73,10 @@ align-items: center; /* align vertical */ }
  $nom_explication = array('honesty','sincerity','love','franchise','loyalty', 'authenticity','patience','courage', 'sensitivity','generosity','wisdom');
  shuffle($nom_explication);
 ?>
-<img src="http://creation.funizi.com/images-theme-perso/1508771127.jpg" id="background"> <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="http://creation.funizi.com/images-theme-perso/1508771127.jpg" id="background"> <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ></div>
 <div id="message"> 
-<div style="font-family: 'Lobster', cursive; color:#FFFF00"><?php echo $_GET['user_name']; ?>
+<div style="font-family: 'Lobster', cursive; color:#FFFF00"><?php echo urldecode($_GET['user_name']); ?>
 <div>=</div><div style="color:#FFF"><?php echo strtoupper ($nom_explication[0]) ?></div><div style="color:#FFF; font-size:20px;">but also</div> <div style="color:#FFF"><?php echo strtoupper ($nom_explication[1]) ?></div>
 </div>
 </div>

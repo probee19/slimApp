@@ -109,8 +109,8 @@ filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 
 <img src="http://creation.funizi.com/images-theme-perso/1513792272.jpg" id="background"> 
 <div id="overlay"></div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?>,</div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?>,</div>
 
 <div class="entete" id="entete" >For your next birthday, you will have:</div>
 <div class="cadeau" id="cadeau1">- <?php echo $houses[0];?></div>

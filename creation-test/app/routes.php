@@ -7,6 +7,7 @@ $app->get('/logout', 'HomeController:logout')->setName('logout');
 $app->get('/choosetheme', 'CreateTestController:index');
 $app->get('/tests', 'AllTestsController:index')->setName('alltests');
 $app->get('/lang', 'LangController:index');
+$app->get('/notifications', 'NotificationPushController:index');
 $app->get('/tests/showmore', 'AllTestsController:showMoreTests')->setName('moretests');
 $app->get('/results', 'AllResultsController:index');
 $app->get('/tests/new/{theme}', 'CreateTestController:createTest');
@@ -69,6 +70,11 @@ $app->post('/config/lang/update', 'LangController:updateLangConfig');
 $app->post('/config/lang/translations/update', 'LangController:updateTranslations');
 $app->post('/config/lang/ui/add', 'LangController:addUi');
 
+$app->post('/notification/send-campaign', 'NotificationPushController:sendCampaign');
+$app->post('/notification/send-campaign-test', 'NotificationPushController:sendToAdmin');
+$app->post('/notification/get-info-test', 'NotificationPushController:getInfoTest');
+$app->post('/notification/save-stats-campaign', 'NotificationPushController:saveStatsCampaign');
+
 
 
 // chunk and upgrade router
@@ -77,4 +83,4 @@ $app->get('/chunk', 'HomeController:chunk');
 $app->get('/upgradelang', 'LangController:upgradeLang');
 $app->get('/upgradejsonfile', 'LangController:UpgradeJsonFile');
 $app->get('/chunk/jsonalltests', 'JsonController:setTestsJSON');
-$app->get('/chunk/updateimgurl', 'HomeController:updateUrlImgProfile');
+$app->get('/chunk/updatevar', 'HomeController:updateVarTestFile');

@@ -19,7 +19,7 @@ class AllTestsController extends Controller
   public function index($request, $response, $arg){
     //Helper::checkCookies();
     if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
-      return $response->withStatus(302)->withHeader('Location', $request->getUri()->getBaseUrl() );
+      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
     }
     $test_owner = $_COOKIE['id_user'];
     $btn_delete_test_admin = 0;
@@ -29,7 +29,7 @@ class AllTestsController extends Controller
     $tests = Test::where('statut','!=',-1)
       ->with('defaultLangInfo')
       ->orderBy('id_test','DESC')
-      ->take(30)
+      //->take(120)
       ->get();
     else
     $tests = Test::where('statut','!=',-1)

@@ -90,7 +90,7 @@ shuffle($texte);shuffle($texte1);
 ?>
 <div id="titre"></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?> :</div>
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?> :</div>
 <div class="" id="resultat1" ><div>- <?php echo $texte[0]; ?></div><div>- <?php echo $texte[1]; ?></div><div>- <?php echo $texte[2]; ?></div></div>
 <div id="titre_bottom"><?php echo $texte1[0]; ?></div>
 

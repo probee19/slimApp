@@ -79,7 +79,7 @@
 <!DOCTYPE HTML>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=400&height=400" class="img_profile" id="fb_id_user">
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=400&height=400" class="img_profile flip" id="fb_id_user_right">
-<div class="name texte" id="name_user" ><span><?php echo $_GET['user_name']; ?></span></div>
+<div class="name texte" id="name_user" ><span><?php echo urldecode($_GET['user_name']); ?></span></div>
 <div id="honnete"><span class="result"><?php $pourcentageH=rand(92,100); echo $pourcentageH;?>%</span><span style="font-size:23px">ehrlich</span></div>
 <div id="malhonnete"><span class="result"><?php echo 100-$pourcentageH;?>%</span><span style="font-size:23px">disehrlich</span></div>
 

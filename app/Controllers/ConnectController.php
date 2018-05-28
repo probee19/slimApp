@@ -72,10 +72,11 @@ class ConnectController extends Controller
         $maxFriends_per_list = 30;
         $name = '';
         $error = ''; $permissions_Ok = true;
-        $test = Test::selectRaw('test_info.titre_test AS titre_test, tests.permissions AS permissions, tests.id_test AS id_test')
+        $test = Test::selectRaw('test_info.titre_test AS titre_test, tests.if_additionnal_info AS if_additionnal_info,  tests.permissions AS permissions, tests.id_test AS id_test')
           ->join('test_info','test_info.id_test','tests.id_test')
           ->Where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
         $permisions_test = $test->permissions;
+        $if_additionnal_info = $test->if_additionnal_info;
         $result_url = $this->router->pathFor('single', [ 'id' => $test->id_test, 'name' => Helper::cleanUrl($test->titre_test)  ] );
         try {
           $accessToken = $helper->getAccessToken();
@@ -246,7 +247,13 @@ class ConnectController extends Controller
                   exit;
                 }
             }
-            $url = 'https://'.$lang.'.funizi.com/start/'.$id;
+
+            if($if_additionnal_info == 0)
+              $url = 'https://'.$lang.'.'.$this->base_domain.'/start/'.$id;
+            else
+              $url = 'https://'.$lang.'.'.$this->base_domain.'/start/1/'.$id;
+
+
 
             $_SESSION['fb_access_token'] = (string) $accessToken;
 

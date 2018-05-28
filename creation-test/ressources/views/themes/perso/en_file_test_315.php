@@ -89,11 +89,11 @@
 
 <img src="https://creation.funizi.com/images-theme-perso/1521197470.jpg" id="back"> 
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 
 <div class="texte" id="header_f"> When you are <?=$pre?> </div>
 
-<div class="name texte" id="family_name" ><?php echo $_GET['additionnal_input_text']; ?></div>
+<div class="name texte" id="family_name" ><?php echo urldecode($_GET['additionnal_input_text']); ?></div>
 
 <div class="texte" id="sign"> <?=$sign[0]?> </div>
 

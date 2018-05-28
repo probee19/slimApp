@@ -72,17 +72,17 @@
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
            $texte = array('Is extremely loyal','Renders one after the other','Love to party!','Smiles even when he wants to cry','Hate injustices','Always have time to spend with family','Always surprised people', 'Never let down his friends' );
-$texte1 = array(''.$_GET['user_name'].' sees opportunities in all the problems he faces. He is very insightful and can project himself into the future.',
-'\"'.$_GET['user_name'].' is always there for his friends, he understands the importance of the support and love he has for them, he has a heart of gold\"',
-'\"'.$_GET['user_name'].' loved and lost, but he has not lost the passion and joy that characterizes him.\"',
-'\"'.$_GET['user_name'].' always has the solution to all problems, and her optimism and wisdom are second to none.\"');
+$texte1 = array(''.urldecode($_GET['user_name']).' sees opportunities in all the problems he faces. He is very insightful and can project himself into the future.',
+'\"'.urldecode($_GET['user_name']).' is always there for his friends, he understands the importance of the support and love he has for them, he has a heart of gold\"',
+'\"'.urldecode($_GET['user_name']).' loved and lost, but he has not lost the passion and joy that characterizes him.\"',
+'\"'.urldecode($_GET['user_name']).' always has the solution to all problems, and her optimism and wisdom are second to none.\"');
    }
             else{ 
            $texte = array('Is extremely loyal','makes one shot after another','Love to party!','Smiles even when she wants to cry','Hate injustices','Always have time to spend with family','Always surprised people', 'Never let down his friends' );
-$texte1 = array(''.$_GET['user_name'].' sees opportunities in every problem she faces. She is very insightful and can project herself into the future.',
-'"'.$_GET['user_name'].' is still there for his friends. She understands the importance of support and love for them. She has a heart of gold"',
-'\"'.$_GET['user_name'].' loved and lost, but she has lost none of the passion and joy that characterize her.\"',
-'\"'.$_GET['user_name'].' always has the solution to all problems, and her optimism and wisdom are second to none.\"');
+$texte1 = array(''.urldecode($_GET['user_name']).' sees opportunities in every problem she faces. She is very insightful and can project herself into the future.',
+'"'.urldecode($_GET['user_name']).' is still there for his friends. She understands the importance of support and love for them. She has a heart of gold"',
+'\"'.urldecode($_GET['user_name']).' loved and lost, but she has lost none of the passion and joy that characterize her.\"',
+'\"'.urldecode($_GET['user_name']).' always has the solution to all problems, and her optimism and wisdom are second to none.\"');
   
             }
         
@@ -90,7 +90,7 @@ shuffle($texte);shuffle($texte1);
 ?>
 <div id="titre"></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?> :</div>
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?> :</div>
 <div class="" id="resultat1" ><div>- <?php echo $texte[0]; ?></div><div>- <?php echo $texte[1]; ?></div><div>- <?php echo $texte[2]; ?></div></div>
 <div id="titre_bottom"><?php echo $texte1[0]; ?></div>
 

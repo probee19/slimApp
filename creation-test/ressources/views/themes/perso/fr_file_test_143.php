@@ -76,7 +76,7 @@
         ?>
         <img src="http://creation.funizi.com/images-theme-perso/1508522215.jpg" id="background">
         <div id="but" ><?php echo $expression[0]; ?> but du match marqué par </div>
-        <div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+        <div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
         <div id="minute" > à la <?php echo rand(5,88); ?>ie minute </div>
 
 

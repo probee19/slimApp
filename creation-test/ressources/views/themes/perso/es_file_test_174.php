@@ -78,7 +78,7 @@ shuffle($message);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508852359.png" id="background">
 <span id="titre" class="titre">Tus socios han notado tus besos:</span>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
 <div id="message"> <b><?php echo mt_rand(13,20) ?></b>/10</div>
 <span id="titre_bottom" class="titre_bottom">Tipo de beso: <?php echo $message[0]; ?></span>
 

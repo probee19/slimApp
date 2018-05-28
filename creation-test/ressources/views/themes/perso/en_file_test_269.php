@@ -87,7 +87,7 @@
           'Yes','Zeal'];
           
  shuffle($mots);
- $prenom=removeAccents($_GET['user_name']);
+ $prenom=removeAccents(urldecode($_GET['user_name']));
  //$prenom='Frederec edouard';
  $prenom = explode(' ',trim($prenom));
 $prenom=$prenom[0]; //
@@ -114,8 +114,8 @@ else
  }
  $font_size -= 5;
 ?>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" width="200" height="200" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" width="200" height="200" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
 <img src="http://creation.funizi.com/images-theme-perso/1517592561.png" id="crochet">
 
 <div class="texte" id="qualites" style="font-size:<?php echo $font_size;?>px"> <?php echo $qualites.$erreur;?> </div>

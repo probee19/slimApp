@@ -591,7 +591,7 @@ class Helper
       $lang = self::getLangSubdomain($request);
       if($lang == ""){
           $lang = self::getLangBrowser();
-          //$url = "https://".$lang.".weasily.com".$_SERVER['REQUEST_URI'];
+          //$url = "https://".$lang.".funizi.com".$_SERVER['REQUEST_URI'];
         return "https://".$lang.".funizi.com".$_SERVER['REQUEST_URI'];
       }
       return "";
