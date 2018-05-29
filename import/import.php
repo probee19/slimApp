@@ -27,7 +27,7 @@ require "dbip.class.php";
 
 $opts = getopt("f:d:t:b:u:p:");
 
-$filename = "dbip-country-2018-03.csv";
+$filename = "dbip-country-2018-05.csv";
 $type = "country";
 
 $dbname = @$opts["b"]
