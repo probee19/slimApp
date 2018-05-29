@@ -99,8 +99,8 @@ ExpiresDefault A2592000
     </IfModule>
 </IfModule>
 ######### CRUNCHIFY SETTING END ############
-#RewriteCond %{HTTP:X-Forwarded-Proto} =http
-#RewriteRule (.*) https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
+RewriteCond %{HTTP:X-Forwarded-Proto} =http
+RewriteRule (.*) https://%{HTTP:Host}%{REQUEST_URI} [L,R=permanent]
 
 RewriteCond %{HTTP_HOST} ^(www\.)?creation.funizi\.com.*$
 RewriteRule (.*) creation-test/$1 [L]
