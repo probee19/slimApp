@@ -1,5 +1,5 @@
 <?php
-die('hello');
-require __DIR__ . '/bootstrap/start.php';
 
+require __DIR__ . '/bootstrap/start.php';
+die('hello');
 $app->run();
