@@ -59,7 +59,7 @@ class HomeController extends Controller
       $alltest = count($tests_json);
 
       // Nombre de pages
-      $pagecount = intval(ceil($alltest/$pagecount));
+      $pagecount = (int)ceil($alltest / $pagecount);
 
       if(!empty($arg['pageid']))
         $pageid = $arg['pageid'];
