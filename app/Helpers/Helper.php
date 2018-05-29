@@ -579,10 +579,7 @@ class Helper
       $host = $request->getUri()->getHost();
       //Helper::debug($_SERVER['REQUEST_URI']);
 
-      $lang = str_replace("www","",$host);
-      $lang = str_replace($_SERVER['SERVER_DOMAIN'],"",$lang);
-      $lang = str_replace(".","",$lang);
-      return $lang;
+        return str_replace(array("www", $_SERVER['SERVER_DOMAIN'], "."), "", $host);
     }
 
     public static function detectLang($request, $response){
