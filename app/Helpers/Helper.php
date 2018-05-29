@@ -579,8 +579,7 @@ class Helper
       $host = $request->getUri()->getHost();
       //Helper::debug($_SERVER['REQUEST_URI']);
 
-        $lang = str_replace(array("www", $_SERVER['SERVER_DOMAIN'], "."), "", $host);
-      return $lang;
+        return str_replace(array("www", $_SERVER['SERVER_DOMAIN'], "."), "", $host);
     }
 
     public static function detectLang($request, $response){
@@ -590,7 +589,7 @@ class Helper
       if($lang == ""){
           $lang = self::getLangBrowser();
           //$url = "https://".$lang.".funizi.com".$_SERVER['REQUEST_URI'];
-        return "https://". $lang. $_SERVER['SERVER_DOMAIN'] . $_SERVER['REQUEST_URI'];
+        return "https://". $lang . '.' . $_SERVER['SERVER_DOMAIN'] . $_SERVER['REQUEST_URI'];
       }
       return "";
     }
