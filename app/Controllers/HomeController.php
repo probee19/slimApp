@@ -33,7 +33,7 @@ class HomeController extends Controller
       if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
       $lang = $this->helper->getLangSubdomain($request);
 
-
+        $this->helper->debug($lang);
         $country_code = $this->helper->getCountryCode();
 
 
@@ -114,7 +114,7 @@ class HomeController extends Controller
                 'id_test'        => $test['id_test'],
                 'titre_test'     => $test['titre_test']
               ];
-              if(!in_array($test['id_test'], $exclude, true)) array_push($exclude, $test['id_test']);
+              if(!in_array($test['id_test'], $exclude, true)) $exclude[] = $test['id_test'];
               array_push($page_tests, $test['id_test']);
             }
           }
