@@ -32,9 +32,7 @@ class HomeController extends Controller
       $url = $this->helper->detectLang($request, $response);
       if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
       $lang = $this->helper->getLangSubdomain($request);
-
-        $this->helper->debug($lang);
-        $country_code = $this->helper->getCountryCode();
+      $country_code = $this->helper->getCountryCode();
 
 
       if(isset($_GET['utm']) && !empty($_GET['utm']))
@@ -115,7 +113,7 @@ class HomeController extends Controller
                 'titre_test'     => $test['titre_test']
               ];
               if(!in_array($test['id_test'], $exclude, true)) $exclude[] = $test['id_test'];
-              array_push($page_tests, $test['id_test']);
+              $page_tests[] = $test['id_test'];
             }
           }
 
@@ -201,7 +199,7 @@ class HomeController extends Controller
         //$email = $request->getParam('email');
         $gender = $request->getParam('gender');
         //$picture = $request->getParam('pic');
-        if(!$_SESSION['user_has_disconnected'] || $_SESSION['user_has_disconnected'] != 'yes'){
+        if(!$_SESSION['user_has_disconnected'] || $_SESSION['user_has_disconnected'] !== 'yes'){
             $_SESSION['uid'] = $id;
             $_SESSION['name'] = $name;
             $_SESSION['last_name'] = $lastname;

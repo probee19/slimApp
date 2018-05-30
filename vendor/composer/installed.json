@@ -644,17 +644,17 @@
     },
     {
         "name": "nesbot/carbon",
-        "version": "1.27.0",
-        "version_normalized": "1.27.0.0",
+        "version": "1.29.2",
+        "version_normalized": "1.29.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/briannesbitt/Carbon.git",
-            "reference": "ef81c39b67200dcd7401c24363dcac05ac3a4fe9"
+            "reference": "ed6aa898982f441ccc9b2acdec51490f2bc5d337"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ef81c39b67200dcd7401c24363dcac05ac3a4fe9",
-            "reference": "ef81c39b67200dcd7401c24363dcac05ac3a4fe9",
+            "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ed6aa898982f441ccc9b2acdec51490f2bc5d337",
+            "reference": "ed6aa898982f441ccc9b2acdec51490f2bc5d337",
             "shasum": ""
         },
         "require": {
@@ -665,7 +665,7 @@
             "friendsofphp/php-cs-fixer": "~2",
             "phpunit/phpunit": "^4.8.35 || ^5.7"
         },
-        "time": "2018-04-23T09:02:57+00:00",
+        "time": "2018-05-29T15:23:46+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1283,17 +1283,17 @@
     },
     {
         "name": "symfony/translation",
-        "version": "v3.4.9",
-        "version_normalized": "3.4.9.0",
+        "version": "v3.4.11",
+        "version_normalized": "3.4.11.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/translation.git",
-            "reference": "d4af50f46cd8171fd5c1cdebdb9a8bbcd8078c6c"
+            "reference": "7047f725e35eab768137c677f8c38e4a2a8e38fb"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/translation/zipball/d4af50f46cd8171fd5c1cdebdb9a8bbcd8078c6c",
-            "reference": "d4af50f46cd8171fd5c1cdebdb9a8bbcd8078c6c",
+            "url": "https://api.github.com/repos/symfony/translation/zipball/7047f725e35eab768137c677f8c38e4a2a8e38fb",
+            "reference": "7047f725e35eab768137c677f8c38e4a2a8e38fb",
             "shasum": ""
         },
         "require": {
@@ -1318,7 +1318,7 @@
             "symfony/config": "",
             "symfony/yaml": ""
         },
-        "time": "2018-04-30T01:22:56+00:00",
+        "time": "2018-05-21T10:06:52+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
