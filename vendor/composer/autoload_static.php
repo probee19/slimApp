@@ -7,10 +7,15 @@ namespace Composer\Autoload;
 class ComposerStaticInit2c7167b12cdab949727ada7d93adb18e
 {
     public static $files = array (
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
+        '8a9dc1de0ca7e01f3e08231539562f61' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/functions.php',
         'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
     );
 
@@ -37,6 +42,10 @@ class ComposerStaticInit2c7167b12cdab949727ada7d93adb18e
             'Psr\\Container\\' => 14,
             'Psr7Middlewares\\' => 16,
         ),
+        'J' => 
+        array (
+            'JmesPath\\' => 9,
+        ),
         'I' => 
         array (
             'Interop\\Container\\' => 18,
@@ -46,6 +55,12 @@ class ComposerStaticInit2c7167b12cdab949727ada7d93adb18e
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
         ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
+            'GuzzleHttp\\Promise\\' => 19,
+            'GuzzleHttp\\' => 11,
+        ),
         'F' => 
         array (
             'FastRoute\\' => 10,
@@ -53,6 +68,7 @@ class ComposerStaticInit2c7167b12cdab949727ada7d93adb18e
         ),
         'A' => 
         array (
+            'Aws\\' => 4,
             'App\\' => 4,
         ),
     );
@@ -98,6 +114,10 @@ class ComposerStaticInit2c7167b12cdab949727ada7d93adb18e
         array (
             0 => __DIR__ . '/..' . '/oscarotero/psr7-middlewares/src',
         ),
+        'JmesPath\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
+        ),
         'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
@@ -122,6 +142,18 @@ class ComposerStaticInit2c7167b12cdab949727ada7d93adb18e
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
+        ),
+        'GuzzleHttp\\Promise\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
+        ),
+        'GuzzleHttp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
@@ -129,6 +161,10 @@ class ComposerStaticInit2c7167b12cdab949727ada7d93adb18e
         'Facebook\\' => 
         array (
             0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
+        ),
+        'Aws\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/aws/aws-sdk-php/src',
         ),
         'App\\' => 
         array (
