@@ -28,7 +28,7 @@ use Aws\S3\S3Client;
 class Helper
 {
     public static function getCountry($ip){
-        if(isset($_COOKIE['countryCode']) && isset($_COOKIE['countryName'])){
+        if(isset($_COOKIE['countryCode'], $_COOKIE['countryName'])){
             $country = [
                 'countryName'   =>  $_COOKIE['countryName'],
                 'countryCode'   =>  $_COOKIE['countryCode']
@@ -47,7 +47,7 @@ class Helper
         //self::debug($inf);
 
         if($inf){
-            $countryBD = Countries::where('alpha2', '=', "$inf->country")->first();
+            $countryBD = Countries::where('alpha2', '=', (string)$inf->country)->first();
             $countryCode = $inf->country;
             $countryname = $countryBD->langFR;
             setcookie("countryCode", $countryCode, time()+3600*24*30);
