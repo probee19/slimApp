@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:900" rel="stylesheet">
+              <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -22,10 +22,14 @@
               }
               .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
-#back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
-#fb_id_user{position: absolute; z-index:1; left: 20px; top: 86px; width:166px ; border:3px solid #D0251D; border-radius:0px; max-width:800px; max-height:420px;}
-#name_user{position:absolute; z-index:1; left: 0px; top: 0px; font-size:30px; color:#FFF;} 
-#message{position:absolute; z-index:1; top: 360px; left: 10px; font-size:30px; color:#000;font-family: 'Alegreya Sans', sans-serif; width:700px; line-height:25px;} 
+
+#fb_id_user{position: absolute; z-index:1; left: 0; bottom: 0; width:400px ;  height:400px ; object-fit: cover; object-position: 50% 10%; }
+ 
+#user{z-index:2; font-family: 'Titillium Web', sans-serif; text-transform:uppercase; position: absolute; left: 0; top: 0; color:#FFF; font-size:30px; width:400px ; height:50px ; background:#80719E;  text-align:center; display:flex; align-items:center; justify-content:center;  }
+
+#personnage{z-index:2; font-family: 'Titillium Web', sans-serif; text-transform:uppercase; position: absolute; right: 0; top: 0; color:#FFF; font-size:30px; width:400px ; height:50px ; background:#D83437;  text-align:center; display:flex; align-items:center; justify-content:center;  }
+ 
+#perso{position:absolute; z-index:1; right:0; bottom:0;  width:400px; height:370px; }
               </style>
               <script src='../../../src/js/jquery.js'></script>
               <script>
@@ -66,31 +70,27 @@
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
       
-<?php
- if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
-            {
-               $message_1 = array('{؟ تم انتخاب user_name؟} رئيسًا لبلده بنسبة 98.9٪ من الأصوات','{؟ لقد تم التصويت للتو على أجمل رجل في الكون',
-               '{؟ يصبح user_name؟} ثراء العالم الثاني وراء بيل غيتس',
-               '{؟ user_name؟} اشترى للتو بلده',
-               '{؟ user_name؟} يكتشف علاجًا للسرطان',
-               '{؟ user_name؟} يمنع الغزو الأجنبي',
-               '{؟ user_name؟} يجعل السلام في العالم');
-     }
-            else{ 
-           $message_1 = array('{؟ تم انتخاب user_name؟} رئيسًا لبلدها بنسبة 96.9٪ من الأصوات', '{؟ تم انتخاب user_name؟} أجمل امرأة في الكون',
-           '{؟ يصبح user_name؟} ثراء العالم الثاني وراء بيل غيتس',
-               '{؟ user_name؟} اشترى للتو بلده',
-               '{؟ user_name؟} يكتشف علاجًا للسرطان',
-               '{؟ user_name؟} يمنع الغزو الأجنبي',
-               '{؟ user_name؟} يجعل السلام في العالم');
- 
-            }
-$max_key = 5; $key = mt_rand(0,$max_key);    
+<?php     
+ if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
+          $personnages = array('Omar','Doudou','Pathé Sène','Dioguoye','Ngor','Diallo');
+          $image = array('1527772162','1527772489','1527773380','1527773407','1527773727','1527774451');
+          $ind = mt_rand(0,5);
+ }
+ else{
+          $personnages = array('Mami','Ami','Adja');
+          $image = array('1527772913','1527773280','1527773330');
+          $ind = mt_rand(0,2);
+ }
+                    
+          
 ?>
-<img src="http://creation.funizi.com/images-theme-perso/1518111094.png" id="back"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div class="" id="message" ><?php echo $message_1[$key] ?></div>
+<!DOCTYPE HTML>
 
+<div class="texte" id="user"><?php echo $_GET['user_name']; ?> </div>
+<div class="texte" id="personnage"> <?=$personnages[$ind]?> </div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
+<img src="https://creation.funizi.com/images-theme-perso/<?=$image[$ind]?>.jpg" id="perso"> 
+ 
 
         </div>
         

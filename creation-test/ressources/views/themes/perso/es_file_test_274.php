@@ -72,23 +72,23 @@ align-items: center; /* align vertical */
 
       if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-               $message = array('Nuestro hijo tiene un rostro seductor, lo llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestro hijo tiene una cara inteligente, lo llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestro hijo tiene una cara angelical, lo llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestro hijo tiene una sonrisa angelical, lo llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestro hijo es muy adorable, lo llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestro hijo es muy lindo, lo llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestro hijo es mágico, lo llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestro hijo tiene un alma pura, lo llamaremos '.urldecode($_GET['user_name']).'');  }
+               $message = array('Nuestro hijo tiene un rostro seductor, lo llamaremos '.$_GET['User_name'].''
+               ,'Nuestro hijo tiene una cara inteligente, lo llamaremos '.$_GET['User_name'].''
+               ,'Nuestro hijo tiene una cara angelical, lo llamaremos '.$_GET['User_name'].''
+               ,'Nuestro hijo tiene una sonrisa angelical, lo llamaremos '.$_GET['User_name'].''
+               ,'Nuestro hijo es muy adorable, lo llamaremos '.$_GET['User_name'].''
+               ,'Nuestro hijo es muy lindo, lo llamaremos '.$_GET['User_name'].''
+               ,'Nuestro hijo es mágico, lo llamaremos '.$_GET['User_name'].''
+               ,'Nuestro hijo tiene un alma pura, lo llamaremos '.$_GET['User_name'].'');  }
             else{ 
-              $message = array('Nuestra hija tiene una cara hermosa, la llamaremos '.urldecode($_GET['user_name']).''
-              ,'Nuestra hija tiene una cara inteligente, la llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestra hija tiene cara de ángel, la llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestra hija tiene una sonrisa angelical, la llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestra hija es muy adorable, la llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestra hija es muy linda, la llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestra hija es mágica, la llamaremos '.urldecode($_GET['user_name']).''
-               ,'Nuestra hija tiene un alma pura, la llamaremos '.urldecode($_GET['user_name']).'');
+              $message = array('Nuestra hija tiene una cara hermosa, la llamaremos '.$_GET['User_name'].''
+              ,'Nuestra hija tiene una cara inteligente, la llamaremos '.$_GET['User_name'].''
+               ,'Nuestra hija tiene cara de ángel, la llamaremos '.$_GET['User_name'].''
+               ,'Nuestra hija tiene una sonrisa angelical, la llamaremos '.$_GET['User_name'].''
+               ,'Nuestra hija es muy adorable, la llamaremos '.$_GET['User_name'].''
+               ,'Nuestra hija es muy linda, la llamaremos '.$_GET['User_name'].''
+               ,'Nuestra hija es mágica, la llamaremos '.$_GET['User_name'].''
+               ,'Nuestra hija tiene un alma pura, la llamaremos '.$_GET['User_name'].'');
             }
 
 shuffle($message);

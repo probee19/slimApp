@@ -79,7 +79,7 @@ align-items: center; /* align vertical */
                ,'Nostro figlio è troppo adorabile, lo chiameremo '.$_GET['Nome utente'].''
                ,'Nostro figlio è troppo carino, lo chiameremo '.$_GET['Nome utente'].''
                ,'Nostro figlio è magico, lo chiameremo '.$_GET['Nome utente'].''
-               ,'Nostro figlio ha un&#39;anima pura, lo chiameremo '.$_GET['Nome utente'].'');  }
+               ,'Nostro figlio ha un\'anima pura, lo chiameremo '.$_GET['Nome utente'].'');  }
             else{ 
               $message = array('Nostra figlia ha una bella faccia, la chiameremo '.$_GET['Nome utente'].''
               ,'Nostra figlia ha un viso intelligente, la chiameremo '.$_GET['Nome utente'].''
@@ -88,7 +88,7 @@ align-items: center; /* align vertical */
                ,'Nostra figlia è troppo adorabile, la chiameremo '.$_GET['Nome utente'].''
                ,'Nostra figlia è troppo carina, la chiameremo '.$_GET['Nome utente'].''
                ,'Nostra figlia è magica, la chiameremo '.$_GET['Nome utente'].''
-               ,'Nostra figlia ha un&#39;anima pura, la chiameremo '.$_GET['Nome utente'].'');
+               ,'Nostra figlia ha un\'anima pura, la chiameremo '.$_GET['Nome utente'].'');
             }
 
 shuffle($message);

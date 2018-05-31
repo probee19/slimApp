@@ -70,7 +70,7 @@
 <?php
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
                    $sis = array('Withhold it, you must marry him.','Do not let him go, he is kind.','Hold on, he is protective.','Remember, he is a perfect husband.'
-                    ,'Hold on, he is faithful.','Hold on, he&#39;s gallant. ');
+                    ,'Hold on, he is faithful.','Hold on, he\'s gallant. ');
           else
                    $sis = array('Do not let her go, you have to marry her.','Withhold it, she is kind.','Do not let her go, she is a perfect wife.'
                     ,'Remember, she is faithful and loyal.','Withhold it, she will make a good mother.');
@@ -78,7 +78,7 @@
 ?>
 
 <div class="texte" id="sis_1"> If his name is </div>
-<div class="texte" id="sis_1_">  <?php echo urldecode($_GET['user_name']); ?> </div>
+<div class="texte" id="sis_1_">  <?php echo $_GET['user_name']; ?> </div>
 <div class="texte" id="sis_2"> <?php echo  $sis[0]; ?> </div>
 
 

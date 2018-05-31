@@ -69,26 +69,26 @@
 <?php
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-               $message_1 = array(''.urldecode($_GET['user_name']).' ha sido elegido presidente de su país con el 98.9% de los votos',''.urldecode($_GET['user_name']).' acaba de ser votado como el hombre más hermoso del universo',
-               ''.urldecode($_GET['user_name']).' se convierte en la segunda fortuna mundial detrás de Bill Gates',
-               ''.urldecode($_GET['user_name']).' acaba de comprar su propio país',
+               $message_1 = array(''.$_GET['user_name'].' ha sido elegido presidente de su país con el 98.9% de los votos',''.$_GET['user_name'].' acaba de ser votado como el hombre más hermoso del universo',
+               ''.$_GET['user_name'].' se convierte en la segunda fortuna mundial detrás de Bill Gates',
+               ''.$_GET['user_name'].' acaba de comprar su propio país',
                ''.$_GET['nombre_usuario'].' descubre una cura para el cáncer',
-               ''.urldecode($_GET['user_name']).' previene una invasión alienígena',
-               ''.urldecode($_GET['user_name']).' hace la paz en el mundo');
+               ''.$_GET['user_name'].' previene una invasión alienígena',
+               ''.$_GET['user_name'].' hace la paz en el mundo');
      }
             else{ 
-           $message_1 = array(''.urldecode($_GET['user_name']).' ha sido elegido presidente de su país con el 96.9% de los votos', ''.urldecode($_GET['user_name']).' ha sido elegida la mujer más hermosa del universo',
-           ''.urldecode($_GET['user_name']).' se convierte en la segunda fortuna mundial detrás de Bill Gates',
-               ''.urldecode($_GET['user_name']).' acaba de comprar su propio país',
+           $message_1 = array(''.$_GET['user_name'].' ha sido elegido presidente de su país con el 96.9% de los votos', ''.$_GET['user_name'].' ha sido elegida la mujer más hermosa del universo',
+           ''.$_GET['user_name'].' se convierte en la segunda fortuna mundial detrás de Bill Gates',
+               ''.$_GET['user_name'].' acaba de comprar su propio país',
                ''.$_GET['nombre_usuario'].' descubre una cura para el cáncer',
-               ''.urldecode($_GET['user_name']).' previene una invasión alienígena',
-               ''.urldecode($_GET['user_name']).' hace la paz en el mundo');
+               ''.$_GET['user_name'].' previene una invasión alienígena',
+               ''.$_GET['user_name'].' hace la paz en el mundo');
  
             }
 $max_key = 5; $key = mt_rand(0,$max_key);    
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1518111094.png" id="back"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
 <div class="" id="message" ><?php echo $message_1[$key] ?></div>
 
 

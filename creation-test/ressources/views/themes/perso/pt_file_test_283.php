@@ -69,16 +69,16 @@
       
 <?php
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
-                   $sis = array('Retenha-o, você deve se casar com ele.','Não o deixe ir, ele é gentil.','Aguente, ele é protetor.','Lembre-se, ele é um marido perfeito.'
-                    ,'Aguente, ele é fiel.','Aguente, ele é galante. ');
+                   $sis = array('Retenha, você deve se casar com ele.','Não deixe ele ir, ele é gentil.','Espere, ele é protetor.','Lembre-se, ele é um marido perfeito.'
+                    ,'Espere, ele é fiel.','Espere, ele é galante. ');
           else
-                   $sis = array('Não a deixe ir, você tem que se casar com ela.','Retenha, ela é gentil.','Não a deixe ir, ela é uma esposa perfeita.'
-                    ,'Lembre-se, ela é fiel e leal.','Retenha, ela fará uma boa mãe.');
+                   $sis = array('Não deixe ela ir, você tem que se casar com ela.','Suspenda, ela é gentil.','Não a deixe ir, ela é uma esposa perfeita.'
+                    ,'Lembre-se, ela é fiel e leal.','Suspenda, ela fará uma boa mãe.');
           shuffle($sis);
 ?>
 
-<div class="texte" id="sis_1"> Se o nome dele for </div>
-<div class="texte" id="sis_1_">  <?php echo urldecode($_GET['user_name']); ?> </div>
+<div class="texte" id="sis_1"> Se o nome dele é </div>
+<div class="texte" id="sis_1_">  <?php echo $_GET['user_name']; ?> </div>
 <div class="texte" id="sis_2"> <?php echo  $sis[0]; ?> </div>
 
 

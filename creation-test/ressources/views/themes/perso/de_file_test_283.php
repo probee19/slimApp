@@ -78,7 +78,7 @@
 ?>
 
 <div class="texte" id="sis_1"> Wenn sein Name ist </div>
-<div class="texte" id="sis_1_">  <?php echo urldecode($_GET['user_name']); ?> </div>
+<div class="texte" id="sis_1_">  <?php echo $_GET['user_name']; ?> </div>
 <div class="texte" id="sis_2"> <?php echo  $sis[0]; ?> </div>
 
 
