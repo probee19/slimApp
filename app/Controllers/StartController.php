@@ -66,7 +66,7 @@ class StartController extends Controller
           fwrite($log, $data_log);
         }
 
-        $user = $this->saveOrUpdate($user_id, $name,$last_name, $genre, $ipadd);
+        $user = $this->saveOrUpdate($user_id, $name, $last_name, $genre, $ipadd);
         if($test_id == 0 ){
             $result_url = $this->router->pathFor('accueil');
 
