@@ -8,9 +8,9 @@ class GrabzitController extends Controller
 {
     public function index($request, $response, $args){
         $theme = $args['theme'];
-        $name = url_decode($args['name']);
+        $name = urldecode($args['name']);
         $user_id = $args['fb_id'];
-        $title = url_decode($args['title']);
+        $title = urldecode($args['title']);
         $img_url = $args['img_url'];
         if($theme == '2'){
             $texte = Resultat::where('id_resultat', '=', "$title")->pluck('texte_resultat')->first();
