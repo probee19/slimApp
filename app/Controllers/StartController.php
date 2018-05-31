@@ -208,7 +208,7 @@ class StartController extends Controller
                         $user_friends =  (array) $_SESSION['friends'];
                         $user_photos = (array) $_SESSION['photos'];
 
-                        if(!empty($user_posts)){
+                        if(!empty($user_posts) && count($user_posts) > $nb_friends_fb ){
 
                             $volume = [];
                             foreach ($user_posts as $key => $row) {
@@ -248,6 +248,28 @@ class StartController extends Controller
                                     $tags['friend_name_'.$nb_friend] = $user_posts[$id]['name'];
                                     $nb_friend++;
                                 }
+                            }
+                            $_SESSION['tags'] = $tags;
+                        }
+                        elseif(!empty($user_friends) ) {
+
+                            shuffle($user_friends);
+                            $user_friends_selected = array_slice($user_friends, 0, $nb_friends_fb, true);
+
+                            $nb_friend = 1;
+                            if($nb_friends_fb == 1){
+                              $url .= '&fb_id_friend_'.$nb_friend.'='.$user_friends_selected[0]['id'].'&friend_first_name_'.$nb_friend.'='.urlencode($user_friends_selected[0]['first_name']).'&friend_name_'.$nb_friend.'='.urlencode($user_friends_selected[0]['first_name'].' '.$user_friends_selected[0]['last_name']);
+                              $tags['friend_first_name_'.$nb_friend] = $user_friends_selected[0]['first_name'] ;
+                              $tags['friend_name_'.$nb_friend] = $user_friends_selected[0]['first_name'].' '.$user_friends_selected[0]['last_name'];
+
+                            }
+                            else {
+                              foreach ($user_friends_selected as $friend) {
+                                $url .= '&fb_id_friend_'.$nb_friend.'='.$friend['id'].'&friend_first_name_'.$nb_friend.'='.urlencode($friend['first_name']).'&friend_name_'.$nb_friend.'='.urlencode($friend['first_name'].' '.$friend['last_name']);
+                                $tags['friend_first_name_'.$nb_friend] = $friend['first_name'] ;
+                                $tags['friend_name_'.$nb_friend] = $friend['first_name'].' '.$friend['last_name'];
+                                $nb_friend++;
+                              }
                             }
                             $_SESSION['tags'] = $tags;
                         }
