@@ -70,15 +70,15 @@
       
 <?php
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
-                    $caracteres = array('La confianza y la lealtad son importantes para '.urldecode($_GET['user_name']).'. El mundo no siempre lo ayudó, pero su actitud positiva le permitió atravesar los malos momentos. Él es ambicioso y ama todo lo que la vida tiene para ofrecer.',
+                    $caracteres = array('La confianza y la lealtad son importantes para '.$_GET['User_name'].'. El mundo no siempre lo ayudó, pero su actitud positiva le permitió atravesar los malos momentos. Él es ambicioso y ama todo lo que la vida tiene para ofrecer.',
                     'La vida no siempre ha sido fácil con '.$_GET['¿User_name'].', Pero eso nunca le ha impedido alcanzar sus sueños. Él es ambicioso, leal e inspirador con todos los que lo rodean. Él continúa viviendo su vida completamente y ama los desafíos.',
-                    'La confianza y la lealtad se describen bien '.urldecode($_GET['user_name']).'. La vida a veces era dura, pero su naturaleza fuerte y decidida le permitía pasar por momentos difíciles. Nadie puede evitar que alcance sus sueños, y su actitud inspira a otros a hacer lo mismo.',
+                    'La confianza y la lealtad se describen bien '.$_GET['User_name'].'. La vida a veces era dura, pero su naturaleza fuerte y decidida le permitía pasar por momentos difíciles. Nadie puede evitar que alcance sus sueños, y su actitud inspira a otros a hacer lo mismo.',
                     ''.$_GET['nombre_usuario'].' vida amorosa! Aunque tenía medias, sigue siendo una persona fuerte y leal. Él es honesto y ambicioso, y alcanza sus sueños día tras día. ¡Nunca pierde de vista quién es realmente!');
           }
           else{
-                    $caracteres = array('La confianza y la lealtad son importantes para '.urldecode($_GET['user_name']).'. El mundo no siempre la ha ayudado, pero su actitud positiva le ha permitido superar los malos momentos. Ella es ambiciosa y ama todo lo que la vida tiene para ofrecer.',
+                    $caracteres = array('La confianza y la lealtad son importantes para '.$_GET['User_name'].'. El mundo no siempre la ha ayudado, pero su actitud positiva le ha permitido superar los malos momentos. Ella es ambiciosa y ama todo lo que la vida tiene para ofrecer.',
                     'La vida no siempre ha sido fácil con '.$_GET['¿User_name'].', Pero eso nunca le ha impedido alcanzar sus sueños. Ella es ambiciosa, leal e inspira a todos a su alrededor. Ella continúa viviendo una vida plena y ama los desafíos.',
-                    'La confianza y la lealtad se describen bien '.urldecode($_GET['user_name']).'. La vida a veces era dura, pero su naturaleza fuerte y decidida le permitía pasar por momentos difíciles. Nadie puede evitar que alcance sus sueños, y su actitud inspira a otros a hacer lo mismo.',
+                    'La confianza y la lealtad se describen bien '.$_GET['User_name'].'. La vida a veces era dura, pero su naturaleza fuerte y decidida le permitía pasar por momentos difíciles. Nadie puede evitar que alcance sus sueños, y su actitud inspira a otros a hacer lo mismo.',
                     ''.$_GET['nombre_usuario'].' vida amorosa! Aunque tenía medias, sigue siendo una persona fuerte y leal. Ella es ambiciosa y ambiciosa, y logra sus sueños día tras día. ¡Nunca pierde de vista quién es realmente!');
           }
           shuffle($caracteres);
@@ -87,7 +87,7 @@
 <img src="https://creation.funizi.com/images-theme-perso/1524758800.png" id="back"> 
 <div class="overlay"></div>
 
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 <div class="texte" id="caractere"><?=$caracteres[0]?></div>
 
 

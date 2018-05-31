@@ -70,16 +70,16 @@
       
 <?php
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
-                    $caracteres = array('Trust and loyalty are important for '.urldecode($_GET['user_name']).'. The world has not always helped him, but his positive outlook allowed him to get through the bad times. He is ambitious and loves all that life has to offer.',
-                    'Life has not always been easy with '.urldecode($_GET['user_name']).', But that has never stopped her from reaching her dreams. He is ambitious, loyal and inspiring with everyone around him. He continues to live his life fully and loves challenges.',
-                    'Trust and loyalty describe well '.urldecode($_GET['user_name']).'. Life was sometimes harsh but her strong and determined nature allowed her to go through difficult times. No one can stop him from reaching his dreams, and his attitude inspires others to do the same.',
-                    ''.urldecode($_GET['user_name']).' love life! Although he had stockings, he remains a strong and loyal person. He is honest and ambitious, and reaches his dreams day after day. He never loses sight of who he really is!');
+                    $caracteres = array('Trust and loyalty are important for '.$_GET['User_name'].'. The world has not always helped him, but his positive outlook allowed him to get through the bad times. He is ambitious and loves all that life has to offer.',
+                    'Life has not always been easy with '.$_GET['User_name'].', But that has never stopped her from reaching her dreams. He is ambitious, loyal and inspiring with everyone around him. He continues to live his life fully and loves challenges.',
+                    'Trust and loyalty describe well '.$_GET['User_name'].'. Life was sometimes harsh but her strong and determined nature allowed her to go through difficult times. No one can stop him from reaching his dreams, and his attitude inspires others to do the same.',
+                    ''.$_GET['user_name'].' love life! Although he had stockings, he remains a strong and loyal person. He is honest and ambitious, and reaches his dreams day after day. He never loses sight of who he really is!');
           }
           else{
-                    $caracteres = array('Trust and loyalty are important for '.urldecode($_GET['user_name']).'. The world has not always helped her, but her positive outlook has allowed her to get through the bad times. She is ambitious and loves all that life has to offer.',
-                    'Life has not always been easy with '.urldecode($_GET['user_name']).', But that has never stopped her from reaching her dreams. She is ambitious, loyal and inspires everyone around her. She continues to live a full life and loves challenges.',
-                    'Trust and loyalty describe well '.urldecode($_GET['user_name']).'. Life was sometimes harsh but her strong and determined nature allowed her to go through difficult times. No one can stop him from reaching his dreams, and his attitude inspires others to do the same.',
-                    ''.urldecode($_GET['user_name']).' love life! Although she had stockings, she remains a strong and loyal person. She is ambitious and ambitious, and achieves her dreams day after day. She never loses sight of who she really is!');
+                    $caracteres = array('Trust and loyalty are important for '.$_GET['User_name'].'. The world has not always helped her, but her positive outlook has allowed her to get through the bad times. She is ambitious and loves all that life has to offer.',
+                    'Life has not always been easy with '.$_GET['User_name'].', But that has never stopped her from reaching her dreams. She is ambitious, loyal and inspires everyone around her. She continues to live a full life and loves challenges.',
+                    'Trust and loyalty describe well '.$_GET['User_name'].'. Life was sometimes harsh but her strong and determined nature allowed her to go through difficult times. No one can stop him from reaching his dreams, and his attitude inspires others to do the same.',
+                    ''.$_GET['user_name'].' love life! Although she had stockings, she remains a strong and loyal person. She is ambitious and ambitious, and achieves her dreams day after day. She never loses sight of who she really is!');
           }
           shuffle($caracteres);
 ?>
@@ -87,7 +87,7 @@
 <img src="https://creation.funizi.com/images-theme-perso/1524758800.png" id="back"> 
 <div class="overlay"></div>
 
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 <div class="texte" id="caractere"><?=$caracteres[0]?></div>
 
 

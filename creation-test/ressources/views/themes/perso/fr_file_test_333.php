@@ -70,25 +70,15 @@
           <div class='main'>
       
 <?php
-          if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
-                    $peurs = array(' L\'idée d\'être loin de ta famille te terrifie. Tu les aimes tellement que tu veux toujours être avec elle.  ',
-                    ' Ta plus grande peur, c\'est de ne pas pouvoir dire à tes amis et à ta famille à quel point tu les aime chaque jour. ',
-                    ' Ta famille t\'aime tellement et t\'as si grandement soutenu que l\'idée de les décevoir te brise le coeur. Tu ne veux voir que des sourires sur leur visage. ',
-                    ' Ta famille est super. Vous partagez tout et vous savez comment vous soutenir les uns des autres. Tu seras perdu sans eux. ',
-                    ' Ta plus grande peur, c\'est d\'être séparé de ton/ta meilleur(e) ami(e). Vous êtes presque des jumeaux ! ',
-                    ' Tu aimes ta famille plus que tout au monde. Tu es terrifié à l\'idée de les perdre. Ce sont les personnes les plus importantes dans ta vie ',
-                    ' Ta famille, c\'est ta source de bonheur. Ce ne sont pas juste des gens avec qui tu partages du sang, ce sont tes meilleurs amis et ton meilleur soutient. ');
-          }
-          else{
-                    $peurs = array(' L\'idée d\'être loin de ta famille te terrifie. Tu les aimes tellement que tu veux toujours être avec elle.  ',
-                    ' Ta plus grande peur, c\'est de ne pas pouvoir dire à tes amis et à ta famille à quel point tu les aime chaque jour. ',
-                    ' Ta famille t\'aime tellement et t\'as si grandement soutenu que l\'idée de les décevoir te brise le coeur. Tu ne veux voir que des sourires sur leur visage. ',
-                    ' Ta famille est super. Vous partagez tout et vous savez comment vous soutenir les uns des autres. Tu seras perdue sans eux. ',
-                    ' Ta plus grande peur, c\'est d\'être séparé de ton/ta meilleur(e) ami(e). Vous êtes presque des jumeaux ! ',
-                    ' Tu aimes ta famille plus que tout au monde. Tu es terrifiée à l\'idée de les perdre. Ce sont les personnes les plus importantes dans ta vie ',
-                    ' Ta famille, c\'est ta source de bonheur. Ce ne sont pas juste des gens avec qui tu partages du sang, ce sont tes meilleurs amis et ton meilleur soutient. ');
-                    
-          }
+          
+          $peurs = array(' L\'idée d\'être loin de ta famille te terrifie. Tu les aimes tellement que tu veux toujours être avec elle.  ',
+          ' Ta plus grande peur, c\'est de ne pas pouvoir dire à tes amis et à ta famille à quel point tu les aime chaque jour. ',
+          ' Ta famille t\'aime tellement et t\'as si grandement soutenu que l\'idée de les décevoir te brise le coeur. Tu ne veux voir que des sourires sur leur visage. ',
+          ' Ta famille est super. Vous partagez tout et vous savez comment vous soutenir les uns des autres. Tu seras pas sans eux. ',
+          ' Ta plus grande peur, c\'est d\'être séparé de ton/ta meilleur(e) ami(e). Vous êtes presque des jumeaux ! ',
+          ' Tu aimes ta famille plus que tout au monde. Tu es terrifié(e) à l\'idée de les perdre. Ce sont les personnes les plus importantes dans ta vie ',
+          ' Ta famille, c\'est ta source de bonheur. Ce ne sont pas juste des gens avec qui tu partages du sang, ce sont tes meilleurs amis et ton meilleur soutient. ');
+
           shuffle($peurs);
 ?>
 <!DOCTYPE HTML>
@@ -96,7 +86,7 @@
 <img src="https://creation.funizi.com/images-theme-perso/1524925262.jpg" id="back"> 
 <div class="overlay"></div>
   
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <div class="texte" id="peur"><?=$peurs[0]?></div>
  
 

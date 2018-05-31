@@ -43,7 +43,7 @@ class StartController extends Controller
         if($_SESSION['uid'] && $_SESSION['uid'] != '')
             $user_id  = $_SESSION['uid'];
         if($_SESSION['gender'] && $_SESSION['gender'] != '')
-        $genre  = $_SESSION['gender'];
+            $genre  = $_SESSION['gender'];
         if($_SESSION['last_name'] && $_SESSION['last_name'] != '')
             $last_name = $_SESSION['last_name'];
 

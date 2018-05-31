@@ -70,25 +70,15 @@
           <div class='main'>
       
 <?php
-          if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
-                    $peurs = array('L\'idea di stare lontano dalla tua famiglia ti terrorizza. Li ami così tanto che vuoi sempre stare con lei.',
-                    'La tua più grande paura non è quella di poter dire ai tuoi amici e alla tua famiglia quanto li ami ogni giorno.',
-                    'La tua famiglia ti ama così tanto e hai sostenuto con forza che l\'idea di deluderli ti spezza il cuore. Vuoi solo vedere i sorrisi sui loro volti.',
-                    'La tua famiglia è fantastica. Condividete tutto e sapete come sostenervi a vicenda. Sarai perso senza di loro.',
-                    'La tua più grande paura è separarsi dal tuo migliore amico. Sei quasi gemelli!',
-                    'Ami la tua famiglia più di ogni altra cosa al mondo. Sei terrorizzato di perderli. Queste sono le persone più importanti della tua vita',
-                    'La tua famiglia è la tua fonte di felicità. Non sono solo le persone con cui condividi il sangue, sono i tuoi migliori amici e il tuo miglior sostegno.');
-          }
-          else{
-                    $peurs = array('L\'idea di stare lontano dalla tua famiglia ti terrorizza. Li ami così tanto che vuoi sempre stare con lei.',
-                    'La tua più grande paura non è quella di poter dire ai tuoi amici e alla tua famiglia quanto li ami ogni giorno.',
-                    'La tua famiglia ti ama così tanto e hai sostenuto con forza che l\'idea di deluderli ti spezza il cuore. Vuoi solo vedere i sorrisi sui loro volti.',
-                    'La tua famiglia è fantastica. Condividete tutto e sapete come sostenervi a vicenda. Sarai perso senza di loro.',
-                    'La tua più grande paura è separarsi dal tuo migliore amico. Sei quasi gemelli!',
-                    'Ami la tua famiglia più di ogni altra cosa al mondo. Sei terrorizzato di perderli. Queste sono le persone più importanti della tua vita',
-                    'La tua famiglia è la tua fonte di felicità. Non sono solo le persone con cui condividi il sangue, sono i tuoi migliori amici e il tuo miglior sostegno.');
-                    
-          }
+          
+          $peurs = array('L\'idea di stare lontano dalla tua famiglia ti terrorizza. Li ami così tanto che vuoi sempre stare con lei.',
+          'La tua più grande paura non è quella di poter dire ai tuoi amici e alla tua famiglia quanto li ami ogni giorno.',
+          'La tua famiglia ti ama così tanto e hai sostenuto con forza che l\'idea di deluderli ti spezza il cuore. Vuoi solo vedere i sorrisi sui loro volti.',
+          'La tua famiglia è fantastica. Condividete tutto e sapete come sostenervi a vicenda. Non sarai senza di loro.',
+          'La tua più grande paura è separarsi dal tuo migliore amico. Sei quasi gemelli!',
+          'Ami la tua famiglia più di ogni altra cosa al mondo. Sei terrorizzato di perderli. Queste sono le persone più importanti della tua vita',
+          'La tua famiglia è la tua fonte di felicità. Non sono solo le persone con cui condividi il sangue, sono i tuoi migliori amici e il tuo miglior sostegno.');
+
           shuffle($peurs);
 ?>
 <!DOCTYPE HTML>
@@ -96,7 +86,7 @@
 <img src="https://creation.funizi.com/images-theme-perso/1524925262.jpg" id="back"> 
 <div class="overlay"></div>
   
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <div class="texte" id="peur"><?=$peurs[0]?></div>
  
 

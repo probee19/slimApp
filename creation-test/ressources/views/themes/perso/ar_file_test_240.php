@@ -80,15 +80,15 @@
 <!DOCTYPE HTML>
 <?php
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
-                    $qualite =array('انه لا يخاف من التحديات', 'لديه قلب من الذهب', 'هو المريض', 'لم يستسلم أبدا', 'لديه ابتسامات أجمل', 'انه متواضع', 'انه لطيف', 'يحب عائلته', 'هو دائما حاضر لأحبائه','انه حالم'  );
+                    $qualite =array('إنه لا يخاف من التحديات', 'لديه قلب من الذهب', 'إنه صبور', 'لم يستسلم أبدا', 'لديه أجمل الابتسامات', 'هو متواضع', 'انه لطيف', 'يحب عائلته', 'هو دائما موجود لأحبائه','إنه حالم'  );
           else  
-                    $qualite =array('انها ليست خائفة من التحديات', 'لديها قلب من ذهب', 'أنها مريضة', 'انها لا تستسلم أبدا', 'لديها ابتسامات أجمل', 'وهي متواضعة', 'انها لطيفة', 'تحب عائلتها', 'وهي دائما موجودة لأحبائها','انها حالم'  );
+                    $qualite =array('هي لا تخاف من التحديات', 'لديها قلب من ذهب', 'أنها مريضة', 'هي لا تستسلم أبداً', 'لديها أجمل الابتسامات', 'إنها متواضعة', 'إنها لطيفة', 'هي تحب عائلتها', 'هي دائما موجودة لأحبائها','إنها حالم'  );
          
           
           shuffle($qualite);
 ?>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 
 <hr class="line" id="line1" />
 <hr class="line" id="line2" />

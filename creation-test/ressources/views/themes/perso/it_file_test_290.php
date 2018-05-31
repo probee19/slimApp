@@ -81,7 +81,7 @@
                     $personnages = array('T\'Challa','T\'Chaka','N\'Jadaka','Everett K. Ross','Ulysses Klaue','M\'Baku','Zuri');
                     $images = array('1519661677','1519662644','1519662729','1519663067','1519663366','1519663616','1519663857');
                     $details = array('Sei un vero vigilante e capace di tutto per proteggere il tuo.','Sei amato, rispettato e in grado di mantenere segreti che minacciano la stabilità del tuo paese.',
-                    'Sei un combattente formidabile con intelligenza straordinaria','','Sei uno scienziato di alto livello e possiedi una forza e una resistenza sovrumane',
+                    'Sei un combattente formidabile con intelligenza straordinaria','','Sei uno scienziato di alto livello e possiedi forza e resistenza sovrumane',
                     'Sei un grande leader e hai capacità sovrumane.','Sei un consulente fedele, un uomo di fiducia.');
                     $ind = mt_rand(0,6);
           }
@@ -99,7 +99,7 @@
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1519658734.jpg" id="back"> 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 
 <div class="texte" id="personnage"> <?=$personnages[$ind];?> </div>
 

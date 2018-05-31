@@ -70,25 +70,15 @@
           <div class='main'>
       
 <?php
-          if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
-                    $peurs = array('Die Vorstellung, von deiner Familie weg zu sein, erschreckt dich. Du liebst sie so sehr, dass du immer mit ihr zusammen sein willst.',
-                    'Deine größte Angst ist es nicht, deinen Freunden und deiner Familie zu sagen, wie sehr du sie jeden Tag liebst.',
-                    'Deine Familie liebt dich so sehr und du hast so stark argumentiert, dass die Idee, sie zu enttäuschen, dein Herz bricht. Sie wollen nur ein Lächeln auf ihren Gesichtern sehen.',
-                    'Deine Familie ist großartig. Du teilst alles und du kannst dich gegenseitig unterstützen. Du wirst ohne sie verloren sein.',
-                    'Deine größte Angst ist es, von deinem besten Freund getrennt zu sein. Du bist fast Zwillinge!',
-                    'Du liebst deine Familie mehr als alles andere auf der Welt. Du hast Angst, sie zu verlieren. Dies sind die wichtigsten Menschen in Ihrem Leben',
-                    'Deine Familie ist deine Quelle der Freude. Sie sind nicht nur Menschen, mit denen Sie Blut teilen, sie sind Ihre besten Freunde und Ihre beste Unterstützung.');
-          }
-          else{
-                    $peurs = array('Die Vorstellung, von deiner Familie weg zu sein, erschreckt dich. Du liebst sie so sehr, dass du immer mit ihr zusammen sein willst.',
-                    'Deine größte Angst ist es nicht, deinen Freunden und deiner Familie zu sagen, wie sehr du sie jeden Tag liebst.',
-                    'Deine Familie liebt dich so sehr und du hast so stark argumentiert, dass die Idee, sie zu enttäuschen, dein Herz bricht. Sie wollen nur ein Lächeln auf ihren Gesichtern sehen.',
-                    'Deine Familie ist großartig. Du teilst alles und du kannst dich gegenseitig unterstützen. Du wirst ohne sie verloren sein.',
-                    'Deine größte Angst ist es, von deinem besten Freund getrennt zu sein. Du bist fast Zwillinge!',
-                    'Du liebst deine Familie mehr als alles andere auf der Welt. Du hast Angst, sie zu verlieren. Dies sind die wichtigsten Menschen in Ihrem Leben',
-                    'Deine Familie ist deine Quelle der Freude. Sie sind nicht nur Menschen, mit denen Sie Blut teilen, sie sind Ihre besten Freunde und Ihre beste Unterstützung.');
-                    
-          }
+          
+          $peurs = array('Die Vorstellung, von deiner Familie weg zu sein, erschreckt dich. Du liebst sie so sehr, dass du immer mit ihr zusammen sein willst.',
+          'Deine größte Angst ist es nicht, deinen Freunden und deiner Familie zu sagen, wie sehr du sie jeden Tag liebst.',
+          'Deine Familie liebt dich so sehr und du hast so stark argumentiert, dass die Idee, sie zu enttäuschen, dein Herz bricht. Sie wollen nur ein Lächeln auf ihren Gesichtern sehen.',
+          'Deine Familie ist großartig. Du teilst alles und du kannst dich gegenseitig unterstützen. Du wirst nicht ohne sie sein.',
+          'Deine größte Angst ist es, von deinem besten Freund getrennt zu sein. Du bist fast Zwillinge!',
+          'Du liebst deine Familie mehr als alles andere auf der Welt. Du hast Angst, sie zu verlieren. Dies sind die wichtigsten Menschen in Ihrem Leben',
+          'Deine Familie ist deine Quelle der Freude. Sie sind nicht nur Menschen, mit denen Sie Blut teilen, sie sind Ihre besten Freunde und Ihre beste Unterstützung.');
+
           shuffle($peurs);
 ?>
 <!DOCTYPE HTML>
@@ -96,7 +86,7 @@
 <img src="https://creation.funizi.com/images-theme-perso/1524925262.jpg" id="back"> 
 <div class="overlay"></div>
   
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <div class="texte" id="peur"><?=$peurs[0]?></div>
  
 

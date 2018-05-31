@@ -96,7 +96,7 @@
           
  shuffle($mots);
  
- $prenoms =removeAccents(urldecode($_GET['user_name'])); 
+ $prenoms =removeAccents($_GET['user_name']); 
  // $prenom=Ludovic;
  $prenom = explode(' ',trim($prenoms));
  $prenom = $prenom[0]; //
@@ -125,7 +125,7 @@
 
 <img src="https://creation.funizi.com/images-theme-perso/1524587617.jpg" id="back"> 
  
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 
 <div class="texte" id="layer"></div>
  

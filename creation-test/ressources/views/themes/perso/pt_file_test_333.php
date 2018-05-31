@@ -70,25 +70,15 @@
           <div class='main'>
       
 <?php
-          if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
-                    $peurs = array('A ideia de estar longe da sua família te aterroriza. Você os ama tanto que sempre quer estar com ela.',
-                    'Seu maior medo é não poder dizer a seus amigos e familiares o quanto você os ama todos os dias.',
-                    'Sua família te ama muito e você argumentou tão fortemente que a ideia de desapontá-los quebra seu coração. Você só quer ver sorrisos em seus rostos.',
-                    'Sua família é ótima. Você compartilha tudo e sabe como apoiar um ao outro. Você estará perdido sem eles.',
-                    'Seu maior medo é ser separado do seu melhor amigo. Você é quase gêmea!',
-                    'Você ama sua família mais do que qualquer coisa no mundo. Você está com medo de perdê-los. Estas são as pessoas mais importantes da sua vida',
-                    'Sua família é sua fonte de felicidade. Eles não são apenas pessoas com quem você compartilha o sangue, eles são seus melhores amigos e seu melhor apoio.');
-          }
-          else{
-                    $peurs = array('A ideia de estar longe da sua família te aterroriza. Você os ama tanto que sempre quer estar com ela.',
-                    'Seu maior medo é não poder dizer a seus amigos e familiares o quanto você os ama todos os dias.',
-                    'Sua família te ama muito e você argumentou tão fortemente que a ideia de desapontá-los quebra seu coração. Você só quer ver sorrisos em seus rostos.',
-                    'Sua família é ótima. Você compartilha tudo e sabe como apoiar um ao outro. Você estará perdido sem eles.',
-                    'Seu maior medo é ser separado do seu melhor amigo. Você é quase gêmea!',
-                    'Você ama sua família mais do que qualquer coisa no mundo. Você está com medo de perdê-los. Estas são as pessoas mais importantes da sua vida',
-                    'Sua família é sua fonte de felicidade. Eles não são apenas pessoas com quem você compartilha o sangue, eles são seus melhores amigos e seu melhor apoio.');
-                    
-          }
+          
+          $peurs = array('A ideia de estar longe da sua família te aterroriza. Você os ama tanto que sempre quer estar com ela.',
+          'Seu maior medo é não poder dizer a seus amigos e familiares o quanto você os ama todos os dias.',
+          'Sua família te ama muito e você argumentou tão fortemente que a ideia de desapontá-los quebra seu coração. Você só quer ver sorrisos em seus rostos.',
+          'Sua família é ótima. Você compartilha tudo e sabe como apoiar um ao outro. Você não ficará sem eles.',
+          'Seu maior medo é ser separado do seu melhor amigo. Você é quase gêmea!',
+          'Você ama sua família mais do que qualquer coisa no mundo. Você está com medo de perdê-los. Estas são as pessoas mais importantes da sua vida',
+          'Sua família é sua fonte de felicidade. Eles não são apenas pessoas com quem você compartilha o sangue, eles são seus melhores amigos e seu melhor apoio.');
+
           shuffle($peurs);
 ?>
 <!DOCTYPE HTML>
@@ -96,7 +86,7 @@
 <img src="https://creation.funizi.com/images-theme-perso/1524925262.jpg" id="back"> 
 <div class="overlay"></div>
   
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <div class="texte" id="peur"><?=$peurs[0]?></div>
  
 

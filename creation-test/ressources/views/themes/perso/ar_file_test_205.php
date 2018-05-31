@@ -71,19 +71,19 @@ ol li{height:55px;}
 <?php
   if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-            $texte = array('{؟ user_name؟} سيكون أب ممتاز!', 'مع {؟ اسم المستخدم؟} نحن أبدا بالملل!', '{؟ اسم المستخدم؟} هو الرجل المثالي!', '{؟ اسم المستخدم؟} يمكن أن تعطي كل شيء من أجل الحب!',
-            '{؟ اسم المستخدم؟} هو طفل لطيف!', '{؟ اسم المستخدم؟} يعد مفاجآت رائعة!','{؟ اسم المستخدم؟} يعرف كيفية جعل الحياة أكثر جمالا!', '{؟ user_name؟} هو ولاء لا يمكن تخطيه!','{؟ اسم المستخدم؟} هو مضحك وذكية');
+            $texte = array('{؟ سوف يكون user_name؟} أب ممتاز!', 'مع {؟ نحن لا نشعر بالملل!', '{؟ user_name؟} هو ببساطة الرجل المثالي!', '{؟ user_name؟} يمكن أن تعطي كل شيء من أجل الحب!',
+            '{؟ user_name؟} هو طفل لطيف!', '{؟ يعد user_name؟} مفاجآت رائعة!','{؟ يعرف user_name؟} كيفية جعل الحياة أكثر جمالا!', '{؟ user_name؟} هو ولاء لا يطاق!','{؟ user_name؟} مضحك وذكي');
   }
             else{ 
-          $texte = array('{؟ user_name؟} ستكون أم ممتازة!', 'مع {؟ اسم المستخدم؟} نحن أبدا بالملل!', '{؟ اسم المستخدم؟} هو ببساطة امرأة مثالية!', '{؟ اسم المستخدم؟} يمكن أن تعطي كل شيء من أجل الحب!',
-            '{؟ اسم المستخدم؟} هو الجمال!', '{؟ اسم المستخدم؟} يعد مفاجآت رائعة!','{؟ اسم المستخدم؟} يعرف كيفية جعل الحياة أكثر جمالا!', '{؟ user_name؟} هو ولاء لا يمكن تخطيه!','{؟ اسم المستخدم؟} هو مضحك وذكية');
+          $texte = array('{؟ سوف يكون user_name؟} أم ممتازة!', 'مع {؟ نحن لا نشعر بالملل!', '{؟ user_name؟} هي ببساطة امرأة مثالية!', '{؟ user_name؟} يمكن أن تعطي كل شيء من أجل الحب!',
+            '{؟ user_name؟} هو جمال!', '{؟ يعد user_name؟} مفاجآت رائعة!','{؟ يعرف user_name؟} كيفية جعل الحياة أكثر جمالا!', '{؟ user_name؟} هو ولاء لا يطاق!','{؟ user_name؟} مضحك وذكي');
   }
 shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1510165729.png" id="background"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div id="titretest" >ال <span style="color:#D90000">5 أسباب</span> للزواج <br><?php echo urldecode($_GET['full_user_name']); ?></div>
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<div id="titretest" >ال <span style="color:#D90000">5 أسباب</span> للزواج <br><?php echo $_GET['full_user_name']; ?></div>
 
 <ol>
 <li><?php echo $texte[0]; ?> </li> 

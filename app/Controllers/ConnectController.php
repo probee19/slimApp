@@ -152,7 +152,7 @@ class ConnectController extends Controller
                                 "last_name" => $friends[$key]['last_name'],
                                 "gender" => $friends[$key]['gender']
                             ];
-                            $user_friends[] = $this_friend;
+                            $user_friends[$value['id']] = $this_friend;
                         }
 
                      // Get friends from user_posts

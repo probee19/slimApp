@@ -82,13 +82,13 @@
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
                     $qualite =array('He is not afraid of challenges', 'He has a heart of gold', 'He is patient', 'He never gives up', 'He has the most beautiful smiles', 'He is humble', 'He is nice', 'He loves his family', 'He is always present for his loved ones','He is a dreamer'  );
           else  
-                    $qualite =array('She is not afraid of challenges', 'She has a heart of gold', 'She is patient', 'She never gives up', 'She has the most beautiful smiles', 'She is humble', 'She&#39;s nice', 'She loves her family', 'She is always present for her loved ones','She&#39;s a dreamer'  );
+                    $qualite =array('She is not afraid of challenges', 'She has a heart of gold', 'She is patient', 'She never gives up', 'She has the most beautiful smiles', 'She is humble', 'She\'s nice', 'She loves her family', 'She is always present for her loved ones','She\'s a dreamer'  );
          
           
           shuffle($qualite);
 ?>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 
 <hr class="line" id="line1" />
 <hr class="line" id="line2" />

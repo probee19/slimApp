@@ -70,16 +70,16 @@
       
 <?php
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
-                    $caracteres = array(' La confiance et la loyauté sont importantes pour '.urldecode($_GET['user_name']).'. Le monde ne l\'a pas toujours aidé mais sa vision positive des choses lui a permis de traverser les mauvaix moments. Il est ambitieux et aime tout ce que la vie a à offrir. ',
-                    ' La vie n\'a pas toujours été facile avec '.urldecode($_GET['user_name']).', mais cela ne l\'a jamais empêché d\'atteindre ses rêves. Il est ambitieux, loyal et inspirant avec tous ceux qui l\'entourent. Il continue de vivre sa vie pleinement et aime les défis. ',
-                    ' La confiance et la loyauté décrivent bien '.urldecode($_GET['user_name']).'. La vie a été parfois dure mais sa nature forte et déterminée lui ont permis de traverser les moments difficiles. Personne ne peut l\'empêcher d\'atteindre ses rêves, et son attitude inspire les autres en à faire de même.',
-                    ' '.urldecode($_GET['user_name']).' aime la vie ! Bien qu\'il ait eu des bas, il demeure une personne forte et loyale. Il est hônnete et ambitieux, et atteint ses rêves jours après jours. Il ne perd jamais de vue qui il est vraiment ! ');
+                    $caracteres = array(' La confiance et la loyauté sont importantes pour '.$_GET['user_name'].'. Le monde ne l\'a pas toujours aidé mais sa vision positive des choses lui a permis de traverser les mauvaix moments. Il est ambitieux et aime tout ce que la vie a à offrir. ',
+                    ' La vie n\'a pas toujours été facile avec '.$_GET['user_name'].', mais cela ne l\'a jamais empêché d\'atteindre ses rêves. Il est ambitieux, loyal et inspirant avec tous ceux qui l\'entourent. Il continue de vivre sa vie pleinement et aime les défis. ',
+                    ' La confiance et la loyauté décrivent bien '.$_GET['user_name'].'. La vie a été parfois dure mais sa nature forte et déterminée lui ont permis de traverser les moments difficiles. Personne ne peut l\'empêcher d\'atteindre ses rêves, et son attitude inspire les autres en à faire de même.',
+                    ' '.$_GET['user_name'].' aime la vie ! Bien qu\'il ait eu des bas, il demeure une personne forte et loyale. Il est hônnete et ambitieux, et atteint ses rêves jours après jours. Il ne perd jamais de vue qui il est vraiment ! ');
           }
           else{
-                    $caracteres = array(' La confiance et la loyauté sont importantes pour '.urldecode($_GET['user_name']).'. Le monde ne l\'a pas toujours aidée mais sa vision positive des choses lui a permis de traverser les mauvaix moments. Elle est ambitieuse et aime tout ce que la vie a à offrir. ',
-                    ' La vie n\'a pas toujours été facile avec '.urldecode($_GET['user_name']).', mais cela ne l\'a jamais empêché d\'atteindre ses rêves. Elle est ambitieuse, loyale et inspire tous ceux qui l\'entourent. Elle continue de vivre sa vie pleinement et aime les défis. ',
-                    ' La confiance et la loyauté décrivent bien '.urldecode($_GET['user_name']).'. La vie a été parfois dure mais sa nature forte et déterminée lui ont permis de traverser les moments difficiles. Personne ne peut l\'empêcher d\'atteindre ses rêves, et son attitude inspire les autres en à faire de même.',
-                    ' '.urldecode($_GET['user_name']).' aime la vie ! Bien qu\'elle ait eu des bas, elle demeure une personne forte et loyale. Elle est hônnete et ambitieuse, et atteint ses rêves jours après jours. Elle ne perd jamais de vue qui elle est vraiment ! ');
+                    $caracteres = array(' La confiance et la loyauté sont importantes pour '.$_GET['user_name'].'. Le monde ne l\'a pas toujours aidée mais sa vision positive des choses lui a permis de traverser les mauvaix moments. Elle est ambitieuse et aime tout ce que la vie a à offrir. ',
+                    ' La vie n\'a pas toujours été facile avec '.$_GET['user_name'].', mais cela ne l\'a jamais empêché d\'atteindre ses rêves. Elle est ambitieuse, loyale et inspire tous ceux qui l\'entourent. Elle continue de vivre sa vie pleinement et aime les défis. ',
+                    ' La confiance et la loyauté décrivent bien '.$_GET['user_name'].'. La vie a été parfois dure mais sa nature forte et déterminée lui ont permis de traverser les moments difficiles. Personne ne peut l\'empêcher d\'atteindre ses rêves, et son attitude inspire les autres en à faire de même.',
+                    ' '.$_GET['user_name'].' aime la vie ! Bien qu\'elle ait eu des bas, elle demeure une personne forte et loyale. Elle est hônnete et ambitieuse, et atteint ses rêves jours après jours. Elle ne perd jamais de vue qui elle est vraiment ! ');
           }
           shuffle($caracteres);
 ?>
@@ -87,7 +87,7 @@
 <img src="https://creation.funizi.com/images-theme-perso/1524758800.png" id="back"> 
 <div class="overlay"></div>
 
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 <div class="texte" id="caractere"><?=$caracteres[0]?></div>
 
 

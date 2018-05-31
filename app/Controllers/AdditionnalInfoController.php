@@ -53,6 +53,12 @@ class AdditionnalInfoController extends Controller
             'label'     => $info->label,
           ];
         }
+        elseif ($info->additionalInfos->typeinput == 'input_gender') { // Le genre de l'uitilisateur est demandé
+          // code...
+          $input_gender = [
+            'label'     => $info->label,
+          ];
+        }
       }
 
 

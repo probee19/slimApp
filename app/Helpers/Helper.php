@@ -88,8 +88,14 @@ class Helper
     }
 
     public function getCountryCode(){
-        $country = self::getCountry($this->getRealUserIp());
-        return $country['countryCode'];
+      if(isset($_COOKIE["country_user"]))
+          $country = (array) json_decode($_COOKIE['country_user']);
+      else {
+          $country = $this->getCountry($this->getRealUserIp());
+          setcookie("country_user", json_encode($country), time()+3600*24*10);
+      }
+      //$country = self::getCountry($this->getRealUserIp());
+      return $country['countryCode'];
     }
 
     public function createCookie(){
@@ -248,190 +254,144 @@ class Helper
         return $randomTests;
     }
 
-    public function relatedTests($countryCode, $exclude, $lang, $total = 24){
-        $alltests= []; $besttests= [];
-        //$new_tests = [];
-        // Selection d'un test parmi les 5 denières créations
-        $new_tests = self::getLastTests($countryCode, $exclude, $lang, 5);
-
-        $choosen_new_tests_1 = array_slice($new_tests, 0, 1);
-        foreach ($choosen_new_tests_1 as $new_test)
-          $exclude[] = $new_test['id_test'];
-
-        $choosen_new_tests_2 = array_slice($new_tests, 1, 2);
-        foreach ($choosen_new_tests_2 as $new_test)
-          $exclude[] = $new_test['id_test'];
-
-
-        $local_tests = self::getLocalTests($countryCode, $exclude, $lang, 5);
-        if(count($local_tests) > 0)
-          $choosen_local_tests_1 = array_slice($local_tests, 0, 1);
-        else
-          $choosen_local_tests_1 = array();
-
-        foreach ($choosen_local_tests_1 as $local_test)
-          $exclude[] = $local_test['id_test'];
-        //Helper::debug($choosen_local_tests_1);
-
-        // Selection de 6 tests parmi les meilleurs partages sur les 7 dernires jours
-        $alltests0 = self::getLovedTests($countryCode, $exclude, $lang, 6);
-        foreach ($alltests0 as $test) {
-          $besttests [] = [
-            'url_image_test' => $test["url_image_test"],
-            'id_test'        => $test["id_test"],
-            'titre_test'     => $test["titre_test"]
+    public static function getTestsWithAdditionnalInfos($countryCode, $exclude, $lang, $total = 1){
+      // Récuperation des tests pour langue $lang;
+      $tests_from_json = self::getAllTestJson($lang);
+      //Helper::debug($tests_from_json);
+      //krsort($tests_from_json);
+      $nb_taken = 0; $tests = array();
+      foreach ($tests_from_json as $test) {
+        if(!in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total && $test['if_additionnal_info'] == 1){
+          $tests[$test['id_test']] = [
+            'url_image_test' => $test['url_image_test'],
+            'id_test'        => $test['id_test'],
+            'titre_test'     => $test['titre_test']
           ];
-          $exclude[] = $test["id_test"];
         }
-        shuffle($besttests);
-        $besttests   = array_merge($choosen_new_tests_1, $besttests);
-
-        $besttests   = array_merge($besttests, $choosen_new_tests_2);
-
-        $besttests   = array_merge($besttests, $choosen_local_tests_1);
-
-        // Selection de tests mis en avant pour completer la liste des tests à découvrir
-        $alltests2 = self::getHighlightsFromJson($lang);
-        foreach ($alltests2 as $test) {
-          // Si le test n'est pas dans les exclus ($exclude) et est soit un test universel ou local
-          if(!in_array($test["id_test"], $exclude, true) && ($test["codes_countries"] == "" || strpos($test["codes_countries"], $countryCode) != false))
-            $alltests [] = [
-                'url_image_test' => $test["url_image_test"],
-                'id_test'        => $test["id_test"],
-                'titre_test'     => $test["titre_test"]
-            ];
-        }
-        shuffle($alltests);
-
-        $alltests   = array_merge($besttests, $alltests);
-        $alltests_total = array_slice($alltests, 0, $total);
-
-        return $alltests_total;
+      }
+      if(count($tests) > 1)
+        shuffle($tests);
+      return $tests;
     }
 
-    public function relatedTests_test($countryCode, $exclude, $lang, $total = 24){
-          // Bests Tests to discover
-          //$best_test = array(256,254,249,165,207,171,240,251);
-          /*
-          $best_test = array(281,280,278,274,256,254,249,165,240,251);
-          $alltests0 = Test::selectRaw('tests.titre_test AS titre_test_fr, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
-                    ->join('test_info','test_info.id_test','tests.id_test')
-                    ->where('test_info.lang','=',$lang)
-                    ->whereNotIn('tests.id_test', $exclude)
-                    ->whereIn('tests.id_test',$best_test)->get();
-          $exclude   = array_merge($exclude, $best_test);
-          */
-          //Helper::debug($lang);
-          //Helper::debug($exclude);
-          //Helper::debug($alltests0);
-          // Bests Tests to discover
+    public static function getTestsWithImgTreatment($countryCode, $exclude, $lang, $total = 1){
+      // Récuperation des tests pour langue $lang;
+      $tests_from_json = self::getAllTestJson($lang);
+      //Helper::debug($tests_from_json);
+      //krsort($tests_from_json);
+      $nb_taken = 0; $tests = array();
+      foreach ($tests_from_json as $test) {
+        if(!in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total && $test['has_treatment'] === 1){
+          $tests[$test['id_test']] = [
+            'url_image_test' => $test['url_image_test'],
+            'id_test'        => $test['id_test'],
+            'titre_test'     => $test['titre_test']
+          ];
+        }
+      }
+      if(count($tests) > 1)
+        shuffle($tests);
+      return $tests;
+    }
 
-          $alltests= []; $besttests= []; $new_tests = [];
-          // Selection d'un test parmi les 5 denières créations
-          $alltests1 = Test::selectRaw('tests.titre_test AS titre_test_fr, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
-              ->join('test_info','test_info.id_test','tests.id_test')
-              ->where([['test_info.lang','=',$lang],['tests.statut','=',1],['tests.codes_countries', 'like', "%$countryCode%"]])
-              ->orwhere([['test_info.lang','=',$lang],['tests.statut','=',1],['tests.codes_countries', 'like', ""]])
-              ->whereNotIn('tests.id_test', $exclude)
-              ->orderBy('tests.created_at','DESC')
-              ->take(5)->get();
-              $alltests= []; $besttests= []; $new_tests = [];
+    public function relatedTests($countryCode, $exclude, $lang, $total = 24){
+      $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
-          foreach ($alltests1 as $new_test) {
-            $new_tests[] = [
-              'url_image_test' => $new_test->url_image_test,
-              'id_test'        => $new_test->id_test,
-              'titre_test'     => $new_test->titre_test
-            ];
-            $exclude[] = $new_test->id_test;
-          }
-          shuffle($new_tests);
-          $choosen_new_tests_1 = array_slice($new_tests, 0, 1);
+      // Selection de quelques tests
+      $choosen_some_tests = array();
+      //$array_tests = array(207,112);
+      $array_tests = array(347,348);
+      $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
+      if(count($choosen_some_tests) >= 1)
+        foreach ($choosen_some_tests as $test)
+          $exclude[] = $test['id_test'];
 
-          // Selection de 6 tests parmi les meilleurs partages sur les 7 dernires jours
-          $alltests0 = self::getLovedTests($countryCode, $exclude, $lang, 6);
 
-          foreach ($alltests0 as $test) {
-            $besttests [] = [
+      //Selection d'un test demandant des informatsions additionnelles
+      $choosen_tests_with_img_treatment = self::getTestsWithImgTreatment($countryCode, $exclude, $lang, 3);
+      if(count($choosen_tests_with_img_treatment) >= 1)
+        foreach ($choosen_tests_with_img_treatment as $test)
+          $exclude[] = $test['id_test'];
+
+
+      /*
+      $choosen_tests_with_add_info = self::getTestsWithAdditionnalInfos($countryCode, $exclude, $lang, 1);
+      if(count($choosen_tests_with_add_info) >= 1)
+        foreach ($choosen_tests_with_add_info as $test)
+          $exclude[] = $test['id_test'];
+      */
+
+      // Selection d'un test parmi les 5 denières créations
+      $new_tests = self::getLastTests($countryCode, $exclude, $lang, 5);
+
+      $choosen_new_tests_1 = array_slice($new_tests, 0, 1);
+      foreach ($choosen_new_tests_1 as $new_test)
+        $exclude[] = $new_test['id_test'];
+
+      $choosen_new_tests_2 = array_slice($new_tests, 1, 2);
+      foreach ($choosen_new_tests_2 as $new_test)
+        $exclude[] = $new_test['id_test'];
+
+
+      $local_tests = self::getLocalTests($countryCode, $exclude, $lang, 5);
+      if(count($local_tests) > 0)
+        $choosen_local_tests_1 = array_slice($local_tests, 0, 1);
+      else
+        $choosen_local_tests_1 = array();
+
+      foreach ($choosen_local_tests_1 as $local_test)
+        $exclude[] = $local_test['id_test'];
+
+      // Selection de 6 tests parmi les meilleurs partages sur les 7 dernires jours
+      $alltests0 = self::getLovedTests($countryCode, $exclude, $lang, 6);
+      foreach ($alltests0 as $test) {
+        $besttests [] = [
+          'url_image_test' => $test["url_image_test"],
+          'id_test'        => $test["id_test"],
+          'titre_test'     => $test["titre_test"]
+        ];
+        $exclude[] = $test["id_test"];
+      }
+      shuffle($besttests);
+
+      $tests_to_discover = array();
+      if($choosen_some_tests != null)
+        $tests_to_discover   = $choosen_some_tests;
+
+
+      if($choosen_tests_with_img_treatment != null)
+        $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_img_treatment);
+
+      $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_1);
+
+      $tests_with_add_info = array();
+      if($choosen_tests_with_add_info != null)
+        $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_add_info);
+
+
+      $tests_to_discover   = array_merge($tests_to_discover, $besttests);
+
+      $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_2);
+
+      $tests_to_discover   = array_merge($tests_to_discover, $choosen_local_tests_1);
+
+      // Selection de tests mis en avant pour completer la liste des tests à découvrir
+      $alltests2 = self::getHighlightsFromJson($lang);
+      foreach ($alltests2 as $test) {
+        // Si le test n'est pas dans les exclus ($exclude) et est soit un test universel ou local
+        if(!in_array($test["id_test"], $exclude, true) && ($test["codes_countries"] == "" || strpos($test["codes_countries"], $countryCode) != false))
+          $alltests [] = [
               'url_image_test' => $test["url_image_test"],
               'id_test'        => $test["id_test"],
               'titre_test'     => $test["titre_test"]
-            ];
-            $exclude[] = $test["id_test"];
-          }
-          shuffle($besttests);
-          $besttests   = array_merge($choosen_new_tests_1, $besttests);
+          ];
+      }
+      shuffle($alltests);
 
-          $choosen_new_tests_2 = array_slice($new_tests, 1, 2);
+      $alltests   = array_merge($tests_to_discover, $alltests);
+      $alltests_total = array_slice($alltests, 0, $total);
 
-          $besttests   = array_merge($besttests, $choosen_new_tests_2);
-
-          // Selection de tests mis en avant pour completer la liste des tests à découvrir
-          $alltests2 = self::getHighlightsFromJson($lang);
-          foreach ($alltests2 as $test) {
-            // Si le test n'est pas dans les exclus ($exclude) et est soit un test universel ou local
-            if(!in_array($test["id_test"], $exclude, true) && ($test["codes_countries"] == "" || strpos($test["codes_countries"], $countryCode) != false))
-              $alltests [] = [
-                  'url_image_test' => $test["url_image_test"],
-                  'id_test'        => $test["id_test"],
-                  'titre_test'     => $test["titre_test"]
-              ];
-          }
-          shuffle($alltests);
-
-          $alltests   = array_merge($besttests, $alltests);
-          $alltests_total = array_slice($alltests, 0, $total);
-
-          return $alltests_total;
-    }
-
-    public function relatedTests2($countryCode, $exclude, $total = 24, $debug = false){
-        $alltests1 = Highlights::whereNotIn('id_test', $exclude)
-            ->where([
-                    ['statut', '=', '1'],
-                    ['codes_countries', 'like', "%$countryCode%"]
-                ]
-            )
-            ->select('url_image_test', 'id_test', 'titre_test')
-            ->take($total)
-            ->get();
-
-        $alltests2 = Highlights::whereNotIn('id_test', $exclude)
-            ->where([
-                    ['statut', '=', '1'],
-                    ['codes_countries', 'like', ""]
-                ]
-            )
-            ->select('url_image_test', 'id_test', 'titre_test')
-            ->take($total)
-            ->get();
-
-        $alltests= [];
-
-        foreach ($alltests1 as $test) {
-           $alltests [] = [
-               'url_image_test' => $test->url_image_test,
-               'id_test'        => $test->id_test,
-               'titre_test'     => $test->titre_test
-           ];
-        }
-        foreach ($alltests2 as $test) {
-           $alltests [] = [
-               'url_image_test' => $test->url_image_test,
-               'id_test'        => $test->id_test,
-               'titre_test'     => $test->titre_test
-           ];
-        }
-        $alltests_total = array_slice($alltests, 0, $total);
-        foreach ($alltests_total as $oneTest) {
-            Test::where('id_test', '=', $oneTest['id_test'])->increment('affichage_discover_count');
-        }
-        shuffle($alltests_total);
-
-
-
-        return $alltests_total;
-
+      return $alltests_total;
     }
 
     public static function getLovedTests($countryCode, $exclude, $lang, $total = 3){
@@ -485,10 +445,29 @@ class Helper
 
     }
 
+    public static function getSomeTests($countryCode, $array_tests, $exclude, $lang)
+    {
+      // Récuperation des tests pour langue $lang;
+      $tests_from_json = self::getAllTestJson($lang);
+      //krsort($tests_from_json);
+      foreach ($tests_from_json as $test) {
+        if(in_array($test['id_test'], $array_tests, true) && !in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) ){
+          $tests[$test['id_test']] = [
+            'url_image_test' => $test['url_image_test'],
+            'id_test'        => $test['id_test'],
+            'titre_test'     => $test['titre_test']
+          ];
+        }
+      }
+
+      if(count($tests) > 0)
+        shuffle($tests);
+      return $tests;
+    }
+
     // Obtention des tests locaux
     public static function getLocalTests($countryCode, $exclude, $lang, $total = 5)
     {
-    	$tests = [];
       // Récuperation des tests pour langue $lang;
       $tests_from_json = self::getAllTestJson($lang);
       //krsort($tests_from_json);
@@ -506,6 +485,7 @@ class Helper
         shuffle($tests);
       return $tests;
     }
+
     // Obtention des noms des éléments de l'interface dans la langue choisie
     public static function getUiLabels($lang=""){
       $language = self::getLangBrowser($lang);
@@ -640,6 +620,34 @@ class Helper
        return $alltest;
     }
 
+    public function getMostTestedCountry($lang, $exclude, $countryCode, $total = 24)
+    {
+      if(strlen($lang) > 2) $lang = 'en'; //
+      $file = "ressources/views/json_files/countries/".$lang."_".$countryCode."_most_tested.json";
+      $jsondata = file_get_contents($file);
+       // converts json data into array
+       $arr_data = json_decode($jsondata);
+       $most_tested = array();
+
+       foreach ($arr_data as $test) {
+         if(!in_array($test->id_test, $exclude, true) && ($test->codes_countries == "" || strpos($test->codes_countries, $countryCode) != false ) && ++$nb_taken <= $total){
+           $most_tested[$test->id_test] = [
+             'url_image_test' => $test->url_image_test,
+             'id_test'        => $test->id_test,
+             'titre_test'     => stripslashes("$test->titre_test")
+           ];
+           $exclude[] = $test->id_test;
+         }
+       }
+       shuffle($most_tested);
+      $data = [
+        'exclude'       =>  $exclude,
+        'most_tested'  =>  $most_tested
+      ];
+
+       return $data;
+    }
+
     public static function getHighlightsFromJson($lang){
       //Get data from existing json file
   	   $jsondata = file_get_contents("ressources/views/json_files/highlights/".$lang."_highlights.json",true);
@@ -662,6 +670,7 @@ class Helper
 
        return $alltest;
     }
+
     public function uploadToS3($fileURL, $folder){
         // AWS Info
 
@@ -694,10 +703,10 @@ class Helper
         }
 
           // Change this
-// For this, I would generate a unqiue random string for the key name. But you can do whatever.
+        // For this, I would generate a unqiue random string for the key name. But you can do whatever.
         $keyName = $folder . basename($fileURL);
         $pathInS3 = 'https://s3.us-east-2.amazonaws.com/' . $bucketName . '/' . $keyName;
-// Add it to S3
+        // Add it to S3
         try {
             // You need a local copy of the image to upload.
             // My solution: http://stackoverflow.com/questions/21004691/downloading-a-file-and-saving-it-locally-with-php

@@ -71,15 +71,15 @@
 <?php
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' ){
                     $caracteres = array('Vertrauen und Loyalität sind wichtig für '.$_GET['Nutzername'].'. Die Welt hat ihm nicht immer geholfen, aber seine positive Einstellung hat ihm erlaubt, die schlechten Zeiten zu überstehen. Er ist ehrgeizig und liebt alles, was das Leben zu bieten hat.',
-                    'Das Leben war nicht immer einfach mit '.urldecode($_GET['user_name']).', Aber das hat sie nie davon abgehalten, ihre Träume zu erreichen. Er ist ehrgeizig, loyal und inspirierend mit allen um ihn herum. Er lebt weiterhin sein Leben voll und liebt Herausforderungen.',
+                    'Das Leben war nicht immer einfach mit '.$_GET['User_name'].', Aber das hat sie nie davon abgehalten, ihre Träume zu erreichen. Er ist ehrgeizig, loyal und inspirierend mit allen um ihn herum. Er lebt weiterhin sein Leben voll und liebt Herausforderungen.',
                     'Vertrauen und Loyalität beschreiben gut '.$_GET['Nutzername'].'. Das Leben war manchmal hart, aber ihre starke und entschlossene Natur erlaubte ihr schwierige Zeiten durchzustehen. Niemand kann ihn daran hindern, seine Träume zu erreichen, und seine Einstellung inspiriert andere dazu, dasselbe zu tun.',
-                    ''.urldecode($_GET['user_name']).' Liebesleben! Obwohl er Strümpfe hat, bleibt er eine starke und loyale Person. Er ist ehrlich und ehrgeizig und erreicht seine Träume Tag für Tag. Er verliert nie aus den Augen, wer er wirklich ist!');
+                    ''.$_GET['user_name'].' Liebesleben! Obwohl er Strümpfe hat, bleibt er eine starke und loyale Person. Er ist ehrlich und ehrgeizig und erreicht seine Träume Tag für Tag. Er verliert nie aus den Augen, wer er wirklich ist!');
           }
           else{
                     $caracteres = array('Vertrauen und Loyalität sind wichtig für '.$_GET['Nutzername'].'. Die Welt hat ihr nicht immer geholfen, aber ihre positive Einstellung hat es ihr ermöglicht, die schlechten Zeiten zu überstehen. Sie ist ehrgeizig und liebt alles, was das Leben zu bieten hat.',
-                    'Das Leben war nicht immer einfach mit '.urldecode($_GET['user_name']).', Aber das hat sie nie davon abgehalten, ihre Träume zu erreichen. Sie ist ehrgeizig, loyal und inspiriert jeden um sie herum. Sie lebt weiterhin ein volles Leben und liebt Herausforderungen.',
+                    'Das Leben war nicht immer einfach mit '.$_GET['User_name'].', Aber das hat sie nie davon abgehalten, ihre Träume zu erreichen. Sie ist ehrgeizig, loyal und inspiriert jeden um sie herum. Sie lebt weiterhin ein volles Leben und liebt Herausforderungen.',
                     'Vertrauen und Loyalität beschreiben gut '.$_GET['Nutzername'].'. Das Leben war manchmal hart, aber ihre starke und entschlossene Natur erlaubte ihr schwierige Zeiten durchzustehen. Niemand kann ihn daran hindern, seine Träume zu erreichen, und seine Einstellung inspiriert andere dazu, dasselbe zu tun.',
-                    ''.urldecode($_GET['user_name']).' Liebesleben! Obwohl sie Strümpfe hat, bleibt sie eine starke und loyale Person. Sie ist ehrgeizig und ehrgeizig und erreicht ihre Träume Tag für Tag. Sie verliert nie aus den Augen, wer sie wirklich ist!');
+                    ''.$_GET['user_name'].' Liebesleben! Obwohl sie Strümpfe hat, bleibt sie eine starke und loyale Person. Sie ist ehrgeizig und ehrgeizig und erreicht ihre Träume Tag für Tag. Sie verliert nie aus den Augen, wer sie wirklich ist!');
           }
           shuffle($caracteres);
 ?>
@@ -87,7 +87,7 @@
 <img src="https://creation.funizi.com/images-theme-perso/1524758800.png" id="back"> 
 <div class="overlay"></div>
 
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 <div class="texte" id="caractere"><?=$caracteres[0]?></div>
 
 

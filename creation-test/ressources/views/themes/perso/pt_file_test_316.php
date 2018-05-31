@@ -81,10 +81,10 @@
           if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin'){
                     $personnalites = array('Líder','Forte','inovador','inspirador','Virtuoso','Aventureiro');
                     $adore = array('As surpresas','Rir','Viagem','Aprender');
-                    $deteste = array('Fofoca','Crueldade','Mentirosos','Os infiéis');
+                    $deteste = array('Fofoca','Crueldade','Mentirosos','O infiel');
                     $animaux = array('Leão','Tigre','Leopardoo','Antílope','guepardo');
                     $forces = array('Honesto a 100%','Persuasivo','Autônomo');
-                    $faiblesses = array('Dê muito','É muito compreensivo');
+                    $faiblesses = array('Dar muito','É muito compreensivo');
           }
           else{
                     $personnalites = array('Líder','Forte','Inovativa','inspirador','Virtuoso','aventureira');
@@ -92,13 +92,13 @@
                     $deteste = array('Fofoca','Crueldade','Les menteurs','Les infidèles');
                     $animaux = array('Leão','Tigre','Leopardoo','Antílope','guepardo');
                     $forces = array('Honesto a 100%','Simpatizar','persuasivo','Autônomo');
-                    $faiblesses = array('Dê muito','É muito compreensivo');
+                    $faiblesses = array('Dar muito','É muito compreensivo');
           }
           shuffle($adore); shuffle($deteste); shuffle($animaux); shuffle($personnalites); shuffle($forces); shuffle($faiblesses);
  ?>
 <!DOCTYPE HTML>
 
-<div class="texte" id="header_t"> As 6 verdades que resumem a sua vida: </div>
+<div class="texte" id="header_t"> As 6 verdades que resumem sua vida: </div>
 
 <div class="texte" id="verite1"> <span class="title_block">Você adora</span> <span class="content_block"> <?=$adore[0]; ?> </span> </div>
 <div class="texte" id="verite2"> <span class="title_block">Você odeia</span> <span class="content_block"> <?=$deteste[0]; ?> </span> </div>
@@ -108,8 +108,8 @@
 <div class="texte" id="verite6"> <span class="title_block">Fraqueza</span> <span class="content_block"> <?=$faiblesses[0]; ?> </span> </div>
 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 
 
 
