@@ -83,7 +83,7 @@ class AdditionnalInfoController extends Controller
       $interface_ui = $this->helper->getUiLabels($lang);
       $all_lang = $this->helper->getActivatedLanguages();
 
-      return $this->view->render($response, 'additionnalInfos.twig', compact('photos_profile', 'input_text', 'id_test', 'test', 'lang', 'url', 'all_test', 'interface_ui', 'lang', 'all_lang'));
+      return $this->view->render($response, 'additionnalInfos.twig', compact('photos_profile', 'input_text', 'input_gender', 'id_test', 'test', 'lang', 'url', 'all_test', 'interface_ui', 'lang', 'all_lang'));
 
     }
 
