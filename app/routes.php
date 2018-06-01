@@ -8,7 +8,7 @@ $app->get('/page/{pageid}', 'HomeController:index')->setName('paginatation');
 $app->get('/test/{name}/{id}', 'TestController:index')->setName('single');
 $app->get('/test/{name}/{id}/{from}', 'TestController:index')->setName('singledis');
 $app->get('/test/{name}/{id}/ref/{code}', 'TestController:index')->setName('shareduri');
-$app->get('/start', 'StartController:index')->setName('start');
+//$app->get('/start', 'StartController:index')->setName('start');
 $app->get('/start/{ref}', 'StartController:index')->setName('startlang');
 $app->get('/grabzit/{theme}/{fb_id}/{name}/{title}/{img_url}', 'GrabzitController:index')->setName('grabzit');
 $app->get('/result/{name}/{code}', 'ResultController:index')->setName('resultat');
