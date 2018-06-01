@@ -72,9 +72,9 @@
 <div class="texte" id="texte_top">Who\'s following me in secret? </div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
 <img src="http://creation.funizi.com/images-theme-perso/1508948989.png" id="chapeau"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <img src="http://creation.funizi.com/images-theme-perso/1508931375.png" id="loope"> 
-<div class="texte" id="paragraphe"><?php echo urldecode($_GET['user_name']); ?>, <?php echo urldecode($_GET['friend_first_name_1']); ?> Follow you in secret! </div>
+<div class="texte" id="paragraphe"><?php echo $_GET['user_name']; ?>, <?php echo $_GET['friend_first_name_1']; ?> Follow you in secret! </div>
 
 
         </div>

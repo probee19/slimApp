@@ -68,16 +68,16 @@
       
 <?php
 if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
-          $lois = array(''.urldecode($_GET['user_name']).' è nominato Chief of Staff.',
-          'Fino al 31 maggio 2020, '.urldecode($_GET['friend_first_name_1']).' Dovrà pagare il '.urldecode($_GET['user_name']).' Rent. ',
-          ''.urldecode($_GET['user_name']).' è troppo grande, ordino che riceva una promozione.',
-          'Con la presente ordino che il salario di '.urldecode($_GET['user_name']).' Essere raddoppiati.',
+          $lois = array(''.$_GET['user_name'].' è nominato Chief of Staff.',
+          'Fino al 31 maggio 2020, '.$_GET['Friend_first_name_1'].' Dovrà pagare il '.$_GET['User_name'].' Rent. ',
+          ''.$_GET['user_name'].' è troppo grande, ordino che riceva una promozione.',
+          'Con la presente ordino che il salario di '.$_GET['User_name'].' Essere raddoppiati.',
           'Dichiaro questa festa in onore di '.$_GET['Nome utente'].'.');
 else 
-       $lois = array(''.urldecode($_GET['user_name']).' è nominato capo del personale',
-          'Fino al 31 maggio 2020, '.urldecode($_GET['friend_first_name_1']).' Dovrà pagare il '.urldecode($_GET['user_name']).' Rent. ',
-          ''.urldecode($_GET['user_name']).' è troppo bello, le ordino di ricevere una promozione.',
-          'Con la presente ordino che il salario di '.urldecode($_GET['user_name']).' Essere raddoppiati.',
+       $lois = array(''.$_GET['user_name'].' è nominato capo del personale',
+          'Fino al 31 maggio 2020, '.$_GET['Friend_first_name_1'].' Dovrà pagare il '.$_GET['User_name'].' Rent. ',
+          ''.$_GET['user_name'].' è troppo bello, le ordino di ricevere una promozione.',
+          'Con la presente ordino che il salario di '.$_GET['User_name'].' Essere raddoppiati.',
           'Dichiaro questa festa in onore di '.$_GET['Nome utente'].'.');   
           
           shuffle($lois);

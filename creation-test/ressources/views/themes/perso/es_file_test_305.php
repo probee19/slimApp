@@ -79,7 +79,7 @@ $message = array('Valiente','Admirable','Adorable','Honesto','Estable','Oferta',
 shuffle($message);
 
 ?>
-<div id="message0"> <?php echo ''.urldecode($_GET['user_name']).'' ?></div>
+<div id="message0"> <?php echo ''.$_GET['user_name'].'' ?></div>
 <div id="message"> <?php echo 'Tu mejor calidad:<br>- '.$message[0].' -'; ?></div>
 
         </div>

@@ -74,7 +74,7 @@
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509119642.jpg" id="bacground"> 
 <img src="http://creation.funizi.com/images-theme-perso/1509121676.jpg" id="top_image"> 
-<div id='titre'><span style="font-size:40px;"><?php echo urldecode($_GET['user_name']); ?>,</span><br>tu vas avoir <br><?php echo $nb_enfants;?> enfant (s)</div>
+<div id='titre'><span style="font-size:40px;"><?php echo $_GET['user_name']; ?>,</span><br>tu vas avoir <br><?php echo $nb_enfants;?> enfant (s)</div>
 <div id='boys'><?php echo $garcon ?>garçon (s)</div>
 <div id='girls'><?php echo $fille?> fille (s)</div>
 

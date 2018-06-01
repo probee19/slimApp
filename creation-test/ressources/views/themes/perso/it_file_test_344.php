@@ -72,13 +72,13 @@
           <div class='main'>
       
 <?php
-          $textes = array(''.urldecode($_GET['user_name']).' dà sempre consigli.',''.urldecode($_GET['user_name']).' mostra il suo amore a tutti.',''.urldecode($_GET['user_name']).' ama incondizionatamente.',''.urldecode($_GET['user_name']).' farebbe qualsiasi cosa per la sua famiglia.',
-          ''.urldecode($_GET['user_name']).' è sempre un modello per gli altri.',''.urldecode($_GET['user_name']).' andrebbe alla fine del mondo con i suoi amici.',''.urldecode($_GET['user_name']).' diffonde gioia e felicità',''.urldecode($_GET['user_name']).' non si arrende mai.',
-          ''.urldecode($_GET['user_name']).' è sempre coraggioso.',''.urldecode($_GET['user_name']).' è ancora ottimista.',''.urldecode($_GET['user_name']).' sa come perdonare.',''.urldecode($_GET['user_name']).' non ingannerà mai i suoi amici.');
+          $textes = array(''.$_GET['user_name'].' dà sempre consigli.',''.$_GET['user_name'].' mostra il suo amore a tutti.',''.$_GET['user_name'].' ama incondizionatamente.',''.$_GET['user_name'].' farebbe qualsiasi cosa per la sua famiglia.',
+          ''.$_GET['user_name'].' è sempre un modello per gli altri.',''.$_GET['user_name'].' andrebbe alla fine del mondo con i suoi amici.',''.$_GET['user_name'].' diffonde gioia e felicità',''.$_GET['user_name'].' non si arrende mai.',
+          ''.$_GET['user_name'].' è sempre coraggioso.',''.$_GET['user_name'].' è ancora ottimista.',''.$_GET['user_name'].' sa come perdonare.',''.$_GET['user_name'].' non ingannerà mai i suoi amici.');
           shuffle($textes);
 ?>
 <!DOCTYPE HTML>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <div class="back" id="back_blue" ><span class="res" id="qualite1"><?=$textes[0]?></span></div>
 <div class="back" id="back_orange" ><span class="res" id="qualite2"><?=$textes[1]?></span></div>
 <div class="back" id="back_red" ><span class="res" id="qualite3"><?=$textes[2]?></span></div>

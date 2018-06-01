@@ -71,19 +71,19 @@ ol li{height:55px;}
 <?php
   if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-            $texte = array(''.urldecode($_GET['user_name']).'은 훌륭한 아버지가 될 것입니다!', ''.urldecode($_GET['user_name']).' 우리는 지루해하지 않습니다!', ''.urldecode($_GET['user_name']).'은 단순히 이상적인 사람입니다!', ''.urldecode($_GET['user_name']).' 사랑에 모든 것을 줄 수 있습니다!',
-            ''.urldecode($_GET['user_name']).' 좋은 아이입니다!', ''.urldecode($_GET['user_name']).' 놀라운 놀라움을 준비합니다!',''.urldecode($_GET['user_name']).' 인생을 더 아름답게 만드는 방법을 알고 있습니다!', ''.urldecode($_GET['user_name']).'은 돌이킬 수없는 충성입니다!',''.urldecode($_GET['user_name']).'은 재미 있고 똑똑합니다.');
+            $texte = array(''.$_GET['user_name'].'은 훌륭한 아버지가 될 것입니다!', ''.$_GET['User_name'].' 우리는 지루해하지 않습니다!', ''.$_GET['user_name'].'은 단순히 이상적인 사람입니다!', ''.$_GET['user_name'].' 사랑에 모든 것을 줄 수 있습니다!',
+            ''.$_GET['user_name'].' 좋은 아이입니다!', ''.$_GET['user_name'].' 놀라운 놀라움을 준비합니다!',''.$_GET['user_name'].' 인생을 더 아름답게 만드는 방법을 알고 있습니다!', ''.$_GET['user_name'].'은 돌이킬 수없는 충성입니다!',''.$_GET['user_name'].'은 재미 있고 똑똑합니다.');
   }
             else{ 
-          $texte = array(''.urldecode($_GET['user_name']).' 훌륭한 엄마가 될 것입니다!', ''.urldecode($_GET['user_name']).' 우리는 지루해하지 않습니다!', ''.urldecode($_GET['user_name']).'은 단순히 이상적인 여성입니다!', ''.urldecode($_GET['user_name']).' 사랑에 모든 것을 줄 수 있습니다!',
-            ''.urldecode($_GET['user_name']).' 아름다움입니다!', ''.urldecode($_GET['user_name']).' 놀라운 놀라움을 준비합니다!',''.urldecode($_GET['user_name']).' 인생을 더 아름답게 만드는 방법을 알고 있습니다!', ''.urldecode($_GET['user_name']).'은 돌이킬 수없는 충성입니다!',''.urldecode($_GET['user_name']).'은 재미 있고 똑똑합니다.');
+          $texte = array(''.$_GET['user_name'].' 훌륭한 엄마가 될 것입니다!', ''.$_GET['User_name'].' 우리는 지루해하지 않습니다!', ''.$_GET['user_name'].'은 단순히 이상적인 여성입니다!', ''.$_GET['user_name'].' 사랑에 모든 것을 줄 수 있습니다!',
+            ''.$_GET['user_name'].' 아름다움입니다!', ''.$_GET['user_name'].' 놀라운 놀라움을 준비합니다!',''.$_GET['user_name'].' 인생을 더 아름답게 만드는 방법을 알고 있습니다!', ''.$_GET['user_name'].'은 돌이킬 수없는 충성입니다!',''.$_GET['user_name'].'은 재미 있고 똑똑합니다.');
   }
 shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1510165729.png" id="background"> 
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div id="titretest" >그만큼 <span style="color:#D90000">5 가지 이유</span> 결혼하다 <br><?php echo urldecode($_GET['full_user_name']); ?></div>
+<div id="titretest" >그만큼 <span style="color:#D90000">5 가지 이유</span> 결혼하다 <br><?php echo $_GET['full_user_name']; ?></div>
 
 <ol>
 <li><?php echo $texte[0]; ?> </li> 

@@ -81,7 +81,7 @@
 ?>
 <!DOCTYPE HTML>
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
 <div class="texte" id="result"><?php echo $results[0]; ?> </div>
 

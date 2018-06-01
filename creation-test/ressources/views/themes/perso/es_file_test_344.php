@@ -72,13 +72,13 @@
           <div class='main'>
       
 <?php
-          $textes = array(''.urldecode($_GET['user_name']).' siempre da consejos.',''.urldecode($_GET['user_name']).' muestra su amor a todos.',''.$_GET['usuario_name'].' ama incondicionalmente.',''.urldecode($_GET['user_name']).' haría cualquier cosa por su familia.',
-          ''.urldecode($_GET['user_name']).' siempre es un modelo para otros.',''.urldecode($_GET['user_name']).' iría al fin del mundo con sus amigos.',''.urldecode($_GET['user_name']).' extiende alegría y felicidad',''.urldecode($_GET['user_name']).' nunca te rindas.',
-          ''.urldecode($_GET['user_name']).' siempre es valiente.',''.urldecode($_GET['user_name']).' sigue siendo optimista.',''.urldecode($_GET['user_name']).' sabe cómo perdonar.',''.$_GET['¿user_name'].' nunca engañará a sus amigos.');
+          $textes = array(''.$_GET['user_name'].' siempre da consejos.',''.$_GET['user_name'].' muestra su amor a todos.',''.$_GET['usuario_name'].' ama incondicionalmente.',''.$_GET['user_name'].' haría cualquier cosa por su familia.',
+          ''.$_GET['user_name'].' siempre es un modelo para otros.',''.$_GET['user_name'].' iría al fin del mundo con sus amigos.',''.$_GET['user_name'].' extiende alegría y felicidad',''.$_GET['user_name'].' nunca te rindas.',
+          ''.$_GET['user_name'].' siempre es valiente.',''.$_GET['user_name'].' sigue siendo optimista.',''.$_GET['user_name'].' sabe cómo perdonar.',''.$_GET['¿user_name'].' nunca engañará a sus amigos.');
           shuffle($textes);
 ?>
 <!DOCTYPE HTML>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <div class="back" id="back_blue" ><span class="res" id="qualite1"><?=$textes[0]?></span></div>
 <div class="back" id="back_orange" ><span class="res" id="qualite2"><?=$textes[1]?></span></div>
 <div class="back" id="back_red" ><span class="res" id="qualite3"><?=$textes[2]?></span></div>

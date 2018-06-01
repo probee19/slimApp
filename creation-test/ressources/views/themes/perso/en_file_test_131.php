@@ -77,9 +77,9 @@
                 shuffle($nature); shuffle($personnalite); shuffle($aime); shuffle($deteste); shuffle($force); shuffle($faiblesse);
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508245566.jpg" id="background">
-            <span id="titre" class="titre"> What is your personality <?php echo urldecode($_GET['user_name']); ?>?</span>
-            <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="img_user">
-            <span id="name_user" class="name"> <?php echo urldecode($_GET['user_name']); ?> </span>
+            <span id="titre" class="titre"> What is your personality <?php echo $_GET['user_name']; ?>?</span>
+            <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="img_user">
+            <span id="name_user" class="name"> <?php echo $_GET['user_name']; ?> </span>
             <span id="texte_1" class="texte"> <b>Nature :</b> <?php echo $nature[0] ?></span>
             <span id="texte_2" class="texte"> <b> Personality:</b> <?php echo $personnalite[0] ?></span>
             <span id="texte_3" class="texte"> <b>Love :</b> <?php echo $aime[0] ?></span>

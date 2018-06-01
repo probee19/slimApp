@@ -76,16 +76,16 @@
 
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-                      $recherche = array('Pourquoi '.urldecode($_GET['user_name']).' Ne rit-il jamais à mes blaques?','Pourquoi '.urldecode($_GET['user_name']).' Est-il plus beau que moi?'
-                ,'Pourquoi '.urldecode($_GET['user_name']).' Est-il aussi riche?','Pourquoi '.urldecode($_GET['user_name']).' Est le plus intelligent?'
-                ,'Pourquoi '.urldecode($_GET['user_name']).' Est aussi majestueux?','Pourquoi '.urldecode($_GET['user_name']).' A rencontré le Président Obama?'
-                ,'Pourquoi '.urldecode($_GET['user_name']).' A autant de chance?');
+                      $recherche = array(' Pourquoi '.$_GET['user_name'].' ne rit-il jamais à mes blaques ? ',' Pourquoi '.$_GET['user_name'].' est-il plus beau que moi ? '
+                ,' Pourquoi '.$_GET['user_name'].' est-il aussi riche ? ',' Pourquoi '.$_GET['user_name'].' est le plus intelligent ? '
+                ,' Pourquoi '.$_GET['user_name'].' est aussi majestueux ? ',' Pourquoi '.$_GET['user_name'].' a rencontré le Président Obama ? '
+                ,' Pourquoi '.$_GET['user_name'].' a autant de chance ?  ');
                 }
             else{ 
-                $recherche = array('Pourquoi '.urldecode($_GET['user_name']).' Ne rit-elle jamais à mes blagues?','Pourquoi '.urldecode($_GET['user_name']).' Est-elle plus belle que moi?'
-                ,'Pourquoi '.urldecode($_GET['user_name']).' At-elle autant de classe?','Pourquoi '.urldecode($_GET['user_name']).' Est la plus intelligente?'
-                ,'Pourquoi '.urldecode($_GET['user_name']).' Est aussi majestueuse?','Pourquoi '.urldecode($_GET['user_name']).' A rencontré Michelle Obama?'
-                ,'Pourquoi '.urldecode($_GET['user_name']).' A autant de chance?');
+                $recherche = array(' Pourquoi '.$_GET['user_name'].' ne rit-elle jamais à mes blagues ? ',' Pourquoi '.$_GET['user_name'].' est-elle plus belle que moi ? '
+                ,' Pourquoi '.$_GET['user_name'].' a-t-elle autant de classe ? ',' Pourquoi '.$_GET['user_name'].' est la plus intelligente ? '
+                ,' Pourquoi '.$_GET['user_name'].' est aussi majestueuse ? ',' Pourquoi '.$_GET['user_name'].' a rencontré Michelle Obama ? '
+                ,' Pourquoi '.$_GET['user_name'].' a autant de chance ?  ');
                
             }
                
@@ -93,9 +93,9 @@
                 shuffle($recherche);
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508544962.png" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
-<div  id="zone_search" >Pourquoi <?php echo urldecode($_GET['user_name']); ?> est ...</div>
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<div  id="zone_search" > Pourquoi <?php echo $_GET['user_name']; ?> est... </div>
 <div  id="result1" ><?php echo $recherche[0] ?></div>
 <div  id="result2" ><?php echo $recherche[1] ?></div>
 <div  id="result3" ><?php echo $recherche[2] ?></div>

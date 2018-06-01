@@ -73,7 +73,7 @@ $message = array('Você pensa em outros antes de pensar em si mesmo','Você semp
 shuffle($message);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508679891.png" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div id="message"> <?php echo $message[0]; ?>
 </div>
 

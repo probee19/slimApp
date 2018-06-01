@@ -84,11 +84,11 @@
 
 ?>
 <!DOCTYPE HTML>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
 <img src="http://creation.funizi.com/images-theme-perso/<?php echo $background; ?>.png" id="eden_or_hell"> 
 <div class="notes" style="color:<?php echo $color1;?>; background:<?php echo $bg_color;?>">
-          <div id="nom">Nom: <?php echo urldecode($_GET['user_name']); ?></div>
+          <div id="nom">Nom: <?php echo $_GET['user_name']; ?></div>
           <div id="good">Actions Bonnes: <?php echo number_format($action); ?> </div>
           <div id="bad">Péchés: <?php echo number_format($peches); ?></div>
           <div id="kindness">Gentillesse: <?php echo $gentillesse; ?> %</div>

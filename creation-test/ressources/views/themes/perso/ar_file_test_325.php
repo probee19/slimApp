@@ -82,7 +82,7 @@ caption{font-weight:800; font-size:24px; }
 <!DOCTYPE HTML>
 <div class="bulletin">
 <table>
-  <caption>2018 بطاقة تقرير المدرسة <?php echo urldecode($_GET['full_user_name']); ?></caption>
+  <caption>2018 بطاقة تقرير المدرسة <?php echo $_GET['full_user_name']; ?></caption>
   <tr>
     <th width="150px">محتويات</th>
     <th width="110px">معدل الطالب</th>

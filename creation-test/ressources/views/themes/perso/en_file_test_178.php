@@ -89,9 +89,9 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508976353.jpg" id="background">
             <div id="certificat">Criminal record</div> <div id="name">Name:</div>
-            <div id="name_reponse"> <?php echo urldecode($_GET['full_user_name']); ?></div> <div id="diagnostic">Crime:</div>
-            <div id="diagnostic_reponse"><?php echo $message_1[$key]; ?></div> <div id="niveau">This document certifies that <?php echo urldecode($_GET['user_name']); ?> is:</div>
-            <div id="niveau_reponse"><?php echo $message_2[$key]; ?></div> <div id="docteur"><?php echo urldecode($_GET['friend_name_1']); ?></div>
+            <div id="name_reponse"> <?php echo $_GET['full_user_name']; ?></div> <div id="diagnostic">Crime:</div>
+            <div id="diagnostic_reponse"><?php echo $message_1[$key]; ?></div> <div id="niveau">This document certifies that <?php echo $_GET['user_name']; ?> is:</div>
+            <div id="niveau_reponse"><?php echo $message_2[$key]; ?></div> <div id="docteur"><?php echo $_GET['friend_name_1']; ?></div>
         
 
         </div>

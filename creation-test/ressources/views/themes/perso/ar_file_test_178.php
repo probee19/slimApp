@@ -89,9 +89,9 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508976353.jpg" id="background">
             <div id="certificat">سجل جنائي</div> <div id="name">اسم:</div>
-            <div id="name_reponse"> <?php echo urldecode($_GET['full_user_name']); ?></div> <div id="diagnostic">جريمة:</div>
-            <div id="diagnostic_reponse"><?php echo $message_1[$key]; ?></div> <div id="niveau">تؤكد هذه الوثيقة أن <?php echo urldecode($_GET['user_name']); ?> هو:</div>
-            <div id="niveau_reponse"><?php echo $message_2[$key]; ?></div> <div id="docteur"><?php echo urldecode($_GET['friend_name_1']); ?></div>
+            <div id="name_reponse"> <?php echo $_GET['full_user_name']; ?></div> <div id="diagnostic">جريمة:</div>
+            <div id="diagnostic_reponse"><?php echo $message_1[$key]; ?></div> <div id="niveau">تؤكد هذه الوثيقة أن <?php echo $_GET['user_name']; ?> هو:</div>
+            <div id="niveau_reponse"><?php echo $message_2[$key]; ?></div> <div id="docteur"><?php echo $_GET['friend_name_1']; ?></div>
         
 
         </div>

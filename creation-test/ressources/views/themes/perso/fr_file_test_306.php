@@ -20,8 +20,7 @@
               .texte2{
                 width: 200px;
               }
-              
-.main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
+              .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
 
 #back{position:absolute; z-index:1; left:0; top:0;  width:800px; max-height:420px; }

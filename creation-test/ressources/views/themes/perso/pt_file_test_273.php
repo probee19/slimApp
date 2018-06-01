@@ -74,13 +74,13 @@ align-items: center; /* align vertical */
 
             {
 
-               $message = array(''.urldecode($_GET['full_user_name']).' Notre fils a un visage de séducteur, on va l\'appeler '.urldecode($_GET['full_user_name']).''
-               ,''.urldecode($_GET['full_user_name']).' Notre fils a un visage intelligent, on va l\'appeler '.urldecode($_GET['full_user_name']).'');  }
+               $message = array(''.$_GET['full_user_name'].' Notre fils a un visage de séducteur, on va l\'appeler '.$_GET['full_user_name'].''
+               ,''.$_GET['full_user_name'].' Notre fils a un visage intelligent, on va l\'appeler '.$_GET['full_user_name'].'');  }
 
             else{ 
 
-              $message = array('Notre fille a un visage de séducteur, on va l\'appeler '.urldecode($_GET['full_user_name']).''
-              ,'Nossa filha tem um rosto inteligente, nós a chamaremos de '.urldecode($_GET['full_user_name']).'');
+              $message = array('Notre fille a un visage de séducteur, on va l\'appeler '.$_GET['full_user_name'].''
+              ,'Nossa filha tem um rosto inteligente, nós a chamaremos de '.$_GET['Full_user_name'].'');
 
             }
 

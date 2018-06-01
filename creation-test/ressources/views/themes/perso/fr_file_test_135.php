@@ -77,9 +77,9 @@
             shuffle($diagnostic); shuffle($niveau); ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508420459.jpg" id="background">
             <div id="certificat"> Certificat Médical </div> <div id="name"> Nom : </div>
-            <div id="name_reponse"> <?php echo urldecode($_GET['user_name']); ?></div> <div id="diagnostic"> Diagnostic : </div>
+            <div id="name_reponse"> <?php echo $_GET['user_name']; ?></div> <div id="diagnostic"> Diagnostic : </div>
             <div id="diagnostic_reponse"><?php echo $diagnostic[0]; ?></div> <div id="niveau"> Niveau : </div>
-            <div id="niveau_reponse"><?php echo $niveau[0]; ?></div> <div id="docteur">Dr <?php echo urldecode($_GET['friend_name_1']); ?></div>
+            <div id="niveau_reponse"><?php echo $niveau[0]; ?></div> <div id="docteur">Dr <?php echo $_GET['friend_name_1']; ?></div>
         
 
         </div>

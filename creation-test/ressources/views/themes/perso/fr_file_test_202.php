@@ -83,7 +83,7 @@
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
 <div class="name texte" id="name_friend_1role" >Ange Gardien</div>
-<div class="name texte" id="name_friend_1" ><?php echo urldecode($_GET['friend_first_name_1']); ?></div>
+<div class="name texte" id="name_friend_1" ><?php echo $_GET['friend_first_name_1']; ?></div>
 <div class='photo' style="top:0;left:267px">
  <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=420&height=420" class="img_profile" id="fb_id_user" >
 </div>

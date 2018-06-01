@@ -66,8 +66,8 @@
           <div class='main'>
       
 <img src="http://creation.funizi.com/images-theme-perso/1510838214.png" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" width="193" height="193" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><span style="font-size:30px">Eu <span style="color:#EF372C"><?php echo urldecode($_GET['user_name']); ?></span></span>,<br> eu digo <span style="color:#EF372C">STOP</span><br> no leilão em<span style="color:#EF372C">Líbia</span> migrantes como <span style="color:#EF372C">escravos</span> !</div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" width="193" height="193" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><span style="font-size:30px">Eu <span style="color:#EF372C"><?php echo $_GET['user_name']; ?></span></span>,<br> eu digo <span style="color:#EF372C">STOP</span><br> no leilão em<span style="color:#EF372C">Líbia</span> migrantes como <span style="color:#EF372C">escravos</span> !</div>
 
 
         </div>

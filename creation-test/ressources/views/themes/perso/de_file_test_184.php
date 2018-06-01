@@ -78,7 +78,7 @@ $pourcentage3=100-$pourcentage2-$pourcentage1;
 
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509153815.jpg" id="back"> 
-<div class='nom'><?php echo urldecode($_GET['friend_first_name_1']); ?></div>
+<div class='nom'><?php echo $_GET['friend_first_name_1']; ?></div>
 <div class='pourcentage' style="left:0"><?php echo $pourcentage1;?>% </div>
 <div class='photo' style="bottom:0;right:600px">
  <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
@@ -93,10 +93,10 @@ $pourcentage3=100-$pourcentage2-$pourcentage1;
 <div class='photo' style="bottom:0;right:200px">
  <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_3']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
 </div>
-<div class='nomgris' style="left:600px"><?php echo urldecode($_GET['user_name']); ?></div>
+<div class='nomgris' style="left:600px"><?php echo $_GET['user_name']; ?></div>
 <div class='pourcentage' style="left:600px">100%</div>
 <div class='photo' style="bottom:0;right:0">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+ <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 </div>
 
         </div>

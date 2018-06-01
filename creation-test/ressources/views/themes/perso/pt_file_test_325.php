@@ -82,7 +82,7 @@ caption{font-weight:800; font-size:24px; }
 <!DOCTYPE HTML>
 <div class="bulletin">
 <table>
-  <caption>2018 Boletim Escolar <?php echo urldecode($_GET['full_user_name']); ?></caption>
+  <caption>2018 Boletim Escolar <?php echo $_GET['full_user_name']; ?></caption>
   <tr>
     <th width="150px">conteúdo</th>
     <th width="110px">Média do aluno</th>

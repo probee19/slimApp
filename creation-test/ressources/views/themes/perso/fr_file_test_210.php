@@ -81,7 +81,7 @@ shuffle($message);
 ?>
 <div id="background"></div> 
 <div id="ilsdisent">Le Père Noël t'apportera:</div> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div id="message"> <?php echo $message[0]; ?>
 </div>
 <img src="http://creation.funizi.com/images-theme-perso/1511006992.png" id="cadeau"> 

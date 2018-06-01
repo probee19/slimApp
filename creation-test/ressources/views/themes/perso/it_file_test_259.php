@@ -86,10 +86,10 @@ hr{position:absolute; z-index:1; left: 15px; top: 35px; width:770px; border:1px 
 ?>
 
 <img src="http://creation.funizi.com/images-theme-perso/1514553692.jpg" id="background"> 
-<div id="header"> 7 fatti riguardanti <?php echo urldecode($_GET['user_name']); ?></div>
+<div id="header"> 7 fatti riguardanti <?php echo $_GET['user_name']; ?></div>
 <hr>
 <div id="profile_img">
-          <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+          <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 </div>
 <div classe="fait" id="fait"> 
           - <?php echo $faits[0]; ?> <br>

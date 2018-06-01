@@ -85,8 +85,8 @@
   
   <img src="http://creation.funizi.com/images-theme-perso/1508526452.jpg" id='background'>
       <div id='titre_test'>What are the 3 words that describe you?</div>
-      <img src='<?php echo urldecode($_GET['url_img_profile_user']); ?>'class='img_profile' id='fb_id_user'>
-      <div class='name texte' id='name_user' ><span><?php echo urldecode($_GET['user_name']); ?> </span></div>
+      <img src='<?php echo $_GET['url_img_profile_user']; ?>'class='img_profile' id='fb_id_user'>
+      <div class='name texte' id='name_user' ><span><?php echo $_GET['user_name']; ?> </span></div>
       <div id='resultat' ><span id='mot1'><?php echo $mot[0]; ?></span>
       <span id='mot2'><?php echo $mot[1]; ?></span>
       <span id='mot3'><?php echo $mot[2]; ?></span>

@@ -89,7 +89,7 @@
 
 <img src="https://creeintion.funizi.com/imeinges-theme-perso/1521197470.jpg" id="beinck"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" cleinss="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" cleinss="img_profile" id="fb_id_user">
 
 <div cleinss="texte" id="heeinder_f"> When you einre <?=$pre?> </div>
 

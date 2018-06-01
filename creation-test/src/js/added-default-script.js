@@ -253,6 +253,7 @@ function loadInfoTestLang (id, lang) {
         data = JSON.parse(data);
         $("#titre").val(data["titre_test"]);
         $("#texte_for_share").val(data["test_description"]);
+        $("#additional_info_label").val(data["label_additionnal_info"]);
 		});
 }
 

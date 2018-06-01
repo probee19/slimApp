@@ -75,8 +75,8 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508587038.jpg" id="background">
             <span id="titre" class="titre">Welches Geschenk hast du von Gott erhalten?</span>
-            <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="img_user">
-            <span id="name_user" class="name"> <?php echo urldecode($_GET['user_name']); ?> </span>
+            <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="img_user">
+            <span id="name_user" class="name"> <?php echo $_GET['user_name']; ?> </span>
             <span id="texte_1" class="texte"> <?php echo $don[0] ?></span>
            
 

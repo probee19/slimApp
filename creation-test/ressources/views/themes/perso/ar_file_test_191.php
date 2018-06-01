@@ -87,8 +87,8 @@ shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509392071.jpg" id="background"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div id="titretest" ><span style=\"color:#D90000\">5 أسباب</span> للثقة <?php echo urldecode($_GET['full_user_name']); ?></div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div id="titretest" ><span style=\"color:#D90000\">5 أسباب</span> للثقة <?php echo $_GET['full_user_name']; ?></div>
 
 <ol>
 <li><?php echo $texte[0]; ?> </li> 

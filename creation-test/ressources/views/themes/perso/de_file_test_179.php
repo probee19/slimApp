@@ -70,15 +70,15 @@
           <div class='main'>
       
 <?php
-$motifs = array('Ich wollte die Mysterien der Schönheit von '.urldecode($_GET['user_name']).' ','enthüllte zu viele Geheimnisse zu '.urldecode($_GET['user_name']).' ','Eifersucht in Richtung Eleganz '.urldecode($_GET['user_name']).'  ','Eifersucht gegenüber der Popularität von '.urldecode($_GET['user_name']).' ','Eifersucht auf die Schönheit von '.urldecode($_GET['user_name']).' ','Eifersucht gegenüber dem Charisma '.urldecode($_GET['user_name']).' ');
+$motifs = array('Ich wollte die Mysterien der Schönheit von '.$_GET['user_name'].' ','enthüllte zu viele Geheimnisse zu '.$_GET['user_name'].' ','Eifersucht in Richtung Eleganz '.$_GET['user_name'].'  ','Eifersucht gegenüber der Popularität von '.$_GET['user_name'].' ','Eifersucht auf die Schönheit von '.$_GET['user_name'].' ','Eifersucht gegenüber dem Charisma '.$_GET['user_name'].' ');
 shuffle($motifs);
 
 ?>
 <div class="texte" id="texte_top">Steckbrief </div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
 <div class="name texte" id="name_friend_1" ></div>
-<div class="texte" id="phrase_1"> <?php echo urldecode($_GET['friend_first_name_1']); ?> entfernt <?php echo urldecode($_GET['user_name']); ?> </div>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="texte" id="phrase_1"> <?php echo $_GET['friend_first_name_1']; ?> entfernt <?php echo $_GET['user_name']; ?> </div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="texte" id="motif"> Grund: <?php echo $motifs[0]; ?> </div>
 
 

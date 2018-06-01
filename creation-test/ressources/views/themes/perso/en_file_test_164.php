@@ -78,19 +78,19 @@
           <div class='main'>
       
 <img src="http://creation.funizi.com/images-theme-perso/1508703005.jpg" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
-<div class="name texte" id="name_friend_1" ><?php echo urldecode($_GET['friend_name_1']); ?></div>
+<div class="name texte" id="name_friend_1" ><?php echo $_GET['friend_name_1']; ?></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_2">
-<div class="name texte" id="name_friend_2" ><?php echo urldecode($_GET['friend_name_2']); ?></div>
+<div class="name texte" id="name_friend_2" ><?php echo $_GET['friend_name_2']; ?></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_3']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_3">
-<div class="name texte" id="name_friend_3" ><?php echo urldecode($_GET['friend_name_3']); ?></div>
+<div class="name texte" id="name_friend_3" ><?php echo $_GET['friend_name_3']; ?></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_4']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_4">
-<div class="name texte" id="name_friend_4" ><?php echo urldecode($_GET['friend_name_4']); ?></div>
+<div class="name texte" id="name_friend_4" ><?php echo $_GET['friend_name_4']; ?></div>
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_5']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_5">
-<div class="name texte" id="name_friend_5" ><?php echo urldecode($_GET['friend_name_5']); ?></div>
+<div class="name texte" id="name_friend_5" ><?php echo $_GET['friend_name_5']; ?></div>
 
 
         </div>

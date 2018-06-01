@@ -20,8 +20,7 @@
               .texte2{
                 width: 200px;
               }
-              
-.main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
+              .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
 
 #back{position:absolute; z-index:1; left:0; top:0;  width:800px; max-height:420px; }
@@ -85,13 +84,13 @@
       
 <?php
           $rev = array('Você é tranquilidade em pessoa.','Você encarna a sabedoria.','Você é confiável.','Você tem uma grande coragem',
-          'Nós sempre podemos confiar em você.','Você tem o espírito criativo.','Você tem um bom coração.','Você tem um alto senso de lealdade.','Você tem olhos bonitos.','Você vai realizar grandes coisas.');
+          'Nós sempre podemos confiar em você.','Você tem o espírito criativo.','Você tem um bom coração.','Você tem um alto senso de lealdade.','Você tem olhos bonitos.','Você realizará grandes coisas.');
           shuffle($rev);
 ?>
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1520361060.jpg" id="back"> 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div class="texte" id="t_footer">O que sua imagem de perfil revela sobre você?</div>
+<div class="texte" id="t_footer">O que sua foto de perfil revela sobre você?</div>
 <img src="https://creation.funizi.com/images-theme-perso/1520417407.png" id="arrow1"> 
 <img src="https://creation.funizi.com/images-theme-perso/1520418225.png" id="arrow2">
 <img src="https://creation.funizi.com/images-theme-perso/1520418817.png" id="arrow3"> 

@@ -95,15 +95,15 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508415358.jpg" id="background">
             <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
-            <span id="name_friend_1" class="name"><?php echo urldecode($_GET['friend_name_1']); ?></span>
+            <span id="name_friend_1" class="name"><?php echo $_GET['friend_name_1']; ?></span>
             <span class="texte" id="message_1"> <?php echo $message_1[$key]; ?> </span>
             <span class="texte" id="date_1"> <?php echo strftime("%d-%m-%G").' à '.strftime("%H").':'.$min_1; ?> </span>
             <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_2">
-            <span id="name_friend_2" class="name"> <?php echo urldecode($_GET['friend_name_2']); ?></span>
+            <span id="name_friend_2" class="name"> <?php echo $_GET['friend_name_2']; ?></span>
             <span class="texte" id="message_2"> <?php echo $message_2[$key]; ?> </span>
             <span class="texte" id="date_2"> <?php echo strftime("%d-%m-%G").' à '.strftime("%H").':'.$min_2; ?> </span>
             <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_3']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_3">
-            <span id="name_friend_3" class="name"> <?php echo urldecode($_GET['friend_name_3']); ?></span>
+            <span id="name_friend_3" class="name"> <?php echo $_GET['friend_name_3']; ?></span>
             <span class="texte" id="message_3"> <?php echo $message_3[$key]; ?> </span>
             <span class="texte" id="date_3"> <?php echo strftime("%d-%m-%G").' à '.strftime("%H").':'.$min_3; ?> </span>
 

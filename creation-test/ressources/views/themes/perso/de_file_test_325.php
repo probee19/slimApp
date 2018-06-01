@@ -82,7 +82,7 @@ caption{font-weight:800; font-size:24px; }
 <!DOCTYPE HTML>
 <div class="bulletin">
 <table>
-  <caption>Schulberichtskarte 2018 <?php echo urldecode($_GET['full_user_name']); ?></caption>
+  <caption>Schulberichtskarte 2018 <?php echo $_GET['full_user_name']; ?></caption>
   <tr>
     <th width="150px">Inhalt</th>
     <th width="110px">Schülerdurchschnitt</th>

@@ -1,0 +1,184 @@
+{% extends 'templates/layoutCreationTest.twig' %}
+{% block title %} Toutes les citations {% endblock %}
+{% block additionalstyle %}
+  <style>
+    .hidden_{
+        display: none;
+  }
+  #liste_citation{
+      font-size: 12px;
+  }
+  </style>
+{% endblock %}
+
+{%block content%}
+
+  <div class="row">
+    <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8">
+       <div class="alert alert-success alert-dismissable " style="display:none;">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         Votre citation a été enregistrée avec succès !
+       </div>
+     </div>
+   </div>
+  <div class="row" id="notif_del_result" style="display:none;">
+    <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8">
+       <div class="alert alert-success alert-dismissable " >
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+                 <span id="texte_notif_del_result">
+             Votre résultat a été supprimé avec succès. Vous pouvez effectuer maintenant un nouveau test !
+                </span>
+       </div>
+     </div>
+   </div>
+    <!-- Informations générales sur la citation  -->
+    <!--div class="row">
+        <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8">
+         <div class="alert alert-warning alert-dismissable " >
+                   <span id="texte_notif_del_result">
+             La page affiche les 60 derniers tests créés !
+                  </span>
+         </div>
+       </div>
+    </div-->
+    <div class="row">
+         <table id="liste_citation" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>N</th>
+                    <th>Statut</th>
+                    <th width="40%">Titre</th>
+                    <th>Langue</th>
+                    <th>Traduction</th>
+                    <th width="17%">Outils</th>
+                </tr>
+            </thead>
+            <tbody id="more">
+              {% set i = 1 %}
+              {% for citation in data_citations %}
+              <tr>
+                <td class="center"> {{i}} </td>
+                <td class="center"> <img src="{{ base_url()}}/src/img/statut/{{citation.statut}}.png" >  </td>
+                  <td><h5 class=""><a href="{{base_url()}}/test/{{citation.id_citation}}" > {{citation.titre_citation}} </a></h5></td>
+                  <td> {{citation.lang}}</td>
+                  <td> {{citation.if_translated}}</td>
+                  <td>
+                    <a href="{{base_url()}}/citations/{{citation.id_citation}}/edit"  data-toggle="tooltip" title="Modifier la citation" ><button type="button" id="btn_modify" class="btn btn-info btn-xs" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+                    {% if citation.statut == 0 %}
+                      <button type="button"  data-toggle="tooltip" title="Activer la citation" id="act_{{citation.id_citation}}" onClick="activeCitation({{citation.id_citation}})" class="btn btn-success btn-xs"  > <span class="glyphicon glyphicon-ok-sign"></span> </button>
+                      <span data-toggle="modal"  data-target="#modalDelete" ><button type="button" data-toggle="tooltip" title="Supprimer la citation" id="{{citation.id_citation}}" onClick="prepareDelete({{citation.id_citation}});" class="btn btn-danger btn-xs" > <span class="glyphicon glyphicon-trash"></span> </button></span>
+                    {% elseif citation.statut == 1 %}
+                      <button type="button"  data-toggle="tooltip" title="Désactiver la citation" id="del{{citation.id_citation}}" onClick="desactiveCitation({{citation.id_citation}});" class="btn btn-warning btn-xs" > <span class="glyphicon glyphicon-remove-sign"></span> </button>
+                    {% endif %}
+                    <a class="btn btn-default btn-xs" href="{{citation.url_citation}}" title="Voir la citation" target="_blank"> <span class="glyphicon glyphicon-eye-open"></span> </a>
+                  </td>
+                </tr>
+                {% set i = i + 1%}
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal pour confirmation de supréssion du citation -->
+    <div id="modalDelete" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title"></h4>
+          </div>
+          <div class="modal-body">
+            <p>Êtes-vous sur de vouloir supprimer cete citation ?</p>
+          </div>
+          <div class="modal-footer">
+            <input type="hidden" value="" name="id_to_delete" id="id_to_delete"/>
+            <button type="button" class="btn btn-danger" id="confirmDelete" onclick="deleteCitation()" data-dismiss="modal">Supprimer</button><button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- Bouton enregistrer un citation-->
+    <div class="row">
+        <div class="form-group col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-4 col-md-4 col-sm-4">
+            <a href="{{ base_url() }}/citations/new"><button type="button" id="btn_add_citation" class="form-control btn btn-success" ><span class="glyphicon glyphicon-plus-sign"></span> Créer une nouvelle citation</button></a>
+        </div>
+    </div>
+
+    <!-- Bouton charger plus de citations -->
+    <div class="row" style="display:none">
+        <div class="form-group col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-4 col-md-4 col-sm-4">
+            <button type="button" id="btn_show_more" class="form-control btn btn-info" ><span class="glyphicon glyphicon-refresh"></span> Voir plus de citations </button>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+
+{% block additionalfooter %}
+
+  <script src="{{ base_url() }}/src/js/alltest.js?v=1.0014"></script>
+
+  <script src="{{ base_url() }}/src/js/added-default-script.js?v=1.292"></script>
+  <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/jquery.dataTables.js"></script>
+  <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/dataTables.bootstrap.js"></script>
+
+
+
+  <script type="text/javascript" language="javascript" class="init">
+    $(document).ready(function() {
+        $('#liste_citation').DataTable( {
+            "order": [[ 0, "asc" ]],
+            "language": {
+               "lengthMenu": "Afficher  _MENU_  citations par page",
+               "zeroRecords": "Aucun citation trouvé ! ",
+               "info": "Voir page _PAGE_ à _PAGES_ ( citation _START_ à _END_ sur _TOTAL_ )",
+               "infoEmpty": "Aucun citation trouvé",
+               "infoFiltered": "(recherche effectuée sur _MAX_ citations)"
+             }
+        } );
+        $('[data-toggle="tooltip"]').tooltip();
+
+        var lastcitationSeen = 20;
+        var numberOfcitation = 4;
+
+
+    		$("#btn_show_more").on("click",function () {
+              $.ajax({
+                  url: "/citations/showmore?begin="+lastcitationSeen+"&nb_to_show="+numberOfcitation,
+                  type: "GET",
+                  processData: false,
+                  contentType: false,
+                  beforeSend: function(){
+    				          $("#btn_show_more").prop("disabled", true);
+                      $("#btn_show_more").html("<img src='{{base_url()}}/src/img/91.gif' > Chargement en cours ");
+                      $("#btn_show_more").css("color","#000");
+      				        $("#btn_show_more").css("color","#000");
+                  }
+                  }).done(function( data ) {
+                      console.log(data);
+                      $("#btn_show_more").html("<span class='glyphicon glyphicon-refresh'></span> Voir plus de citations");
+                      $("#btn_show_more").css("color","#FFF");
+                      $("#btn_show_more").prop("disabled", false);
+                      lastcitationSeen = lastcitationSeen + 4;
+                      //$("#more").append(data);
+
+                      //$('#liste_citation').DataTable().destroy();
+
+                      $('#liste_citation').DataTable().rows.add(data).draw();
+
+
+
+                  });
+  		});
+
+    } );
+
+
+
+  </script>
+{%endblock%}

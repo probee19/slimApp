@@ -75,9 +75,9 @@
           shuffle($causes);
 ?>
 <div id="profile_img">
-          <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+          <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 </div>
-<div class="texte" id="texte1" ><span style="color:#B71C1C;"><?php echo urldecode($_GET['friend_first_name_1']); ?></span> thought about <?php echo urldecode($_GET['user_name']); ?> </div>
+<div class="texte" id="texte1" ><span style="color:#B71C1C;"><?php echo $_GET['friend_first_name_1']; ?></span> thought about <?php echo $_GET['user_name']; ?> </div>
 <div class="texte" id="texte2"><?php echo mt_rand(102,450); ?> TIME</div>
 <div class="texte" id="texte3">this year because of </div> 
 <div class="texte" id="texte4"><?php echo $causes[0]; ?></div> 

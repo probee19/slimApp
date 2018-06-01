@@ -75,9 +75,9 @@
 
 <img src="https://creation.funizi.com/images-theme-perso/1522791843.png" id="back"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
-<div class="texte" id="texte1"><?php echo urldecode($_GET['user_name']); ?> wünscht Ihnen ein Happy</div>
+<div class="texte" id="texte1"><?php echo $_GET['user_name']; ?> wünscht Ihnen ein Happy</div>
 
 <div class="texte" id="texte2">Tag der Unabhängigkeit</div>
 

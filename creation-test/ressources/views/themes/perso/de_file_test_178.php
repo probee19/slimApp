@@ -89,9 +89,9 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508976353.jpg" id="background">
             <div id="certificat">Vorstrafenregister</div> <div id="name">Name:</div>
-            <div id="name_reponse"> <?php echo urldecode($_GET['full_user_name']); ?></div> <div id="diagnostic">Kriminalität:</div>
-            <div id="diagnostic_reponse"><?php echo $message_1[$key]; ?></div> <div id="niveau">In diesem Dokument wird bestätigt, dass <?php echo urldecode($_GET['user_name']); ?> Folgendes ist:</div>
-            <div id="niveau_reponse"><?php echo $message_2[$key]; ?></div> <div id="docteur"><?php echo urldecode($_GET['friend_name_1']); ?></div>
+            <div id="name_reponse"> <?php echo $_GET['full_user_name']; ?></div> <div id="diagnostic">Kriminalität:</div>
+            <div id="diagnostic_reponse"><?php echo $message_1[$key]; ?></div> <div id="niveau">In diesem Dokument wird bestätigt, dass <?php echo $_GET['user_name']; ?> Folgendes ist:</div>
+            <div id="niveau_reponse"><?php echo $message_2[$key]; ?></div> <div id="docteur"><?php echo $_GET['friend_name_1']; ?></div>
         
 
         </div>

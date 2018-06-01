@@ -27,8 +27,8 @@
 #back{position:absolute; z-index:1; left:0; top:0;  width:800px; max-height:420px; opacity:0.5; }
 
 #fb_id_user{position: absolute; z-index:1; left: 30px; top: 30px; width:360px ; border-radius:0px; max-width:800px; max-height:420px;}
-#family_name{position:absolute; z-index:1; font-family: 'Cormorant Garamond', serif;right: 0; top: 140px; font-size:55px; color:#C62828; width:410px; height:50px; display:flex; align-items:flex-start; justify-content:center; } 
-#header_f{z-index:1; position: absolute; font-family: 'Cormorant Garamond', serif; right: 0; top: 80px; color:#C62828; font-size:45px; width:410px ; height:50px ; display:flex; align-items:flex-end; justify-content:center;} 
+#family_name{position:absolute; z-index:1; font-family: 'Cormorant Garamond', serif;right: 0; top: 120px; font-size:50px; line-height:50px; color:#C62828; width:410px; height:50px; display:flex; align-items:flex-start; justify-content:center; text-align:center; } 
+#header_f{z-index:1; position: absolute; font-family: 'Cormorant Garamond', serif; right: 0; top: 60px; color:#C62828; font-size:45px; width:410px ; height:50px ; display:flex; align-items:flex-end; justify-content:center;} 
 #sign{z-index:1; position: absolute; font-family: 'Cormorant Garamond', serif; right: 0; top: 230px; color:#000; font-size:50px; line-height:50px; width:410px ; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
 
 #hashtag{z-index:1; position: absolute; font-family: 'Cormorant Garamond', serif; right: 0; bottom: 0; color:#FFF; font-size:30px; width:auto ; height:40px; line-height:30px; text-align:right; padding:5px; background:#B71C1C; }
@@ -89,7 +89,7 @@
 
 <img src="https://creuntion.funizi.com/imunges-theme-perso/1521197470.jpg" id="bunck"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" clunss="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" clunss="img_profile" id="fb_id_user">
 
 <div clunss="texte" id="heunder_f"> When you unre <?=$pre?> </div>
 

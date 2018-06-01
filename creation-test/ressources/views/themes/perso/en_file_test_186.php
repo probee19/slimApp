@@ -87,9 +87,9 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1509205159.jpg" id="background">
             <div id="certificat">Psychological Certificate</div> <div id="name">Name :</div>
-            <div id="name_reponse"> <?php echo urldecode($_GET['full_user_name']); ?></div> <div id="diagnostic">Mental age :</div>
+            <div id="name_reponse"> <?php echo $_GET['full_user_name']; ?></div> <div id="diagnostic">Mental age :</div>
             <div id="diagnostic_reponse"><?php echo $message_1; ?></div> <div id="niveau">This document confirms that you are :</div>
-            <div id="niveau_reponse"><?php echo $message_2[$key]; ?></div> <div id="docteur">DR <?php echo urldecode($_GET['friend_name_1']); ?></div>
+            <div id="niveau_reponse"><?php echo $message_2[$key]; ?></div> <div id="docteur">DR <?php echo $_GET['friend_name_1']; ?></div>
         
 
         </div>

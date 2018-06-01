@@ -70,12 +70,12 @@ align-items: center; /* align vertical */ }
           <div class='main'>
       
 <?php
-$message = array('واضاف &quot;اننى لا اأسف لماضى، واننى اأسف فقط للوقت الضائع مع الشعب الخطأ&quot;.','&quot;مهما فعلنا، سوف ننتقد دائما، لذلك بقدر ما نريد!&quot;','&quot;أنا لست قلبي، تعلمت للتو استخدامه مع الناس الذين يستحقون ذلك&quot;','&quot;لا تدع أي شخص يحكم حياتك، لأن لا أحد عاش نفس الأشياء كما كنت!&quot;','&quot;من الأفضل أن تكون محاطة بعدد قليل من الناس الذين يحبونك من كثير من الناس الذين تجعلك تعتقد ذلك&quot;.');
+$message = array('\"أنا لست نادما على ماضي ، أنا فقط نأسف للوقت الضائع مع الناس الخطأ\".','\"كل ما نفعله ، سنكون دائما موضع انتقاد ، وكذلك تفعل ما نريد!\"','\"أنا لست بلا قلب ، تعلمت فقط لاستخدامه مع من يستحقون ذلك\"','\"لا تدع أي شخص يحكم حياتك ، لأن لا أحد قد عاش نفس الأشياء مثلك!\"','\"من الأفضل أن تكون محاطًا بعدد قليل من الأشخاص الذين يحبونك أكثر من العديد من الأشخاص الذين يجعلونك تصدق ذلك.\"');
 shuffle($message);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508776234.jpg" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div id="message"> <?php echo $message[0]; ?><br>- <?php echo urldecode($_GET['user_name']); ?>
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<div id="message"> <?php echo $message[0]; ?><br>- <?php echo $_GET['user_name']; ?>
 -</div>
 
         </div>

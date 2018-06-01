@@ -81,12 +81,12 @@
 
             if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-                $message_1 = array('L&#39;hai sentito '.urldecode($_GET['user_name']).' Stava andando alle Maldive?', 'Odio quando '.urldecode($_GET['user_name']).' Entra in una stanza, tutti la guardano', 'Festa VIP segreta stasera, sei invitato '.$_GET['Nome utente'].'?','Hai visto '.urldecode($_GET['user_name']).' Ultimamente? Oh caro !','Ho appena visto '.urldecode($_GET['user_name']).' In una limousine!','Hai visto '.urldecode($_GET['user_name']).' Alla festa di ieri? !!');
+                $message_1 = array('L&#39;hai sentito '.$_GET['User_name'].' Stava andando alle Maldive?', 'Odio quando '.$_GET['User_name'].' Entra in una stanza, tutti la guardano', 'Festa VIP segreta stasera, sei invitato '.$_GET['Nome utente'].'?','Hai visto '.$_GET['User_name'].' Ultimamente? Oh caro !','Ho appena visto '.$_GET['User_name'].' In una limousine!','Hai visto '.$_GET['User_name'].' Alla festa di ieri? !!');
                 $message_2 = array('Sì, ho visto! Come mai ? Dove ha preso i soldi per questo viaggio?', 'È perché è il più interessante', 'Questo è il nostro amico più glamour, ovviamente! Dobbiamo essere all&#39;altezza','È chiaro ! Ha classe ora. Non è giusto.','Grave? È pazzesco !','Grave! Da quando si veste anche lui?');
                 $message_3 = array('È troppo misterioso ...', 'Questo è vero. È una vera star', ' Se c&#39;è un VIP nel nostro gruppo, è buono '.$_GET['Nome utente'].'!','Ci sono persone che mi chiedono se è single','Lui è sempre più misterioso ...','Nessuno potrebbe distogliere gli occhi da lui. Una vera star.');
             }
             else{ 
-                $message_1 = array('L&#39;hai sentito '.urldecode($_GET['user_name']).' Stava andando alle Maldive?', 'Odio quando '.urldecode($_GET['user_name']).' Entra in una stanza, tutti la guardano', 'Festa VIP segreta stasera, sei invitato '.$_GET['Nome utente'].'?','Hai visto '.urldecode($_GET['user_name']).' Ultimamente? Oh caro !','Ho appena visto '.urldecode($_GET['user_name']).' In una limousine! ','Hai visto '.urldecode($_GET['user_name']).' Alla festa di ieri? !!');
+                $message_1 = array('L&#39;hai sentito '.$_GET['User_name'].' Stava andando alle Maldive?', 'Odio quando '.$_GET['User_name'].' Entra in una stanza, tutti la guardano', 'Festa VIP segreta stasera, sei invitato '.$_GET['Nome utente'].'?','Hai visto '.$_GET['User_name'].' Ultimamente? Oh caro !','Ho appena visto '.$_GET['User_name'].' In una limousine! ','Hai visto '.$_GET['User_name'].' Alla festa di ieri? !!');
                 $message_2 = array('Sì, ho visto! Come mai ? Dove ha preso i soldi per questo viaggio?', 'Questo perché è il più interessante', 'Lei è la nostra amica più glamour, ovviamente! Dobbiamo essere all&#39;altezza',' È chiaro ! lei ha lezione ora. Non è giusto.','Grave? È pazzesco !','Grave! Da quando si veste così bene?');
                 $message_3 = array('Lei è troppo misteriosa ...', 'Questo è vero. È una vera star', ' Se c&#39;è un VIP nel nostro gruppo, è buono '.$_GET['Nome utente'].'!','Ci sono persone che mi chiedono se è single',' Lei è sempre più misteriosa ...','Nessuno potrebbe distogliere lo sguardo da lei. Una vera star.');
 
@@ -95,15 +95,15 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508415358.jpg" id="background">
             <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
-            <span id="name_friend_1" class="name"><?php echo urldecode($_GET['friend_name_1']); ?></span>
+            <span id="name_friend_1" class="name"><?php echo $_GET['friend_name_1']; ?></span>
             <span class="texte" id="message_1"> <?php echo $message_1[$key]; ?> </span>
             <span class="texte" id="date_1"> <?php echo strftime("%d-%m-%G").' à '.strftime("%H").':'.$min_1; ?> </span>
             <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_2">
-            <span id="name_friend_2" class="name"> <?php echo urldecode($_GET['friend_name_2']); ?></span>
+            <span id="name_friend_2" class="name"> <?php echo $_GET['friend_name_2']; ?></span>
             <span class="texte" id="message_2"> <?php echo $message_2[$key]; ?> </span>
             <span class="texte" id="date_2"> <?php echo strftime("%d-%m-%G").' à '.strftime("%H").':'.$min_2; ?> </span>
             <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_3']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_3">
-            <span id="name_friend_3" class="name"> <?php echo urldecode($_GET['friend_name_3']); ?></span>
+            <span id="name_friend_3" class="name"> <?php echo $_GET['friend_name_3']; ?></span>
             <span class="texte" id="message_3"> <?php echo $message_3[$key]; ?> </span>
             <span class="texte" id="date_3"> <?php echo strftime("%d-%m-%G").' à '.strftime("%H").':'.$min_3; ?> </span>
 

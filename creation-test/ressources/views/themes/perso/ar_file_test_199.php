@@ -73,13 +73,13 @@
         
                 $message_1 = array('"لقاءات جديدة"','"راحة نفسية"','"الثراء"','"مشاريع"','"تجديد"');
                 $message_2 = array('لن تكون وحيدا أبدا.','سوف تجد السلام الداخلي!','سيشكرك حسابك المصرفي.','اغتنام الفرص!','أنت لن تترك أي شيء للصدفة!');
-            //    $message_3 = array('Il est trop mystérieux...', 'C\'est vrai. C\'est une vrai star', ' S\'il y\'a un VIP dans notre groupe, c\'est bien '.urldecode($_GET['user_name']).' !','Il y\'a des gens qui me demandent s\'il est célibataire',' Il est de plus en plus mystérieux...','Personne ne pouvait le quitter des yeux. Une vraie star.');
+            //    $message_3 = array('Il est trop mystérieux...', 'C\'est vrai. C\'est une vrai star', ' S\'il y\'a un VIP dans notre groupe, c\'est bien '.$_GET['user_name'].' !','Il y\'a des gens qui me demandent s\'il est célibataire',' Il est de plus en plus mystérieux...','Personne ne pouvait le quitter des yeux. Une vraie star.');
            
             $max_key = 4; $key = mt_rand(0,$max_key); setlocale(LC_ALL, 'fr_FR'); $min_1 = mt_rand(10,32); $min_2 = $min_1 + 11; $min_3 = $min_1 + 17;
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509666315.png" id="background">
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" >سنة<?php echo urldecode($_GET['user_name']); ?> :</div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" >سنة<?php echo $_GET['user_name']; ?> :</div>
 <div class="" id="nouvelle" ><?php echo $message_1[$key]; ?></div>
 <div class="" id="nouvelle_bottom" ><?php echo $message_2[$key]; ?></div>
 

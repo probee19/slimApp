@@ -71,8 +71,8 @@
       
 <img src="http://creation.funizi.com/images-theme-perso/1508668164.png" id="background"> 
 Code HTML : 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" >- <?php echo urldecode($_GET['user_name']); ?> -</div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" >- <?php echo $_GET['user_name']; ?> -</div>
 
 <div id="jauge_container">
 <div id="jauge" style="width:<?php $pourcent=rand(90,100); echo $pourcent ?>%"><span style="font-size:20px">سعيد <?php echo $pourcent ?> ٪</div>

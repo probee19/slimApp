@@ -80,7 +80,7 @@ if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['
  ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509236995.jpg" id="background">
 <div id="texte"> <?php echo $texte[0]; ?>
-<div id="name"><?php echo urldecode($_GET['full_user_name']); ?></div>
+<div id="name"><?php echo $_GET['full_user_name']; ?></div>
 </div>
 
         </div>

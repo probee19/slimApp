@@ -86,20 +86,20 @@ align-items: center; /* align vertical */}
 <?php
   if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-                     $texte = array('Tu donnes toujours avec le coeur','Tu ne laissas jamais tomber','Tu n&#39;as besoin de personne','Tu as le soucis du détail',
-                     'Tu ne blessas jamais personne','Tu ne recules devant rien','Tu traverserais un incendie pour sauver ta famille',
-                     'Tu détestes les injustices','Tu n&#39;abandonnes jamais les gens','Ta loyauté est infaillible','Tu apprends de tes erreurs','Tu veilles toujours sur tes amis','Tu es toujours honnête avec les gens');
+                     $texte = array(' Tu donnes toujours avec le coeur ',' Tu ne laisseras jamais tomber personne ',' Tu n\'as besoin de personne ',' Tu as le soucis du détail ',
+                     ' Tu ne blesseras jamais personne ',' Tu ne recules devant rien ',' Tu traverserais un incendie pour sauver ta famille ',
+                     ' Tu détestes les injustices ','  Tu n\'abandonnes jamais les gens ',' Ta loyauté est infaillible ',' Tu apprends de tes erreurs ',' Tu veilles toujours sur tes amis ',' Tu es toujours honnête avec les gens ');
 
   }
             else{ 
-             $texte = array('heureuse','Chef','Honnête','Puissante','sauge','Succés');
+             $texte = array(' heureuse ',' Leader ',' Honnête ',' Puissante ',' Sage ',' Succés ');
 
             }
 shuffle($texte);
 ?>
 
 <div class='photo' style="top:0;left:0">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
 </div>
 <div id="result1">
 <?php echo $texte[0]; ?>
@@ -108,16 +108,16 @@ shuffle($texte);
 <?php echo $texte[1]; ?>
 </div>
 <div class='photo' style="top:127px;left:269px">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
 </div>
 <div id="result3">
 <?php echo $texte[2]; ?>
 </div>
 <div id="name_user">
-<?php echo urldecode($_GET['user_name']); ?>
+<?php echo $_GET['user_name']; ?>
 </div>
 <div class='photo' style="top:0;right:0px">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
 </div>
 
         </div>

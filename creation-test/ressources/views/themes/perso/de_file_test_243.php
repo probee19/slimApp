@@ -80,7 +80,7 @@ shuffle($message);
 <img src="http://creation.funizi.com/images-theme-perso/1513345516.jpg" id="background"> 
 <img src="https://res.cloudinary.com/funizi/image/facebook/e_art:red_rock/<?php echo $_GET['fb_id_user']; ?>.jpg" class="img_profile" id="fb_id_user">
 <div id="message"> <?php echo $message[0]; ?></div>
-<div id="signature">- <?php echo urldecode($_GET['user_name']); ?> -</div> 
+<div id="signature">- <?php echo $_GET['user_name']; ?> -</div> 
 
 
         </div>

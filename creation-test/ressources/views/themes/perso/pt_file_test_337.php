@@ -79,7 +79,7 @@
 <div class="texte" id="head"> A primeira letra do seu grande amor é ... </div>
 
  
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 
 <img src="https://creation.funizi.com/images-theme-perso/1525097350.png" id="heart"> 
 

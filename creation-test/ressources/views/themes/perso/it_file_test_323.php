@@ -89,7 +89,7 @@
 <!DOCTYPE HTML>
 
 <img src="https://creation.funizi.com/images-theme-perso/1523965710.jpg" id="back"> 
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 <div class="texte ligne" id="ligne1"> i amo :  </div>
 <div class="texte resultat" id="resultat1"> <?=$like[0];?> </div>
 

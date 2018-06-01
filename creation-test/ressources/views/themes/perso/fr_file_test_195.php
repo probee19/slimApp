@@ -99,10 +99,10 @@ shuffle($key);
 <div class='photo' style="bottom:0;right:200px">
  <img src="<?php echo $image_star[$key[2]]; ?>" class="img_profile" id="fb_id_user">
 </div>
-<div class='nomgris' style="left:600px"><?php echo urldecode($_GET['user_name']); ?></div>
+<div class='nomgris' style="left:600px"><?php echo $_GET['user_name']; ?></div>
 <div class='pourcentage' style="left:600px">100%</div>
 <div class='photo' style="bottom:0;right:0">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+ <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 </div>
 
         </div>

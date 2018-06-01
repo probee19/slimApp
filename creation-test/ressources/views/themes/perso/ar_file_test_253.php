@@ -86,7 +86,7 @@ box-shadow: 0px 0px 18px 8px rgba(232,232,232,1);
           shuffle($reves);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1514369932.jpg" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
 <div class="reve" id="reve1"><?php echo $reves[0]; ?></div>
 <div class="reve" id="reve2"><?php echo $reves[1]; ?></div>

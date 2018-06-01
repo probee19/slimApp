@@ -106,7 +106,7 @@
 ?>
 <!DOCTYPE HTML>
 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
 <div class="texte box" id="box_heart">  Amour  </div>
 <img src="http://creation.funizi.com/images-theme-perso/1519302793.png" class="img_ico" id="heart"> 

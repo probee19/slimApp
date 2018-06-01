@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-
+              
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -70,46 +70,47 @@
           </head>
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
-
+      
 <?php
  $texte=array('Sauvage', 'Sexy', 'Cinglé','Fou','Dingue', 'Farceur', 'Charmeur', 'Blagueur');
  shuffle($texte);
 ?>
 
 <div class="conteneur rouge" style="top:0;left:0">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile blanc_border" id="fb_id_user">          
+ <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile blanc_border" id="fb_id_user">          
 <div class='texte blanc_texte'><?php echo $texte[0]; ?></div>
 </div>
 <div class="conteneur blanc" style="top:0;left:200px">
- <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile rouge_border" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile rouge_border" id="fb_id_user">          
 <div class='texte rouge_texte'><?php echo $texte[1]; ?></div>
 </div>
 <div class="conteneur rouge" style="top:0;left:400px">
- <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275" class="img_profile blanc_border" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275" class="img_profile blanc_border" id="fb_id_user">          
 <div class='texte blanc_texte'><?php echo $texte[2]; ?></div>
 </div>
 <div class="conteneur blanc" style="top:0;left:600px">
- <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_3']; ?>/picture/?width=275&height=275" class="img_profile rouge_border" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_3']; ?>/picture/?width=275&height=275" class="img_profile rouge_border" id="fb_id_user">          
 <div class='texte rouge_texte'><?php echo $texte[3]; ?></div>
 </div>
 <div class="conteneur blanc" style="top:210px;left:0">
- <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_4']; ?>/picture/?width=275&height=275" class="img_profile rouge_border" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_4']; ?>/picture/?width=275&height=275" class="img_profile rouge_border" id="fb_id_user">          
 <div class='texte rouge_texte'><?php echo $texte[4]; ?></div>
 </div>
 <div class="conteneur rouge" style="top:210px;left:200px">
- <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_5']; ?>/picture/?width=275&height=275" class="img_profile blanc_border" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_5']; ?>/picture/?width=275&height=275" class="img_profile blanc_border" id="fb_id_user">          
 <div class='texte blanc_texte'><?php echo $texte[5]; ?></div>
 </div>
 <div class="conteneur blanc" style="top:210px;left:400px">
- <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_6']; ?>/picture/?width=275&height=275" class="img_profile rouge_border" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_6']; ?>/picture/?width=275&height=275" class="img_profile rouge_border" id="fb_id_user">          
 <div class='texte rouge_texte'><?php echo $texte[6]; ?></div>
 </div>
 <div class="conteneur rouge" style="top:210px;left:600px">
- <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_7']; ?>/picture/?width=275&height=275" class="img_profile blanc_border" id="fb_id_user">
+ <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_7']; ?>/picture/?width=275&height=275" class="img_profile blanc_border" id="fb_id_user">          
 <div class='texte blanc_texte'><?php echo $texte[7]; ?></div>
 </div>
 
         </div>
-
+        
         </body>
         </html>
+      

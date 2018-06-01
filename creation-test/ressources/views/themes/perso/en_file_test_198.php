@@ -83,16 +83,16 @@ shuffle($texte);
 ?>
 <div id="bottom"><span id="mot"><?php echo strtoupper($texte[0]); ?></span></div>
 <div class='photo' style="top:0;left:0">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+ <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 </div>
 <div class='photo' style="top:0;left:200px">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user" style=" opacity: 0.5;">
+ <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user" style=" opacity: 0.5;">
 </div>
 <div class='photo' style="top:0;left:400px">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+ <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 </div>
 <div class='photo' style="top:0;left:600px">
- <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user" style=" opacity: 0.5;">
+ <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user" style=" opacity: 0.5;">
 </div>
 
         </div>

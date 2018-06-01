@@ -83,10 +83,10 @@
 
 <img src="https://creation.funizi.com/images-theme-perso/1519645150.jpg" id="back"> 
 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
 <div class="texte" id="force">  
-          <div  id="force_1"> The main strength of <?php echo urldecode($_GET['user_name']); ?> is</div>
+          <div  id="force_1"> The main strength of <?php echo $_GET['user_name']; ?> is</div>
           <div  id="force_2"> <?= $forces[0];?>  </div>
 </div>
 

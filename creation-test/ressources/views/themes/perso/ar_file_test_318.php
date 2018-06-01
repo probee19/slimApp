@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              <link href="https://fonts.googleapis.com/css?family=Courgette|Montserrat:400,800" rel="stylesheet">
+              <link href="https://fonts.googleapis.com/css?family=Courgette|Montserrat:400,800|Great+Vibes" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -27,7 +27,7 @@
 
 #header_t{font-family: 'Montserrat', sans-serif; z-index:1; position: absolute; left: 180px; top: 55px; color:#B71C1C; font-size:30px; display:flex; align-items:center; justify-content:center; width:450px ; height:50px ; text-transform:uppercase;}
 #header_t_2{font-family: 'Courgette', cursive; z-index:1; position: absolute; left: 180px; top: 100px; color:#000; font-size:20px; display:flex; align-items:center; justify-content:center; width:450px ; height:50px ;  }
-#name_user{position:absolute; z-index:1; left: 180px; top: 155px; font-size:30px; color:#000; width:450px ; height:40px ; text-align:center; border-bottom:2px solid;} 
+#name_user{position:absolute;font-family: 'Great Vibes', cursive; z-index:1; left: 180px; top: 155px; font-size:40px; color:#000; width:450px ; height:40px ; text-align:center; border-bottom:2px solid;} 
 #pour{font-family: 'Montserrat', sans-serif; z-index:1; position: absolute; left: 80px; top: 200px; color:#B71C1C; font-size:20px; display:flex; align-items:center; justify-content:center; width:650px ; height:50px ; text-transform:uppercase; }
 #en{font-family: 'Courgette', cursive; z-index:1; position: absolute; left: 80px; top: 240px; color:#66BB6A; font-size:24px; line-height:24px; display:flex; align-items:center; justify-content:center; text-align:center; width:650px ; height:50px ;  }
 #deliv{font-family: 'Courgette', cursive; z-index:1; position: absolute; left: 80px; top: 285px; color:#000; font-size:20px; display:flex; align-items:center; justify-content:center; text-align:center; width:650px ; height:50px ;  }
@@ -90,7 +90,7 @@
 
 <div class="texte" id="header_t_2"> صدر بفخر ل </div>
 
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['full_user_name']); ?></div>
+<div class="name texte" id="name_user" ><?php echo $_GET['full_user_name']; ?></div>
 
 <div class="texte" id="pour" ><?=$pour[$ind];?></div>
 
@@ -98,9 +98,9 @@
 
 <div class="texte" id="deliv" >الاعتراف الصادر والمعترف به من قبل:</div>
 
-<div class="name texte" id="friend_1" > <?php echo urldecode($_GET['friend_name_1']); ?> </div>
-<div class="name texte" id="friend_2" > <?php echo urldecode($_GET['friend_name_2']); ?> </div>
-<div class="name texte" id="friend_3" > <?php echo urldecode($_GET['friend_name_3']); ?> </div>
+<div class="name texte" id="friend_1" > <?php echo $_GET['friend_name_1']; ?> </div>
+<div class="name texte" id="friend_2" > <?php echo $_GET['friend_name_2']; ?> </div>
+<div class="name texte" id="friend_3" > <?php echo $_GET['friend_name_3']; ?> </div>
 
 
 

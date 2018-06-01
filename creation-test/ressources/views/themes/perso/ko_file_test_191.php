@@ -71,16 +71,16 @@ ol li{height:55px;}
 <?php
   if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-            $texte = array(''.urldecode($_GET['user_name']).' 우수한 평판을 유지하고자합니다.',''.urldecode($_GET['user_name']).'은 성실하고 관대하며 충직합니다.',''.urldecode($_GET['user_name']).'은 여전히 ​​약속을 지키고 있습니다.',
-''.urldecode($_GET['user_name']).' 비밀을 밝히지 않았습니다.',''.urldecode($_GET['user_name']).' 절대로 사랑하는 사람을 실망 시키려하지 않습니다.','
-'.urldecode($_GET['user_name']).'은 우정으로 사랑에 충실합니다.',''.urldecode($_GET['user_name']).'은 취소 할 수 없습니다.',''.urldecode($_GET['user_name']).'은 그가 사랑하는 사람을 기쁘게합니다.',
-''.urldecode($_GET['user_name']).' 다른 사람들에 대한 나쁜 것들을 말하지 않습니다.',''.urldecode($_GET['user_name']).'은 아무도 배신하지 않았습니다.', ''.urldecode($_GET['user_name']).'은 자신의 앞에 다른 사람들의 욕구를 둔다.');
+            $texte = array(''.$_GET['user_name'].' 우수한 평판을 유지하고자합니다.',''.$_GET['user_name'].'은 성실하고 관대하며 충직합니다.',''.$_GET['user_name'].'은 여전히 ​​약속을 지키고 있습니다.',
+''.$_GET['user_name'].' 비밀을 밝히지 않았습니다.',''.$_GET['user_name'].' 절대로 사랑하는 사람을 실망 시키려하지 않습니다.','
+'.$_GET['user_name'].'은 우정으로 사랑에 충실합니다.',''.$_GET['user_name'].'은 취소 할 수 없습니다.',''.$_GET['user_name'].'은 그가 사랑하는 사람을 기쁘게합니다.',
+''.$_GET['user_name'].' 다른 사람들에 대한 나쁜 것들을 말하지 않습니다.',''.$_GET['user_name'].'은 아무도 배신하지 않았습니다.', ''.$_GET['user_name'].'은 자신의 앞에 다른 사람들의 욕구를 둔다.');
   }
             else{ 
-             $texte = array(''.urldecode($_GET['user_name']).' 우수한 평판을 유지하고자합니다.',''.urldecode($_GET['user_name']).'은 성실하고 관대하며 충직합니다.',''.urldecode($_GET['user_name']).'은 여전히 ​​약속을 지키고 있습니다.',
-''.urldecode($_GET['user_name']).' 비밀을 밝히지 않았습니다.',''.urldecode($_GET['user_name']).' 절대로 사랑하는 사람을 실망 시키려하지 않습니다.','
-'.urldecode($_GET['user_name']).'은 우정으로 사랑에 충실합니다.',''.urldecode($_GET['user_name']).'은 취소 할 수 없습니다.',''.urldecode($_GET['user_name']).'은 자신이 사랑하는 사람들을 기쁘게합니다.',
-''.urldecode($_GET['user_name']).' 다른 사람들에 대한 나쁜 것들을 말하지 않습니다.',''.urldecode($_GET['user_name']).'은 아무도 배신하지 않았습니다.', ''.urldecode($_GET['user_name']).'은 자신의 앞에 다른 사람들의 욕구를 둔다.');
+             $texte = array(''.$_GET['user_name'].' 우수한 평판을 유지하고자합니다.',''.$_GET['user_name'].'은 성실하고 관대하며 충직합니다.',''.$_GET['user_name'].'은 여전히 ​​약속을 지키고 있습니다.',
+''.$_GET['user_name'].' 비밀을 밝히지 않았습니다.',''.$_GET['user_name'].' 절대로 사랑하는 사람을 실망 시키려하지 않습니다.','
+'.$_GET['user_name'].'은 우정으로 사랑에 충실합니다.',''.$_GET['user_name'].'은 취소 할 수 없습니다.',''.$_GET['user_name'].'은 자신이 사랑하는 사람들을 기쁘게합니다.',
+''.$_GET['user_name'].' 다른 사람들에 대한 나쁜 것들을 말하지 않습니다.',''.$_GET['user_name'].'은 아무도 배신하지 않았습니다.', ''.$_GET['user_name'].'은 자신의 앞에 다른 사람들의 욕구를 둔다.');
 
             }
 shuffle($texte);
@@ -88,7 +88,7 @@ shuffle($texte);
 <img src="http://creation.funizi.com/images-theme-perso/1509392071.jpg" id="background"> 
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div id="titretest" ><?php echo urldecode($_GET['full_user_name']); ?>을 (를) 신뢰 <span style=\"color:#D90000\">해야하는 5 가지 이유</span></div>
+<div id="titretest" ><?php echo $_GET['full_user_name']; ?>을 (를) 신뢰 <span style=\"color:#D90000\">해야하는 5 가지 이유</span></div>
 
 <ol>
 <li><?php echo $texte[0]; ?> </li> 

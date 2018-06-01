@@ -76,8 +76,8 @@ $texte = array('Sei una persona di perfetta bellezza, puoi mettere chiunque in t
 $score = array('11','12','10');
 $k = mt_rand(0,2);
 ?>
-<div class="texte" id="top"> <?php echo urldecode($_GET['user_name']); ?> QUESTO È IL TUO PUNTEGGIO! </div>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="texte" id="top"> <?php echo $_GET['user_name']; ?> QUESTO È IL TUO PUNTEGGIO! </div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="texte" id="texte"><?php echo $texte[$k]; ?></div>
 <div class="texte" id="score"><span></span><?php echo $score[$k]; ?></span></div>
 

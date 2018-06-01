@@ -72,8 +72,8 @@
                 $expression = array("Seytané wakhoul deugg wanté yakhanab khél","Yàggay woné légétub taat","Ndànk-ndànkay jàpp golo cib ñaay", "Nen du bëreek doj","Duma jënd jaar ci pax","Bëggum ñeex duma taxa dëppoo cin lu tàng","Su may dee ci àll, gayndee may rey","Bant, lumu yàgg cig dex, du tax mu soppiku jasig", "Benn loxo du tàccu","Sori kaw a tax jaxaay di saw bouki","Ku fecc ba génnub géw, kenn du la seetaan","Këll bu ne am na mberoom", "Daqaar du wuum ku ko maccul","Xeex, ku ko fekke, boo àttewul, danga sot","Cuuc bu narée doon seex cin manaluko dara","Kuy gunge boroom biirbuy daw, lu la ca 'waaxusil' fekkee.","Dëgg kaani la, ku ñu ko xëpp nga toxoñu.");
                 shuffle($expression); ?> <img src="http://creation.funizi.com/images-theme-perso/1508499676.png" id='background'>
                 <div id='titre_test'>Quelle expression wolof te correspond le mieux ?</div>
-                <img src='<?php echo urldecode($_GET['url_img_profile_user']); ?>'class='img_profile' id='fb_id_user'>
-                <div class='name texte' id='name_user' ><span><?php echo urldecode($_GET['user_name']); ?></span></div>
+                <img src='<?php echo $_GET['url_img_profile_user']; ?>'class='img_profile' id='fb_id_user'>
+                <div class='name texte' id='name_user' ><span><?php echo $_GET['user_name']; ?></span></div>
                 <div id='resultat' ><?php echo $expression[0]; ?> </div>
         
 

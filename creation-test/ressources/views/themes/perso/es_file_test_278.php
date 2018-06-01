@@ -68,17 +68,17 @@
       
 <?php
 if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
-          $lois = array(''.urldecode($_GET['user_name']).' es nombrado Jefe de Gabinete.',
-          'Hasta el 31 de mayo de 2020, '.urldecode($_GET['friend_first_name_1']).' Tendrá que pagar el '.urldecode($_GET['user_name']).' Rent. ',
-          ''.urldecode($_GET['user_name']).' es demasiado grande, ordeno que reciba una promoción.',
-          'Por la presente ordeno que el salario de '.urldecode($_GET['user_name']).' Ser duplicado.',
-          'Declaro estas vacaciones en honor de '.urldecode($_GET['user_name']).'.');
+          $lois = array(''.$_GET['user_name'].' es nombrado Jefe de Gabinete.',
+          'Hasta el 31 de mayo de 2020, '.$_GET['Friend_first_name_1'].' Tendrá que pagar el '.$_GET['User_name'].' Rent. ',
+          ''.$_GET['user_name'].' es demasiado grande, ordeno que reciba una promoción.',
+          'Por la presente ordeno que el salario de '.$_GET['User_name'].' Ser duplicado.',
+          'Declaro estas vacaciones en honor de '.$_GET['User_name'].'.');
 else 
-       $lois = array(''.urldecode($_GET['user_name']).' es nombrado jefe de personal',
-          'Hasta el 31 de mayo de 2020, '.urldecode($_GET['friend_first_name_1']).' Tendrá que pagar el '.urldecode($_GET['user_name']).' Rent. ',
-          ''.urldecode($_GET['user_name']).' es demasiado genial, le ordeno que reciba una promoción.',
-          'Por la presente ordeno que el salario de '.urldecode($_GET['user_name']).' Ser duplicado.',
-          'Declaro estas vacaciones en honor de '.urldecode($_GET['user_name']).'.');   
+       $lois = array(''.$_GET['user_name'].' es nombrado jefe de personal',
+          'Hasta el 31 de mayo de 2020, '.$_GET['Friend_first_name_1'].' Tendrá que pagar el '.$_GET['User_name'].' Rent. ',
+          ''.$_GET['user_name'].' es demasiado genial, le ordeno que reciba una promoción.',
+          'Por la presente ordeno que el salario de '.$_GET['User_name'].' Ser duplicado.',
+          'Declaro estas vacaciones en honor de '.$_GET['User_name'].'.');   
           
           shuffle($lois);
 ?>

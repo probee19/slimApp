@@ -10,6 +10,8 @@ use App\Controllers\JsonController;
 use App\Models\Admin;
 use App\Models\TestOwner;
 use App\Models\Test;
+use App\Models\Citation;
+use App\Models\CitationInfo;
 use App\Models\Resultat;
 use App\Models\User;
 use App\Models\UserTest;
@@ -75,6 +77,26 @@ class ActionTestController extends Controller
         $test = $_GET['test']; $user = $_GET['admin'];
         $delete = UserTest::where([ ['test_id','=', $test], ['user_id','=', $user] ])->delete();
   }
+
+  // Citation
+
+  public function DeleteCitation($request, $response, $arg)
+  {
+    Citation::where('id_citation',$_GET['idcitation'])->update(['statut' => -1]);
+  }
+
+
+  public function ActiveCitation($request, $response, $arg)
+  {
+    Citation::where('id_citation',$_GET['idcitation'])->update(['statut' =>1]);
+  }
+
+
+  public function DesactiveCitation($request, $response, $arg)
+  {
+    Citation::where('id_citation',$_GET['idcitation'])->update(['statut' =>0]);
+  }
+
 
   public function UploadImageThemePerso($request, $response, $arg)
   {
@@ -227,7 +249,7 @@ class ActionTestController extends Controller
       $data_tp[] = [
         'id_test'       =>  $_POST['idTest'],
         'lang'          =>  "$lang->code",
-        'code_php'      =>  Helper::translateWithTags($lang->code,$_POST['codePHPHTML']),
+        'code_php'      =>  Helper::translateWithTags($lang->code, $_POST['codePHPHTML']),
         'code_css'      =>  $_POST['codeCSS'],
         'code_js'       =>  $_POST['codeJS'],
         'code_head'     =>  $_POST['codeRequireTop'],
@@ -404,6 +426,20 @@ class ActionTestController extends Controller
       "test_description"        =>  $info_test->test_description,
       "label_additionnal_info"  =>  $test_additionnal_infos->label
     ];
+    return json_encode($data);
+  }
+
+
+  public function loadInfoCitation()
+  {
+    $info_citation = CitationInfo::where([["id_citation", "=", $_POST['id_citation']],["lang", "=", $_POST['lang']]])->first();
+    //Helper::debug($theme_perso->code_php);
+    $data = [
+      'titre_citation'          =>  $info_citation->titre_citation,
+      'citation_description'    =>  $info_citation->citation_description,
+      'code_php'                =>  $info_citation->code_php
+    ];
+
     return json_encode($data);
   }
 

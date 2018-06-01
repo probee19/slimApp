@@ -78,7 +78,7 @@
 ?>
 <div id="profile_img"><img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user"></div>
 <img src="http://creation.funizi.com/images-theme-perso/<?php echo $files[0]; ?>.jpg" id="house"> 
-<div id="footer"> 이것은 <?php echo urldecode($_GET['user_name']); ?>의 미래 집입니다.</div>
+<div id="footer"> 이것은 <?php echo $_GET['user_name']; ?>의 미래 집입니다.</div>
 
 
 

@@ -48,6 +48,7 @@ function deleteTest () {
     }
    });
 }
+
 // Active le test choisi puis recharge la page
 function activeTest(id){
   $.ajax({
@@ -121,7 +122,7 @@ function highlight(test) {
      }).done(function (data) {
        updateJsonHighlightedTestsFiles();
        setTimeout(function () {
-           $('#highlight_'+test).html("<i class=\"fa fa-level-down\" aria-hidden=\"true\"></i> ");
+           $('#highlight_'+test).html("<i class=\"fas fa-level-up-alt\"></i>");
            $('#highlight_'+test).prop("title","Ne plus mettre en avant le test");
            $('#highlight_'+test).attr("onclick","moveHighlight("+test+")");
            $('#highlight_'+test).removeClass("btn-success").addClass("btn-danger");
@@ -144,7 +145,7 @@ function moveHighlight(test) {
        success : function(code_html, statut){
           updateJsonHighlightedTestsFiles();
            setTimeout(function () {
-               $('#highlight_'+test).html("<i class=\"fa fa-level-up\" aria-hidden=\"true\"></i> ");
+               $('#highlight_'+test).html("<i class=\"fas fa-level-up-alt\"></i> ");
                $('#highlight_'+test).prop("title","Mettre en avant le test");
                $('#highlight_'+test).attr("onclick","highlight("+test+")");
                $('#highlight_'+test).removeClass("btn-danger").addClass("btn-success");
@@ -154,5 +155,57 @@ function moveHighlight(test) {
              loadingProgress('100%', 'Opération terminée avec succès.', 'close');
            }, 3000);
         }
+   });
+}
+
+
+// Supprime une citation
+function deleteCitation () {
+  var idToDelete = $("#id_to_delete").val();
+
+  $.ajax({
+     url : 'action/deleteCitation',
+     type : 'GET',
+     data : 'action=del&idcitation='+idToDelete,
+     dataType : 'html',
+     success : function(code_html, statut){
+       location.reload();
+    }
+   });
+}
+
+// Active la citation choisie puis recharge la page
+function activeCitation(id){
+  $.ajax({
+     url : 'action/activeCitation',
+     type : 'GET',
+     data : 'action=act&idcitation='+id,
+     dataType : 'html',
+     beforeSend: function () {
+       loadingProgress ('0%', 'Activation de la citation en cours...');
+     }
+   }).done(function (data) {
+     //updateJsonTestFiles();
+     setTimeout(function(){
+       loadingProgress ('100%', 'Opération terminée avec succès.', 'reload');
+     },1000);
+   });
+}
+
+// Desactive la citation choisie puis recharge la page
+function desactiveCitation(id){
+  $.ajax({
+     url : 'action/desactiveCitation',
+     type : 'GET',
+     data : 'action=des&idcitation='+id,
+     dataType : 'html',
+     beforeSend: function () {
+       loadingProgress('0%', 'Désactivation de la citation en cours...');
+     }
+   }).done(function (data) {
+     //updateJsonTestFiles();
+     setTimeout(function(){
+       loadingProgress('100%', 'Opération terminée avec succès.', 'reload');
+     },1000);
    });
 }

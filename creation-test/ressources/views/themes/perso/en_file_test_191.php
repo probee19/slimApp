@@ -71,24 +71,24 @@ ol li{height:55px;}
 <?php
   if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-            $texte = array(''.urldecode($_GET['user_name']).' wants to maintain an excellent reputation',''.urldecode($_GET['user_name']).' is sincere, generous and loyal',''.urldecode($_GET['user_name']).' still lives up to its promises',
-''.urldecode($_GET['user_name']).' never revealed a secret',''.urldecode($_GET['user_name']).' never wants to disappoint his loved ones','
-'.urldecode($_GET['user_name']).' is as faithful in love as friendship',''.urldecode($_GET['user_name']).' is irreproachable',''.urldecode($_GET['user_name']).' loves to please those he loves',
-''.urldecode($_GET['user_name']).' never says bad things about others',''.urldecode($_GET['user_name']).' has never betrayed anyone', ''.urldecode($_GET['user_name']).' puts the desires of others before his own');
+            $texte = array(''.$_GET['user_name'].' wants to maintain an excellent reputation',''.$_GET['user_name'].' is sincere, generous and loyal',''.$_GET['user_name'].' still lives up to its promises',
+''.$_GET['user_name'].' never revealed a secret',''.$_GET['user_name'].' never wants to disappoint his loved ones','
+'.$_GET['user_name'].' is as faithful in love as friendship',''.$_GET['user_name'].' is irreproachable',''.$_GET['user_name'].' loves to please those he loves',
+''.$_GET['user_name'].' never says bad things about others',''.$_GET['user_name'].' has never betrayed anyone', ''.$_GET['user_name'].' puts the desires of others before his own');
   }
             else{ 
-             $texte = array(''.urldecode($_GET['user_name']).' wants to maintain an excellent reputation',''.urldecode($_GET['user_name']).' is sincere, generous and loyal',''.urldecode($_GET['user_name']).' still lives up to its promises',
-''.urldecode($_GET['user_name']).' never revealed a secret',''.urldecode($_GET['user_name']).' never wants to disappoint his loved ones','
-'.urldecode($_GET['user_name']).' is as faithful in love as friendship',''.urldecode($_GET['user_name']).' is irreproachable',''.urldecode($_GET['user_name']).' loves to please those she loves',
-''.urldecode($_GET['user_name']).' never says bad things about others',''.urldecode($_GET['user_name']).' has never betrayed anyone', ''.urldecode($_GET['user_name']).' puts the desires of others before his own');
+             $texte = array(''.$_GET['user_name'].' wants to maintain an excellent reputation',''.$_GET['user_name'].' is sincere, generous and loyal',''.$_GET['user_name'].' still lives up to its promises',
+''.$_GET['user_name'].' never revealed a secret',''.$_GET['user_name'].' never wants to disappoint his loved ones','
+'.$_GET['user_name'].' is as faithful in love as friendship',''.$_GET['user_name'].' is irreproachable',''.$_GET['user_name'].' loves to please those she loves',
+''.$_GET['user_name'].' never says bad things about others',''.$_GET['user_name'].' has never betrayed anyone', ''.$_GET['user_name'].' puts the desires of others before his own');
 
             }
 shuffle($texte);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1509392071.jpg" id="background"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div id="titretest" ><span style=\"color:#D90000\">5 reasons</span> to trust <?php echo urldecode($_GET['full_user_name']); ?></div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div id="titretest" ><span style=\"color:#D90000\">5 reasons</span> to trust <?php echo $_GET['full_user_name']; ?></div>
 
 <ol>
 <li><?php echo $texte[0]; ?> </li> 

@@ -71,11 +71,11 @@
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1522410996.jpg" id="back"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ></div>
 
 
-<div class="texte" id="texte1"> Mesmo aos 80 anos, <?php echo urldecode($_GET['user_name']); ?> ainda mantém sua beleza!</div>
+<div class="texte" id="texte1"> Mesmo aos 80 anos, <?php echo $_GET['user_name']; ?> ainda mantém sua beleza!</div>
 
 
 

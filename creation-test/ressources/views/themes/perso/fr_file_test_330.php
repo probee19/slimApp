@@ -82,8 +82,8 @@ shuffle($message);
 <div id="titre" class="titre"> Que te réserve le mois de mai ? </div>
 <img src="http://creation.funizi.com/images-theme-perso/1509379734.jpg" id="background"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><span id="name_contour"><?php echo urldecode($_GET['user_name']); ?></span></div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><span id="name_contour"><?php echo $_GET['user_name']; ?></span></div>
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
 <div id="message"> <?php echo $message[0]; ?>

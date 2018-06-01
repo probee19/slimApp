@@ -80,8 +80,8 @@
           shuffle($mots);
 ?>
 <!DOCTYPE HTML>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
 
 
 <div class="texte mot" id="mot1"><?php echo $mots[0]; ?> </div>

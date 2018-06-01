@@ -81,29 +81,29 @@
 
             if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-                $message_1 = array(' Tu as entendu que '.urldecode($_GET['user_name']).' partait aux Maldives ? ', ' Je déteste quand '.urldecode($_GET['user_name']).' rentre dans une pièce, tout le monde le regarde ', ' Fête VIP secrète ce soir, est-ce qu\'on invite '.urldecode($_GET['user_name']).' ? ',' Tu as vu '.urldecode($_GET['user_name']).' dernièrement ? Oh la la ! ',' Je viens de voir passer '.urldecode($_GET['user_name']).' dans une limousine ! ',' Tu as vu '.urldecode($_GET['user_name']).' à la soirée hier ?!! ');
+                $message_1 = array(' Tu as entendu que '.$_GET['user_name'].' partait aux Maldives ? ', ' Je déteste quand '.$_GET['user_name'].' rentre dans une pièce, tout le monde le regarde ', ' Fête VIP secrète ce soir, est-ce qu\'on invite '.$_GET['user_name'].' ? ',' Tu as vu '.$_GET['user_name'].' dernièrement ? Oh la la ! ',' Je viens de voir passer '.$_GET['user_name'].' dans une limousine ! ',' Tu as vu '.$_GET['user_name'].' à la soirée hier ?!! ');
                 $message_2 = array(' Ouais, j\'ai vu! Comment ça se fait ? Où est-ce qu\'il a eu l\'argent pour ce voyage ? ', ' C\'est parce que c\'est le plus intéressant ', ' C\'est notre ami le plus glamour, bien sûr ! Il faut qu\'on soit à la hauteur ',' C\'est clair ! Il a la classe maintenant. C\'est pas juste. ',' Sérieux ? C\'est fou ! ',' Grave ! Depuis quand il s\'habille aussi bien ? ');
-                $message_3 = array(' Il est trop mystérieux... ', ' C\'est vrai. C\'est une vrai star ', '  S\'il y\'a un VIP dans notre groupe, c\'est bien '.urldecode($_GET['user_name']).' ! ',' Il y\'a des gens qui me demandent s\'il est célibataire ',' Il est de plus en plus mystérieux... ',' Personne ne pouvait le quitter des yeux. Une vraie star. ');
+                $message_3 = array(' Il est trop mystérieux... ', ' C\'est vrai. C\'est une vrai star ', '  S\'il y\'a un VIP dans notre groupe, c\'est bien '.$_GET['user_name'].' ! ',' Il y\'a des gens qui me demandent s\'il est célibataire ',' Il est de plus en plus mystérieux... ',' Personne ne pouvait le quitter des yeux. Une vraie star. ');
             }
             else{ 
-                $message_1 = array(' Tu as entendu que '.urldecode($_GET['user_name']).' partait aux Maldives ? ', ' Je déteste quand '.urldecode($_GET['user_name']).' rentre dans une pièce, tout le monde la regarde ', ' Fête VIP secrète ce soir, est-ce qu\'on invite '.urldecode($_GET['user_name']).' ? ',' Tu as vu '.urldecode($_GET['user_name']).' dernièrement ? Oh la la ! ',' Je viens de voir passer '.urldecode($_GET['user_name']).' dans une limousine !  ',' Tu as vu '.urldecode($_GET['user_name']).' à la soirée hier ?!! ');
+                $message_1 = array(' Tu as entendu que '.$_GET['user_name'].' partait aux Maldives ? ', ' Je déteste quand '.$_GET['user_name'].' rentre dans une pièce, tout le monde la regarde ', ' Fête VIP secrète ce soir, est-ce qu\'on invite '.$_GET['user_name'].' ? ',' Tu as vu '.$_GET['user_name'].' dernièrement ? Oh la la ! ',' Je viens de voir passer '.$_GET['user_name'].' dans une limousine !  ',' Tu as vu '.$_GET['user_name'].' à la soirée hier ?!! ');
                 $message_2 = array(' Ouais, j\'ai vu! Comment ça se fait ? Où est-ce qu\'elle a eu l\'argent pour ce voyage ? ', ' C\'est parce que c\'est la plus intéressante ', ' C\'est notre amie la plus glamour, bien sûr ! Il faut qu\'on soit à la hauteur ','  C\'est clair ! elle a la classe maintenant. C\'est pas juste. ',' Sérieux ? C\'est fou ! ',' Grave ! Depuis quand elle s\'habille aussi bien ? ');
-                $message_3 = array(' Elle est trop mystérieuse... ', ' C\'est vrai. C\'est une vrai star ', '  S\'il y\'a un VIP dans notre groupe, c\'est bien '.urldecode($_GET['user_name']).' ! ',' Il y\'a des gens qui me demandent si elle est célibataire ','  Elle est de plus en plus mystérieuse... ',' Personne ne pouvait la quitter des yeux. Une vraie star. ');
+                $message_3 = array(' Elle est trop mystérieuse... ', ' C\'est vrai. C\'est une vrai star ', '  S\'il y\'a un VIP dans notre groupe, c\'est bien '.$_GET['user_name'].' ! ',' Il y\'a des gens qui me demandent si elle est célibataire ','  Elle est de plus en plus mystérieuse... ',' Personne ne pouvait la quitter des yeux. Une vraie star. ');
 
             }
             $max_key = 5; $key = mt_rand(0,$max_key); setlocale(LC_ALL, 'fr_FR'); $min_1 = mt_rand(10,32); $min_2 = $min_1 + 11; $min_3 = $min_1 + 17;
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508415358.jpg" id="background">
             <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
-            <span id="name_friend_1" class="name"><?php echo urldecode($_GET['friend_name_1']); ?></span>
+            <span id="name_friend_1" class="name"><?php echo $_GET['friend_name_1']; ?></span>
             <span class="texte" id="message_1"> <?php echo $message_1[$key]; ?> </span>
             <span class="texte" id="date_1"> <?php echo strftime("%d-%m-%G").' à '.strftime("%H").':'.$min_1; ?> </span>
             <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_2">
-            <span id="name_friend_2" class="name"> <?php echo urldecode($_GET['friend_name_2']); ?></span>
+            <span id="name_friend_2" class="name"> <?php echo $_GET['friend_name_2']; ?></span>
             <span class="texte" id="message_2"> <?php echo $message_2[$key]; ?> </span>
             <span class="texte" id="date_2"> <?php echo strftime("%d-%m-%G").' à '.strftime("%H").':'.$min_2; ?> </span>
             <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_3']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_3">
-            <span id="name_friend_3" class="name"> <?php echo urldecode($_GET['friend_name_3']); ?></span>
+            <span id="name_friend_3" class="name"> <?php echo $_GET['friend_name_3']; ?></span>
             <span class="texte" id="message_3"> <?php echo $message_3[$key]; ?> </span>
             <span class="texte" id="date_3"> <?php echo strftime("%d-%m-%G").' à '.strftime("%H").':'.$min_3; ?> </span>
 

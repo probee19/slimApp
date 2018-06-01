@@ -78,7 +78,7 @@ align-items: center; /* align vertical */ }
 <img src="http://creation.funizi.com/images-theme-perso/1509106743.png" id="background"> 
 
 <div id="ilsdisent">Ton mariage sera le:</div> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div id="message"> 
 <div id="jour" style="font-size:100px"><?php echo $jour[0] ?></div>
 <div id="mois" style="font-size:80px; margin-top:55px;"><?php echo $mois[0] ?></div>

@@ -78,11 +78,11 @@
 <div id="title"> ¿Quién es tu mejor amigo? </div>
 <img src="http://creation.funizi.com/images-theme-perso/1514391096.jpg" id="background"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['full_user_name']); ?></div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo $_GET['full_user_name']; ?></div>
 
 <img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
-<div class="name texte" id="name_friend_1" ><?php echo urldecode($_GET['friend_name_1']); ?></div>
+<div class="name texte" id="name_friend_1" ><?php echo $_GET['friend_name_1']; ?></div>
 
 
 <img src="http://creation.funizi.com/images-theme-perso/1514392448.png" id="arrow"> 

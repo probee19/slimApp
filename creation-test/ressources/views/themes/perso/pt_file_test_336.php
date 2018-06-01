@@ -75,7 +75,7 @@
           <div class='main'>
       
 <?php
-          $qualites = array(''.urldecode($_GET['user_name']).' faz todos sorrirem',''.urldecode($_GET['user_name']).' ainda lutando contra a injustiça',''.urldecode($_GET['user_name']).' é confiável',''.urldecode($_GET['user_name']).' sempre fica sorrindo',''.urldecode($_GET['user_name']).' é sempre um bom conselho');
+          $qualites = array(''.$_GET['user_name'].' faz todos sorrirem',''.$_GET['user_name'].' ainda lutando contra a injustiça',''.$_GET['user_name'].' é confiável',''.$_GET['user_name'].' sempre fica sorrindo',''.$_GET['user_name'].' é sempre um bom conselho');
           shuffle($qualites);
 ?>
 <!DOCTYPE HTML>

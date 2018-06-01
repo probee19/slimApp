@@ -76,9 +76,9 @@
           $files = array('1515406266','1515407961','1515407984','1515408000','1515408016','1515408034','1515408047','1515409292','1515409307','1515409328');
           shuffle($files);
 ?>
-<div id="profile_img"><img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"></div>
+<div id="profile_img"><img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"></div>
 <img src="http://creation.funizi.com/images-theme-perso/<?php echo $files[0]; ?>.jpg" id="house"> 
-<div id="footer"> Voici la future maison de <?php echo urldecode($_GET['user_name']); ?></div>
+<div id="footer"> Voici la future maison de <?php echo $_GET['user_name']; ?></div>
 
 
 

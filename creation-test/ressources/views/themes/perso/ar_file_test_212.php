@@ -81,7 +81,7 @@ align-items: center; /* align vertical */ }
 shuffle($message);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1512663544.jpg" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
  <div id="message"> <?php echo $message[0]; ?>
 </div>
 

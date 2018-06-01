@@ -82,7 +82,7 @@ caption{font-weight:800; font-size:24px; }
 <!DOCTYPE HTML>
 <div class="bulletin">
 <table>
-  <caption>Informe escolar 2018 <?php echo urldecode($_GET['full_user_name']); ?></caption>
+  <caption>Informe escolar 2018 <?php echo $_GET['full_user_name']; ?></caption>
   <tr>
     <th width="150px">contenido</th>
     <th width="110px">Promedio del estudiante</th>

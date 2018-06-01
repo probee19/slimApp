@@ -23,12 +23,12 @@
               .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
 #background{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
-#fb_id_friend_1{position: absolute; z-index:1; left: 146px; top: 156px; width:164px ; border-radius:0px; max-width:800px; max-height:420px;}
+#fb_id_friend_1{position: absolute; -webkit-filter: sepia(100%); z-index:1; left: 146px; top: 156px; width:164px ; border-radius:0px; max-width:800px; max-height:420px;}
 #name_friend_1{position:absolute; z-index:1; left: 0px; top: 0px; font-size:30px; color:#FFF;} 
-#fb_id_friend_2{position: absolute; z-index:1; left: 490px; top: 156px; width:164px ; border-radius:0px; max-width:800px; max-height:420px;}
+#fb_id_friend_2{position: absolute; -webkit-filter: sepia(100%); z-index:1; left: 490px; top: 156px; width:164px ; border-radius:0px; max-width:800px; max-height:420px;}
 #name_friend_2{position:absolute; z-index:1; left: 0px; top: 0px; font-size:30px; color:#FFF;} 
 
-#fb_id_user{position: absolute; z-index:1; left: 318px; top: 156px; width:164px ; border-radius:0px; max-width:800px; max-height:420px;}
+#fb_id_user{position: absolute; -webkit-filter: sepia(100%); z-index:1; left: 318px; top: 156px; width:164px ; border-radius:0px; max-width:800px; max-height:420px;}
 #name_user{position:absolute; z-index:1; left: 0px; top: 0px; font-size:30px; color:#FFF;} 
               </style>
               <script src='../../../src/js/jquery.js'></script>
@@ -71,10 +71,9 @@
           <div class='main'>
       
 <img src="http://creation.funizi.com/images-theme-perso/1519055730.jpg" id="background"> 
-<img src="https://res.cloudinary.com/demo/image/facebook/w_164,h_164,c_fill,e_sepia/<?php echo $_GET['fb_id_friend_1']; ?>.jpg"  class="img_profile" id="fb_id_friend_1">
-<img src="https://res.cloudinary.com/demo/image/facebook/w_164,h_164,c_fill,e_sepia/<?php echo $_GET['fb_id_friend_2']; ?>.jpg"  class="img_profile" id="fb_id_friend_2">
 <img src="https://res.cloudinary.com/demo/image/facebook/w_164,h_164,c_fill,e_sepia/<?php echo $_GET['fb_id_user']; ?>.jpg" class="img_profile" id="fb_id_user">
-
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_2">
 
         </div>
         

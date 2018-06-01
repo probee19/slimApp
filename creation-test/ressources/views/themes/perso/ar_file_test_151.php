@@ -68,9 +68,9 @@
           </head>
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
-
-<div id='titre_test'><?php echo urldecode($_GET['user_name']); ?> يكرهك:</div>
-<img src='<?php echo urldecode($_GET['url_img_profile_user']); ?>'class='img_profile' id='fb_id_user'>
+      
+<div id='titre_test'><?php echo $_GET['user_name']; ?> يكرهك:</div>
+<img src='<?php echo $_GET['url_img_profile_user']; ?>'class='img_profile' id='fb_id_user'>
 <div id='resultat' ><?php echo rand (50,499);?> <div style="font-size:25px;">اشخاص</div>
 </div>
 
@@ -78,3 +78,4 @@
         <!-- Ces lignes seront placées dans le footer de la page à capturer -->
         </body>
         </html>
+      

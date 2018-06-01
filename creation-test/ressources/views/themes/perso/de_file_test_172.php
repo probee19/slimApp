@@ -70,12 +70,12 @@ align-items: center; /* align vertical */ }
           <div class='main'>
       
 <?php
-$message = array('&quot;Ich bereue meine Vergangenheit nicht, ich bereue nur die verlorene Zeit mit den falschen Leuten.&quot;','&quot;Was immer wir tun, wir werden immer kritisiert werden, also tu so viel, wie wir wollen!&quot;','&quot;Ich bin nicht herzlos, ich habe es nur mit Leuten gelernt, die es verdienen&quot;','&quot;Lass niemanden dein Leben richten, weil niemand die gleichen Dinge gelebt hat wie du!&quot;','&quot;Es ist besser, von wenigen Menschen umgeben zu sein, die dich lieben, als von vielen Menschen, die dich dazu bringen, es zu glauben.&quot;');
+$message = array('\"Ich bereue meine Vergangenheit nicht, ich bereue nur die verlorene Zeit mit den falschen Leuten.\"','\"Was immer wir tun, wir werden immer kritisiert werden, also tu so viel, wie wir wollen!\"','\"Ich bin nicht herzlos, ich habe es nur mit Leuten gelernt, die es verdienen\"','\"Lass niemanden dein Leben richten, weil niemand die gleichen Dinge gelebt hat wie du!\"','\"Es ist besser, von wenigen Menschen umgeben zu sein, die dich lieben, als von vielen Menschen, die dich dazu bringen, es zu glauben.\"');
 shuffle($message);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508776234.jpg" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div id="message"> <?php echo $message[0]; ?><br>- <?php echo urldecode($_GET['user_name']); ?>
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<div id="message"> <?php echo $message[0]; ?><br>- <?php echo $_GET['user_name']; ?>
 -</div>
 
         </div>

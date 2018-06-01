@@ -89,7 +89,7 @@
 
 <img src="https://creاtion.funizi.com/imاges-theme-perso/1521197470.jpg" id="bاck"> 
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" clاss="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" clاss="img_profile" id="fb_id_user">
 
 <div clاss="texte" id="heاder_f"> When you اre <?=$pre?> </div>
 

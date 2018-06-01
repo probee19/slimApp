@@ -87,8 +87,11 @@
 
     function UpdateJsonLovedTest () {
       console.log('Début de la mise à jour...');
+      console.log('Du '+ start.format('YYYY-MM-DD') + ' au '+ end.format('YYYY-MM-DD'));
+
       $.ajax({
-        url: 'maj/jsonlovedtests?start=' + start7Days.format('YYYY-MM-DD') + '&end=' + end.format('YYYY-MM-DD'),
+        //url: 'maj/jsonlovedtests?start=' + start7Days.format('YYYY-MM-DD') + '&end=' + end.format('YYYY-MM-DD'),
+        url: 'maj/jsonlovedtests?start=' + start.format('YYYY-MM-DD') + '&end=' + end.format('YYYY-MM-DD'),
         type: 'GET',
         processData: false,
         contentType: false,

@@ -81,9 +81,9 @@
   shuffle($result_image);
 ?>
 <div id="" style="witdh:800px; Height:420px; background:#000"></div>
-<div id="now_name"><?php echo urldecode($_GET['user_name']); ?> now</div>
-<div id="then_name"><?php echo urldecode($_GET['user_name']); ?> in 2023</div>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div id="now_name"><?php echo $_GET['user_name']; ?> now</div>
+<div id="then_name"><?php echo $_GET['user_name']; ?> in 2023</div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <img src="<?php echo $result_image[0]; ?>" id="result_image">
 
 

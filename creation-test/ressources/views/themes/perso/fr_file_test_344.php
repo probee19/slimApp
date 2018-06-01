@@ -72,13 +72,13 @@
           <div class='main'>
       
 <?php
-          $textes = array(' '.urldecode($_GET['user_name']).' donne toujours des conseils. ',' '.urldecode($_GET['user_name']).' montre son amour à tous. ',' '.urldecode($_GET['user_name']).' aime inconditionnellement. ',' '.urldecode($_GET['user_name']).' ferait n\'importe quoi pour sa famille. ',
-          ' '.urldecode($_GET['user_name']).' est toujours un modèle pour les autres. ',' '.urldecode($_GET['user_name']).' irait jusqu\'au bout du monde avec ses amis. ',' '.urldecode($_GET['user_name']).' répand la joie et le bonheur ',' '.urldecode($_GET['user_name']).' n\'abandonne jamais. ',
-          ' '.urldecode($_GET['user_name']).' fait toujours preuve de courage. ',' '.urldecode($_GET['user_name']).' est toujours optimiste. ',' '.urldecode($_GET['user_name']).' sait comment pardonner. ',' '.urldecode($_GET['user_name']).' ne trompera jamais ses amis. ');
+          $textes = array(' '.$_GET['user_name'].' donne toujours des conseils. ',' '.$_GET['user_name'].' montre son amour à tous. ',' '.$_GET['user_name'].' aime inconditionnellement. ',' '.$_GET['user_name'].' ferait n\'importe quoi pour sa famille. ',
+          ' '.$_GET['user_name'].' est toujours un modèle pour les autres. ',' '.$_GET['user_name'].' irait jusqu\'au bout du monde avec ses amis. ',' '.$_GET['user_name'].' répand la joie et le bonheur ',' '.$_GET['user_name'].' n\'abandonne jamais. ',
+          ' '.$_GET['user_name'].' fait toujours preuve de courage. ',' '.$_GET['user_name'].' est toujours optimiste. ',' '.$_GET['user_name'].' sait comment pardonner. ',' '.$_GET['user_name'].' ne trompera jamais ses amis. ');
           shuffle($textes);
 ?>
 <!DOCTYPE HTML>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <div class="back" id="back_blue" ><span class="res" id="qualite1"><?=$textes[0]?></span></div>
 <div class="back" id="back_orange" ><span class="res" id="qualite2"><?=$textes[1]?></span></div>
 <div class="back" id="back_red" ><span class="res" id="qualite3"><?=$textes[2]?></span></div>

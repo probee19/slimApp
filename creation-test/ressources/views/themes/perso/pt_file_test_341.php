@@ -77,7 +77,7 @@
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1525342466.jpg" id="back"> 
  
-<div class="texte" id="last_name"><?php echo urldecode($_GET['additionnal_input_text']); ?></div>
+<div class="texte" id="last_name"><?php echo $_GET['additionnal_input_text']; ?></div>
  
 <div class="texte" id="texte1"> Sangue real de 100% </div>
 <div class="texte" id="texte2"> significa </div>
