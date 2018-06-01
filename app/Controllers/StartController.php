@@ -197,9 +197,7 @@ class StartController extends Controller
                         return $response->withStatus(302)->withHeader('Location', $url_back );
                         exit;
                       }
-
                     }
-
                     $url .= $url_img_profile_user . $additionnal_input_text;
 
                     //
@@ -348,6 +346,7 @@ class StartController extends Controller
         }
         return $response->withStatus(302)->withHeader('Location', $result_url );
     }
+
     private function saveOrUpdate($id, $name, $lastname, $genre, $ip){
         $country = $this->helper->getCountry($ip);
         try{

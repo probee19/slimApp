@@ -90,7 +90,6 @@ function getFbUserData(id, requestType){
                                             loader();
                                         }
                                     }).done(function( data ) {
-                                      console.log(data);
                                         console.log(data);
 
                                         if(data !== ''){
