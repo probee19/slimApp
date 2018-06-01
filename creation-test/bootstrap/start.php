@@ -7,16 +7,13 @@ use App\Controllers\ShareController;
 use App\Controllers\TestController;
 use App\Controllers\StartController;
 use App\Controllers\AllResultsController;
-use App\Controllers\AllCitationsController;
 use App\Controllers\ClickController;
 use App\Controllers\CronController;
 use App\Controllers\LoadStatsController;
 use App\Controllers\CreateTestController;
-use App\Controllers\CreateCitationController;
 use App\Controllers\ActionTestController;
 use App\Controllers\AllTestsController;
 use App\Controllers\LangController;
-use App\Controllers\NotificationPushController;
 use App\Controllers\JsonController;
 
 use App\Helpers\Helper;
@@ -39,9 +36,7 @@ use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 
 session_start();
-
-require __DIR__ . '/../vendor/autoload.php';
-
+// RDS CONST
 define('RDS_HOSTNAME', $_SERVER['RDS_HOSTNAME']);
 define('RDS_USERNAME', $_SERVER['RDS_USERNAME']);
 define('RDS_PASSWORD', $_SERVER['RDS_PASSWORD']);
@@ -50,7 +45,8 @@ define('GZIT_KEY', $_SERVER['GZIT_KEY']);
 define('GZIT_SECRET', $_SERVER['GZIT_SECRET']);
 define('FB_SECRET_KEY', $_SERVER['FB_SECRET_KEY']);
 define('FB_APP_ID', $_SERVER['FB_APP_ID']);
-define('SERVER_DOMAIN', $_SERVER['SERVER_DOMAIN']);
+
+require __DIR__ . '/../vendor/autoload.php';
 
 $config = [
     'displayErrorDetails'   =>  true,
@@ -60,15 +56,12 @@ $config = [
         'database'  =>  RDS_DB_NAME,
         'username'  =>  RDS_USERNAME,
         'password'  =>  RDS_PASSWORD,
-        'charset'   =>  'utf8',
-        'collation' =>  'utf8_unicode_ci',
+        'charset'   =>  'utf8mb4',
+        'collation' =>  'utf8mb4_unicode_ci',
         'prefix'    =>  '',
     ],
-    'grabzit_key'       => "MDliYmY0OTM1OTI3NDk5OTkwOWYyZjY5MDZlZTJkZTU=",
-    'grabzit_secret'    => "H2s/Dj8/Pzk/P1ZmbDk/bT8/Sz8/Pz9BPz8/Pz8/Pz8=",
     'test_per_page'     =>  15,
 ];
-
 date_default_timezone_set('Etc/GMT');
 
 $app = new App(["settings" => $config]);
@@ -127,18 +120,16 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addFilter(new Twig_SimpleFilter('date("d/m/Y à H:i:s")', 'date("d/m/Y à H:i:s")'));
     $view->getEnvironment()->addFilter(new Twig_SimpleFilter('date("H:i:s")', 'date("H:i:s")'));
     $view->getEnvironment()->addFilter($twigCleanUrl);
-    $view->getEnvironment()->addGlobal('defined_base_url', "https://creation.".SERVER_DOMAIN);
-    $view->getEnvironment()->addGlobal('defined_base_domain', "https://".SERVER_DOMAIN);
-    $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
-    $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     $view->getEnvironment()->addGlobal('cookie', $_COOKIE);
     $view->getEnvironment()->addGlobal('cookie_id_user', $_COOKIE['id_user']);
     $view->getEnvironment()->addGlobal('cookie_prenom_user', $_COOKIE['prenom_user']);
     $view->getEnvironment()->addGlobal('cookie_img_user', $_COOKIE['url_photo_user']);
-    $view->getEnvironment()->addGlobal('now', date());
-    $view->getEnvironment()->addGlobal('domain_url', $container->request->getUri()->getBaseUrl());
+    $view->getEnvironment()->addGlobal('now', new DateTime());
+    $view->getEnvironment()->addGlobal('storage_base', "https://funiziuploads.s3.us-east-2.amazonaws.com");
+    $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
+    $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
 
     return $view;
 };
@@ -172,9 +163,6 @@ $container['GrabzitController'] = function ($container) {
 $container['AllResultsController'] = function ($container) {
     return new AllResultsController($container);
 };
-$container['AllCitationsController'] = function ($container) {
-    return new AllCitationsController($container);
-};
 $container['ShareController'] = function ($container) {
     return new ShareController($container);
 };
@@ -193,9 +181,6 @@ $container['LoadStatsController'] = function ($container) {
 $container['CreateTestController'] = function ($container) {
     return new CreateTestController($container);
 };
-$container['CreateCitationController'] = function ($container) {
-    return new CreateCitationController($container);
-};
 $container['ActionTestController'] = function ($container) {
     return new ActionTestController($container);
 };
@@ -205,14 +190,11 @@ $container['AllTestsController'] = function ($container) {
 $container['LangController'] = function ($container) {
     return new LangController($container);
 };
-$container['NotificationPushController'] = function ($container) {
-    return new NotificationPushController($container);
-};
 $container['JsonController'] = function ($container) {
     return new JsonController($container);
 };
 $container['grabzit'] = function ($container) {
-    return new GrabzItClient("N2U3YTNkZGYxNGUzNDA0OWFjODRmYzYzZjk0ZDAxZmU=", "CD8/PzIJP2shZz8/Pz8rBj8LET8/P0M/aBcsc1gQGT8=");
+    return new GrabzItClient(GZIT_KEY, GZIT_SECRET);
 };
 $container['helper'] = function ($container){
     return new Helper();
