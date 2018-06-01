@@ -87,9 +87,9 @@
             ?>
             <img src="http://creation.funizi.com/images-theme-perso/1508589599.png" id="background">
             <span id="titre" class="titre">ما المشكلة مع اسمك؟</span>
-            <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="img_user">
+            <img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="img_user">
            
-            <span id="texte_1" class="texte"> المشكلة مع <div style="font-family: 'Lobster', cursive; color:#7A4324"><?php echo $_GET['user_name']; ?></div><?php echo $explication[0] ?></span>
+            <span id="texte_1" class="texte"> المشكلة مع <div style="font-family: 'Lobster', cursive; color:#7A4324"><?php echo urldecode($_GET['user_name']); ?></div><?php echo $explication[0] ?></span>
            
 
         

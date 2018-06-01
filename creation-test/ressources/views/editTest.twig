@@ -67,7 +67,7 @@
                                     <input type="text" value=""  id="resultat{0}" name="resultat{0}"  placeholder="Nom du résultat" class="form-control col-lg-12 col-md-12 col-sm-12 col-xs-12 titre-resultat"/>
                                 </div>
                             {% endif %}
-                            <img src="{{base_url()}}/src/img/preview.jpg" id="img_resultat_preview_{0}" class="img_resulat" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor({0});"/>
+                            <img src="{{domain_url}}/src/img/preview.jpg" id="img_resultat_preview_{0}" class="img_resulat" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor({0});"/>
                             <input type="button" id="btn_crop_{0}"  class="btn btn-primary btn-md btn_add_image_resultat center-block" value="Choisissez une image" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor({0});" />
                         </div>
                     </div>
@@ -101,7 +101,7 @@
         </section>
     </textarea>
 
-    <form class="col-lg-12 " id="modification_test" name="modification_test" action="{{base_url()}}/tests/edit/save" method="POST" enctype="multipart/form-data">
+    <form class="col-lg-12 " id="modification_test" name="modification_test" action="{{domain_url}}/tests/edit/save" method="POST" enctype="multipart/form-data">
       <!-- Informations générales sur le test  -->
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -146,7 +146,11 @@
                   <label class="control-label" for="localtite">Localité :</label>
                   <select class="select-pays form-control" multiple="multiple" id="localite" name="localite[]">
                     {% for country in countries %}
-                        <option value="{{country.alpha2}}" {% if country.alpha2 in liste_des_pays %} selected {% endif %}> {{country.alpha2}} - {{country.langFR}}</option>
+                      {% if country.alpha2 in liste_des_pays %}
+                        <option value="{{country.alpha2}}" selected> {{country.alpha2}} - {{country.langFR}}</option>
+                      {% else %}
+                        <option value="{{country.alpha2}}"> {{country.alpha2}} - {{country.langFR}}</option>
+                      {% endif %}
                     {% endfor %}
 
                   </select>
@@ -198,7 +202,7 @@
                               <label class="control-label" for="titre">Image du test :</label>
                           </div>
                           <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 nopaddingleft">
-                              <img src="{{base_url()}}/{{test.url_image_test}}" id="img_test_preview" name="img_test_preview" class="img_resulat " data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor(0);"/>
+                              <img src="{{domain_url}}/{{test.url_image_test}}" id="img_test_preview" name="img_test_preview" class="img_resulat " data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor(0);"/>
                               <input type="button" id="btn_crop_1" class="btn btn-primary btn-md btn_add_image_resultat center-block" value="Choisissez une image" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor(0);" />
                               <input type="hidden" name="img_resultat_base_64_1" id="img_resultat_base_64_1" class="img_base_64" value="noimage" />
                               <input type="hidden" id="id_resultat1" name="id_resultat1" value="{{first_resultat.id_resultat}}">
@@ -209,59 +213,14 @@
                           {% for theme in themes %}
                             <div class="col-md-6 col-xs-6" style="text-align:center;" >
                                 <label class="control-label">
-                                    <input type="radio" name="newtheme" value="{{theme.id}}" {% if theme.id == test.id_theme %} checked {% else %} onclick="changeTheme({{test.id_test}},{{test.id_theme}},{{theme.id}})" {% endif %}  style="margin-bottom: 10px;"/>
+                                    <input type="radio" name="newtheme" value="{{theme.id}}" {% if theme.id == test.id_theme %} checked {% else %}onclick="changeTheme({{test.id_test}},{{test.id_theme}},{{theme.id}})" {% endif %}  style="margin-bottom: 10px;"/>
                                     {{theme.title}}  {% if theme.id == test.id_theme %} (actuel) {% endif %}
-                                    <img src="{{base_url()}}/src/img/theme{{theme.id}}.jpg" class="img-theme-edit" style="width:100%; {% if theme.id == test.id_theme %} border: 3px solid #1C304F; {% endif %} cursor:pointer; " />
+                                    <img src="{{domain_url}}/src/img/theme{{theme.id}}.jpg" class="img-theme-edit" style="width:100%; {% if theme.id == test.id_theme %} border: 3px solid #1C304F; {% endif %} cursor:pointer; " />
                                 </label>
                             </div>
                           {% endfor %}
                   {% endif %}
             </section>
-
-              <section class="col-sm-6">
-                <legend> Informations additionnelles </legend>
-                <!--div class="checkbox">
-                    <label><input type="checkbox" name="gallery_album" id="gallery_album" value="1" > Possibilité de choix de la photo de profil </label>
-                </div-->
-                <div class="checkbox">
-                    <label><input type="checkbox" name="add_additionnal_infos_test" id="add_additionnal_infos_test" onChange = "showAddInfo();" value="1" {% if test.if_additionnal_info == 1 %} checked {% endif %}> Demander une information additionnelle lors de l'exécution du test </label>
-                </div>
-                <div id="box_add_info" style="display:none;">
-                    <div class="form-group">
-                        <label class="control-label" for="additional_infos" style="width:100%">Informations à demander</label>
-                        <select class="select-addionnalt-info form-control" id="additional_infos" name="additional_infos">
-                          {% for info in additionnal_infos %}
-                            <option value="{{info.id}}"  {% if info.id == test_additionnal_infos.id_additionnal_info %} selected {% endif %} > {{info.label}} </option>
-                          {% endfor %}
-                        </select>
-                    </div>
-                </div>
-                <div id="box_add_info_label" style="display:none;">
-                    <div class="form-group">
-                        <label class="control-label" for="additional_info_label" style="width:100%">Label pour l'information additionnelle</label>
-                        <input type="text" class="form-control" id="additional_info_label" name="additional_info_label" value="{{test_additionnal_infos.label}}">
-                    </div>
-                </div>
-              </section>
-
-
-              <section class="col-sm-6" style="margin-top:1em;">
-                <legend> Traitement de l'image </legend>
-                <div class="checkbox">
-                    <label><input type="checkbox" name="add_img_treatment" id="add_img_treatment" onChange = "showImgTreatment();" value="1" {% if test.has_treatment != 0 %} checked {% endif %} > L'image du profil de l'utilisateur sera traitée. </label>
-                </div>
-                <div id="box_add_treatment" style="display:none;">
-                    <div class="form-group">
-                        <label class="control-label" for="treatments" style="width:100%">Information à demander</label>
-                        <select class="select-addionnal-treatment form-control" id="treatments" name="treatments" >
-                          <option value="" >  </option>
-                            <option value="1" {% if test.has_treatment == 1 %} selected {% endif %}> Vieillissement de l'image - CMF </option>
-                        </select>
-                    </div>
-                </div>
-              </section>
-
-
 
 
           {% if test.id_theme == 4 %}
@@ -428,7 +387,7 @@
                                                 <input type="text" value="{{resultat.titre_resultat | htmlspecialchars}}"  id="resultat{{i}}" name="resultat{{i}}"  placeholder="Nom du résultat" class="form-control col-lg-12 col-md-12 col-sm-12 col-xs-12 titre-resultat"/>
                                             </div>
                                         {% endif %}
-                                        <img src="{{base_url()}}/{{resultat.image_resultat}}" id="img_resultat_preview_{{i}}" class="img_resulat" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor({{i}});" />
+                                        <img src="{{domain_url}}/{{resultat.image_resultat}}" id="img_resultat_preview_{{i}}" class="img_resulat" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor({{i}});" />
                                         <input type="button" id="btn_crop_{{i}}" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor({{i}});" class="btn btn-primary btn-md btn_add_image_resultat center-block" value="Changer l'image" />
                                     </div>
                                 </div>
@@ -466,7 +425,7 @@
       <!-- END Inputs hidden  -->
       <div class="row">
           <div class="form-group col-lg-offset-3 col-md-offset-3 col-sm-offset-3 col-lg-3 col-md-3 col-sm-3">
-              <button type="button"  id="btn_cancel" onclick="window.location = '{{base_url()}}/tests';" class="form-control btn btn-default" ><span class="glyphicon glyphicon-arrow-left"></span> Annuler</button>
+              <button type="button"  id="btn_cancel" onclick="window.location = '{{domain_url}}/tests';" class="form-control btn btn-default" ><span class="glyphicon glyphicon-arrow-left"></span> Annuler</button>
           </div>
           <div class="form-group col-lg-3 col-md-3 col-sm-3">
                 <button type="submit"  id="btn_save" {% if test.id_theme == 4 %} onclick="updateTest({{test.id_test}});" {% endif %} class="form-control btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Enregistrer le test</button>
@@ -484,58 +443,11 @@
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
-  <script src="{{ base_url() }}/src/js/cropit/jquery.cropit.js" ></script>
+  <script src="{{ domain_url }}/src/js/cropit/jquery.cropit.js" ></script>
 
   <script>
       $(".select-pays").select2();
       $(".select-langs").select2();
-      $(".select-addionnalt-info").select2();
-
-      if($('#add_additionnal_infos_test').is(':checked')) showAddInfo();
-      if($('#add_img_treatment').is(':checked')) showImgTreatment();
-
-
-      function showAddInfo(){
-        if($('#add_additionnal_infos_test').is(':checked')){
-          $(".select-addionnalt-info").select2();
-          $('#box_add_info').fadeIn('slow');
-          $('.select-addionnalt-info').select2({
-               placeholder: 'Choissisez une ou plusieurs options',
-               width: '100%'
-          });
-          showAddInfoLabel();
-        }
-        else{
-          $('#box_add_info').fadeOut('slow');
-          showAddInfoLabel();
-        }
-      }
-
-      function showAddInfoLabel(){
-        if($('#additional_infos').val() != 0){
-          $('#box_add_info_label').fadeIn('slow');
-        }
-        else{
-          $('#box_add_info_label').fadeOut('slow');
-        }
-      }
-
-
-      function showImgTreatment(){
-        if($('#add_img_treatment').is(':checked')){
-          $(".select-addionnal-treatment").select2();
-          $('#box_add_treatment').fadeIn('slow');
-          $('.select-addionnal-treatment').select2({
-               placeholder: 'Choissisez une transformation',
-               width: '100%'
-          });
-        }
-        else{
-          $('#box_add_treatment').fadeOut('slow');
-        }
-      }
-
-
   </script>
   {% if test.id_theme == 4 %}
           <!-- Modal pour ajouter une image du thème personnalisé-->
@@ -545,7 +457,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                  <h4 class="modal-title">Ajouter une image <img src="{{ base_url() }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
+                                  <h4 class="modal-title">Ajouter une image <img src="{{ domain_url }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
                             <span id="message-error"> </span>
                             </div>
                           <div class="modal-body">
@@ -591,7 +503,7 @@
                           <div class="modal-content">
                               <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              <h4 class="modal-title">Ajouter une image de profil <img src="{{ base_url() }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
+                              <h4 class="modal-title">Ajouter une image de profil <img src="{{ domain_url }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
 
                               </div>
                             <div class="modal-body">
@@ -646,7 +558,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Ajouter du texte <img src="{{ base_url() }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
+                                <h4 class="modal-title">Ajouter du texte <img src="{{ domain_url }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
 
                                 </div>
                               <div class="modal-body">
@@ -746,9 +658,9 @@
                           </div>
                         </div>
 
-      <script src="{{ base_url() }}/src/js/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-      <script id="{{ base_url() }}/src/apercu_js"></script>
-      <script src="{{ base_url() }}/src/js/script-theme-perso.js?v=1.945"></script>
+      <script src="{{ domain_url }}/src/js/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+      <script id="{{ domain_url }}/src/apercu_js"></script>
+      <script src="{{ domain_url }}/src/js/script-theme-perso.js?v=1.940"></script>
   {% endif %}
       <!-- Modal pour ajouter une image du test-->
       <div id="modalOpenImage" class="modal fade" role="dialog">
@@ -757,7 +669,7 @@
               <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Ajouter une image <img src="{{ base_url() }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
+                      <h4 class="modal-title">Ajouter une image <img src="{{ domain_url }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
                       <span id="message-error"> </span>
                     </div>
                   <div class="modal-body image-editor">
@@ -801,19 +713,19 @@
                           </div>
                           <div class="row">
                               <div class=" col-sm-offset-2 col-sm-1  col-xs-offset-1 col-xs-1 ">
-                                  <img src="{{ base_url() }}/src/img/zoomout.png" class="ico-zoom-out"/>
+                                  <img src="{{ domain_url }}/src/img/zoomout.png" class="ico-zoom-out"/>
                               </div>
                               <div class=" col-sm-6  col-xs-8 image-size-label center">
                                   <input type="range" class="cropit-image-zoom-input">
                               </div>
                               <div class=" col-sm-1 col-xs-1 ">
-                                  <img src="{{ base_url() }}/src/img/zoomin.png" class="ico-zoom-in"/>
+                                  <img src="{{ domain_url }}/src/img/zoomin.png" class="ico-zoom-in"/>
                               </div>
                           </div>
                           <div class="row">
                               <div class=" col-sm-12  center">
-                                  <button class="rotate-ccw"><img src="{{ base_url() }}/src/img/counterclockwise-circular-arrow.png"/></button>
-                                  <button class="rotate-cw"><img src="{{ base_url() }}/src/img/clockwise-circular-arrow.png"/> </button>
+                                  <button class="rotate-ccw"><img src="{{ domain_url }}/src/img/counterclockwise-circular-arrow.png"/></button>
+                                  <button class="rotate-cw"><img src="{{ domain_url }}/src/img/clockwise-circular-arrow.png"/> </button>
                               </div>
                           </div>
                           <div class="row">
@@ -832,8 +744,8 @@
 
 
 
-  <script src="{{ base_url() }}/src/js/added-scripts.js?v=1.99"></script>
-  <script src="{{ base_url() }}/src/js/added-default-script.js?v=1.285"></script>
-  <script src="{{ base_url() }}/src/js/bootstrap.min.js"></script>
+  <script src="{{ domain_url }}/src/js/added-scripts.js?v=1.99"></script>
+  <script src="{{ domain_url }}/src/js/added-default-script.js?v=1.284"></script>
+  <script src="{{ domain_url }}/src/js/bootstrap.min.js"></script>
 
 {% endblock %}

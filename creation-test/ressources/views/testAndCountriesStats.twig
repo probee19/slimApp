@@ -193,7 +193,7 @@
     <tbody>
       {% set i = 1 %}
       {% for user in data_best_users %}
-        <tr class="pointer" onclick='showUsersTests("{{user.user_name}}",{{user.user_id}},{{user.facebook_id}})' >
+        <tr class="pointer" onclick="showUsersTests('{{user.user_name}}',{{user.user_id}},{{user.facebook_id}})" >
           <td style="float: right;">{{i}}</td>
           <td class="title-test"><a href="http://www.facebook.com/{{user.facebook_id}}" target="_blank">{{user.user_name}}</a></td>
           <td>{{user.nb_test_done}}</td>

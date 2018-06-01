@@ -148,24 +148,23 @@ class HomeController extends Controller
   }
 
 
-  public function updateUrlImgProfile($request, $response, $arg)
+  public function updateVarTestFile($request, $response, $arg)
   {
     $test_id = 2;
 
-    $tests = Test::where([['id_theme','=','4']])->orderBy('id_test','DESC')->get();
+    $tests = Test::where([['id_theme','=','4'],['id_test','=','207']])->orderBy('id_test','DESC')->get();
     Helper::debug(count($tests));
 
     $langs = Language::where('status','=',1)->get();
     $nb_done = 0;
 
     foreach ($tests as $test) {
-      //Helper::debug($test->titre_test);
+      Helper::debug($test->titre_test);
 
       foreach ($langs as $lang) {
         $test_infos = TestInfo::where([['id_test','=',$test->id_test],['lang','=',$lang->code]])->get();
         foreach ($test_infos as $test_info) {
-          //Helper::debug($test_info->lang);
-
+          Helper::debug($test_info->lang);
 
             $file = "ressources/views/themes/perso/".$test_info->lang."_file_test_".$test->id_test.".php";
         	  $content_file = file_get_contents($file);
@@ -174,24 +173,19 @@ class HomeController extends Controller
 
             if($file){
               Helper::debug($texte);
+              $old_var_1 = '';
+              $content_file = str_replace('$_GET[', 'urldecode($_GET[', $content_file);
+              $content_file = str_replace('];', ']);', $content_file);
 
-            $old_url_1 = "https://graph.facebook.com/<?php echo \$_GET['fb_id_user']; ?>/picture/?width=275&height=275";
-            $old_url_2 = "https://graph.facebook.com/<?php echo \$_GET['fb_id_user']; ?>/picture/?width=350&height=350";
-            $old_url_3 = "https://graph.facebook.com/<?php echo \$_GET['fb_id_user']; ?>/picture/?width=275&height=275";
-            $new_url = "<?php echo \$_GET['url_img_profile_user']; ?>";
-            $content_file = str_replace($old_url_1, $new_url, $content_file);
-            $content_file = str_replace($old_url_2, $new_url, $content_file);
-            $content_file = str_replace($old_url_3, $new_url, $content_file);
+              $url_temp_file_php = 'ressources/views/themes/perso/'.$test_info->lang.'_file_test_'.$test->id_test;
+              $temp_file_php = fopen($url_temp_file_php.".php", "w+");
+              if($temp_file_php==false)
+              die("La création du fichier a échoué");
 
-            $url_temp_file_php = 'ressources/views/themes/perso/'.$test_info->lang.'_file_test_'.$test->id_test;
-            $temp_file_php = fopen($url_temp_file_php.".php", "w+");
-            if($temp_file_php==false)
-            die("La création du fichier a échoué");
+              fputs($temp_file_php, $content_file);
 
-            fputs($temp_file_php, $content_file);
-
-
-            $nb_done++;
+              Helper::debug($content_file);
+              $nb_done++;
 
             }
 

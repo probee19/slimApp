@@ -76,16 +76,16 @@
 
  if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-                      $recherche = array('لماذا {؟ لا تضحك أبدا على طلقاتي؟','لماذا {؟ اسم المستخدم؟} أكثر جمالا مني؟'
-                ,'لماذا {؟ User_name؟} غنية جدا؟','لماذا ا {؟ إسم المستخدم؟} هل الأذكى؟'
-                ,'لماذا ا {؟ اسم المستخدم؟} هل مهيب جدا؟','لماذا فعلت {؟ اسم المستخدم؟} مقابلة الرئيس أوباما؟'
-                ,'لماذا ا {؟ اسم المستخدم؟} هل هذا محظوظ؟');
+                      $recherche = array('لماذا {؟ اسم المستخدم؟} لا تضحك أبدا في صفقاتي؟','لماذا {؟ اسم المستخدم؟} أكثر جمالا مني؟'
+                ,'لماذا {؟ اسم المستخدم؟} غنية جدا؟','لماذا ا {؟ اسم المستخدم؟} هو أذكى؟'
+                ,'لماذا ا {؟ اسم المستخدم؟} هل مهيب جدا؟','لماذا فعلت {؟ اسم المستخدم؟} لقاء الرئيس أوباما؟'
+                ,'لماذا ا {؟ اسم المستخدم؟} هل محظوظ جدا؟');
                 }
             else{ 
-                $recherche = array('لماذا {؟ لا تضحك أبدا على النكات الخاصة بي؟','لماذا {؟ اسم المستخدم؟} أكثر جمالا مني؟'
-                ,'لماذا {؟ اسم المستخدم؟} هل لديك الكثير من الدرجة؟','لماذا ا {؟ إسم المستخدم؟} هل الأذكى؟'
-                ,'لماذا ا {؟ اسم المستخدم؟} هل مهيب جدا؟','لماذا فعلت {؟ اسم المستخدم؟} لقاء ميشيل أوباما؟'
-                ,'لماذا ا {؟ اسم المستخدم؟} هل هذا محظوظ؟');
+                $recherche = array('لماذا {؟ اسم المستخدم؟} لا تضحك أبدا في نكاتي؟','لماذا {؟ اسم المستخدم؟} أكثر جمالا مني؟'
+                ,'لماذا {؟ اسم المستخدم؟} هل لديك الكثير من الدرجة؟','لماذا ا {؟ اسم المستخدم؟} هو أذكى؟'
+                ,'لماذا ا {؟ اسم المستخدم؟} هل مهيب جدا؟','لماذا فعلت {؟ اسم المستخدم؟} ميت ميشيل أوباما؟'
+                ,'لماذا ا {؟ اسم المستخدم؟} هل محظوظ جدا؟');
                
             }
                
@@ -93,9 +93,9 @@
                 shuffle($recherche);
             ?>
 <img src="http://creation.funizi.com/images-theme-perso/1508544962.png" id="background"> 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
-<div  id="zone_search" >لماذا <?php echo $_GET['user_name']; ?> هو ...</div>
+<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<div  id="zone_search" >لماذا <?php echo urldecode($_GET['user_name']); ?> هو ...</div>
 <div  id="result1" ><?php echo $recherche[0] ?></div>
 <div  id="result2" ><?php echo $recherche[1] ?></div>
 <div  id="result3" ><?php echo $recherche[2] ?></div>

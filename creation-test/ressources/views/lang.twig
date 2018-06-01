@@ -36,6 +36,7 @@
    </div>
  </div>
 
+
   <div class="panel panel-default" style="clear: both;">
     <!-- Default panel contents -->
     <div class="panel-heading">Gestion des langues </div>
@@ -61,6 +62,7 @@
         </div>
       </div>
   </div>
+
 
   <div class="panel panel-default" style="clear: both;">
     <!-- Default panel contents -->
@@ -125,58 +127,60 @@
       </div>
   </div>
 
-<!-- Modal  -->
-	<div id="alert_modal" class="modal fade" role="dialog">
-	    <div class="modal-dialog">
 
-	        <div class="modal-content">
-	            <div class="modal-header" style="background-color: #1C304F;">
-                    <img class="img-responsive" src="{{ base_url() }}/src/img/funizi.png" style="height:20px; margin: 0 auto; " alt="Funizi">
-	            </div>
-	            <div class="modal-body text-center">
-                <p>
-                  Les modifications apportées ne seront pas sauvegardées.<br/>
-                  Voulez-vous sauvegarder les changements ?
-                </p>
-				      </div>
-	            <div class="row modal-button center" style="height:auto; margin: 0 auto; padding-bottom:10px" >
-                      <button type="button"  id="modal_btn_cancel_lang_translations" class="form-control btn btn-default" style="width: auto;">Annuler les changements</button>
-                      <button type="button"  id="modal_btn_save_lang_translations" class="form-control btn btn-success" style="width: auto; "><span class="glyphicon glyphicon-floppy-save"></span> Sauvegarder </button>
-	           </div>
-	        </div>
-	    </div>
-	</div>
 
-  <div id="add_ui_modal" class="modal fade" role="dialog">
-	    <div class="modal-dialog">
+    <!-- Modal  -->
+    	<div id="alert_modal" class="modal fade" role="dialog">
+    	    <div class="modal-dialog">
 
-	        <div class="modal-content">
-	            <div class="modal-header" style="background-color: #1C304F;">
-                    <img class="img-responsive" src="{{ base_url() }}/src/img/funizi.png" style="height:20px; margin: 0 auto; " alt="Funizi">
-	            </div>
-	            <div class="modal-body text-center">
-                <p>
-                Ajouter les informations sur l'élément ?
-                </p>
-                <form >
-                    <div class="form-group col-sm-6">
-                      <label for="formGroupExampleInput">Code</label>
-                      <input type="text" class="form-control" id="new_label_code" placeholder="Ex : menu_home ...">
-                    </div>
-                    <div class="form-group col-sm-6">
-                      <label for="formGroupExampleInput2">Label (en français)</label>
-                      <input type="text" class="form-control" id="new_default_label_name" placeholder="Ex : accueil ...">
-                    </div>
-                </form>
-				      </div>
-	            <div class="row modal-button center" style="height:auto; margin: 0 auto; padding-bottom:10px" >
-                  <button type="button"  id="modal_btn_cancel_add_ui" class="form-control btn btn-default" data-dismiss="modal"  style="width: auto;">Annuler</button>
-                  <button type="button"  id="modal_btn_save_new_ui" class="form-control btn btn-success" style="width: auto; "><span class="glyphicon glyphicon-floppy-save"></span> Sauvegarder </button>
-	           </div>
-	        </div>
-	    </div>
-	</div>
-<!-- /Modal  -->
+    	        <div class="modal-content">
+    	            <div class="modal-header" style="background-color: #1C304F;">
+                        <img class="img-responsive" src="{{ domain_url }}/src/img/funizi.png" style="height:20px; margin: 0 auto; " alt="Funizi">
+    	            </div>
+    	            <div class="modal-body text-center">
+                    <p>
+                      Les modifications apportées ne seront pas sauvegardées.<br/>
+                      Voulez-vous sauvegarder les changements ?
+                    </p>
+    				      </div>
+    	            <div class="row modal-button center" style="height:auto; margin: 0 auto; padding-bottom:10px" >
+                          <button type="button"  id="modal_btn_cancel_lang_translations" class="form-control btn btn-default" style="width: auto;">Annuler les changements</button>
+                          <button type="button"  id="modal_btn_save_lang_translations" class="form-control btn btn-success" style="width: auto; "><span class="glyphicon glyphicon-floppy-save"></span> Sauvegarder </button>
+    	           </div>
+    	        </div>
+    	    </div>
+    	</div>
+
+      <div id="add_ui_modal" class="modal fade" role="dialog">
+    	    <div class="modal-dialog">
+
+    	        <div class="modal-content">
+    	            <div class="modal-header" style="background-color: #1C304F;">
+                        <img class="img-responsive" src="{{ domain_url }}/src/img/funizi.png" style="height:20px; margin: 0 auto; " alt="Funizi">
+    	            </div>
+    	            <div class="modal-body text-center">
+                    <p>
+                    Ajouter les informations sur l'élément ?
+                    </p>
+                    <form >
+                        <div class="form-group col-sm-6">
+                          <label for="formGroupExampleInput">Code</label>
+                          <input type="text" class="form-control" id="new_label_code" placeholder="Ex : menu_home ...">
+                        </div>
+                        <div class="form-group col-sm-6">
+                          <label for="formGroupExampleInput2">Label (en français)</label>
+                          <input type="text" class="form-control" id="new_default_label_name" placeholder="Ex : accueil ...">
+                        </div>
+                    </form>
+    				      </div>
+    	            <div class="row modal-button center" style="height:auto; margin: 0 auto; padding-bottom:10px" >
+                      <button type="button"  id="modal_btn_cancel_add_ui" class="form-control btn btn-default" data-dismiss="modal"  style="width: auto;">Annuler</button>
+                      <button type="button"  id="modal_btn_save_new_ui" class="form-control btn btn-success" style="width: auto; "><span class="glyphicon glyphicon-floppy-save"></span> Sauvegarder </button>
+    	           </div>
+    	        </div>
+    	    </div>
+    	</div>
+    <!-- /Modal  -->
 
 {% endblock %}
 

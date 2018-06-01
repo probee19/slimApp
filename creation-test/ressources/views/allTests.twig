@@ -59,12 +59,12 @@
               {% for test in dataTest%}
               <tr>
                 <td class="center"> {{i}} </td>
-                <td class="center"> <img src="{{ base_url()}}/src/img/statut/{{test.statut}}.png" >  </td>
-                  <td><h5 class=""><a href="{{base_url()}}/test/{{test.id_test}}" > {{test.titre_test}} </a></h5></td>
+                <td class="center"> <img src="{{ domain_url}}/src/img/statut/{{test.statut}}.png" >  </td>
+                  <td><h5 class=""><a href="{{domain_url}}/test/{{test.id_test}}" > {{test.titre_test}} </a></h5></td>
                   <td> {{test.lang}}</td>
                   <td> {{test.if_translated}}</td>
                   <td>
-                    <a href="{{base_url()}}/tests/{{test.id_test}}/edit"  data-toggle="tooltip" title="Modifier le test" ><button type="button" id="btn_modify" class="btn btn-info btn-xs" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+                    <a href="{{domain_url}}/tests/{{test.id_test}}/edit"  data-toggle="tooltip" title="Modifier le test" ><button type="button" id="btn_modify" class="btn btn-info btn-xs" ><span class="glyphicon glyphicon-pencil"></span></button></a>
                     {% if test.statut == 0 %}
                       <button type="button"  data-toggle="tooltip" title="Activer le test" id="act_{{test.id_test}}" onClick="activeTest({{test.id_test}})" class="btn btn-success btn-xs"  > <span class="glyphicon glyphicon-ok-sign"></span> </button>
                       <span data-toggle="modal"  data-target="#modalDelete" ><button type="button" data-toggle="tooltip" title="Supprimer le test" id="{{test.id_test}}" onClick="prepareDelete({{test.id_test}});" class="btn btn-danger btn-xs" > <span class="glyphicon glyphicon-trash"></span> </button></span>
@@ -79,9 +79,9 @@
                     {% endif %}
 
                     {% if test.highlight == 0 %}
-                      <button type="button"  data-toggle="tooltip" title="Mettre en avant le test" id="highlight_{{test.id_test}}" onclick="highlight({{test.id_test}})" class="btn btn-success btn-xs"  > <i class="fas fa-level-up-alt"></i> </button>
+                      <button type="button"  data-toggle="tooltip" title="Mettre en avant le test" id="highlight_{{test.id_test}}" onclick="highlight({{test.id_test}})" class="btn btn-success btn-xs"  > <i class="fa fa-level-up" aria-hidden="true"></i> </button>
                     {% else %}
-                      <button type="button"  data-toggle="tooltip" title="Ne plus mettre en avant le test" id="highlight_{{test.id_test}}" onclick="moveHighlight({{test.id_test}})" class="btn btn-danger btn-xs"  > <i class="fas fa-level-down-alt"></i> </button>
+                      <button type="button"  data-toggle="tooltip" title="Ne plus mettre en avant le test" id="highlight_{{test.id_test}}" onclick="moveHighlight({{test.id_test}})" class="btn btn-danger btn-xs"  > <i class="fa fa-level-down" aria-hidden="true"></i> </button>
 
                     {% endif %}
 
@@ -118,7 +118,7 @@
       <!-- Bouton enregistrer un test-->
       <div class="row">
           <div class="form-group col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-4 col-md-4 col-sm-4">
-              <a href="{{ base_url() }}/choosetheme"><button type="button" id="btn_add_test" class="form-control btn btn-success" ><span class="glyphicon glyphicon-plus-sign"></span> Créer un nouveau test</button></a>
+              <a href="{{ domain_url }}/choosetheme"><button type="button" id="btn_add_test" class="form-control btn btn-success" ><span class="glyphicon glyphicon-plus-sign"></span> Créer un nouveau test</button></a>
           </div>
       </div>
 
@@ -140,11 +140,11 @@
 
 {% block additionalfooter %}
 
-  <script src="{{ base_url() }}/src/js/alltest.js?v=1.0010"></script>
+  <script src="{{ domain_url }}/src/js/alltest.js?v=1.0010"></script>
 
-  <script src="{{ base_url() }}/src/js/added-default-script.js?v=1.292"></script>
-  <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/jquery.dataTables.js"></script>
-  <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/dataTables.bootstrap.js"></script>
+  <script src="{{ domain_url }}/src/js/added-default-script.js?v=1.292"></script>
+  <script type="text/javascript" language="javascript" src="{{ domain_url }}/src/js/DataTables/jquery.dataTables.js"></script>
+  <script type="text/javascript" language="javascript" src="{{ domain_url }}/src/js/DataTables/dataTables.bootstrap.js"></script>
 
 
 
@@ -174,7 +174,7 @@
                   contentType: false,
                   beforeSend: function(){
     				          $("#btn_show_more").prop("disabled", true);
-                      $("#btn_show_more").html("<img src='{{base_url()}}/src/img/91.gif' > Chargement en cours ");
+                      $("#btn_show_more").html("<img src='{{domain_url}}/src/img/91.gif' > Chargement en cours ");
                       $("#btn_show_more").css("color","#000");
       				        $("#btn_show_more").css("color","#000");
                   }

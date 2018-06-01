@@ -1,7 +1,7 @@
 {% extends 'templates/layoutCreationTest.twig' %}
 {% block title %} Tous les tests {% endblock %}
 {% block additionalstyle %}
-    <link href="{{base_url()}}/src/css/filterizr/index.css?v=1.1007" rel="stylesheet">
+    <link href="{{domain_url}}/src/css/filterizr/index.css?v=1.1007" rel="stylesheet">
     <style>
     .hidden_{
         display: none;
@@ -51,7 +51,7 @@
                <input type="hidden" value="60"  name="last_img_seen" id="last_img_seen"/>
                {% for data in data_users_tests %}
                  <div class="col-xs-6 col-sm-3 col-md-3 filtr-item" data-category="{{data.theme}}" data-sort="{{data.titre_test}}">
-                   <img class="img-responsive" src="https://fr.funizi.com/{{data.img_url}}" alt="sample image">
+                   <img class="img-responsive" src="{{ storage_base }}{{data.img_url}}" alt="sample image">
                                    {% if data.shared %}
                                       <span style="z-index: 3; position:absolute; bottom: 1.5rem; left: 1.5rem;"><a href="https://www.facebook.com/{{data.facebook_id}}" target="_blank"> <img src="https://icon-icons.com/icons2/642/PNG/32/facebook_icon-icons.com_59205.png" /></a> </span>
                                       <span class="stat"> <i class="fa fa-mouse-pointer" aria-hidden="true"></i> {{data.nb_clics}}  </span>
@@ -83,8 +83,8 @@
 
 
 {% block additionalfooter %}
-  <script src="{{base_url()}}/src/js/filterizr/jquery.filterizr.min.js"></script>
-  <script src="{{base_url()}}/src/js/filterizr/controls.js"></script>
+  <script src="{{domain_url}}/src/js/filterizr/jquery.filterizr.min.js"></script>
+  <script src="{{domain_url}}/src/js/filterizr/controls.js"></script>
   <!-- Kick off Filterizr -->
 	<script type="text/javascript">
   	$(document).ready(function(){
@@ -107,7 +107,7 @@
                   contentType: false,
                   beforeSend: function(){
       				$("#btn_show_more").prop("disabled", true);
-                      $("#btn_show_more").html("<img src='{{base_url()}}/src/img/91.gif' > Chargement en cours ");
+                      $("#btn_show_more").html("<img src='{{domain}}/src/img/91.gif' > Chargement en cours ");
       				$("#btn_show_more").css("color","#000");
                   }
                   }).done(function( data ) {

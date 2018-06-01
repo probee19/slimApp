@@ -53,31 +53,31 @@
               <li role="presentation" class="active">
                   <a href="#global_stats" id="btn_global" aria-controls="global_stats" role="tab" data-toggle="tab">
                       Statistiques générales
-                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="global-refresh-btn" onclick="charger(this,'global',{{this_test.id_test}},'#global_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                      <img src='{{ domain_url }}/src/img/refresh.png' title="Actualiser" class="global-refresh-btn" onclick="charger(this,'global',{{this_test.id_test}},'#global_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
                   </a>
               </li>
               <li role="presentation">
                   <a href="#daily_stats" onclick="charger(this,'daily',{{this_test.id_test}},'#daily_stats',0,{{this_test.id_theme}})" id="btn_daily" aria-controls="daily_stats" role="tab" data-toggle="tab">
                       Statistiques journalières
-                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="daily-refresh-btn" onclick="charger(this,'daily',{{this_test.id_test}},'#daily_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                      <img src='{{ domain_url }}/src/img/refresh.png' title="Actualiser" class="daily-refresh-btn" onclick="charger(this,'daily',{{this_test.id_test}},'#daily_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
                   </a>
               </li>
               <li role="presentation">
                   <a href="#weekly_stats" onclick="charger(this,'weekly',{{this_test.id_test}},'#weekly_stats',0,{{this_test.id_theme}})" id="btn_weekly" aria-controls="weekly_stats" role="tab" data-toggle="tab">
                       Statistiques hebdomadaires
-                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="weekly-refresh-btn" onclick="charger(this,'weekly',{{this_test.id_test}},'#weekly_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                      <img src='{{ domain_url }}/src/img/refresh.png' title="Actualiser" class="weekly-refresh-btn" onclick="charger(this,'weekly',{{this_test.id_test}},'#weekly_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
                   </a>
               </li>
               <li role="presentation">
                   <a href="#monthly_stats" onclick="" aria-controls="monthly_stats" role="tab" data-toggle="tab">
                       Statistiques mensuelles
-                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="monthly-refresh-btn" onclick="charger(this,'monthly',{{this_test.id_test}},'#monthly_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                      <img src='{{ domain_url }}/src/img/refresh.png' title="Actualiser" class="monthly-refresh-btn" onclick="charger(this,'monthly',{{this_test.id_test}},'#monthly_stats',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
                   </a>
               </li>
               <li role="presentation">
                   <a href="#last_shares" onclick="charger(this,'last_share',{{this_test.id_test}},'#last_shares',0,{{this_test.id_theme}})" id="btn_last_share"  aria-controls="last_shares" role="tab" data-toggle="tab">
                       Derniers partages
-                      <img src='{{ base_url() }}/src/img/refresh.png' title="Actualiser" class="last_share-refresh-btn" onclick="charger(this,'last_share',{{this_test.id_test}},'#last_shares',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
+                      <img src='{{ domain_url }}/src/img/refresh.png' title="Actualiser" class="last_share-refresh-btn" onclick="charger(this,'last_share',{{this_test.id_test}},'#last_shares',1,{{this_test.id_theme}})" style="cursor:pointer; display:none;">
                   </a>
               </li>
             </ul>
@@ -100,7 +100,7 @@
   <!-- Bouton enregistrer un test-->
   <div class="row">
       <div class="form-group col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-4 col-md-4 col-sm-4">
-          <a href="{{ base_url() }}/choosetheme"><button type="button" id="btn_add_test" class="form-control btn btn-success" ><span class="glyphicon glyphicon-plus-sign"></span> Créer un nouveau test</button></a>
+          <a href="{{ domain_url }}/choosetheme"><button type="button" id="btn_add_test" class="form-control btn btn-success" ><span class="glyphicon glyphicon-plus-sign"></span> Créer un nouveau test</button></a>
       </div>
   </div>
 
@@ -110,8 +110,8 @@
 
 {% block additionalfooter %}
 
-	<script type="text/javascript" language="javascript" src="{{base_url()}}/src/js/DataTables/jquery.dataTables.js"></script>
-	<script type="text/javascript" language="javascript" src="{{base_url()}}/src/js/DataTables/dataTables.bootstrap.js"></script>
+	<script type="text/javascript" language="javascript" src="{{domain_url}}/src/js/DataTables/jquery.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="{{domain_url}}/src/js/DataTables/dataTables.bootstrap.js"></script>
   <script type="text/javascript" language="javascript" class="init">
         $(document).ready(function() {
             charger(' ','global',{{this_test.id_test}},'#global_stats',1,{{this_test.id_theme}});
@@ -126,12 +126,12 @@
                 $idd = '#btn_'+tab;
             }
             $.ajax({
-               url : '{{base_url()}}/test/load/stats',
+               url : '{{domain_url}}/test/load/stats',
                type : 'GET',
                data : 'tab='+tab+'&id='+id+'&theme='+theme,
                dataType : 'html',
                beforeSend : function () {
-                   $('.'+tab+'-refresh-btn').attr('src','{{base_url()}}/src/img/3.gif').fadeIn('fast');
+                   $('.'+tab+'-refresh-btn').attr('src','{{domain_url}}/src/img/3.gif').fadeIn('fast');
                    $(target).prepend('<div class="alert alert-info" style="text-align:center;"> Chargement en cours ...</div>');
                },
                success : function(code_html, statut){
@@ -140,7 +140,7 @@
                        $(target).html(code_html);
                    }, 1000);
                    $(target).fadeIn('slow');
-                   $('.'+tab+'-refresh-btn').attr('src','{{base_url()}}/src/img/refresh.png').fadeIn('slow');
+                   $('.'+tab+'-refresh-btn').attr('src','{{domain_url}}/src/img/refresh.png').fadeIn('slow');
 
                 }
            });

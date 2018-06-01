@@ -1,5 +1,5 @@
 {% extends 'templates/layoutCreationTest.twig' %}
-{% block title %} Créer une citation {% endblock %}
+{% block title %} Créer un test {% endblock %}
 {% block additionalstyle %}
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
   <style>
@@ -8,6 +8,7 @@
   </style>
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 {% endblock %}
+
 
 {%block content%}
 <header class="row">
@@ -68,7 +69,7 @@
                                       <input type="text" value=""  id="resultat{0}" name="resultat{0}"  placeholder="Nom du résultat" class="form-control col-lg-12 col-md-12 col-sm-12 col-xs-12 titre-resultat"/>
                                   </div>
                               <?php }?>
-                              <img src="{{ base_url() }}/src/img/preview.jpg" id="img_resultat_preview_{0}" class="img_resulat" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor({0});"/>
+                              <img src="{{ domain_url }}/src/img/preview.jpg" id="img_resultat_preview_{0}" class="img_resulat" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor({0});"/>
                               <input type="button" id="btn_crop_{0}"  class="btn btn-primary btn-md btn_add_image_resultat center-block" value="Choisissez une image" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor({0});" />
                           </div>
                           <?php if($theme == 3){?>
@@ -96,7 +97,7 @@
 
                       <!--div class"form-group col-lg-offset-2 col-lg-8">
                           <img src="https://graph.facebook.com/120092618630394/picture?height=200" id="" class="img_resulat" />
-                          <img src="{{ base_url() }}/src/img/preview.jpg" id="img_resultat_preview_{0}" class="img_resulat" />
+                          <img src="{{ domain_url }}/src/img/preview.jpg" id="img_resultat_preview_{0}" class="img_resulat" />
 
                           <input type="hidden" name="img_resultat_base_64_{0}" id="img_resultat_base_64_{0}" class="img_base_64" value="" />
                           <div id="apercu_resultat{0}" class="apercu_resultat col-lg-10"> <p> </p></div>
@@ -193,55 +194,13 @@
                               <label class="control-label" for="titre">Image du test :</label>
                           </div>
                           <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 nopaddingleft">
-                              <img src="{{ base_url() }}/src/img//preview.jpg" id="img_resultat_preview_1" name="img_resultat_preview_1" class="img_resulat " data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor(1);"/>
+                              <img src="{{ domain_url }}/src/img//preview.jpg" id="img_resultat_preview_1" name="img_resultat_preview_1" class="img_resulat " data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor(1);"/>
                               <input type="button" id="btn_crop_1" class="btn btn-primary btn-md btn_add_image_resultat center-block" value="Choisissez une image" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor(1);" />
                               <input type="hidden" name="img_resultat_base_64_1" id="img_resultat_base_64_1" class="img_base_64" value="" />
                           </div>
                       </div>
                   </section>
               {% endif %}
-
-                <section class="col-sm-6">
-                  <legend> Informations additionnelles </legend>
-                  <!--div class="checkbox">
-                      <label><input type="checkbox" name="gallery_album" id="gallery_album" value="1" > Possibilité de choix de la photo de profil </label>
-                  </div-->
-                  <div class="checkbox">
-                      <label><input type="checkbox" name="add_additionnal_infos_test" id="add_additionnal_infos_test" onChange = "showAddInfo();" value="1" > Demander une information additionnelle lors de l'exécution du test </label>
-                  </div>
-                  <div id="box_add_info" style="display:none;">
-                      <div class="form-group">
-                          <label class="control-label" for="additional_infos" style="width:100%">Information à demander</label>
-                          <select class="select-addionnalt-info form-control" id="additional_infos" name="additional_infos" onChange='showAddInfoLabel();'>
-                            {% for info in additionnal_infos %}
-                              <option value="{{info.id}}" > {{info.label}} </option>
-                            {% endfor %}
-                          </select>
-                      </div>
-                  </div>
-                  <div id="box_add_info_label" style="display:none;">
-                      <div class="form-group">
-                          <label class="control-label" for="additional_info_label" style="width:100%">Label pour l'information additionnelle</label>
-                          <input type="text" class="form-control" id="additional_info_label" name="additional_info_label" value="">
-                      </div>
-                  </div>
-                </section>
-
-                <section class="col-sm-6" style="margin-top:2em;">
-                  <legend> Traitement de l'image </legend>
-                  <div class="checkbox">
-                      <label><input type="checkbox" name="add_img_treatment" id="add_img_treatment" onChange = "showImgTreatment();" value="1" > L'image du profil de l'utilisateur sera traitée. </label>
-                  </div>
-                  <div id="box_add_treatment" style="display:none;">
-                      <div class="form-group">
-                          <label class="control-label" for="treatments" style="width:100%">Information à demander</label>
-                          <select class="select-addionnal-treatment form-control" id="treatments" name="treatments" >
-                            <option value="" >  </option>
-                              <option value="1" > Vieillissement de l'image - CMF </option>
-                          </select>
-                      </div>
-                  </div>
-                </section>
 
               {% if theme == 4 %}
                   <section class="col-sm-12">
@@ -252,12 +211,12 @@
                           <div class="panel panel-default">
                               <div class="panel-heading">
                                    Options
-                                  <button type="button" id="" title="Prévisualier le résultat" onclick="preview()" class="btn btn-default btn-xs pull-right" > <i class="fas fa-eye" ></i></button>
-                                  <button type="button" id="" title="Télécharger une image" data-toggle="modal"  data-target="#modalOpenImagePerso" class="btn btn-default btn-xs pull-right"  style="padding:0 10px;"> <i class="far fa-image"></i></button>
-                                  <button type="button" id="btnModalAddFriend" title="Ajouter un(e) ami Facebook" data-toggle="modal"  data-target="#modalAddFriend" class="btn btn-default btn-xs pull-right" > <i class="fas fa-users"></i></button>
-                                  <button type="button" id="btnModalAddUser" title="Ajouter l'image de l'utilisateur" data-toggle="modal"  data-target="#modalAddFriend" class="btn btn-default btn-xs pull-right" > <i class="fas fa-user"></i></button>
-                                  <button type="button" id="btnModalAddTexte" title="Ajouter un texte" data-toggle="modal"  data-target="#modalAddText" class="btn btn-default btn-xs pull-right" > <i class="fas fa-font"></i></button>
-                                  <button type="button" id="btnPutTranslateTag" title="A traduire"  class="btn btn-default btn-xs pull-right" style="border-color:#1565C0; " > <i class="fas fa-language"></i></button>
+                                  <button type="button" id="" title="Prévisualier le résultat" onclick="preview()" class="btn btn-default btn-xs pull-right" > <i class="fa fa-eye" aria-hidden="true"></i></button>
+                                  <button type="button" id="" title="Télécharger une image" data-toggle="modal"  data-target="#modalOpenImagePerso" class="btn btn-default btn-xs pull-right"  style="padding:0 10px;"> <i class="fa fa-picture-o" aria-hidden="true"></i></button>
+                                  <button type="button" id="btnModalAddFriend" title="Ajouter un(e) ami Facebook" data-toggle="modal"  data-target="#modalAddFriend" class="btn btn-default btn-xs pull-right" > <i class="fa fa-users" aria-hidden="true"></i></button>
+                                  <button type="button" id="btnModalAddUser" title="Ajouter l'image de l'utilisateur" data-toggle="modal"  data-target="#modalAddFriend" class="btn btn-default btn-xs pull-right" > <i class="fa fa-user-o" aria-hidden="true"></i></button>
+                                  <button type="button" id="btnModalAddTexte" title="Ajouter un texte" data-toggle="modal"  data-target="#modalAddText" class="btn btn-default btn-xs pull-right" > <i class="fa fa-text-width" aria-hidden="true"></i></button>
+                                  <button type="button" id="btnPutTranslateTag" title="A traduire"  class="btn btn-default btn-xs pull-right" style="border-color:#1565C0; " > <i class="fa fa-language" aria-hidden="true"></i></button>
                                   <button type="button" id="" title="Initialiser l'éditeur"  class="btn btn-default btn-xs pull-right" > <i class="fa fa-file" aria-hidden="true"></i> </button>
                                   <!--input type="hidden" id="nb_friends_fb" name="nb_friends_fb" value="1" -->
                                   <input type="number" id="max_friend_fb" name="max_friend_fb" value="20" class="pull-right" style="height: 22px; width: 50px; margin-left:10px"/>
@@ -342,6 +301,9 @@
 
                             </div>
                       </div>
+                      <script>
+
+                      </script>
                       <legend>Aperçu du thème</legend>
                       <div class="form-group col-md-12 col-sm-12 col-xs-12 " >
                           <div id="theme-perso" class="main">
@@ -399,277 +361,231 @@
       </form>
 
 </div>
-{% endblock %}
+{%endblock%}
 
 
 {% block additionalfooter %}
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
-  <script src="{{ base_url() }}/src/js/cropit/jquery.cropit.js" ></script>
+  <script src="{{ domain_url }}/src/js/cropit/jquery.cropit.js" ></script>
 
   <script>
       $(".select-pays").select2();
       $(".select-langs").select2();
-      $(".select-addionnalt-info").select2();
-
-
-      function showAddInfo(){
-        if($('#add_additionnal_infos_test').is(':checked')){
-          $(".select-addionnalt-info").select2();
-          $('#box_add_info').fadeIn('slow');
-          $('.select-addionnalt-info').select2({
-               placeholder: 'Choissisez une ou plusieurs options',
-               width: '100%'
-          });
-          showAddInfoLabel();
-        }
-        else{
-          $('#box_add_info').fadeOut('slow');
-          showAddInfoLabel();
-        }
-      }
-
-      function showAddInfoLabel(){
-        if($('#additional_infos').val() != 0){
-          $('#box_add_info_label').fadeIn('slow');
-        }
-        else{
-          $('#box_add_info_label').fadeOut('slow');
-        }
-      }
-
-
-
-      function showImgTreatment(){
-        if($('#add_img_treatment').is(':checked')){
-          $(".select-addionnal-treatment").select2();
-          $('#box_add_treatment').fadeIn('slow');
-          $('.select-addionnal-treatment').select2({
-               placeholder: 'Choissisez une transformation',
-               width: '100%'
-          });
-        }
-        else{
-          $('#box_add_treatment').fadeOut('slow');
-        }
-      }
-
-
-
   </script>
   {% if theme == 4 %}
           <!-- Modal pour ajouter une image du thème personnalisé-->
-      <div id="modalOpenImagePerso" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-              <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Ajouter une image <img src="{{ base_url() }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
-              <span id="message-error"> </span>
-              </div>
-            <div class="modal-body">
-                        <div class="row">
-                            <form name="upload_background" class="form-inline" id="upload_background" type="POST" enctype="multipart/form-data">
-                                <input type="file" class="" name="input_background" id="input_background" style="display:none;">
-                                <div class="col-sm-offset-0 col-sm-12 center">
-                                    <div class="form-group ">
-                                          <label class="control-label" for="id_image"> </label>
-                                          <div class="input-group">
-                                              <span class="input-group-addon">Saisir un Id pour l'image : #</span>
-                                              <input type="text" id="id_image" name="id_image" value="" class="form-control" >
+          <div id="modalOpenImagePerso" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h4 class="modal-title">Ajouter une image <img src="{{ domain_url }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
+                            <span id="message-error"> </span>
+                            </div>
+                          <div class="modal-body">
+                                      <div class="row">
+                                          <form name="upload_background" class="form-inline" id="upload_background" type="POST" enctype="multipart/form-data">
+                                              <input type="file" class="" name="input_background" id="input_background" style="display:none;">
+                                              <div class="col-sm-offset-0 col-sm-12 center">
+                                                  <div class="form-group ">
+                                                        <label class="control-label" for="id_image"> </label>
+                                                        <div class="input-group">
+                                                            <span class="input-group-addon">Saisir un Id pour l'image : #</span>
+                                                            <input type="text" id="id_image" name="id_image" value="" class="form-control" >
+                                                        </div>
+                                                  </div>
+
+                                                  <div class="form-group ">
+                                                      puis
+                                                  </div>
+                                                  <button type="button" id="openbackground" class="btn btn-primary btn-sm" disabled>Choisir un fichier </button>
+                                              </div>
+                                          </form>
+                                      </div>
+
+                                      <div class="row" id="block_get_code" style="display:none;     margin-top: 20px;">
+                                          <div class="col-sm-offset-0 col-sm-12 center">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="titre">Copiez et collez le code HTML / CSS suivant : </label>
+                                                <textarea id="code_html_img" name="code_html_img" class="form-control noresize" rows="5" > </textarea>
+                                              </div>
                                           </div>
+                                      </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" onclick="initFormAddImg();" data-dismiss="modal">Fermer</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+          <div id="modalAddFriend" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                          <!-- Modal content-->
+                          <div class="modal-content">
+                              <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Ajouter une image de profil <img src="{{ domain_url }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
+
+                              </div>
+                            <div class="modal-body">
+                                    <div class="row" id="set-css-friend" style="">
+                                        <div class="col-sm-2" id="num_friend">
+                                            <div class="form-group ">
+                                              <label class="control-label" for="titre">Friend # : </label>
+                                              <input type="number" id="number_friend" name="number_friend" value="" class="form-control input-sm" >
+                                            </div>
+                                        </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-group ">
+                                                  <label class="control-label" for="titre">width (px) : </label>
+                                                  <input type="number" id="width_friend" name="width_friend" value="200" class="form-control input-sm" >
+                                                </div>
+                                            </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group ">
+                                              <label class="control-label" for="titre">border-radius (px) : </label>
+                                              <input type="number" id="radius_friend" name="radius_friend" value="0" placeholder="0" class="form-control input-sm">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <div class="form-group ">
+                                              <label class="control-label" for="titre">z-index : </label>
+                                              <input type="number" id="z_index_friend" name="z_index_friend" value="1" placeholder="1" class="form-control input-sm">
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group ">
-                                        puis
+                                    <div class="row" id="set-css-friend-code" style="display:none">
+                                        <div class="col-sm-12">
+                                            <div class="form-group ">
+                                              <label class="control-label" for="titre">Copiez et collez le code HTML / CSS suivant : </label>
+                                              <textarea name="code_html_friend" id="code_html_friend" rows="5" cols=""  class="form-control noresize"></textarea>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <button type="button" id="openbackground" class="btn btn-primary btn-sm" disabled>Choisir un fichier </button>
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" id="btn_charger_friend" class="export btn btn-primary" onclick="chargerFriend();">Obtenir le code </button>
+                              <button type="button" class="btn btn-default" onclick="initFormAddFriend();" id=""data-dismiss="modal">Fermer</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+          <div id="modalAddText" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Ajouter du texte <img src="{{ domain_url }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
+
                                 </div>
-                            </form>
+                              <div class="modal-body">
+                                      <div class="row" id="set-css-text" style="">
+                                          <div class="col-sm-12 form-group ">
+                                              Pour le texte :
+                                          </div>
+                                          <div class="col-sm-4">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="color_text">Id du texte : </label>
+                                                <input type="text" id="id_text" name="id_text" value="" class="form-control input-sm" >
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-4">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="color_text">color  : </label>
+                                                <input type="text" id="color_text" name="color_text" value="#000" class="form-control input-sm" >
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-4">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="font_size_text">font-size (px) : </label>
+                                                <input type="number" id="font_size_text" name="font_size_text" value="14" class="form-control input-sm" >
+                                              </div>
+                                          </div>
+                                          <hr style="width:100%;">
+
+                                          <div class="col-sm-12 form-group ">
+                                              Pour le block conteneur du texte :
+                                          </div>
+
+                                          <div class="col-sm-3">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="background_text">background  : </label>
+                                                <input type="text" id="background_text" name="background_text" value="transparent" class="form-control input-sm" >
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-3">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="width_text">width (px) : </label>
+                                                <input type="number" id="width_text" name="width_text" value="200" class="form-control input-sm" >
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-3">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="height_text">height (px) : </label>
+                                                <input type="number" id="height_text" name="height_text" value="50" class="form-control input-sm" >
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-3">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="padding_text">padding (px) : </label>
+                                                <input type="number" id="padding_text" name="padding_text" value="5" class="form-control input-sm" >
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-3">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="text_align_text">text-align : </label>
+                                                <input type="text" id="text_align_text" name="text_align_text" value="left" placeholder="0" class="form-control input-sm">
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-3">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="border_text">border : </label>
+                                                <input type="text" id="border_text" name="border_text" value="0" placeholder="0" class="form-control input-sm">
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-3">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="radius_text">border-radius(px): </label>
+                                                <input type="number" id="radius_text" name="radius_text" value="0" placeholder="0" class="form-control input-sm">
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-3">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="z_index_text">z-index : </label>
+                                                <input type="number" id="z_index_text" name="z_index_text" value="1" placeholder="1" class="form-control input-sm">
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                      <div class="row" id="set-css-text-code" style="display:none">
+                                          <div class="col-sm-12">
+                                              <div class="form-group ">
+                                                <label class="control-label" for="titre">Copiez et collez le code HTML / CSS suivant : </label>
+                                                <textarea name="code_html_text" id="code_html_text" rows="5" cols=""  class="form-control noresize"></textarea>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" id="btn_charger_text" class="export btn btn-primary" onclick="chargerText();" disabled>Obtenir le code </button>
+                                <button type="button" class="btn btn-default" onclick="initFormAddText();" id=""data-dismiss="modal">Fermer</button>
+                              </div>
+                            </div>
+                          </div>
                         </div>
 
-                        <div class="row" id="block_get_code" style="display:none;     margin-top: 20px;">
-                            <div class="col-sm-offset-0 col-sm-12 center">
-                                <div class="form-group ">
-                                  <label class="control-label" for="titre">Copiez et collez le code HTML / CSS suivant : </label>
-                                  <textarea id="code_html_img" name="code_html_img" class="form-control noresize" rows="5" > </textarea>
-                                </div>
-                            </div>
-                        </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" onclick="initFormAddImg();" data-dismiss="modal">Fermer</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="modalAddFriend" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-              <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Ajouter une image de profil <img src="{{ base_url() }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
-
-              </div>
-            <div class="modal-body">
-                    <div class="row" id="set-css-friend" style="">
-                        <div class="col-sm-2" id="num_friend">
-                            <div class="form-group ">
-                              <label class="control-label" for="titre">Friend # : </label>
-                              <input type="number" id="number_friend" name="number_friend" value="" class="form-control input-sm" >
-                            </div>
-                        </div>
-                            <div class="col-sm-3">
-                                <div class="form-group ">
-                                  <label class="control-label" for="titre">width (px) : </label>
-                                  <input type="number" id="width_friend" name="width_friend" value="200" class="form-control input-sm" >
-                                </div>
-                            </div>
-                        <div class="col-sm-4">
-                            <div class="form-group ">
-                              <label class="control-label" for="titre">border-radius (px) : </label>
-                              <input type="number" id="radius_friend" name="radius_friend" value="0" placeholder="0" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-                              <label class="control-label" for="titre">z-index : </label>
-                              <input type="number" id="z_index_friend" name="z_index_friend" value="1" placeholder="1" class="form-control input-sm">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row" id="set-css-friend-code" style="display:none">
-                        <div class="col-sm-12">
-                            <div class="form-group ">
-                              <label class="control-label" for="titre">Copiez et collez le code HTML / CSS suivant : </label>
-                              <textarea name="code_html_friend" id="code_html_friend" rows="5" cols=""  class="form-control noresize"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" id="btn_charger_friend" class="export btn btn-primary" onclick="chargerFriend();">Obtenir le code </button>
-              <button type="button" class="btn btn-default" onclick="initFormAddFriend();" id=""data-dismiss="modal">Fermer</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="modalAddText" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-          <!-- Modal content-->
-          <div class="modal-content">
-              <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Ajouter du texte <img src="{{ base_url() }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
-
-              </div>
-            <div class="modal-body">
-                    <div class="row" id="set-css-text" style="">
-                        <div class="col-sm-12 form-group ">
-                            Pour le texte :
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group ">
-                              <label class="control-label" for="color_text">Id du texte : </label>
-                              <input type="text" id="id_text" name="id_text" value="" class="form-control input-sm" >
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group ">
-                              <label class="control-label" for="color_text">color  : </label>
-                              <input type="text" id="color_text" name="color_text" value="#000" class="form-control input-sm" >
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="form-group ">
-                              <label class="control-label" for="font_size_text">font-size (px) : </label>
-                              <input type="number" id="font_size_text" name="font_size_text" value="14" class="form-control input-sm" >
-                            </div>
-                        </div>
-                        <hr style="width:100%;">
-
-                        <div class="col-sm-12 form-group ">
-                            Pour le block conteneur du texte :
-                        </div>
-
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-                              <label class="control-label" for="background_text">background  : </label>
-                              <input type="text" id="background_text" name="background_text" value="transparent" class="form-control input-sm" >
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-                              <label class="control-label" for="width_text">width (px) : </label>
-                              <input type="number" id="width_text" name="width_text" value="200" class="form-control input-sm" >
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-                              <label class="control-label" for="height_text">height (px) : </label>
-                              <input type="number" id="height_text" name="height_text" value="50" class="form-control input-sm" >
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-                              <label class="control-label" for="padding_text">padding (px) : </label>
-                              <input type="number" id="padding_text" name="padding_text" value="5" class="form-control input-sm" >
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-                              <label class="control-label" for="text_align_text">text-align : </label>
-                              <input type="text" id="text_align_text" name="text_align_text" value="left" placeholder="0" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-                              <label class="control-label" for="border_text">border : </label>
-                              <input type="text" id="border_text" name="border_text" value="0" placeholder="0" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-                              <label class="control-label" for="radius_text">border-radius(px): </label>
-                              <input type="number" id="radius_text" name="radius_text" value="0" placeholder="0" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group ">
-                              <label class="control-label" for="z_index_text">z-index : </label>
-                              <input type="number" id="z_index_text" name="z_index_text" value="1" placeholder="1" class="form-control input-sm">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row" id="set-css-text-code" style="display:none">
-                        <div class="col-sm-12">
-                            <div class="form-group ">
-                              <label class="control-label" for="titre">Copiez et collez le code HTML / CSS suivant : </label>
-                              <textarea name="code_html_text" id="code_html_text" rows="5" cols=""  class="form-control noresize"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" id="btn_charger_text" class="export btn btn-primary" onclick="chargerText();" disabled>Obtenir le code </button>
-              <button type="button" class="btn btn-default" onclick="initFormAddText();" id=""data-dismiss="modal">Fermer</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <script src="{{ base_url() }}/src/js/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-      <script id="{{ base_url() }}/src/apercu_js"></script>
-      <script src="{{ base_url() }}/src/js/script-theme-perso.js?v=1.946"></script>
+      <script src="{{ domain_url }}/src/js/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+      <script id="{{ domain_url }}/src/apercu_js"></script>
+      <script src="{{ domain_url }}/src/js/script-theme-perso.js?v=1.941"></script>
   {% endif %}
       <!-- Modal pour ajouter une image du test-->
       <div id="modalOpenImage" class="modal fade" role="dialog">
@@ -678,7 +594,7 @@
               <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Ajouter une image <img src="{{ base_url() }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
+                      <h4 class="modal-title">Ajouter une image <img src="{{ domain_url }}/src/img/loading2.gif" style="display:none;" class="img-loading" /></h4>
                       <span id="message-error"> </span>
                     </div>
                   <div class="modal-body image-editor">
@@ -722,19 +638,19 @@
                           </div>
                           <div class="row">
                               <div class=" col-sm-offset-2 col-sm-1  col-xs-offset-1 col-xs-1 ">
-                                  <img src="{{ base_url() }}/src/img/zoomout.png" class="ico-zoom-out"/>
+                                  <img src="{{ domain_url }}/src/img/zoomout.png" class="ico-zoom-out"/>
                               </div>
                               <div class=" col-sm-6  col-xs-8 image-size-label center">
                                   <input type="range" class="cropit-image-zoom-input">
                               </div>
                               <div class=" col-sm-1 col-xs-1 ">
-                                  <img src="{{ base_url() }}/src/img/zoomin.png" class="ico-zoom-in"/>
+                                  <img src="{{ domain_url }}/src/img/zoomin.png" class="ico-zoom-in"/>
                               </div>
                           </div>
                           <div class="row">
                               <div class=" col-sm-12  center">
-                                  <button class="rotate-ccw"><img src="{{ base_url() }}/src/img/counterclockwise-circular-arrow.png"/></button>
-                                  <button class="rotate-cw"><img src="{{ base_url() }}/src/img/clockwise-circular-arrow.png"/> </button>
+                                  <button class="rotate-ccw"><img src="{{ domain_url }}/src/img/counterclockwise-circular-arrow.png"/></button>
+                                  <button class="rotate-cw"><img src="{{ domain_url }}/src/img/clockwise-circular-arrow.png"/> </button>
                               </div>
                           </div>
                           <div class="row">
@@ -753,8 +669,8 @@
 
 
 
-  <script src="{{ base_url() }}/src/js/added-scripts.js?v=2.12"></script>
-  <script src="{{ base_url() }}/src/js/added-default-script.js?v=1.283"></script>
-  <script src="{{ base_url() }}/src/js/bootstrap.min.js"></script>
+  <script src="{{ domain_url }}/src/js/added-scripts.js?v=2.02"></script>
+  <script src="{{ domain_url }}/src/js/added-default-script.js?v=1.283"></script>
+  <script src="{{ domain_url }}/src/js/bootstrap.min.js"></script>
 
 {% endblock %}
