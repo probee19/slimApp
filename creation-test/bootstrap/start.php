@@ -42,14 +42,24 @@ session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
 
+define('RDS_HOSTNAME', $_SERVER['RDS_HOSTNAME']);
+define('RDS_USERNAME', $_SERVER['RDS_USERNAME']);
+define('RDS_PASSWORD', $_SERVER['RDS_PASSWORD']);
+define('RDS_DB_NAME',  $_SERVER['RDS_DB_NAME']);
+define('GZIT_KEY', $_SERVER['GZIT_KEY']);
+define('GZIT_SECRET', $_SERVER['GZIT_SECRET']);
+define('FB_SECRET_KEY', $_SERVER['FB_SECRET_KEY']);
+define('FB_APP_ID', $_SERVER['FB_APP_ID']);
+define('SERVER_DOMAIN', $_SERVER['SERVER_DOMAIN']);
+
 $config = [
     'displayErrorDetails'   =>  true,
     'db'        =>  [
         'driver'    =>  'mysql',
-        'host'      =>  'localhost',
-        'database'  =>  'funizi_store',
-        'username'  =>  'funizi_user',
-        'password'  =>  'R$46Wm1tM0-)',
+        'host'      =>  RDS_HOSTNAME,
+        'database'  =>  RDS_DB_NAME,
+        'username'  =>  RDS_USERNAME,
+        'password'  =>  RDS_PASSWORD,
         'charset'   =>  'utf8',
         'collation' =>  'utf8_unicode_ci',
         'prefix'    =>  '',
@@ -58,6 +68,7 @@ $config = [
     'grabzit_secret'    => "H2s/Dj8/Pzk/P1ZmbDk/bT8/Sz8/Pz9BPz8/Pz8/Pz8=",
     'test_per_page'     =>  15,
 ];
+
 date_default_timezone_set('Etc/GMT');
 
 $app = new App(["settings" => $config]);
