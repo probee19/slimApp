@@ -70,13 +70,9 @@
                     <a class="btn btn-primary btn-lg btn_to_track" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fa fa-facebook-square" aria-hidden="true"></i> {{interface_ui.btn_share}}</a>
                 </div>
                 {% if unique_result == 1 %}
-                  <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="display:none; margin-top:.8em;" id="block_redo">
+                  <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em;" id="block_redo">
                       <a id="btn-redo" class="btn btn-default btn_to_track" href="{{ domain_url }}/start{% if if_additionnal_info == 1 %}/1{% endif %}/{{ testId }}" onclick="loaderReTest();" style="cursor:pointer;"  data-btn="re-process"><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_retest | capitalize}}</a>
                   </div>
-
-                  <script>
-                    setTimeout(function(){ $("#block_redo").css("display","block").fadeIn("slow") }, 10000);
-                  </script>
                 {% endif %}
             {% if test_owner %}
                 <div class="col-sm-12" style="margin-top: 5px; font-size: 10px;">
