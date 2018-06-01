@@ -1,0 +1,89 @@
+.filtr-container{
+    min-height: 600px;
+}
+.filtr-item {
+    padding: 1rem;
+}
+.item-desc {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    position: absolute;
+    text-transform: none;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 1rem 0;
+    z-index: 1;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+}
+
+
+.stat{
+    z-index: 3;
+    position:absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    color:#FFF;
+    color: #FFF;
+    padding: 7px;
+    font-size: 12px;
+    line-height: 14px;
+    border-radius: 50%;
+    background: #1651B1;
+}
+
+
+/* Filter controls */
+.simplefilter, .sortandshuffle{
+    padding: 1rem;
+}
+.simplefilter li, .multifilter li, .sortandshuffle li {
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 4px 8px;
+}
+.simplefilter li {
+    background-color: #585858;
+}
+.simplefilter li.active {
+    background-color: #212121;
+}
+.multifilter li {
+    background-color: #4b9eff;
+}
+.multifilter li.active {
+    background-color: #2265b4;
+}
+
+/* Shuffle and sort controls */
+select {
+    padding: 1rem 1rem;
+    text-transform: none;
+}
+.sortandshuffle .shuffle-btn {
+    background-color: #dec800;
+}
+.sortandshuffle .sort-btn {
+    background-color: #de0000;
+}
+.sortandshuffle .sort-btn.active {
+    background-color: #9d0000;
+}
+
+/* Search control */
+.search-row {
+    margin-left: 2.5rem;
+}
+.filtr-search {
+    padding: 0.5rem;
+    text-transform: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 150px;
+    max-width: 150px;
+    height: 30px;
+}

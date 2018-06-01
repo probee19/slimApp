@@ -1,0 +1,101 @@
+<div class="col-sm-12 infobox-container">
+  <div class="infobox-header">
+    <i class=""></i>
+    <a href="http://www.facebook.com/{{data_global.facebook_id}}" target="_blank"><img src="https://graph.facebook.com/{{data_global.facebook_id}}/picture?height=40&width=40" style="border-radius:40px; margin-right : 10px;"/></a>
+    {{data_global.user_name}} : statistiques du {{data_global.start}} {% if data_global.start != data_global.end %} au {{data_global.end}} {% endif %}
+    <span style="font-size:12px; float:right;"> MAJ : {{now|date("H:i:s")}} </span>
+  </div>
+  <div class="panel panel-default" style="clear: both;">
+    <!-- Default panel contents -->
+    <div class="panel-heading">En résumé </div>
+    <div class="panel-body">
+
+      <div class="infobox infobox3 infobox-green">
+        <div class="infobox-icon">
+          <i class="ace-icon fa fa-check"></i>
+        </div>
+        <div class="infobox-data">
+          <span class="infobox-data-number">{{data_global.nb_tests_done_all}}</span>
+          <div class="infobox-content">Tests effectués</div>
+        </div>
+        <div class="badge badge-success">{{data_global.nb_test_unique_done_all}}</div>
+      </div>
+      <div class="infobox infobox3 infobox-pink">
+        <div class="infobox-icon">
+          <i class="ace-icon fa fa-share-square-o"></i>
+        </div>
+        <div class="infobox-data">
+          <span class="infobox-data-number">{{data_global.share_count_all}}</span>
+          <div class="infobox-content">Partages directs</div>
+        </div>
+        <div class="badge badge-success">{{data_global.share_count_unique_all}}  </div>
+        <div class="stat stat-important"></div>
+      </div>
+      <div class="infobox infobox3 infobox-pink">
+        <div class="infobox-icon">
+          <i class="ace-icon fa fa-share-square-o"></i>
+        </div>
+        <div class="infobox-data">
+          <span class="infobox-data-number">{{data_global.taux_sharing_all}} %</span>
+          <div class="infobox-content">Taux de partage</div>
+        </div>
+        <div class="badge badge-success">{{data_global.taux_sharing_unique_all}} % </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default" style="clear: both;">
+  <!-- Default panel contents -->
+
+  <div class="panel-heading">Meilleurs tests </div>
+
+  <table id="liste_test2" class="table table-striped table-condensed" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th width="2%"></th>
+        <th width="46%">Tests</th>
+        <th width="8%">T.</th>
+        <th width="8%">T.U.</th>
+        <th width="8%">P.</th>
+        <th width="10%">% P</th>
+        <th width="8%">P.U.</th>
+        <th width="10%">% P.U.</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% set i = 1 %}
+      {% for test in tests_users%}
+        <tr class="pointer" onclick="showForOneTest('{{test.titre_test|addslashes}}',{{test.test_id}})">
+          <td style="float: right;">{{i}}</td>
+          <td class="title-test">{{test.titre_test}}</td>
+          <td>{{test.nb_test_done}}</td>
+          <td>{{test.nb_test_unique_done}}</td>
+          <td>{{test.nb_share}}</td>
+          <td>{{test.taux_share}} %</td>
+          <td>{{test.nb_share_unique}}</td>
+          <td>{{test.taux_share_unique}} %</td>
+        </tr>
+        {% set i = i + 1 %}
+      {% endfor%}
+
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript" language="javascript" class="init">
+  $(document).ready(function() {
+
+    $('#liste_test2').DataTable( {
+      "order": [[ 2, "desc" ]],
+      "language": {
+      "lengthMenu": "Afficher  _MENU_  tests par page",
+      "zeroRecords": "Aucune test trouvé ! ",
+      "info": "Voir page _PAGE_ à _PAGES_ ( test _START_ à _END_ sur _TOTAL_ )",
+      "infoEmpty": "Aucune test trouvé",
+      "infoFiltered": "(recherche effectuée sur _MAX_ tests)"
+    }
+    } );
+  } );
+
+</script>
