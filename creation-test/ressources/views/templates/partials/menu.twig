@@ -6,16 +6,37 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-	  <a class="navbar-brand" href="http://funizi.com" target="_blank"><img src="{{domain_url}}/src/img/funizi.png" height="100%"/></a>
+	  <a class="navbar-brand" href="http://funizi.com" target="_blank"><img src="{{base_url}}/src/img/funizi.png" height="100%"/></a>
 	</div>
 	<div class="collapse navbar-collapse" id="myNavbar">
 		<ul class="nav navbar-nav">
             <li class=""><a href="{{ domain_url }}">ACCUEIL</a></li>
-            <li class=""><a href="{{ domain_url }}/tests">TOUS LES TESTS</a></li>
-            <li class=""><a href="{{ domain_url }}/results">DERNIERS RESULTATS</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" >TESTS</a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="{{domain_url}}/tests">TOUS LES TESTS</a></li>
+                <li class=""><a href="http://creation.funizi.com/results">DERNIERS RESULTATS</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" >CITATIONS</a>
+              <ul class="dropdown-menu">
+                <li class=""><a href="{{domain_url}}/citations">TOUTES LES CITATIONS</a></li>
+              </ul>
+            </li>
+
             <!--li><a href="http://creation.funizi.com/create-test.php?theme=1">NOUVEAU TEST</a></li-->
-            <li><a href="{{ domain_url }}/choosetheme">NOUVEAU TEST</a></li>
-            <li><a href="{{ domain_url }}/lang">GESTION DES LANGUES</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" >NOUVEAU</a>
+              <ul class="dropdown-menu">
+                <li><a href="{{ domain_url }}/choosetheme">NOUVEAU TEST</a></li>
+                <li><a href="{{ domain_url }}/citations/new">NOUVELLE CITATION</a></li>
+              </ul>
+
+            </li>
+            <li><a href="{{ domain_url }}/lang">LANGUES</a></li>
+            <li><a href="{{ domain_url }}/notifications">NOTIFICATIONS</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
             <li class="dropdown">

@@ -7,13 +7,16 @@ use App\Controllers\ShareController;
 use App\Controllers\TestController;
 use App\Controllers\StartController;
 use App\Controllers\AllResultsController;
+use App\Controllers\AllCitationsController;
 use App\Controllers\ClickController;
 use App\Controllers\CronController;
 use App\Controllers\LoadStatsController;
 use App\Controllers\CreateTestController;
+use App\Controllers\CreateCitationController;
 use App\Controllers\ActionTestController;
 use App\Controllers\AllTestsController;
 use App\Controllers\LangController;
+use App\Controllers\NotificationPushController;
 use App\Controllers\JsonController;
 
 use App\Helpers\Helper;
@@ -163,6 +166,9 @@ $container['GrabzitController'] = function ($container) {
 $container['AllResultsController'] = function ($container) {
     return new AllResultsController($container);
 };
+$container['AllCitationsController'] = function ($container) {
+    return new AllCitationsController($container);
+};
 $container['ShareController'] = function ($container) {
     return new ShareController($container);
 };
@@ -181,6 +187,9 @@ $container['LoadStatsController'] = function ($container) {
 $container['CreateTestController'] = function ($container) {
     return new CreateTestController($container);
 };
+$container['CreateCitationController'] = function ($container) {
+    return new CreateCitationController($container);
+};
 $container['ActionTestController'] = function ($container) {
     return new ActionTestController($container);
 };
@@ -189,6 +198,9 @@ $container['AllTestsController'] = function ($container) {
 };
 $container['LangController'] = function ($container) {
     return new LangController($container);
+};
+$container['NotificationPushController'] = function ($container) {
+    return new NotificationPushController($container);
 };
 $container['JsonController'] = function ($container) {
     return new JsonController($container);
