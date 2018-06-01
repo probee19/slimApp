@@ -127,6 +127,10 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addFilter(new Twig_SimpleFilter('date("d/m/Y à H:i:s")', 'date("d/m/Y à H:i:s")'));
     $view->getEnvironment()->addFilter(new Twig_SimpleFilter('date("H:i:s")', 'date("H:i:s")'));
     $view->getEnvironment()->addFilter($twigCleanUrl);
+    $view->getEnvironment()->addGlobal('defined_base_url', "https://creation.".SERVER_DOMAIN);
+    $view->getEnvironment()->addGlobal('defined_base_domain', "https://".SERVER_DOMAIN);
+    $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
+    $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     $view->getEnvironment()->addGlobal('cookie', $_COOKIE);
@@ -142,8 +146,8 @@ $container['view'] = function ($container){
 //Facebook app config
 $container['fb'] = function($container){
     return new Facebook([
-        'app_id' => '348809548888116',
-        'app_secret' => '2d51d516fa50ce2382b2e8214db499c3',
+        'app_id' => FB_APP_ID,
+        'app_secret' => FB_SECRET_KEY,
         'default_graph_version' => 'v2.5',
     ]);
 };
