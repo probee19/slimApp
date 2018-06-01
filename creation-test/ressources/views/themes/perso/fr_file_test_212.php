@@ -24,8 +24,8 @@
 .main img{ position:absolute; max-height:420px; max-width:800px; }
 #background{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
 #fb_id_user{position: absolute; z-index:1; left: 50px; top: 110px; width:200px ; border-radius:100px; max-width:800px; max-height:420px; }
-#name_user{position:absolute; z-index:1; left: 0px; top: 0px; font-size:30px; color:#FFF;} 
-#name_user{position:absolute; z-index:1; right: 50px; top: 100px; font-size:30px; color:#FFF;} 
+#name_user{position:absolute; z-index:1; left: 0px; top: 0px; font-size:30px; color:#FFF;}
+#name_user{position:absolute; z-index:1; right: 50px; top: 100px; font-size:30px; color:#FFF;}
 #message{position:absolute; z-index:2; right:25px; top:20px; width:450px; height:420px; font-size:60px; line-height:60px;font-family: 'Archivo Black', sans-serif;; text-align:center;color:#FFF;display: flex;
 justify-content: center; /* align horizontal */
 align-items: center; /* align vertical */ }
@@ -69,24 +69,23 @@ align-items: center; /* align vertical */ }
           </head>
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
-      
+
 <?php
       if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
                $message = array('Elle est déjà à tes côtés.','Tu partages déjà ta vie avec Elle.','Elle a toujours été à tes côtés et le reste.');          }
-            else{ 
-               $message = array('Il est déjà à tes côtés.','Tu partages déjà ta vie avec Lui.','Il a toujours été à tes côtés et le reste.');     
+            else{
+               $message = array('Il est déjà à tes côtés.','Tu partages déjà ta vie avec Lui.','Il a toujours été à tes côtés et le reste.');
             }
 
 shuffle($message);
 ?>
-<img src="http://creation.funizi.com/images-theme-perso/1512663544.jpg" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="http://creation.funizi.com/images-theme-perso/1512663544.jpg" id="background">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
  <div id="message"> <?php echo $message[0]; ?>
 </div>
 
         </div>
-        
+
         </body>
         </html>
-      
