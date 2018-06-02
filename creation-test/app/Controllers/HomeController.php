@@ -8,6 +8,7 @@ use App\Controllers\LoadStatsController;
 use App\Models\Admin;
 use App\Models\TestOwner;
 use App\Models\TestInfo;
+use App\Models\ThemePerso;
 use App\Models\Test;
 use App\Models\User;
 use App\Models\UserTest;
@@ -150,7 +151,7 @@ class HomeController extends Controller
   public function desableTestWhitFriends($request, $response, $arg)
   {
       $tests_to_disable = ThemePerso::selectRaw('id_test')->where('nb_friends_fb','>',0)->distinct()->get();
-      
+
       $this->helper->debug($tests_to_disable);
 
 
