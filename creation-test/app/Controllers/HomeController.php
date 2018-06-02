@@ -147,6 +147,16 @@ class HomeController extends Controller
       return json_decode($resp);
   }
 
+  public function desableTestWhitFriends($request, $response, $arg)
+  {
+      $tests_to_disable = ThemePerso::selectRaw('id_test')->where('nb_friends_fb','>',0)->distinct()->get();
+      
+      $this->helper->debug($tests_to_disable);
+
+
+
+  }
+
 
   public function updateVarTestFile($request, $response, $arg)
   {
