@@ -100,3 +100,4 @@ $app->get('/upgradelang', 'LangController:upgradeLang');
 $app->get('/upgradejsonfile', 'LangController:UpgradeJsonFile');
 $app->get('/chunk/jsonalltests', 'JsonController:setTestsJSON');
 $app->get('/chunk/updatevar', 'HomeController:updateVarTestFile');
+$app->get('/chunk/setting', 'HomeController:desableTestWhitFriends');
