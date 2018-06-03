@@ -72,7 +72,7 @@
                       <button type="button"  data-toggle="tooltip" title="Désactiver le test" id="del{{test.id_test}}" onClick="desactiveTest({{test.id_test}});" class="btn btn-warning btn-xs" > <span class="glyphicon glyphicon-remove-sign"></span> </button>
                     {% endif %}
 
-                    <a class="btn btn-default btn-xs" href="{{test.url_test}}" title="Voir le test" target="_blank"> <span class="glyphicon glyphicon-eye-open"></span> </a>
+                    <a class="btn btn-default btn-xs" href="{{test.url_test}}?admin={{test.id_test_owner}}" title="Voir le test" target="_blank"> <span class="glyphicon glyphicon-eye-open"></span> </a>
 
                     {% if test.btn_delete_test_admin %}
                       <button type="button" id="btn_del_resultl_{{test.id_test}}" title="Supprimer le test déjà effectué" onClick="deleteResult({{user_admin_id}}, {{test.id_test}});" class="btn btn-danger btn-xs"  > <span class="glyphicon glyphicon-remove"></span> </button>

@@ -55,6 +55,7 @@ class AllTestsController extends Controller
 
       $dataTest []= [
         "id_test"               => $test->id_test,
+        "id_test_owner"         => $test->id_test_owner,
         "statut"                => $test->statut,
         "titre_test"            => $test->titre_test,
         "lang"                  => $test->defaultLangInfo->name,
