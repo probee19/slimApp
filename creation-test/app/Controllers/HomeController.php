@@ -151,9 +151,13 @@ class HomeController extends Controller
   public function desableTestWhitFriends($request, $response, $arg)
   {
       $tests = [];
-      $tests_to_disable = ThemePerso::selectRaw('id_test ')->where('nb_friends_fb','>',0)->distinct()->get();
+      $tests_to_disable = ThemePerso::selectRaw('id_test ')->where('nb_friends_fb','>',0)->distinct()->with('test')->get();
       foreach ($tests_to_disable as $test) {
-        $tests[] =  $test->id_test;
+
+        $tests[] =  [
+            'id_test' =>  $test->id_test,
+            'titre'   =>  $test->test->titre
+          ];
       }
       $this->helper->debug($tests);
 

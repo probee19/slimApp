@@ -20,5 +20,8 @@ class ThemePerso extends Eloquent
       'best_friends',
       'lang'
     ];
-
+    
+    public function test(){
+        return $this->belongsTo('App\Models\Test', 'id_test', 'id_test');
+    }
 }
