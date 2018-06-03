@@ -79,9 +79,9 @@
                     {% endif %}
 
                     {% if test.highlight == 0 %}
-                      <button type="button"  data-toggle="tooltip" title="Mettre en avant le test" id="highlight_{{test.id_test}}" onclick="highlight({{test.id_test}})" class="btn btn-success btn-xs"  > <i class="fa fa-level-up" aria-hidden="true"></i> </button>
+                      <button type="button"  data-toggle="tooltip" title="Mettre en avant le test" id="highlight_{{test.id_test}}" onclick="highlight({{test.id_test}})" class="btn btn-success btn-xs"  > <i class="fas fa-level-up-alt"></i>  </button>
                     {% else %}
-                      <button type="button"  data-toggle="tooltip" title="Ne plus mettre en avant le test" id="highlight_{{test.id_test}}" onclick="moveHighlight({{test.id_test}})" class="btn btn-danger btn-xs"  > <i class="fa fa-level-down" aria-hidden="true"></i> </button>
+                      <button type="button"  data-toggle="tooltip" title="Ne plus mettre en avant le test" id="highlight_{{test.id_test}}" onclick="moveHighlight({{test.id_test}})" class="btn btn-danger btn-xs"  > <i class="fas fa-level-down-alt"></i> </button>
 
                     {% endif %}
 
