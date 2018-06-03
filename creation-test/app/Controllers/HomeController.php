@@ -167,7 +167,7 @@ class HomeController extends Controller
           "updated_at"    =>  \date("Y-m-d H:i:s")  # \Datetime()
         ]);
         Test::where([['id_test',$test->id_test],['statut','=', 1]])->update(['statut' => 0]);
-        echo 'Test' . $test->id_test . ' désactivé avec succès !';
+        echo 'Test' . $test->id_test . ' désactivé avec succès !<br>';
       }
       $this->helper->debug($tests);
   }
@@ -178,7 +178,7 @@ class HomeController extends Controller
 
     foreach ($disabled_tests as $test) {
       Test::where([['id_test',$test->id_test],['statut','=', 0]])->update(['statut' => 1]);
-      echo 'Test' . $test->id_test .' réactivé avec succès !';
+      echo 'Test' . $test->id_test .' réactivé avec succès !<br>';
     }
 
 
