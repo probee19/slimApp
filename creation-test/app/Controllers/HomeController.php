@@ -9,6 +9,7 @@ use App\Models\Admin;
 use App\Models\TestOwner;
 use App\Models\TestInfo;
 use App\Models\ThemePerso;
+use App\Models\DisabledTest;
 use App\Models\Test;
 use App\Models\User;
 use App\Models\UserTest;
@@ -158,6 +159,13 @@ class HomeController extends Controller
             'id_test' =>  $test->id_test,
             'titre'   =>  $test->test->titre_test
           ];
+
+        DisabledTest::create([
+          'id_test'       =>  $test->id_test,
+          'objet'         =>  'Bug FB friends list',
+          "created_at"    =>  \date("Y-m-d H:i:s"), # \Datetime()
+          "updated_at"    =>  \date("Y-m-d H:i:s")  # \Datetime()
+        ]);
       }
       $this->helper->debug($tests);
 

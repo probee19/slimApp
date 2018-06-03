@@ -3,7 +3,7 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Test extends Eloquent
+class DisabledTest extends Eloquent
 {
 
     protected $table = 'disabled_tests';
