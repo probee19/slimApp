@@ -31,7 +31,7 @@ class TestController extends Controller
             ->where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
         //->with('themeInfo')
         $permission = $test->permissions;
-        if(!$test || $test->statut != 1 ){
+        if((!$test || $test->statut != 1 ) && (!isset($_GET['admin'])) ){
             $result_url = $this->router->pathFor('accueil' );
             $this->flash->addMessage('invalid_test', $interface_ui['label_notif_no_test']);
             return $response->withStatus(302)->withHeader('Location', $result_url );
