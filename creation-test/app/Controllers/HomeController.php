@@ -156,7 +156,7 @@ class HomeController extends Controller
 
         $tests[] =  [
             'id_test' =>  $test->id_test,
-            'titre'   =>  $test->test->titre
+            'titre'   =>  $test->test->titre_test
           ];
       }
       $this->helper->debug($tests);
