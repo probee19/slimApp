@@ -297,99 +297,114 @@ class Helper
     public function relatedTests($countryCode, $exclude, $lang, $total = 24){
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
-      // Selection de quelques tests
-      $choosen_some_tests = array();
-      //$array_tests = array(207,112);
-      $array_tests = array(347,348);
-      $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
-      if(count($choosen_some_tests) >= 1)
-        foreach ($choosen_some_tests as $test)
-          $exclude[] = $test['id_test'];
+      if(in_array($countryCode, ['SN','CI','FR'], true)){
+        $choosen_some_tests = array();
+        $array_tests = array(351, 353);
+        $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
+        if(count($choosen_some_tests) >= 1)
+          foreach ($choosen_some_tests as $test)
+            $exclude[] = $test['id_test'];
 
-
-      //Selection d'un test demandant des informatsions additionnelles
-      $choosen_tests_with_img_treatment = self::getTestsWithImgTreatment($countryCode, $exclude, $lang, 3);
-      if(count($choosen_tests_with_img_treatment) >= 1)
-        foreach ($choosen_tests_with_img_treatment as $test)
-          $exclude[] = $test['id_test'];
-
-
-      /*
-      $choosen_tests_with_add_info = self::getTestsWithAdditionnalInfos($countryCode, $exclude, $lang, 1);
-      if(count($choosen_tests_with_add_info) >= 1)
-        foreach ($choosen_tests_with_add_info as $test)
-          $exclude[] = $test['id_test'];
-      */
-
-      // Selection d'un test parmi les 5 denières créations
-      $new_tests = self::getLastTests($countryCode, $exclude, $lang, 5);
-
-      $choosen_new_tests_1 = array_slice($new_tests, 0, 1);
-      foreach ($choosen_new_tests_1 as $new_test)
-        $exclude[] = $new_test['id_test'];
-
-      $choosen_new_tests_2 = array_slice($new_tests, 1, 2);
-      foreach ($choosen_new_tests_2 as $new_test)
-        $exclude[] = $new_test['id_test'];
-
-
-      $local_tests = self::getLocalTests($countryCode, $exclude, $lang, 5);
-      if(count($local_tests) > 0)
-        $choosen_local_tests_1 = array_slice($local_tests, 0, 1);
-      else
-        $choosen_local_tests_1 = array();
-
-      foreach ($choosen_local_tests_1 as $local_test)
-        $exclude[] = $local_test['id_test'];
-
-      // Selection de 6 tests parmi les meilleurs partages sur les 7 dernires jours
-      $alltests0 = self::getLovedTests($countryCode, $exclude, $lang, 6);
-      foreach ($alltests0 as $test) {
-        $besttests [] = [
-          'url_image_test' => $test["url_image_test"],
-          'id_test'        => $test["id_test"],
-          'titre_test'     => $test["titre_test"]
-        ];
-        $exclude[] = $test["id_test"];
+          $nb_restant = 24 - count($choosen_some_tests);
+          $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
+          if($choosen_some_tests != null)
+            $alltests_total   = array_merge($choosen_some_tests, $alltests_total);
       }
-      shuffle($besttests);
-
-      $tests_to_discover = array();
-      if($choosen_some_tests != null)
-        $tests_to_discover   = $choosen_some_tests;
-
-
-      if($choosen_tests_with_img_treatment != null)
-        $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_img_treatment);
-
-      $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_1);
-
-      $tests_with_add_info = array();
-      if($choosen_tests_with_add_info != null)
-        $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_add_info);
+      else {
+        // Selection de quelques tests
+        $choosen_some_tests = array();
+        //$array_tests = array(207,112);
+        $array_tests = array(347);
+        $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
+        if(count($choosen_some_tests) >= 1)
+          foreach ($choosen_some_tests as $test)
+            $exclude[] = $test['id_test'];
 
 
-      $tests_to_discover   = array_merge($tests_to_discover, $besttests);
+        //Selection d'un test demandant des informatsions additionnelles
+        $choosen_tests_with_img_treatment = self::getTestsWithImgTreatment($countryCode, $exclude, $lang, 3);
+        if(count($choosen_tests_with_img_treatment) >= 1)
+          foreach ($choosen_tests_with_img_treatment as $test)
+            $exclude[] = $test['id_test'];
 
-      $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_2);
 
-      $tests_to_discover   = array_merge($tests_to_discover, $choosen_local_tests_1);
+        /*
+        $choosen_tests_with_add_info = self::getTestsWithAdditionnalInfos($countryCode, $exclude, $lang, 1);
+        if(count($choosen_tests_with_add_info) >= 1)
+          foreach ($choosen_tests_with_add_info as $test)
+            $exclude[] = $test['id_test'];
+        */
 
-      // Selection de tests mis en avant pour completer la liste des tests à découvrir
-      $alltests2 = self::getHighlightsFromJson($lang);
-      foreach ($alltests2 as $test) {
-        // Si le test n'est pas dans les exclus ($exclude) et est soit un test universel ou local
-        if(!in_array($test["id_test"], $exclude, true) && ($test["codes_countries"] == "" || strpos($test["codes_countries"], $countryCode) != false))
-          $alltests [] = [
-              'url_image_test' => $test["url_image_test"],
-              'id_test'        => $test["id_test"],
-              'titre_test'     => $test["titre_test"]
+        // Selection d'un test parmi les 5 denières créations
+        $new_tests = self::getLastTests($countryCode, $exclude, $lang, 5);
+
+        $choosen_new_tests_1 = array_slice($new_tests, 0, 1);
+        foreach ($choosen_new_tests_1 as $new_test)
+          $exclude[] = $new_test['id_test'];
+
+        $choosen_new_tests_2 = array_slice($new_tests, 1, 2);
+        foreach ($choosen_new_tests_2 as $new_test)
+          $exclude[] = $new_test['id_test'];
+
+
+        $local_tests = self::getLocalTests($countryCode, $exclude, $lang, 5);
+        if(count($local_tests) > 0)
+          $choosen_local_tests_1 = array_slice($local_tests, 0, 1);
+        else
+          $choosen_local_tests_1 = array();
+
+        foreach ($choosen_local_tests_1 as $local_test)
+          $exclude[] = $local_test['id_test'];
+
+        // Selection de 6 tests parmi les meilleurs partages sur les 7 dernires jours
+        $alltests0 = self::getLovedTests($countryCode, $exclude, $lang, 6);
+        foreach ($alltests0 as $test) {
+          $besttests [] = [
+            'url_image_test' => $test["url_image_test"],
+            'id_test'        => $test["id_test"],
+            'titre_test'     => $test["titre_test"]
           ];
-      }
-      shuffle($alltests);
+          $exclude[] = $test["id_test"];
+        }
+        shuffle($besttests);
 
-      $alltests   = array_merge($tests_to_discover, $alltests);
-      $alltests_total = array_slice($alltests, 0, $total);
+        $tests_to_discover = array();
+        if($choosen_some_tests != null)
+          $tests_to_discover   = $choosen_some_tests;
+
+
+        if($choosen_tests_with_img_treatment != null)
+          $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_img_treatment);
+
+        $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_1);
+
+        $tests_with_add_info = array();
+        if($choosen_tests_with_add_info != null)
+          $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_add_info);
+
+
+        $tests_to_discover   = array_merge($tests_to_discover, $besttests);
+
+        $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_2);
+
+        $tests_to_discover   = array_merge($tests_to_discover, $choosen_local_tests_1);
+
+        // Selection de tests mis en avant pour completer la liste des tests à découvrir
+        $alltests2 = self::getHighlightsFromJson($lang);
+        foreach ($alltests2 as $test) {
+          // Si le test n'est pas dans les exclus ($exclude) et est soit un test universel ou local
+          if(!in_array($test["id_test"], $exclude, true) && ($test["codes_countries"] == "" || strpos($test["codes_countries"], $countryCode) != false))
+            $alltests [] = [
+                'url_image_test' => $test["url_image_test"],
+                'id_test'        => $test["id_test"],
+                'titre_test'     => $test["titre_test"]
+            ];
+        }
+        shuffle($alltests);
+
+        $alltests   = array_merge($tests_to_discover, $alltests);
+        $alltests_total = array_slice($alltests, 0, $total);
+      }
 
       return $alltests_total;
     }
