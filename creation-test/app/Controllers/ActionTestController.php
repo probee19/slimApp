@@ -76,6 +76,27 @@ class ActionTestController extends Controller
         $delete = UserTest::where([ ['test_id','=', $test], ['user_id','=', $user] ])->delete();
   }
 
+
+  // Citation
+
+  public function DeleteCitation($request, $response, $arg)
+  {
+    Citation::where('id_citation',$_GET['idcitation'])->update(['statut' => -1]);
+  }
+
+
+  public function ActiveCitation($request, $response, $arg)
+  {
+    Citation::where('id_citation',$_GET['idcitation'])->update(['statut' =>1]);
+  }
+
+
+  public function DesactiveCitation($request, $response, $arg)
+  {
+    Citation::where('id_citation',$_GET['idcitation'])->update(['statut' =>0]);
+  }
+
+
   public function UploadImageThemePerso($request, $response, $arg)
   {
       $target_dir = 'images-theme-perso'; $target_file = "";$end = 0;
@@ -407,6 +428,18 @@ class ActionTestController extends Controller
     return json_encode($data);
   }
 
+  public function loadInfoCitation()
+  {
+    $info_citation = CitationInfo::where([["id_citation", "=", $_POST['id_citation']],["lang", "=", $_POST['lang']]])->first();
+    //Helper::debug($theme_perso->code_php);
+    $data = [
+      'titre_citation'          =>  $info_citation->titre_citation,
+      'citation_description'    =>  $info_citation->citation_description,
+      'code_php'                =>  $info_citation->code_php
+    ];
+
+    return json_encode($data);
+  }
 
 //
   public function upgrade($request, $response, $arg)
