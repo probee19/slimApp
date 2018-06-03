@@ -149,7 +149,7 @@ class HomeController extends Controller
       return json_decode($resp);
   }
 
-  public function desableTestWhitFriends($request, $response, $arg)
+  public function desableSpecificTest($request, $response, $arg)
   {
       $tests = [];
       $tests_to_disable = ThemePerso::selectRaw('id_test ')->where('nb_friends_fb','>',0)->distinct()->with('test')->get();
@@ -166,9 +166,20 @@ class HomeController extends Controller
           "created_at"    =>  \date("Y-m-d H:i:s"), # \Datetime()
           "updated_at"    =>  \date("Y-m-d H:i:s")  # \Datetime()
         ]);
+        Test::where([['id_test',$test->id_test],['statut','=', 1]])->update(['statut' => 0]);
+        echo 'Test' . $test->id_test . ' désactivé avec succès !';
       }
       $this->helper->debug($tests);
+  }
 
+  public function enableSpecificTest($request, $response, $arg)
+  {
+    $disabled_tests = DisabledTest::all();
+
+    foreach ($disabled_tests as $test) {
+      Test::where([['id_test',$test->id_test],['statut','=', 0]])->update(['statut' => 1]);
+      echo 'Test' . $test->id_test .' réactivé avec succès !';
+    }
 
 
   }
