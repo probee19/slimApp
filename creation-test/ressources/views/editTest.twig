@@ -491,7 +491,55 @@
   <script>
       $(".select-pays").select2();
       $(".select-langs").select2();
+      $(".select-addionnalt-info").select2();
+
+      if($('#add_additionnal_infos_test').is(':checked')) showAddInfo();
+      if($('#add_img_treatment').is(':checked')) showImgTreatment();
+
+
+      function showAddInfo(){
+        if($('#add_additionnal_infos_test').is(':checked')){
+          $(".select-addionnalt-info").select2();
+          $('#box_add_info').fadeIn('slow');
+          $('.select-addionnalt-info').select2({
+               placeholder: 'Choissisez une ou plusieurs options',
+               width: '100%'
+          });
+          showAddInfoLabel();
+        }
+        else{
+          $('#box_add_info').fadeOut('slow');
+          showAddInfoLabel();
+        }
+      }
+
+      function showAddInfoLabel(){
+        if($('#additional_infos').val() != 0){
+          $('#box_add_info_label').fadeIn('slow');
+        }
+        else{
+          $('#box_add_info_label').fadeOut('slow');
+        }
+      }
+
+
+      function showImgTreatment(){
+        if($('#add_img_treatment').is(':checked')){
+          $(".select-addionnal-treatment").select2();
+          $('#box_add_treatment').fadeIn('slow');
+          $('.select-addionnal-treatment').select2({
+               placeholder: 'Choissisez une transformation',
+               width: '100%'
+          });
+        }
+        else{
+          $('#box_add_treatment').fadeOut('slow');
+        }
+      }
+
+
   </script>
+  
   {% if test.id_theme == 4 %}
           <!-- Modal pour ajouter une image du thème personnalisé-->
           <div id="modalOpenImagePerso" class="modal fade" role="dialog">
