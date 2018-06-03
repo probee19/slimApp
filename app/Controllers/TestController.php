@@ -26,12 +26,12 @@ class TestController extends Controller
             $code = $args['code'];
         $user_test = UserTest::where('uuid', '=', "$code")->first();
         $img_url = $user_test->img_url;
-        $test = Test::selectRaw('tests.titre_test AS titre_test_fr, tests.if_additionnal_info AS if_additionnal_info, tests.permissions AS permissions, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
+        $test = Test::selectRaw('tests.statut AS statut, tests.titre_test AS titre_test_fr, tests.if_additionnal_info AS if_additionnal_info, tests.permissions AS permissions, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
             ->join('test_info','test_info.id_test','tests.id_test')
             ->where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
         //->with('themeInfo')
         $permission = $test->permissions;
-        if(! $test ){
+        if(!$test || $test->statut != 1 ){
             $result_url = $this->router->pathFor('accueil' );
             $this->flash->addMessage('invalid_test', $interface_ui['label_notif_no_test']);
             return $response->withStatus(302)->withHeader('Location', $result_url );
@@ -50,7 +50,7 @@ class TestController extends Controller
                     $exclude [] = $user->test_id;
                 }
         }
-        
+
         if(in_array($country_code, ['SN','CI','FR'], true) ){
           $data_mt = $sandbox->getMostTestedCountry($lang, $exclude, $country_code);
           $all_test = $data_mt['most_tested'];
