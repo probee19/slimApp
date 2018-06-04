@@ -1,19 +1,5 @@
 [
     {
-        "id_test": 352,
-        "id_theme": 4,
-        "id_rubrique": 1,
-        "statut": 1,
-        "if_translated": 1,
-        "if_additionnal_info": 0,
-        "has_treatment": 0,
-        "default_lang": "fr",
-        "titre_test": "What does the month of June reserve for you?",
-        "unique_result": 1,
-        "url_image_test": ".\/images-tests\/test_18156678084510011527787611_1.jpeg",
-        "codes_countries": ""
-    },
-    {
         "id_test": 351,
         "id_theme": 4,
         "id_rubrique": 1,
@@ -607,7 +593,7 @@
         "id_rubrique": 1,
         "statut": 1,
         "if_translated": 0,
-        "if_additionnal_info": 0,
+        "if_additionnal_info": 1,
         "has_treatment": 0,
         "default_lang": "fr",
         "titre_test": "Which Congolese artist are you?",
