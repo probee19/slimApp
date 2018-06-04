@@ -202,6 +202,48 @@
                   </section>
               {% endif %}
 
+              <section class="col-sm-6">
+                <legend> Informations additionnelles </legend>
+                <!--div class="checkbox">
+                    <label><input type="checkbox" name="gallery_album" id="gallery_album" value="1" > Possibilité de choix de la photo de profil </label>
+                </div-->
+                <div class="checkbox">
+                    <label><input type="checkbox" name="add_additionnal_infos_test" id="add_additionnal_infos_test" onChange = "showAddInfo();" value="1" > Demander une information additionnelle lors de l'exécution du test </label>
+                </div>
+                <div id="box_add_info" style="display:none;">
+                    <div class="form-group">
+                        <label class="control-label" for="additional_infos" style="width:100%">Information à demander</label>
+                        <select class="select-addionnalt-info form-control" id="additional_infos" name="additional_infos" onChange='showAddInfoLabel();'>
+                          {% for info in additionnal_infos %}
+                            <option value="{{info.id}}" > {{info.label}} </option>
+                          {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div id="box_add_info_label" style="display:none;">
+                    <div class="form-group">
+                        <label class="control-label" for="additional_info_label" style="width:100%">Label pour l'information additionnelle</label>
+                        <input type="text" class="form-control" id="additional_info_label" name="additional_info_label" value="">
+                    </div>
+                </div>
+              </section>
+
+              <section class="col-sm-6" style="margin-top:2em;">
+                <legend> Traitement de l'image </legend>
+                <div class="checkbox">
+                    <label><input type="checkbox" name="add_img_treatment" id="add_img_treatment" onChange = "showImgTreatment();" value="1" > L'image du profil de l'utilisateur sera traitée. </label>
+                </div>
+                <div id="box_add_treatment" style="display:none;">
+                    <div class="form-group">
+                        <label class="control-label" for="treatments" style="width:100%">Information à demander</label>
+                        <select class="select-addionnal-treatment form-control" id="treatments" name="treatments" >
+                          <option value="" >  </option>
+                            <option value="1" > Vieillissement de l'image - CMF </option>
+                        </select>
+                    </div>
+                </div>
+              </section>
+
               {% if theme == 4 %}
                   <section class="col-sm-12">
                       <legend>Edition du thème personnalisé</legend>
@@ -370,10 +412,56 @@
   <script src="https://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
   <script src="{{ domain_url }}/src/js/cropit/jquery.cropit.js" ></script>
 
-  <script>
-      $(".select-pays").select2();
-      $(".select-langs").select2();
-  </script>
+    <script>
+        $(".select-pays").select2();
+        $(".select-langs").select2();
+        $(".select-addionnalt-info").select2();
+
+
+        function showAddInfo(){
+          if($('#add_additionnal_infos_test').is(':checked')){
+            $(".select-addionnalt-info").select2();
+            $('#box_add_info').fadeIn('slow');
+            $('.select-addionnalt-info').select2({
+                 placeholder: 'Choissisez une ou plusieurs options',
+                 width: '100%'
+            });
+            showAddInfoLabel();
+          }
+          else{
+            $('#box_add_info').fadeOut('slow');
+            showAddInfoLabel();
+          }
+        }
+
+        function showAddInfoLabel(){
+          if($('#additional_infos').val() != 0){
+            $('#box_add_info_label').fadeIn('slow');
+          }
+          else{
+            $('#box_add_info_label').fadeOut('slow');
+          }
+        }
+
+
+
+        function showImgTreatment(){
+          if($('#add_img_treatment').is(':checked')){
+            $(".select-addionnal-treatment").select2();
+            $('#box_add_treatment').fadeIn('slow');
+            $('.select-addionnal-treatment').select2({
+                 placeholder: 'Choissisez une transformation',
+                 width: '100%'
+            });
+          }
+          else{
+            $('#box_add_treatment').fadeOut('slow');
+          }
+        }
+
+
+
+    </script>
   {% if theme == 4 %}
           <!-- Modal pour ajouter une image du thème personnalisé-->
           <div id="modalOpenImagePerso" class="modal fade" role="dialog">
