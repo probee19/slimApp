@@ -299,7 +299,7 @@ class Helper
 
       if(in_array($countryCode, ['SN','CI','FR'], true)){
         $choosen_some_tests = array();
-        $array_tests = array(351, 353);
+        $array_tests = array(351, 353, 354);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
