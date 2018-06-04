@@ -51,13 +51,8 @@ class TestController extends Controller
                 }
         }
 
-        if(in_array($country_code, ['SN','CI','FR'], true) ){
-          $data_mt = $sandbox->getMostTestedCountry($lang, $exclude, $country_code);
-          $all_test = $data_mt['most_tested'];
-          $exclude = $data_mt['exclude'];
-        }
-        else
-          $all_test = $sandbox->relatedTests($country_code, $exclude, $lang);
+
+        $all_test = $sandbox->relatedTests($country_code, $exclude, $lang);
         // For Facebook connect
         $helper = $this->fb->getRedirectLoginHelper();
         $pdata = $helper->getPersistentDataHandler();
