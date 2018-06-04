@@ -98,43 +98,10 @@ class HomeController extends Controller
 
   public function chunk($request, $response, $args){
 
-      $url_api_cmf = 'https://api.cmfapp.co.uk/api2/';
-      $url_img = 'https://scontent.fdkr1-1.fna.fbcdn.net/v/t1.0-9/10433155_802047553146370_3916300256747549866_n.jpg?_nc_cat=0&oh=83558d7c92123337f7b094e310a162be&oe=5B6CC8EA';
+    $filepath = "https://funiziuploads.s3.us-east-2.amazonaws.com/uploads/jNV57z29gAnY7gu.jpg";
+    $resultUrl = $this->helper->uploadToS3($filepath, 'images/');
 
-      $temp_file = "./uploads/output".time().".jpg";
-      // Dowloading img in a temp folder
-      file_put_contents($temp_file, file_get_contents($url_img));
-
-      // Create a CURLFile object
-      $cfile = new \CURLFile($temp_file, 'image/jpeg', 'image');
-      //Helper::debug($cfile);
-
-      // Assign POST data
-      $data = array(
-        "action"      => "upload_image",
-        "api_key"     => "4Y8QUjSW1gKu05KxUpNq2N25faD85WRN",
-        'image'       => $cfile
-      );
-
-      $response_cmf = self::curlCmf($url_api_cmf, $data);
-      $session_id = $response_cmf->session_id;
-
-      Helper::debug($response_cmf);
-
-      //
-      $data = array(
-          "action"                => "apply_effects",
-          "api_key"               => "4Y8QUjSW1gKu05KxUpNq2N25faD85WRN",
-          "session_id"            => $session_id,
-          "effects[effect_id]"    => 100,
-          "effects[age]"          => 80,
-          "effects[dont_cache]"   => true
-      );
-      //Helper::debug($data);
-      $response_cmf_final = self::curlCmf($url_api_cmf, $data);
-
-      Helper::debug($response_cmf_final->data->effect_results[0]->output_file);
-
+    $this->helper->debug($resultUrl);
 
 
   }

@@ -118,7 +118,9 @@ class CreateTestController extends Controller
       $has_treatment = 0;
       $test_to_translate = false;
       $statut = 0; $save_done = true;
-      $error_message = ''; $target_dir = './images-tests/'; $target_file = ""; $end = false;
+      $error_message = ''; $target_file = ""; $end = false;
+      //$target_dir = './images-tests/'; 
+      $target_dir = $this->storage_base . '/images/images-tests/';
       $localite = ""; $id_test = 0;
       // Enregitrement des informations générales du test
       $name = 'test_'.$test_owner.str_replace(' ','_',time().'_'.$_POST['rubrique'].'.jpeg');
@@ -233,7 +235,9 @@ class CreateTestController extends Controller
       //Helper::checkCookies();
       $titre_resultat = ' '; $texte_resultat = ' '; $permissions = 0; $unique_result = 0; $genre = 'all'; $if_translated = 0; $has_treatment = 0;
       $if_additionnal_info = 0; $test_to_translate = false;
-    	$id_theme = $_POST['theme']; $error_message = ''; $target_dir = './images-tests/'; $target_file = ""; $end = false;
+    	$id_theme = $_POST['theme']; $error_message = '';
+      $target_dir = $this->storage_base . '/images/images-tests/';;
+      $target_file = ""; $end = false;
     	$localite = "";
 
 
