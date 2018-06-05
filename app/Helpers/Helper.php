@@ -50,16 +50,16 @@ class Helper
             $countryBD = Countries::where('alpha2', '=', (string)$inf->country)->first();
             $countryCode = $inf->country;
             $countryname = $countryBD->langFR;
-            setcookie("countryCode", $countryCode, time()+3600*24*30);
-            setcookie("countryName", $countryname, time()+3600*24*30);
+            //setcookie("countryCode", $countryCode, time()+3600*24*30);
+            //setcookie("countryName", $countryname, time()+3600*24*30);
         }
         else {
             $data = json_decode(file_get_contents('http://geoplugin.net/json.gp?ip='.$ip));
             $countryname = $data->geoplugin_countryName;
             $countryCode = $data->geoplugin_countryCode;
             if($data){
-                setcookie("countryCode", $countryCode, time()+3600*24*30);
-                setcookie("countryName", $countryname, time()+3600*24*30);
+                //setcookie("countryCode", $countryCode, time()+3600*24*30);
+                //setcookie("countryName", $countryname, time()+3600*24*30);
             }
         }
 

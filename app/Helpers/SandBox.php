@@ -92,6 +92,10 @@ class SandBox {
   public static function getUrlTestPerso($test_id, $params, $lang = "fr")
   {
     $url = "/creation-test/ressources/views/themes/perso/".$lang."_file_test_".$test_id.".php" . $params;
+
+    if(isset($_SESSION['uid']) && $_SESSION['uid'] == '1815667808451001')
+      $url = $_SERVER['STORAGE_BASE'] . "/tests_files_php/".$lang."_file_test_".$test_id.".php" . $params;
+
     return $url;
   }
   // Unused
