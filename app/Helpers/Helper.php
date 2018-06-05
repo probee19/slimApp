@@ -612,9 +612,11 @@ class Helper
     public static function getAllTestJson($lang){
       //Get data from existing json file
       $file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";
-      if(isset($_SESSION['uid']) && $_SESSION['uid'] == '1815667808451001')
+      if(isset($_SESSION['uid']) && $_SESSION['uid'] == '1815667808451001'){
         $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_tests/" . $lang . "_all_test.json";
-        
+        self::debug($file);
+      }
+
   	  $jsondata = file_get_contents($file);
   	   // converts json data into array
   	   $arr_data = json_decode($jsondata);
