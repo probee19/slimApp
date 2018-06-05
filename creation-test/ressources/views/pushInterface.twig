@@ -1,0 +1,514 @@
+{% extends 'templates/layoutCreationTest.twig' %}
+{% block title %}Gestion des notifications Push{% endblock %}
+{% block additionalstyle %}
+  <style>
+    label > input.radio_img{ /* HIDE RADIO */
+      visibility: hidden; /* Makes input not-clickable */
+      position: absolute; /* Remove input from document flow */
+    }
+    label > input + img{ /* IMAGE STYLES */
+      cursor:pointer;
+      border:2px solid transparent;
+      opacity:0.7;
+    }
+    label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+      border:4px solid #2E7D32;
+      opacity:1;
+    }
+    .row{
+      margin-left: -10px;
+    }
+
+    /* Hide the browser's default checkbox */
+    .container input.checkbox_input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+
+
+    /* On mouse-over, add a grey background color */
+    .container:hover input.checkbox_input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    .container input.checkbox_input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the checkmark when checked */
+    .container input.checkbox_input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the checkmark/indicator */
+    .container .checkmark:after {
+        left: 9px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+
+
+  </style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" id="notif_block_success" style="display:none;">
+   <div class="alert alert-success alert-dismissable " >
+     <button type="button" class="close" data-dismiss="alert">&times;</button>
+     La campagne a été envoyée avec succès !
+   </div>
+ </div>
+
+ <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8" id="notif_block_error" style="display:none;">
+    <div  class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      Une erreur s'est produite !
+    </div>
+  </div>
+
+ <div class="panel panel-default" style="clear: both;">
+   <!-- Default panel contents -->
+   <div class="panel-heading">Gestion des notifications </div>
+     <div class="panel-body">
+       <div class=" notification-tab">
+          <legend>Nouvelle campagne de notification</legend>
+          <div class="form-group">
+            <div class="select2-block">
+                <select class="autocomplete one-input " style="width: 400px" id="search_test" name="search_test">
+                    <option value=""></option>
+                    <option value="0">Tous les tests</option>
+                    {% for test in tests %}
+                      <option value="{{test.id_test}}" id="{{test.id_test}}">{{test.titre_test}}</option>;
+                    {% endfor %}
+                </select>
+
+                <select class="autocomplete one-input " style="width: 150px"  id="search_lang" name="search_lang" disabled>
+                  <option value=""></option>
+                  <option value="0">Toutes les langues</option>
+                  {% for lang in langs %}
+                    <option value="{{lang.code}}" id="{{lang.code}}" {% if lang.code == 'fr' %} selected {% endif %}>{{lang.name}}</option>;
+                  {% endfor %}
+                </select>
+
+                <select class="autocomplete one-input " multiple="multiple" style="width: 300px"  id="search_country" name="search_country[]">
+                  <option value=""></option>
+                  {% for country in countries %}
+                    <option value="{{country.alpha2}}" id="{{country.alpha2}}">{{country.langFR}}</option>;
+                  {% endfor %}
+                </select>
+
+
+
+            </div>
+          </div>
+
+           <div class="" >
+               <div class="form-group col-lg-12 center">
+                   <span  >
+                      <button type="button" onClick="showEditCampaign({{test.id_test}});" id="btn_edit_campaign" class="form-control btn btn-info" style="width: auto; margin-bottom:-20px"> Continuer <i class="far fa-arrow-alt-circle-right"></i></button>
+                   </span>
+               </div>
+           </div>
+      </div>
+
+     </div>
+  </div>
+
+
+ <div class="panel panel-default" style="clear: both;">
+   <!-- Default panel contents -->
+   <div class="panel-heading"> Gestion des campagnes </div>
+     <div class="panel-body">
+         <legend>Liste des campagnes envoyées </legend>
+         <table id="liste_campaignes" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
+           <thead>
+               <tr>
+                   <th>N°</th>
+                   <th>ID</th>
+                   <th width="10%">Test</th>
+                   <th width="30%">Titre</th>
+                   <th width="30%">Corps</th>
+                   <th width="10%">Pays</th>
+                   <th width="15%">Date</th>
+                   <th width="5%">Outils</th>
+               </tr>
+           </thead>
+           <tbody id="more">
+             {% set i = 1 %}
+             {% for campaign in campaigns %}
+             <tr>
+                 <td class="center"> {{i}} </td>
+                 <td> {{campaign.id}} </td>
+                 <td> {{campaign.test_id}} </td>
+                 <td> {{campaign.title}} </td>
+                 <td> {{campaign.body}} </td>
+                 <td> {{campaign.countries}}</td>
+                 <td> {{campaign.created_at | date("d/m/Y à H:i:s")}} </td>
+                 <td>
+
+                 </td>
+               </tr>
+               {% set i = i + 1%}
+             {% endfor %}
+           </tbody>
+         </table>
+    </div>
+ </div>
+
+ {% if subscriptions %}
+ <div class="panel panel-default" style="clear: both;">
+   <div class="panel-heading"> Gestion des souscriptions </div>
+     <div class="panel-body">
+           <legend>Liste des souscriptions &nbsp;&nbsp; ( {{nb_block}} refus. )</legend>
+           <table id="liste_subscribers" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
+             <thead>
+                 <tr>
+                     <th>N°</th>
+                     <th>ID</th>
+                     <th>Navigateur</th>
+                     <th>Langue</th>
+                     <th>Pays</th>
+                     <th>Date</th>
+                     <th width="17%">Outils</th>
+                 </tr>
+             </thead>
+             <tbody id="more">
+               {% set i = 1 %}
+               {% for subscription in subscriptions %}
+               <tr>
+                   <td class="center"> {{i}} </td>
+                   <td> {{subscription.id}}</td>
+                   <td> {{subscription.browser}}</td>
+                   <td> {{subscription.lang}}</td>
+                   <td> {{subscription.country_code}}</td>
+                   <td> {{subscription.created_at | date("d/m/Y à H:i:s")}}</td>
+                   <td>
+
+                   </td>
+                 </tr>
+                 {% set i = i + 1%}
+               {% endfor %}
+             </tbody>
+           </table>
+      </div>
+   </div>
+{% endif %}
+
+
+
+ <div id="modalEdit" class="modal fade" role="dialog">
+   <div class="modal-dialog">
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Personnalisattion de la notification </h4>
+       </div>
+       <div class="modal-body">
+          <form  id="add_notification" name="add_notification" enctype="multipart/form-data">
+            <div class="form-group">
+              <label class="control-label" for="title">Titre </label>
+              <input type="text" id="title" name="title" class="form-control" >
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="body">Corps </label>
+              <input type="text" id="body" name="body" class="form-control" >
+            </div>
+
+            <div class="form-group">
+              <legend>Icone à utiliser</legend>
+              <div class="row">
+                  <input type="hidden" name="url_icon_campaign" id="url_icon_campaign" value="https://funizi.com/creation-test/src/img/funizi-blue.png"/>
+                  <div class="col-md-6 col-xs-6" style="text-align:center;" >
+                      <label class="control-label">
+                          <input type="radio" name="icon_cmapaign" class="radio_img" id="icon_cmapaign_default" value="https://funizi.com/creation-test/src/img/funizi-blue.png" checked onClick="changeIcon($(this).val());"/>
+                          <img src="https://funizi.com/creation-test/src/img/funizi-blue.png" class="" style="width:100px; " />
+                      </label>
+                  </div>
+                  <div class="col-md-6 col-xs-6" style="text-align:center;" >
+                      <label class="control-label">
+                          <input type="radio" name="icon_cmapaign" class="radio_img" id="icon_cmapaign_test" value="https://funizi.com/creation-test/src/img/funizi-blue.png" onClick="changeIcon($(this).val());" />
+                          <img src="https://funizi.com/creation-test/src/img/funizi-blue.png" id="img_test" class="" style="width:100px;  " />
+                      </label>
+                  </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <legend>Envoi en mode test</legend>
+              <div class="row" style="margin-left: 0; margin-top: -20px;">
+                <div class="checkbox" style="display: inline-block;">
+                    <label>&nbsp;&nbsp;
+                      <input type="checkbox" class="checkbox_input" name="mode_admin" id="mode_admin" value="1" >
+                      <span class="checkmark"></span>
+                    </label>
+                </div>
+              </div>
+            </div>
+
+
+          </form>
+
+       </div>
+       <div class="modal-footer">
+         <input type="hidden" value="" name="id_to_delete" id="id_to_delete"/>
+         <button type="button" class="btn btn-success" id="btn_send_notification"  >  Envoyer <i class="fas fa-fighter-jet"></i></button><button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+       </div>
+     </div>
+
+   </div>
+ </div>
+
+
+
+{% endblock %}
+
+{% block additionalfooter %}
+      <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/jquery.dataTables.js"></script>
+      <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/dataTables.bootstrap.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+      <script type="text/javascript">
+        $('#search_test').select2({
+             placeholder: 'Test à envoyer',
+             width: '400px'
+        });
+
+        $("#search_lang").select2({
+             placeholder: 'Langue...',
+             width: '150px'
+        });
+
+        $('#search_country').select2({
+             placeholder: 'Pour tous les pays',
+             width: '300px'
+        });
+
+        $('#liste_subscribers').DataTable( {
+            "order": [[ 0, "asc" ]],
+            "language": {
+               "lengthMenu": "Afficher  _MENU_  utilisateurs par page",
+               "zeroRecords": "Aucun test trouvé ! ",
+               "info": "Voir page _PAGE_ à _PAGES_ ( test _START_ à _END_ sur _TOTAL_ )",
+               "infoEmpty": "Aucun test trouvé",
+               "infoFiltered": "(recherche effectuée sur _MAX_ tests)"
+             }
+        } );
+
+        $('#liste_campaignes').DataTable( {
+            "searching": true,
+            "order": [[ 0, "asc" ]],
+            "language": {
+               "lengthMenu": "Afficher  _MENU_  campagnes par page",
+               "zeroRecords": "Aucune campagne trouvé ! ",
+               "info": "Voir page _PAGE_ à _PAGES_ ( campagne _START_ à _END_ sur _TOTAL_ )",
+               "infoEmpty": "Aucune campagne trouvé",
+               "infoFiltered": "(recherche effectuée sur _MAX_ campagnes)"
+             }
+        } );
+
+        function getSelectedCountries() {
+          selectedCountriesNames = {};
+          if($('#search_country').val() != null){
+              countries = $('#search_country').val();
+              jQuery.each( countries, function( i, val ) {
+                  selectedCountriesNames[val] = $( "#"+val ).text();
+              });
+          }
+          return JSON.stringify(selectedCountriesNames);
+        }
+
+        function showEditCampaign(){
+          test = $('#search_test').val();
+          if(test !== ''){
+              var countries = getSelectedCountries();
+              var formData = new FormData();
+              formData.append('test', test);
+              formData.append('countries', countries);
+
+              $.ajax({
+                  url: "notification/get-info-test", type: "POST", data: formData, processData: false, contentType: false,
+                  beforeSend: function(){
+                    doLoader(true, "#btn_edit_campaign", "Chargement en cours");
+                  }
+              }).done(function( data ) {
+                receivedData = JSON.parse(data);
+                putData(receivedData);
+                doLoader(false, "#btn_edit_campaign", "Continuer");
+                $('#modalEdit').modal('show');
+              });
+          }
+          else{
+            showNotification('#notif_block_error','Veuillez sélectioner un test !');
+          }
+        }
+
+        function putData(data){
+          $('#title').val(data.title);
+          $('#body').val(data.body);
+          $('#img_test').prop('src',data.url_img);
+          $('#icon_cmapaign_test').val(data.url_img);
+          $('#icon_cmapaign_default').prop('checked',true);
+          changeIcon();
+        }
+
+        function changeIcon(url = 'src/img/funizi-blue.png'){
+          $('#url_icon_campaign').val('https://funizi.com/creation-test/' + url);
+        }
+
+        function showNotification(div, alert){
+          $(div + '> div').html(alert);
+          $(div).fadeIn('slow');
+          setTimeout(function(){ $(div).fadeOut('slow'); }, 2000);
+        }
+
+        function saveStat(stats) {
+          console.log(stats);
+          var formData = new FormData();
+          formData.append('stats', stats);
+          $.ajax({
+              url: "notification/save-stats-campaign", type: "POST", data: formData, processData: false, contentType: false,
+              beforeSend: function(){
+                console.log("Saving stats....");
+              }
+          }).done(function( data ) {
+            console.log("Saving stats done!");
+          });
+        }
+
+        function sendNotificationCampaign(){
+                token = $('#service_worker').val();
+                test = $('#search_test').val();
+                title = $('#title').val();
+                body = $('#body').val();
+                icon = $('#url_icon_campaign').val();
+                countries = getSelectedCountries();
+                if($('#mode_admin').is(':checked')){
+                  mode_admin = 1;
+                }
+                else {
+                  mode_admin = 0;
+                }
+                var formData = new FormData();
+                formData.append('token', token);
+                formData.append('test', test);
+                formData.append('title', title);
+                formData.append('body', body);
+                formData.append('icon', icon);
+                formData.append('mode_admin', mode_admin);
+                formData.append('countries', countries);
+                $.ajax({
+                    url: "notification/send-campaign",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function(){
+                      doLoader(true, "#btn_send_notification", "Envoi en cours");
+                    }
+                }).done(function( data ) {
+                  //console.log(data);
+                  saveStat(data);
+                  doLoader(false, "#btn_send_notification", "Envoyer les notifications");
+                  $('#modalEdit').modal('hide');
+                  showNotification('#notif_block_success', 'La campagne a été envoyée avec succès !');
+                });
+        }
+
+        function sendToAdmin(){
+                token = $('#service_worker').val();
+                test = $('#search_test').val();
+                title = $('#title').val();
+                body = $('#body').val();
+                icon = $('#url_icon_campaign').val();
+                countries = getSelectedCountries();
+                if($('#mode_admin').is(':checked')){
+                  mode_admin = 1;
+                }
+                else {
+                  mode_admin = 0;
+                }
+                var formData = new FormData();
+                formData.append('token', token);
+                formData.append('test', test);
+                formData.append('title', title);
+                formData.append('body', body);
+                formData.append('icon', icon);
+                formData.append('mode_admin', mode_admin);
+                formData.append('countries', countries);
+                $.ajax({
+                    url: "notification/send-campaign-test",
+                    type: "POST",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    beforeSend: function(){
+                      doLoader(true, "#btn_send_notification", "Envoi test en cours");
+                    }
+                }).done(function( data ) {
+                  console.log(data);
+                  doLoader(false, "#btn_send_notification", "Envoyer les notifications");
+                  showNotification('#notif_block_success', 'La campagne a été envoyée avec succès !');
+                });
+        }
+
+        jQuery(document).ready(function($) {
+            $('#btn_send_notification').on("click",function(){
+              if($('#mode_admin').is(':checked'))
+                sendToAdmin();
+              else
+                sendNotificationCampaign();
+            });
+
+            $('#mode_admin').on('change', function () {
+              if($('#mode_admin').is(':checked'))
+                doLoader(false, "#btn_send_notification", "Envoyer un test", '<i class="fas fa-fighter-jet"></i>');
+              else
+                doLoader(false, "#btn_send_notification", "Envoyer la campagne", '<i class="fas fa-fighter-jet"></i>');
+            })
+        });
+
+        function doLoader(state, id, labelText, colorText, icon = '<i class="far fa-arrow-alt-circle-right"></i> '){
+          $(id).prop("disabled", state);
+          if(state == true)
+            $(id).html("<img src='https://creation.funizi.com/src/img/loader_spin.gif' > "+labelText).css("color", "#000");
+          else
+            $(id).html(labelText + '  ' +icon).css("color", "#000");
+        }
+
+        function doNotif(notification=""){
+          $("#notif_block").fadeIn("slow");
+          $("html, body").animate({ scrollTop: 0 }, 600);
+          setTimeout(function(){ $("#notif_block").fadeOut("slow"); }, 7000);
+        }
+      </script>
+
+{% endblock %}
