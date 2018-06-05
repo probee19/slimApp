@@ -271,6 +271,8 @@ class CreateTestController extends Controller
   			$name = 'test_'.$test_owner.str_replace(' ','_',time().'_'.$_POST['rubrique'].'.jpeg');
   			$uploadPath = $target_dir. $name;
   			self::decode($_POST['img_test_base_64'], $uploadPath);
+        $this->helper->uploadToS3($uploadPath, 'images/images-tests/');
+
         if($_POST['default_lang'] == $_POST['langs_edit'])
             $new_data = [
               "titre_test"              =>  $_POST['titre'],
@@ -357,6 +359,7 @@ class CreateTestController extends Controller
   					$name = 'resultat_'.$i.'_'.time().'_'.str_replace(' ','_',$_POST['idTest'].'.jpeg');
   					$uploadPath = $target_dir. $name;
   					if(self::decode($_POST['img_resultat_base_64_'.$i], $uploadPath)){
+              $this->helper->uploadToS3($uploadPath, 'images/images-tests/');
   						// Mise à jour des informations du résultat
               $new_data_result = [
                 "titre_resultat"  =>  $titre_resultat,
@@ -377,6 +380,7 @@ class CreateTestController extends Controller
   					$name = 'resultat_'.$i.'_'.time().'_'.str_replace(' ','_',$_POST['idTest'].'.jpeg');
   					$uploadPath = $target_dir. $name;
   					if(self::decode($_POST['img_resultat_base_64_'.$i], $uploadPath)){
+              $this->helper->uploadToS3($uploadPath, 'images/images-tests/');
               $data_new_resultat = [
                 "id_test"         =>  $_POST['idTest'],
                 "titre_resultat"  =>  $titre_resultat,

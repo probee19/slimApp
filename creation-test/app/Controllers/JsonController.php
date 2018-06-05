@@ -75,10 +75,11 @@ class JsonController extends Controller
             }
           }
         $data_best_tests = Helper::array_msort($best_tests, array('taux_share'=>SORT_DESC, 'nb_test_done'=>SORT_DESC));
-        $json = fopen("../ressources/views/json_files/best_tests/".$lang->code."_best_tests.json", "w+");
+        $filepath = "../ressources/views/json_files/best_tests/".$lang->code."_best_tests.json";
+        $json = fopen($filepath, "w+");
         $data_json = json_encode($data_best_tests, JSON_PRETTY_PRINT);
         fputs($json, $data_json);
-
+        $this->helper->uploadToS3($filepath, 'json_files/best_tests/');
       }
 
       return 'Fichiers mis à jours avec succès!';
@@ -110,9 +111,10 @@ class JsonController extends Controller
         }
         $all_tests = json_encode($all_tests, JSON_PRETTY_PRINT);
 
-        $json = fopen("../ressources/views/json_files/highlights/".$lang."_highlights.json", "w+");
-
+        $filepath = "../ressources/views/json_files/highlights/".$lang."_highlights.json";
+        $json = fopen($filepath, "w+");
         fputs($json, $all_tests);
+        $this->helper->uploadToS3($filepath, 'json_files/highlights/');
     }
     else {
       $langs = Language::where([['status','=','1'],['translated','=','1']])->get();
@@ -136,9 +138,10 @@ class JsonController extends Controller
           ];
         }
         $all_tests = json_encode($all_tests, JSON_PRETTY_PRINT);
-
-        $json = fopen("../ressources/views/json_files/highlights/".$lang->code."_highlights.json", "w+");
+        $filepath = "../ressources/views/json_files/highlights/".$lang->code."_highlights.json";
+        $json = fopen($filepath, "w+");
         fputs($json, $all_tests);
+        $this->helper->uploadToS3($filepath, 'json_files/highlights/');
       }
     }
     return 'Fichiers des tests promus mis à jours avec succès!';
@@ -174,7 +177,7 @@ class JsonController extends Controller
       $filepath = "../ressources/views/json_files/all_tests/".$lang->code."_all_test.json";
       $json = fopen($filepath, "w+");
       fputs($json, $all_tests);
-      $this->helper->uploadToS3($filepath, 'uploads/json_files/all_tests/');
+      $this->helper->uploadToS3($filepath, 'json_files/all_tests/');
 
     }
     return "Mise à jours des fichiers effectuée !";
