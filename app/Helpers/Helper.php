@@ -410,7 +410,8 @@ class Helper
     }
 
     public static function getLovedTests($countryCode, $exclude, $lang, $total = 3){
-      $file = "ressources/views/json_files/best_tests/".$lang."_best_tests.json";
+      //$file = "ressources/views/json_files/best_tests/".$lang."_best_tests.json";
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/best_tests/" . $lang . "_best_tests.json";
       $jsondata = file_get_contents($file);
       $arr_data = json_decode($jsondata);
       $alltests = array();
@@ -460,8 +461,7 @@ class Helper
 
     }
 
-    public static function getSomeTests($countryCode, $array_tests, $exclude, $lang)
-    {
+    public static function getSomeTests($countryCode, $array_tests, $exclude, $lang){
       // Récuperation des tests pour langue $lang;
       $tests_from_json = self::getAllTestJson($lang);
       //krsort($tests_from_json);
@@ -481,8 +481,7 @@ class Helper
     }
 
     // Obtention des tests locaux
-    public static function getLocalTests($countryCode, $exclude, $lang, $total = 5)
-    {
+    public static function getLocalTests($countryCode, $exclude, $lang, $total = 5){
       // Récuperation des tests pour langue $lang;
       $tests_from_json = self::getAllTestJson($lang);
       //krsort($tests_from_json);
@@ -516,12 +515,13 @@ class Helper
       return $data;
 
     }
+
     // Obtention de la liste des langues activées
-    public static function getActivatedLanguages()
-    {
+    public static function getActivatedLanguages(){
       $all_lang = Language::where('status','=',1)->get();
       return $all_lang;
     }
+
     // Obtention de la langue par défaut du Navigateur
     public static function getLangBrowser($lang=""){
       if($lang == ""){
@@ -588,6 +588,7 @@ class Helper
 
     public static function getTestFromJson($file = "ressources/views/all_test.json"){
       //Get data from existing json file
+       //$file = $_SERVER['STORAGE_BASE'] . "/json_files/all_test.json";
   	   $jsondata = file_get_contents($file);
   	   // converts json data into array
   	   $arr_data = json_decode($jsondata);
@@ -611,11 +612,8 @@ class Helper
 
     public static function getAllTestJson($lang){
       //Get data from existing json file
-      $file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";
-      if(isset($_SESSION['uid']) && $_SESSION['uid'] == '1815667808451001'){
-        $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_tests/" . $lang . "_all_test.json";
-        self::debug($file);
-      }
+      //$file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_tests/" . $lang . "_all_test.json";
 
   	  $jsondata = file_get_contents($file);
   	   // converts json data into array
@@ -640,10 +638,10 @@ class Helper
        return $alltest;
     }
 
-    public function getMostTestedCountry($lang, $exclude, $countryCode, $total = 24)
-    {
+    public function getMostTestedCountry($lang, $exclude, $countryCode, $total = 24){
       if(strlen($lang) > 2) $lang = 'en'; //
-      $file = "ressources/views/json_files/countries/".$lang."_".$countryCode."_most_tested.json";
+      //$file = "ressources/views/json_files/countries/".$lang."_".$countryCode."_most_tested.json";
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/countries/" . $lang ."_".$countryCode."_most_tested.json";
       $jsondata = file_get_contents($file);
        // converts json data into array
        $arr_data = json_decode($jsondata);
@@ -671,7 +669,9 @@ class Helper
 
     public static function getHighlightsFromJson($lang){
       //Get data from existing json file
-  	   $jsondata = file_get_contents("ressources/views/json_files/highlights/".$lang."_highlights.json",true);
+       $file = $_SERVER['STORAGE_BASE'] . "/json_files/highlights/" . $lang . "_highlights.json";
+       $jsondata = file_get_contents($file, true);
+       //$jsondata = file_get_contents("ressources/views/json_files/highlights/".$lang."_highlights.json",true);
   	   // converts json data into array
   	   $arr_data = json_decode($jsondata);
        $alltest = array();
