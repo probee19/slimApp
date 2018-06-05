@@ -294,7 +294,7 @@ class Helper
       return $tests;
     }
 
-    public function relatedTests($countryCode, $exclude, $lang, $total = 24){
+    public function relatedTests($countryCode, $exclude, $lang, $total = 32){
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
       if(in_array($countryCode, ['SN','CI','FR'], true)){
@@ -305,21 +305,20 @@ class Helper
           foreach ($choosen_some_tests as $test)
             $exclude[] = $test['id_test'];
 
-          $nb_restant = 24 - count($choosen_some_tests);
+          $nb_restant = $total - count($choosen_some_tests);
           $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
 
-          if(isset($_SESSION['uid']) && $_SESSION['uid'] == '1815667808451001'){
+          //
             $best_local_test = self::getBestLocalTest($lang, $exclude, $countryCode, $nb_restant);
             self::debug($best_local_test);
             if(count($best_local_test) >= 1)
               foreach ($best_local_test as $test)
                 $exclude[] = $test['id_test'];
-
+            $nb_restant = $nb_restant - count($best_local_test);
             $choosen_some_tests   = array_merge($choosen_some_tests, $best_local_test);
             $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
+          //
 
-
-          }
 
           if($choosen_some_tests != null)
             $alltests_total   = array_merge($choosen_some_tests, $alltests_total);

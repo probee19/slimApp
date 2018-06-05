@@ -72,14 +72,14 @@ align-items: center; /* align vertical */ }
           <div class='main'>
       
 <?php
-$message = array("Thanks to good deeds, you will receive money you do not expect and good news. You will win on all fronts.",
-"You will have a long trip with two close friends. Along the way, you will meet new faces that will have a huge impact on your life in 2018. Exciting.",
-"A huge change in the last week of the month will get you to focus on your goals for next year. You will plan the greatest adventure of your life.",
-"You will meet the love of your life, but not the way you imagine it. A party at a friend\'s house will trigger the events.");
+$message = array("Graças a boas ações, você receberá dinheiro que não espera e boas notícias. Você vai ganhar em todas as frentes.",
+"Você terá uma longa viagem com dois amigos próximos. Ao longo do caminho, você conhecerá novos rostos que terão um enorme impacto em sua vida em 2018. Emocionante.",
+"Uma grande mudança na última semana do mês fará com que você se concentre em suas metas para o próximo ano. Você planejará a maior aventura da sua vida.",
+"Você vai encontrar o amor da sua vida, mas não do jeito que você imagina. Uma festa na casa de um amigo acionará os eventos.");
 shuffle($message);
 ?>
 
-<div id="titre" class="titre">What does the month of June reserve for you?</div>
+<div id="titre" class="titre">O que o mês de junho reserva para você?</div>
 <img src="http://creation.funizi.com/images-theme-perso/1509379734.jpg" id="background"> 
 
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
