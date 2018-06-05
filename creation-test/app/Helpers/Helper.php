@@ -487,7 +487,7 @@ class Helper
 
       fputs($temp_file_php, $begin_gabarit. "\n" . $code_php . "\n" . $end_gabarit);
       //fputs($temp_file_php, $begin_gabarit. "<style>".$css."</style> \n" . "<script>".$js."</script> \n" . $code_php . $end_gabarit);
-      $this->uploadToS3($path . $url_temp_file_php.".php", 'tests_files_php/');
+      self::uploadToS3($path . $url_temp_file_php.".php", 'tests_files_php/');
       return $url_temp_file_php;
     }
 
