@@ -309,8 +309,16 @@ class Helper
           $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
 
           if(isset($_SESSION['uid']) && $_SESSION['uid'] == '1815667808451001'){
-            $alltests_total = self::getBestLocalTest($lang, $exclude, $countryCode, $nb_restant);
-            self::debug($alltests_total);
+            $best_local_test = self::getBestLocalTest($lang, $exclude, $countryCode, $nb_restant);
+            self::debug($best_local_test);
+            if(count($best_local_test) >= 1)
+              foreach ($best_local_test as $test)
+                $exclude[] = $test['id_test'];
+
+            $choosen_some_tests   = array_merge($choosen_some_tests, $best_local_test);
+            $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
+
+
           }
 
           if($choosen_some_tests != null)
