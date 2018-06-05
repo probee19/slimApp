@@ -147,6 +147,60 @@ class JsonController extends Controller
     return 'Fichiers des tests promus mis à jours avec succès!';
   }
 
+  // Création des fichiers JSON des tests les plus effectués pour chaque langue activée
+  public function setLovedTestJSONForCountry($request, $response, $arg)
+  {
+    //$start = date_create('2018-03-21');
+    //$end = date_create('2018-06-06');
+    $start = date_create($_GET['start']);
+    $start = date_format($start, 'Y-m-d H:i:s');
+    $end = date_create($_GET['end']);
+    $end = date_format($end, 'Y-m-d H:i:s');
+
+    $country_get = $_GET['cc'];
+
+    // Data For Best Tests
+      $tests = UserTest::selectRaw('users.country_code AS countryCode, tests.id_test AS test_id, tests.default_lang AS default_lang, tests.if_translated AS if_translated, tests.if_additionnal_info AS if_additionnal_info, tests.codes_countries AS codes_countries, tests.url_image_test AS url_image_test, tests.unique_result AS unique_result, tests.statut AS statut, tests.id_theme AS id_theme, tests.id_rubrique AS id_rubrique, tests.titre_test AS titre_test, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT user_id) AS nb_test_unique_done')
+        ->join('users','users.id','=','users_tests.user_id')
+        ->join('tests','tests.id_test','=','users_tests.test_id')
+        ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"],['users.country_code','=',$country_get]])
+        ->groupBy('users_tests.test_id')
+        ->orderBy('nb_test_done','DESC')
+        ->get();
+
+      $langs = Language::where([['status','=','1'],['translated','=','1']])->get();
+      foreach ($langs as $lang) {
+        $most_tested = []; $nb_test_total = 0;
+        foreach ($tests as $test) {
+          if($test->if_translated == 1 || $test->default_lang == $lang->code ){
+            $info_test = TestInfo::where([['id_test','=',$test->test_id],['lang','=',$lang->code]])->first();
+            $most_tested [] = [
+              "id_test"               =>  $test->test_id,
+              "id_theme"              =>  $test->id_theme,
+              "id_rubrique"           =>  $test->id_rubrique,
+              "statut"                =>  $test->statut,
+              "unique_result"         =>  $test->unique_result,
+              "if_translated"         =>  $test->if_translated,
+              "url_image_test"        =>  $test->url_image_test,
+              "unique_result"         =>  $test->unique_result,
+              "if_additionnal_info"   =>  $test->if_additionnal_info,
+              "codes_countries"       =>  $test->codes_countries,
+              "nb_test_done"          =>  $test->nb_test_done,
+              "nb_test_unique_done"   =>  $test->nb_test_unique_done,
+              "titre_test"            =>  $info_test->titre_test,
+            ];
+          }
+          $nb_test_total += $test->nb_test_done;
+          $country = $test->countryCode;
+        }
+        $json = fopen("../ressources/views/json_files/countries/".$lang->code."_".$country."_most_tested.json", "w+");
+        $data_json = json_encode($most_tested, JSON_PRETTY_PRINT);
+        fputs($json, $data_json);
+        $this->helper->uploadToS3($filepath, 'json_files/countries/');
+      }
+      $this->helper->debug(count($tests));
+      return 'Fichiers mis à jours avec succès!';
+  }
   // Mise à jour des fichiers Json la liste des tests pour chaque langue activée
   public function setTestsJSON($request, $response, $arg){
     $langs = Language::where([['status','=','1'],['translated','=','1']])->get();

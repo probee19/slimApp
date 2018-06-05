@@ -307,8 +307,15 @@ class Helper
 
           $nb_restant = 24 - count($choosen_some_tests);
           $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
+
+          if(isset($_SESSION['uid']) && $_SESSION['uid'] == '1815667808451001'){
+            $alltests_total = self::getBestLocalTest($lang, $exclude, $countryCode, $nb_restant);
+            self::debug($alltests_total);
+          }
+
           if($choosen_some_tests != null)
             $alltests_total   = array_merge($choosen_some_tests, $alltests_total);
+
       }
       else {
         // Selection de quelques tests
@@ -326,14 +333,6 @@ class Helper
         if(count($choosen_tests_with_img_treatment) >= 1)
           foreach ($choosen_tests_with_img_treatment as $test)
             $exclude[] = $test['id_test'];
-
-
-        /*
-        $choosen_tests_with_add_info = self::getTestsWithAdditionnalInfos($countryCode, $exclude, $lang, 1);
-        if(count($choosen_tests_with_add_info) >= 1)
-          foreach ($choosen_tests_with_add_info as $test)
-            $exclude[] = $test['id_test'];
-        */
 
         // Selection d'un test parmi les 5 denières créations
         $new_tests = self::getLastTests($countryCode, $exclude, $lang, 5);
@@ -372,7 +371,6 @@ class Helper
         if($choosen_some_tests != null)
           $tests_to_discover   = $choosen_some_tests;
 
-
         if($choosen_tests_with_img_treatment != null)
           $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_img_treatment);
 
@@ -381,7 +379,6 @@ class Helper
         $tests_with_add_info = array();
         if($choosen_tests_with_add_info != null)
           $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_add_info);
-
 
         $tests_to_discover   = array_merge($tests_to_discover, $besttests);
 
@@ -637,6 +634,37 @@ class Helper
 
        return $alltest;
     }
+
+
+    public function getBestLocalTest($lang, $exclude, $countryCode, $total = 24){
+      if(strlen($lang) > 2) $lang = 'en'; //
+      //$file = "ressources/views/json_files/countries/".$lang."_".$countryCode."_most_tested.json";
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/countries/" . $lang ."_".$countryCode."_most_tested.json";
+      $jsondata = file_get_contents($file);
+       // converts json data into array
+       $arr_data = json_decode($jsondata);
+       $most_tested = array();
+
+       foreach ($arr_data as $test) {
+         if(!in_array($test->id_test, $exclude, true) && (strpos($test->codes_countries, $countryCode) != false ) && ++$nb_taken <= $total){
+           $most_tested[$test->id_test] = [
+             'url_image_test' => $test->url_image_test,
+             'id_test'        => $test->id_test,
+             'titre_test'     => stripslashes("$test->titre_test")
+           ];
+           $exclude[] = $test->id_test;
+         }
+       }
+       shuffle($most_tested);
+      $data = [
+        'exclude'       =>  $exclude,
+        'most_tested'  =>  $most_tested
+      ];
+
+      //return $data;
+      return $data['most_tested'];
+    }
+
 
     public function getMostTestedCountry($lang, $exclude, $countryCode, $total = 24){
       if(strlen($lang) > 2) $lang = 'en'; //
