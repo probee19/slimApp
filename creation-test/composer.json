@@ -9,7 +9,8 @@
         "facebook/graph-sdk": "5.6.1",
         "grabzit/grabzit": "3.2.2",
         "illuminate/events": "v5.4.27",
-        "bes/mobiledetect-twig-extension": "v1.0"
+        "bes/mobiledetect-twig-extension": "v1.0",
+         "aws/aws-sdk-php": "^3.61"
     },
     "autoload": {
       "psr-4": {
