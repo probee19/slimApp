@@ -91,12 +91,7 @@ class ResultController extends Controller
                 foreach ($top_tests as $top_test) {
                   $exclude [] = $top_test["id_test"];
                 }
-                if(in_array($country_code, ['SN','CI','FR'], true) ){
-                  $data_mt = $helper->getMostTestedCountry($lang, $exclude, $country_code);
-                  $all_test = $data_mt['most_tested'];
-                  $exclude = $data_mt['exclude'];
-                }
-                else
+
                 $all_test = $helper->relatedTests($country_code, $exclude, $lang);
             }
             else{
@@ -113,12 +108,7 @@ class ResultController extends Controller
                 foreach ($top_tests as $top_test) {
                   $exclude [] = $top_test["id_test"];
                 }
-                if(in_array($country_code, ['SN','CI','FR'], true) ){
-                  $data_mt = $helper->getMostTestedCountry($lang, $exclude, $country_code);
-                  $all_test = $data_mt['most_tested'];
-                  $exclude = $data_mt['exclude'];
-                }
-                else
+                 
                 $all_test = $helper->relatedTests($country_code, $exclude, $lang);
             }
             $testId = $test->test_id;

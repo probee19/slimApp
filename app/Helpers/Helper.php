@@ -660,7 +660,8 @@ class Helper
         'most_tested'  =>  $most_tested
       ];
 
-       return $data;
+      //return $data;
+      return $data['most_tested'];
     }
 
     public static function getHighlightsFromJson($lang){
