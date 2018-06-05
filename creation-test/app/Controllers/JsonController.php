@@ -193,7 +193,8 @@ class JsonController extends Controller
           $nb_test_total += $test->nb_test_done;
           $country = $test->countryCode;
         }
-        $json = fopen("../ressources/views/json_files/countries/".$lang->code."_".$country."_most_tested.json", "w+");
+        $filepath = "../ressources/views/json_files/countries/".$lang->code."_".$country."_most_tested.json";
+        $json = fopen($filepath, "w+");
         $data_json = json_encode($most_tested, JSON_PRETTY_PRINT);
         fputs($json, $data_json);
         $this->helper->uploadToS3($filepath, 'json_files/countries/');
