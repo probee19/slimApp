@@ -171,8 +171,11 @@ class JsonController extends Controller
         ];
       }
       $all_tests = json_encode($all_tests, JSON_PRETTY_PRINT);
-      $json = fopen("../ressources/views/json_files/all_tests/".$lang->code."_all_test.json", "w+");
+      $filepath = "../ressources/views/json_files/all_tests/".$lang->code."_all_test.json";
+      $json = fopen($filepath, "w+");
       fputs($json, $all_tests);
+      $this->helper->uploadToS3($filepath, 'uploads/json_files/all_tests/');
+
     }
     return "Mise à jours des fichiers effectuée !";
   }
