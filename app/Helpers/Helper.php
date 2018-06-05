@@ -310,7 +310,6 @@ class Helper
 
           //
             $best_local_test = self::getBestLocalTest($lang, $exclude, $countryCode, $nb_restant);
-            self::debug($best_local_test);
             if(count($best_local_test) >= 1)
               foreach ($best_local_test as $test)
                 $exclude[] = $test['id_test'];
