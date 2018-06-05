@@ -73,13 +73,8 @@ class AdditionnalInfoController extends Controller
                 $exclude [] = $user->test_id;
             }
       }
-      if(in_array($country_code, ['SN','CI','FR'], true) ){
-        $data_mt = $this->helper->getMostTestedCountry($lang, $exclude, $country_code);
-        $all_test = $data_mt['most_tested'];
-        $exclude = $data_mt['exclude'];
-      }
-      else
-        $all_test = $this->helper->relatedTests($country_code, $exclude, $lang);
+
+      $all_test = $this->helper->relatedTests($country_code, $exclude, $lang);
 
       //$all_test = $this->helper->relatedTests($country_code, $exclude, $lang);
       //User Id

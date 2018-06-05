@@ -294,7 +294,7 @@ class Helper
       return $tests;
     }
 
-    public function relatedTests($countryCode, $exclude, $lang, $total = 32){
+    public function relatedTests($countryCode, $exclude, $lang, $total = 33){
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
       if(in_array($countryCode, ['SN','CI','FR'], true)){
