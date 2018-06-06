@@ -265,6 +265,10 @@ class CreateTestController extends Controller
   		$localite = addslashes($localite);
 
       //if(isset($_POST['img_resultat_base_64_1']) AND $_POST['img_resultat_base_64_1']!="")
+
+      $this->helper->debug($_POST['img_test_base_64']);
+      $this->helper->debug($_POST['langs_edit']);
+
       if(isset($_POST['img_test_base_64']) AND $_POST['img_test_base_64']!="")
   		{
   			// L'image du test a été modifiée
@@ -272,8 +276,10 @@ class CreateTestController extends Controller
   			$uploadPath = $target_dir. $name;
   			self::decode($_POST['img_test_base_64'], $uploadPath);
         $this->helper->uploadToS3($uploadPath, 'images/images-tests/');
+
         $this->helper->debug($_POST['default_lang']);
         $this->helper->debug($_POST['langs_edit']);
+
         if($_POST['default_lang'] == $_POST['langs_edit'])
             $new_data = [
               "titre_test"              =>  $_POST['titre'],
@@ -303,6 +309,10 @@ class CreateTestController extends Controller
   		}
   		else
       {
+
+        $this->helper->debug($_POST['default_lang']);
+        $this->helper->debug($_POST['langs_edit']);
+
         if($_POST['default_lang'] == $_POST['langs_edit'])
           $new_data = [
             "titre_test"              =>  $_POST['titre'],
