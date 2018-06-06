@@ -109,8 +109,9 @@ class ActionTestController extends Controller
           $target_file= time().'.'.$extension;
           $uploadPath = $target_dir. $name;
           if(move_uploaded_file( $_FILES["file_background"]["tmp_name"][$key], "$target_dir/$target_file")){
-            echo "https://creation.funizi.com/" . "$target_dir/$target_file" ;
-            $this->helper->uploadToS3("$target_dir/$target_file", 'images/images-theme-perso/');
+            $file_img = "https://creation.funizi.com/" . "$target_dir/$target_file" ;
+            echo $file_img ; 
+            $this->helper->uploadToS3($file_img, 'images/images-theme-perso/');
           }
           else {
             //echo 'erreur' ;
