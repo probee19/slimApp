@@ -281,7 +281,7 @@ class CreateTestController extends Controller
         $this->helper->debug($_POST['default_lang']);
         $this->helper->debug($_POST['langs_edit']);
 
-        if($_POST['default_lang'] == $_POST['langs_edit'])
+        if($_POST['default_lang'] == $_POST['langs_edit'] || $_POST['langs_edit'] == NULL )
             $new_data = [
               "titre_test"              =>  $_POST['titre'],
               "id_rubrique"             =>  $_POST['rubrique'],
@@ -314,7 +314,7 @@ class CreateTestController extends Controller
         $this->helper->debug($_POST['default_lang']);
         $this->helper->debug($_POST['langs_edit']);
 
-        if($_POST['default_lang'] == $_POST['langs_edit'])
+        if($_POST['default_lang'] == $_POST['langs_edit'] || $_POST['langs_edit'] == NULL )
           $new_data = [
             "titre_test"              =>  $_POST['titre'],
             "id_rubrique"             =>  intval($_POST['rubrique']),
