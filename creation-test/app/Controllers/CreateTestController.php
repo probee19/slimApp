@@ -272,7 +272,8 @@ class CreateTestController extends Controller
   			$uploadPath = $target_dir. $name;
   			self::decode($_POST['img_test_base_64'], $uploadPath);
         $this->helper->uploadToS3($uploadPath, 'images/images-tests/');
-
+        $this->helper->debug($_POST['default_lang']);
+        $this->helper->debug($_POST['langs_edit']);
         if($_POST['default_lang'] == $_POST['langs_edit'])
             $new_data = [
               "titre_test"              =>  $_POST['titre'],
