@@ -327,7 +327,7 @@ class CreateTestController extends Controller
             "if_additionnal_info"     =>  $if_additionnal_info
           ];
       }
-
+      $this->helper->debug($new_data);
       // Mise à jour des informations générales du test
       $update_test = Test::where('id_test',$_POST['idTest'])->update($new_data);
 
@@ -409,7 +409,7 @@ class CreateTestController extends Controller
   			// Traitement des résultats choisis pour Supression
           $req_del_resultat = Resultat::where('id_resultat',$_POST['to_del'.$j])->delete();
   		}
-      return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('alltests') );
+      //return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('alltests') );
   }
 
   public function grabImageForCropit($request, $response, $arg)
