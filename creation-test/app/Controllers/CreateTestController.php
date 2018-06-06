@@ -266,6 +266,7 @@ class CreateTestController extends Controller
 
       //if(isset($_POST['img_resultat_base_64_1']) AND $_POST['img_resultat_base_64_1']!="")
 
+      $this->helper->debug($_POST);
       $this->helper->debug($_POST['img_test_base_64']);
       $this->helper->debug($_POST['langs_edit']);
 
