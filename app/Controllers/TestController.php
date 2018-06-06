@@ -21,6 +21,9 @@ class TestController extends Controller
         $id = (int)$args['id'];
         $country_code = $sandbox->getCountryCode();
 
+        if(isset($_GET['p']) && $_GET['p'] == 1)
+          $no_ads = true;
+
         $code = $request->getParam('ref');
         if($args['code'])
             $code = $args['code'];
@@ -51,7 +54,6 @@ class TestController extends Controller
                 }
         }
 
-
         $all_test = $sandbox->relatedTests($country_code, $exclude, $lang);
 
         // For Facebook connect
@@ -79,6 +81,6 @@ class TestController extends Controller
             $id_user = $_SESSION['uid'];
 
         $all_lang = $this->helper->getActivatedLanguages();
-        return $this->view->render($response, 'single.twig', compact('lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
+        return $this->view->render($response, 'single.twig', compact('no_ads', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
     }
 }

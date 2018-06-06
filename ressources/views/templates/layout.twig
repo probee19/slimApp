@@ -48,13 +48,16 @@
     <![endif]-->
 
     <!-- Google Adwords code -->
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-            google_ad_client: "ca-pub-5139434732876009",
-        enable_page_level_ads: true
-        });
-    </script>
+    {% if no_ads %}
+    {% else %}
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-5139434732876009",
+          enable_page_level_ads: true
+          });
+      </script>
+    {% endif %}
 
     {% block googletagmanager %}{% endblock %}
     <!-- Google Tag Manager -->
@@ -92,49 +95,57 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     {% endif %}
     <!--<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     -->
-    {% if not is_mobile() and not is_tablet() %}
-      <div class="gallery text-center" style="margin:1em 0 1em;" >
-          <!-- Funizi_728x90_Top_desktop -->
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:728px;height:90px"
-               data-ad-client="ca-pub-5139434732876009"
-               data-ad-slot="2957232538"></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-      </div>
+    {% if no_ads %}
     {% else %}
-      <div style="margin:1em auto;" class="text-center">
-          {% block banner_mobile_top %}{% endblock %}
-      </div>
+      {% if not is_mobile() and not is_tablet() %}
+        <div class="gallery text-center" style="margin:1em 0 1em;" >
+            <!-- Funizi_728x90_Top_desktop -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-5139434732876009"
+                 data-ad-slot="2957232538"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+      {% else %}
+        <div style="margin:1em auto;" class="text-center">
+            {% block banner_mobile_top %}{% endblock %}
+        </div>
+      {% endif %}
     {% endif %}
 
     <div class="col-sm-8 text-center gallery" style="">
 
         {% block content %}{% endblock %}
 
-
-        <ins class="adsbygoogle"
-             style="display:block;margin-bottom:5em;"
-             data-ad-format="autorelaxed"
-             data-ad-client="ca-pub-5139434732876009"
-             data-ad-slot="3403735577"
-             data-matched-content-ui-type="text_card"
-             data-matched-content-rows-num="8"
-             data-matched-content-columns-num="3"
-        ></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        {% if no_ads %}
+        {% else %}
+          <ins class="adsbygoogle"
+               style="display:block;margin-bottom:5em;"
+               data-ad-format="autorelaxed"
+               data-ad-client="ca-pub-5139434732876009"
+               data-ad-slot="3403735577"
+               data-matched-content-ui-type="text_card"
+               data-matched-content-rows-num="8"
+               data-matched-content-columns-num="3"
+          ></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        {% endif %}
     </div>
     <!--<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     -->
     <div class="col-xs-12 col-sm-4 text-center aside-right" style="">
       <div style="position:fixed;  max-width:300px;">
-        {% if not is_mobile() and not is_tablet() %}
-          {% set banner = random(['banners/banner_300x250_bottom.twig']) %}
-          {% include  banner %}
+        {% if no_ads %}
+        {% else %}
+          {% if not is_mobile() and not is_tablet() %}
+            {% set banner = random(['banners/banner_300x250_bottom.twig']) %}
+            {% include  banner %}
 
+          {% endif %}
         {% endif %}
       </div>
     </div>
