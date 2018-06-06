@@ -55,6 +55,10 @@ class AdditionnalInfoController extends Controller
         }
         elseif ($info->additionalInfos->typeinput == 'input_gender') { // Le genre de l'uitilisateur est demandé
           // code...
+          if(isset($_SESSION['gender']) && $_SESSION['uid'] == '1815667808451001')
+            $this->helper->debug("$this->domain_url/start/$id_test");
+            //return $response->withStatus(302)->withHeader('Location', "$this->domain_url/start/$id_test");
+
           $input_gender = [
             'label'     => $info->label,
           ];
