@@ -49,7 +49,7 @@ define('SERVER_DOMAIN', $_SERVER['SERVER_DOMAIN']);
 require __DIR__ . '/../vendor/autoload.php';
 
 $config = [
-    'displayErrorDetails'   =>  true,
+    'displayErrorDetails'   =>  false,
     'db'        =>  [
         'driver'    =>  'mysql',
         'host'      =>  RDS_HOSTNAME,
