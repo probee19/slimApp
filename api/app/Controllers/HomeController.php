@@ -103,10 +103,10 @@ class HomeController extends Controller
     public function createPicMatch($request, $response, $arg)
     {
       // code...
-      $matchs = AirtableController::getAllMatchs();
+      $matchs_records = AirtableController::getAllMatchs();
       Helper::debug($matchs);
 
-      $matchs_records = json_decode($matchs);
+      //$matchs_records = json_decode($matchs);
       $nb = 1;
       foreach ($matchs_records as $match) {
         // code...
@@ -120,14 +120,8 @@ class HomeController extends Controller
         $url = "https://fr.funizi.com/api/start/358";
         $result = self::curl_post($url, $fields );
         $nb++;
-        if($nb == 3) break;
+        if($nb == 6) break;
       }
-
-
-
-
-
-
 
     }
 
