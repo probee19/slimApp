@@ -119,7 +119,7 @@ class StartController extends Controller
          //
          $url = SandBox::getUrlTestPerso($test_id ,$url, $lang);
 
-         if($test_id = 358){
+         if($test_id == 358){
            $url .= '&team_a=' . $_GET['team_a'] . '&team_b='. $_GET['team_b'] ;
          }
 
