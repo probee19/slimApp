@@ -47,8 +47,11 @@ class AirtableController extends Controller
                   if ( $valcountries->id == $value->fields->team_b[0] )
                   {
                       $data_team_b = [
-                        'id'    =>  $value->fields->team_b[0],
-                        'data'  =>  (array) $valcountries
+                        'id'            =>  $value->fields->team_b[0],
+                        'idcountry'     =>  $valcountries->fields->idcountry,
+                        'country_code'  =>  $valcountries->fields->country_code,
+                        'french'        =>  $valcountries->fields->french,
+                        'flag'          =>  $valcountries->fields->flag
                       ];
                       $all_games[$key]->fields->team_b[0] = new  \StdClass();
                       $all_games[$key]->fields->team_b[0] = self::addToObject($value->fields->team_b[0],['datas',$valcountries]);
@@ -66,6 +69,17 @@ class AirtableController extends Controller
 
       Helper::debug($games);
       Helper::debug($array_matchs);
+      $all_macth = [];
+      foreach ($array_matchs as $match) {
+        $all_macth [] = [
+          'id'            =>  $match['id'],
+          'team_a'        =>  $match['team_a'],
+          'team_b'        =>  $match['team_b'],
+          'team_a_flag'   =>  $match['team_a'][0],
+          'team_b_flag'   =>  $match['team_b'][0]
+        ];
+
+      }
 
       return $games;
     }
