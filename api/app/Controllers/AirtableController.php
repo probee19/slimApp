@@ -23,29 +23,31 @@ class AirtableController extends Controller
 
     public static function getAllMatchs()
     {
-      return self::findInTable("games");
+      return self::findInTable("games", [], false);
     }
     public static function findInTable($table_name, $options=[], $cash=true)
     {
-        if (self::$api_key)
-        {
           $put_url = self::$path_cash;
           $put_url.="$table_name.txt";
+
 
           if ($cash)
              $poster = file_get_contents($put_url);
           else
              $poster = '';
 
-
           if (!empty($poster))
             return json_decode($poster);
           else{
             $fields = [];
             $fields = $options;
-            $fields['api_key'] = self::$api_key;
+            $fields['api_key'] = $_SERVER['AIRTABLE_API_KEY'];
             $url = "https://api.airtable.com/v0/appec3rBvyPYpIOAx/$table_name";
             $poster = self::curl_get_fields($url, $fields);
+
+            Helper::debug($fields);
+            Helper::debug($url);
+
 
             $decode = json_decode($poster);
             if (isset($decode->records))
@@ -53,8 +55,6 @@ class AirtableController extends Controller
 
             return $decode;
           }
-
-        }
     }
 
 

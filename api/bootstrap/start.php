@@ -41,6 +41,7 @@ define('GZIT_SECRET', $_SERVER['GZIT_SECRET']);
 define('FB_SECRET_KEY', $_SERVER['FB_SECRET_KEY']);
 define('FB_APP_ID', $_SERVER['FB_APP_ID']);
 define('SERVER_DOMAIN', $_SERVER['SERVER_DOMAIN']);
+define('AIRTABLE_API_KEY', $_SERVER['AIRTABLE_API_KEY']);
 
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -119,6 +120,8 @@ $container['view'] = function ($container){
 
 //Facebook app config
 $container['base_domain'] = SERVER_DOMAIN;
+$container['airtable_api_key'] = AIRTABLE_API_KEY;
+
 $container['airtable'] = "https://api.airtable.com/v0/appec3rBvyPYpIOAx/";
 
 $container['fb'] = function($container){
