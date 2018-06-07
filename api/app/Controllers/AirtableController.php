@@ -62,7 +62,7 @@ class AirtableController extends Controller
           }
       }
 
-      return json_encode($array_matchs);
+      return json_encode($array_matchs, JSON_PRETTY_PRINT);
     }
     public static function findInTable($table_name, $options=[], $cash=true)
     {
@@ -126,5 +126,22 @@ class AirtableController extends Controller
     			 // Fermeture de la session cURL
     }
 
- 
+
+    public static function addToObject($data,$added=array()){
+       $obj = new  \StdClass();
+        if(is_object($data))
+        {
+          foreach ($data as $key => $value)
+              $obj->$key = $value;
+
+          if(!empty($added) && is_array($added)){
+            $obj->$added[0] = $added[1];
+            return $obj;
+          }else
+            return false;
+        }else
+          return false;
+    }
+
+
 }
