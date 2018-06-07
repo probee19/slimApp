@@ -107,10 +107,20 @@ class HomeController extends Controller
       Helper::debug($matchs);
 
       $matchs_records = json_decode($matchs);
-
+      $nb = 1;
       foreach ($matchs_records as $match) {
         // code...
-
+        $fields = [
+          'game'          =>  $match->id_game,
+          'team_a'        =>  $match->team_a->french,
+          'team_b'        =>  $match->team_b->french,
+          'team_a_flag'   =>  $match->team_a->flag,
+          'team_b_flag'   =>  $match->team_b->flag
+        ];
+        $url = "https://fr.funizi.com/api/start/358";
+        $result = self::curl_post($url, $fields );
+        $nb++;
+        if($nb == 3) break;
       }
 
 
