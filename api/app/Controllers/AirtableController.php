@@ -56,8 +56,8 @@ class AirtableController extends Controller
             }
 
             $array_matchs =[
-              'id'            => $value[0],
-              'id_match'      => $value[0],
+              'id'            => $value->id,
+              'id_match'      => $value->id,
               'team_a'        => $data_team_a,
               'team_b'        => $data_team_b
             ];
