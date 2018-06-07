@@ -26,15 +26,53 @@ class AirtableController extends Controller
 
 
       $countries = self::findInTable('countries',[]);
-      $matchs = self::findInTable("games", [], false);
+      $games = self::findInTable("games", [], false);
 
-      return $countries;
+      if (isset($games->records)){
+          $all_games = $games->records;
+          $array_matchs = [];
+          foreach ($all_games as $key => $value){
+            $recordscountries = $countries->records;
+            foreach ($recordscountries as $keycountries => $valcountries){
+                  if ( $valcountries->id == $value->fields->team_a[0] )
+                  {
+                      $data_team_a = [
+                        'id'    =>  $value->fields->team_a[0],
+                        'data'  =>  (array) $valcountries
+                      ];
+                      $all_games[$key]->fields->team_a[0] = new  \StdClass();
+                      $all_games[$key]->fields->team_a[0] = self::addToObject($value->fields->team_a[0],['datas',$valcountries]);
+                  }
+
+                  if ( $valcountries->id == $value->fields->team_b[0] )
+                  {
+                      $data_team_b = [
+                        'id'    =>  $value->fields->team_b[0],
+                        'data'  =>  (array) $valcountries
+                      ];
+                      $all_games[$key]->fields->team_b[0] = new  \StdClass();
+                      $all_games[$key]->fields->team_b[0] = self::addToObject($value->fields->team_b[0],['datas',$valcountries]);
+                  }
+            }
+
+            $array_matchs =[
+              'id'            => $value[0],
+              'id_match'      => $value[0],
+              'team_a'        => $data_team_a,
+              'team_b'        => $data_team_b
+            ];
+          }
+      }
+
+      Helper::debug($games);
+      Helper::debug($array_matchs);
+
+      return $games;
     }
     public static function findInTable($table_name, $options=[], $cash=true)
     {
           $put_url = self::$path_cash;
           $put_url.="$table_name.txt";
-
 
           if ($cash)
              $poster = file_get_contents($put_url);
@@ -50,10 +88,6 @@ class AirtableController extends Controller
             $url = "https://api.airtable.com/v0/appec3rBvyPYpIOAx/$table_name";
             $poster = self::curl_get_fields($url, $fields);
 
-            Helper::debug($fields);
-            Helper::debug($url);
-
-
             $decode = json_decode($poster);
             if (isset($decode->records))
               file_put_contents($put_url, $poster);
@@ -61,7 +95,6 @@ class AirtableController extends Controller
             return $decode;
           }
     }
-
 
 
     public static function curl_get_fields($url,$fields,$header=false){
@@ -99,6 +132,21 @@ class AirtableController extends Controller
     }
 
 
+    public static function addToObject($data,$added=array()){
+       $obj = new  \StdClass();
+        if(is_object($data))
+        {
+          foreach ($data as $key => $value)
+              $obj->$key = $value;
+
+          if(!empty($added) && is_array($added)){
+            $obj->$added[0] = $added[1];
+            return $obj;
+          }else
+            return false;
+        }else
+          return false;
+    }
 
 
 }
