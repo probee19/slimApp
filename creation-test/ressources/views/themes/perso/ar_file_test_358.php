@@ -79,11 +79,11 @@
 
 <div class="texte team_name" id="team_a"><?php echo $_GET['team_a']; ?></div>
  
-<div class="texte flag_team" id="flag_tema_a">??</div>
+<div class="texte flag_team" id="flag_tema_a"><?php echo $_GET['team_a_flag']; ?></div>
  
-<div class="texte " id="hour"> 15:00 </div>
+<div class="texte " id="hour"> <?php echo $_GET['time']; ?> </div>
 
-<div class="texte flag_team" id="flag_tema_b">??</div>
+<div class="texte flag_team" id="flag_tema_b"><?php echo $_GET['team_b_flag']; ?></div>
 
 <div class="texte team_name" id="team_b"><?php echo $_GET['team_b']; ?></div>
 
