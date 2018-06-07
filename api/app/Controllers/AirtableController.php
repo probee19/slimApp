@@ -23,8 +23,6 @@ class AirtableController extends Controller
 
     public static function getAllMatchs()
     {
-
-
       $countries = self::findInTable('countries',[]);
       $games = self::findInTable("games", [], false);
 
@@ -35,17 +33,15 @@ class AirtableController extends Controller
             $recordscountries = $countries->records;
             foreach ($recordscountries as $keycountries => $valcountries){
                   if ( $valcountries->id == $value->fields->team_a[0] )
-                  {
                       $data_team_a = [
-                        'id'    =>  $value->fields->team_a[0],
-                        'data'  =>  (array) $valcountries
+                        'id'            =>  $value->fields->team_a[0],
+                        'idcountry'     =>  $valcountries->fields->idcountry,
+                        'country_code'  =>  $valcountries->fields->country_code,
+                        'french'        =>  $valcountries->fields->french,
+                        'flag'          =>  $valcountries->fields->flag
                       ];
-                      $all_games[$key]->fields->team_a[0] = new  \StdClass();
-                      $all_games[$key]->fields->team_a[0] = self::addToObject($value->fields->team_a[0],['datas',$valcountries]);
-                  }
 
                   if ( $valcountries->id == $value->fields->team_b[0] )
-                  {
                       $data_team_b = [
                         'id'            =>  $value->fields->team_b[0],
                         'idcountry'     =>  $valcountries->fields->idcountry,
@@ -53,35 +49,20 @@ class AirtableController extends Controller
                         'french'        =>  $valcountries->fields->french,
                         'flag'          =>  $valcountries->fields->flag
                       ];
-                      $all_games[$key]->fields->team_b[0] = new  \StdClass();
-                      $all_games[$key]->fields->team_b[0] = self::addToObject($value->fields->team_b[0],['datas',$valcountries]);
-                  }
             }
 
             $array_matchs =[
-              'id'            => $value->id,
-              'id_match'      => $value->id,
-              'team_a'        => $data_team_a,
-              'team_b'        => $data_team_b
+              'id'           => $value->id,
+              'id_game'      => $value->fields->idgame,
+              'game_day'     => $value->fields->game_day,
+              'group'        => $value->fields->group,
+              'team_a'       => $data_team_a,
+              'team_b'       => $data_team_b
             ];
           }
       }
 
-      Helper::debug($games);
-      Helper::debug($array_matchs);
-      $all_macth = [];
-      foreach ($array_matchs as $match) {
-        $all_macth [] = [
-          'id'            =>  $match['id'],
-          'team_a'        =>  $match['team_a'],
-          'team_b'        =>  $match['team_b'],
-          'team_a_flag'   =>  $match['team_a'][0],
-          'team_b_flag'   =>  $match['team_b'][0]
-        ];
-
-      }
-
-      return $games;
+      return json_encode($array_matchs, JSON_PRETTY_PRINT);
     }
     public static function findInTable($table_name, $options=[], $cash=true)
     {
