@@ -166,7 +166,7 @@ class StartController extends Controller
           $generated = $this->grabzit->URLToImage($url, $options);
           $save = $this->grabzit->SaveTo("../".$filepath);
           if($save){
-              $filepath = "https://".$this->base_domain . $filepath;
+              $filepath = "https://".$this->base_domain . "uploads/game_". $_POST['game'] . '.jpg';
               $resultUrl = $this->helper->uploadToS3($filepath, 'api/');
           }
           $data = [
