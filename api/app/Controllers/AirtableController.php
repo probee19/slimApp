@@ -23,7 +23,12 @@ class AirtableController extends Controller
 
     public static function getAllMatchs()
     {
-      return self::findInTable("games", [], false);
+
+
+      $countries = self::findInTable('countries',[]);
+      $matchs = self::findInTable("games", [], false);
+
+      return $countries;
     }
     public static function findInTable($table_name, $options=[], $cash=true)
     {
