@@ -51,7 +51,7 @@ class AirtableController extends Controller
                       ];
             }
 
-            $array_matchs =[
+            $array_matchs[] =[
               'id'           => $value->id,
               'id_game'      => $value->fields->idgame,
               'game_day'     => $value->fields->game_day,
