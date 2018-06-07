@@ -167,8 +167,8 @@ class StartController extends Controller
 
 
           //Helper::debug($data);
-          if($save)
-              $bottest = BotTests::create($data);
+          //if($save)
+              //$bottest = BotTests::create($data);
 
           $image_url = "https://fr.funizi.com/".$filepath;
 
