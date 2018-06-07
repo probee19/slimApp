@@ -30,23 +30,35 @@ use Slim\Views\TwigExtension;
 
 session_start();
 
+
+define('RDS_HOSTNAME', $_SERVER['RDS_HOSTNAME']);
+define('RDS_USERNAME', $_SERVER['RDS_USERNAME']);
+define('RDS_PASSWORD', $_SERVER['RDS_PASSWORD']);
+define('RDS_DB_NAME',  $_SERVER['RDS_DB_NAME']);
+define('GZIT_KEY', $_SERVER['GZIT_KEY']);
+define('GZIT_SECRET', $_SERVER['GZIT_SECRET']);
+define('FB_SECRET_KEY', $_SERVER['FB_SECRET_KEY']);
+define('FB_APP_ID', $_SERVER['FB_APP_ID']);
+define('SERVER_DOMAIN', $_SERVER['SERVER_DOMAIN']);
+
 require __DIR__ . '/../vendor/autoload.php';
+
 
 $config = [
     'displayErrorDetails'   =>  true,
     'db'        =>  [
         'driver'    =>  'mysql',
-        'host'      =>  'localhost',
-        'database'  =>  'funizi_store',
-        'username'  =>  'funizi_systemi',
-        'password'  =>  'fWOahOSH{%]2',
-        'charset'   =>  'utf8',
-        'collation' =>  'utf8_unicode_ci',
+        'host'      =>  RDS_HOSTNAME,
+        'database'  =>  RDS_DB_NAME,
+        'username'  =>  RDS_USERNAME,
+        'password'  =>  RDS_PASSWORD,
+        'charset'   =>  'utf8mb4',
+        'collation' =>  'utf8mb4_unicode_ci',
         'prefix'    =>  '',
     ],
-    'grabzit_key'       => "MDliYmY0OTM1OTI3NDk5OTkwOWYyZjY5MDZlZTJkZTU=",
-    'grabzit_secret'    => "H2s/Dj8/Pzk/P1ZmbDk/bT8/Sz8/Pz9BPz8/Pz8/Pz8=",
-    'test_per_page'     =>  15,
+    'grabzit_key'       => GZIT_KEY,
+    'grabzit_secret'    => GZIT_SECRET,
+    'test_per_page'     => 15,
 ];
 date_default_timezone_set('Etc/GMT');
 
@@ -107,8 +119,8 @@ $container['view'] = function ($container){
 //Facebook app config
 $container['fb'] = function($container){
     return new Facebook([
-        'app_id' => '348809548888116',
-        'app_secret' => '2d51d516fa50ce2382b2e8214db499c3',
+        'app_id' => FB_APP_ID,
+        'app_secret' => FB_SECRET_KEY,
         'default_graph_version' => 'v2.5',
     ]);
 };
@@ -146,7 +158,7 @@ $container['DailyStatsController'] = function ($container) {
     return new DailyStatsController($container);
 };
 $container['grabzit'] = function ($container) {
-    return new GrabzItClient("N2U3YTNkZGYxNGUzNDA0OWFjODRmYzYzZjk0ZDAxZmU=", "CD8/PzIJP2shZz8/Pz8rBj8LET8/P0M/aBcsc1gQGT8=");
+    return new GrabzItClient(GZIT_KEY, GZIT_SECRET);
 };
 $container['helper'] = function ($container){
     return new Helper();

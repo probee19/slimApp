@@ -26,7 +26,6 @@ class StartController extends Controller
         $lang = 'fr';
         //self::writeOnFile("ressources/views/tempfiles/test.php","Ok");
 
-
         $name = '';
         $test_id = $arg['ref'];
         if(isset($_POST['first_name'])){
