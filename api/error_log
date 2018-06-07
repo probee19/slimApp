@@ -1,0 +1,45 @@
+[22-Nov-2017 13:32:49 Etc/GMT] PHP Fatal error:  Class 'Twig_Loader_Filesystem' not found in /home/funizi/public_html/api/vendor/slim/twig-view/src/Twig.php on line 129
+[22-Nov-2017 13:45:50 Etc/GMT] PHP Warning:  fopen(ressources/views/tempfiles/15113583501815667808451001.php): failed to open stream: No such file or directory in /home/funizi/public_html/api/app/Controllers/StartController.php on line 257
+[22-Nov-2017 13:57:33 Etc/GMT] PHP Warning:  fopen(ressources/views/tempfiles/15113590531815667808451001.php): failed to open stream: No such file or directory in /home/funizi/public_html/api/app/Controllers/StartController.php on line 257
+[22-Nov-2017 13:58:15 Etc/GMT] PHP Warning:  fopen(ressources/views/tempfiles/15113590951815667808451001.php): failed to open stream: No such file or directory in /home/funizi/public_html/api/app/Controllers/StartController.php on line 257
+[22-Nov-2017 13:59:56 Etc/GMT] PHP Warning:  file_put_contents(uploads/jFvEyUrMgDt6tfC.jpg): failed to open stream: No such file or directory in /home/funizi/public_html/api/vendor/grabzit/grabzit/lib/GrabzItClient.class.php on line 405
+[22-Nov-2017 15:58:35 Etc/GMT] PHP Warning:  file_put_contents(uploads/7WJ2orz4bmg09zp.jpg): failed to open stream: No such file or directory in /home/funizi/public_html/api/vendor/grabzit/grabzit/lib/GrabzItClient.class.php on line 405
+[22-Nov-2017 15:59:52 Etc/GMT] PHP Warning:  file_put_contents(uploads/3uCyWBB4J8e1CNl.jpg): failed to open stream: No such file or directory in /home/funizi/public_html/api/vendor/grabzit/grabzit/lib/GrabzItClient.class.php on line 405
+[22-Nov-2017 17:09:05 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/funizi/public_html/api/app/Controllers/StartController.php on line 293
+[22-Nov-2017 17:26:05 Etc/GMT] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/funizi/public_html/api/app/Controllers/StartController.php on line 414
+[22-Nov-2017 17:26:10 Etc/GMT] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/funizi/public_html/api/app/Controllers/StartController.php on line 414
+[22-Nov-2017 17:27:28 Etc/GMT] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/funizi/public_html/api/app/Controllers/StartController.php on line 413
+[22-Nov-2017 17:27:32 Etc/GMT] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/funizi/public_html/api/app/Controllers/StartController.php on line 413
+[22-Nov-2017 17:27:48 Etc/GMT] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/funizi/public_html/api/app/Controllers/StartController.php on line 413
+[22-Nov-2017 17:33:18 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/funizi/public_html/api/app/Controllers/StartController.php on line 38
+[22-Nov-2017 17:33:21 Etc/GMT] PHP Parse error:  syntax error, unexpected '{' in /home/funizi/public_html/api/app/Controllers/StartController.php on line 38
+[22-Nov-2017 17:44:56 Etc/GMT] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/funizi/public_html/api/app/Controllers/StartController.php on line 424
+[22-Nov-2017 17:44:56 Etc/GMT] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/funizi/public_html/api/app/Controllers/StartController.php on line 424
+[22-Nov-2017 17:45:10 Etc/GMT] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/funizi/public_html/api/app/Controllers/StartController.php on line 424
+[22-Nov-2017 17:45:21 Etc/GMT] PHP Parse error:  syntax error, unexpected 'private' (T_PRIVATE) in /home/funizi/public_html/api/app/Controllers/StartController.php on line 424
+[22-Nov-2017 18:18:52 Etc/GMT] PHP Parse error:  syntax error, unexpected '=' in /home/funizi/public_html/api/app/Controllers/StartController.php on line 113
+[22-Nov-2017 18:18:57 Etc/GMT] PHP Parse error:  syntax error, unexpected '=' in /home/funizi/public_html/api/app/Controllers/StartController.php on line 113
+[22-Nov-2017 18:19:04 Etc/GMT] PHP Parse error:  syntax error, unexpected '=' in /home/funizi/public_html/api/app/Controllers/StartController.php on line 113
+[23-Nov-2017 12:54:36 Etc/GMT] PHP Fatal error:  Class 'App\Controllers\BotTests' not found in /home/funizi/public_html/api/app/Controllers/StartController.php on line 205
+[23-Nov-2017 12:54:49 Etc/GMT] PHP Fatal error:  Class 'App\Controllers\BotTests' not found in /home/funizi/public_html/api/app/Controllers/StartController.php on line 205
+[23-Nov-2017 12:55:30 Etc/GMT] PHP Parse error:  syntax error, unexpected ''first_name'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /home/funizi/public_html/api/app/Models/BotTests.php on line 13
+[23-Nov-2017 12:59:17 Etc/GMT] PHP Parse error:  syntax error, unexpected ''first_name'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /home/funizi/public_html/api/app/Models/BotTests.php on line 13
+[23-Nov-2017 12:59:26 Etc/GMT] PHP Parse error:  syntax error, unexpected ''first_name'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /home/funizi/public_html/api/app/Models/BotTests.php on line 13
+[23-Nov-2017 13:00:52 Etc/GMT] PHP Parse error:  syntax error, unexpected ''first_name'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /home/funizi/public_html/api/app/Models/BotTests.php on line 13
+[23-Nov-2017 13:01:46 Etc/GMT] PHP Parse error:  syntax error, unexpected ''first_name'' (T_CONSTANT_ENCAPSED_STRING), expecting ']' in /home/funizi/public_html/api/app/Models/BotTests.php on line 13
+[24-Nov-2017 15:25:40 Etc/GMT] PHP Parse error:  syntax error, unexpected ':', expecting ']' in /home/funizi/public_html/api/app/Controllers/StartController.php on line 217
+[24-Nov-2017 15:25:52 Etc/GMT] PHP Parse error:  syntax error, unexpected ':', expecting ']' in /home/funizi/public_html/api/app/Controllers/StartController.php on line 217
+[29-Nov-2017 10:56:10 Etc/GMT] PHP Fatal error:  Class 'DailyStatsController' not found in /home/funizi/public_html/api/bootstrap/start.php on line 146
+[04-Dec-2017 16:03:42 Etc/GMT] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 4194304 bytes) in /home/funizi/public_html/api/vendor/illuminate/database/Connection.php on line 325
+[04-Dec-2017 16:13:40 Etc/GMT] PHP Warning:  Invalid argument supplied for foreach() in /home/funizi/public_html/api/app/Controllers/HomeController.php on line 26
+[04-Dec-2017 16:13:42 Etc/GMT] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 85 bytes) in /home/funizi/public_html/api/vendor/illuminate/database/Connection.php on line 325
+[04-Dec-2017 16:14:03 Etc/GMT] PHP Parse error:  syntax error, unexpected end of file in /home/funizi/public_html/api/app/Controllers/HomeController.php on line 128
+[04-Dec-2017 16:14:07 Etc/GMT] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 32 bytes) in /home/funizi/public_html/api/vendor/illuminate/database/Connection.php on line 325
+[04-Dec-2017 16:17:05 Etc/GMT] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 72 bytes) in /home/funizi/public_html/api/vendor/illuminate/database/Connection.php on line 325
+[04-Dec-2017 16:51:00 Etc/GMT] PHP Parse error:  syntax error, unexpected '$', expecting variable (T_VARIABLE) in /home/funizi/public_html/api/app/Controllers/HomeController.php on line 133
+[04-Dec-2017 17:01:36 Etc/GMT] PHP Fatal error:  Class 'App\Controllers\HomeController' not found in /home/funizi/public_html/api/bootstrap/start.php on line 119
+[06-Dec-2017 13:07:41 Etc/GMT] PHP Warning:  Error while sending STMT_PREPARE packet. PID=3061 in /home/funizi/public_html/api/vendor/illuminate/database/Connection.php on line 445
+[06-Dec-2017 13:08:18 Etc/GMT] PHP Warning:  Error while sending STMT_PREPARE packet. PID=2894 in /home/funizi/public_html/api/vendor/illuminate/database/Connection.php on line 445
+[06-Dec-2017 13:08:49 Etc/GMT] PHP Warning:  Error while sending STMT_PREPARE packet. PID=2810 in /home/funizi/public_html/api/vendor/illuminate/database/Connection.php on line 445
+[11-Dec-2017 15:41:19 Etc/GMT] PHP Warning:  fputs() expects parameter 2 to be string, array given in /home/funizi/public_html/api/app/Controllers/StartController.php on line 256
+[19-Mar-2018 10:11:34 Etc/GMT] PHP Fatal error:  Class 'App\Controllers\StartController' not found in /home/funizi/public_html/api/bootstrap/start.php on line 125
