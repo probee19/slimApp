@@ -126,6 +126,8 @@ class StartController extends Controller
            else
             $url .= '&time=vs';
 
+            //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
+
          }
 
 
@@ -149,6 +151,10 @@ class StartController extends Controller
           // Path of the saved image result
           $filepath = "uploads/". $code . '.jpg';
 
+          if($test_id == 358)
+            $filepath = "uploads/game_". $_POST['game'] . '.jpg';
+
+
           //Grabzit Options
           $options = new GrabzItImageOptions();
           $options->setBrowserwidth(800);
@@ -159,6 +165,10 @@ class StartController extends Controller
 
           $generated = $this->grabzit->URLToImage($url, $options);
           $save = $this->grabzit->SaveTo("../".$filepath);
+          if($save){
+              $filepath = "https://".$this->base_domain . $filepath;
+              $resultUrl = $this->helper->uploadToS3($filepath, 'api/');
+          }
           $data = [
               'messenger_user_id'     => $user_id,
               'first_name'            => $name,

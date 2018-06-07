@@ -106,9 +106,48 @@ class HomeController extends Controller
       $matchs = AirtableController::getAllMatchs();
       Helper::debug($matchs);
 
+      $matchs_records = json_decode($matchs);
+
+      foreach ($matchs_records as $match) {
+        // code...
+
+      }
+
+
+
+
+
 
 
     }
+
+
+    public static function curl_post($url, $fields=[], $headers=false){
+
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, $url);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+      curl_setopt($ch, CURLOPT_POST, 1);
+
+
+         if (is_array($headers))
+         {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+         }
+
+         $result = curl_exec($ch);
+
+         if (curl_errno($ch)) {
+            curl_close ($ch);
+             return false;
+         }
+
+         curl_close ($ch);
+         return $result;
+
+    }
+
 
 
 }
