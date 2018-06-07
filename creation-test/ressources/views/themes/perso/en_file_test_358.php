@@ -75,15 +75,15 @@
       
 <!DOCTYPE HTML>
 
-<img src="https://creation.funizi.com/images-theme-perso/1528383708.jpg" id="back">   
+<img src="https://creation.funizi.com/images-theme-perso/1528387221.jpg" id="back">   
 
 <div class="texte team_name" id="team_a"><?php echo $_GET['team_a']; ?></div>
  
-<div class="texte flag_team" id="flag_tema_a">🇧🇷</div>
+<div class="texte flag_team" id="flag_tema_a">??</div>
  
 <div class="texte " id="hour"> 15:00 </div>
 
-<div class="texte flag_team" id="flag_tema_b">🇬🇧</div>
+<div class="texte flag_team" id="flag_tema_b">??</div>
 
 <div class="texte team_name" id="team_b"><?php echo $_GET['team_b']; ?></div>
 
