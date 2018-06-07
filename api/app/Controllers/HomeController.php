@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Models\UserTest;
 use App\Models\Visitors;
 use App\Models\Countries;
+use App\Controllers\AirtableController;
 use Psr7Middlewares\Middleware\ClientIp;
 use GrabzItImageOptions;
 
@@ -98,54 +99,16 @@ class HomeController extends Controller
             ->write(json_encode($data));
 
     }
-    public function chunk($request, $response){
-        var_dump($request->getAttributes());
-        //$sub = str_replace(".funizi.com", "", $_SERVER["HTTP_HOST"]);
-        //die($sub);
-        $helper = new Helper();
 
-        $helper->getCountry2('92.184.255.255');
+    public function createPicMatch($request, $response, $arg)
+    {
+      // code...
+      $matchs = AirtableController::getAllMatchs();
+      Helper::debug($matchs);
 
-        exit;
-        return $this->view->render($response, 'chunk.twig', compact('alltests'));
+
 
     }
-    public function chunk2($request, $response){
 
-        $admins = UserTest::where('img_url', '=', '')->pluck('uuid')->toArray();
-        //Helper::debug($admins);
-        foreach($admins as $admin){
-            $save = UserTest::where('uuid', '=', "$admin")->update(['img_url' => "/uploads/$admin.png"]);
-        }
-        echo "done";
-        //die();
-        $ip = $this->helper->getRealUserIp();
-        //Helper::debug($ip);
-        //Helper::debug($request->getAttribute('ip_address'));
-        $sandbox = new Helper();
-        $exclude = [
-            '27'
-        ];
-        if(!empty($_SESSION['uid']))
-            //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
-            $user_tests = User::where('facebook_id', '=', $_SESSION['uid'])
-                ->with('usertests')->first();
-        //Helper::debug($user_tests);
-        foreach($user_tests->usertests as $user_test){
 
-            $exclude [] = $user_test->test_id;
-        }
-        //$str = "Is this your real ip address?";
-
-        // Outputs: Is your name O\'reilly?
-        //echo addslashes($str);
-
-        echo 'ALL';
-
-        //Helper::debug($exclude);
-        $alltests = $sandbox->relatedTests('SN', $exclude, '2', 4);
-
-        return $this->view->render($response, 'chunk.twig', compact('alltests'));
-
-    }
 }

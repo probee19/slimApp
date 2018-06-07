@@ -8,6 +8,7 @@ use App\Controllers\TestController;
 use App\Controllers\StartController;
 use App\Controllers\ResultController;
 use App\Controllers\ClickController;
+use App\Controllers\AirtableController;
 
 use App\Helpers\Helper;
 use Bes\Twig\Extension\MobileDetectExtension;
@@ -117,6 +118,9 @@ $container['view'] = function ($container){
 };
 
 //Facebook app config
+$container['base_domain'] = SERVER_DOMAIN;
+$container['airtable'] = "https://api.airtable.com/v0/appec3rBvyPYpIOAx/";
+
 $container['fb'] = function($container){
     return new Facebook([
         'app_id' => FB_APP_ID,
@@ -153,6 +157,9 @@ $container['ClickController'] = function ($container) {
 };
 $container['ConnectController'] = function ($container) {
     return new ConnectController($container);
+};
+$container['AirtableController'] = function ($container) {
+    return new AirtableController($container);
 };
 $container['DailyStatsController'] = function ($container) {
     return new DailyStatsController($container);
