@@ -130,6 +130,16 @@ class StartController extends Controller
             //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
 
          }
+
+        if($test_id == 359){
+          Helper::debug($_POST);
+          $url .= '&team_a_name=' . urlencode($_POST['team_a_name']) . '&team_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . $_POST['cca'] . '&ccb='. $_POST['ccb'] . '&teamuser_ps='. $_POST['teamuser_ps'] ;
+         
+
+           //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
+
+        }
+
           foreach ($tags as $key => $tag)
               $result_description = str_replace('{{'.$key.'}}', $tag, $result_description );
 
