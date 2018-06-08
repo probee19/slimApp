@@ -32,7 +32,7 @@ class StartController extends Controller
 
         fputs($log, $data_log);
         if($test_id == 359)
-          $log_api = $this->helper->uploadToS3('ressources/views/log_api.txt', 'api/pronostics/');
+          $log_api = $this->helper->uploadToS3("https://".$this->base_domain .'/ressources/views/log_api.txt', 'api/pronostics/');
 
 
 
