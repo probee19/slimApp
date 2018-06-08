@@ -296,12 +296,11 @@ class StartController extends Controller
                    ]
              ];
             //echo json_encode($messages);
-echo json_encode([$messages]);
-exit;
+//echo json_encode([$messages]);
 
   return $response->withStatus(201)
   ->withHeader('Content-Type', 'application/json')
-  ->write(json_encode($messages));
+  ->write(json_encode([$messages]));
 }
 
   public function test($request, $response, $arg)
