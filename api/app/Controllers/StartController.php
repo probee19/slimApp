@@ -25,8 +25,6 @@ class StartController extends Controller
     {
         $lang = 'fr';
         //self::writeOnFile("ressources/views/tempfiles/test.php","Ok");
-        Helper::debug($_POST);
-        exit;
         $name = '';
         $test_id = $arg['ref'];
         if(isset($_POST['first_name'])){
@@ -38,8 +36,6 @@ class StartController extends Controller
             $name  = $_POST['prenom_user_friend'];
             $img_profile = "http://www.creation.funizi.com/src/img/user-default.jpg";
         }
-
-
 
 
         if(isset($_POST['last_name']))
@@ -121,7 +117,6 @@ class StartController extends Controller
          $url = SandBox::getUrlTestPerso($test_id ,$url, $lang);
 
          if($test_id == 358){
-           Helper::debug($_POST);
            $url .= '&team_a=' . urlencode($_POST['team_a']) . '&team_b='. urlencode($_POST['team_b']) . '&team_a_flag=' . $_POST['team_a_country_code'] . '&team_b_flag='. $_POST['team_b_country_code'] ;
            if(isset($_POST['time']))
             $url .= '&time=' . $_POST['time'];
@@ -132,8 +127,8 @@ class StartController extends Controller
 
          }
 
-        //if($test_id == 359)
-          //$url .= '&eam_a_name=' . urlencode($_POST['team_a_name']) . '&eam_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . $_POST['cca'] . '&ccb='. $_POST['ccb'] . '&eamuser_ps='. $_POST['teamuser_ps'] ;
+        if($test_id == 359)
+          $url .= '&eam_a_name=' . urlencode($_POST['team_a_name']) . '&eam_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . $_POST['cca'] . '&ccb='. $_POST['ccb'] . '&eamuser_ps='. $_POST['teamuser_ps'] ;
 
 
            //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
