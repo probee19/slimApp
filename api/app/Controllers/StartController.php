@@ -121,7 +121,7 @@ class StartController extends Controller
 
          if($test_id == 358){
            Helper::debug($_POST);
-           $url .= '&team_a=' . $_POST['team_a'] . '&team_b='. $_POST['team_b'] . '&team_a_flag=' . $_POST['team_a_flag'] . '&team_b_flag='. $_POST['team_b_flag'] ;
+           $url .= '&team_a=' . $_POST['team_a'] . '&team_b='. $_POST['team_b'] . '&team_a_flag=' . $_POST['team_a_country_code'] . '&team_b_flag='. $_POST['team_b_country_code'] ;
            if(isset($_POST['time']))
             $url .= '&time=' . $_POST['time'];
            else

@@ -111,12 +111,14 @@ class HomeController extends Controller
         // code...
 
         $fields = array(
-          'game'          =>  $match->id_game,
-          'team_a'        =>  $match->team_a->french,
-          'team_b'        =>  $match->team_b->french,
-          'team_a_flag'   =>  $match->team_a->flag,
-          'team_b_flag'   =>  $match->team_b->flag,
-          'time'          =>  '17:00'
+          'game'                  =>  $match->id_game,
+          'team_a'                =>  $match->team_a->french,
+          'team_b'                =>  $match->team_b->french,
+          'team_a_flag'           =>  $match->team_a->flag,
+          'team_a_country_code'   =>  strtolower($match->team_a->country_code),
+          'team_b_flag'           =>  $match->team_b->flag,
+          'team_b_country_code'   =>  strtolower($match->team_b->country_code),
+          'time'                  =>  '17:00'
         );
         Helper::debug($fields);
         $url = "https://fr.funizi.com/api/start/358";
