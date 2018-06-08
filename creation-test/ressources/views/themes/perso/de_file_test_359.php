@@ -114,7 +114,7 @@
 
 <img src="https://creation.funizi.com/images-theme-perso/1528471357.jpg" id="back"> 
 
-<div class="texte" id="pronostic"> <span style="color:#03D7DC"><?php echo $_GET['user_name']; ?></span><?=$ph;?> </div>
+<div class="texte" id="pronostic"> <span style="color:#03D7DC"><?php echo $_GET['user_name']; ?></span> <?=$ph;?> </div>
 
 <img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['cca']; ?>.png" id="flag_tema_a" class="flag_team"> 
 <div class="texte team_name" id="team_a"><?php echo $_GET['eam_a_name']; ?></div>
