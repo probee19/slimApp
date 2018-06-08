@@ -25,6 +25,18 @@ class StartController extends Controller
     {
         $lang = 'fr';
         //self::writeOnFile("ressources/views/tempfiles/test.php","Ok");
+
+        //
+        $log = fopen("ressources/views/log_api.txt", "w+");
+        $data_log = '&url_img_profile_user='.urlencode($_POST['link_picture']).'&eam_a_name=' . urlencode($_POST['team_a_name']) . '&eam_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . $_POST['cca'] . '&ccb='. $_POST['ccb'] . '&eamuser_ps='. $_POST['teamuser_ps'] ;
+
+        fputs($log, $data_log);
+        if($test_id == 359)
+          $log_api = $this->helper->uploadToS3('ressources/views/log_api.txt', 'api/pronostics/');
+
+
+
+
         $name = '';
         $test_id = $arg['ref'];
         if(isset($_POST['first_name'])){

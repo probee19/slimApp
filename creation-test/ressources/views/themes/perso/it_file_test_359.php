@@ -122,7 +122,7 @@
 <img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['ccb']; ?>.png" id="flag_tema_b" class="flag_team"> 
 <div class="texte team_name" id="team_b"><?php echo $_GET['eam_b_name']; ?></div>
 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
  
 <img src="https://creation.funizi.com/images-theme-perso/1528476005.png" class="yes" id="<?=$class_no;?>"> 
 
