@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              
+              <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -25,13 +25,14 @@
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
  
-.flag_team{z-index:1; position: absolute;  top: 170px; font-size:70px; line-height:70px; width:300px ; height:50px ; text-align:center;   }
-#flag_tema_a{left: 165px;}
-#flag_tema_b{right: 165px;}
-.team_name{z-index:1; font-family:'Open Sans'; position: absolute; top: 140px; color:#FFF; font-size:35px; line-height:35px; width:270px ; height:110px; display:flex; align-items:center; }
+.flag_team{z-index:1; position: absolute;  top:180px; font-size:70px; width:80px ; height:40px ; text-align:center;   }
+#flag_tema_a{left: 265px;}
+
+#flag_tema_b{right: 265px;}
+.team_name{z-index:1; font-family: 'Titillium Web', sans-serif;position: absolute; top: 142px; color:#FFF; font-size:35px; line-height:35px; width:260px ; height:110px; display:flex; align-items:center; }
 #team_a{ left: 0;  justify-content:flex-end ;}
 #team_b{ right: 0;  justify-content:left;}
-#hour{z-index:1; font-family:'Open Sans'; position: absolute; top: 145px; color:#FFF; font-size:25px; line-height:25px; width:800px ; height:110px; display:flex; align-items:center;justify-content:center; }
+#hour{z-index:1; font-family: 'Titillium Web', sans-serif; position: absolute; top: 145px; color:#FFF; font-size:25px; line-height:25px; width:800px ; height:110px; display:flex; align-items:center;justify-content:center; }
 
               </style>
               <script src='../../../src/js/jquery.js'></script>
@@ -78,12 +79,12 @@
 <img src="https://creation.funizi.com/images-theme-perso/1528387221.jpg" id="back">   
 
 <div class="texte team_name" id="team_a"><?php echo $_GET['team_a']; ?></div>
- 
-<div class="texte flag_team" id="flag_tema_a"><?php echo $_GET['team_a_flag']; ?></div>
+  
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['team_a_flag']; ?>.png" id="flag_tema_a" class="flag_team"> 
  
 <div class="texte " id="hour"> <?php echo $_GET['time']; ?> </div>
 
-<div class="texte flag_team" id="flag_tema_b"><?php echo $_GET['team_b_flag']; ?></div>
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['team_b_flag']; ?>.png" id="flag_tema_b" class="flag_team">
 
 <div class="texte team_name" id="team_b"><?php echo $_GET['team_b']; ?></div>
 
