@@ -103,10 +103,10 @@ class HomeController extends Controller
     public function createPicMatch($request, $response, $arg)
     {
       // code...
-      $matchs_records = AirtableController::getAllMatchs();
-      Helper::debug($matchs_records);
+      $matchs = AirtableController::getAllMatchs();
+      Helper::debug($matchs);
 
-      //$matchs_records = json_decode($matchs);
+      $matchs_records = json_decode($matchs);
       $nb = 1;
       foreach ($matchs_records as $match) {
         // code...
