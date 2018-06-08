@@ -110,8 +110,6 @@ class HomeController extends Controller
       $nb = 1;
       foreach ($matchs_records as $match) {
         // code...
-        Helper::debug($match->id_game);
-        Helper::debug($match->team_a->french);
 
         $fields = [
           'game'          =>  $match->id_game,
@@ -121,8 +119,10 @@ class HomeController extends Controller
           'team_b_flag'   =>  $match->team_b->flag,
           'time'          =>  '17:00'
         ];
+        Helper::debug($fields);
         $url = "https://fr.funizi.com/api/start/358";
         $result = self::curl_post($url, $fields );
+        Helper::debug($result);
         $nb++;
         if($nb == 6) break;
       }
@@ -130,7 +130,7 @@ class HomeController extends Controller
     }
 
 
-    public static function curl_post($url, $fields=[], $headers=false){
+    public static function curl_post($url, $fields, $headers=false){
 
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
