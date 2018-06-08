@@ -17,34 +17,30 @@
                       position: relative;
                       overflow: hidden;
                   }
-              .texte2{
-                width: 200px;
-              }
-              .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
-.main img{ position:absolute; max-height:420px; max-width:800px; }
+                  .texte2{
+                    width: 200px;
+                  }
+                  .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
+                  .main img{ position:absolute; max-height:420px; max-width:800px; }
 
-#back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
+                  #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
 
-.team_name{z-index:1; font-family: 'Titillium Web', sans-serif; position: absolute; bottom: 65px; color:#FFF; font-size:27px; line-height:35px; width:330px ; height:50px; display:flex; align-items:center; }
-#team_a{ left: 0;  justify-content:flex-end ;}
-#team_b{ right: 0;  justify-content:left;}
+                  .team_name{z-index:1; font-family: 'Titillium Web', sans-serif; position: absolute; bottom: 65px; color:#FFF; font-size:27px; line-height:35px; width:330px ; height:50px; display:flex; align-items:center; }
+                  #team_a{ left: 0;  justify-content:flex-end ;}
+                  #team_b{ right: 0;  justify-content:left;}
 
-.flag_team{z-index:1; position: absolute;  bottom:62px; width:90px ; height:47px ; text-align:center;   }
-#flag_tema_a{left: 37px;}
-#flag_tema_b{right: 37px;}
+                  .flag_team{z-index:1; position: absolute;  bottom:62px; width:90px ; height:47px ; text-align:center;   }
+                  #flag_tema_a{left: 37px;}
+                  #flag_tema_b{right: 37px;}
 
-#pronostic{z-index:1; z-index:1; font-family: 'Titillium Web', sans-serif;  position: absolute; left: 180px; top: 80px; color:#fff; font-size:35px; line-height:40px; width:415px ; height:100px ;   text-align:center; }
+                  #pronostic{z-index:1; z-index:1; font-family: 'Titillium Web', sans-serif;  position: absolute; left: 180px; top: 80px; color:#fff; font-size:35px; line-height:40px; width:415px ; height:100px ;   text-align:center; }
 
-#fb_id_user{position: absolute; z-index:1; left: 370px; bottom: 140px; width:60px ; border-radius:60px; }
+                  #fb_id_user{position: absolute; z-index:1; left: 370px; bottom: 140px; width:60px ; border-radius:60px; }
 
-.yes{position:absolute; z-index:1; }
-#yes_a{left:350px; bottom:70px; }
-#yes_b{right:355px; bottom:70px; }
-#yes_ab{display:none; }
-
-
-
-
+                  .yes{position:absolute; z-index:1; }
+                  #yes_a{left:350px; bottom:70px; }
+                  #yes_b{right:355px; bottom:70px; }
+                  #yes_ab{display:none; }
 
               </style>
               <script src='../../../src/js/jquery.js'></script>
