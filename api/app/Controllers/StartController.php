@@ -26,7 +26,7 @@ class StartController extends Controller
         $lang = 'fr';
         //self::writeOnFile("ressources/views/tempfiles/test.php","Ok");
         Helper::debug($_POST);
-        
+
         $name = '';
         $test_id = $arg['ref'];
         if(isset($_POST['first_name'])){
@@ -133,7 +133,7 @@ class StartController extends Controller
          }
 
         if($test_id == 359){
-          $url .= '&team_a_name=' . urlencode($_POST['team_a_name']) . '&team_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . $_POST['cca'] . '&ccb='. $_POST['ccb'] . '&teamuser_ps='. $_POST['teamuser_ps'] ;
+          $url .= '&eam_a_name=' . urlencode($_POST['team_a_name']) . '&eam_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . $_POST['cca'] . '&ccb='. $_POST['ccb'] . '&eamuser_ps='. $_POST['teamuser_ps'] ;
 
 
            //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
