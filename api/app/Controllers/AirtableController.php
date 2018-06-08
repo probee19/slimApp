@@ -25,7 +25,6 @@ class AirtableController extends Controller
     {
       $countries = self::findInTable('countries',[]);
       $games = self::findInTable("games", [], false);
-      Helper::debug($games);
 
       if (isset($games->records)){
           $all_games = $games->records;
@@ -62,8 +61,7 @@ class AirtableController extends Controller
             ];
           }
       }
-      Helper::debug($array_matchs);
-      return json_encode($array_matchs, JSON_PRETTY_PRINT);
+      return json_encode($array_matchs);
     }
     public static function findInTable($table_name, $options=[], $cash=true)
     {
