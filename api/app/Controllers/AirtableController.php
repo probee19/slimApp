@@ -25,6 +25,7 @@ class AirtableController extends Controller
     {
       $countries = self::findInTable('countries',[]);
       $games = self::findInTable("games", [], false);
+      Helper::debug($games);
 
       if (isset($games->records)){
           $all_games = $games->records;
