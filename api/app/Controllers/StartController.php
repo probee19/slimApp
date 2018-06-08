@@ -151,7 +151,7 @@ class StartController extends Controller
           $filepath = "uploads/". $code . '.jpg';
 
           if($test_id == 358)
-            $filepath = "uploads/game_". $_POST['game'] . '.jpg';
+            $filepath = "uploads/games/game_". $_POST['game'] . '.jpg';
 
 
           //Grabzit Options
