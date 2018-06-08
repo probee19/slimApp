@@ -140,7 +140,7 @@ class StartController extends Controller
          }
 
         if($test_id == 359)
-          $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&eam_a_name=' . urlencode($_POST['team_a_name']) . '&eam_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . $_POST['cca'] . '&ccb='. $_POST['ccb'] . '&eamuser_ps='. $_POST['teamuser_ps'] ;
+          $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&eam_a_name=' . urlencode($_POST['team_a_name']) . '&eam_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . strtolower($_POST['cca']) . '&ccb='. strtolower($_POST['ccb']) . '&eamuser_ps='. $_POST['teamuser_ps'] ;
 
 
            //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
