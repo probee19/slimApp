@@ -153,7 +153,6 @@ class StartController extends Controller
           $result_description = strip_tags($result_description);
 
           $url = "https://fr.funizi.com" . $url;
-          Helper::debug($url);
           /*
           if($user_id = '1518836714820288'){
             return $url;
