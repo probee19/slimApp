@@ -118,7 +118,8 @@ class HomeController extends Controller
           'team_a'        =>  $match->team_a->french,
           'team_b'        =>  $match->team_b->french,
           'team_a_flag'   =>  $match->team_a->flag,
-          'team_b_flag'   =>  $match->team_b->flag
+          'team_b_flag'   =>  $match->team_b->flag,
+          'time'          =>  '17:00'
         ];
         $url = "https://fr.funizi.com/api/start/358";
         $result = self::curl_post($url, $fields );
