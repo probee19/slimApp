@@ -62,7 +62,7 @@ class AirtableController extends Controller
             ];
           }
       }
-
+      Helper::debug($array_matchs);
       return json_encode($array_matchs, JSON_PRETTY_PRINT);
     }
     public static function findInTable($table_name, $options=[], $cash=true)
