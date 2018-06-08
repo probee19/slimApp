@@ -104,7 +104,6 @@ class HomeController extends Controller
     {
       // code...
       $matchs = AirtableController::getAllMatchs();
-      Helper::debug($matchs);
 
       $matchs_records = json_decode($matchs);
       $nb = 1;
