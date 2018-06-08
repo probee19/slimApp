@@ -85,52 +85,57 @@
           </head>
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
-      
+
 <?php
          $pr  = $_GET['eamuser_ps'];
-         //$pr = 'b';
+         //$pr  = "a";
+         function getAdverb($team, $adverbe=""){
+                   $feminin = array('Belgium','Colombia','Croitia','France','North Korea','Mexico','Poland','Russia','Serbia','Sweden','Swiss','Tunisia');
+                   $masculin = array('Brazil','Costa Rica','Denmark','Japan','Morocco','Nigeria','Panama','Peru','Portugal','Senegal');
+                    if(in_array($team,$feminin,true ))
+                              $adverbe = 'of ';
+                    elseif(in_array($team,$masculin,true ))
+                              $adverbe = 'of ';
+                    return $adverbe;
+         }
          if( $pr ==  'a'){
-                   $class_no = 'yes_b';
-                   $class_yes = 'yes_a'; 
-                   $team = $_GET['eam_a_name'];
-                   $ph = 'a pronostiqué la victoire du <span style="color:#FF3369">'.$team.'</span>.';
+                    $class_no = 'yes_b';
+                    $class_yes = 'yes_a';
+                    $team = $_GET['eam_a_name'];
+                    //$team = "France";
+                   $ph = 'predicted the victory '.getAdverb($team).'<span style="color:#FF3369">'.$team.'</span>.';
          }
          elseif( $pr ==  'b'){
                    $class_no = 'yes_a';
-                   $class_yes = 'yes_b';   
-                   $team = $_GET['eam_b_name'];
-                   $ph = 'a pronostiqué la victoire du <span style="color:#FF3369">'.$team.'</span>.';
+                   $class_yes = 'yes_b';
+                    $team = $_GET['eam_b_name'];
+                    //$team = "Espagne";
+                    if(in_array($team,$feminin,true ))
+                              $adverbe = 'de la';
+                    elseif(in_array($team,$masculin,true ))
+                              $adverbe = 'du';
+                   $ph = 'predicted the victory '.getAdverb($team).'<span style="color:#FF3369">'.$team.'</span>.';
          }
          else{
                    $class_no = 'yes_ab';
-                   $class_yes = 'yes_ab';  
-                   $ph = 'a pronostiqué un match nul.';
+                   $class_yes = 'yes_ab';
+                   $ph = 'predicted a draw.';
          }
-          
-          $adv = 'du'; 
-          
-                    
+
 ?>
-
-<img src="https://creation.funizi.com/images-theme-perso/1528471357.jpg" id="back"> 
-
+<img src="https://creation.funizi.com/images-theme-perso/1528471357.jpg" id="back">
 <div class="texte" id="pronostic"> <span style="color:#03D7DC"><?php echo $_GET['user_name']; ?></span> <?=$ph;?> </div>
-
-<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['cca']; ?>.png" id="flag_tema_a" class="flag_team"> 
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['cca']; ?>.png" id="flag_tema_a" class="flag_team">
 <div class="texte team_name" id="team_a"><?php echo $_GET['eam_a_name']; ?></div>
-
-<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['ccb']; ?>.png" id="flag_tema_b" class="flag_team"> 
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['ccb']; ?>.png" id="flag_tema_b" class="flag_team">
 <div class="texte team_name" id="team_b"><?php echo $_GET['eam_b_name']; ?></div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<img src="https://creation.funizi.com/images-theme-perso/1528476005.png" class="yes" id="<?=$class_no;?>">
+<img src="https://creation.funizi.com/images-theme-perso/1528472617.png" class="yes" id="<?=$class_yes;?>">
 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
- 
-<img src="https://creation.funizi.com/images-theme-perso/1528476005.png" class="yes" id="<?=$class_no;?>"> 
 
-<img src="https://creation.funizi.com/images-theme-perso/1528472617.png" class="yes" id="<?=$class_yes;?>"> 
- 
 
         </div>
-        
+
         </body>
         </html>
-      
