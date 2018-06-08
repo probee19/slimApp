@@ -110,6 +110,8 @@ class HomeController extends Controller
       $nb = 1;
       foreach ($matchs_records as $match) {
         // code...
+        Helper::debug($match);
+
         $fields = [
           'game'          =>  $match->id_game,
           'team_a'        =>  $match->team_a->french,
