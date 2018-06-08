@@ -89,13 +89,13 @@
 <?php
          $pr  = $_GET['eamuser_ps'];
          //$pr  = "a";
-         function getAdverb($team, $adverbe=""){
+         function getAdverb($team, $adverbe="des"){
                    $feminin = array('Belgien','Kolumbien','Kroatien','Frankreich','Nord Korea','Mexiko','Polen','Russland','Serbien','Schweden','schweizerisch','Tunesien');
                    $masculin = array('Brasilien','Costa Rica','Dänemark','Japan','Marokko','Nigeria','Panama','Peru','Portugal','Senegal');
                     if(in_array($team,$feminin,true ))
                               $adverbe = 'des ';
                     elseif(in_array($team,$masculin,true ))
-                              $adverbe = 'von ';
+                              $adverbe = 'des ';
                     return $adverbe;
          }
          if( $pr ==  'a'){

@@ -89,7 +89,7 @@
 <?php
          $pr  = $_GET['eamuser_ps'];
          //$pr  = "a";
-         function getAdverb($team, $adverbe=""){
+         function getAdverb($team, $adverbe="من "){
                    $feminin = array('بلجيكا','كولومبيا','كرواتيا','لا فرنسا','كوريا الشمالية','المكسيك','بولندا','روسيا','صربيا','السويد','سويسري','تونس');
                    $masculin = array('البرازيل','كوستا ريكا','الدنمارك','اليابان','المغرب','نيجيريا','بناما','بيرو','البرتغال','السنغال');
                     if(in_array($team,$feminin,true ))
