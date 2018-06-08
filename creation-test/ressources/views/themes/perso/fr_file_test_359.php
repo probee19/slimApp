@@ -85,52 +85,51 @@
           </head>
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
-      
+
 <?php
-         //$pr  = eamuser_ps'];
-         $pr = 'b';
+         $pr  = $_GET['teamuser_ps'];
+         //$pr = 'b';
          if( $pr ==  'a'){
                    $class_no = 'yes_b';
-                   $class_yes = 'yes_a'; 
-                   $team = eam_a_name'];
+                   $class_yes = 'yes_a';
+                   $team = $_GET['team_a_name'];
                    $ph = 'a pronostiqué la victoire du <span style="color:#FF3369">'.$team.'</span>.';
          }
          elseif( $pr ==  'b'){
                    $class_no = 'yes_a';
-                   $class_yes = 'yes_b';   
-                   $team = eam_b_name'];
+                   $class_yes = 'yes_b';
+                   $team = $_GET['team_b_name'];
                    $ph = 'a pronostiqué la victoire du <span style="color:#FF3369">'.$team.'</span>.';
          }
          else{
                    $class_no = 'yes_ab';
-                   $class_yes = 'yes_ab';  
+                   $class_yes = 'yes_ab';
                    $ph = 'a pronostiqué un match nul.';
          }
-          
-          $adv = 'du'; 
-          
-                    
+
+          $adv = 'du';
+
+
 ?>
 
-<img src="https://creation.funizi.com/images-theme-perso/1528471357.jpg" id="back"> 
+<img src="https://creation.funizi.com/images-theme-perso/1528471357.jpg" id="back">
 
 <div class="texte" id="pronostic"> <span style="color:#03D7DC"><?php echo $_GET['user_name']; ?></span><?=$ph;?> </div>
 
-<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/sen.png" id="flag_tema_a" class="flag_team"> 
-<div class="texte team_name" id="team_a"><?php echo $_GET['team_a_name']; ?></div>
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['cca']; ?>.png" id="flag_tema_a" class="flag_team">
+<div class="texte team_name" id="team_a"><?php echo $_GET[' team_a_name ']; ?></div>
 
-<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/eng.png" id="flag_tema_b" class="flag_team"> 
-<div class="texte team_name" id="team_b"><?php echo $_GET['team_b_name']; ?></div>
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['ccb']; ?>.png" id="flag_tema_b" class="flag_team">
+<div class="texte team_name" id="team_b"><?php echo $_GET[' team_b_name ']; ?></div>
 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user"> 
- 
-<img src="https://creation.funizi.com/images-theme-perso/1528476005.png" class="yes" id="<?=$class_no;?>"> 
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
 
-<img src="https://creation.funizi.com/images-theme-perso/1528472617.png" class="yes" id="<?=$class_yes;?>"> 
- 
+<img src="https://creation.funizi.com/images-theme-perso/1528476005.png" class="yes" id="<?=$class_no;?>">
+
+<img src="https://creation.funizi.com/images-theme-perso/1528472617.png" class="yes" id="<?=$class_yes;?>">
+
 
         </div>
-        
+
         </body>
         </html>
-      
