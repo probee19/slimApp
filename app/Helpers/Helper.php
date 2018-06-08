@@ -297,7 +297,7 @@ class Helper
     public function relatedTests($countryCode, $exclude, $lang, $total = 33){
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
-      if(in_array($countryCode, ['SN','CI','FR'], true)){
+      if(in_array($countryCode, ['SN','CI','FR','CD'], true)){
         $choosen_some_tests = array();
         $array_tests = array(351, 353, 354, 357);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);

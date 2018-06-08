@@ -110,17 +110,17 @@ class HomeController extends Controller
       foreach ($matchs_records as $match) {
         // code...
 
-        $fields = [
+        $fields = array(
           'game'          =>  $match->id_game,
           'team_a'        =>  $match->team_a->french,
           'team_b'        =>  $match->team_b->french,
           'team_a_flag'   =>  $match->team_a->flag,
           'team_b_flag'   =>  $match->team_b->flag,
           'time'          =>  '17:00'
-        ];
+        );
         Helper::debug($fields);
         $url = "https://fr.funizi.com/api/start/358";
-        $result = self::curl_post($url, $fields );
+        $result = self::curlPost($url, $fields );
         Helper::debug($result);
         $nb++;
         if($nb == 6) break;
@@ -128,21 +128,20 @@ class HomeController extends Controller
 
     }
 
-    public static function curlPost($url, $fields, $headers=false)
+    public static function curlPost($url, $fields, $headers= [])
     {
       // code...
 
-      $handle = curl_init();
-      if (FALSE === $handle)
-         throw new Exception('failed to initialize');
-
-      curl_setopt($handle, CURLOPT_URL, $url);
-      curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
-      curl_setopt($handle, CURLOPT_POSTFIELDS, array('key'=> $projectId, 'q' => $text, 'source' => $source, 'target' => $lang));
-      curl_setopt($handle, CURLOPT_HTTPHEADER, array('X-HTTP-Method-Override: GET'));
-      $response = curl_exec($handle);
-      $data = json_decode($response);
+      $ch = curl_init();
+      curl_setopt( $ch,CURLOPT_URL, $url );
+      curl_setopt( $ch,CURLOPT_POST, true );
+      curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+      curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+      curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+      curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
+      $result = curl_exec($ch );
+      curl_close( $ch );
+      return $result;
 
     }
 
