@@ -151,7 +151,7 @@ class StartController extends Controller
           $filepath = "uploads/". $code . '.jpg';
 
           if($test_id == 358)
-            $filepath = "uploads/games/game_". $_POST['game'] . '.jpg';
+            $filepath = "uploads/game_". $_POST['game'] . '.jpg';
 
 
           //Grabzit Options
@@ -166,7 +166,7 @@ class StartController extends Controller
           $save = $this->grabzit->SaveTo("../".$filepath);
           if($save){
               $filepath_ = "https://".$this->base_domain .'/'. $filepath;
-              $resultUrl = $this->helper->uploadToS3($filepath_, 'api/');
+              $resultUrl = $this->helper->uploadToS3($filepath_, 'api/games/');
           }
           $data = [
               'messenger_user_id'     => $user_id,
