@@ -158,6 +158,9 @@ class StartController extends Controller
           if($test_id == 358)
             $filepath = "uploads/game_". $_POST['game'] . '.jpg';
 
+          if($test_id == 359)
+            $filepath = "uploads/pronostic_". $code . '.jpg';
+
 
           //Grabzit Options
           $options = new GrabzItImageOptions();
@@ -171,7 +174,11 @@ class StartController extends Controller
           $save = $this->grabzit->SaveTo("../".$filepath);
           if($save){
               $filepath_ = "https://".$this->base_domain .'/'. $filepath;
-              $resultUrl = $this->helper->uploadToS3($filepath_, 'api/games/');
+              if($test_id == 358)
+                $resultUrl = $this->helper->uploadToS3($filepath_, 'api/games/');
+
+              if($test_id == 359)
+                $resultUrl = $this->helper->uploadToS3($filepath_, 'api/pronostics/');
           }
           $data = [
               'messenger_user_id'     => $user_id,
@@ -246,13 +253,43 @@ class StartController extends Controller
                      ]
                    ]
                 ]
-            ];
+          ];
 
+            //
+            $elements = [];
+
+            $image = "https://s3.us-east-2.amazonaws.com/funiziuploads/api/pronostics/pronostic_$code.jpg";
+
+            $elements[] = [
+                               'title' => "Pronostic",
+                               'image_url'=> $image,
+                               'subtitle' => '',
+
+                               'buttons' =>[
+                                         [
+                                               'type'  => 'show_block',
+                                                 'block_names'   => ['ede'],
+                                                 'title' => 'Go'
+                                         ]
+                               ]
+                           ];
+            $messages = [
+                   'messages'  => [
+                           'attachment'  => [
+                                  'type' => 'template',
+                                  'payload' => [
+                                       'template_type' => 'generic',
+                                       'elements' => $elements
+                                    ]
+                           ]
+                   ]
+             ];
+            //echo json_encode($messages);
 
 
   return $response->withStatus(201)
   ->withHeader('Content-Type', 'application/json')
-  ->write(json_encode($images));
+  ->write(json_encode($messages));
 }
 
   public function test($request, $response, $arg)
