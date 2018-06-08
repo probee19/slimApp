@@ -296,7 +296,7 @@ class StartController extends Controller
                    ]
              ];
             //echo json_encode($messages);
-echo json_encode($messages);
+echo json_encode([$messages]);
 exit;
 
   return $response->withStatus(201)
