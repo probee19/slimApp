@@ -128,13 +128,32 @@ class HomeController extends Controller
 
     }
 
+    public static function curlPost($url, $fields, $headers=false)
+    {
+      // code...
+
+      $handle = curl_init();
+      if (FALSE === $handle)
+         throw new Exception('failed to initialize');
+
+      curl_setopt($handle, CURLOPT_URL, $url);
+      curl_setopt($handle, CURLOPT_RETURNTRANSFER, 1);
+      curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+      curl_setopt($handle, CURLOPT_POSTFIELDS, array('key'=> $projectId, 'q' => $text, 'source' => $source, 'target' => $lang));
+      curl_setopt($handle, CURLOPT_HTTPHEADER, array('X-HTTP-Method-Override: GET'));
+      $response = curl_exec($handle);
+      $data = json_decode($response);
+
+    }
 
     public static function curl_post($url, $fields, $headers=false){
 
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, $url);
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('X-HTTP-Method-Override: GET'));
       curl_setopt($ch, CURLOPT_POST, 1);
 
 
