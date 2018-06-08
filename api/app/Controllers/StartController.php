@@ -129,7 +129,7 @@ class StartController extends Controller
          $url = SandBox::getUrlTestPerso($test_id ,$url, $lang);
 
          if($test_id == 358){
-           $url .= '&team_a=' . urlencode($_POST['team_a']) . '&team_b='. urlencode($_POST['team_b']) . '&team_a_flag=' . $_POST['team_a_country_code'] . '&team_b_flag='. $_POST['team_b_country_code'] ;
+           $url .= '&team_a=' . urlencode($_POST['team_a']) . '&team_b='. urlencode($_POST['team_b']) . '&team_a_flag=' . strtolower($_POST['team_a_country_code']) . '&team_b_flag='. strtolower($_POST['team_b_country_code']) ;
            if(isset($_POST['time']))
             $url .= '&time=' . $_POST['time'];
            else
