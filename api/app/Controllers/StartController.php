@@ -158,7 +158,7 @@ class StartController extends Controller
             return $url;
           }
           */
-          Helper::debug($url);
+          //Helper::debug($url);
 
           //Generate unique code string for the test result
           $stringen = new RandomStringGenerator();
