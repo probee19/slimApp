@@ -71,94 +71,17 @@
     <!-- End Google Tag Manager -->
 
 </head>
-<body>
+<body style="display:flex; justify-content:center; align-items:center;">
   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4J4L86"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4J4L86" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/{{interface_ui.lang}}/sdk.js#xfbml=1&version=v2.10&appId=348809548888116";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
-<!-- Page Content -->
-<div data-domain="{{ domain_url }}" data-resquest-uri="{{ request_uri }}" data-defined-domain="{{ defined_base_domain }}" id="domain"></div>
-<div class="container-fluid container-funizi">
-    {% if not is_mobile() and not is_tablet() %}
-    <div class="row text-center">
-        <div class="fb-like" data-href="https://www.facebook.com/funizi/" data-layout="button_count" data-action="like" data-size="" data-show-faces="false" data-share="false"></div>
-    </div>
-    {% endif %}
-    <!--<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    -->
-    {% if no_ads %}
-    {% else %}
-      {% if not is_mobile() and not is_tablet() %}
-        <div class="gallery text-center" style="margin:1em 0 1em;" >
-            <!-- Funizi_728x90_Top_desktop -->
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px"
-                 data-ad-client="ca-pub-5139434732876009"
-                 data-ad-slot="2957232538"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
-      {% else %}
-        <div style="margin:1em auto;" class="text-center">
-            {% block banner_mobile_top %}{% endblock %}
-        </div>
-      {% endif %}
-    {% endif %}
+ <div class="container-fluid container-funizi">
 
-    <div class="col-sm-8 text-center gallery" style="display:flex; justify-content:center; align-items:center;">
-
-        {% block content %}{% endblock %}
-
-        {% if no_ads %}
-        {% else %}
-          <ins class="adsbygoogle"
-               style="display:block;margin-bottom:5em;"
-               data-ad-format="autorelaxed"
-               data-ad-client="ca-pub-5139434732876009"
-               data-ad-slot="3403735577"
-               data-matched-content-ui-type="text_card"
-               data-matched-content-rows-num="8"
-               data-matched-content-columns-num="3"
-          ></ins>
-          <script>
-              (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        {% endif %}
-    </div>
-    <!--<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    -->
-    <div class="col-xs-12 col-sm-4 text-center aside-right" style="">
-      <div style="position:fixed;  max-width:300px;">
-        {% if no_ads %}
-        {% else %}
-          {% if not is_mobile() and not is_tablet() %}
-            {% set banner = random(['banners/banner_300x250_bottom.twig']) %}
-            {% include  banner %}
-
-          {% endif %}
-        {% endif %}
-      </div>
-    </div>
-
-
+    {% block content %}{% endblock %}
 
 </div>
-<!-- /.container -->
-<div class="row clearfix"style="margin-top:20px"></div>
-<!--Footer-->
-
-<!--/.Footer-->
+<!-- /.container --> 
 <!-- jQuery -->
 <script src="{{ domain_url }}/src/js/jquery.js"></script>
   <!-- Latest compiled and minified JavaScript -->
