@@ -14,10 +14,10 @@ use App\Controllers\AirtableController;
 use Psr7Middlewares\Middleware\ClientIp;
 use GrabzItImageOptions;
 
-class HomeController extends Controller
+class ShareApiController extends Controller
 {
     public function index($request, $response, $arg){
-     
+
 
     return $this->view->render($response, 'page.twig');
 
