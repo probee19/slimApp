@@ -1,0 +1,87 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ domain_url }}?utm=from_logo"><img src="{{ domain_url }}/creation-test/src/img/funizi.png" height="20"/></a>
+            {% if is_mobile() or  is_tablet() %}
+            <div class="li-select">
+              <div class="">
+                <select class="selectpicker" id="lang_selector" onchange="changeLang($(this).val());">
+                  {% for lang in all_lang %}
+                    <option value="{{lang.code}}" {% if interface_ui.code_lang == lang.code %} selected {% endif %} >{{lang.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            {% endif %}
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="{{ domain_url }}">{{interface_ui.menu_home}}</a>
+                </li>
+                <li>
+                    <a href="{{ domain_url }}/rubrique/{{interface_ui.rubrique_5}}/5">{{interface_ui.rubrique_5}}</a>
+                </li>
+                <!--
+
+                    {% if session.uid %}
+                    <li>
+                        <a href="http://www.funizi.com/mytest/choosetheme">Créez votre propre test</a>
+                    </li>
+                    {% else %}
+                        <li>
+                            <a href="#" onclick="openModal(-1)">Créez votre propre test</a>
+                        </li>
+                    {% endif %}
+                    {% if session.name %}
+                        <li>
+                            <a href="http://www.funizi.com/mytest/mes-tests.php">Mes tests</a>
+                        </li>
+                    {% endif %}
+                -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              {% if is_mobile() or  is_tablet() %}
+              {% else %}
+                <li class="li-select">
+                  <div class="">
+                    <select class="selectpicker" id="lang_selector" onchange="changeLang($(this).val());">
+                      {% for lang in all_lang %}
+                        <option value="{{lang.code}}" {% if interface_ui.code_lang == lang.code %} selected {% endif %} >{{lang.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                </li>
+              {% endif %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="height: 50px;padding-top: 5px;">
+                            {% if session.uid %}
+                                <img src="https://graph.facebook.com/{{ session.uid }}/picture?type=large&w‌​idth=40&height=40" alt="" class="img-responsive img-circle" style="display: inline;width:40px; height: 40px;">
+                            {% else %}
+                                <img src="{{ domain_url }}/src/img/default_profile.jpg" alt="" class="img-responsive img-circle" style="display: inline;width:40px">
+                            {% endif %}
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% if session.uid %}
+                            <li><a href="{{ domain_url }}/logout">{{interface_ui.menu_logout}}</a></li>
+                        {% else %}
+                            <li><a href="#" onclick="openModal(0)">{{interface_ui.menu_login}}</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>

@@ -9,6 +9,7 @@ use App\Controllers\StartController;
 use App\Controllers\ResultController;
 use App\Controllers\ClickController;
 use App\Controllers\AirtableController;
+use App\Controllers\FootBotController;
 
 use App\Helpers\Helper;
 use Bes\Twig\Extension\MobileDetectExtension;
@@ -163,6 +164,9 @@ $container['ConnectController'] = function ($container) {
 };
 $container['AirtableController'] = function ($container) {
     return new AirtableController($container);
+};
+$container['FootBotController'] = function ($container) {
+    return new FootBotController($container);
 };
 $container['DailyStatsController'] = function ($container) {
     return new DailyStatsController($container);

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <link rel="apple-touch-icon" sizes="57x57"   href="{{ domain_url }}/src/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60"   href="{{ domain_url }}/src/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72"   href="{{ domain_url }}/src/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76"   href="{{ domain_url }}/src/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ domain_url }}/src/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ domain_url }}/src/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{ domain_url }}/src/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ domain_url }}/src/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ domain_url }}/src/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ domain_url }}/src/favicon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ domain_url }}/src/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{ domain_url }}/src/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ domain_url }}/src/favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{ domain_url }}/src/favicon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ domain_url }}/src/favicon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <title>{% block title %}{% endblock %} | Funizi</title>
+            {% block graph %}{% endblock %}
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ domain_url }}/src/css/3-col-portfolio.css?v=0.0006" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ domain_url }}/src/css/app.css?v=1.319">
+    <link rel="stylesheet" href="{{ domain_url }}/src/css/container.css?v=0.0008">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Adwords code -->
+    {% if no_ads %}
+    {% else %}
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <script>
+          (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-5139434732876009",
+          enable_page_level_ads: true
+          });
+      </script>
+    {% endif %}
+
+    {% block googletagmanager %}{% endblock %}
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N4J4L86');</script>
+    <!-- End Google Tag Manager -->
+
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N4J4L86"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/{{interface_ui.lang}}/sdk.js#xfbml=1&version=v2.10&appId=348809548888116";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+{% include 'templates/partials/menu.twig' %}
+<!-- Page Content -->
+<div data-domain="{{ domain_url }}" data-resquest-uri="{{ request_uri }}" data-defined-domain="{{ defined_base_domain }}" id="domain"></div>
+<div class="container-fluid container-funizi">
+    {% if not is_mobile() and not is_tablet() %}
+    <div class="row text-center">
+        <div class="fb-like" data-href="https://www.facebook.com/funizi/" data-layout="button_count" data-action="like" data-size="" data-show-faces="false" data-share="false"></div>
+    </div>
+    {% endif %}
+    <!--<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    -->
+    {% if no_ads %}
+    {% else %}
+      {% if not is_mobile() and not is_tablet() %}
+        <div class="gallery text-center" style="margin:1em 0 1em;" >
+            <!-- Funizi_728x90_Top_desktop -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-5139434732876009"
+                 data-ad-slot="2957232538"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+      {% else %}
+        <div style="margin:1em auto;" class="text-center">
+            {% block banner_mobile_top %}{% endblock %}
+        </div>
+      {% endif %}
+    {% endif %}
+
+    <div class="col-sm-8 text-center gallery" style="">
+
+        {% block content %}{% endblock %}
+
+        {% if no_ads %}
+        {% else %}
+          <ins class="adsbygoogle"
+               style="display:block;margin-bottom:5em;"
+               data-ad-format="autorelaxed"
+               data-ad-client="ca-pub-5139434732876009"
+               data-ad-slot="3403735577"
+               data-matched-content-ui-type="text_card"
+               data-matched-content-rows-num="8"
+               data-matched-content-columns-num="3"
+          ></ins>
+          <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        {% endif %}
+    </div>
+    <!--<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    -->
+    <div class="col-xs-12 col-sm-4 text-center aside-right" style="">
+      <div style="position:fixed;  max-width:300px;">
+        {% if no_ads %}
+        {% else %}
+          {% if not is_mobile() and not is_tablet() %}
+            {% set banner = random(['banners/banner_300x250_bottom.twig']) %}
+            {% include  banner %}
+
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Modal FB Connexion -->
+	<div id="facebook-login-modal" class="modal fade" role="dialog">
+	    <div class="modal-dialog">
+
+	        <div class="modal-content">
+	            <div class="modal-header">
+                    <img class="img-responsive" src="{{ base_url }}/creation-test/src/img/funizi.png" style="height:30px; margin: 0 auto;" alt="Funizi">
+	                <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            </div>
+	            <div class="modal-body text-center">
+	                <p>
+                  {{interface_ui.label_login}}
+	                <br>
+                  {{interface_ui.label_login_2}}
+	                </p>
+				</div>
+	            <div class="row">
+		            <div class="modal-footer text-center col-lg-offset-3 col-lg-6 col-xs-10 col-xs-offset-1" style="font-size:1em;">
+						<button type="button"  id="btn_log_fb" onClick="" class="btn btn-lg btn-facebook btn-block " >
+							<i class="fa fa-facebook-square" ></i>  &nbsp;{{interface_ui.btn_login}}
+						</button>
+					</div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+    <!-- /Modal FB Connexion -->
+
+</div>
+<!-- /.container -->
+<div class="row clearfix"style="margin-top:20px"></div>
+<!--Footer-->
+
+<footer class="footer">
+    <!--Footer Links-->
+    <div class="container-fluid text-center">
+      <!--div class="footer-block text-center logo_footer">
+          <a href="{{ domain_url }}?utm=from_logo"><img src="{{ base_url }}/creation-test/src/img/funizi.png" height="30"/></a>
+      </div>
+      <!--/.Footer Links-->
+      <!--Copyright-->
+      <div class="footer-block text-center">
+          <a href="{{ path_for('privacypolicy') }}" class="link_footer">{{interface_ui.footer_privacy_policy}}</a>
+          <!--<a href="#" class="link_footer">{{interface_ui.footer_about_us}}</a>-->
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfIXQZF0ZmdvjuvIM5bz5pomT-Ds6HH28ppkFR29bVksONofw/viewform" target="_blank" class="link_footer">{{interface_ui.footer_contact_us}}</a>
+      </div>
+    </div>
+    <!--/.Copyright-->
+</footer>
+<!--/.Footer-->
+<!-- jQuery -->
+<script src="{{ domain_url }}/src/js/jquery.js"></script>
+<script class="init">
+  $(document).ready(function () {
+    tasks = Array('{{interface_ui.label_loading_1}}','{{interface_ui.label_loading_2}}','{{interface_ui.label_loading_3}}','{{interface_ui.label_loading_4}}','{{interface_ui.label_loading_5}}');
+  });
+
+</script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="{{ domain_url }}/src/js/scripts.js?v=1.261"></script>
+<script src="{{ domain_url }}/src/js/facebook-login.js?v=1.251"></script>
+</body>
+</html>
