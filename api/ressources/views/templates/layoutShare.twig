@@ -26,7 +26,7 @@
     <meta name="theme-color" content="#ffffff">
 
 
-    <title>{% block title %}{% endblock %} | Funizi</title>
+  <title>{% block title %}{% endblock %} | FootBot</title>
     {% block graph %}{% endblock %}
 
     <!-- Latest compiled and minified CSS -->
@@ -86,7 +86,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 </script>
-{% include 'templates/partials/menu.twig' %}
 <!-- Page Content -->
 <div data-domain="{{ domain_url }}" data-resquest-uri="{{ request_uri }}" data-defined-domain="{{ defined_base_domain }}" id="domain"></div>
 <div class="container-fluid container-funizi">
@@ -117,7 +116,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       {% endif %}
     {% endif %}
 
-    <div class="col-sm-8 text-center gallery" style="">
+    <div class="col-sm-8 text-center gallery" style="display:flex; justify-content:center; align-items:center;">
 
         {% block content %}{% endblock %}
 
@@ -152,16 +151,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-   
+
 
 </div>
 <!-- /.container -->
 <div class="row clearfix"style="margin-top:20px"></div>
 <!--Footer-->
 
-<footer class="footer">
-
-</footer>
 <!--/.Footer-->
 <!-- jQuery -->
 <script src="{{ domain_url }}/src/js/jquery.js"></script>
