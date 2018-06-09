@@ -24,6 +24,18 @@
 
 
 {% block content %}
+  <div class="mainContent" style="display:flex; justify-content:center; align-items:center;">
     {{ data }}
+
+  </div>
   <!-- /New Test Button -->
+  <script>
+    function windowH() {
+     var wH = $(window).height();
+
+     $('.mainContent').css({height: wH});
+    }
+
+    windowH();
+  </script>
 {% endblock %}
