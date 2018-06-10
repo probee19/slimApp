@@ -23,7 +23,7 @@ class ShareApiController extends Controller
       $team_b = $_GET['team_b'];
       $data = [
         'user'       => $_GET['first_name'],
-        'img'        => $_GET['img_url'],
+        'img_url'    => $_GET['img_url'],
         'team_a'     => $_GET['team_a'],
         'team_b'     => $_GET['team_b']
       ];
