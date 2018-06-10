@@ -18,6 +18,7 @@ class FootBotController extends Controller
           'user'        =>  $_GET['from'],
           'img_url'     =>  $_GET['img_url']
           ];
+        Helper::debug($data);
         return $this->view->render($response, 'footBot.twig', compact('data'));
     }
 }
