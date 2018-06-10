@@ -17,8 +17,8 @@ use GrabzItImageOptions;
 class ShareApiController extends Controller
 {
     public function index($request, $response, $arg){
-      $user = $_POST['first_name'];
-      $img = $_POST['img'];
+      $user = $_GET['first_name'];
+      $img = $_GET['img_url'];
 
 
     return $this->view->render($response, 'page.twig', compact('user','img'));
