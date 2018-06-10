@@ -25,7 +25,11 @@
 
 {% block content %}
   <div class="mainContent" style="display:flex; justify-content:center; align-items:center;">
-    {{ data }}
+    {{ data.text}}
+
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center">
+        <a class="btn btn-primary btn-lg btn_footbot" href="https://www.messenger.com/t/funizi" onclick='alert("Clic")' style="cursor:pointer;"  data-btn="discover-footbot"><i class="fab fa-facebook-messenger"></i> {{data.btn_title}}</a>
+    </div>
 
   </div>
   <!-- /New Test Button -->

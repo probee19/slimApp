@@ -11,8 +11,10 @@ class FootBotController extends Controller
 
     public function index($request, $response, $args){
 
-        $data = 'test';
-        
+        $data = [
+          'text'        =>  'Découvrir FootBot',
+          'btn_title'   =>  'FootBot'
+          ];
         return $this->view->render($response, 'footBot.twig', compact('data'));
     }
 }
