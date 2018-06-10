@@ -36,7 +36,7 @@ class ShareApiController extends Controller
     $lang = $this->helper->getLangSubdomain($request);
     $interface_ui = $this->helper->getUiLabels($lang);
 
-    return $this->view->render($response, 'page.twig', compact('data','url_to_share','url_redirect_share','result_description','interface_ui'));
+    return $this->view->render($response, 'share.twig', compact('data','url_to_share','url_redirect_share','result_description','interface_ui'));
 
     }
 
