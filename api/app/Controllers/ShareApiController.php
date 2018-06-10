@@ -19,9 +19,24 @@ class ShareApiController extends Controller
     public function index($request, $response, $arg){
       $user = $_GET['first_name'];
       $img = $_GET['img_url'];
+      $team_a = $_GET['team_a'];
+      $team_b = $_GET['team_b'];
+      $data = [
+        'user'       => $_GET['first_name'],
+        'img'        => $_GET['img_url'],
+        'team_a'     => $_GET['team_a'],
+        'team_b'     => $_GET['team_b']
+      ];
+
+    $url_to_share = urlencode('https://funizi.com/api/footbot?from='.$_GET['first_name'].'&img_url='.$_GET['img_url']);
+    $url_redirect_share = $url_to_share;
+    $result_description = 'Partage ton pronostic à tes amis et à tes proches.';
 
 
-    return $this->view->render($response, 'page.twig', compact('user','img'));
+    $lang = $this->helper->getLangSubdomain($request);
+    $interface_ui = $this->helper->getUiLabels($lang);
+
+    return $this->view->render($response, 'page.twig', compact('data','url_to_share','url_redirect_share','result_description','interface_ui'));
 
     }
 

@@ -17,6 +17,9 @@ use App\Models\UserTest;
 use App\Models\Highlights;
 use App\Models\Visitors;
 use App\Models\Countries;
+use App\Models\Language;
+use App\Models\InterfaceUi;
+use App\Models\InterfaceUiTranslations;
 
 use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;
@@ -309,8 +312,6 @@ class Helper
 
     }
 
-
-
     public function uploadToS3($fileURL, $folder){
         // AWS Info
 
@@ -382,4 +383,62 @@ class Helper
         return $res;
 
     }
+
+    public static function getLangSubdomain($request){
+      $host = $request->getUri()->getHost();
+      //Helper::debug($_SERVER['REQUEST_URI']);
+
+      return str_replace(array("www", $_SERVER['SERVER_DOMAIN'], "."), "", $host);
+    }
+
+    // Obtention de la langue par défaut du Navigateur
+    public static function getLangBrowser($lang=""){
+      if($lang == ""){
+        $language = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        $language = $language{0}.$language{1};
+      }
+      else {
+        $language = $lang;
+      }
+
+      $language_info = Language::selectRaw("status")->where("code",$language)->first();
+      if(isset($language_info->status) &&  $language_info->status == 0)
+        $language = "en";
+      return $language;
+    }
+
+    public static function detectLang($request, $response){
+      //$host = $request->getUri()->getHost();
+      $server = $_SERVER["HTTP_X_FORWARDED_PROTO"];
+      $lang = self::getLangSubdomain($request);
+      if($lang == ""){
+          $lang = self::getLangBrowser();
+          //$url = "https://".$lang.".funizi.com".$_SERVER['REQUEST_URI'];
+        return "https://". $lang . '.' . $_SERVER['SERVER_DOMAIN'] . $_SERVER['REQUEST_URI'];
+      }
+      return "";
+    }
+
+    // Obtention des noms des éléments de l'interface dans la langue choisie
+    public static function getUiLabels($lang=""){
+      $language = self::getLangBrowser($lang);
+      $labels = InterfaceUiTranslations::selectRaw("interface_ui_code,interface_ui")->where("lang",$language)->get();
+      $data = [ ];
+      $data ["code_lang"] = $lang;
+
+      $data ["lang"] = $lang.'_'.strtoupper($lang);
+      foreach ($labels as $label) {
+        $data[$label->interface_ui_code] = $label->interface_ui;
+      }
+      return $data;
+
+    }
+
+    // Obtention de la liste des langues activées
+    public static function getActivatedLanguages(){
+      $all_lang = Language::where('status','=',1)->get();
+      return $all_lang;
+    }
+
+
 }
