@@ -25,9 +25,11 @@
 
 #fb_id_user{position: absolute; z-index:1; left: 0; bottom: 0; width:400px ;  height:400px ; object-fit: cover; object-position: 50% 10%; }
  
-#user{z-index:2; font-family: 'Titillium Web', sans-serif; text-transform:uppercase; position: absolute; left: 0; top: 0; color:#FFF; font-size:30px; width:400px ; height:50px ; background:#1C582B;  text-align:center; display:flex; align-items:center; justify-content:center;  }
+#user{z-index:2; font-family: 'Titillium Web', sans-serif; text-transform:uppercase; position: absolute; left: 0; top: 0; color:#FFF; font-size:30px; width:300px ; height:50px ; background:#1C582B;  text-align:center; display:flex; align-items:center; justify-content:center;  }
 
-#personnage{z-index:2; font-family: 'Titillium Web', sans-serif; text-transform:uppercase; position: absolute; right: 0; top: 0; color:#FFF; font-size:30px; width:400px ; height:50px ; background:#E32702;  text-align:center; display:flex; align-items:center; justify-content:center;  }
+#yellow{z-index:2;   position: absolute; left: 300px; top: 0;  width:200px ; height:50px ; background:#E6A81A; background:rgb(252,209,22);  text-align:center; display:flex; align-items:center; justify-content:center;  }
+
+#personnage{z-index:2; font-family: 'Titillium Web', sans-serif; text-transform:uppercase; position: absolute; right: 0; top: 0; color:#FFF; font-size:30px; width:300px ; height:50px ; background:#E32702;  text-align:center; display:flex; align-items:center; justify-content:center;  }
  
 #perso{position:absolute; z-index:1; right:0; bottom:0;  width:400px; height:370px; }
 
@@ -83,12 +85,13 @@
 <!DOCTYPE HTML>
 
 <div class="texte" id="user"><?php echo $_GET['user_name']; ?> </div>
+<div class="texte" id="yellow"> </div>
 <div class="texte" id="personnage"> <?=$personnages[$ind]?> </div>
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <img src="https://creation.funizi.com/images-theme-perso/<?=$image[$ind]?>.jpg" id="perso"> 
 
 
-<img src="https://creation.funizi.com/images-theme-perso/1528284568.png" id="star"> 
+<img src="https://creation.funizi.com/images-theme-perso/1528654344.png" id="star"> 
   
 
         </div>
