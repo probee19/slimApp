@@ -22,13 +22,13 @@ class ShareApiController extends Controller
       $team_a = $_GET['team_a'];
       $team_b = $_GET['team_b'];
       $data = [
-        'user'       => $_GET['first_name'],
+        'user'       => $_GET['from'],
         'img_url'    => $_GET['img_url'],
         'team_a'     => $_GET['team_a'],
         'team_b'     => $_GET['team_b']
       ];
 
-    $url_to_share = urlencode('https://funizi.com/api/footbot?from='.$_GET['first_name'].'&img_url='.$_GET['img_url']);
+    $url_to_share = urlencode('https://funizi.com/api/footbot?from='.$_GET['from'].'&img_url='.$_GET['img_url']);
     $url_redirect_share = $url_to_share;
     $result_description = 'Partage ton pronostic à tes amis et à tes proches.';
 
