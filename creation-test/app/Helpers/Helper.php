@@ -385,6 +385,7 @@ class Helper
 
       fputs($temp_file_php, $begin_gabarit. "\n" . $code_php . "\n" . $end_gabarit);
       //fputs($temp_file_php, $begin_gabarit. "<style>".$css."</style> \n" . "<script>".$js."</script> \n" . $code_php . $end_gabarit);
+      self::uploadToS3($path . $url_temp_file_php.".php", 'quotes_files_php/');
       return $path . $url_temp_file_php . '.php';
     }
     // Crée le fichier du test dans la langue $lang pour le test $test_id

@@ -126,6 +126,7 @@ class CreateTestController extends Controller
 
 
       if(self::decode($_POST['img_resultat_base_64_1'], $uploadPath)){
+        $this->helper->uploadToS3($uploadPath, 'images/images-tests/');
         // Récuperation de la liste des zones sélectionnées pour le test
         if(isset($_POST['localite'])){
           foreach ($_POST['localite'] as $code_localite) {
@@ -195,6 +196,7 @@ class CreateTestController extends Controller
               $name = 'resultat_'.$i.'_'.time().'_'.str_replace(' ','_',$id_test.'.jpeg');
                   $uploadPathResultat = $target_dir. $name;
                   if(self::decode($_POST['img_resultat_base_64_'.$i], $uploadPathResultat)){
+                    $this->helper->uploadToS3($uploadPathResultat, 'images/images-tests/');
                     if($id_theme == 1){
                       $titre_resultat = $_POST['resultat'.$i];
                       $genre = $_POST['genre'.$i];

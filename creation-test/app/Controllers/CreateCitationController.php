@@ -151,6 +151,7 @@ class CreateCitationController extends Controller
 
       // Do capture with url
       $citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang);
+      $this->helper->uploadToS3($url_file, 'images/images-citations/');
 
       // Sauvegarde des informations de la citation pour chaque langue activée
       $data_ci = array();
@@ -349,5 +350,5 @@ class CreateCitationController extends Controller
 	    file_put_contents($pathname, $code);
 		return true;
 	}
- 
+
 }
