@@ -115,6 +115,8 @@ $container['view'] = function ($container){
     // Adding created custom filter to twig envirnment
     $view->getEnvironment()->addFilter($twigCleanUrl);
     $view->getEnvironment()->addGlobal('flash', $container->flash);
+    $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
+    $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
     $view->getEnvironment()->addGlobal('session', $_SESSION);
 
     return $view;
