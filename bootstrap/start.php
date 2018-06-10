@@ -13,6 +13,7 @@ use App\Controllers\DailyStatsController;
 use App\Controllers\RubriqueController;
 use App\Controllers\NotificationPushController;
 use App\Controllers\AdditionnalInfoController;
+use App\Controllers\CitationsController;
 
 use App\Helpers\Helper;
 use Bes\Twig\Extension\MobileDetectExtension;
@@ -104,9 +105,15 @@ $container['view'] = function ($container){
         $title_url = Helper::getUrlTest($title, $id, $lang);
         return Helper::cleanUrl($title_url);
     });
+
+    $twigTitleCitationUrl = new Twig_SimpleFilter('twig_title_citation_url', function ($title, $id, $lang){
+        $title_url = Helper::getUrlCitation($title, $id, $lang);
+        return Helper::cleanUrl($title_url);
+    });
     // Adding created custom filter to twig envirnment
     $view->getEnvironment()->addFilter($twigCleanUrl);
     $view->getEnvironment()->addFilter($twigTitleUrl);
+    $view->getEnvironment()->addFilter($twigTitleCitationUrl);
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
@@ -177,6 +184,9 @@ $container['NotificationPushController'] = function ($container) {
 };
 $container['DevtestController'] = function ($container) {
     return new DevtestController($container);
+};
+$container['CitationsController'] = function ($container) {
+    return new CitationsController($container);
 };
 $container['grabzit'] = function ($container) {
     return new GrabzItClient(GZIT_KEY, GZIT_SECRET);

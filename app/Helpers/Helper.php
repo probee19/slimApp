@@ -123,13 +123,22 @@ class Helper
         //return $data;
     }
 
-    public static function getUrlTest($titre_test, $id, $lang)
-    {
+    public static function getUrlTest($titre_test, $id, $lang){
       if($lang === 'ar'){
           return TestInfo::where([['id_test','=',$id],['lang','=','en']])->first()->titre_test;
       }
       else
         return $titre_test;
+
+    }
+
+    public static function getUrlCitation($titre_citation, $id, $lang){
+      if($lang == 'ar'){
+        $citation_info = CitationInfo::where([['id_citation','=',$id],['lang','=','en']])->first();
+        return $citation_info->titre_citation;
+      }
+      else
+        return $titre_citation;
 
     }
 
