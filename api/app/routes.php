@@ -5,6 +5,7 @@
 $app->get('/', 'ClickController:index');
 $app->get('/chunk', 'HomeController:index');
 $app->get('/footbot', 'FootBotController:index');
+$app->get('/share/footbot', 'ShareApiController:index');
 
 
 
