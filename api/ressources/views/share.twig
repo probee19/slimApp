@@ -13,14 +13,13 @@
       <meta property="og:image" content="{{ data.img_url }}" />
       <meta property="og:type" content="website">
       <meta property="fb:app_id" content="348809548888116">
-{% endblock %}
-{% block googletagmanager %}
-  <script>
-    dataLayer = [{
-      'pageCategory': 'home'
-    }];
-  </script>
-{% endblock %}
+  {% block googletagmanager %}
+    <script>
+      dataLayer = [{
+        'pageCategory': 'home'
+      }];
+    </script>
+  {% endblock %}
 {% endblock %}
 {% block banner_mobile_top %} {% include 'banners/banner_320x100_top.twig' %} {% endblock %}
 
