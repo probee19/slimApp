@@ -36,11 +36,11 @@
             <a href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
 
             <div class="overlay-share">
-              <a class="overlay-btn-share" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "overlay")' style="width: 5em; height: 5em;"  >
+              <a class="overlay-btn-share" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "overlay")' style="width: 5em; height: 5em; font-size:0.8em;"  >
                 <i class="fab fa-facebook-f" style="font-size:0.8em;"></i> &nbsp;{{interface_ui.label_short_share}}
               </a>
-              <span class="overlay-btn-close" onclick='$(".overlay-share").fadeOut("slow")' style="width: 2em; height: 2em;">
-                <i class="fa fa-times" aria-hidden="true" style="font-size:2em;"></i>
+              <span class="overlay-btn-close" onclick='$(".overlay-share").fadeOut("slow")' style="width: 2em; height: 2em; font-size:1em;">
+                <i class="fa fa-times" aria-hidden="true" style="font-size:1em;"></i>
               </span>
             </div>
             <script>
