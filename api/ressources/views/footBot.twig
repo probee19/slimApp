@@ -24,14 +24,14 @@
 
 
 {% block content %}
-  <div class="mainContent" style="display:flex; justify-content:center; align-items:center; flex-direction: column;">
+  <div class="mainContent" style="display:flex; justify-content:center; align-items:center; flex-direction: column; font-size: 1.5em;">
     <div  id="div_test" class="col-xs-12 col-sm-10 col-sm-offset-1 back_layer">
-      <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-bottom:30px;">
         {{ data.text}}
       </div>
 
       <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center">
-          <a class="btn btn-primary btn-lg btn_footbot" href="https://www.messenger.com/t/funizi" onclick='alert("Clic")' style="cursor:pointer;"  data-btn="discover-footbot"><i class="fab fa-facebook-messenger"></i> {{data.btn_title}}</a>
+          <a class="btn btn-primary btn-lg btn_footbot" href="https://www.messenger.com/t/funizi" onclick='alert("Clic")' style="cursor:pointer; width: 200px;"  data-btn="discover-footbot"><i class="fab fa-facebook-messenger"></i> {{data.btn_title}}</a>
       </div>
     </div>
 
