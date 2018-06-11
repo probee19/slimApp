@@ -336,8 +336,7 @@ class CreateCitationController extends Controller
     $file_src = 'http://creation.funizi.com/'.$filesrc;
     $generated = $grabzit->URLToImage($file_src, $options);
     $save = $grabzit->SaveTo($filepath);
-    if($save)
-      $this->helper->uploadToS3($filepath, 'images/images-citations/');
+    $this->helper->uploadToS3($filepath, 'images/images-citations/');
     // Upload to S3 AWS
     //...
     //
