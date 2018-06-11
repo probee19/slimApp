@@ -267,8 +267,6 @@ class CreateCitationController extends Controller
             $url_file = $this->helper->getUrlCitationFile($lang->code, $id_citation, "ressources/views/themes/citations/", $_POST['codePHPHTML'], $_POST['codeCSS'], $_POST['codeJS'], $_POST['codeRequireTop'], $_POST['codeRequireBottom']);
             // Do capture
             $citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
-
-            // Save to DB
             if( $lang->code == $_POST['default_lang'])
               $new_data_ci = [
                 "code_php"                =>  $this->helper->translateWithTags($lang->code, $_POST['codePHPHTML']),
@@ -291,7 +289,6 @@ class CreateCitationController extends Controller
           $url_file = $this->helper->getUrlCitationFile($_POST['langs_citations_edit'], $id_citation, "ressources/views/themes/citations/", $_POST['codePHPHTML'], $_POST['codeCSS'], $_POST['codeJS'], $_POST['codeRequireTop'], $_POST['codeRequireBottom']);
           // Do capture
           $citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
-
           $new_data_ci = [
             "code_php"                =>  $_POST['codePHPHTML'],
             "url_image_citation"      =>  $citation_img_name,
@@ -336,7 +333,7 @@ class CreateCitationController extends Controller
     $file_src = 'http://creation.funizi.com/'.$filesrc;
     $generated = $grabzit->URLToImage($file_src, $options);
     $save = $grabzit->SaveTo($filepath);
-    $this->helper->uploadToS3($filepath, 'images/images-citations/');
+    Helper::uploadToS3($filepath, 'images/images-citations/');
     // Upload to S3 AWS
     //...
     //
