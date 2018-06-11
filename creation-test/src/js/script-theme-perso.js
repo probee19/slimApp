@@ -59,10 +59,15 @@ function upload(input, btn) {
 }
 
 function chargerFriend(idImage, idName, name) {
+	var urlImg = '';
 	$('#set-css-friend-code').fadeIn("fast");
-	$('#code_html_friend').html("Code HTML : \n<img src=\"https://graph.facebook.com/{{"+idImage+"}}/picture/?width=275&height=275\" class=\"img_profile\" id=\""+idImage+"\">\n"+
+	if(idImage != 'fb_id_user')
+		urlImg = 'https://graph.facebook.com/{{' + idImage + '}}/picture/?width=275&height=275';
+	else
+		urlImg = '{{url_img_profile_user}}';
+	$('#code_html_friend').html("Code HTML : \n<img src=\"" + urlImg + "\" class=\"img_profile\" id=\"" + idImage + "\">\n"+
 		"<div class=\"name texte\" id=\""+idName+"\" >{{"+name+"}}</div>\n\n"+
-		"Code CSS : \n#"+idImage+"{position: absolute; z-index:"+$('#z_index_friend').val()+"; left: 0px; top: 0px; width:"+$('#width_friend').val()+"px ; border-radius:"+$('#radius_friend').val()+"px; max-width:800px; max-height:420px;}\n"+
+		"Code CSS : \n#"+idImage+"{position: absolute; z-index:"+$('#z_index_friend').val()+"; left: 0px; top: 0px; width:"+$('#width_friend').val()+"px ;  height:"+$('#width_friend').val()+"px ; object-fit: cover; object-position: 50% 10%; border-radius:"+$('#radius_friend').val()+"px; max-width:800px; max-height:420px;}\n"+
 		"#"+idName+"{position:absolute; z-index:"+$('#z_index_friend').val()+"; left: 0px; top: 0px; font-size:30px; color:#FFF;} ");
 	if(idImage != 'fb_id_user'){
 		nbFriend = parseInt($("#nb_friends_fb").val()) +1;
