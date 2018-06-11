@@ -38,7 +38,7 @@ class ResultController extends Controller
         $date = date('Y-m-d');
         $test = UserTest::where('uuid', "$code")->with('testInfo')->first();
         //$testInfo = Test::where('id_test', $test->testInfo->id_test)->first();
-        $testInfo = Test::selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.unique_result AS unique_result, tests.id_theme AS id_theme, tests.id_test AS id_test')
+        $testInfo = Test::selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.unique_result AS unique_result, tests.id_theme AS id_theme, tests.id_rubrique AS id_rubrique, tests.id_test AS id_test')
           ->join('test_info','test_info.id_test','tests.id_test')
           ->Where([['tests.id_test', '=', $test->testInfo->id_test],['test_info.lang','=',$lang]])->first();
         if(isset($test))
@@ -108,16 +108,17 @@ class ResultController extends Controller
                 foreach ($top_tests as $top_test) {
                   $exclude [] = $top_test["id_test"];
                 }
-                 
+
                 $all_test = $helper->relatedTests($country_code, $exclude, $lang);
             }
             $testId = $test->test_id;
             $unique_result = $test->testInfo->unique_result;
+            $id_rubrique = $test->testInfo->id_rubrique;
             $if_additionnal_info = $test->testInfo->if_additionnal_info;
 
             $interface_ui = $this->helper->getUiLabels($lang);
             $all_lang = $this->helper->getActivatedLanguages();
-            return $this->view->render($response, 'result.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'img_url', 'result_description', 'url_to_share', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
+            return $this->view->render($response, 'result.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'id_rubrique', 'img_url', 'result_description', 'url_to_share', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
         }
     }
 }
