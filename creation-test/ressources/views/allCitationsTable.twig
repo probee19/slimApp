@@ -58,12 +58,12 @@
               {% for citation in data_citations %}
               <tr>
                 <td class="center"> {{i}} </td>
-                <td class="center"> <img src="{{ base_url()}}/src/img/statut/{{citation.statut}}.png" >  </td>
-                  <td><h5 class=""><a href="{{base_url()}}/test/{{citation.id_citation}}" > {{citation.titre_citation}} </a></h5></td>
+                <td class="center"> <img src="{{ domain_url}}/src/img/statut/{{citation.statut}}.png" >  </td>
+                  <td><h5 class=""><a href="{{domain_url}}/test/{{citation.id_citation}}" > {{citation.titre_citation}} </a></h5></td>
                   <td> {{citation.lang}}</td>
                   <td> {{citation.if_translated}}</td>
                   <td>
-                    <a href="{{base_url()}}/citations/{{citation.id_citation}}/edit"  data-toggle="tooltip" title="Modifier la citation" ><button type="button" id="btn_modify" class="btn btn-info btn-xs" ><span class="glyphicon glyphicon-pencil"></span></button></a>
+                    <a href="{{domain_url}}/citations/{{citation.id_citation}}/edit"  data-toggle="tooltip" title="Modifier la citation" ><button type="button" id="btn_modify" class="btn btn-info btn-xs" ><span class="glyphicon glyphicon-pencil"></span></button></a>
                     {% if citation.statut == 0 %}
                       <button type="button"  data-toggle="tooltip" title="Activer la citation" id="act_{{citation.id_citation}}" onClick="activeCitation({{citation.id_citation}})" class="btn btn-success btn-xs"  > <span class="glyphicon glyphicon-ok-sign"></span> </button>
                       <span data-toggle="modal"  data-target="#modalDelete" ><button type="button" data-toggle="tooltip" title="Supprimer la citation" id="{{citation.id_citation}}" onClick="prepareDelete({{citation.id_citation}});" class="btn btn-danger btn-xs" > <span class="glyphicon glyphicon-trash"></span> </button></span>
@@ -101,7 +101,7 @@
     <!-- Bouton enregistrer un citation-->
     <div class="row">
         <div class="form-group col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-lg-4 col-md-4 col-sm-4">
-            <a href="{{ base_url() }}/citations/new"><button type="button" id="btn_add_citation" class="form-control btn btn-success" ><span class="glyphicon glyphicon-plus-sign"></span> Créer une nouvelle citation</button></a>
+            <a href="{{ domain_url }}/citations/new"><button type="button" id="btn_add_citation" class="form-control btn btn-success" ><span class="glyphicon glyphicon-plus-sign"></span> Créer une nouvelle citation</button></a>
         </div>
     </div>
 
@@ -121,11 +121,11 @@
 
 {% block additionalfooter %}
 
-  <script src="{{ base_url() }}/src/js/alltest.js?v=1.0014"></script>
+  <script src="{{ domain_url }}/src/js/alltest.js?v=1.0014"></script>
 
-  <script src="{{ base_url() }}/src/js/added-default-script.js?v=1.292"></script>
-  <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/jquery.dataTables.js"></script>
-  <script type="text/javascript" language="javascript" src="{{ base_url() }}/src/js/DataTables/dataTables.bootstrap.js"></script>
+  <script src="{{ domain_url }}/src/js/added-default-script.js?v=1.292"></script>
+  <script type="text/javascript" language="javascript" src="{{ domain_url }}/src/js/DataTables/jquery.dataTables.js"></script>
+  <script type="text/javascript" language="javascript" src="{{ domain_url }}/src/js/DataTables/dataTables.bootstrap.js"></script>
 
 
 
@@ -155,7 +155,7 @@
                   contentType: false,
                   beforeSend: function(){
     				          $("#btn_show_more").prop("disabled", true);
-                      $("#btn_show_more").html("<img src='{{base_url()}}/src/img/91.gif' > Chargement en cours ");
+                      $("#btn_show_more").html("<img src='{{domain_url}}/src/img/91.gif' > Chargement en cours ");
                       $("#btn_show_more").css("color","#000");
       				        $("#btn_show_more").css("color","#000");
                   }
