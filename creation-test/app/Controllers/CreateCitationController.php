@@ -340,7 +340,7 @@ class CreateCitationController extends Controller
     //...
     //
 
-    return $citation_img_name;
+    return './images-citations/'.$citation_img_name;
   }
 
 	public static function decode ($code,$pathname) {
