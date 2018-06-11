@@ -35,7 +35,7 @@ class CitationsController extends Controller
         "id_citation"             =>  $citation_col->id_citation,
         "titre_citation"          =>  $citation_col->titre_citation,
         "citation_description"    =>  $citation_col->citation_description,
-        "url_image_citation"      =>  './images/'.$citation_col->url_image_citation
+        "url_image_citation"      =>  '/images/'.$citation_col->url_image_citation
       ];
 
 
