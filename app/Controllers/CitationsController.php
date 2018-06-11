@@ -55,6 +55,7 @@ class CitationsController extends Controller
         ];
 
       $sandbox->debug($previous_citation);
+      $sandbox->debug($citation);
       $sandbox->debug($next_citation);
 
       $exclude = [];
