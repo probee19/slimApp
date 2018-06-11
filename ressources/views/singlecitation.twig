@@ -1,20 +1,19 @@
 {% extends 'templates/layout.twig' %}
 {% block title %}{{ citation.titre_citation }}{% endblock %}
-
-    {% block graph %}
-            <!--FACEBOOK-->
-            <link rel="canonical" href="{{ domain_url }}/citation/{{ citation.titre_citation | twig_title_url(citation.id_citation, lang) }}/{{ citation.id_citation }}/ref/{{ code }}">
-            <meta property="og:title" content="{{ citation.titre_citation }}" />
-            <meta property="og:site_name" content="Funizi" />
-            <meta property="og:url" content="{{ domain_url }}/citation/{{ citation.titre_citation | twig_title_url(citation.id_citation, lang) }}/{{ citation.id_citation }}" >
-            <meta property="og:description" content="{{interface_ui.label_share_prefixe | capitalize}} : {{ citation.titre_citation | lower }}" />
-            <meta property="og:image:type" content="image/jpeg" />
-            <meta property="og:image:width" content="800"/>
-            <meta property="og:image:height" content="420"/>
-            <meta property="og:image" content="{{storage_base}}{{ citation.url_image_citation }}" />
-            <meta property="og:type" content="website">
-            <meta property="fb:app_id" content="348809548888116">
-    {% endblock %}
+{% block graph %}
+    <!--FACEBOOK-->
+    <link rel="canonical" href="{{ domain_url }}/citation/{{ citation.titre_citation | twig_title_url(citation.id_citation, lang) }}/{{ citation.id_citation }}">
+    <meta property="og:title" content="{{ citation.titre_citation }}" />
+    <meta property="og:site_name" content="Funizi" />
+    <meta property="og:url" content="{{ domain_url }}/citation/{{ citation.titre_citation | twig_title_url(citation.id_citation, lang) }}/{{ citation.id_citation }}" >
+    <meta property="og:description" content="{{interface_ui.label_share_prefixe | capitalize}} : {{ citation.titre_citation | lower }}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="800"/>
+    <meta property="og:image:height" content="420"/>
+    <meta property="og:image" content="{{storage_base}}{{ citation.url_image_citation }}" />
+    <meta property="og:type" content="website">
+    <meta property="fb:app_id" content="348809548888116">
+{% endblock %}
 {% block googletagmanager %}
     <script>
       dataLayer = [{
@@ -50,7 +49,7 @@
                 </span>
               </div>
               <script>
-                setTimeout(function(){ $(".overlay-share").css("display","flex").fadeIn("slow") }, 7000);
+                setTimeout(function(){ $(".overlay-share").css("display","flex").fadeIn("slow") }, 8000);
               </script>
           </div>
           <div>
