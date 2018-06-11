@@ -2,32 +2,18 @@
 {% block title %}{{ citation.titre_citation }}{% endblock %}
 
     {% block graph %}
-        {% if code !='' %}
             <!--FACEBOOK-->
             <link rel="canonical" href="{{ domain_url }}/citation/{{ citation.titre_citation | twig_title_url(citation.id_citation, lang) }}/{{ citation.id_citation }}/ref/{{ code }}">
             <meta property="og:title" content="{{ citation.titre_citation }}" />
             <meta property="og:site_name" content="Funizi" />
-            <meta property="og:url" content="{{ domain_url }}/test/{{ test.titre_test | twig_title_url(test.id_test, lang) }}/{{ test.id_test }}/ref/{{ code }}" >
-            <meta property="og:description" content="{{interface_ui.label_share_prefixe | capitalize}} : {{ test.titre_test | lower }}" />
+            <meta property="og:url" content="{{ domain_url }}/citation/{{ citation.titre_citation | twig_title_url(citation.id_citation, lang) }}/{{ citation.id_citation }}" >
+            <meta property="og:description" content="{{interface_ui.label_share_prefixe | capitalize}} : {{ citation.titre_citation | lower }}" />
             <meta property="og:image:type" content="image/jpeg" />
             <meta property="og:image:width" content="800"/>
             <meta property="og:image:height" content="420"/>
-            <meta property="og:image" content="{{ domain_url }}{{ img_url }}" />
+            <meta property="og:image" content="{{storage_base}}{{ citation.url_image_citation }}" />
             <meta property="og:type" content="website">
             <meta property="fb:app_id" content="348809548888116">
-
-        {% else %}
-            <!--FACEBOOK-->
-            <link rel="canonical" href="{{ domain_url }}/test/{{ citation.titre_citation | twig_title_url(citation.id_citation, lang) }}/{{ citation.id_citation }}">
-            <meta property="og:title" content="{{ citation.titre_citation }}" />
-            <meta property="og:site_name" content="Funizi.com" />
-            <meta property="og:url" content="{{ domain_url }}/test/{{ citation.titre_citation | twig_title_url(citation.id_citation, lang) }}/{{ citation.id_citation }}" >
-            <meta property="og:description" content="{{interface_ui.label_share_prefixe | capitalize}} : {{ test.titre_citation | lower }}" />
-            <!--<meta property="og:image" content="{{ base_url }}/creation-test{{ citation.url_image_citation |trim('.', 'left') }}" />-->
-            <meta property="og:type" content="website">
-            <meta property="fb:app_id" content="348809548888116">
-
-        {% endif %}
     {% endblock %}
 {% block googletagmanager %}
     <script>
