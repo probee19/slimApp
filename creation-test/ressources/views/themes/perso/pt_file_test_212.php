@@ -73,15 +73,15 @@ align-items: center; /* align vertical */ }
 <?php
       if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-               $message = array('Ela já está ao seu lado.','Você já compartilha sua vida com ela.','Ela sempre esteve ao seu lado e permanecerá tão.');          }
+               $message = array('Ela já está ao seu lado.','Você já compartilha sua vida com ela.','Ela sempre esteve ao seu lado e continuará assim.');          }
             else{ 
-               $message = array('Ele já está ao seu lado.','Você já compartilha sua vida com Ele.','Ele sempre esteve ao seu lado e permanecerá assim.');     
+               $message = array('Ele já está ao seu lado.','Você já compartilha sua vida com ele.','Ele sempre esteve ao seu lado e continuará assim.');     
             }
 
 shuffle($message);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1512663544.jpg" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
  <div id="message"> <?php echo $message[0]; ?>
 </div>
 

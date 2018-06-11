@@ -73,15 +73,15 @@ align-items: center; /* align vertical */ }
 <?php
       if( $_GET['user_gender'] == 'homme' || $_GET['user_gender'] == 'male' || $_GET['user_gender'] == 'masculin' )
             {
-               $message = array('هي بالفعل في الجانب الخاص بك.','كنت بالفعل مشاركة حياتك معها.','كانت دائما إلى جانبكم وسوف تبقى كذلك.');          }
+               $message = array('هي بالفعل بجانبك.','أنت بالفعل تشارك حياتك معها.','كانت دائما بجانبك وستظل كذلك.');          }
             else{ 
-               $message = array('هو بالفعل في الجانب الخاص بك.','كنت بالفعل مشاركة حياتك معه.','لقد كان دائما إلى جانبكم وسوف تبقى كذلك.');     
+               $message = array('هو بالفعل بجانبك.','أنت بالفعل تشارك حياتك معه.','كان دائما بجانبك وسيظل كذلك.');     
             }
 
 shuffle($message);
 ?>
 <img src="http://creation.funizi.com/images-theme-perso/1512663544.jpg" id="background"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
  <div id="message"> <?php echo $message[0]; ?>
 </div>
 
