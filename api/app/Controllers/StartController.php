@@ -279,7 +279,7 @@ class StartController extends Controller
 
                                'buttons' =>[
                                          'type'  => 'web_url',
-                                         'url'   => $url_share,
+                                         'url'   => "$url_share",
                                          'title' => 'Partager sur Facebook'
                                      ]
                            ];
