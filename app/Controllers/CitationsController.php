@@ -12,6 +12,40 @@ class CitationsController extends Controller
 {
 
     public function index($request, $response, $args){
+      $sandbox = new Helper();
+
+      $url = $sandbox->detectLang($request, $response);
+      if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
+
+      $lang = $sandbox->getLangSubdomain($request);
+      $interface_ui = $sandbox->getUiLabels($lang);
+
+      $country_code = $sandbox->getCountryCode();
+      $pagecount = $this->test_per_page;
+      $citations_col = CitationInfo::where([['statut', '=', 1],['lang', '=',$lang]])->get();
+      $citations = [];
+      foreach ($citations_col as $citation) {
+        $citations[] = [
+          'id_citation'         =>  $citation->id_citation,
+          'titre_citation'      =>  $citation->titre_citation,
+          'url_image_citation'  =>  $citation->url_image_citation
+        ];
+      }
+      $nb_citation = count($citations);
+      $pagecount = (int)ceil($nb_citation / $pagecount);
+
+      if(!empty($arg['pageid']))
+        $pageid = $arg['pageid'];
+      else
+        $pageid = 1;
+      $name_session_page = $lang.'_citations_page_'.$pageid;
+
+
+      $this->helper->debug($citations);
+
+      $all_lang = $this->helper->getActivatedLanguages();
+      return $this->view->render($response, 'citations.twig', compact('citations', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
+
 
     }
     public function oneQuote($request, $response, $args)
@@ -73,4 +107,5 @@ class CitationsController extends Controller
       return $this->view->render($response, 'singlecitation.twig', compact('citation', 'next_citation', 'previous_citation','id_user', 'all_test', 'interface_ui', 'lang', 'all_lang'));
 
     }
+
 }

@@ -62,7 +62,7 @@
                           </li>
                       {% endif %}
                       <li class="btn-next" style="margin-bottom: 20px">
-                          <a href="{{ domain_url }}/citation/{{next_citation.titre_citation | twig_title_citation_url(next_citation.id_citation, lang) }}/{{next_citation.id_citation}}" class="btn_to_track" data-btn="next">Voir toutes les citations</a>
+                          <a href="{{ domain_url }}/citations" class="btn_to_track" data-btn="all_quotes">{{interface_ui.btn_all_quotes}}</a>
                       </li>
                       {% if next_citation %}
                           <li class="btn-next" style="margin-bottom: 20px">
