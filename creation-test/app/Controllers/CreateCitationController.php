@@ -264,7 +264,10 @@ class CreateCitationController extends Controller
             $code_php = $this->helper->toEn($_POST['codePHPHTML']);
 
           foreach ($langs as $lang){
-            $url_file = $this->helper->getUrlCitationFile($lang->code, $id_citation, "ressources/views/themes/citations/", $code_php, $_POST['codeCSS'], $_POST['codeJS'], $_POST['codeRequireTop'], $_POST['codeRequireBottom']);
+            if($lang->code == 'fr')
+              $url_file = $this->helper->getUrlCitationFile($lang->code, $id_citation, "ressources/views/themes/citations/", $_POST['codePHPHTML'], $_POST['codeCSS'], $_POST['codeJS'], $_POST['codeRequireTop'], $_POST['codeRequireBottom']);
+            else
+              $url_file = $this->helper->getUrlCitationFile($lang->code, $id_citation, "ressources/views/themes/citations/", $code_php, $_POST['codeCSS'], $_POST['codeJS'], $_POST['codeRequireTop'], $_POST['codeRequireBottom']);
             // Do capture
             $citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
             if( $lang->code == $_POST['default_lang'])
