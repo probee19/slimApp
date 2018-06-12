@@ -53,7 +53,7 @@
             <span class="mobile-layer"></span>
             <!-- <a href="{{ path_for('single', { 'id': citation.id_citation, 'name': citation.titre_citation | twig_clean_url }) }}" class="citation__link" data-btn="btn-test"></a> -->
             <a href="{{ domain_url }}/citation/{{citation.titre_citation | twig_title_url(citation.id_citation, lang)}}/{{citation.id_citation}}" class="test__link" data-btn="btn-test"></a>
-            <h3 class="test-title">{{ citation.titre_citation }}</h3>
+            <h3 class="test-title">{{ citation.titre_citation }}</h3> 
             <div class="test__next"><a href="{{ path_for('singlecitation', { 'id': citation.id_citation, 'name': citation.titre_citation | twig_title_url(citation.id_citation, lang) }) }}" class="btn btn-primary col-sm-8 col-sm-offset-2" data-btn="btn-test">{{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
         </div>
     </div>
