@@ -19,10 +19,10 @@ use GrabzItImageOptions;
 class AirtableController extends Controller
 {
     static $api_key = false;
+
     static $path_cash = DIR.DS.'public'.DS.'cash'.DS.'airtable'.DS;
 
-    public static function getAllMatchs()
-    {
+    public static function getAllMatchs(){
       $countries = self::findInTable('countries',[]);
       $games = self::findInTable("games", [], false);
 
@@ -63,8 +63,13 @@ class AirtableController extends Controller
       }
       return json_encode($array_matchs, JSON_PRETTY_PRINT);
     }
-    public static function findInTable($table_name, $options=[], $cash=true)
+
+    public static function getPronostics($user, $game_day)
     {
+      // code...
+      
+    }
+    public static function findInTable($table_name, $options=[], $cash=true){
           $put_url = self::$path_cash;
           $put_url.="$table_name.txt";
 
@@ -89,7 +94,6 @@ class AirtableController extends Controller
             return $decode;
           }
     }
-
 
     public static function curl_get_fields($url,$fields,$header=false){
     				$get_array = [];
@@ -124,7 +128,6 @@ class AirtableController extends Controller
     		 		 return $content;
     			 // Fermeture de la session cURL
     }
-
 
     public static function addToObject($data,$added=array()){
        $obj = new  \StdClass();

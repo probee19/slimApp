@@ -30,54 +30,7 @@ class HomeController extends Controller
     return $this->view->render($response, 'home.twig');
 
     }
-    public function devEnv($request, $response, $arg){
-        //$maint = time();
-        //var_dump($maint);
-        $pagecount = $this->test_per_page;
-        $alltest = Test::where('statut', '1')->count();
 
-        $pagecount = intval(ceil($alltest/$pagecount));
-        if($arg['pageid']){
-            $pageid = $arg['pageid'];
-            $tests = Test::where('statut', '1')->orderBy('id_test', 'desc')->skip($this->test_per_page*($pageid - 1))->take(6)->get();
-        }else{
-            $tests = Test::where('statut', '1')->orderBy('id_test', 'desc')->take($this->test_per_page)->get();
-            $pageid = 1;
-        }
-        return $this->view->render($response, 'home.twig', compact('tests', 'pagecount', 'pageid'));
-    }
-    public function logout($request, $response){
-
-        session_destroy();
-        session_unset();
-        session_start();
-        $_SESSION['user_has_disconnected'] = 'yes';
-        // Suppression du fichier cookie
-        unset($_COOKIE['id_user']);
-        //unset($_COOKIE['email_user']);
-        unset($_COOKIE['nom_user']);
-        unset($_COOKIE['prenom_user']);
-        unset($_COOKIE['url_photo_user']);
-        setcookie('id_user', null, -1);
-        //setcookie('email_user', null, -1);
-        setcookie('nom_user', null, -1);
-        setcookie('prenom_user', null, -1);
-        setcookie('url_photo_user', null, -1);
-
-
-
-        $result_url = $this->router->pathFor('accueil');
-        return $response->withStatus(302)->withHeader('Location', $result_url );
-    }
-    public function login($request, $response){
-        $id = $request->getParam('id');
-        $email = $request->getParam('email');
-        $first_name = $request->getParam('prenom');
-        $last_name = $request->getParam('nom');
-
-
-
-    }
     public function createSession($request, $response){
         $id = $request->getParam('id');
         $name = $request->getParam('first_name');
@@ -146,32 +99,7 @@ class HomeController extends Controller
       return $result;
 
     }
-
-    public static function curl_post($url, $fields, $headers=false){
-
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, $url);
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
-      curl_setopt($ch, CURLOPT_POST, 1);
-
-
-         if (is_array($headers))
-         {
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-         }
-
-         $result = curl_exec($ch);
-
-         if (curl_errno($ch)) {
-            curl_close ($ch);
-             return false;
-         }
-
-         curl_close ($ch);
-         return $result;
-
-    }
+ 
 
 
 

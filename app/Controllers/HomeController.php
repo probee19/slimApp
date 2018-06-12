@@ -63,7 +63,7 @@ class HomeController extends Controller
         $pageid = $arg['pageid'];
       else
         $pageid = 1;
-      $name_session_page = $lang.'_page_'.$pageid;
+      $name_session_page = $lang.'_tests_page_'.$pageid;
 
       // Récuperation des tests au top
       $tests_on_top = array();
