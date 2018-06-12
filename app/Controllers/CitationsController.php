@@ -42,7 +42,7 @@ class CitationsController extends Controller
       $name_session_page = $lang.'_citations_page_'.$pageid;
 
 
-      $this->helper->debug($citations);
+      //$this->helper->debug($citations);
 
       $all_lang = $this->helper->getActivatedLanguages();
       return $this->view->render($response, 'citations.twig', compact('citations', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
