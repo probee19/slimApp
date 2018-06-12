@@ -269,20 +269,19 @@ class StartController extends Controller
 
 
           if($test_id == 359){
+            $url_share = "https://fr.funizi.com/share/footbot?from=" .urlencode($name) . "&img_url=" .urlencode($image) ."&team_a=" . urlencode($_POST['team_a_name']) ."&team_b=" . urlencode($_POST['team_b_name']);
             $elements = [];
             $image = "https://s3.us-east-2.amazonaws.com/funiziuploads/api/pronostics/pronostic_$code.jpg";
             $elements[] = [
-                               'title' => "Pronostic",
+                               'title' => $_POST['team_a_name'] ." - ". $_POST['team__name'],
                                'image_url'=> $image,
                                'subtitle' => '',
 
                                'buttons' =>[
-                                         [
-                                               'type'  => 'show_block',
-                                                 'block_names'   => ['ede'],
-                                                 'title' => 'Go'
-                                         ]
-                               ]
+                                         'type'  => 'web_url',
+                                         'url'   => $url_share,
+                                         'title' => 'Partager sur Facebook'
+                                     ]
                            ];
             $messages = [
                    'messages'  => [
