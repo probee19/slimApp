@@ -242,10 +242,10 @@ class JsonController extends Controller
     $langs = Language::where([['status','=','1'],['translated','=','1']])->get();
     foreach ($langs as $lang) {
       $citations_col = CitationInfo::where('lang', '=',$lang->code)->with('citationInfos')->get();
-      $citations = [];
+      $all_quotes = [];
       foreach ($citations_col as $citation) {
         if($citation->citationInfos->statut == 1)
-          $citations[] = [
+          $all_quotes[] = [
             'id_citation'         =>  $citation->id_citation,
             'titre_citation'      =>  $citation->titre_citation,
             'url_image_citation'  =>  $citation->url_image_citation
