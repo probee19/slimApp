@@ -298,7 +298,7 @@ class Helper
       //
       // Traduction dans la langue $lang
       //if($lang != 'fr')
-        $php = self::translateWithTags($lang, $php);
+      $php = self::translateWithTags($lang, $php);
 
       // changement de tags pour le code php
       $code_php = $php;
@@ -314,7 +314,7 @@ class Helper
       $code_php = str_replace('}}', '\']; ?>', $code_php );
       $begin_gabarit = "
           <!DOCTYPE html>
-          <html lang='en'>
+          <html lang='".$lang."'>
           <head>
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
