@@ -156,3 +156,55 @@ function moveHighlight(test) {
         }
    });
 }
+
+
+// Supprime une citation
+function deleteCitation () {
+  var idToDelete = $("#id_to_delete").val();
+
+  $.ajax({
+     url : 'action/deleteCitation',
+     type : 'GET',
+     data : 'action=del&idcitation='+idToDelete,
+     dataType : 'html',
+     success : function(code_html, statut){
+       location.reload();
+    }
+   });
+}
+
+// Active la citation choisie puis recharge la page
+function activeCitation(id){
+  $.ajax({
+     url : 'action/activeCitation',
+     type : 'GET',
+     data : 'action=act&idcitation='+id,
+     dataType : 'html',
+     beforeSend: function () {
+       loadingProgress ('0%', 'Activation de la citation en cours...');
+     }
+   }).done(function (data) {
+     //updateJsonTestFiles();
+     setTimeout(function(){
+       loadingProgress ('100%', 'Opération terminée avec succès.', 'reload');
+     },1000);
+   });
+}
+
+// Desactive la citation choisie puis recharge la page
+function desactiveCitation(id){
+  $.ajax({
+     url : 'action/desactiveCitation',
+     type : 'GET',
+     data : 'action=des&idcitation='+id,
+     dataType : 'html',
+     beforeSend: function () {
+       loadingProgress('0%', 'Désactivation de la citation en cours...');
+     }
+   }).done(function (data) {
+     //updateJsonTestFiles();
+     setTimeout(function(){
+       loadingProgress('100%', 'Opération terminée avec succès.', 'reload');
+     },1000);
+   });
+}
