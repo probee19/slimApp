@@ -252,7 +252,7 @@ class JsonController extends Controller
           ];
       }
       $this->helper->debug($all_quotes);
-      $all_quotes = json_encode($all_quotes, JSON_PRETTY_PRINT);
+      $all_quotes = json_encode($all_quotes);
       $filepath = "../ressources/views/json_files/all_quotes/".$lang->code."_all_quotes.json";
       $json = fopen($filepath, "w+");
       fputs($json, $all_quotes);
