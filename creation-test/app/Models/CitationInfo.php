@@ -16,7 +16,7 @@ class CitationInfo extends Eloquent
         'lang',
         'code_php'
     ];
-    public function CitationInfo(){
+    public function citationInfos(){
         return $this->belongsTo('App\Models\Citation', 'id_citation', 'id_citation');
     }
 }
