@@ -251,6 +251,7 @@ class JsonController extends Controller
             'url_image_citation'  =>  $citation->url_image_citation
           ];
       }
+      $this->helper->debug($all_quotes);
       $all_quotes = json_encode($all_quotes, JSON_PRETTY_PRINT);
       $filepath = "../ressources/views/json_files/all_quotes/".$lang->code."_all_quotes.json";
       $json = fopen($filepath, "w+");
