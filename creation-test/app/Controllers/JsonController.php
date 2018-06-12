@@ -9,6 +9,8 @@ use App\Helpers\Helper;
 use App\Models\Admin;
 use App\Models\TestOwner;
 use App\Models\Test;
+use App\Models\Citation;
+use App\Models\CitationInfo;
 use App\Models\ThemePerso;
 use App\Models\TestInfo;
 use App\Models\User;
@@ -30,8 +32,7 @@ class JsonController extends Controller
   }
 
   // Création des fichiers JSON des tests les plus partagés (%P > 25%) pour chaque langue activée
-  public function setLovedTestJSON($request, $response, $arg)
-  {
+  public function setLovedTestJSON($request, $response, $arg){
     $start = date_create($_GET['start']);
     $start = date_format($start, 'Y-m-d H:i:s');
     $end = date_create($_GET['end']);
@@ -86,8 +87,7 @@ class JsonController extends Controller
   }
 
   // Mise à jour des fichiers json des tests mis en avant pour chaque langue activée
-  public function setHighlightsJSON($request, $response, $arg)
-  {
+  public function setHighlightsJSON($request, $response, $arg){
     //$lang = $_GET['lang'];
     $lang = "";
     if($lang != ""){
@@ -148,8 +148,7 @@ class JsonController extends Controller
   }
 
   // Création des fichiers JSON des tests les plus effectués pour chaque langue activée
-  public function setLovedTestJSONForCountry($request, $response, $arg)
-  {
+  public function setLovedTestJSONForCountry($request, $response, $arg){
     //$start = date_create('2018-03-21');
     //$end = date_create('2018-06-06');
     $start = date_create($_GET['start']);
@@ -236,6 +235,28 @@ class JsonController extends Controller
 
     }
     return "Mise à jours des fichiers effectuée !";
+  }
+
+  // Mise à jour des fichiers Json la liste des citations pour chaque langue activée
+  public function setQuotesJSON($request, $response, $arg){
+    $langs = Language::where([['status','=','1'],['translated','=','1']])->get();
+    foreach ($langs as $lang) {
+      $citations_col = CitationInfo::where('lang', '=',$lang->code)->with('citationInfos')->get();
+      $citations = [];
+      foreach ($citations_col as $citation) {
+        if($citation->citationInfos->statut == 1)
+          $citations[] = [
+            'id_citation'         =>  $citation->id_citation,
+            'titre_citation'      =>  $citation->titre_citation,
+            'url_image_citation'  =>  $citation->url_image_citation
+          ];
+      }
+      $all_quotes = json_encode($all_quotes, JSON_PRETTY_PRINT);
+      $filepath = "../ressources/views/json_files/all_quotes/".$lang->code."_all_quotes.json";
+      $json = fopen($filepath, "w+");
+      fputs($json, $all_quotes);
+      $this->helper->uploadToS3($filepath, 'json_files/all_quotes/');
+    }
   }
 
 
