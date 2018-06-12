@@ -267,11 +267,10 @@ class StartController extends Controller
                 ]
           ];
 
-            //
+
+          if($test_id == 359){
             $elements = [];
-
             $image = "https://s3.us-east-2.amazonaws.com/funiziuploads/api/pronostics/pronostic_$code.jpg";
-
             $elements[] = [
                                'title' => "Pronostic",
                                'image_url'=> $image,
@@ -296,9 +295,10 @@ class StartController extends Controller
                            ]
                    ]
              ];
-            //echo json_encode($messages);
-echo json_encode([$messages]);
-exit;
+            echo json_encode([$messages]);
+            exit;
+          }
+
   return $response->withStatus(201)
   ->withHeader('Content-Type', 'application/json')
   ->write(json_encode([$messages]));

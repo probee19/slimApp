@@ -64,10 +64,23 @@ class AirtableController extends Controller
       return json_encode($array_matchs, JSON_PRETTY_PRINT);
     }
 
-    public static function getPronostics($user, $game_day)
+    public static function getPronosticsImg()
     {
-      // code...
-      
+        $pronostics = $_POST['pronostics'];
+        foreach ($pronostics as $pronostic) {
+            $fields = array(
+              'link_picture'      =>  $pronostic->link_picture,
+              'team_a_name'       =>  $pronostic->team_a_name,
+              'team_b_name'       =>  $pronostic->team_b_name,
+              'cca'               =>  $pronostic->cca,
+              'ccb'               =>  $pronostic->ccb,
+              'teamuser_ps'       =>  $pronostic->teamuser_ps
+            );
+            $url = "https://fr.funizi.com/api/start/359";
+            $result = $this->helper->curlPost($url, $fields );
+        }
+
+
     }
     public static function findInTable($table_name, $options=[], $cash=true){
           $put_url = self::$path_cash;
@@ -144,6 +157,5 @@ class AirtableController extends Controller
         }else
           return false;
     }
-
 
 }

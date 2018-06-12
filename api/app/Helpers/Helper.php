@@ -176,91 +176,6 @@ class Helper
         }
         return $ip?$ip:$default;
     }
-    public function getRelatedCountryTest($countryCode, $exclude, $count){
-        $relatedCountryTests = Test::where([
-            ['statut', '=', '1'],
-                ['codes_countries', 'like', "%$countryCode%"]
-        ]
-            )->whereNotIn('id_test', $exclude)
-            ->orderByRaw('RAND()')
-            ->select('url_image_test', 'id_test', 'titre_test')
-            ->take($count)
-            ->get();
-
-        return $relatedCountryTests;
-    }
-    public function getRelatedThemeTest($theme_id, $countryCode, $exclude, $count){
-        $relatedThemeTests = Test::whereNotIn('id_test', $exclude)
-            ->where([
-                    ['statut', '=', '1'],
-                    ['id_theme', '=', "$theme_id"],
-                    ['codes_countries', 'like', "%$countryCode%"]
-                ]
-        )
-            ->orWhere([
-                    ['statut', '=', '1'],
-                    ['id_theme', '=', "$theme_id"],
-                    ['codes_countries', 'like', ""]
-                ]
-            )
-            ->orderByRaw('RAND()')
-            ->select('url_image_test', 'id_test', 'titre_test')
-            ->take($count)
-            ->get();
-
-        return $relatedThemeTests;
-    }
-    public function getRandomTest($exclude, $count){
-        $randomTests = Test::where([
-                ['statut', '=', '1'],
-                ['codes_countries', '=', '']
-        ])->whereNotIn('id_test', $exclude)
-            ->orderByRaw('RAND()')
-            ->take($count)
-            ->select('url_image_test', 'id_test', 'titre_test')
-            ->get();
-
-        return $randomTests;
-    }
-
-    public function relatedTests2($countryCode, $exclude, $theme_id, $count, $total = 24, $debug = false){
-        $customTests = $this->getRelatedThemeTest(4, $countryCode, $exclude, $count);
-        $numb = 0;
-        foreach($customTests as $customTest){
-            $exclude [] = (string) $customTest['id_test'];
-            $numb ++;
-        }
-        $newTests = $this->getRelatedThemeTest(3, $countryCode, $exclude, $count);
-        foreach($newTests as $newTest){
-            $exclude [] = (string) $newTest['id_test'];
-            $numb ++;
-        }
-        $pays = $this->getRelatedCountryTest($countryCode, $exclude, $count);
-
-        foreach($pays as $pay){
-            $exclude [] = (string) $pay['id_test'];
-            $numb ++;
-        }
-        $themes = $this->getRelatedThemeTest($theme_id, $countryCode, $exclude, $count);
-        foreach($themes as $theme){
-            $exclude [] = (string) $theme['id_test'];
-            $numb ++;
-        }
-        $limit = $total - $numb;
-        if($debug == true){
-            Helper::debug($numb);
-            Helper::debug($total);
-        }
-        if($limit > 0){
-            $randoms = $this->getRandomTest($exclude, $limit);
-            $alltests = $customTests->toBase()->merge($newTests)->merge($pays)->merge($themes)->merge($randoms);
-        }else{
-            $alltests = $customTests->toBase()->merge($newTests)->merge($pays)->merge($themes);
-        }
-
-        return $alltests;
-    }
-
 
     public function relatedTests($countryCode, $exclude, $total = 24, $debug = false)
     {
@@ -438,6 +353,20 @@ class Helper
     public static function getActivatedLanguages(){
       $all_lang = Language::where('status','=',1)->get();
       return $all_lang;
+    }
+
+    public static function curlPost($url, $fields, $headers= [])
+    {
+      $ch = curl_init();
+      curl_setopt( $ch,CURLOPT_URL, $url );
+      curl_setopt( $ch,CURLOPT_POST, true );
+      curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
+      curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
+      curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
+      curl_setopt( $ch,CURLOPT_POSTFIELDS, $fields);
+      $result = curl_exec($ch );
+      curl_close( $ch );
+      return $result;
     }
 
 

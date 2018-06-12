@@ -55,13 +55,11 @@ class HomeController extends Controller
 
     public function createPicMatch($request, $response, $arg)
     {
-      // code...
       $matchs = AirtableController::getAllMatchs();
 
       $matchs_records = json_decode($matchs);
       $nb = 1;
       foreach ($matchs_records as $match) {
-        // code...
 
         $fields = array(
           'game'                  =>  $match->id_game,
@@ -73,33 +71,14 @@ class HomeController extends Controller
           'team_b_country_code'   =>  strtolower($match->team_b->country_code),
           'time'                  =>  '17:00'
         );
-        Helper::debug($fields);
         $url = "https://fr.funizi.com/api/start/358";
-        $result = self::curlPost($url, $fields );
-        Helper::debug($result);
+        $result = $this->helper->curlPost($url, $fields );
         $nb++;
         if($nb == 6) break;
       }
-
     }
 
-    public static function curlPost($url, $fields, $headers= [])
-    {
-      // code...
 
-      $ch = curl_init();
-      curl_setopt( $ch,CURLOPT_URL, $url );
-      curl_setopt( $ch,CURLOPT_POST, true );
-      curl_setopt( $ch,CURLOPT_HTTPHEADER, $headers );
-      curl_setopt( $ch,CURLOPT_RETURNTRANSFER, true );
-      curl_setopt( $ch,CURLOPT_SSL_VERIFYPEER, false );
-      curl_setopt( $ch,CURLOPT_POSTFIELDS, $fields);
-      $result = curl_exec($ch );
-      curl_close( $ch );
-      return $result;
-
-    }
- 
 
 
 
