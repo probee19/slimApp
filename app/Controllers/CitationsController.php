@@ -22,14 +22,15 @@ class CitationsController extends Controller
 
       $country_code = $sandbox->getCountryCode();
       $pagecount = $this->test_per_page;
-      $citations_col = CitationInfo::where([['statut', '=', 1],['lang', '=',$lang]])->get();
+      $citations_col = CitationInfo::where(['lang', '=',$lang])->with('CitationInfo')->get();
       $citations = [];
       foreach ($citations_col as $citation) {
-        $citations[] = [
-          'id_citation'         =>  $citation->id_citation,
-          'titre_citation'      =>  $citation->titre_citation,
-          'url_image_citation'  =>  $citation->url_image_citation
-        ];
+        if($citation->CitationInfo->statut == 1)
+          $citations[] = [
+            'id_citation'         =>  $citation->id_citation,
+            'titre_citation'      =>  $citation->titre_citation,
+            'url_image_citation'  =>  $citation->url_image_citation
+          ];
       }
       $nb_citation = count($citations);
       $pagecount = (int)ceil($nb_citation / $pagecount);
