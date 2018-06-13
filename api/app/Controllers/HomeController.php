@@ -89,19 +89,19 @@ class HomeController extends Controller
 
         foreach ($day as $key => $value) {
           // code...
-          $fields ["team_a_".$nb_games] = $value->team_a->french;
-          $fields ["team_b_".$nb_games] = $value->team_b->french;
-          $fields ["cca_".$nb_games] = $value->team_a->country_code;
-          $fields ["ccb_".$nb_games] = $value->team_b->country_code;
-          $fields ["time_".$nb_games] = $value->game_time;
+          $fields ["a".$nb_games] = $value->team_a->french;
+          $fields ["b".$nb_games] = $value->team_b->french;
+          $fields ["cca".$nb_games] = $value->team_a->country_code;
+          $fields ["ccb".$nb_games] = $value->team_b->country_code;
+          $fields ["time".$nb_games] = $value->game_time;
           $nb_games++;
         }
         $this->helper->debug($fields);
 
 
         $url = "https://fr.funizi.com/api/start/358";
-        //$result = $this->helper->curlPost($url, $fields );
-        //$this->helper->debug($result);
+        $result = $this->helper->curlPost($url, $fields );
+        $this->helper->debug($result);
 
       }
 
