@@ -82,9 +82,9 @@ class HomeController extends Controller
     {
       // code...
       $game_days = AirtableController::getAllGamesDay();
-      $this->helper::debug($game_days);
+      $this->helper->debug($game_days);
       foreach ($game_days as $day) {
-        $this->helper::debug($day);
+        $this->helper->debug($day);
 
         //$url = "https://fr.funizi.com/api/start/358";
         //$result = $this->helper->curlPost($url, $fields );
