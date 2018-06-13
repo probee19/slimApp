@@ -55,7 +55,7 @@ class AirtableController extends Controller
           }
 
           $array_games[$game->fields->game_day][] = [
-            'game_time'    => "17:00",
+            'game_time'    => " - ",
             'team_a'       => $data_team_a,
             'team_b'       => $data_team_b
           ];
