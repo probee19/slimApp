@@ -86,12 +86,12 @@ class HomeController extends Controller
 
       foreach ($game_days as $key => $day) {
         $fields = array(
-          'games'   =>  json_encode($day),
+          'games'   =>  $day,
           'day'     =>  $key
         );
         //$this->helper->debug($fields);
         $url = "https://fr.funizi.com/api/start/358";
-        $result = $this->helper->curlPost($url, json_encode($fields) );
+        $result = $this->helper->curlPost($url, $fields );
         $this->helper->debug($result);
 
       }
