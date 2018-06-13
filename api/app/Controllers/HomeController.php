@@ -82,6 +82,7 @@ class HomeController extends Controller
     {
       // code...
       $game_days = AirtableController::getAllGamesDay();
+      $this->helper::debug($game_days);
       foreach ($game_days as $day) {
         $this->helper::debug($day);
 
