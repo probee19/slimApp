@@ -86,7 +86,7 @@ class HomeController extends Controller
 
       foreach ($game_days as $key => $day) {
         $fields = array(
-          'games'   =>  $day,
+          'games'   =>  json_encode($day),
           'day'     =>  $key
         );
         $this->helper->debug($fields);
