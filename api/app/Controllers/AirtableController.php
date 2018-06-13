@@ -33,7 +33,52 @@ class AirtableController extends Controller
           $array_days[] = $day->fields->game_day;
       }
 
-      Helper::debug($array_days);
+      if (isset($games->records)){
+        $all_games = $games->records;
+        $array_games = [];
+        foreach ($all_games as $game)
+          //$array_games[$game->fields->game_day][] = $game->fields->game_day;
+
+          $recordscountries = $countries->records;
+          foreach ($recordscountries as $keycountries => $valcountries){
+                if ( $valcountries->id == $game->fields->team_a[0] )
+                    $data_team_a = [
+                      'id'            =>  $game->fields->team_a[0],
+                      'idcountry'     =>  $valcountries->fields->idcountry,
+                      'country_code'  =>  $valcountries->fields->country_code,
+                      'french'        =>  $valcountries->fields->french,
+                      'flag'          =>  $valcountries->fields->flag
+                    ];
+
+                if ( $valcountries->id == $value->fields->team_b[0] )
+                    $data_team_b = [
+                      'id'            =>  $game->fields->team_b[0],
+                      'idcountry'     =>  $valcountries->fields->idcountry,
+                      'country_code'  =>  $valcountries->fields->country_code,
+                      'french'        =>  $valcountries->fields->french,
+                      'flag'          =>  $valcountries->fields->flag
+                    ];
+          }
+
+          $array_games[$game->fields->game_day][] = [
+            'id'           => $game->id,
+            'id_game'      => $game->fields->idgame,
+            'game_day'     => $game->fields->game_day,
+            'group'        => $game->fields->group,
+            'team_a'       => $data_team_a,
+            'team_b'       => $data_team_b
+          ];
+          $array_matchs[] =[
+            'id'           => $game->id,
+            'id_game'      => $game->fields->idgame,
+            'game_day'     => $game->fields->game_day,
+            'group'        => $game->fields->group,
+            'team_a'       => $data_team_a,
+            'team_b'       => $data_team_b
+          ];
+
+      }
+      Helper::debug($array_games);
 
     }
 
