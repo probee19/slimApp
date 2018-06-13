@@ -129,7 +129,9 @@ class StartController extends Controller
          $url = SandBox::getUrlTestPerso($test_id ,$url, $lang);
 
          if($test_id == 358){
-           $this->helper->debug($_POST);
+           $this->helper->debug($_POST['games']);
+           $this->helper->debug($_POST['games']['team_a']);
+           $this->helper->debug($_POST['games']['game_time']);
 
 
            $url .= '&games=' . $_POST['games'];
