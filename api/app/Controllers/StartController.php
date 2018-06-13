@@ -130,8 +130,7 @@ class StartController extends Controller
 
          if($test_id == 358){
            $this->helper->debug($_POST['games']);
-           $this->helper->debug(urlencode($_POST['games']));
-           $url .= '&games=' . urlencode($_POST['games']);
+           $url .= '&games=' . $_POST['games'];
 
             //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
 
