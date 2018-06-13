@@ -87,7 +87,7 @@ class HomeController extends Controller
         //$this->helper->debug($day);
         $fields = [];
         $nb_games = 0;
-        foreach ($day as $key => $value) {
+        foreach ($day as $value) {
           $nb_games++;
           $fields ["a".$nb_games] = $value->team_a->french;
           $fields ["b".$nb_games] = $value->team_b->french;
@@ -97,11 +97,12 @@ class HomeController extends Controller
         }
         //$this->helper->debug($fields);
         $fields ["nb_games"] = $nb_games;
+        $fields ["day"] = $key;
 
 
         $url = "https://fr.funizi.com/api/start/358";
         $result = $this->helper->curlPost($url, $fields );
-        $this->helper->debug($result);
+        //$this->helper->debug($result);
 
       }
 
