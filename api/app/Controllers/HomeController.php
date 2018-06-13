@@ -91,7 +91,7 @@ class HomeController extends Controller
         );
         $this->helper->debug($fields);
         $url = "https://fr.funizi.com/api/start/358";
-        $result = $this->helper->curlPost($url, $fields );
+        $result = $this->helper->curlPost($url, json_encode($fields) );
         $this->helper->debug($result);
 
       }
