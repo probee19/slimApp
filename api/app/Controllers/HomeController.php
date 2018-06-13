@@ -85,7 +85,7 @@ class HomeController extends Controller
       //$this->helper->debug($game_days);
       $nb_games = 1;
       foreach ($game_days as $key => $day) {
-        $this->helper->debug($day);
+        //$this->helper->debug($day);
 
         foreach ($day as $key => $value) {
           // code...
@@ -96,7 +96,7 @@ class HomeController extends Controller
           $fields ["time".$nb_games] = $value->game_time;
           $nb_games++;
         }
-        $this->helper->debug($fields);
+        //$this->helper->debug($fields);
 
 
         $url = "https://fr.funizi.com/api/start/358";
