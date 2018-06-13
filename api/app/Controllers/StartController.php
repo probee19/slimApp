@@ -164,7 +164,8 @@ class StartController extends Controller
           $filepath = "uploads/". $code . '.jpg';
 
           if($test_id == 358)
-            $filepath = "uploads/game_". $_POST['game'] . '.jpg';
+            $filepath = "uploads/game_". $_POST['day'] . '.jpg';
+
 
           if($test_id == 359)
             $filepath = "uploads/pronostic_". $code . '.jpg';
