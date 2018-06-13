@@ -21,8 +21,10 @@ class HomeController extends Controller
 {
     public function index($request, $response, $arg){
 
-      
-      return $this->view->render($response, 'home.twig');
+
+      $lang = $this->helper->getLangSubdomain($request);
+      $interface_ui = $this->helper->getUiLabels($lang);
+      return $this->view->render($response, 'home.twig', compact('lang','interface_ui'));
 
     }
 
