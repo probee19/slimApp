@@ -1,0 +1,46 @@
+{% extends 'templates/layoutShare.twig' %}
+{% block title %}FootBot{% endblock %}
+{% block graph %}
+      <!--FACEBOOK-->
+      <link rel="canonical" href="{{ domain_url }}/api/footbot">
+      <meta property="og:title" content="{{data.user}} a fait son pronostic." />
+      <meta property="og:site_name" content="FootBot" />
+      <meta property="og:url" content="{{ domain_url }}/api/footbot" >
+      <meta property="og:description" content=" Fais tes pronostics pour la coupe du monde comme {{data.user}}." />
+      <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:width" content="800"/>
+      <meta property="og:image:height" content="420"/>
+      <meta property="og:image" content="{{ data.img_url }}" />
+      <meta property="og:type" content="website">
+      <meta property="fb:app_id" content="348809548888116">
+{% endblock %}
+{% block googletagmanager %}
+  <script>
+    dataLayer = [{
+      'pageCategory': 'home'
+    }];
+  </script>
+{% endblock %}
+
+
+{% block content %}
+  <div class="mainContent" style="display:flex; justify-content:center; align-items:center; flex-direction: column; font-size: 1.5em;">
+    <div  id="div_test" class="col-xs-10 col-sm-6" style="padding:1em; background-color:rgba(28, 48, 79, 0.4);">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-bottom:30px;">
+        {{ data.text}}
+      </div>
+
+      <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center">
+          <!--a class="btn btn-primary btn-lg btn_footbot" href="https://www.messenger.com/t/funizi" onclick='alert("Clic")' style="cursor:pointer; width: 200px;"  data-btn="discover-footbot"><i class="fab fa-facebook-messenger"></i> {{data.btn_title}}</a-->
+          <a href="#"
+            class="btn-close" onclick="window.close()"
+            style="  width: 200px;">
+             {{data.btn_close}} <i class="fas fa-times"></i>
+          </a>
+      </div>
+    </div>
+
+  </div>
+  <!-- /New Test Button -->
+
+{% endblock %}
