@@ -85,14 +85,22 @@ class HomeController extends Controller
       //$this->helper->debug($game_days);
 
       foreach ($game_days as $key => $day) {
+        $this->helper->debug($day);
+
         $fields = array(
-          'games'   =>  $day,
-          'day'     =>  $key
+          'game'        =>  "",
+          'team_a'      =>  "",
+          'team_b'      =>  "",
+          'cca'         =>  strtolower(""),
+          'ccb'         =>  strtolower(""),
+          'time'        =>  '17:00'
         );
         //$this->helper->debug($fields);
+
+
         $url = "https://fr.funizi.com/api/start/358";
-        $result = $this->helper->curlPost($url, $fields );
-        $this->helper->debug($result);
+        //$result = $this->helper->curlPost($url, $fields );
+        //$this->helper->debug($result);
 
       }
 
