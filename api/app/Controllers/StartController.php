@@ -133,7 +133,7 @@ class StartController extends Controller
 
 
            $url .= '&games=' . $_POST['games'];
-
+           exit;
             //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
 
          }
