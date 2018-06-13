@@ -129,6 +129,8 @@ class StartController extends Controller
          $url = SandBox::getUrlTestPerso($test_id ,$url, $lang);
 
          if($test_id == 358){
+           $this->helper->debug($_POST['games']);
+           $this->helper->debug(urlencode($_POST['games']));
            $url .= '&games=' . urlencode($_POST['games']);
 
             //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
@@ -164,7 +166,7 @@ class StartController extends Controller
           $filepath = "uploads/". $code . '.jpg';
 
           if($test_id == 358)
-            $filepath = "uploads/game_". $_POST['day'] . '.jpg';
+            $filepath = "uploads/game_day_". $_POST['day'] . '.jpg';
 
 
           if($test_id == 359)
