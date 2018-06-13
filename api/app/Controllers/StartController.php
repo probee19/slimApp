@@ -130,8 +130,11 @@ class StartController extends Controller
 
          if($test_id == 358){
            $this->helper->debug($_POST);
-           $this->helper->debug($_POST['a1']);
 
+           for ($i=1; $i <= $_POST['nb_games'] ; $i++) {
+             $url .= '&a'.$i.'=' . $_POST['a'.$i] .'&b'.$i.'=' . $_POST['b'.$i];
+           }
+           $this->helper->debug($url);
 
            $url .= '&games=' . $_POST['games'];
            exit;
