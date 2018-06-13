@@ -50,7 +50,7 @@ class AirtableController extends Controller
                       'flag'          =>  $valcountries->fields->flag
                     ];
 
-                if ( $valcountries->id == $value->fields->team_b[0] )
+                if ( $valcountries->id == $game->fields->team_b[0] )
                     $data_team_b = [
                       'id'            =>  $game->fields->team_b[0],
                       'idcountry'     =>  $valcountries->fields->idcountry,
@@ -65,14 +65,7 @@ class AirtableController extends Controller
             'id_game'      => $game->fields->idgame,
             'game_day'     => $game->fields->game_day,
             'group'        => $game->fields->group,
-            'team_a'       => $data_team_a,
-            'team_b'       => $data_team_b
-          ];
-          $array_matchs[] =[
-            'id'           => $game->id,
-            'id_game'      => $game->fields->idgame,
-            'game_day'     => $game->fields->game_day,
-            'group'        => $game->fields->group,
+            'game_time'    => "17:00",
             'team_a'       => $data_team_a,
             'team_b'       => $data_team_b
           ];
@@ -80,7 +73,7 @@ class AirtableController extends Controller
 
 
       }
-      Helper::debug($array_games);
+      return json_encode($array_games, JSON_PRETTY_PRINT);
 
     }
 
