@@ -138,9 +138,7 @@ class StartController extends Controller
            }
            $this->helper->debug($url);
 
-           $url .= '&games=' . $_POST['games'];
-           exit;
-            //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
+          //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
 
          }
 
