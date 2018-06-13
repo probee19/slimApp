@@ -133,7 +133,7 @@ class StartController extends Controller
 
            for ($i=1; $i <= $_POST['nb_games'] ; $i++) {
              $url .= '&a'.$i.'=' . $_POST['a'.$i] .'&b'.$i.'=' . $_POST['b'.$i];
-             $url .= '&cca'.$i.'=' . $_POST['cca'.$i] .'&ccb'.$i.'=' . $_POST['ccb'.$i];
+             $url .= '&cca'.$i.'=' . strtolower($_POST['cca'.$i]) .'&ccb'.$i.'=' . strtolower($_POST['ccb'.$i]);
              $url .= '&time'.$i.'=' . $_POST['time'.$i];
            }
            $this->helper->debug($url);
