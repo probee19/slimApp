@@ -78,6 +78,12 @@ class HomeController extends Controller
       }
     }
 
+    public function createGameDays($request, $response, $arg)
+    {
+      // code...
+      $game_days = AirtableController::getAllGamesDay();
+    }
+
 
 
 

@@ -246,15 +246,18 @@ class JsonController extends Controller
       foreach ($citations_col as $citation) {
         if($citation->citationInfos->statut == 1)
           $all_quotes[] = [
-            'id_citation'         =>  $citation->id_citation,
-            'titre_citation'      =>  $citation->titre_citation,
-            'url_image_citation'  =>  $citation->url_image_citation
+            'id_citation'           =>  $citation->id_citation,
+            'titre_citation'        =>  $citation->titre_citation,
+            'url_image_citation'    =>  $citation->url_image_citation,
+            "default_lang"          =>  $citation->citationInfos->default_lang,
+            "id_rubrique"           =>  $citation->citationInfos->id_rubrique,
+            "statut"                =>  $citation->citationInfos->statut,
           ];
       }
       $this->helper->debug($all_quotes);
       $all_quotes = json_encode($all_quotes, JSON_PRETTY_PRINT);
       $this->helper->debug($all_quotes);
-      
+
       $filepath = "../ressources/views/json_files/all_quotes/".$lang->code."_all_quotes.json";
       $json = fopen($filepath, "w+");
       fputs($json, $all_quotes);

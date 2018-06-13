@@ -22,6 +22,21 @@ class AirtableController extends Controller
 
     static $path_cash = DIR.DS.'public'.DS.'cash'.DS.'airtable'.DS;
 
+    public static function getAllGamesDay(){
+      $countries = self::findInTable('countries',[]);
+      $games = self::findInTable("games", [], false);
+      $game_days = self::findInTable("game_day", [], false);
+      if (isset($game_days->records)){
+        $all_days = $game_days->records;
+        $array_days = [];
+        foreach ($all_days as $day)
+          $array_days[] = $day->fields->game_day;
+      }
+
+      Helper::debug($array_days);
+
+    }
+
     public static function getAllMatchs(){
       $countries = self::findInTable('countries',[]);
       $games = self::findInTable("games", [], false);
@@ -64,8 +79,7 @@ class AirtableController extends Controller
       return json_encode($array_matchs, JSON_PRETTY_PRINT);
     }
 
-    public static function getPronosticsImg()
-    {
+    public static function getPronosticsImg(){
         $pronostics = $_POST['pronostics'];
         foreach ($pronostics as $pronostic) {
             $fields = array(
@@ -82,6 +96,7 @@ class AirtableController extends Controller
 
 
     }
+
     public static function findInTable($table_name, $options=[], $cash=true){
           $put_url = self::$path_cash;
           $put_url.="$table_name.txt";
