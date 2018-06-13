@@ -89,9 +89,9 @@ class HomeController extends Controller
           'games'   =>  json_encode($day),
           'day'     =>  $key
         );
-        $this->helper->debug($fields);
+        //$this->helper->debug($fields);
         $url = "https://fr.funizi.com/api/start/358";
-        $result = $this->helper->curlPost($url, json_encode($fields) );
+        $result = $this->helper->curlPost($url, $fields );
         $this->helper->debug($result);
 
       }
