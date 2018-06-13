@@ -275,6 +275,11 @@ class StartController extends Controller
             $elements = [];
             $image = "https://s3.us-east-2.amazonaws.com/funiziuploads/api/pronostics/pronostic_$code.jpg";
             $url_share = "https://fr.funizi.com/api/share/footbot?from=" .urlencode($name) . "&img_url=" .urlencode($image) ."&team_a=" . urlencode($_POST['team_a_name']) ."&team_b=" . urlencode($_POST['team_b_name']);
+
+            $url_to_share = urlencode('https://funizi.com/api/footbot?from='.$name.'&img_url='.$image);
+            $url_redirect_share = "https://fr.funizi.com/api/";
+            $url_share = "https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href=" . $url_to_share . "&redirect_uri=" . $url_redirect_share;
+
             $elements[] = [
                                'title' => $_POST['team_a_name'] ." - ". $_POST['team_b_name'],
                                'image_url'=> $image,

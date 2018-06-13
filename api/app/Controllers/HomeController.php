@@ -20,14 +20,9 @@ use GrabzItImageOptions;
 class HomeController extends Controller
 {
     public function index($request, $response, $arg){
-      $list_countries = array();
 
-      $tests = Test::where('statut', 1)->get();
-      $countries = Countries::orderBy('langFR','ASC')->with('users')->take(10)->get();
-      $pageid = 1;
-      $pagecount = 5;
-
-    return $this->view->render($response, 'home.twig');
+      
+      return $this->view->render($response, 'home.twig');
 
     }
 
