@@ -83,11 +83,12 @@ class HomeController extends Controller
       // code...
       $game_days = json_decode(AirtableController::getAllGamesDay());
       $this->helper->debug($game_days);
-      foreach ($game_days as $day) {
+      
+      foreach ($game_days as $key => $day) {
         $this->helper->debug($day);
         $fields = array(
           'games'   =>  $day,
-          'day'     =>  ""
+          'day'     =>  $key
         );
         $this->helper->debug($fields);
 //        $url = "https://fr.funizi.com/api/start/358";
