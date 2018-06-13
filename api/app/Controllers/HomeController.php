@@ -81,7 +81,7 @@ class HomeController extends Controller
     public function createGameDays($request, $response, $arg)
     {
       // code...
-      $game_days = AirtableController::getAllGamesDay();
+      $game_days = json_decode(AirtableController::getAllGamesDay());
       $this->helper->debug($game_days);
       foreach ($game_days as $day) {
         $this->helper->debug($day);
