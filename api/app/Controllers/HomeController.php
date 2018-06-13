@@ -86,15 +86,14 @@ class HomeController extends Controller
       foreach ($game_days as $key => $day) {
         //$this->helper->debug($day);
         $fields = [];
-        $nb_games = 1;
+        $nb_games = 0;
         foreach ($day as $key => $value) {
-          // code...
+          $nb_games++;
           $fields ["a".$nb_games] = $value->team_a->french;
           $fields ["b".$nb_games] = $value->team_b->french;
           $fields ["cca".$nb_games] = $value->team_a->country_code;
           $fields ["ccb".$nb_games] = $value->team_b->country_code;
           $fields ["time".$nb_games] = $value->game_time;
-          $nb_games++;
         }
         //$this->helper->debug($fields);
         $fields ["nb_games"] = $nb_games;
