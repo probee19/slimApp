@@ -36,7 +36,7 @@ class AirtableController extends Controller
       if (isset($games->records)){
         $all_games = $games->records;
         $array_games = [];
-        foreach ($all_games as $game)
+        foreach ($all_games as $game){
           //$array_games[$game->fields->game_day][] = $game->fields->game_day;
 
           $recordscountries = $countries->records;
@@ -76,6 +76,8 @@ class AirtableController extends Controller
             'team_a'       => $data_team_a,
             'team_b'       => $data_team_b
           ];
+        }
+
 
       }
       Helper::debug($array_games);
