@@ -68,7 +68,7 @@ class HomeController extends Controller
           'team_a_country_code'   =>  strtolower($match->team_a->country_code),
           'team_b_flag'           =>  $match->team_b->flag,
           'team_b_country_code'   =>  strtolower($match->team_b->country_code),
-          'time'                  =>  '17:00'
+          'time'                  =>  $match->game_time
         );
         $url = "https://fr.funizi.com/api/start/358";
         $result = $this->helper->curlPost($url, $fields );
@@ -93,10 +93,11 @@ class HomeController extends Controller
         }
         $fields ["nb_games"] = $nb_games;
         $fields ["day"] = $key;
+        $this->helper->debug($fields);
 
-        $url = "https://fr.funizi.com/api/start/358";
-        $result = $this->helper->curlPost($url, $fields );
-        $this->helper->debug($result);
+        //$url = "https://fr.funizi.com/api/start/358";
+        //$result = $this->helper->curlPost($url, $fields );
+        //$this->helper->debug($result);
       }
     }
 
