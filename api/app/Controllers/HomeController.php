@@ -20,11 +20,13 @@ use GrabzItImageOptions;
 class HomeController extends Controller
 {
     public function index($request, $response, $arg){
-
+      $data = [
+        'text' => "Merci d'avoir partagé, reviens demain pour de nouveaux pronostics et augmenter ton nombre de points !",
+      ];
 
       $lang = $this->helper->getLangSubdomain($request);
       $interface_ui = $this->helper->getUiLabels($lang);
-      return $this->view->render($response, 'home.twig', compact('lang','interface_ui'));
+      return $this->view->render($response, 'home.twig', compact('data','lang','interface_ui'));
 
     }
 
