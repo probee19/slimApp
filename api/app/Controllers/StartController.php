@@ -274,7 +274,7 @@ class StartController extends Controller
             $image = "https://s3.us-east-2.amazonaws.com/funiziuploads/api/pronostics/pronostic_$code.jpg";
             //$url_share = "https://fr.funizi.com/api/share/footbot?from=" .urlencode($name) . "&img_url=" .urlencode($image) ."&team_a=" . urlencode($_POST['team_a_name']) ."&team_b=" . urlencode($_POST['team_b_name']);
 
-            $url_to_share = urlencode('https://'.$lang.'funizi.com/api/footbot?from='.$name.'&img_url='.$image.'&team_a='.$_POST['team_a_name'].'&team_b='.$_POST['team_b_name'].'&cca='.strtolower($_POST['cca']).'&ccb='.strtolower($_POST['ccb']));
+            $url_to_share = urlencode('https://'.$lang.'.funizi.com/api/footbot?from='.$name.'&img_url='.$image.'&team_a='.$_POST['team_a_name'].'&team_b='.$_POST['team_b_name'].'&cca='.strtolower($_POST['cca']).'&ccb='.strtolower($_POST['ccb']));
             $url_redirect_share = "https://fr.funizi.com/api/";
             $url_share = "https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href=" . $url_to_share . "&redirect_uri=" . $url_redirect_share;
 
