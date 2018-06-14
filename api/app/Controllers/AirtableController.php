@@ -23,13 +23,13 @@ class AirtableController extends Controller
     static $path_cash = DIR.DS.'public'.DS.'cash'.DS.'airtable'.DS;
 
     public static function getAllGamesDay(){
-      $sort = array(
-        	array("field" => "game_day",   "direction" => "asc"),
-        	array("field" => "idgame",     "direction" => "asc")
-      );
+      $sort = [
+        ["field" => "game_day",   "direction" => "asc"],
+        ["field" => "idgame",     "direction" => "asc"]
+      ];
       $countries = self::findInTable('countries',[]);
       $games = self::findInTable("games", ["sort" => $sort], false);
-       
+
       if (isset($games->records)){
         $all_games = $games->records;
         $array_games = [];
