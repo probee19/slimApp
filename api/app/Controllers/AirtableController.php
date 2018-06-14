@@ -68,8 +68,12 @@ class AirtableController extends Controller
     }
 
     public static function getAllMatchs(){
+      $sort = array(
+        	array("field" => "game_day",   "direction" => "asc"),
+        	array("field" => "idgame",     "direction" => "asc")
+      );
       $countries = self::findInTable('countries',[]);
-      $games = self::findInTable("games", [], false);
+      $games = self::findInTable("games", ["sort" => $sort], false);
 
       if (isset($games->records)){
           $all_games = $games->records;
