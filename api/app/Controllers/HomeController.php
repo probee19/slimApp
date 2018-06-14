@@ -80,11 +80,7 @@ class HomeController extends Controller
     public function createGameDays($request, $response, $arg)
     {
       $game_days = json_decode(AirtableController::getAllGamesDay());
-      $this->helper->debug($game_days);
-      $arr = [];
-
       foreach ($game_days as $key => $day) {
-        //$this->helper->debug($day);
         $fields = [];
         $nb_games = 0;
         foreach ($day as $value) {
@@ -95,26 +91,13 @@ class HomeController extends Controller
           $fields ["ccb".$nb_games] = $value->team_b->country_code;
           $fields ["time".$nb_games] = $value->game_time;
         }
-        //$this->helper->debug($fields);
         $fields ["nb_games"] = $nb_games;
         $fields ["day"] = $key;
 
-        //
-        $arr [] = $fields;
-
-        //$url = "https://fr.funizi.com/api/start/358";
-        //$result = $this->helper->curlPost($url, $fields );
-        //$this->helper->debug($result);
-
+        $url = "https://fr.funizi.com/api/start/358";
+        $result = $this->helper->curlPost($url, $fields );
+        $this->helper->debug($result);
       }
-
-      $this->helper->debug($arr);
-
-
     }
-
-
-
-
 
 }
