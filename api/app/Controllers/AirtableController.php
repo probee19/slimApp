@@ -23,12 +23,6 @@ class AirtableController extends Controller
     static $path_cash = DIR.DS.'public'.DS.'cash'.DS.'airtable'.DS;
 
     public static function getAllGamesDay(){
-      $sort = [
-        ["field" => "game_day",   "direction" => "asc"],
-        ["field" => "idgame",     "direction" => "asc"]
-      ];
-
-      $sort = ['{field: "game_day", direction: "asc"},{field: "idgame", direction: "asc"}'];
       $countries = self::findInTable('countries',[]);
       $games = self::findInTable("games", [], false);
 
@@ -142,7 +136,7 @@ class AirtableController extends Controller
             $fields = [];
             $fields = $options;
             $fields['api_key'] = $_SERVER['AIRTABLE_API_KEY'];
-            $url = "https://api.airtable.com/v0/appec3rBvyPYpIOAx/$table_name?sort%5B0%5D%5Bfield%5D=game_day&sort%5B0%5D%5Bdirection%5D=asc&sort%5B1%5D%5Bfield%5D=idgame&sort%5B1%5D%5Bdirection%5D=asc";
+            $url = "https://api.airtable.com/v0/appec3rBvyPYpIOAx/$table_name";
             $poster = self::curl_get_fields($url, $fields);
 
             $decode = json_decode($poster);
