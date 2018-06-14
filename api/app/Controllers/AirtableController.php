@@ -19,9 +19,7 @@ use GrabzItImageOptions;
 class AirtableController extends Controller
 {
     static $api_key = false;
-
     static $path_cash = DIR.DS.'public'.DS.'cash'.DS.'airtable'.DS;
-
     public static function getAllGamesDay(){
       $countries = self::findInTable('countries',[]);
       $games = self::findInTable("games", [], false);
@@ -31,7 +29,6 @@ class AirtableController extends Controller
         $array_games = [];
         foreach ($all_games as $game){
           //$array_games[$game->fields->game_day][] = $game->fields->game_day;
-
           $recordscountries = $countries->records;
           foreach ($recordscountries as $keycountries => $valcountries){
                 if ( $valcountries->id == $game->fields->team_a[0] )
@@ -39,7 +36,6 @@ class AirtableController extends Controller
                       'country_code'  =>  $valcountries->fields->country_code,
                       'french'        =>  $valcountries->fields->french,
                     ];
-
                 if ( $valcountries->id == $game->fields->team_b[0] )
                     $data_team_b = [
                       'country_code'  =>  $valcountries->fields->country_code,
@@ -49,7 +45,7 @@ class AirtableController extends Controller
 
           $date_game = date_create($game->fields->date);
           $array_games[$game->fields->game_day][] = [
-            'game_time'    => date_format($date_game,"H:i:s"),
+            'game_time'    => date_format($date_game,"H:i"),
             'team_a'       => $data_team_a,
             'team_b'       => $data_team_b
           ];
