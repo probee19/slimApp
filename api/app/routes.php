@@ -13,4 +13,4 @@ $app->get('/share/footbot', 'ShareApiController:index');
 // POST
 $app->post('/start/{ref}', 'StartController:index');
 $app->post('/match', 'HomeController:createPicMatch');
-$app->get('/gameday', 'HomeController:createGameDays');
+$app->post('/gameday', 'HomeController:createGameDays');
