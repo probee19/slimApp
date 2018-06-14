@@ -31,8 +31,6 @@ class StartController extends Controller
         $data_log = '&url_img_profile_user='.urlencode($_POST['link_picture']).'&eam_a_name=' . urlencode($_POST['team_a_name']) . '&eam_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . $_POST['cca'] . '&ccb='. $_POST['ccb'] . '&eamuser_ps='. $_POST['teamuser_ps'] ;
 
         fputs($log, $data_log);
-        if($test_id == 359)
-          $log_api = $this->helper->uploadToS3("https://".$this->base_domain .'/uploads/log_api.txt', 'api/pronostics/');
 
 
 
@@ -46,7 +44,7 @@ class StartController extends Controller
         }
         elseif(isset($_POST['prenom_user_friend'])){
             $name  = $_POST['prenom_user_friend'];
-            $img_profile = "http://www.creation.funizi.com/src/img/user-default.jpg";
+            $img_profile = "http://creation.funizi.com/src/img/user-default.jpg";
         }
 
 
@@ -274,9 +272,9 @@ class StartController extends Controller
           if($test_id == 359){
             $elements = [];
             $image = "https://s3.us-east-2.amazonaws.com/funiziuploads/api/pronostics/pronostic_$code.jpg";
-            $url_share = "https://fr.funizi.com/api/share/footbot?from=" .urlencode($name) . "&img_url=" .urlencode($image) ."&team_a=" . urlencode($_POST['team_a_name']) ."&team_b=" . urlencode($_POST['team_b_name']);
+            //$url_share = "https://fr.funizi.com/api/share/footbot?from=" .urlencode($name) . "&img_url=" .urlencode($image) ."&team_a=" . urlencode($_POST['team_a_name']) ."&team_b=" . urlencode($_POST['team_b_name']);
 
-            $url_to_share = urlencode('https://funizi.com/api/footbot?from='.$name.'&img_url='.$image);
+            $url_to_share = urlencode('https://'.$lang.'funizi.com/api/footbot?from='.$name.'&img_url='.$image.'&team_a='.$_POST['team_a_name'].'&team_b='.$_POST['team_b_name'].'&cca='.strtolower($_POST['cca']).'&ccb='.strtolower($_POST['ccb']));
             $url_redirect_share = "https://fr.funizi.com/api/";
             $url_share = "https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href=" . $url_to_share . "&redirect_uri=" . $url_redirect_share;
 
