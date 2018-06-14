@@ -27,6 +27,8 @@ class AirtableController extends Controller
         ["field" => "game_day",   "direction" => "asc"],
         ["field" => "idgame",     "direction" => "asc"]
       ];
+
+      $sort = ['{field: "game_day", direction: "asc"},{field: "idgame", direction: "asc"}'];
       $countries = self::findInTable('countries',[]);
       $games = self::findInTable("games", ["sort" => $sort], false);
 
