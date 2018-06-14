@@ -33,7 +33,7 @@
 #flag_tema_a{left: 37px;}
 #flag_tema_b{right: 37px;}
 
-#pronostic{z-index:1; z-index:1; font-family: 'Titillium Web', sans-serif;  position: absolute; left: 180px; top: 80px; color:#fff; font-size:35px; line-height:40px; width:415px ; height:100px ;   text-align:center; }
+#pronostic{z-index:1; z-index:1; font-family: 'Titillium Web', sans-serif;  position: absolute; left: 85px; top: 80px; color:#fff; font-size:45px; line-height:55px; width:605px ; height:100px ; text-align:center; }
 
 #fb_id_user{position: absolute; z-index:1; left: 370px; bottom: 140px; width:60px ; border-radius:60px; }
 
@@ -85,57 +85,58 @@
           </head>
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
-
+      
 <?php
          $pr  = $_GET['eamuser_ps'];
          //$pr  = "a";
-         function getAdverb($team, $adverbe="l'"){
-                   $feminin = array('Belgique','Colombie','Croitie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
-                   $masculin = array('Brésil','Costa Rica','Danemark','Japon','Maroc','Nigeria','Panama','Péru','Portugal','Sénégal');
+         function getAdverb($team, $adverbe="de l'"){ 
+                   $feminin = array(' Belgique ',' Colombie ',' Croitie ',' France ',' Corée du nord ',' Mexique ',' Pologne ',' Russie ',' Serbie ',' Suède ',' Suisse ',' Tunisie ');
+                   $masculin = array(' Brésil ',' Costa Rica ',' Danemark ',' Japon ',' Maroc ',' Nigeria ',' Panama ',' Péru ',' Portugal ',' Sénégal ');
                     if(in_array($team,$feminin,true ))
-                              $adverbe ='de la ';
+                              $adverbe = ' de la  '; 
                     elseif(in_array($team,$masculin,true ))
-                              $adverbe ='du ';
+                              $adverbe = ' du  '; 
                     return $adverbe;
-         }
-         if( $pr == 'a'){
+         } 
+         if( $pr ==  'a'){
                     $class_no = 'yes_b';
-                    $class_yes = 'yes_a';
+                    $class_yes = 'yes_a'; 
                     $team = $_GET['eam_a_name'];
                     //$team = "France";
-                   $ph = 'a pronostiqué la victoire  '.getAdverb($team).'<span style="color:#FF3369">'.$team.'</span>.';
+                   $ph = ' a pronostiqué la victoire  '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
          }
          elseif( $pr ==  'b'){
                    $class_no = 'yes_a';
-                   $class_yes = 'yes_b';
-                    $team = $_GET['eam_b_name'];
+                   $class_yes = 'yes_b';   
+                    $team = $_GET['eam_b_name']; 
                     //$team = "Espagne";
                     if(in_array($team,$feminin,true ))
-                              $adverbe = 'de la';
+                              $adverbe = 'de la'; 
                     elseif(in_array($team,$masculin,true ))
-                              $adverbe = 'du';
-                   $ph = 'a pronostiqué la victoire  '.getAdverb($team).'<span style="color:#FF3369">'.$team.'</span>.';
+                              $adverbe = 'du'; 
+                   $ph = ' a pronostiqué la victoire  '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
          }
          else{
                    $class_no = 'yes_ab';
-                   $class_yes = 'yes_ab';
-                   $ph = 'a pronostiqué un match nul. ';
+                   $class_yes = 'yes_ab';  
+                   $ph = ' a pronostiqué un match nul. ';
          }
-
+                     
 ?>
-<img src="https://creation.funizi.com/images-theme-perso/1528471357.jpg" id="back">
-<div class="texte" id="pronostic"> <span style="color:#03D7DC"><?php echo $_GET['user_name']; ?></span> <?=$ph;?> </div>
-<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['cca']; ?>.png" id="flag_tema_a" class="flag_team">
+<img src="https://creation.funizi.com/images-theme-perso/1528995761.jpg" id="back"> 
+<div class="texte" id="pronostic"> <span style="color:#0aa06e"><?php echo $_GET['user_name']; ?></span> <?=$ph;?> </div>
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['cca']; ?>.png" id="flag_tema_a" class="flag_team"> 
 <div class="texte team_name" id="team_a"><?php echo $_GET['eam_a_name']; ?></div>
-<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['ccb']; ?>.png" id="flag_tema_b" class="flag_team">
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['ccb']; ?>.png" id="flag_tema_b" class="flag_team"> 
 <div class="texte team_name" id="team_b"><?php echo $_GET['eam_b_name']; ?></div>
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<img src="https://creation.funizi.com/images-theme-perso/1528476005.png" class="yes" id="<?=$class_no;?>">
-<img src="https://creation.funizi.com/images-theme-perso/1528472617.png" class="yes" id="<?=$class_yes;?>">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
+<img src="https://creation.funizi.com/images-theme-perso/1528476005.png" class="yes" id="<?=$class_no;?>"> 
+<img src="https://creation.funizi.com/images-theme-perso/1528472617.png" class="yes" id="<?=$class_yes;?>"> 
 
-
+ 
 
         </div>
-
+        
         </body>
         </html>
+      
