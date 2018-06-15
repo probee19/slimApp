@@ -47,6 +47,7 @@ class AirtableController extends Controller
           $array_games[$game->fields->game_day][] = [
             'game_id'      => $game->fields->idgame,
             'game_time'    => date_format($date_game,"H:i"),
+            'game_date'    => date_format($date_game,"d M Y"),
             'team_a'       => $data_team_a,
             'team_b'       => $data_team_b
           ];
