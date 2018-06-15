@@ -52,11 +52,15 @@ class AirtableController extends Controller
           ];
         }
 
-        $array_games = self::array_msort($array_games, array('game_id'=>SORT_ASC));
+        $array_games_r = [];
+        foreach ($array_games as $key => $value) {
+          $value = self::array_msort($value, array('game_id'=>SORT_ASC));
+          $array_games_r[$key] = $value;
+        }
 
       }
 
-      return json_encode($array_games, JSON_PRETTY_PRINT);
+      return json_encode($array_games_r, JSON_PRETTY_PRINT);
 
     }
 
