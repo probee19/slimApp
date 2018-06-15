@@ -43,6 +43,8 @@ class AirtableController extends Controller
                     ];
           }
 
+          setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
+
           $date_game = date_create($game->fields->date);
           $array_games[$game->fields->game_day][] = [
             'game_id'      => $game->fields->idgame,
