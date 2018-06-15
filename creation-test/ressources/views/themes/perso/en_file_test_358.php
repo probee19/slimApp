@@ -81,7 +81,11 @@
 <img src="https://creation.funizi.com/images-theme-perso/1528387221.jpg" id="back">  
 <div class="overlay"></div>
 <div id="box">
-          <div id="" class="games"> 
+          <div id="" class="games">  
+                    <div id="" class="game">
+                              <span class="texte hour" id=""> Journée du <?php echo $_GET['date']; ?> </span>
+                               
+                    </div> 
                     <?php   
                      if(isset($_GET['a1'])) { 
                               ?> 

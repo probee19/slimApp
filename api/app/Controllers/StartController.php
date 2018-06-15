@@ -133,7 +133,7 @@ class StartController extends Controller
              $url .= '&cca'.$i.'=' . strtolower(trim($_POST['cca'.$i])) .'&ccb'.$i.'=' . strtolower(trim($_POST['ccb'.$i]));
              $url .= '&time'.$i.'=' . $_POST['time'.$i];
            }
-           $url .= '&day' . $_POST['day'];
+           $url .= '&date' . $_POST['date'];
            //$this->helper->debug($url);
 
           //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
