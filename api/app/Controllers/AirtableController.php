@@ -52,7 +52,7 @@ class AirtableController extends Controller
           ];
         }
 
-        $array_games = Helper::array_msort($array_games, array('taux_share'=>SORT_DESC, 'nb_test_done'=>SORT_DESC));
+        $array_games = self::array_msort($array_games, array('game_id'=>SORT_ASC));
 
       }
 
