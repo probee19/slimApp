@@ -45,15 +45,43 @@ class AirtableController extends Controller
 
           $date_game = date_create($game->fields->date);
           $array_games[$game->fields->game_day][] = [
+            'game_id'      => $game->fields->idgame,
             'game_time'    => date_format($date_game,"H:i"),
             'team_a'       => $data_team_a,
             'team_b'       => $data_team_b
           ];
         }
 
+        $array_games = Helper::array_msort($array_games, array('taux_share'=>SORT_DESC, 'nb_test_done'=>SORT_DESC));
 
       }
+
       return json_encode($array_games, JSON_PRETTY_PRINT);
+
+    }
+
+    public static function array_msort($array, $cols)
+    {
+        $colarr = array();
+        foreach ($cols as $col => $order) {
+            $colarr[$col] = array();
+            foreach ($array as $k => $row) { $colarr[$col]['_'.$k] = strtolower($row[$col]); }
+        }
+        $eval = 'array_multisort(';
+        foreach ($cols as $col => $order) {
+            $eval .= '$colarr[\''.$col.'\'],'.$order.',';
+        }
+        $eval = substr($eval,0,-1).');';
+        eval($eval);
+        $ret = array();
+        foreach ($colarr as $col => $arr) {
+            foreach ($arr as $k => $v) {
+                $k = substr($k,1);
+                if (!isset($ret[$k])) $ret[$k] = $array[$k];
+                $ret[$k][$col] = $array[$k][$col];
+            }
+        }
+        return $ret;
 
     }
 
