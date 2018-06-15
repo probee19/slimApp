@@ -90,12 +90,12 @@
          $pr  = $_GET['eamuser_ps'];
          //$pr  = "a";
          function getAdverb($team, $adverbe="de l'"){ 
-                   $feminin = array('Belgio','Colombia','Croitie','la Francia','Corea del nord','Messico','Polonia','Russia','Serbia','Svezia','svizzero','Tunisia');
-                   $masculin = array('Brasile','Costa Rica','Danimarca','Giappone','Marocco','Nigeria','Panama','Perù','Portogallo','Senegal');
+                   $feminin = array('Belgique','Colombie','Croitie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
+                   $masculin = array('Brésil','Costa Rica','Danemark','Japon','Maroc','Nigeria','Panama','Péru','Portugal','Sénégal');
                     if(in_array($team,$feminin,true ))
-                              $adverbe = 'del '; 
+                              $adverbe = 'de la '; 
                     elseif(in_array($team,$masculin,true ))
-                              $adverbe = 'di '; 
+                              $adverbe = 'du '; 
                     return $adverbe;
          } 
          if( $pr ==  'a'){
@@ -103,7 +103,7 @@
                     $class_yes = 'yes_a'; 
                     $team = $_GET['eam_a_name'];
                     //$team = "France";
-                   $ph = 'ha predetto la vittoria '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
+                   $ph = 'a pronostiqué la victoire '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
          }
          elseif( $pr ==  'b'){
                    $class_no = 'yes_a';
@@ -114,12 +114,12 @@
                               $adverbe = 'de la'; 
                     elseif(in_array($team,$masculin,true ))
                               $adverbe = 'du'; 
-                   $ph = 'ha predetto la vittoria '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
+                   $ph = 'a pronostiqué la victoire '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
          }
          else{
                    $class_no = 'yes_ab';
                    $class_yes = 'yes_ab';  
-                   $ph = 'previsto un pareggio.';
+                   $ph = 'a pronostiqué un match nul.';
          }
                      
 ?>
@@ -129,7 +129,7 @@
 <div class="texte team_name" id="team_a"><?php echo $_GET['eam_a_name']; ?></div>
 <img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags/<?php echo $_GET['ccb']; ?>.png" id="flag_tema_b" class="flag_team"> 
 <div class="texte team_name" id="team_b"><?php echo $_GET['eam_b_name']; ?></div>
-<img src="<?php echo $_GET['url_img_prdiile_user']; ?>" class="img_prdiile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <img src="https://creation.funizi.com/images-theme-perso/1528476005.png" class="yes" id="<?=$class_no;?>"> 
 <img src="https://creation.funizi.com/images-theme-perso/1528472617.png" class="yes" id="<?=$class_yes;?>"> 
 

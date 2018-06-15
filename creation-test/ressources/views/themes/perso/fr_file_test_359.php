@@ -90,12 +90,12 @@
          $pr  = $_GET['eamuser_ps'];
          //$pr  = "a";
          function getAdverb($team, $adverbe="de l'"){ 
-                   $feminin = array(' Belgique ',' Colombie ',' Croitie ',' France ',' Corée du nord ',' Mexique ',' Pologne ',' Russie ',' Serbie ',' Suède ',' Suisse ',' Tunisie ');
-                   $masculin = array(' Brésil ',' Costa Rica ',' Danemark ',' Japon ',' Maroc ',' Nigeria ',' Panama ',' Péru ',' Portugal ',' Sénégal ');
+                   $feminin = array('Belgique','Colombie','Croitie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
+                   $masculin = array('Brésil','Costa Rica','Danemark','Japon','Maroc','Nigeria','Panama','Péru','Portugal','Sénégal');
                     if(in_array($team,$feminin,true ))
-                              $adverbe = ' de la  '; 
+                              $adverbe = 'de la '; 
                     elseif(in_array($team,$masculin,true ))
-                              $adverbe = ' du  '; 
+                              $adverbe = 'du '; 
                     return $adverbe;
          } 
          if( $pr ==  'a'){
@@ -103,7 +103,7 @@
                     $class_yes = 'yes_a'; 
                     $team = $_GET['eam_a_name'];
                     //$team = "France";
-                   $ph = ' a pronostiqué la victoire  '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
+                   $ph = 'a pronostiqué la victoire '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
          }
          elseif( $pr ==  'b'){
                    $class_no = 'yes_a';
@@ -114,12 +114,12 @@
                               $adverbe = 'de la'; 
                     elseif(in_array($team,$masculin,true ))
                               $adverbe = 'du'; 
-                   $ph = ' a pronostiqué la victoire  '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
+                   $ph = 'a pronostiqué la victoire '.getAdverb($team).'<span style="color:#e21b1b">'.$team.'</span>.';
          }
          else{
                    $class_no = 'yes_ab';
                    $class_yes = 'yes_ab';  
-                   $ph = ' a pronostiqué un match nul. ';
+                   $ph = 'a pronostiqué un match nul.';
          }
                      
 ?>
