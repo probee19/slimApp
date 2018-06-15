@@ -28,32 +28,35 @@ class AirtableController extends Controller
         $all_games = $games->records;
         $array_games = [];
         foreach ($all_games as $game){
-          //$array_games[$game->fields->game_day][] = $game->fields->game_day;
-          $recordscountries = $countries->records;
-          foreach ($recordscountries as $keycountries => $valcountries){
-                if ( $valcountries->id == $game->fields->team_a[0] )
-                    $data_team_a = [
-                      'country_code'  =>  $valcountries->fields->country_code,
-                      'french'        =>  $valcountries->fields->french,
-                    ];
-                if ( $valcountries->id == $game->fields->team_b[0] )
-                    $data_team_b = [
-                      'country_code'  =>  $valcountries->fields->country_code,
-                      'french'        =>  $valcountries->fields->french,
-                    ];
+          if($game->fields->game_day != -1){
+            //$array_games[$game->fields->game_day][] = $game->fields->game_day;
+            $recordscountries = $countries->records;
+            foreach ($recordscountries as $keycountries => $valcountries){
+                  if ( $valcountries->id == $game->fields->team_a[0] )
+                      $data_team_a = [
+                        'country_code'  =>  $valcountries->fields->country_code,
+                        'french'        =>  $valcountries->fields->french,
+                      ];
+                  if ( $valcountries->id == $game->fields->team_b[0] )
+                      $data_team_b = [
+                        'country_code'  =>  $valcountries->fields->country_code,
+                        'french'        =>  $valcountries->fields->french,
+                      ];
+            }
+
+
+            $date_game = date_create($game->fields->date);
+            //date_format($date_game,"d m Y"),
+            setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
+            $array_games[$game->fields->game_day][] = [
+              'game_id'      => $game->fields->idgame,
+              'game_time'    => date_format($date_game,"H:i"),
+              'game_date'    => strftime("%d %b %Y", strtotime($game->fields->date)),
+              'team_a'       => $data_team_a,
+              'team_b'       => $data_team_b
+            ];
           }
 
-
-          $date_game = date_create($game->fields->date);
-          //date_format($date_game,"d m Y"),
-          setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
-          $array_games[$game->fields->game_day][] = [
-            'game_id'      => $game->fields->idgame,
-            'game_time'    => date_format($date_game,"H:i"),
-            'game_date'    => strftime("%d %b %Y", strtotime($game->fields->date)),
-            'team_a'       => $data_team_a,
-            'team_b'       => $data_team_b
-          ];
         }
 
         $array_games_r = [];
