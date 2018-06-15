@@ -134,7 +134,7 @@ class StartController extends Controller
              $url .= '&time'.$i.'=' . $_POST['time'.$i];
            }
            $url .= '&date' . $_POST['date'];
-           //$this->helper->debug($url);
+           $this->helper->debug($url);
 
           //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
 
