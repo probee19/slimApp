@@ -1,8 +1,5 @@
 <?php
-
-
 namespace App\Controllers;
-
 
 use App\Helpers\DBIP;
 use App\Helpers\Helper;
@@ -43,8 +40,6 @@ class AirtableController extends Controller
                         'french'        =>  $valcountries->fields->french,
                       ];
             }
-
-
             $date_game = date_create($game->fields->date);
             //date_format($date_game,"d m Y"),
             setlocale(LC_TIME, 'fr', 'fr_FR', 'fr_FR.ISO8859-1');
@@ -56,19 +51,14 @@ class AirtableController extends Controller
               'team_b'       => $data_team_b
             ];
           }
-
         }
-
         $array_games_r = [];
         foreach ($array_games as $key => $value) {
           $value = self::array_msort($value, array('game_id'=>SORT_ASC));
           $array_games_r[$key] = $value;
         }
-
       }
-
       return json_encode($array_games_r, JSON_PRETTY_PRINT);
-
     }
 
     public static function array_msort($array, $cols)
@@ -93,7 +83,6 @@ class AirtableController extends Controller
             }
         }
         return $ret;
-
     }
 
     public static function getAllMatchs(){
