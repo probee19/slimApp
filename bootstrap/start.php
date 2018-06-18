@@ -119,6 +119,7 @@ $container['view'] = function ($container){
     //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
     $view->getEnvironment()->addGlobal('defined_base_url', "https://".SERVER_DOMAIN);
     $view->getEnvironment()->addGlobal('defined_base_domain', SERVER_DOMAIN);
+    $view->getEnvironment()->addGlobal('fb_app_id', FB_APP_ID);
     $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
     $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
     $view->getEnvironment()->addGlobal('storage_base', "https://funiziuploads.s3.us-east-2.amazonaws.com");
