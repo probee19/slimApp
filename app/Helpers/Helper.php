@@ -650,6 +650,32 @@ class Helper
        return $alltest;
     }
 
+    public static function getAllQuotesJson($lang){
+      //Get data from existing json file
+      //$file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_quotes/" . $lang . "_all_quotes.json";
+
+      $jsondata = file_get_contents($file);
+       // converts json data into array
+       $arr_data = json_decode($jsondata);
+       $allcitation = array();
+       foreach ($arr_data as $citation) {
+         $allcitation [$citation->id_citation] = [
+           "id_citation"           => $citation->id_test,
+           "id_rubrique"           => $citation->id_rubrique,
+           "statut"                => $citation->statut,
+           "if_translated"         => $citation->if_translated,
+           "if_personalizable"     => $citation->if_personalizable,
+           "default_lang"          => $citation->default_lang,
+           "titre_citation"        => stripslashes((string)$citation->titre_citation),
+           "url_image_citation"    => $citation->url_image_citation,
+           "codes_countries"       => $citation->codes_countries
+         ];
+       }
+
+       return $allcitation;
+    }
+
 
     public function getBestLocalTest($lang, $exclude, $countryCode, $total = 24){
       if(strlen($lang) > 2) $lang = 'en'; //

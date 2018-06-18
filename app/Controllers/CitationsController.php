@@ -22,34 +22,42 @@ class CitationsController extends Controller
 
       $country_code = $sandbox->getCountryCode();
       $pagecount = $this->test_per_page;
-      $citations_col = CitationInfo::where('lang', '=',$lang)->with('citationInfos')->get();
-      $citations = [];
-      foreach ($citations_col as $citation) {
-        if($citation->citationInfos->statut == 1)
-          $citations[] = [
-            'id_citation'         =>  $citation->id_citation,
-            'titre_citation'      =>  $citation->titre_citation,
-            'url_image_citation'  =>  $citation->url_image_citation
+      $citations_from_json = $this->helper->getAllcitationsJson($lang);
+
+      // Calcul du nombre total de ciataions
+      foreach ($citations_from_json as $citation) {
+        if($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ){
+          $citations_json[] = [
+            'url_image_citation' => $citation['url_image_citation'],
+            'id_citation'        => $citation['id_citation'],
+            'titre_citation'     => $citation['titre_citation']
           ];
+        }
       }
-      $nb_citation = count($citations);
-      $pagecount = (int)ceil($nb_citation / $pagecount);
+
+
+      $allcitation = count($citations_json);
+
+      // Nombre de pages
+      $pagecount = (int)ceil($allcitation / $pagecount);
 
       if(!empty($arg['pageid']))
         $pageid = $arg['pageid'];
       else
         $pageid = 1;
       $name_session_page = $lang.'_citations_page_'.$pageid;
+//
 
-
-      //$this->helper->debug($citations);
+//
+      $this->helper->debug($citations_json);
+      $this->helper->debug($allcitation);
 
       $all_lang = $this->helper->getActivatedLanguages();
       return $this->view->render($response, 'citations.twig', compact('citations', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
 
 
     }
-    public function oneQuote($request, $response, $args)
+    public function onecitation($request, $response, $args)
     {
       // code...
       $sandbox = new Helper();
@@ -95,13 +103,13 @@ class CitationsController extends Controller
 
       $exclude = [];
       if(!empty($_SESSION['uid'])){
-          $testUser = User::where('facebook_id', '=', $_SESSION['uid'])->with('usertests')->first();
-          if(count($testUser->usertests) > 0)
-            foreach($testUser->usertests as $user)
+          $citationUser = User::where('facebook_id', '=', $_SESSION['uid'])->with('usertests')->first();
+          if(count($citationUser->usertests) > 0)
+            foreach($citationUser->usertests as $user)
                 $exclude [] = $user->test_id;
       }
 
-      $url_to_share = urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_".date('Y-m-d')."&utm_content=quote_".$citation['id_citation']);
+      $url_to_share = urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
 
       $url_redirect_share = $url_to_share;
 
