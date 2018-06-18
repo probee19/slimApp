@@ -595,7 +595,16 @@ class Helper
           //$url = "https://".$lang.".funizi.com".$_SERVER['REQUEST_URI'];
         return "https://". $lang . '.' . $_SERVER['SERVER_DOMAIN'] . $_SERVER['REQUEST_URI'];
       }
+      self::setNbSeenPage($request, $response);
       return "";
+    }
+
+    public static function setNbSeenPage($request, $response)
+    {
+      if(isset($_SESSION['count_seen_page']))
+        $_SESSION['count_seen_page'] = $_SESSION['count_seen_page'] + 1;
+      else
+        $_SESSION['count_seen_page'] = 1;
     }
 
     public static function getTestFromJson($file = "ressources/views/all_test.json"){
