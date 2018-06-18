@@ -670,7 +670,7 @@ class Helper
        $allcitation = array();
        foreach ($arr_data as $citation) {
          $allcitation [$citation->id_citation] = [
-           "id_citation"           => $citation->id_test,
+           "id_citation"           => $citation->id_citation,
            "id_rubrique"           => $citation->id_rubrique,
            "statut"                => $citation->statut,
            "if_translated"         => $citation->if_translated,
