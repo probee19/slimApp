@@ -35,7 +35,6 @@ class CitationsController extends Controller
         }
       }
 
-
       $allcitation = count($citations_json);
 
       // Nombre de pages
@@ -89,13 +88,7 @@ class CitationsController extends Controller
       }
 
       //
-      $this->helper->debug($pageid);
-      $this->helper->debug($exclude);
-      $this->helper->debug($_SESSION);
-      $this->helper->debug($allcitation);
-      $this->helper->debug($citations_from_json);
-      $this->helper->debug($citations_json);
-      $this->helper->debug($citations);
+
 
       $all_lang = $this->helper->getActivatedLanguages();
       return $this->view->render($response, 'citations.twig', compact('citations', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
