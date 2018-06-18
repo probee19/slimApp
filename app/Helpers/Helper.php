@@ -650,7 +650,7 @@ class Helper
        return $alltest;
     }
 
-    public static function getAllQuotesJson($lang){
+    public static function getAllCitationJson($lang){
       //Get data from existing json file
       //$file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";
       $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_quotes/" . $lang . "_all_quotes.json";
