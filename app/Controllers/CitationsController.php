@@ -63,11 +63,11 @@ class CitationsController extends Controller
       }
       else {// Si cette page n'est pas en session
 
-        if($allcitation == count($_SESSION["seen"]) || $allcitation <= count($_SESSION["seen"]))
-          $_SESSION["seen"] = array();
+        if($allcitation == count($_SESSION["citations_seen"]) || $allcitation <= count($_SESSION["citations_seen"]))
+          $_SESSION["citations_seen"] = array();
         $exclude = array();
-        if(isset($_SESSION['seen']))
-          $exclude = $_SESSION['seen'];
+        if(isset($_SESSION['citations_seen']))
+          $exclude = $_SESSION['citations_seen'];
           shuffle($citations_from_json);
           $nb_taken = 0;
           $page_citations = array();
@@ -83,7 +83,7 @@ class CitationsController extends Controller
             }
           }
 
-          $_SESSION['seen'] = $exclude;
+          $_SESSION['citations_seen'] = $exclude;
           $_SESSION[$name_session_page] = $page_citations;
       }
 
