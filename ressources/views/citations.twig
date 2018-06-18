@@ -82,21 +82,21 @@
           <ul class="text-center pager" style="margin-top:15px;">
               {% if pageid == 1 %}
                   <li class="btn-next">
-                      <a href="{{ domain_url }}/ciataions/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                      <a href="{{ domain_url }}/citations/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
                   </li>
               {% elseif pageid == pagecount %}
                   <li class="btn-prev">
-                      <a href="{{ domain_url }}/ciataions/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                      <a href="{{ domain_url }}/citations/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
                   </li>
                   <li>
-                      <a href="{{ domain_url }}/ciataions/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                      <a href="{{ domain_url }}/citations/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
                   </li>
               {% else %}
                   <li class="btn-prev">
-                      <a href="{{ domain_url }}/ciataions/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                      <a href="{{ domain_url }}/citations/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
                   </li>
                   <li>
-                      <a href="{{ domain_url }}/ciataions/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                      <a href="{{ domain_url }}/citations/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
                   </li>
               {% endif %}
           </ul>
