@@ -22,7 +22,7 @@ class CitationsController extends Controller
 
       $country_code = $sandbox->getCountryCode();
       $pagecount = $this->test_per_page;
-      $citations_from_json = $this->helper->getAllcitationsJson($lang);
+      $citations_from_json = $this->helper->getAllCitationJson($lang);
 
       // Calcul du nombre total de ciataions
       foreach ($citations_from_json as $citation) {

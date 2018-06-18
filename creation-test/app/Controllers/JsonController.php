@@ -257,7 +257,6 @@ class JsonController extends Controller
             "codes_countries"       =>  $citation->citationInfos->codes_countries
           ];
       }
-      $this->helper->debug($all_quotes);
       $all_quotes = json_encode($all_quotes, JSON_PRETTY_PRINT);
       $this->helper->debug($all_quotes);
 
