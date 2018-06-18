@@ -381,7 +381,7 @@
         }
 
         function changeIcon(url = 'src/img/funizi-blue.png'){
-          $('#url_icon_campaign').val('https://funizi.com/creation-test/' + url);
+          $('#url_icon_campaign').val({{storage_base}} + url);
         }
 
         function showNotification(div, alert){
