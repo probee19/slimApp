@@ -2,7 +2,7 @@ var domain = $("#domain").data("domain");
 function registerServiceWorker () {
   if ('serviceWorker' in navigator) {
     // enregistrement du fichier 'service-worker.js' présent à la racine de l'application
-    navigator.serviceWorker.register('{{ base_url() }}/src/js/service-worker.js').then(function (reg) {
+    navigator.serviceWorker.register('{{ domain_url }}/src/js/service-worker.js').then(function (reg) {
       // registration worked
       console.log('Registration succeeded. Scope is ' + reg.scope);
       subscribeDevice();
