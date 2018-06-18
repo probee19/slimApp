@@ -91,6 +91,7 @@ class CitationsController extends Controller
       $this->helper->debug($exclude);
       $this->helper->debug($_SESSION);
       $this->helper->debug($allcitation);
+      $this->helper->debug($citations_from_json);
       $this->helper->debug($citations_json);
       $this->helper->debug($citations);
 
