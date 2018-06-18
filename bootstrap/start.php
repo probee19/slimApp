@@ -69,7 +69,7 @@ $config = [
         'prefix'    =>  '',
     ],
     'test_per_page'     =>  12,
-    'citation_per_page' =>  2,
+    'citation_per_page' =>  12,
     'default_lang'      =>  "en",
 ];
 
