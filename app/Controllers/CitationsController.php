@@ -47,10 +47,52 @@ class CitationsController extends Controller
         $pageid = 1;
       $name_session_page = $lang.'_citations_page_'.$pageid;
 //
+      // Si cette page a été déjà ouverte et en session
+      if(isset($_SESSION[$name_session_page]) && !empty($_SESSION[$name_session_page]) ){
+        $include = $_SESSION[$name_session_page];
+        foreach ($citations_from_json as $citation) {
+          if(in_array($citation['id_citation'], $include, true)){
+            $citations[$citation['id_citation']] = [
+              'url_image_citation' => $citation['url_image_citation'],
+              'id_citation'        => $citation['id_citation'],
+              'titre_citation'     => $citation['titre_citation']
+            ];
+          }
+        }
+        $citations = array_replace(array_flip($include), $citations);
+      }
+      else {// Si cette page n'est pas en session
+
+        if($allcitation == count($_SESSION["seen"]) || $allcitation <= count($_SESSION["seen"]))
+          $_SESSION["seen"] = array();
+        $exclude = array();
+        if(isset($_SESSION['seen']))
+          $exclude = $_SESSION['seen'];
+          shuffle($citations_from_json);
+          $nb_taken = 0;
+          $page_citations = array();
+          foreach ($citations_from_json as $citation) {
+            if(($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ) && !in_array($citation['id_test'], $exclude, true) && ++$nb_taken <= $this->test_per_page){
+              $citations[$citation['id_citation']] = [
+                'url_image_citation' => $citation['url_image_citation'],
+                'id_citation'        => $citation['id_citation'],
+                'titre_citation'     => $citation['titre_citation']
+              ];
+              if(!in_array($citation['id_citation'], $exclude, true)) $exclude[] = $citation['id_citation'];
+              $page_citations[] = $citation['id_citation'];
+            }
+          }
+
+          $_SESSION['seen'] = $exclude;
+          $_SESSION[$name_session_page] = $page_citations;
+      }
 
 //
-      $this->helper->debug($citations_json);
+      $this->helper->debug($exclude);
+      $this->helper->debug($_SESSION);
       $this->helper->debug($allcitation);
+      $this->helper->debug($citations_json);
+      $this->helper->debug($citations);
 
       $all_lang = $this->helper->getActivatedLanguages();
       return $this->view->render($response, 'citations.twig', compact('citations', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
