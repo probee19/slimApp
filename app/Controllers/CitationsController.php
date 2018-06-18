@@ -11,7 +11,7 @@ use App\Models\Language;
 class CitationsController extends Controller
 {
 
-    public function index($request, $response, $args){
+    public function index($request, $response, $arg){
       $sandbox = new Helper();
 
       $url = $sandbox->detectLang($request, $response);
@@ -89,6 +89,7 @@ class CitationsController extends Controller
       }
 
       //
+      $this->helper->debug($pageid);
       $this->helper->debug($exclude);
       $this->helper->debug($_SESSION);
       $this->helper->debug($allcitation);
