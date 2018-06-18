@@ -74,7 +74,17 @@ class NotificationPushController extends Controller
   public function sendToAdmin($request, $response, $arg)
   {
     // Get subscribers to send campaign
+
     if($_POST['mode_admin'] == 1){
+
+      $countries = json_decode($_POST['countries']);
+      $countries_filter = array(); $data_countries = '';
+      foreach ($countries as $country_code => $country_name) {
+          $countries_filter []= $country_code;
+          $data_countries .=  $country_code . ' ';
+      }
+
+      
       $subscriptions = NotificationSubscriptions::whereIn('id',[520])->get();
       foreach ($subscriptions as $endpoint) {
         $registrationIds []= $endpoint->token;
