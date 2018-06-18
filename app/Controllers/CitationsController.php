@@ -21,7 +21,7 @@ class CitationsController extends Controller
       $interface_ui = $sandbox->getUiLabels($lang);
 
       $country_code = $sandbox->getCountryCode();
-      $pagecount = $this->test_per_page;
+      $pagecount = $this->citation_per_page;
       $citations_from_json = $this->helper->getAllCitationJson($lang);
 
       // Calcul du nombre total de ciataions
@@ -72,7 +72,7 @@ class CitationsController extends Controller
           $nb_taken = 0;
           $page_citations = array();
           foreach ($citations_from_json as $citation) {
-            if(($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ) && !in_array($citation['id_citation'], $exclude, true) && ++$nb_taken <= $this->test_per_page){
+            if(($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ) && !in_array($citation['id_citation'], $exclude, true) && ++$nb_taken <= $this->citation_per_page){
               $citations[$citation['id_citation']] = [
                 'url_image_citation' => $citation['url_image_citation'],
                 'id_citation'        => $citation['id_citation'],
