@@ -101,11 +101,15 @@ class CitationsController extends Controller
                 $exclude [] = $user->test_id;
       }
 
+      $url_to_share = urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_".date('Y-m-d')."&utm_content=quote_".$citation['id_citation']);
+
+      $url_redirect_share = $url_to_share;
+
       $all_test = $sandbox->relatedTests($country_code, $exclude, $lang);
 
 
       $all_lang = $this->helper->getActivatedLanguages();
-      return $this->view->render($response, 'singlecitation.twig', compact('citation', 'next_citation', 'previous_citation','id_user', 'all_test', 'interface_ui', 'lang', 'all_lang'));
+      return $this->view->render($response, 'singlecitation.twig', compact('citation', 'next_citation', 'previous_citation','id_user', 'all_test', 'interface_ui', 'lang', 'all_lang', 'url_to_share', 'url_redirect_share'));
 
     }
 
