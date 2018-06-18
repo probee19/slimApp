@@ -374,10 +374,8 @@
         function putData(data){
           $('#title').val(data.title);
           $('#body').val(data.body);
-          $('#img_test').prop('src',data.url_img);
-          $('#icon_cmapaign_test').val('{{storage_base}}' + data.url_img);
-          console.log('{{storage_base}}' + data.url_img);
-          console.log($('#icon_cmapaign_test').val());
+          $('#img_test').prop('src','{{storage_base}}' + '/images/' + data.url_img);
+          $('#icon_cmapaign_test').val('{{storage_base}}' + '/images/' + data.url_img);
           $('#icon_cmapaign_default').prop('checked',true);
           changeIcon();
         }
