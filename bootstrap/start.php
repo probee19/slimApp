@@ -47,6 +47,13 @@ define('FB_SECRET_KEY', $_SERVER['FB_SECRET_KEY']);
 define('FB_APP_ID', $_SERVER['FB_APP_ID']);
 define('SERVER_DOMAIN', $_SERVER['SERVER_DOMAIN']);
 
+define('FIREBASE_API_KEY', $_SERVER['FIREBASE_API_KEY']);
+define('FIREBASE_AUTH_DOMAIN', $_SERVER['FIREBASE_AUTH_DOMAIN']);
+define('FIREBASE_DATABASE_URL', $_SERVER['FIREBASE_DATABASE_URL']);
+define('FIREBASE_MESSENGER_SENDER_ID', $_SERVER['FIREBASE_MESSENGER_SENDER_ID']);
+define('FIREBASE_PROJECT_ID', $_SERVER['FIREBASE_PROJECT_ID']);
+define('FIREBASE_STORAGE_BUCKET', $_SERVER['FIREBASE_STORAGE_BUCKET']);
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $config = [
@@ -119,6 +126,14 @@ $container['view'] = function ($container){
     //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
     $view->getEnvironment()->addGlobal('defined_base_url', "https://".SERVER_DOMAIN);
     $view->getEnvironment()->addGlobal('defined_base_domain', SERVER_DOMAIN);
+
+    $view->getEnvironment()->addGlobal('firebase_api_key', FIREBASE_API_KEY);
+    $view->getEnvironment()->addGlobal('firebase_auth_domain', FIREBASE_AUTH_DOMAIN);
+    $view->getEnvironment()->addGlobal('firebase_database_url', FIREBASE_DATABASE_URL);
+    $view->getEnvironment()->addGlobal('firebase_messenger_sender_id', FIREBASE_MESSENGER_SENDER_ID);
+    $view->getEnvironment()->addGlobal('firebase_project_id', FIREBASE_PROJECT_ID);
+    $view->getEnvironment()->addGlobal('firebase_storage_bucket', FIREBASE_STORAGE_BUCKET);
+
     $view->getEnvironment()->addGlobal('fb_app_id', FB_APP_ID);
     $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());
     $view->getEnvironment()->addGlobal('domain_url', $domaine_url);
