@@ -157,6 +157,9 @@ $container['fb'] = function($container){
 $container['test_per_page'] = function ($container) {
     return $container['settings']['test_per_page'];
 };
+$container['citation_per_page'] = function ($container) {
+    return $container['settings']['citation_per_page'];
+};
 $container['default_lang'] = function ($container) {
     return $container['settings']['default_lang'];
 };

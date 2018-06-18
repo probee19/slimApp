@@ -46,7 +46,8 @@ class CitationsController extends Controller
       else
         $pageid = 1;
       $name_session_page = $lang.'_citations_page_'.$pageid;
-//
+
+      //
       // Si cette page a été déjà ouverte et en session
       if(isset($_SESSION[$name_session_page]) && !empty($_SESSION[$name_session_page]) ){
         $include = $_SESSION[$name_session_page];
@@ -87,7 +88,7 @@ class CitationsController extends Controller
           $_SESSION[$name_session_page] = $page_citations;
       }
 
-//
+      //
       $this->helper->debug($exclude);
       $this->helper->debug($_SESSION);
       $this->helper->debug($allcitation);
