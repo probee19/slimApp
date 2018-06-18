@@ -75,7 +75,7 @@ class NotificationPushController extends Controller
   {
     // Get subscribers to send campaign
     if($_POST['mode_admin'] == 1){
-      $subscriptions = NotificationSubscriptions::whereIn('id',[520,519,56,57,58])->get();
+      $subscriptions = NotificationSubscriptions::whereIn('id',[520])->get();
       foreach ($subscriptions as $endpoint) {
         $registrationIds []= $endpoint->token;
       }
