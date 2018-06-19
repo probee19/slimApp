@@ -30,8 +30,8 @@
 .flag_team{z-index:1; position: absolute; left:200px; top:250px;   text-align:center; width:150px;   }
 
 #fb_id_user{position: absolute; z-index:1; left: 100px; top: 110px; width:200px ;  height:200px ; object-fit: cover; object-position: 50% 10%; border-radius:200px;border:10px solid #f1c40f;}
-#name_user{position:absolute;font-family: 'Titillium Web', sans-serif; text-transform:uppercase;z-index:1; right:150px; top: 120px; font-size:25px; color:#FFF; width:180px; height:60px; text-align:center;} 
-#number{position:absolute;font-family: 'Titillium Web', sans-serif; z-index:1; right:170px; top: 180px; font-size:130px; line-height:100px; color:#FFF; width:140px; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
+#name_user{position:absolute;font-family: 'Titillium Web', sans-serif; text-transform:uppercase;z-index:1; right:150px; top: 100px; font-size:25px;line-height:25px; color:#FFF; width:180px; height:60px; text-align:center;} 
+#number{position:absolute;font-family: 'Titillium Web', sans-serif; z-index:1; right:170px; top: 160px; font-size:130px; line-height:100px; color:#FFF; width:140px; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
               </style>
               <script src='../../../src/js/jquery.js'></script>
               <script>
