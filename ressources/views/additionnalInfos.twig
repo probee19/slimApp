@@ -103,7 +103,9 @@
                     <div class="form-group" style="font-size: 1.6em;">
                       <label class="control-label" for="user_friend_name">{{input_list_team.label}}</label>
                       {% for team in input_list_team.teams %}
-                        <img src="{{storage_base}}/api/flags_big/{{team.cc}}.png" class="col-sm-3 col-xs-3"/>
+                        <div class="col-sm-3 col-xs-3">
+                          <img src="{{storage_base}}/api/flags_big/{{team.cc}}.png" class="input_list_team" onclick="setSessionVar('fav_team','{{team.cc}}',{{id_test}},true)"/>
+                        </div>
                       {% endfor %}
                     </div>
                     <div class="form-group">
