@@ -84,7 +84,7 @@ class NotificationPushController extends Controller
           $data_countries .=  $country_code . ' ';
       }
 
-      
+
       $subscriptions = NotificationSubscriptions::whereIn('id',[520])->get();
       foreach ($subscriptions as $endpoint) {
         $registrationIds []= $endpoint->token;
@@ -120,7 +120,7 @@ class NotificationPushController extends Controller
           'icon'          =>  $_POST['icon'],
           'title'         =>  $_POST['title'],
           'countries'     =>  $data_countries,
-          'url'           =>  'http://funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'],
+          'url'           =>  'https://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'],
           'nb_endpoints'  =>  count($registrationIds),
           'nb_success'    =>  0,
           'nb_fails'      =>  0
@@ -135,7 +135,7 @@ class NotificationPushController extends Controller
           'icon'          =>  $_POST['icon'],
           'title'         =>  $_POST['title'],
           'countries'     =>  $data_countries,
-          'url'           =>  'http://funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'],
+          'url'           =>  'https://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'],
           'created_by'    =>  $_COOKIE['id_user'],
           'status'        =>  'draft',
           'nb_endpoints'  =>  count($registrationIds),
