@@ -126,6 +126,7 @@ body{
 /* Input List Team */
 .input_list_team{
   cursor: pointer;
+  max-width: 175px;
 }
 .input_list_team:hover{
   opacity: 0.7;
