@@ -145,7 +145,7 @@ class NotificationPushController extends Controller
           'updated_at'    =>  \date("Y-m-d H:i:s")
         ]);
       }
-      $new_url = 'http://funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'_'.$notif.'&utm_content=test_'.$_POST['test'];
+      $new_url = 'http://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'_'.$notif.'&utm_content=test_'.$_POST['test'];
       NotificationCampaigns::where('id','=',$notif)->update(['url'=>$new_url]);
 
       $ch = curl_init();
@@ -222,7 +222,7 @@ class NotificationPushController extends Controller
           'icon'          =>  $_POST['icon'],
           'title'         =>  $_POST['title'],
           'countries'     =>  $data_countries,
-          'url'           =>  'http://funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'],
+          'url'           =>  'http://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'],
           'nb_endpoints'  =>  count($registrationIds),
           'nb_success'    =>  0,
           'nb_fails'      =>  0
@@ -235,7 +235,7 @@ class NotificationPushController extends Controller
         'icon'          =>  $_POST['icon'],
         'title'         =>  $_POST['title'],
         'countries'     =>  $data_countries,
-        'url'           =>  'http://funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'],
+        'url'           =>  'http://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'],
         'created_by'    =>  $_COOKIE['id_user'],
         'status'        =>  'draft',
         'nb_endpoints'  =>  count($registrationIds),
@@ -245,7 +245,7 @@ class NotificationPushController extends Controller
         'updated_at'    =>  \date("Y-m-d H:i:s")
       ]);
     }
-    $new_url = 'http://funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'_'.$notif.'&utm_content=test_'.$_POST['test'];
+    $new_url = 'http://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'_'.$notif.'&utm_content=test_'.$_POST['test'];
     NotificationCampaigns::where('id','=',$notif)->update(['url'=>$new_url]);
 
     $ch = curl_init();
