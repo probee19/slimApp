@@ -308,7 +308,7 @@ class Helper
 
       if(in_array($countryCode, ['SN','CI','FR','CD'], true)){
         $choosen_some_tests = array();
-        $array_tests = array(351, 353, 354, 357, 360, 361, 362, 364);
+        $array_tests = array(351, 353, 354, 357, 360, 361, 362, 364, 365);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
