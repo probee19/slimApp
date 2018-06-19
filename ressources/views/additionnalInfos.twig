@@ -89,7 +89,25 @@
 
                     </div>
                     <div class="form-group">
-                      <a id="btn-result" href="{{ base_url() }}/start/{{ test.id_test }}" onclick="setSessionVar('gender',$('input[name=user_gender]:checked', '#gender').val(),{{id_test}}, true);" class="btn btn-primary btn-lg btn_to_track gtm_btn-test" data-btn="process" style="">
+                      <a id="btn-result" href="{{ domain_url }}/start/{{ test.id_test }}" onclick="setSessionVar('gender',$('input[name=user_gender]:checked', '#gender').val(),{{id_test}}, true);" class="btn btn-primary btn-lg btn_to_track gtm_btn-test" data-btn="process" style="">
+                          <i class="fa fa-facebook-square"></i>
+                              {{interface_ui.btn_continue | capitalize}} {{ session.name | capitalize }}
+                      </a>
+                    </div>
+                  </form>
+                {% endif %}
+
+                {% if input_list_team is defined %}
+                  <form id="input_list_team">
+                    <input  type="hidden" name="fav_team" id="fav_team" value=""/>
+                    <div class="form-group" style="font-size: 1.6em;">
+                      <label class="control-label" for="user_friend_name">{{input_list_team.label}}</label>
+                      {% for team in input_list_team.teams %}
+                        <img src="{{storage_base}}/api/flags_big/{{team.cc}}.png"/>
+                      {% endfor %}
+                    </div>
+                    <div class="form-group">
+                      <a id="btn-result" href="{{ domain_url }}/start/{{ test.id_test }}" onclick="setSessionVar('fav_team',,{{id_test}}, true);" class="btn btn-primary btn-lg btn_to_track gtm_btn-test" data-btn="process" style="">
                           <i class="fa fa-facebook-square"></i>
                               {{interface_ui.btn_continue | capitalize}} {{ session.name | capitalize }}
                       </a>

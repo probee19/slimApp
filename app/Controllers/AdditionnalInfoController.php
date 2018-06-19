@@ -22,6 +22,7 @@ use App\Models\Visitors;
 use App\Models\Language;
 use App\Models\AdditionnalInfos;
 use App\Models\TestAdditionnalInfos;
+use App\Models\TeamCDM;
 use Psr7Middlewares\Middleware\ClientIp;
 use GrabzItImageOptions;
 
@@ -54,13 +55,30 @@ class AdditionnalInfoController extends Controller
           ];
         }
         elseif ($info->additionalInfos->typeinput == 'input_gender') { // Le genre de l'uitilisateur est demandé
-          // code...
-          
-            //return $response->withStatus(302)->withHeader('Location', "$this->domain_url/start/$id_test");
 
           $input_gender = [
             'label'     => $info->label,
           ];
+        }
+        elseif ($info->additionalInfos->typeinput == 'team_wc') {
+          // code...
+
+
+          $teams = TeamCDM::all();
+
+          foreach ($teams as $team) {
+              $team_array []=[
+                'cc'        =>  $team->cc,
+                'french'    =>  $team->french,
+                'english'   =>  $team->english
+              ];
+          }
+          $input_list_team = [
+            'label'     =>  '',
+            'teams'     => $team_array
+          ];
+
+
         }
       }
 
@@ -89,7 +107,7 @@ class AdditionnalInfoController extends Controller
       $interface_ui = $this->helper->getUiLabels($lang);
       $all_lang = $this->helper->getActivatedLanguages();
 
-      return $this->view->render($response, 'additionnalInfos.twig', compact('photos_profile', 'input_text', 'input_gender', 'id_test', 'test', 'lang', 'url', 'all_test', 'interface_ui', 'lang', 'all_lang'));
+      return $this->view->render($response, 'additionnalInfos.twig', compact('photos_profile', 'input_text', 'input_gender', 'input_list_team', 'id_test', 'test', 'lang', 'url', 'all_test', 'interface_ui', 'lang', 'all_lang'));
 
     }
 
