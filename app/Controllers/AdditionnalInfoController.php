@@ -70,7 +70,8 @@ class AdditionnalInfoController extends Controller
               $team_array []=[
                 'cc'        =>  $team->cc,
                 'french'    =>  $team->french,
-                'english'   =>  $team->english
+                'english'   =>  $team->english,
+                'flag'      =>  $this->storage_base."/api/flags_big/".$team->cc.".png"
               ];
           }
           $input_list_team = [
