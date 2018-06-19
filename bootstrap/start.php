@@ -70,6 +70,7 @@ $config = [
     ],
     'test_per_page'     =>  12,
     'citation_per_page' =>  12,
+    'storage_base'      =>  "https://funiziuploads.s3.us-east-2.amazonaws.com",
     'default_lang'      =>  "en",
 ];
 
@@ -153,6 +154,9 @@ $container['fb'] = function($container){
         'app_secret' => FB_SECRET_KEY,
         'default_graph_version' => 'v2.5',
     ]);
+};
+$container['storage_base'] = function ($container) {
+    return $container['settings']['storage_base'];
 };
 $container['test_per_page'] = function ($container) {
     return $container['settings']['test_per_page'];
