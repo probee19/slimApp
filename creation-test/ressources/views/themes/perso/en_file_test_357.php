@@ -75,10 +75,10 @@
           <div class='main'>
       
 <?php      
-          $personnages = array('Zargo Touré','Kara Mbodji','Gana Guèye','Cheikh Ndoye','Mame Birame Diouf','Ismaila Sarr','Mousssa Konaté','Pape Kouly Diop','Pape Alioune Ndiaye','Moussa Sow','Khadim Ndiaye','Cheikh Kouyaté','Keita Baldé','Kalidou Coulibaly','Sadio Mané');
-          $image = array('1528282299','1528282348','1528282375','1528282838','1528282876','1528282916','1528282969','1528283098','1528283150','1528283191','1528283218','1528283003','1528283607','1528283661','1528283697');
+          $personnages = array('Zargo Touré','Kara Mbodji','Gana Guèye','Cheikh Ndoye','Ismaila Sarr','Mousssa Konaté','Pape Kouly Diop','Pape Alioune Ndiaye','Moussa Sow','Khadim Ndiaye','Cheikh Kouyaté','Keita Baldé','Kalidou Coulibaly','Sadio Mané','Mbaye Niang');
+          $image = array('1528282299','1528282348','1528282375','1528282838','1528282916','1528282969','1528283098','1528283150','1528283191','1528283218','1528283003','1528283607','1528283661','1528283697','1529493425');
           $ind = mt_rand(0,14);
- 
+          //1528282876 Mame Birame
                     
           
 ?>

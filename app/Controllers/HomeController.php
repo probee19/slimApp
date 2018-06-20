@@ -247,8 +247,8 @@ class HomeController extends Controller
         'countryflagCDM'  =>  getParam('flag')
       ];
       $_SESSION[$varName] = json_encode($data);
-      $this->helper->debug($data);
-      $this->helper->debug(json_encode($data));
+      //$this->helper->debug($data);
+      //$this->helper->debug(json_encode($data));
       return 'Session setted.';
     }
 
