@@ -132,8 +132,8 @@ function setSessionVarCDM (varName, countryCode, countryName, flag, idTest, load
       type: 'post',
       data: {'varName': varName, 'countryCode': countryCode, 'countryName': countryName},
       success:function(data){
-          console.log(data);
-          //window.location.replace(domain+"/start/" + idTest);
+          //console.log(data);
+          window.location.replace(domain+"/start/" + idTest);
       },
       error:function(response){
           //console.log(response);

@@ -188,12 +188,9 @@ class StartController extends Controller
 
                       if(isset($_SESSION['fav_team'])){
                         $fav_team = json_decode($_SESSION['fav_team']);
-                        foreach ($fav_team as $key => $value){
-                          if($key != 'cf'){ //CountryFlag
-                            $this->helper->debug($value);
+                        foreach ($fav_team as $key => $value)
+                          if($key != 'cf') //CountryFlag
                             $additionnal_input_country_cdm .= '&'.$key.'='.$value;
-                          }
-                        }
 
                       }
 
@@ -301,8 +298,8 @@ class StartController extends Controller
                 //$url = "http://".$lang.".funizi.com" . $url;
 
                 if($user_id == '1815667808451001'){
-                  echo $url;
-                  exit;
+                  //echo $url;
+                  //exit;
 
                 }
                 //Generate unique code string for the test result

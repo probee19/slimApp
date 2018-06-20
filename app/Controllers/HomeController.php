@@ -247,8 +247,6 @@ class HomeController extends Controller
         'cf'  =>  $this->storage_base."/api/flags_big/".$request->getParam('countryCode').".png"
       ];
       $_SESSION[$varName] = json_encode($data);
-      $this->helper->debug($data);
-      $this->helper->debug(json_encode($data));
       return 'Session setted.';
     }
 
