@@ -31,7 +31,7 @@
         <div class="row text-center" style="margin-top:1.5em">
             {% include banner %}
         </div>
-        {% if user_sn and user_sn == 1 %}
+        {% if country_code() == 'SN'%}
           <div class="row text-center" style="margin-top:1em">
             <a href="http://bit.ly/gainde2018" target="_blank"><img src="{{storage_base}}/images/banner/image_Filtre1280x400.jpg" style="max-width: 100%;" alt="Senegal"></a>
           </div>

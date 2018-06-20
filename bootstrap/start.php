@@ -119,10 +119,15 @@ $container['view'] = function ($container){
         $title_url = Helper::getUrlCitation($title, $id, $lang);
         return Helper::cleanUrl($title_url);
     });
+
+    $countryCode = new Twig_SimpleFilter('country_code', function (){
+        return Helper::getCountryCode();
+    });
     // Adding created custom filter to twig envirnment
     $view->getEnvironment()->addFilter($twigCleanUrl);
     $view->getEnvironment()->addFilter($twigTitleUrl);
     $view->getEnvironment()->addFilter($twigTitleCitationUrl);
+    $view->getEnvironment()->addFilter($countryCode);
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
