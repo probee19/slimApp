@@ -123,7 +123,22 @@ function setSessionVar (varName, value, id, loader_on = false){
           //console.log(response);
       }
   });
+}
+function setSessionVarCDM (countryCode, countryName, flag, idTest, loader_on = false){
 
+  if(loader_on == true) loader();
+  $.ajax({
+      url: domain+'/setSessionVar',
+      type: 'post',
+      data: {'varName': varName, 'value': value},
+      success:function(data){
+          //console.log(data);
+          window.location.replace(domain+"/start/" + idTest);
+      },
+      error:function(response){
+          //console.log(response);
+      }
+  });
 }
 
 
