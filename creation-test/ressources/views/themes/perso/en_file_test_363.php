@@ -79,15 +79,27 @@
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
       
+<?php
+         function getAdverb($team, $adverbe="l'"){ 
+                   $feminin = array('Belgique','Colombie','Corée','Croitie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
+                   $masculin = array('Brésil','Costa Rica','Danemark','Japon','Maroc','Nigeria','Panama','Péru','Portugal','Sénégal');
+                    if(in_array($team,$feminin,true ))
+                              $adverbe = 'la '; 
+                    elseif(in_array($team,$masculin,true ))
+                              $adverbe = 'le '; 
+                    return $adverbe;
+         } 
+         $texte = '';
+ ?>
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1529368399.jpg" id="back"> 
  
 <img src="https://creation.funizi.com/images-theme-perso/1529368950.png" id="coupe"> 
-<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags_big/sen.png" id="" class="flag_team"> 
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags_big/<?php echo $_GET['cc']; ?>.png" id="" class="flag_team"> 
                                        
  
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="support" ><?php echo $_GET['user_name']; ?> supporte le <span class="team">Sénégal</span></div>
+<div class="name texte" id="support" ><span style="color:#FFF"><?php echo $_GET['user_name']; ?> supporte</span>  <span style="color:#f1c40f; text-transform:uppercase;"><?=getAdverb($_GET['cn'])?> <?php echo $_GET['cn']; ?></span></div>
 
 <div class="texte" id="slog">Always winners </div>
  
