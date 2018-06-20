@@ -64,6 +64,11 @@
                     <div class="row text-center" style="margin-top:0.5em">
                         {% include banner %}
                     </div>
+                    {% if country_code == 'SN' %}
+                      <div class="row text-center" style="margin-top:1em">
+                        <a href="http://bit.ly/gainde2018" target="_blank"><img src="{{storage_base}}/images/banner/image_Filtre1280x400.jpg" style="max-width: 100%;" alt="Senegal"></a>
+                      </div>
+                    {% endif %}
                 {% endif %}
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center"
                         {% if is_mobile() or is_tablet() %} style="margin-top:.8em;" {% endif %}>
