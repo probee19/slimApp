@@ -120,15 +120,12 @@ $container['view'] = function ($container){
         return Helper::cleanUrl($title_url);
     });
 
-    $countryCode = new Twig_SimpleFilter('country_code', function (){
-        return Helper::getCountryCode();
-    });
     // Adding created custom filter to twig envirnment
     $view->getEnvironment()->addFilter($twigCleanUrl);
     $view->getEnvironment()->addFilter($twigTitleUrl);
     $view->getEnvironment()->addFilter($twigTitleCitationUrl);
-    $view->getEnvironment()->addFilter($countryCode);
     $view->getEnvironment()->addGlobal('flash', $container->flash);
+    $view->getEnvironment()->addGlobal('country_code', $container->helper->getCountryCode());
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
     $view->getEnvironment()->addGlobal('defined_base_url', "https://".SERVER_DOMAIN);
