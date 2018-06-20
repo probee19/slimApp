@@ -35,7 +35,7 @@
                     <a class="btn btn-primary btn-lg btn_to_track" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "top")'  style="cursor:pointer;" data-btn="share-top"><i class="fa fa-facebook-square" aria-hidden="true"></i> {{interface_ui.btn_share}}</a>
                 </div>
                 <div class="col-sm-10 col-sm-offset-1" style="clear: both; position: relative;">
-                    <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="margin:15px auto">
+                    <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:15px auto*/">
                     <a href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
 
                     <div class="overlay-share">

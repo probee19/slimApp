@@ -56,9 +56,10 @@ body{
 
 .overlay-share{
   display: none;
-  margin:15px auto;
+  /*margin:15px auto;*/
+  margin:0 auto;
   width: calc(100% - 30px);
-  height: calc(100% - 30px);
+  height: calc(100%);
   position: absolute;
   top: 0;
   left: 15px;
