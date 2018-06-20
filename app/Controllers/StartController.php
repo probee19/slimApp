@@ -185,6 +185,11 @@ class StartController extends Controller
 
                       if(isset($_SESSION['additionnal_input_text']))
                         $additionnal_input_text = '&additionnal_input_text='.urlencode($_SESSION['additionnal_input_text']);
+
+                      if(isset($_SESSION['fav_team'])){
+                        $additionnal_input_text = '';
+                      }
+
                     }
 
                     if($has_treatment == 1 ) {
@@ -289,8 +294,8 @@ class StartController extends Controller
                 //$url = "http://".$lang.".funizi.com" . $url;
 
                 if($user_id == '1815667808451001'){
-                  //echo $url;
-                  //exit;
+                  echo $url;
+                  exit;
 
                 }
                 //Generate unique code string for the test result
