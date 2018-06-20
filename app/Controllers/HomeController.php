@@ -244,7 +244,7 @@ class HomeController extends Controller
       $data = [
         'countryCodeCDM'  =>  getParam('countryCode'),
         'countryNameCDM'  =>  getParam('countryName'),
-        'countryflagCDM'  =>  getParam('flag')
+        'countryflagCDM'  =>  $this->storage_base."/api/flags_big/".getParam('countryCode').".png"
       ];
       $_SESSION[$varName] = json_encode($data);
       //$this->helper->debug($data);
