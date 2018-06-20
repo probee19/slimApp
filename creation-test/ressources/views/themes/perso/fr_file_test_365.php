@@ -75,7 +75,7 @@
 ?>
 <!DOCTYPE HTML>
 
-<img src="https://creation.funizi.com/images-theme-perso/1529431028.jpg" id="back">  
+<img src="https://creation.funizi.com/images-theme-perso/1529495780.jpg" id="back">  
 
 <div class="texte" id="message"><?=$messages[0]?> </div>
 

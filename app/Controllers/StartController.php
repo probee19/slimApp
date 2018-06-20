@@ -176,7 +176,7 @@ class StartController extends Controller
                     $url_img_profile_user = '&url_img_profile_user='.urlencode($url_img_profile);
 
                     if( $if_additionnal_info == 1){
-                       $additionnal_input_text = '';
+                       $additionnal_input_text = ''; $additionnal_input_country_cdm = '';
                       if(isset($_SESSION['url_img_profile_user']) && $_SESSION['url_img_profile_user'] != 'unset'){
                         $url_img_profile_user = '&url_img_profile_user='.urlencode($_SESSION['url_img_profile_user']);
                         $url_img_profile = $_SESSION['url_img_profile_user'];
@@ -187,7 +187,12 @@ class StartController extends Controller
                         $additionnal_input_text = '&additionnal_input_text='.urlencode($_SESSION['additionnal_input_text']);
 
                       if(isset($_SESSION['fav_team'])){
-                        $additionnal_input_text = '';
+                        $fav_team = json_decode($_SESSION['fav_team']);
+                        foreach ($fav_team as $key => $value){
+                          $this->helper->debug($value);
+                          $additionnal_input_country_cdm = '&'.$key.'='.$value;
+                        }
+
                       }
 
                     }
@@ -203,7 +208,7 @@ class StartController extends Controller
                         exit;
                       }
                     }
-                    $url .= $url_img_profile_user . $additionnal_input_text;
+                    $url .= $url_img_profile_user . $additionnal_input_text . $additionnal_input_country_cdm;
 
                     //
                     if($nb_friends_fb > 0){
