@@ -191,7 +191,7 @@ class StartController extends Controller
                         foreach ($fav_team as $key => $value){
                           if($key != 'cf'){ //CountryFlag
                             $this->helper->debug($value);
-                            $additionnal_input_country_cdm = '&'.$key.'='.$value;
+                            $additionnal_input_country_cdm .= '&'.$key.'='.$value;
                           }
                         }
 
