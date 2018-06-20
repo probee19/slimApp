@@ -104,7 +104,7 @@
                       <label class="control-label" for="user_friend_name">{{input_list_team.label}}</label>
                       {% for team in input_list_team.teams %}
                         <div class="col-sm-3 col-xs-3">
-                          <img src="{{team.flag}}" class="input_list_team" onclick="setSessionVar('fav_team','{{team.cc}}','{{team.french}}','{{team.flag}}',{{id_test}},true)"/>
+                          <img src="{{team.flag}}" class="input_list_team" onclick="setSessionVarCDM('fav_team','{{team.cc}}','{{team.french}}','{{team.flag}}',{{id_test}},true)"/>
                         </div>
                       {% endfor %}
                     </div>
