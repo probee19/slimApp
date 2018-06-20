@@ -251,72 +251,11 @@ class HomeController extends Controller
     }
 
     public function chunk($request, $response, $args){
-      $filepath = "https://funiziuploads.s3.us-east-2.amazonaws.com/uploads/jNV57z29gAnY7gu.jpg";
-      $resultUrl = $this->helper->uploadToS3($filepath, 'images/tests/');
 
-      $this->helper->debug($resultUrl);
-
-      exit;
-              $url = $this->helper->detectLang($request, $response);
-              if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
-
-              //$sandbox = new Helper();
-              $lang = $this->helper->getLangSubdomain($request);
-              $interface_ui = $this->helper->getUiLabels($lang);
-
-              //$id = (int) $args['id'];
-              $id = 317;
-              $id_test = 317;
-              $country_code = $this->helper->getCountryCode();
-
-              $code = $request->getParam('ref');
-              if($args['code'])
-                  $code = $args['code'];
-              $user_test = UserTest::where('uuid', '=', "$code")->first();
-              $img_url = $user_test->img_url;
-              $test = Test::selectRaw('tests.titre_test AS titre_test_fr, tests.permissions AS permissions, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
-                    ->join('test_info','test_info.id_test','tests.id_test')
-                    ->where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
-                    //->with('themeInfo')
-              $permission = $test->permissions;
-              if(! $test){
-                  $result_url = $this->router->pathFor('accueil' );
-                  $this->flash->addMessage('invalid_test', $interface_ui['label_notif_no_test']);
-                  return $response->withStatus(302)->withHeader('Location', $result_url );
-              }
-
-              if($_GET['utm'] && $_GET['utm'] !='')
-                  $this->helper->setUTM($_GET['utm'], "test", $id);
-
-              $exclude = [$id];
-              if(!empty($_SESSION['uid'])){
-                  //$this->helper->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
-                  $testUser = User::where('facebook_id', '=', $_SESSION['uid'])
-                      ->with('usertests')->first();
-                  foreach($testUser->usertests as $user){
-                      $exclude [] = $user->test_id;
-                  }
-              }
-
-              $all_test = $this->helper->relatedTests($country_code, $exclude, $lang);
-              // For Facebook connect
-              // Optional permissions
-              //$helper = new Helper();
-              //$this->helper->createCookie();
-              $id_user = 0;
-              if(isset($_SESSION['uid']))
-                $id_user = $_SESSION['uid'];
-
-              //$uuid_str = new RandomStringGenerator('0123456789');
-              //$uuid = 'fun_'.$uuid_str->generate(10);
-              //$url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-
-              $all_lang = $this->helper->getActivatedLanguages();
-
-              return $this->view->render($response, 'chunk.twig', compact('photos_profile', 'id_test', 'lang', 'url', 'all_test', 'interface_ui', 'lang', 'all_lang'));
-             // return $this->view->render($response, 'chunk.twig', compact('photos_profile', 'lang','id_test', 'url','uuid','id_user','test', 'code', 'all_test', 'new_con', 'permission', 'loginUrl', 'loginUrl2' , 'test_owner', 'img_url', 'interface_ui','lang','all_lang'));
-
-
+          $all_lang = $this->helper->getActivatedLanguages();
+          $lang = $this->helper->getLangSubdomain($request);
+          $interface_ui = $this->helper->getUiLabels($lang);
+          return $this->view->render($response, 'chunk.twig', compact('all_test', 'interface_ui', 'lang', 'all_lang'));
     }
 
     public function saveSubNewsletter($request, $response, $arg)
