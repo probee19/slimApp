@@ -189,8 +189,10 @@ class StartController extends Controller
                       if(isset($_SESSION['fav_team'])){
                         $fav_team = json_decode($_SESSION['fav_team']);
                         foreach ($fav_team as $key => $value){
-                          $this->helper->debug($value);
-                          $additionnal_input_country_cdm = '&'.$key.'='.$value;
+                          if($key != 'cf'){ //CountryFlag
+                            $this->helper->debug($value);
+                            $additionnal_input_country_cdm = '&'.$key.'='.$value;
+                          }
                         }
 
                       }
