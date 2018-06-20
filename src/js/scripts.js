@@ -124,7 +124,7 @@ function setSessionVar (varName, value, id, loader_on = false){
       }
   });
 }
-function setSessionVarCDM (varName, countryCode, countryName, flag, idTest, loader_on = false){
+function setSessionVarCDM (varName, countryCode, countryName, idTest, loader_on = false){
 
   if(loader_on == true) loader();
   $.ajax({
