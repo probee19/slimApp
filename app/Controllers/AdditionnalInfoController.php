@@ -78,7 +78,7 @@ class AdditionnalInfoController extends Controller
             'label'     =>  '',
             'teams'     => $team_array
           ];
-
+          $this->debug($_SESSION);
 
         }
       }
