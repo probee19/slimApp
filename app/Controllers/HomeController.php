@@ -255,7 +255,7 @@ class HomeController extends Controller
           $all_lang = $this->helper->getActivatedLanguages();
           $lang = $this->helper->getLangSubdomain($request);
           $interface_ui = $this->helper->getUiLabels($lang);
-          $country_code = $sandbox->getCountryCode();
+          $country_code = $this->helper->getCountryCode();
           $this->helper->debug($user_sn);
           if($country_code == 'SN')
             $user_sn = 1;
