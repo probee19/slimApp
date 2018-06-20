@@ -81,7 +81,8 @@ class AdditionnalInfoController extends Controller
 
           $this->helper->debug($_SESSION);
           $this->helper->debug($_SESSION['fav_team']);
-          foreach ($_SESSION['fav_team'] as $key => $value) 
+          $fav_team = json_decode($_SESSION['fav_team']);
+          foreach ($fav_team as $key => $value)
             $this->helper->debug($value);
 
 

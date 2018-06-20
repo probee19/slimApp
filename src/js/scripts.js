@@ -124,15 +124,15 @@ function setSessionVar (varName, value, id, loader_on = false){
       }
   });
 }
-function setSessionVarCDM (countryCode, countryName, flag, idTest, loader_on = false){
+function setSessionVarCDM (varName, countryCode, countryName, flag, idTest, loader_on = false){
 
   if(loader_on == true) loader();
   $.ajax({
-      url: domain+'/setSessionVar',
+      url: domain+'/setSessionVarCDM',
       type: 'post',
-      data: {'varName': varName, 'value': value},
+      data: {'varName': varName, 'countryCode': countryCode, 'countryName': countryName, 'flag': flag},
       success:function(data){
-          //console.log(data);
+          console.log(data);
           window.location.replace(domain+"/start/" + idTest);
       },
       error:function(response){

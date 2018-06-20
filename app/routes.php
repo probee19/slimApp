@@ -37,6 +37,7 @@ $app->post('/grabimage', 'GrabzitController:getImageFromUrl');
 $app->post('/setsession', 'HomeController:createSession');
 $app->post('/connect_user', 'ConnectController:index');
 $app->post('/setSessionVar', 'HomeController:setSessionVar');
+$app->post('/setSessionVarCDM', 'HomeController:setSessionVarCDM');
 $app->post('/register-to-notification', 'NotificationPushController:registerToNotification');
 $app->post('/save-error-notification', 'NotificationPushController:saveErrorNotification');
 $app->post('/save-subscription-to-newsletter', 'HomeController:saveSubNewsletter');

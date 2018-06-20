@@ -25,8 +25,7 @@ use GrabzItImageOptions;
 
 class HomeController extends Controller
 {
-    public function index($request, $response, $arg)
-    {
+    public function index($request, $response, $arg) {
       //die();
 
       $url = $this->helper->detectLang($request, $response);
@@ -131,8 +130,7 @@ class HomeController extends Controller
 
     }
 
-    public function privacyPolicy($request, $response, $arg)
-    {
+    public function privacyPolicy($request, $response, $arg){
       $url = $this->helper->detectLang($request, $response);
       if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 
@@ -142,6 +140,7 @@ class HomeController extends Controller
       $all_lang = $this->helper->getActivatedLanguages();
       return $this->view->render($response, 'privacypolicy.twig', compact('interface_ui','all_lang'));
     }
+
     public function devEnv($request, $response, $arg){
         //$maint = time();
         //var_dump($maint);
@@ -239,6 +238,19 @@ class HomeController extends Controller
       return 'Session setted.';
     }
 
+    public function setSessionVarCDM($request, $response, $arg)
+    {
+      $varName = $request->getParam('varName');
+      $data = [
+        'countryCodeCDM'  =>  getParam('countryCode'),
+        'countryNameCDM'  =>  getParam('countryName'),
+        'countryflagCDM'  =>  getParam('flag')
+      ];
+      $_SESSION[$varName] = json_encode($data);
+      $this->helper->debug($data);
+      $this->helper->debug(json_encode($data));
+      return 'Session setted.';
+    }
 
     public function chunk($request, $response, $args){
       $filepath = "https://funiziuploads.s3.us-east-2.amazonaws.com/uploads/jNV57z29gAnY7gu.jpg";
