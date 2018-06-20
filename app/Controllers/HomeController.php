@@ -255,7 +255,13 @@ class HomeController extends Controller
           $all_lang = $this->helper->getActivatedLanguages();
           $lang = $this->helper->getLangSubdomain($request);
           $interface_ui = $this->helper->getUiLabels($lang);
-          return $this->view->render($response, 'chunk.twig', compact('all_test', 'interface_ui', 'lang', 'all_lang'));
+          $country_code = $sandbox->getCountryCode();
+          $this->helper->debug($user_sn);
+          if($country_code == 'SN')
+            $user_sn = 1;
+
+          $this->helper->debug($user_sn);
+          return $this->view->render($response, 'chunk.twig', compact('user_sn', 'all_test', 'interface_ui', 'lang', 'all_lang'));
     }
 
     public function saveSubNewsletter($request, $response, $arg)
