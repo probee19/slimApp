@@ -117,15 +117,15 @@
     </div>
 
     {% if is_mobile() or is_tablet() %}
-        {% set banner = random(['banners/banner_320x50_middle_top_mobile.twig', 'banners/banner_300x250_middle_top_mobile.twig']) %}
-        <div class="row text-center" style="margin-top:1.5em">
-            {% include banner %}
-        </div>
         {% if country_code == 'SN' %}
           <div class="row text-center" style="margin-top:1em">
             <a href="http://bit.ly/gogainde2018" target="_blank"><img src="{{storage_base}}/images/banner/image_Filtre1280x400.jpg" style="max-width: 95%;" alt="Senegal"></a>
           </div>
         {% endif %}
+        {% set banner = random(['banners/banner_320x50_middle_top_mobile.twig', 'banners/banner_300x250_middle_top_mobile.twig']) %}
+        <div class="row text-center" style="margin-top:1.5em">
+            {% include banner %}
+        </div>
     {% endif %}
     <div class="row text-center" style="margin-top:0.5em">
     <h3 style="margin:.5em auto 1em;">{{interface_ui.label_discover | capitalize}}</h3>
