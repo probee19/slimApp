@@ -252,16 +252,8 @@ class HomeController extends Controller
 
     public function chunk($request, $response, $args){
 
-          $all_lang = $this->helper->getActivatedLanguages();
-          $lang = $this->helper->getLangSubdomain($request);
-          $interface_ui = $this->helper->getUiLabels($lang);
-          $country_code = $this->helper->getCountryCode();
-          $this->helper->debug($user_sn);
-          if($country_code == 'SN')
-            $user_sn = 1;
-
-          $this->helper->debug($user_sn);
-          return $this->view->render($response, 'chunk.twig', compact('user_sn', 'all_test', 'interface_ui', 'lang', 'all_lang'));
+          $this->helper->getScore($args['id']);
+          exit;
     }
 
     public function saveSubNewsletter($request, $response, $arg)

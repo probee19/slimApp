@@ -599,8 +599,7 @@ class Helper
       return "";
     }
 
-    public static function setNbSeenPage($request, $response)
-    {
+    public static function setNbSeenPage($request, $response){
       if(isset($_SESSION['count_seen_page']))
         $_SESSION['count_seen_page'] = $_SESSION['count_seen_page'] + 1;
       else
@@ -685,7 +684,6 @@ class Helper
        return $allcitation;
     }
 
-
     public function getBestLocalTest($lang, $exclude, $countryCode, $total = 24){
       if(strlen($lang) > 2) $lang = 'en'; //
       //$file = "ressources/views/json_files/countries/".$lang."_".$countryCode."_most_tested.json";
@@ -714,7 +712,6 @@ class Helper
       //return $data;
       return $data['most_tested'];
     }
-
 
     public function getMostTestedCountry($lang, $exclude, $countryCode, $total = 24){
       if(strlen($lang) > 2) $lang = 'en'; //
@@ -841,4 +838,48 @@ class Helper
         return $res;
 
     }
+
+    public function getScore($team)
+    {
+      //$idTeam = $arg['id'];
+      self::debug($team);
+      $result = self::curl_get_fields("https://wizili.com/worldcupru/teamfeed/$team",[]);
+      self::debug($result);
+
+    }
+
+
+    public static function curl_get_fields($url, $fields, $header=false){
+				$get_array = [];
+				if ( is_array($fields) ) {
+					 foreach ($fields as $key => $value) {
+						   $value = str_replace("'", "%27", $value);
+							 $value = str_replace(' ', '%20', $value);
+					 	   $get_array[] = "$key=$value";
+					 }
+					 $soo =  implode('&', $get_array);
+					 $url .= "?$soo";
+				}
+			 // Tableau contenant les options de téléchargement
+			 $options=array(
+			       CURLOPT_URL            => $url,     // Url cible (l'url la page que vous voulez télécharger)
+			       CURLOPT_RETURNTRANSFER => true,    // Retourner le contenu téléchargé dans une chaine (au lieu de l'afficher directement)
+			       CURLOPT_HEADER         => $header // Ne pas inclure l'entête de réponse du serveur dans la chaine retournée
+			 );
+			 ////////// MAIN
+			 // Création d'un nouvelle ressource cURL
+			 $CURL = curl_init();
+			       // Configuration des options de téléchargement
+			       curl_setopt_array($CURL,$options);
+			       // Exécution de la requête
+			       $content=curl_exec($CURL);      // Le contenu téléchargé est enregistré dans la variable $content. Libre à vous de l'afficher.
+						 if (curl_errno($CURL)) {
+		 					 curl_close($CURL);
+		 						return false;
+		 				}
+		 			curl_close ($CURL);
+		 		 return $content;
+			 // Fermeture de la session cURL
+    }
+
 }
