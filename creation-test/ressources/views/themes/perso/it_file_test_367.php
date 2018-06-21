@@ -25,12 +25,15 @@
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
 
-#fb_id_user{position: absolute; z-index:1; right: 30px; bottom: 30px; width:230px ;  height:230px ; object-fit: cover; object-position: 50% 10%; border-radius:230px;}
+#fb_id_user{display:none; position: absolute; z-index:1; right: 30px; bottom: 30px; width:230px ;  height:230px ; object-fit: cover; object-position: 50% 10%; border-radius:230px;}
 #name_user{position:absolute; z-index:1; left: 0px; top: 0px; font-size:30px; color:#FFF;} 
 
-#ask{z-index:1;font-family: 'Play', sans-serif; position: absolute; left: 275px; top: 40px; color:#000; font-size:30px; width:320px ; height:60px ; display:flex; align-items:center; justify-content:center; text-align:center; }
+#ask{z-index:1;font-family: 'Play', sans-serif; position: absolute; left: 275px; top: 40px; color:#000; font-size:30px; width:320px ; height:60px ; display:flex; align-items:center; justify-content:center; text-align:center;display:none; }
 
-#answer{z-index:1;font-family: 'Play', sans-serif; position: absolute; left: 170px; top: 140px; color:#000; font-size:30px; line-height:50px; width:370px ; height:90px ; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+#answer{z-index:1;font-family: 'Play', sans-serif; position: absolute; left: 225px; top: 55px; color:#000; font-size:40px; line-height:55px; width:530px ; height:200px ; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.relief{font-size:55px; color:#520121; }
+.relief2{font-size:50px; }
+.new_line{display:block}
               </style>
               <script src='../../../src/js/jquery.js'></script>
               <script>
@@ -72,8 +75,13 @@
           <div class='main'>
       
 <!DOCTYPE HTML>
-
-<img src="https://creation.funizi.com/images-theme-perso/1529588435.jpg" id="back"> 
+<?php
+          $end = "ème";
+          if($_GET['rank'] == 1) $end = "er";
+          if($_GET['score'] >= 2) $ss = "s";
+                    
+?>
+<img src="https://creation.funizi.com/images-theme-perso/1529600902.jpg" id="back"> 
  
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
  
@@ -81,7 +89,7 @@
 <div class="texte" id="ask"> Quel est mon score ? </div>
 
 
-<div class="texte" id="answer"> <?php echo $_GET['user_name']; ?>, tu as <span style="font-size:55px; text-transform:uppercase"><?php echo $_GET['score']; ?> points !</span>  </div>
+<div class="texte" id="answer"> <span class="relief2 new_line"><?php echo $_GET['user_name']; ?></span> occupe la <span class="relief"><?php echo $_GET['rank']; ?></span><sup><?=$end?></sup> place avec <span class="relief new_line"><?php echo $_GET['score']; ?> point<?=$ss?> !</span>  </div>
 
 
         </div>
