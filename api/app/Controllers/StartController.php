@@ -321,7 +321,7 @@ class StartController extends Controller
             $url_share = "https://www.facebook.com/dialog/share?app_id=614562495236789&display=popup&href=" . $url_to_share . "&redirect_uri=" . $url_redirect_share;
 
             $elements[] = [
-                               'title' => $_POST['first_name'] ." a ". $_POST['point_pronostic'] ." points.",
+                               'title' => $_POST['first_name'] .", tu as ". $_POST['point_pronostic'] ." points.",
                                'image_url'=> $image,
                                'subtitle' => '',
                                'buttons' =>[
