@@ -101,7 +101,7 @@
                   <form id="input_list_team">
                     <input  type="hidden" name="fav_team" id="fav_team" value=""/>
                     <div class="form-group" style="font-size: 1.6em;">
-                      <label class="control-label" for="user_friend_name">{{input_list_team.label}}</label>
+                      <label class="control-label" for="user_friend_name" style="width:100%">{{input_list_team.label}}</label>
                       {% for team in input_list_team.teams %}
                         <div class="col-sm-3 col-xs-3" style="padding:0">
                           <img src="{{team.flag}}" class="input_list_team" onclick="setSessionVarCDM('fav_team','{{team.cc}}','{{team.french}}',{{id_test}},true)"/>
