@@ -316,7 +316,7 @@ class StartController extends Controller
             $elements = [];
             $image = "https://s3.us-east-2.amazonaws.com/funiziuploads/api/score_footbot/score_$code.jpg";
             //$url_share = "https://fr.funizi.com/api/share/footbot?from=" .urlencode($name) . "&img_url=" .urlencode($image) ."&team_a=" . urlencode($_POST['team_a_name']) ."&team_b=" . urlencode($_POST['team_b_name']);
-            $url_to_share = urlencode('https://www.wizili.com/worldcup/footbot/?from='.$name.'&img_url='.$image.'&team_a='.$_POST['team_a_name'].'&team_b='.$_POST['team_b_name'].'&cca='.strtolower($_POST['cca']).'&ccb='.strtolower($_POST['ccb']));
+            $url_to_share = urlencode('https://www.wizili.com/worldcup/footbot/points/?from='.$name.'&img_url='.$image.'&score='.$_POST['point_pronostic']);
             $url_redirect_share = "https://www.wizili.com/worldcup/footbot/done";
             $url_share = "https://www.facebook.com/dialog/share?app_id=614562495236789&display=popup&href=" . $url_to_share . "&redirect_uri=" . $url_redirect_share;
 
