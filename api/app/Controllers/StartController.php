@@ -178,7 +178,7 @@ class StartController extends Controller
           if($test_id == 359)
             $filepath = "uploads/pronostic_". $code . '.jpg';
 
-          if($test_id == 359)
+          if($test_id == 367)
             $filepath = "uploads/score_". $code . '.jpg';
 
 
@@ -324,7 +324,6 @@ class StartController extends Controller
                                'title' => $_POST['first_name'] ." a ". $_POST['point_pronostic'] ." points.",
                                'image_url'=> $image,
                                'subtitle' => '',
-
                                'buttons' =>[
                                   [
                                          'type'  => 'web_url',
