@@ -145,7 +145,7 @@ class StartController extends Controller
 
 
         if($test_id == 367)
-          $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&score=' . urlencode($_POST['point_pronostic']) ;
+          $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&score=' . urlencode($_POST['point_pronostic']) .'&rank='.$_POST['rank'] ;
 
 
            //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
