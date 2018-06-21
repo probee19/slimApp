@@ -855,7 +855,7 @@ class Helper
         "date"    =>  $result->match_date,
         "time"    =>  $result->match_time,
       ];
-      self::debug($data);
+      self::debug(json_encode($data));
 
     }
 

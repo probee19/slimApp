@@ -144,6 +144,13 @@ class StartController extends Controller
           $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&eam_a_name=' . urlencode($_POST['team_a_name']) . '&eam_b_name='. urlencode($_POST['team_b_name']) . '&cca=' . strtolower($_POST['cca']) . '&ccb='. strtolower($_POST['ccb']) . '&eamuser_ps='. $_POST['teamuser_ps'] ;
 
 
+        if($test_id == 367){
+          $this->helper->debug($_POST);
+          $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&score=' . urlencode($_POST['point_pronostic']) ;
+
+        }
+
+
            //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
 
 
@@ -171,9 +178,11 @@ class StartController extends Controller
           if($test_id == 358)
             $filepath = "uploads/game_day_". $_POST['day'] . '.jpg';
 
-
           if($test_id == 359)
             $filepath = "uploads/pronostic_". $code . '.jpg';
+
+          if($test_id == 359)
+            $filepath = "uploads/score_". $code . '.jpg';
 
 
           //Grabzit Options
@@ -193,6 +202,9 @@ class StartController extends Controller
 
               if($test_id == 359)
                 $resultUrl = $this->helper->uploadToS3($filepath_, 'api/pronostics/');
+
+              if($test_id == 367)
+                $resultUrl = $this->helper->uploadToS3($filepath_, 'api/score_footbot/');
           }
           $data = [
               'messenger_user_id'     => $user_id,
@@ -215,8 +227,6 @@ class StartController extends Controller
           $titre_url = Helper::cleanUrl($test_name);
           $url_to_share = urlencode("https://fr.funizi.com/result/".$titre_url."/".$code."?ref=fb&utm=partage_bot");
           $url_redirect_share = urlencode("https://fr.funizi.com/result/".$titre_url."/".$code."/new");
-
-
 
           $url_share = "https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href=".$url_to_share."&redirect_uri=".$url_redirect_share;
           $data_json = [
@@ -254,7 +264,6 @@ class StartController extends Controller
               ]
           ];
 
-
           $link_image  =  "$image_url";
           $images = [
             'messages'  => [
@@ -269,7 +278,6 @@ class StartController extends Controller
                 ]
           ];
 
-
           if($test_id == 359){
             $elements = [];
             $image = "https://s3.us-east-2.amazonaws.com/funiziuploads/api/pronostics/pronostic_$code.jpg";
@@ -281,6 +289,42 @@ class StartController extends Controller
 
             $elements[] = [
                                'title' => $_POST['team_a_name'] ." - ". $_POST['team_b_name'],
+                               'image_url'=> $image,
+                               'subtitle' => '',
+
+                               'buttons' =>[
+                                  [
+                                         'type'  => 'web_url',
+                                         'url'   => "$url_share",
+                                         'title' => 'Partager sur Facebook'
+                                     ]
+                                  ]
+                           ];
+            $messages = [
+                   'messages'  => [
+                           'attachment'  => [
+                                  'type' => 'template',
+                                  'payload' => [
+                                       'template_type' => 'generic',
+                                       'elements' => $elements
+                                    ]
+                           ]
+                   ]
+             ];
+            echo json_encode([$messages]);
+            exit;
+          }
+
+          if($test_id == 367){
+            $elements = [];
+            $image = "https://s3.us-east-2.amazonaws.com/funiziuploads/api/score_footbot/score_$code.jpg";
+            //$url_share = "https://fr.funizi.com/api/share/footbot?from=" .urlencode($name) . "&img_url=" .urlencode($image) ."&team_a=" . urlencode($_POST['team_a_name']) ."&team_b=" . urlencode($_POST['team_b_name']);
+            $url_to_share = urlencode('https://www.wizili.com/worldcup/footbot/?from='.$name.'&img_url='.$image.'&team_a='.$_POST['team_a_name'].'&team_b='.$_POST['team_b_name'].'&cca='.strtolower($_POST['cca']).'&ccb='.strtolower($_POST['ccb']));
+            $url_redirect_share = "https://www.wizili.com/worldcup/footbot/done";
+            $url_share = "https://www.facebook.com/dialog/share?app_id=614562495236789&display=popup&href=" . $url_to_share . "&redirect_uri=" . $url_redirect_share;
+
+            $elements[] = [
+                               'title' => $_POST['first_name'] ." a ". $_POST['point_pronostic'] ." points.",
                                'image_url'=> $image,
                                'subtitle' => '',
 
