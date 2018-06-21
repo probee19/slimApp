@@ -843,8 +843,19 @@ class Helper
     {
       //$idTeam = $arg['id'];
       self::debug($team);
-      $result = self::curl_get_fields("https://wizili.com/worldcupru/teamfeed/$team",[]);
+      $result = json_decode(self::curl_get_fields("https://wizili.com/worldcupru/teamfeed/$team",[]));
       self::debug($result);
+
+      $data = [
+        "score_a" =>  $result->localteam_score,
+        "score_b" =>  $result->visitorteam_score,
+        "cca"     =>  $result->localteam,
+        "ccb"     =>  $result->visitor,
+        "timer"   =>  $result->timer,
+        "date"    =>  $result->match_date,
+        "time"    =>  $result->match_time,
+      ];
+      self::debug($data);
 
     }
 
