@@ -77,7 +77,7 @@
 <!DOCTYPE HTML>
 <?php
           $end = "ème";
-          if($_GET['rank'] == 1) $end = "er";
+          if($_GET['rank'] == 1) $end = "ère";
           if($_GET['score'] >= 2) $ss = "s";
                     
 ?>
