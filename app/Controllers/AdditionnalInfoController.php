@@ -61,11 +61,7 @@ class AdditionnalInfoController extends Controller
           ];
         }
         elseif ($info->additionalInfos->typeinput == 'team_wc') {
-          // code...
-
-
           $teams = TeamCDM::all();
-
           foreach ($teams as $team) {
               $team_array []=[
                 'cc'        =>  $team->cc,
@@ -75,7 +71,7 @@ class AdditionnalInfoController extends Controller
               ];
           }
           $input_list_team = [
-            'label'     =>  '',
+            'label'     => $info->label,
             'teams'     => $team_array
           ];
 
