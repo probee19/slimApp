@@ -24,7 +24,7 @@ class TestController extends Controller
         if(isset($_GET['p']) && $_GET['p'] == 1)
           $no_ads = true;
 
-        $code = $request->getParam('ref');
+        //$code = $request->getParam('ref');
         if($args['code'])
             $code = $args['code'];
         //$user_test = UserTest::where('uuid', '=', "$code")->first();
