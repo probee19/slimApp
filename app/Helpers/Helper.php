@@ -530,7 +530,27 @@ class Helper
 
     // Obtention de la liste des langues activées
     public static function getActivatedLanguages(){
-      $all_lang = Language::where('status','=',1)->get();
+      //$all_lang = Language::where('status','=',1)->get();
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_languages/all_lang.json";
+
+  	  $jsondata = file_get_contents($file);
+  	   // converts json data into array
+  	   $arr_data = json_decode($jsondata);
+       $alllang = array();
+       foreach ($arr_data as $lang) {
+         if($lang->status == 1)
+         $alllang [] = [
+           "id"          =>  $lang->id,
+           "code"        =>  $lang->code,
+           "fr_name"     =>  $lang->fr_name,
+           "status"      =>  $lang->status,
+           "translated"  =>  $lang->translated,
+           "test_count"  =>  $lang->test_count,
+           "created_at"  =>  $lang->created_at,
+           "updated_at"  =>  $lang->updated_at
+         ];
+       }
+
       return $all_lang;
     }
     public static function getActivatedLanguages2(){
