@@ -257,8 +257,9 @@ class HomeController extends Controller
         $tests_from_json = $this->helper->getAllTestJson($lang);
 
         // Calcul du nombre total de tests
+        $this->helper->debug($tests_from_json);
         $this->helper->debug($tests_from_json[207]);
-        
+
         foreach ($tests_from_json as $test) {
           if($test['codes_countries'] == "" || strpos($test['codes_countries'], $country_code) != false ){
             $tests_json[] = [
