@@ -536,10 +536,10 @@ class Helper
   	  $jsondata = file_get_contents($file);
   	   // converts json data into array
   	   $arr_data = json_decode($jsondata);
-       $alllang = array();
+       $all_lang = array();
        foreach ($arr_data as $lang) {
          if($lang->status == 1)
-         $alllang [] = [
+         $all_lang [] = [
            "id"          =>  $lang->id,
            "code"        =>  $lang->code,
            "fr_name"     =>  $lang->fr_name,
