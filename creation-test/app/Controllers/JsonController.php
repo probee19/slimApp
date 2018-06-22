@@ -292,9 +292,6 @@ class JsonController extends Controller
     $json = fopen($filepath, "w+");
     fputs($json, $all_lang);
     $this->helper->uploadToS3($filepath, 'json_files/all_languages/');
-
-
-    $langgg = $this->helper->getAllLanguages();
-    $this->helper->debug($langgg);
   }
+  
 }
