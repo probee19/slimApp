@@ -253,7 +253,10 @@ class HomeController extends Controller
     public function chunk($request, $response, $args){
 
         // Récuperation des tests pour langue $lang;
-              
+              $alltest = Test::where('statut', '1')->get();
+                var_dump($alltest);
+                die();
+
                 $url = $this->helper->detectLang($request, $response);
                 if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 
