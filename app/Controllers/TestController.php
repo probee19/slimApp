@@ -33,11 +33,6 @@ class TestController extends Controller
 
         $tests_from_json = $this->helper->getAllTestJson($lang);
         $test  = $tests_from_json[$id];
-
-        //$test = Test::selectRaw('tests.statut AS statut, tests.id_rubrique AS id_rubrique, tests.titre_test AS titre_test_fr, tests.if_additionnal_info AS if_additionnal_info, tests.permissions AS permissions, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
-          //  ->join('test_info','test_info.id_test','tests.id_test')
-          //  ->where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
-        //->with('themeInfo')
         $permission = $test['permissions'];
         if((!$test || $test['statut'] != 1 ) && (!isset($_GET['admin'])) ){
             $result_url = $this->router->pathFor('accueil' );

@@ -268,5 +268,24 @@ class JsonController extends Controller
     }
   }
 
+  public function setLangsJson($request, $response, $arg)
+  {
+    // code...
+    $all_lang = Language::all();
+    $data = [];
+    foreach ($all_lang as $lang) {
+        $data [] = [
+          "id"          =>  $lang->id,
+          "code"        =>  $lang->code,
+          "fr_name"     =>  $lang->fr_name,
+          "status"      =>  $lang->status,
+          "translated"  =>  $lang->translated,
+          "test_count"  =>  $lang->test_count,
+          "created_at"  =>  $lang->created_at,
+          "updated_at"  =>  $lang->updated_at
+        ];
+    }
 
+    $this->helper->debug();
+  }
 }
