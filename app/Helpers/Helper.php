@@ -534,6 +534,31 @@ class Helper
       return $all_lang;
     }
 
+    public static function getAllLanguages()
+    {
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_languages/all_lang.json";
+
+  	  $jsondata = file_get_contents($file);
+  	   // converts json data into array
+  	   $arr_data = json_decode($jsondata);
+       $alllang = array();
+       foreach ($arr_data as $lang) {
+         # code...
+         $alllang [] = [
+           "id"          =>  $lang->id,
+           "code"        =>  $lang->code,
+           "fr_name"     =>  $lang->fr_name,
+           "status"      =>  $lang->status,
+           "translated"  =>  $lang->translated,
+           "test_count"  =>  $lang->test_count,
+           "created_at"  =>  $lang->created_at,
+           "updated_at"  =>  $lang->updated_at
+         ];
+       }
+
+       return $alllang;
+    }
+
     // Obtention de la langue par défaut du Navigateur
     public static function getLangBrowser($lang=""){
       if($lang == ""){
