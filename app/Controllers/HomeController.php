@@ -252,8 +252,25 @@ class HomeController extends Controller
 
     public function chunk($request, $response, $args){
 
-          $this->helper->getScore($args['id']);
-          exit;
+
+        // Récuperation des tests pour langue $lang;
+        $tests_from_json = $this->helper->getAllTestJson($lang);
+
+        // Calcul du nombre total de tests
+        $this->helper->debug($tests_from_json[207]);
+        
+        foreach ($tests_from_json as $test) {
+          if($test['codes_countries'] == "" || strpos($test['codes_countries'], $country_code) != false ){
+            $tests_json[] = [
+              'url_image_test' => $test['url_image_test'],
+              'id_test'        => $test['id_test'],
+              'titre_test'     => $test['titre_test']
+            ];
+          }
+        }
+        //
+        $this->helper->getScore($args['id']);
+        exit;
     }
 
     public function saveSubNewsletter($request, $response, $arg)
