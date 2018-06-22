@@ -271,10 +271,10 @@ class JsonController extends Controller
   public function setLangsJson($request, $response, $arg)
   {
     // code...
-    $all_lang = Language::all();
-    $data = [];
-    foreach ($all_lang as $lang) {
-        $data [] = [
+    $lang_col = Language::all();
+    $all_lang = [];
+    foreach ($lang_col as $lang) {
+        $all_lang [] = [
           "id"          =>  $lang->id,
           "code"        =>  $lang->code,
           "fr_name"     =>  $lang->fr_name,
@@ -285,7 +285,12 @@ class JsonController extends Controller
           "updated_at"  =>  $lang->updated_at
         ];
     }
+    $all_lang = json_encode($all_lang, JSON_PRETTY_PRINT);
+    $this->helper->debug($all_lang);
 
-    $this->helper->debug($data);
+    $filepath = "../ressources/views/json_files/all_languages/all_lang.json";
+    $json = fopen($filepath, "w+");
+    fputs($json, $all_lang);
+    $this->helper->uploadToS3($filepath, 'json_files/all_languages/');
   }
 }
