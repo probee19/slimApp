@@ -254,7 +254,8 @@ class HomeController extends Controller
 
 
         // Récuperation des tests pour langue $lang;
-
+              echo $_SERVER['RDS_PASSWORD'];
+              
                 $url = $this->helper->detectLang($request, $response);
                 if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 
