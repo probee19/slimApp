@@ -254,6 +254,7 @@ class HomeController extends Controller
 
 
         // Récuperation des tests pour langue $lang;
+        $lang = 'fr';
         $tests_from_json = $this->helper->getAllTestJson($lang);
 
         // Calcul du nombre total de tests
