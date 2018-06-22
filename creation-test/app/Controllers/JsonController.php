@@ -286,6 +286,6 @@ class JsonController extends Controller
         ];
     }
 
-    $this->helper->debug();
+    $this->helper->debug($data);
   }
 }
