@@ -27,7 +27,7 @@ class TestController extends Controller
         $code = $request->getParam('ref');
         if($args['code']){
           $code = $args['code'];
-          $img_url = "./images-tests/".$code;
+          $img_url = "/uploads/".$code.".jpg";
         }
         //$user_test = UserTest::where('uuid', '=', "$code")->first();
         //$img_url = $user_test->img_url;
