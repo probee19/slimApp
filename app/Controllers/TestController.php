@@ -31,12 +31,15 @@ class TestController extends Controller
         //$img_url = $user_test->img_url;
         $img_url = "/uploads/$code.jpg";
 
-        $test = Test::selectRaw('tests.statut AS statut, tests.id_rubrique AS id_rubrique, tests.titre_test AS titre_test_fr, tests.if_additionnal_info AS if_additionnal_info, tests.permissions AS permissions, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
-            ->join('test_info','test_info.id_test','tests.id_test')
-            ->where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
+        $tests_from_json = $this->helper->getAllTestJson($lang);
+        $test  = $tests_from_json[$id];
+
+        //$test = Test::selectRaw('tests.statut AS statut, tests.id_rubrique AS id_rubrique, tests.titre_test AS titre_test_fr, tests.if_additionnal_info AS if_additionnal_info, tests.permissions AS permissions, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
+          //  ->join('test_info','test_info.id_test','tests.id_test')
+          //  ->where([['tests.id_test', '=', $id],['test_info.lang','=',$lang]])->first();
         //->with('themeInfo')
-        $permission = $test->permissions;
-        if((!$test || $test->statut != 1 ) && (!isset($_GET['admin'])) ){
+        $permission = $test['permissions'];
+        if((!$test || $test['statut'] != 1 ) && (!isset($_GET['admin'])) ){
             $result_url = $this->router->pathFor('accueil' );
             $this->flash->addMessage('invalid_test', $interface_ui['label_notif_no_test']);
             return $response->withStatus(302)->withHeader('Location', $result_url );
@@ -84,5 +87,5 @@ class TestController extends Controller
 
         $all_lang = $this->helper->getActivatedLanguages();
         return $this->view->render($response, 'single.twig', compact('no_ads', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
-    }
+        }
 }
