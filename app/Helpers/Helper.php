@@ -591,6 +591,7 @@ class Helper
          $alllang [] = [
            "id"          =>  $lang->id,
            "code"        =>  $lang->code,
+           "name"        =>  $lang->name,
            "fr_name"     =>  $lang->fr_name,
            "status"      =>  $lang->status,
            "translated"  =>  $lang->translated,
