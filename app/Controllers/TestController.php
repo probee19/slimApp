@@ -33,6 +33,12 @@ class TestController extends Controller
 
         $tests_from_json = $this->helper->getAllTestJson($lang);
         $test  = $tests_from_json[$id];
+        if(isset($_SESSION['uid']) && $_SESSION['uid'] == '1815667808451001'){
+          $this->helper->debug($test);
+          $this->helper->debug($tests_from_json);
+
+        }
+
         $permission = $test['permissions'];
         if((!$test || $test['statut'] != 1 ) && (!isset($_GET['admin'])) ){
             $result_url = $this->router->pathFor('accueil' );
