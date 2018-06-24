@@ -32,12 +32,7 @@ class TestController extends Controller
         $img_url = "/uploads/$code.jpg";
 
         $tests_from_json = $this->helper->getAllTestJson($lang);
-        $test  = $tests_from_json[$id];
-        if(isset($_SESSION['uid']) && $_SESSION['uid'] == '1815667808451001'){
-          $this->helper->debug($test);
-          $this->helper->debug($tests_from_json);
-
-        }
+        $test  = $tests_from_json[$id]; 
 
         $permission = $test['permissions'];
         if((!$test || $test['statut'] != 1 ) && (!isset($_GET['admin'])) ){
