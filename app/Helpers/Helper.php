@@ -716,7 +716,7 @@ class Helper
            "id_theme"             => $test->id_theme,
            "id_rubrique"          => $test->id_rubrique,
            "statut"               => $test->statut,
-           'if_additionnal_info'  => $test['if_additionnal_info'],
+           'if_additionnal_info'  => $test->if_additionnal_info,
            "if_translated"        => $test->if_translated,
            "default_lang"         => $test->default_lang,
            "titre_test"           => stripslashes((string)$test->titre_test),
