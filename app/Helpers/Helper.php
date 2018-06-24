@@ -458,7 +458,6 @@ class Helper
           $tests[$test['id_test']] = [
             'url_image_test'        => $test['url_image_test'],
             'id_test'               => $test['id_test'],
-            'if_additionnal_info'   => $test['if_additionnal_info'],
             'titre_test'            => $test['titre_test']
           ];
         }
@@ -713,16 +712,17 @@ class Helper
        foreach ($arr_data as $test) {
          # code...
          $alltest [$test->id_test] = [
-           "id_test"           => $test->id_test,
-           "id_theme"          => $test->id_theme,
-           "id_rubrique"       => $test->id_rubrique,
-           "statut"            => $test->statut,
-           "if_translated"     => $test->if_translated,
-           "default_lang"      => $test->default_lang,
-           "titre_test"        => stripslashes((string)$test->titre_test),
-           "unique_result"     => $test->unique_result,
-           "url_image_test"    => $test->url_image_test,
-           "codes_countries"   => $test->codes_countries
+           "id_test"              => $test->id_test,
+           "id_theme"             => $test->id_theme,
+           "id_rubrique"          => $test->id_rubrique,
+           "statut"               => $test->statut,
+           'if_additionnal_info'  => $test['if_additionnal_info'],
+           "if_translated"        => $test->if_translated,
+           "default_lang"         => $test->default_lang,
+           "titre_test"           => stripslashes((string)$test->titre_test),
+           "unique_result"        => $test->unique_result,
+           "url_image_test"       => $test->url_image_test,
+           "codes_countries"      => $test->codes_countries
          ];
        }
 
