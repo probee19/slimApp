@@ -308,7 +308,7 @@ class Helper
 
       if(in_array($countryCode, ['SN','CI','FR','CD'], true)){
         $choosen_some_tests = array();
-        $array_tests = array(351, 353, 354, 357, 360, 361, 362, 364, 365, 366, 363, 368);
+        $array_tests = array(351, 353, 354, 357, 360, 361, 362, 364, 365, 366, 363, 368, 369);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
@@ -456,9 +456,10 @@ class Helper
       foreach ($tests_from_json as $test) {
         if(!in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total){
           $tests[$test['id_test']] = [
-            'url_image_test' => $test['url_image_test'],
-            'id_test'        => $test['id_test'],
-            'titre_test'     => $test['titre_test']
+            'url_image_test'        => $test['url_image_test'],
+            'id_test'               => $test['id_test'],
+            'if_additionnal_info'   => $test['if_additionnal_info'],
+            'titre_test'            => $test['titre_test']
           ];
         }
       }
