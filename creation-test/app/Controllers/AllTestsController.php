@@ -29,13 +29,13 @@ class AllTestsController extends Controller
     $tests = Test::where('statut','!=',-1)
       ->with('defaultLangInfo')
       ->orderBy('id_test','DESC')
-      //->take(120)
+      ->take(60)
       ->get();
     else
     $tests = Test::where('statut','!=',-1)
       ->with('defaultLangInfo')
       ->orderBy('id_test','DESC')
-      ->take(20)
+      ->take(60)
       ->get();
 
     foreach ($tests as $test) {
