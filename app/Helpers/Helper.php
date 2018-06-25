@@ -502,6 +502,8 @@ class Helper
       $tests_from_json = self::getAllTestJson($lang);
       //krsort($tests_from_json);
       $nb_taken = 0;
+      shuffle($tests_from_json);
+
       foreach ($tests_from_json as $test) {
         if(!in_array($test['id_test'], $exclude, true) && (strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total){
           $tests[$test['id_test']] = [
