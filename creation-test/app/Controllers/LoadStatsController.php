@@ -464,7 +464,7 @@ class LoadStatsController extends Controller
             ->groupBy('test_id')
             ->first();
 
-        if($data_bests->nb_test_done >=10 && $best_shares_col->nb_share > 0)
+        if($data_bests->nb_test_unique_done >=100 && $best_shares_col->nb_share > 0)
           $best_shares [] = [
             "test_id"               =>  $data_bests->test_id,
             "nb_test_done"          =>  $data_bests->nb_test_done,
