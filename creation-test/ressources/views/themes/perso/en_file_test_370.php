@@ -31,7 +31,7 @@
 
 .flag_team{z-index:1; position: absolute; left:200px; top:250px;   text-align:center; width:150px;   }
 
-#fb_id_user{position: absolute; z-index:1; left: 100px; top: 110px; width:200px ;  height:200px ; object-fit: cover; object-position: 50% 10%; border-radius:200px;border:10px solid #f1c40f;}
+#fb_id_user{position: absolute; z-index:1; left: 100px; top: 110px; width:200px ;  height:200px ; object-fit: cover; object-position: 50% 10%; border-radius:200px;border:10px solid #008751;}
 #name_user{position:absolute;font-family: 'Titillium Web', sans-serif;text-transform:uppercase;z-index:1; font-weight:700; right:130px; top: 105px; font-size:24px;line-height:25px; color:#13473D; width:160px; height:70px; text-align:center;} 
 #number{position:absolute;font-family: 'Titillium Web', sans-serif; z-index:1; right:145px; top: 160px; font-size:130px; line-height:100px; color:#13473D; width:140px; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
 
