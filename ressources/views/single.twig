@@ -30,6 +30,9 @@
             {% if test.id_test == 365 %}
               <meta property="og:image" content="{{ storage_base }}/uploads/test_365.png" />
             {% endif %}
+            {% if test.id_test == 370 %}
+              <meta property="og:image" content="{{ storage_base }}/uploads/test_370.png" />
+            {% endif %}
             <meta property="fb:app_id" content="348809548888116">
 
         {% endif %}
@@ -116,7 +119,7 @@
 
     </div>
 
-    {% if is_mobile() or is_tablet() %} 
+    {% if is_mobile() or is_tablet() %}
         {% if country_code == 'SN' %}
           <div class="row text-center" style="margin-top:1em">
             <a href="http://bit.ly/MyFavTeam2018" target="_blank"><img src="{{storage_base}}/images/banner/image_Filtre600x188.jpg" style="max-width: 95%;" alt="Senegal"></a>
