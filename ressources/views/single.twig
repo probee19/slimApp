@@ -23,7 +23,7 @@
             <meta property="og:title" content="{{ test.titre_test }}" />
             <meta property="og:site_name" content="Funizi.com" />
             <meta property="og:url" content="{{ domain_url }}/test/{{ test.titre_test | twig_title_url(test.id_test, lang) }}/{{ test.id_test }}" >
-            <meta property="og:description" content=" {% if test.id_rubrique != 9 %}{{interface_ui.label_share_prefixe | capitalize}} : {% endif %} {{ test.titre_test | lower }}" />
+            <meta property="og:description" content="{{interface_ui.label_share_prefixe2 | capitalize}}" />
             <meta property="og:type" content="website">
             <meta property="og:image" content="{{ storage_base }}/uploads/test_{{ test.id_test }}.png" />
             {% if test.id_test == 207 %}
