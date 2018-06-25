@@ -612,7 +612,7 @@ class LoadStatsController extends Controller
             ->groupBy('test_id')
             ->first();
 
-        if(round(($best_shares_col->nb_share/$data_bests->nb_test_done*100), 2) >= 25){
+        if(round(($best_shares_col->nb_share/$data_bests->nb_test_done*100), 2) >= 25 && $data_bests->nb_test_unique_done > 50){
             $best_tests [] = [
               "test_id"               =>  $data_bests->test_id,
               "id_theme"              =>  $data_bests->id_theme,
