@@ -32,7 +32,7 @@
 #date{position:absolute; z-index:1; left:90px; top:230px;  font-weight:900;}
 
 #label_to{position:absolute; z-index:1; left:400px; top:190px; font-size : 35px;}
-#to{position:absolute; z-index:1; left:460px; top:190px; font-weight:900;font-size : 35px; }
+#to{position:absolute; z-index:1; left:450px; top:190px; font-weight:900;font-size : 35px; }
 
 
 
@@ -80,16 +80,16 @@
 
 <?php
           $to = array('Paris', 'Havana', 'Hawaii', 'Bora Bora', 'London', 'mexico', 'Miami');
-          $mois = array('January','February','March','April','may','June');
+          $mois = array('July','August','September','October','December');
           shuffle($mois); shuffle($to);
 ?>
 
 <img src="http://creation.funizi.com/images-theme-perso/1515157095.jpg" id="background">
 <div id="label_passenger"> Passenger : </div>
-<div id="passenger"> <?php echo urldecode($_GET['full_user_name']); ?> </div>
+<div id="passenger"> <?php echo $_GET['full_user_name']; ?> </div>
 <div id="date"> <?=  mt_rand(1,28).' '.$mois[0].' 2018 to '.mt_rand(12,23).':'.mt_rand(11,59); ?></div>
 
-<div id="label_to">To : </div>
+<div id="label_to">AT : </div>
 <div id="to"><?=  $to[0]; ?></div>
 
 <div id="abordage">Boarding Time :</div>

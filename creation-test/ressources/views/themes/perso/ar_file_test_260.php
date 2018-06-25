@@ -80,14 +80,14 @@
 
 <?php
           $to = array('باريس', 'هافانا', 'هاواي', 'بورا بورا', 'لندن', 'المكسيك', 'ميامي');
-          $mois = array('كانون الثاني','شهر فبراير','مارس','أبريل','قد','يونيو');
+          $mois = array('يوليو','أغسطس','سبتمبر','شهر اكتوبر','ديسمبر');
           shuffle($mois); shuffle($to);
 ?>
 
 <img src="http://creation.funizi.com/images-theme-perso/1515157095.jpg" id="background">
 <div id="label_passenger"> راكب : </div>
-<div id="passenger"> <?php echo urldecode($_GET['full_user_name']); ?> </div>
-<div id="date"> <?=  mt_rand(1,28).' '.$mois[0].' 2018 إلى '.mt_rand(12,23).':'.mt_rand(11,59); ?></div>
+<div id="passenger"> <?php echo $_GET['full_user_name']; ?> </div>
+<div id="date"> <?=  mt_rand(1,28).' '.$mois[0].' 2018 ل '.mt_rand(12,23).':'.mt_rand(11,59); ?></div>
 
 <div id="label_to">في : </div>
 <div id="to"><?=  $to[0]; ?></div>

@@ -80,13 +80,13 @@
 
 <?php
           $to = array(' Paris ', ' La Havane ', ' Hawai ', ' Bora Bora ', ' Londres ', ' Mexico ', ' Miami ');
-          $mois = array(' janvier ',' fevrier ',' mars ',' avril ',' mai ',' juin ');
+          $mois = array(' juillet ',' aout ',' septembre ',' octobre ',' décembre ');
           shuffle($mois); shuffle($to);
 ?>
 
 <img src="http://creation.funizi.com/images-theme-perso/1515157095.jpg" id="background">
 <div id="label_passenger">  Passager  : </div>
-<div id="passenger"> <?php echo urldecode($_GET['full_user_name']); ?> </div>
+<div id="passenger"> <?php echo $_GET['full_user_name']; ?> </div>
 <div id="date"> <?=  mt_rand(1,28).' '.$mois[0].'   2018 à   '.mt_rand(12,23).':'.mt_rand(11,59); ?></div>
 
 <div id="label_to"> A  : </div>
