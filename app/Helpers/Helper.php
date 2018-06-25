@@ -337,11 +337,14 @@ class Helper
         // Selection de quelques tests
         $choosen_some_tests = array();
         //$array_tests = array(207,112);
-        $array_tests = array(347, 207, 361, 362, 366, 363);
+
+
+        $array_tests = array(370, 347, 207, 361, 362, 366, 363);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
             $exclude[] = $test['id_test'];
+
 
 
         //Selection d'un test demandant des informatsions additionnelles
