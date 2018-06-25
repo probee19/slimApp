@@ -317,7 +317,6 @@ class Helper
 
           $nb_restant = $total - count($choosen_some_tests);
           $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
-
           //
             $best_local_test = self::getBestLocalTest($lang, $exclude, $countryCode, $nb_restant);
             if(count($best_local_test) >= 1)
@@ -327,25 +326,18 @@ class Helper
             $choosen_some_tests   = array_merge($choosen_some_tests, $best_local_test);
             $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
           //
-
-
           if($choosen_some_tests != null)
             $alltests_total   = array_merge($choosen_some_tests, $alltests_total);
-
       }
       else {
         // Selection de quelques tests
         $choosen_some_tests = array();
         //$array_tests = array(207,112);
-
-
-        $array_tests = array(370, 347, 207, 361, 362, 366, 363);
+        $array_tests = array(370, 347, 207, 361, 362, 366, 363, 371);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
             $exclude[] = $test['id_test'];
-
-
 
         //Selection d'un test demandant des informatsions additionnelles
         $choosen_tests_with_img_treatment = self::getTestsWithImgTreatment($countryCode, $exclude, $lang, 3);
@@ -363,7 +355,6 @@ class Helper
         $choosen_new_tests_2 = array_slice($new_tests, 1, 2);
         foreach ($choosen_new_tests_2 as $new_test)
           $exclude[] = $new_test['id_test'];
-
 
         $local_tests = self::getLocalTests($countryCode, $exclude, $lang, 5);
         if(count($local_tests) > 0)
