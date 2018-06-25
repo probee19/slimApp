@@ -505,9 +505,14 @@ class Helper
       foreach ($tests_from_json as $test) {
         if(!in_array($test['id_test'], $exclude, true) && (strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total){
           $tests[$test['id_test']] = [
-            'url_image_test' => $test['url_image_test'],
-            'id_test'        => $test['id_test'],
-            'titre_test'     => $test['titre_test']
+            'url_image_test'    => $test['url_image_test'],
+            'id_test'           => $test['id_test'],
+            'titre_test'        => $test['titre_test'],
+            "id_theme"          => $test['id_theme'],
+            "id_rubrique"       => $test['id_rubrique'],
+            "statut"            => $test['statut'],
+            "unique_result"     => $test['unique_result'],
+            "codes_countries"   => $test['codes_countries']
           ];
         }
       }

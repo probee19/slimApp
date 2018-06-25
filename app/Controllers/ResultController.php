@@ -87,7 +87,7 @@ class ResultController extends Controller
                         $exclude [] = $user->test_id;
                     }
                 }
-                $top_tests = $this->helper->getLovedTests($country_code, $exclude, $lang);
+                $top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
                 foreach ($top_tests as $top_test) {
                   $exclude [] = $top_test["id_test"];
                 }
@@ -104,7 +104,7 @@ class ResultController extends Controller
                         $exclude [] = $user->test_id;
                     }
                 }
-                $top_tests = $this->helper->getLovedTests($country_code, $exclude, $lang);
+                $top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
                 foreach ($top_tests as $top_test) {
                   $exclude [] = $top_test["id_test"];
                 }
