@@ -207,7 +207,7 @@ class JsonController extends Controller
     foreach ($langs as $lang) {
       $tests = Test::selectRaw('tests.id_test AS id_test, tests.permissions AS permissions, tests.if_additionnal_info AS if_additionnal_info, tests.has_treatment AS has_treatment, tests.id_theme AS id_theme, tests.default_lang AS default_lang, tests.if_translated AS if_translated, tests.id_rubrique AS id_rubrique, tests.statut AS statut, test_info.titre_test AS titre_test, tests.unique_result AS unique_result, tests.url_image_test AS url_image_test, tests.codes_countries AS codes_countries')
             ->join('test_info','test_info.id_test','tests.id_test')
-            ->where([['tests.statut','=',1],['test_info.lang','=',$lang->code]])
+            ->where([['tests.statut','!=',-1],['test_info.lang','=',$lang->code]])
             ->orderBy('tests.id_test','DESC')
             ->get();
       $all_tests = array();
