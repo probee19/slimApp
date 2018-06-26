@@ -396,10 +396,6 @@ class Helper
 
         $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_1);
 
-        $tests_with_add_info = array();
-        if($choosen_tests_with_add_info != null)
-          $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_add_info);
-
         $tests_to_discover   = array_merge($tests_to_discover, $besttests);
 
         $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_2);
