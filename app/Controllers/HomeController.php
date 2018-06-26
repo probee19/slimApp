@@ -261,11 +261,12 @@ class HomeController extends Controller
           $str_2 .= ",'$value'";
           //$url = str_replace($key, $value, $url); // Replaces all spaces with hyphens.
         }
-        $str_1 = ']'; $str_2 = ']';
+        $str_1 .= ']'; $str_2 .= ']';
         Helper::debug($str_1);
         Helper::debug($str_2);
         //$url = strtr($url, $index, $values);
         //$url = str_replace(array(array_keys($transliterationTable), ' '), array(array_values($transliterationTable), '-'), $url); // Replaces all spaces with hyphens.
+        $url = str_replace(' ', '-', $url); // Replaces all spaces with hyphens.
         $url = str_replace($index, $values, $url); // Replaces all spaces with hyphens.
         $url = preg_replace('/[^A-Za-z0-9\-]/', '', $url); // Removes special chars.
         $url = strtolower(trim($url, '-'));
