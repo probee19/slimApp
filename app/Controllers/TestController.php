@@ -25,7 +25,8 @@ class TestController extends Controller
           $no_ads = true;
 
         //$code = $request->getParam('ref');
-        if($args['code'])
+        $code = "";
+        if(isset($args['code']))
             $code = $args['code'];
         //$user_test = UserTest::where('uuid', '=', "$code")->first();
         //$img_url = $user_test->img_url;
