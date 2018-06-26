@@ -708,7 +708,7 @@ class Helper
        return $alltest;
     }
 
-    public static function getAllTestJson2($lang, $get_all = false){
+    public static function getAllTestJson($lang, $get_all = false){
       //Get data from existing json file
       //$file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";
       $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_tests/" . $lang . "_all_test_2.json";
@@ -757,7 +757,7 @@ class Helper
        return $alltest;
     }
 
-    public static function getAllTestJson($lang){
+    public static function getAllTestJson2($lang){
       //Get data from existing json file
       //$file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";
       $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_tests/" . $lang . "_all_test.json";

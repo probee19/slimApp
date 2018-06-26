@@ -36,7 +36,7 @@ class TestController extends Controller
         $test  = $tests_from_json[$id];
 
         $permission = $test['permissions'];
-        if((!$test || $test['statut'] != 1 ) && (!isset($_GET['admin'])) ){
+        if((!$test || $test['statut'] != 1 ) && (!isset($_GET['access'])) ){
             $result_url = $this->router->pathFor('accueil' );
             $this->flash->addMessage('invalid_test', $interface_ui['label_notif_no_test']);
             return $response->withStatus(302)->withHeader('Location', $result_url );
