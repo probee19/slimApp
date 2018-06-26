@@ -804,7 +804,7 @@ class Helper
        // converts json data into array
        $arr_data = json_decode($jsondata);
        $most_tested = array();
-
+       $nb_taken = 0;
        foreach ($arr_data as $test) {
          if(!in_array($test->id_test, $exclude, true) && ($test->codes_countries == "" || strpos($test->codes_countries, $countryCode) != false ) && ++$nb_taken <= $total){
            $most_tested[$test->id_test] = [
