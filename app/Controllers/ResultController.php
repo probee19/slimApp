@@ -105,6 +105,7 @@ class ResultController extends Controller
                     }
                 }
                 $top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
+                if(count($top_tests) > 0)
                 foreach ($top_tests as $top_test) {
                   $exclude [] = $top_test["id_test"];
                 }

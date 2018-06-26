@@ -350,10 +350,10 @@ class Helper
             $exclude[] = $test['id_test'];
 
         //Selection d'un test demandant des informatsions additionnelles
-        $choosen_tests_with_img_treatment = self::getTestsWithImgTreatment($countryCode, $exclude, $lang, 3);
-        if(count($choosen_tests_with_img_treatment) >= 1)
-          foreach ($choosen_tests_with_img_treatment as $test)
-            $exclude[] = $test['id_test'];
+        //$choosen_tests_with_img_treatment = self::getTestsWithImgTreatment($countryCode, $exclude, $lang, 3);
+        //if(count($choosen_tests_with_img_treatment) >= 1)
+          //foreach ($choosen_tests_with_img_treatment as $test)
+            //$exclude[] = $test['id_test'];
 
         // Selection d'un test parmi les 5 denières créations
         $new_tests = self::getLastTests($countryCode, $exclude, $lang, 5);
