@@ -262,6 +262,7 @@ class HomeController extends Controller
         }
         Helper::debug($index);
         Helper::debug($values);
+        $url = strtr($message, $index, $values);
         //$url = str_replace(array(array_keys($transliterationTable), ' '), array(array_values($transliterationTable), '-'), $url); // Replaces all spaces with hyphens.
         $url = preg_replace('/[^A-Za-z0-9\-]/', '', $url); // Removes special chars.
         $url = strtolower(trim($url, '-'));
