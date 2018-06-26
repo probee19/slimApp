@@ -708,6 +708,55 @@ class Helper
        return $alltest;
     }
 
+    public static function getAllTestJson2($lang, $get_all = false){
+      //Get data from existing json file
+      //$file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_tests/" . $lang . "_all_test.json";
+
+      $jsondata = file_get_contents($file);
+       // converts json data into array
+       $arr_data = json_decode($jsondata);
+       $alltest = array();
+       foreach ($arr_data as $test) {
+         if($get_all == false ){
+           if($test->statut == 1)
+             $alltest [$test->id_test] = [
+               "id_test"              => $test->id_test,
+               "id_theme"             => $test->id_theme,
+               "id_rubrique"          => $test->id_rubrique,
+               "statut"               => $test->statut,
+               'permissions'          => $test->permissions,
+               'if_additionnal_info'  => $test->if_additionnal_info,
+               "if_translated"        => $test->if_translated,
+               "has_treatment"        => $test->has_treatment,
+               "default_lang"         => $test->default_lang,
+               "titre_test"           => stripslashes((string)$test->titre_test),
+               "unique_result"        => $test->unique_result,
+               "url_image_test"       => $test->url_image_test,
+               "codes_countries"      => $test->codes_countries
+             ];
+         }
+         else
+           $alltest [$test->id_test] = [
+             "id_test"              => $test->id_test,
+             "id_theme"             => $test->id_theme,
+             "id_rubrique"          => $test->id_rubrique,
+             "statut"               => $test->statut,
+             'permissions'          => $test->permissions,
+             'if_additionnal_info'  => $test->if_additionnal_info,
+             "if_translated"        => $test->if_translated,
+             "has_treatment"        => $test->has_treatment,
+             "default_lang"         => $test->default_lang,
+             "titre_test"           => stripslashes((string)$test->titre_test),
+             "unique_result"        => $test->unique_result,
+             "url_image_test"       => $test->url_image_test,
+             "codes_countries"      => $test->codes_countries
+           ];
+       }
+
+       return $alltest;
+    }
+
     public static function getAllTestJson($lang){
       //Get data from existing json file
       //$file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";

@@ -322,6 +322,8 @@ class StartController extends Controller
                 $generated = $this->grabzit->URLToImage($url, $options);
                 $save = $this->grabzit->SaveTo($filepath);
                 // Saving the test result of user
+                $referal = 'direct';
+                if(isset($_SESSION['referal'])) $referal = $_SESSION['referal'];
                 $data = [
                     'user_id'               => $user->id,
                     'test_id'               => $test_id,
@@ -329,7 +331,7 @@ class StartController extends Controller
                     'result_id'             => $result_id,
                     'shared_link'           => $code,
                     'result_description'    => $result_description,
-                    'test_from'             => $_SESSION['referal'],
+                    'test_from'             => $referal,
                     'lang'                  => $lang
                 ];
                 if($save){

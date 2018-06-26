@@ -229,7 +229,7 @@ class JsonController extends Controller
         ];
       }
       $all_tests = json_encode($all_tests, JSON_PRETTY_PRINT);
-      $filepath = "../ressources/views/json_files/all_tests/".$lang->code."_all_test.json";
+      $filepath = "../ressources/views/json_files/all_tests/".$lang->code."_all_test_2.json";
       $json = fopen($filepath, "w+");
       fputs($json, $all_tests);
       $this->helper->uploadToS3($filepath, 'json_files/all_tests/');
