@@ -32,7 +32,7 @@ class TestController extends Controller
         //$img_url = $user_test->img_url;
         $img_url = "/uploads/$code.jpg";
 
-        $tests_from_json = $this->helper->getAllTestJson($lang);
+        $tests_from_json = $this->helper->getAllTestJson($lang, true);
         $test  = $tests_from_json[$id];
 
         $permission = $test['permissions'];
