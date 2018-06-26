@@ -72,14 +72,15 @@
       
 <!DOCTYPE HTML>
 
-<div class="name texte" id="name_user" ><?php echo urldecode($_GET['user_name']); ?></div>
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
  
 <img src="https://creation.funizi.com/images-theme-perso/1525784882.png" id="back"> 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+<!-- https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275 -->
+<!-- https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275   img_profile -->
+<img src="https://creation.funizi.com/images-theme-perso/dec_1.jpg" class="" id="fb_id_friend_1">
 
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_1">
-
-<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_friend_2">
+<img src="https://creation.funizi.com/images-theme-perso/dec_2.jpg" class="" id="fb_id_friend_2">
 
 
 

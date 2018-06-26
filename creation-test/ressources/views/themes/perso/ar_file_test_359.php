@@ -90,8 +90,8 @@
          $pr  = $_GET['eamuser_ps'];
          //$pr  = "a";
          function getAdverb($team, $adverbe="de l'"){ 
-                   $feminin = array('Belgique','Colombie','Croitie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
-                   $masculin = array('Brésil','Costa Rica','Danemark','Japon','Maroc','Nigeria','Panama','Péru','Portugal','Sénégal');
+                   $feminin = array('Belgique','Colombie','Corée','Croitie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
+                   $masculin = array('Brésil','Costa Rica','Danemark','Japon','Maroc','Pérou','Nigeria','Panama','Péru','Portugal','Sénégal');
                     if(in_array($team,$feminin,true ))
                               $adverbe = 'de la '; 
                     elseif(in_array($team,$masculin,true ))
