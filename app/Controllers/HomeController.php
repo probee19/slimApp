@@ -278,7 +278,7 @@ class HomeController extends Controller
       //$img_url = $user_test->img_url;
       $img_url = "/uploads/$code.jpg";
 
-      $tests_from_json = $this->helper->getAllTestJson2($lang, true);
+      $tests_from_json = $this->helper->getAllTestJson($lang, true);
       $test  = $tests_from_json[$id];
       $this->helper->debug($test);
       $this->helper->debug($tests_from_json);
