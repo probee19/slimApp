@@ -711,7 +711,7 @@ class Helper
     public static function getAllTestJson2($lang, $get_all = false){
       //Get data from existing json file
       //$file = "ressources/views/json_files/all_tests/".$lang."_all_test.json";
-      $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_tests/" . $lang . "_all_test.json";
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_tests/" . $lang . "_all_test_2.json";
 
       $jsondata = file_get_contents($file);
        // converts json data into array
