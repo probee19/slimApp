@@ -391,8 +391,8 @@ class Helper
         if($choosen_some_tests != null)
           $tests_to_discover   = $choosen_some_tests;
 
-        if($choosen_tests_with_img_treatment != null)
-          $tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_img_treatment);
+        //if($choosen_tests_with_img_treatment != null)
+          //$tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_img_treatment);
 
         $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_1);
 
@@ -775,7 +775,7 @@ class Helper
        // converts json data into array
        $arr_data = json_decode($jsondata);
        $most_tested = array();
-
+       $nb_taken = 0;
        foreach ($arr_data as $test) {
          if(!in_array($test->id_test, $exclude, true) && (strpos($test->codes_countries, $countryCode) != false ) && ++$nb_taken <= $total){
            $most_tested[$test->id_test] = [

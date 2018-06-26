@@ -32,7 +32,7 @@ class TestController extends Controller
         $img_url = "/uploads/$code.jpg";
 
         $tests_from_json = $this->helper->getAllTestJson($lang);
-        $test  = $tests_from_json[$id]; 
+        $test  = $tests_from_json[$id];
 
         $permission = $test['permissions'];
         if((!$test || $test['statut'] != 1 ) && (!isset($_GET['admin'])) ){
@@ -41,7 +41,7 @@ class TestController extends Controller
             return $response->withStatus(302)->withHeader('Location', $result_url );
         }
 
-        if($_GET['utm'] && $_GET['utm'] !='')
+        if(isset($_GET['utm']) && $_GET['utm'] !='')
             $sandbox->setUTM($_GET['utm'], "test", $id);
 
         $exclude = [$id];
