@@ -174,9 +174,9 @@ class StartController extends Controller
 
                     //$url_img_profile_user = '&url_img_profile_user='.urlencode('https://graph.facebook.com/'.$user_id.'/picture/?width=275&height=275');
                     $url_img_profile_user = '&url_img_profile_user='.urlencode($url_img_profile);
+                    $additionnal_input_text = ''; $additionnal_input_country_cdm = '';
 
                     if( $if_additionnal_info == 1){
-                       $additionnal_input_text = ''; $additionnal_input_country_cdm = '';
                       if(isset($_SESSION['url_img_profile_user']) && $_SESSION['url_img_profile_user'] != 'unset'){
                         $url_img_profile_user = '&url_img_profile_user='.urlencode($_SESSION['url_img_profile_user']);
                         $url_img_profile = $_SESSION['url_img_profile_user'];
