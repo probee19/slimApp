@@ -84,7 +84,7 @@ class Helper
       $to = [ 'a','A','a','A','a','A','a','A','a','A','a','A','a','A','a','A','ae','AE','ae','AE','b','B','c','C','c','C','c','C','c','C','c','C','d','D','d','D','d','D','dh','Dh','e','E','e','E','e','E','e','E','e','E','e','E','e','E','e','E','e','E','f','F','f','F','g','G','g','G','g','G','g','G','h','H','h','H','i','I','i','I','i','I','i','I','i','I','i','I','i','I','j','J','k','K','l','L','l','L','l','L','l','L','m','M','n','N','n','N','n','N','n','N','o','O','o','O','o','O','o','O','o','O','oe','OE','o','O','o','O','oe','OE','p','P','r','R','r','R','r','R','s','S','s','S','s','S','s','S','s','S','s','S','SS','t','T','t','T','t','T','t','T','t','T','u','U','u','U','u','U','u','U','u','U','u','U','u','U','u','U','u','U','u','U','ue','UE','w','W','w','W','w','W','w','W','y','Y','y','Y','y','Y','y','Y','z','Z','z','Z','z','Z','th','Th','u','a','a','b','b','v','v','g','g','d','d','e','E','e','E','zh','zh','z','z','i','i','j','j','k','k','l','l','m','m','n','n','o','o','p','p','r','r','s','s','t','t','u','u','f','f','h','h','c','c','ch','ch','sh','sh','sch','sch','','','y','y','','','e','e','ju','ju','ja','ja'];
 
       $url = str_replace(' ', '-', $url); // Replaces all spaces with hyphens.
-      $url = str_replace($from, $to, $url); // 
+      $url = str_replace($from, $to, $url); //
       $url = preg_replace('/[^A-Za-z0-9\-]/', '', $url); // Removes special chars.
       $url = strtolower(trim($url, '-'));
       return preg_replace('/-+/', '-', $url);
@@ -504,7 +504,7 @@ class Helper
       //krsort($tests_from_json);
       $nb_taken = 0;
       shuffle($tests_from_json);
-
+      $tests = [];
       foreach ($tests_from_json as $test) {
         if(!in_array($test['id_test'], $exclude, true) && (strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total){
           $tests[$test['id_test']] = [
