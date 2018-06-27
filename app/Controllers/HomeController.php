@@ -68,7 +68,7 @@ class HomeController extends Controller
       $tests_on_top = array();
       if($pageid == 1){
         //$first_tests = array(321, 319, 318, 317, 316, 306, 290, 286, 287 );
-        $first_tests = array(324, 323, 318, 317, 316, 315, 306 );
+        $first_tests = array(363, 324, 323, 317, 316, 315, 306 );
         shuffle($first_tests);
         $first_tests = array_slice($first_tests,0,3);
         foreach ($first_tests as $test) {
