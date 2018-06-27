@@ -440,7 +440,7 @@ class Helper
               }
               ".$css."
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;
