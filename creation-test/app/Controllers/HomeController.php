@@ -98,7 +98,7 @@ class HomeController extends Controller
 
   public function chunk($request, $response, $args){
 
-    $result = json_decode(Helper::curl_get_fields("https://creation.funizi.com/chunk/jsonalltests",[]));
+    $result = Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonlanguages",[]);
     $this->helper->debug($result);
 
   }

@@ -412,6 +412,10 @@ class CreateTestController extends Controller
   			// Traitement des résultats choisis pour Supression
           $req_del_resultat = Resultat::where('id_resultat',$_POST['to_del'.$j])->delete();
   		}
+
+      // Mise à jour des fichiers json des tests
+      Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonlanguages",[]);
+
       return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('alltests') );
   }
 
