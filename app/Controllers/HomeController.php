@@ -260,9 +260,7 @@ class HomeController extends Controller
     public function chunk($request, $response, $args){
 
 
-      $result = json_decode(self::curl_get_fields("https://creation.funizi.com/chunk/jsonalltests",[]));
-      $this->helper->debug($result);
-      exit;
+    
       $url = $this->helper->detectLang($request, $response);
       if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 

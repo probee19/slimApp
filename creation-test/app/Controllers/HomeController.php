@@ -98,11 +98,8 @@ class HomeController extends Controller
 
   public function chunk($request, $response, $args){
 
-    $filepath = "https://funiziuploads.s3.us-east-2.amazonaws.com/uploads/jNV57z29gAnY7gu.jpg";
-    $resultUrl = $this->helper->uploadToS3($filepath, 'images/tests/');
-
-    $this->helper->debug($resultUrl);
-
+    $result = json_decode(Helper::curl_get_fields("https://creation.funizi.com/chunk/jsonalltests",[]));
+    $this->helper->debug($result);
 
   }
   public static function curlCmf($url_api, $data)
