@@ -44,6 +44,7 @@ function deleteTest () {
      data : 'action=del&idtest='+idToDelete,
      dataType : 'html',
      success : function(code_html, statut){
+       updateJsonTestFiles();
        location.reload();
     }
    });
