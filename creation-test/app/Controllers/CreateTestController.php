@@ -222,6 +222,8 @@ class CreateTestController extends Controller
             // Enregistrement des informations du test effectué avec succès
             // Mise à jour du nombre de test de la rubrique choisie
             //$update_rubrique = Rubrique::where('id_rubrique',$_POST['rubrique'])->increment('nb_test');
+            // Mise à jour des fichiers json des tests
+            Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonalltests",[]);
           }
          else
           $save_done = false;

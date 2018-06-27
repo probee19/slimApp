@@ -76,7 +76,6 @@ $(document).ready(function(){
                         console.log('Test personnalisé');
                         saveTest(data);
                     }
-                    updateJsonTestFiles();
                     setTimeout(function(){
                       loadingProgress ('100%', 'Test enrégistré avec succès.');
                       //$(".alert-success").fadeIn("slow");
