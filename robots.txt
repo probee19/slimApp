@@ -1,5 +1,6 @@
 # www.robotstxt.org/
-
+User-agent: Mediapartners-Google
+Disallow:
 # Allow crawling of all content
 User-agent: *
 Disallow: /result/*

@@ -414,7 +414,7 @@ class CreateTestController extends Controller
   		}
 
       // Mise à jour des fichiers json des tests
-      Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonlanguages",[]);
+      Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonalltests",[]);
 
       return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('alltests') );
   }
