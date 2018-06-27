@@ -32,6 +32,11 @@
 #fb_id_user{position: absolute; z-index:1; left: 100px; top: 110px; width:200px ;  height:200px ; object-fit: cover; object-position: 50% 10%; border-radius:200px;border:10px solid #f1c40f;}
 #name_user{position:absolute;font-family: 'Titillium Web', sans-serif; text-transform:uppercase;z-index:1; right:150px; top: 100px; font-size:25px;line-height:25px; color:#FFF; width:180px; height:60px; text-align:center;} 
 #number{position:absolute;font-family: 'Titillium Web', sans-serif; z-index:1; right:170px; top: 160px; font-size:130px; line-height:100px; color:#FFF; width:140px; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
+
+#tag{z-index:1; position: absolute;font-family: 'Titillium Web', sans-serif; font-style:italic; right: 140px; bottom: 20px; color:#fff; font-size:24px; width:200px ; height:50px ;  text-align:center; }
+
+
+
               </style>
               <script src='../../../src/js/jquery.js'></script>
               <script>
@@ -84,6 +89,10 @@
 <div class="texte" id="number" ><?=mt_rand(5,11);?></div>
  
 <img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags_big/sen.png" id="" class="flag_team"> 
+
+
+<div class="texte" id="tag">#funizi</div>
+
 
         </div>
         
