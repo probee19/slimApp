@@ -39,7 +39,7 @@
 
 
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;
@@ -90,7 +90,7 @@
 <img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags_big/<?php echo $_GET['cc']; ?>.png" id="" class="flag_team"> 
 
 
-<div class="texte" id="personne">Pedre Dieye</div>
+<div class="texte" id="personne"><?php echo $_GET['full_user_name']; ?></div>
 <div class="texte" id="country"><?php echo $_GET['cn']; ?></div>
 <div class="texte" id="poste"><?=$postes[0]?></div>
 

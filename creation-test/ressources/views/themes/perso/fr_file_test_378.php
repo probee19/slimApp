@@ -70,12 +70,12 @@
           <div class='main'>
       
 <?php
-          $messages = array('Amoul ragal !<br> dém ba diekh gaïndé !','Gaïndé dou reub di soy !<br> Bonne chance aux lions.','En avant pour la qualification Gaïndé.<br> On est derrière vous !','On compte sur vous Gaïndé!<br> Faites-nous rêver.');
+          $messages = array('Merci Gaïndé !','Merci aux lions de la téranga.','Mbarawacc gaindé ndiaye.<br> On est fier de vous !', 'Démoon na bay nekh. Merci Gaïndé !');
           shuffle($messages);
 ?>
 <!DOCTYPE HTML>
 
-<img src="https://creation.funizi.com/images-theme-perso/1530034974.jpg" id="back">  
+<img src="https://creation.funizi.com/images-theme-perso/1530203388.jpg" id="back">  
 
 <div class="texte" id="message"><?=$messages[0]?> </div>
 

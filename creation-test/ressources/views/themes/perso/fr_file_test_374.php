@@ -30,7 +30,7 @@
 #fb_id_user{position: absolute; z-index:1; left: 10px; bottom: 10px; width:70px ;  height:70px ; object-fit: cover; object-position: 50% 10%; border-radius:70px; }
 
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;
@@ -70,7 +70,7 @@
           <div class='main'>
       
 <?php
-          $messages = array('Amoul ragal !<br> dém ba diekh gaïndé !','Gaïndé dou reub di soy !<br> Bonne chance aux lions.','En avant pour la qualification Gaïdé.<br> On est derrière vous !','On compte sur vous Gaïndé!<br> Faites-nous rêver.');
+          $messages = array('Amoul ragal !<br> dém ba diekh gaïndé !','Gaïndé dou reub di soy !<br> Bonne chance aux lions.','En avant pour la qualification Gaïndé.<br> On est derrière vous !','On compte sur vous Gaïndé!<br> Faites-nous rêver.');
           shuffle($messages);
 ?>
 <!DOCTYPE HTML>
