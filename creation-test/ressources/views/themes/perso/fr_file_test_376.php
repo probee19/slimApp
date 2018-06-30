@@ -29,7 +29,7 @@
 #fb_id_user{position: absolute; z-index:1; left: 300px; top: 20px; width:200px ;  height:200px ; object-fit: cover; object-position: 50% 10%; border-radius:200px;border:10px solid #fff;}
 .text{ position:absolute;font-family: 'Titillium Web', sans-serif; text-transform:uppercase;z-index:1; left:200px; top: 300px; font-size:25px;line-height:25px; color:#FFF; width:400px; height:40px; text-align:center;} 
 
-#personne{ position:absolute;font-family: 'Exo 2', sans-serif; text-transform:uppercase;z-index:1; left:200px; top: 250px; font-size:45px; font-weight:700; line-height:45px; color:#FFF; width:400px; height:40px; text-align:center;} 
+#personne{ position:absolute;font-family: 'Exo 2', sans-serif; text-transform:uppercase;z-index:1; left:0; top: 250px; font-size:45px; font-weight:700; line-height:45px; color:#FFF; width:800px; height:40px; text-align:center;} 
 #poste{ position:absolute;font-family: 'Exo 2', sans-serif; z-index:1; left:200px; top: 350px;font-size:35px;line-height:40px; color:#FFF; width:400px; height:40px; text-align:center;} 
 #country{ position:absolute;font-family: 'Exo 2', sans-serif; text-transform:uppercase; z-index:1; left:200px; top: 305px;font-size:25px;line-height:30px;opacity:0.8; color:#FFF; width:400px; height:40px; text-align:center;} 
 

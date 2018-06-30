@@ -33,7 +33,7 @@
 #name_user{position:absolute;font-family: 'Titillium Web', sans-serif; text-transform:uppercase;z-index:1; right:140px; top: 90px;  font-size:25px;line-height:25px; color:#FFF; width:180px; height:60px; text-align:center;} 
 #number{position:absolute;font-family: 'Titillium Web', sans-serif; z-index:1; right:160px; top: 150px; font-size:130px; line-height:100px; color:#FFF; width:140px; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;
@@ -77,7 +77,7 @@
 
 <img src="https://creation.funizi.com/images-theme-perso/1529414005.jpg" id="back"> 
  
-<img src="https://creation.funizi.com/images-theme-perso/1529948999.png" id="maillot"> 
+<img src="https://creation.funizi.com/images-theme-perso/1530271534.png" id="maillot"> 
  
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>

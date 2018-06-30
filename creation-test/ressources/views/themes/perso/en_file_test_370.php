@@ -27,17 +27,20 @@
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
 
-#maillot{position:absolute; z-index:1; right:10px; top:10px;  max-width:800px; max-height:420px; }
+#maillot{position:absolute; z-index:1; right:10px; top:40px;  max-width:800px; max-height:420px; }
 
 .flag_team{z-index:1; position: absolute; left:200px; top:250px;   text-align:center; width:150px;   }
 
 #fb_id_user{position: absolute; z-index:1; left: 100px; top: 110px; width:200px ;  height:200px ; object-fit: cover; object-position: 50% 10%; border-radius:200px;border:10px solid #008751;}
-#name_user{position:absolute;font-family: 'Titillium Web', sans-serif;text-transform:uppercase;z-index:1; font-weight:700; right:130px; top: 105px; font-size:24px;line-height:25px; color:#13473D; width:160px; height:70px; text-align:center;} 
-#number{position:absolute;font-family: 'Titillium Web', sans-serif; z-index:1; right:145px; top: 160px; font-size:130px; line-height:100px; color:#13473D; width:140px; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
+#name_user{position:absolute;font-family: 'Titillium Web', sans-serif;text-transform:uppercase;z-index:1; font-weight:700; right:130px; top: 135px; font-size:24px;line-height:25px; color:#13473D; width:160px; height:70px; text-align:center;} 
+#number{position:absolute;font-family: 'Titillium Web', sans-serif; z-index:1; right:145px; top: 190px; font-size:130px; line-height:100px; color:#13473D; width:140px; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
+
+
+#message{z-index:1; position: absolute;font-family: 'Titillium Web', sans-serif; text-transform:uppercase; right: 0; top: 0; color:#fff;  background-color:#008751; font-size:30px; font-weight:700; display:flex; align-items:center; justify-content:center; width:800px ; height:60px ; text-align:center; }
 
 
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;
@@ -77,10 +80,14 @@
           <div class='main'>
       
 <!DOCTYPE HTML>
-
+<?php
+          $messages = array('You made us proud. Thank you super eagles!', 'Thank you for good moments, super eagles!');
+          shuffle($messages);
+?>
 
 <img src="https://creation.funizi.com/images-theme-perso/1529414005.jpg" id="back"> 
  
+<div class="texte" id="message"> <?=$messages[0]?>  </div>
 <img src="https://creation.funizi.com/images-theme-perso/1529923628.png" id="maillot"> 
  
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
