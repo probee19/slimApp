@@ -103,7 +103,7 @@
             <span class="input-group-addon"><i class="fab fa-facebook-f"></i></span>
             <input type="text" id="fb_url" name="fb_url_campaign" id="fb_url_campaign" value="{{data_test.fb_url_campaign}}" class="form-control">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onClick="copyToClipboard($('#fb_url_campaign'))"><i class="far fa-copy"></i></button>
+                <button type="button" class="btn btn-default" onClick="copyToClipboard('#fb_url_campaign')"><i class="far fa-copy"></i></button>
             </span>
         </div>
     </div>
@@ -113,7 +113,7 @@
             <span class="input-group-addon"><i class="fab fa-twitter"></i></span>
             <input type="text" id="fb_url" name="twitter_url_campaign" id="twitter_url_campaign" value="{{data_test.twitter_url_campaign}}" class="form-control">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onClick="copyToClipboard($('#twitter_url_campaign'))"><i class="far fa-copy"></i></button>
+                <button type="button" class="btn btn-default" onClick="copyToClipboard('#twitter_url_campaign')"><i class="far fa-copy"></i></button>
             </span>
         </div>
     </div>
@@ -123,7 +123,7 @@
             <span class="input-group-addon"><i class="fas fa-briefcase"></i></span>
             <input type="text" id="fb_url" name="ads_fb_url_campaign" id="ads_fb_url_campaign" value="{{data_test.ads_fb_url_campaign}}" class="form-control">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onClick="copyToClipboard($('#ads_fb_url_campaign'))"><i class="far fa-copy"></i></button>
+                <button type="button" class="btn btn-default" onClick="copyToClipboard('#ads_fb_url_campaign')"><i class="far fa-copy"></i></button>
             </span>
         </div>
     </div>
@@ -151,8 +151,12 @@
             charger(' ','global',{{this_test.id_test}},'#global_stats',1,{{this_test.id_theme}});
     //	$('#myTab').tabCollapse();
         } );
-        function copyToClipboard(elem) {
+        function copyToClipboard(elemm) {
             // create hidden text element, if it doesn't already exist
+            elem = $(elemm);
+            console.log(elemm);
+            
+
             var targetId = "_hiddenCopyText_";
             var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
             var origSelectionStart, origSelectionEnd;
@@ -198,6 +202,7 @@
                 // clear temporary content
                 target.textContent = "";
             }
+            console.log(succeed);
             return succeed;
         }
 
@@ -218,7 +223,6 @@
                    $(target).prepend('<div class="alert alert-info" style="text-align:center;"> Chargement en cours ...</div>');
                },
                success : function(code_html, statut){
-                   console.log(code_html);
                    setTimeout(function() {
                        $(target).html(code_html);
                    }, 1000);
