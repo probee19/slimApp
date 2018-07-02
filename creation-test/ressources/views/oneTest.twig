@@ -95,38 +95,47 @@
 
     </div>
 
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Liens à utiliser pour les réseaux sociaux </div>
+        <div class="panel-body">
+          <div class="form-group  col-sm-12">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="fab fa-facebook-f"></i></span>
+                  <input type="text" name="fb_url_campaign" id="fb_url_campaign" value="{{data_test.fb_url_campaign}}" class="form-control">
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" onClick="copyToClipboard('#fb_url_campaign', $(this))"><i class="far fa-copy"></i></button>
+                  </span>
+              </div>
+          </div>
+
+          <div class="form-group  col-sm-12">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="fab fa-twitter"></i></span>
+                  <input type="text" name="twitter_url_campaign" id="twitter_url_campaign" value="{{data_test.twitter_url_campaign}}" class="form-control">
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" onClick="copyToClipboard('#twitter_url_campaign', $(this))"><i class="far fa-copy"></i></button>
+                  </span>
+              </div>
+          </div>
+
+          <div class="form-group  col-sm-12">
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="fas fa-bullhorn"></i></span>
+                  <input type="text" name="ads_fb_url_campaign" id="ads_fb_url_campaign" value="{{data_test.ads_fb_url_campaign}}" class="form-control">
+                  <span class="input-group-btn">
+                      <button type="button" class="btn btn-default" onClick="copyToClipboard('#ads_fb_url_campaign', $(this))"><i class="far fa-copy"></i></button>
+                  </span>
+              </div>
+          </div>
+
+        </div>
+
+    </div>
+
   </div>
 
   <div class="row">
-    <div class="form-group  col-sm-12">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fab fa-facebook-f"></i></span>
-            <input type="text" name="fb_url_campaign" id="fb_url_campaign" value="{{data_test.fb_url_campaign}}" class="form-control">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onClick="copyToClipboard('#fb_url_campaign', $(this))"><i class="far fa-copy"></i></button>
-            </span>
-        </div>
-    </div>
-
-    <div class="form-group  col-sm-12">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fab fa-twitter"></i></span>
-            <input type="text" name="twitter_url_campaign" id="twitter_url_campaign" value="{{data_test.twitter_url_campaign}}" class="form-control">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onClick="copyToClipboard('#twitter_url_campaign', $(this))"><i class="far fa-copy"></i></button>
-            </span>
-        </div>
-    </div>
-
-    <div class="form-group  col-sm-12">
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fas fa-briefcase"></i></span>
-            <input type="text" name="ads_fb_url_campaign" id="ads_fb_url_campaign" value="{{data_test.ads_fb_url_campaign}}" class="form-control">
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onClick="copyToClipboard('#ads_fb_url_campaign', $(this))"><i class="far fa-copy"></i></button>
-            </span>
-        </div>
-    </div>
 
 
   </div>
