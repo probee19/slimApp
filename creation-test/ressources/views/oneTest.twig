@@ -101,9 +101,9 @@
     <div class="form-group  col-sm-12">
         <div class="input-group">
             <span class="input-group-addon"><i class="fab fa-facebook-f"></i></span>
-            <input type="text" id="fb_url" name="fb_url_campaign" id="fb_url_campaign" value="{{data_test.fb_url_campaign}}" class="form-control">
+            <input type="text" name="fb_url_campaign" id="fb_url_campaign" value="{{data_test.fb_url_campaign}}" class="form-control">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onClick="copyToClipboard('#fb_url_campaign')"><i class="far fa-copy"></i></button>
+                <button type="button" class="btn btn-default" onClick="copyToClipboard('#fb_url_campaign', $(this))"><i class="far fa-copy"></i></button>
             </span>
         </div>
     </div>
@@ -111,9 +111,9 @@
     <div class="form-group  col-sm-12">
         <div class="input-group">
             <span class="input-group-addon"><i class="fab fa-twitter"></i></span>
-            <input type="text" id="fb_url" name="twitter_url_campaign" id="twitter_url_campaign" value="{{data_test.twitter_url_campaign}}" class="form-control">
+            <input type="text" name="twitter_url_campaign" id="twitter_url_campaign" value="{{data_test.twitter_url_campaign}}" class="form-control">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onClick="copyToClipboard('#twitter_url_campaign')"><i class="far fa-copy"></i></button>
+                <button type="button" class="btn btn-default" onClick="copyToClipboard('#twitter_url_campaign', $(this))"><i class="far fa-copy"></i></button>
             </span>
         </div>
     </div>
@@ -121,9 +121,9 @@
     <div class="form-group  col-sm-12">
         <div class="input-group">
             <span class="input-group-addon"><i class="fas fa-briefcase"></i></span>
-            <input type="text" id="fb_url" name="ads_fb_url_campaign" id="ads_fb_url_campaign" value="{{data_test.ads_fb_url_campaign}}" class="form-control">
+            <input type="text" name="ads_fb_url_campaign" id="ads_fb_url_campaign" value="{{data_test.ads_fb_url_campaign}}" class="form-control">
             <span class="input-group-btn">
-                <button type="button" class="btn btn-default" onClick="copyToClipboard('#ads_fb_url_campaign')"><i class="far fa-copy"></i></button>
+                <button type="button" class="btn btn-default" onClick="copyToClipboard('#ads_fb_url_campaign', $(this))"><i class="far fa-copy"></i></button>
             </span>
         </div>
     </div>
@@ -151,12 +151,16 @@
             charger(' ','global',{{this_test.id_test}},'#global_stats',1,{{this_test.id_theme}});
     //	$('#myTab').tabCollapse();
         } );
-        function copyToClipboard(element) {
+        function copyToClipboard(element, btn) {
           var $temp = $("<input>");
           $("body").append($temp);
-          $temp.val($(element).text()).select();
+          $temp.val($(element).val()).select();
           document.execCommand("copy");
           $temp.remove();
+          btn.html('<i class="fas fa-check"></i>');
+          setTimeout(function() {
+              btn.html('<i class="far fa-copy"></i>');
+          }, 2000);
         }
 
 
