@@ -46,6 +46,7 @@ $app->post('/save-subscription-to-newsletter', 'HomeController:saveSubNewsletter
 // chunk
 $app->get('/json', 'HomeController:setTestsJSON');
 $app->get('/chunk', 'HomeController:chunk');
+$app->get('/chunkresult/{name}/{code}', 'ResultController:index')->setName('has_shared');
 $app->get('/chunk/{name}/{id}', 'HomeController:chunk');
 $app->get('/chunk/{id}', 'HomeController:chunk');
 //$app->post('/chunk/loadMore/{bloc}', 'HomeController:chunk2');
