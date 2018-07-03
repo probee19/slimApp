@@ -1,52 +1,255 @@
 {% extends 'templates/layout.twig' %}
-{% block title %}{{interface_ui.title_home | capitalize}}{% endblock %}
+{% block title %}{{ titre_test }}{% endblock %}
+ {% block graph %}
+     <!--FACEBOOK-->
+     <link rel="canonical" href="{{ domain_url }}/result/{{ titre_url }}/{{ code }}?ref=fb">
+     <meta property="og:title" content="{{ titre_test }}" />
+     <meta property="og:site_name" content="Funizi.com" />
+     <meta property="og:url" content="{{ domain_url }}/result/{{ titre_url }}/{{ code }}?ref=fb" >
+     <meta property="og:description" content="{% if id_rubrique != 9 %}{{interface_ui.label_share_prefixe | capitalize}} :{% endif %} {{ titre_test }}" />
+     <meta property="og:image" content="{{ storage_base }}{{ img_url }}" />
+     <meta property="og:image:width" content="800" />
+     <meta property="og:image:height" content="420" />
+     <meta property="og:image:type" content="image/jpeg" />
+     <meta property="og:type" content="website">
+     <meta property="fb:app_id" content="348809548888116">
+ {% endblock %}
 {% block googletagmanager %}
-<script>
-  dataLayer = [{
-    'pageCategory': 'home'
-  }];
-</script>
+ <script>
+   dataLayer = [{
+     'pageCategory': 'result'
+   }];
+ </script>
 {% endblock %}
 {% block banner_mobile_top %}
-    {% include 'banners/banner_320x100_top.twig' %}
+    {% include 'banners/banner_320x100_top_result_page.twig' %}
 {% endblock %}
-
-
 {% block content %}
+    {% if not new %}
+    {% set i = 0 %}
+    <div class="row">
+        <div class="col-sm-12 text-center" id="result_block">
+            {% if is_result == true %}
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-top:15px;margin-bottom:15px;">
+                    <p>{{ titre_test }}</p>
+                    <a class="btn btn-primary btn-lg btn_to_track" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "top")'  style="cursor:pointer;" data-btn="share-top"><i class="fa fa-facebook-square" aria-hidden="true"></i> {{interface_ui.btn_share}}</a>
+                </div>
+                <div class="col-sm-10 col-sm-offset-1" style="clear: both; position: relative;">
+                    <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:15px auto*/">
+                    <a href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
 
-<div id="discovery-share-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-            <div class="modal-header">
-                  <img class="img-responsive" src="{{ domain_url }}/creation-test/src/img/funizi.png" style="height:30px; margin: 0 auto;" alt="Funizi">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body text-center">
-              <p>
-                {{session.name | capitalize }}, {{interface_ui.label_other_tests | capitalize}} !
-              </p>
-              <div class="row text-center" style="margin-top:1.5em">
-                {% for test in top_tests %}
-                    <div class="col-sm-6 col-md-4 portfolio-item">
-                        <div class="border">
-                            <img class="img-responsive" src="{{ storage_base }}/images{{ test.url_image_test |trim('.', 'left') }}" alt="image du test">
-                            <span class="mobile-layer"></span>
-                            <a href="{{ path_for('single', { 'id': test.id_test, 'name': test.titre_test | twig_title_url(test.id_test, lang) }) }}?utm=d_test" class="test__link" data-btn="btn-test"></a>
-                            <h3 class="test-title">{{ test.titre_test }}</h3>
-                            <div class="test__next"><a href="{{ path_for('single', { 'id': test.id_test, 'name': test.titre_test | twig_title_url(test.id_test, lang) }) }}?utm=d_test" class="btn btn-primary col-sm-8 col-sm-offset-2" data-btn="btn-test" style="font-size: 12px;">{{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
-                        </div>
+                    <div class="overlay-share">
+                      <a class="overlay-btn-share" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "overlay")'  >
+                        <i class="fa fa-facebook-f" aria-hidden="true" style="font-size:2em;"></i> &nbsp;{{interface_ui.label_short_share}}
+                      </a>
+                      <span class="overlay-btn-close" onclick='$(".overlay-share").fadeOut("slow")'>
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                      </span>
                     </div>
-                {% endfor %}
+                    <script>
+                      setTimeout(function(){ $(".overlay-share").css("display","flex").fadeIn("slow") }, 7000);
+                    </script>
+                </div>
+                {% if result_description %}
+                    <div class="col-sm-10 col-sm-offset-1" style="clear: both; font-size: 1.2em; margin-top: 15px; margin-bottom: 10px; text-align: center;">
+                    {% autoescape %}
+                        {{result_description | raw | nl2br }}
+                    {% endautoescape %}
+                    </div>
+                {% endif %}
+
+                <p><a href=""></a></p>
+                {% if is_mobile() or is_tablet() %}
+                    {% if country_code == 'SN' and 3==4 %}
+                      <div class="row text-center" style="margin-top:1em">
+                        <a href="http://bit.ly/MyFavTeam2018" target="_blank"><img src="{{storage_base}}/images/banner/image_Filtre600x188.jpg" style="max-width: 95%;" alt="Senegal"></a>
+                      </div>
+                    {% endif %}
+                    {% set banner = random(['banners/banner_320x50_middle_top_mobile.twig', 'banners/banner_300x250_middle_top_mobile.twig']) %}
+                    <div class="row text-center" style="margin-top:0.5em">
+                        {% include banner %}
+                    </div>
+                {% endif %}
+                <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center"
+                        {% if is_mobile() or is_tablet() %} style="margin-top:.8em;" {% endif %}>
+                    <a class="btn btn-primary btn-lg btn_to_track" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fa fa-facebook-square" aria-hidden="true"></i> {{interface_ui.btn_share}}</a>
+                </div>
+                {% if unique_result == 1 %}
+                  <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em;" id="block_redo">
+                      <a id="btn-redo" class="btn btn-default btn_to_track" href="{{ domain_url }}/start{% if if_additionnal_info == 1 %}/1{% endif %}/{{ testId }}" onclick="loaderReTest();" style="cursor:pointer;"  data-btn="re-process"><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_retest | capitalize}}</a>
+                  </div>
+                {% endif %}
+            {% if test_owner %}
+                <div class="col-sm-12" style="margin-top: 5px; font-size: 10px;">
+                    Avertissement : Ce test a été créé et publié par <a href="https://facebook.com/{{ test_owner.facebook_id}}" target="_blank">{{ test_owner.first_name}} {{ test_owner.last_name}} </a>
+                </div>
+            {% endif %}
+                {% else %}
+                    Aucun résultat correspondant, <a href="{{ domain_url }}">retour à la page des tests</a>
+                    {% endif %}
+
+        </div>
+
+        <div id="div_loader" class="col-xs-12 col-sm-10 col-sm-offset-1" style="display:none; margin-top: 30px; ">
+            <div class="col-xs-12 col-sm-10 col-sm-offset-1 " >
+                <img src="{{ domain_url }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
+                <div style="font-weight: 500; font-size:1.2em; ">{{ interface_ui.label_loading_fixed | capitalize }} </div>
+                <div id="div_tasks" style="display:block; font-weight: 500; margin-top:0px; clear: both; font-size:1em;" >{{ interface_ui.label_loading_1 }} </div>
+                <span class="info-partage text-center" style="display:block; clear: both; margin-top:8px; font-family: 'Helvetica Neue';color: #2e5085; font-weight: 500; font-size:1.1em; ">{{interface_ui.label_like_1}} {{ session.name }} ! <br> ! {{interface_ui.label_like_2}} !</span>
+                <div style="width:250px; margin: 5px auto;  position: relative;">
+                    <div class="div_left_hand"> <img src="{{ domain_url }}/src/img/hand_left.png" class="left_hand"/> </div>
+
+                    <div class="fb-like" data-href="https://www.facebook.com/funizi/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+                    <div class="div_right_hand"> <img src="{{ domain_url }}/src/img/hand_right.png"  class="right_hand"/></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    {% else %}
+          <!-- Modal top 3 tests -->
+          {% if top_tests is not empty %}
+          <div id="discovery-tests-modal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                  <div class="modal-content">
+                      <div class="modal-header">
+                            <img class="img-responsive" src="{{ domain_url }}/creation-test/src/img/funizi.png" style="height:30px; margin: 0 auto;" alt="Funizi">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      <div class="modal-body text-center">
+                        <p>
+        	                {{session.name | capitalize }}, {{interface_ui.label_other_tests | capitalize}} !
+      	                </p>
+                        <div class="row text-center" style="margin-top:1.5em">
+                          {% for test in top_tests %}
+                              <div class="col-sm-6 col-md-4 portfolio-item">
+                                  <div class="border">
+                                      <img class="img-responsive" src="{{ storage_base }}/images{{ test.url_image_test |trim('.', 'left') }}" alt="image du test">
+                                      <span class="mobile-layer"></span>
+                                      <a href="{{ path_for('single', { 'id': test.id_test, 'name': test.titre_test | twig_title_url(test.id_test, lang) }) }}?utm=d_test" class="test__link" data-btn="btn-test"></a>
+                                      <h3 class="test-title">{{ test.titre_test }}</h3>
+                                      <div class="test__next"><a href="{{ path_for('single', { 'id': test.id_test, 'name': test.titre_test | twig_title_url(test.id_test, lang) }) }}?utm=d_test" class="btn btn-primary col-sm-8 col-sm-offset-2" data-btn="btn-test" style="font-size: 12px;">{{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
+                                  </div>
+                              </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                  </div>
               </div>
+          </div>
+          {% endif %}
+          <!-- /Modal top 3 tests -->
+
+    {% endif %}
+
+
+
+    <div class="col-sm-10 col-sm-offset-1 subscrip_newltr_block">
+      <div class="row label_notif_block"> {{interface_ui.sign_up_newsletter_label}} </div>
+        <div class='row centerMe'>
+          <div class='cta'>
+            <span>{{interface_ui.sign_up_newsletter_btn_1}}</span>
+            <form >
+              <div class='inputsubnewsletter'>
+                <input placeholder='{{interface_ui.sign_up_newsletter_place_holder}}' type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+              </div>
+              <div class='buttonsubnewsletter'>
+                <button disabled='disabled' type='submit' >{{interface_ui.sign_up_newsletter_btn_2}}</button>
+              </div>
+              <input type="hidden" name="sign_up_newsletter_thank"  id="sign_up_newsletter_thank" value="{{interface_ui.sign_up_newsletter_thank}}">
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    {% set i = 0 %}
+    {% set j = 0 %}
+    <div class="row text-center" style="margin-top:1.5em">
+    <h3 style="margin:1em">{{interface_ui.label_discover | capitalize}}</h3>
+    {% if all_test %}
+        {% for single_test in all_test %}
+          {% if is_mobile() or is_tablet() %}
+            <div class="col-md-4 portfolio-item">
+                <div class="border" data-test-id="{{single_test.id_test}}">
+                    <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test">
+                    <span class="mobile-layer"></span>
+                    <a class="test__link btn_to_track" href="{{ path_for('singledis', { 'from': 'discover', 'id': single_test.id_test, 'name': single_test.titre_test | twig_title_url(single_test.id_test, lang) }) }}" data-btn="btn-test"></a>
+                    <h3 class="test-title">{{ single_test.titre_test }}</h3>
+                    <div class="test__next"><a href="{{ path_for('singledis', { 'from': 'discover', 'id': single_test.id_test, 'name': single_test.titre_test | twig_title_url(single_test.id_test, lang) }) }}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track"  data-btn="btn-test">{{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
+                </div>
+            </div>
+            {% set i = i+1 %}
+            {% if i is divisible by(3) %}
+                {% set j = j + 1 %}
+                </div>
+                {% if j == 1 %}
+                    {% if is_mobile() or is_tablet() %}
+                        <div class="" style="margin:5px auto 10px">
+                            {% set banner = random(['banners/banner_360x300_responsive_bottom.twig', 'banners/banner_300x250_bottom.twig']) %}
+                            {% include  banner %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+                <div class="row text-center">
+            {% endif %}
+          {% else %}
+          <div class="col-sm-6 col-md-4 portfolio-item-gallery">
+                <div class="border_gallery" >
+                    <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test" style="width: 100%; height: 100%; object-fit: cover; object-position: 0 30%;">
+                    <span class="mobile-layer"></span>
+                    <!-- <a href="{{ path_for('single', { 'id': single_test.id_test, 'name': single_test.titre_test | twig_clean_url }) }}" class="test__link" data-btn="btn-test"></a> -->
+                    <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" class="test__link" data-btn="btn-test"></a>
+
+                </div>
+                <div  class="test-title-gallery">
+                  <span style="font-size:14px;">{{ single_test.titre_test }}</span>
+                </div>
+          </div>
+
+          {% set i = i+1 %}
+          {% if i is divisible by(3) %}
+              {% set j = j + 1 %}
+              </div>
+              {% if j == 1 %}
+                  {% if is_mobile() or is_tablet() %}
+                      <div class="" style="margin:5px auto 10px">
+                          {% set banner = random(['banners/banner_360x300_responsive_bottom.twig', 'banners/banner_300x250_bottom.twig']) %}
+                          {% include  banner %}
+                      </div>
+                  {% endif %}
+              {% endif %}
+              <div class="row text-center">
+          {% endif %}
+          {% endif %}
+
+        {% endfor %}
+    {% endif %}
+    </div>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top:1em; margin-bottom:2em"><a class="btn btn-default btn-lg btn_to_track" href="{{ path_for('accueil') }}?utm=all_test"  data-btn="btn-home"><i class="fa fa-home"></i>{{interface_ui.btn_home | capitalize}}</a></div>
+
+
+    <div id="discovery-share-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                      <img class="img-responsive" src="{{ domain_url }}/creation-test/src/img/funizi.png" style="height:30px; margin: 0 auto;" alt="Funizi">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:15px auto*/">
+                  <a href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
+                  
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-
-<script type="text/javascript">
-
-</script>
 
 {% endblock %}
