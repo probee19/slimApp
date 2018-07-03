@@ -478,7 +478,9 @@ class Helper
               foreach ($best_local_test as $test)
                 $exclude[] = $test['id_test'];
             $nb_restant = $nb_restant - count($best_local_test);
-            $choosen_some_tests   = array_merge($related_tests, $choosen_some_tests);
+
+            if($related_tests != null)
+              $choosen_some_tests   = array_merge($related_tests, $choosen_some_tests);
             $choosen_some_tests   = array_merge($choosen_some_tests, $best_local_test);
             $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
           //
