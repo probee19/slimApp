@@ -239,13 +239,13 @@
 
             <div class="modal-content">
                 <div class="modal-header">
-                      <img class="img-responsive" src="{{ domain_url }}/creation-test/src/img/funizi.png" style="height:30px; margin: 0 auto;" alt="Funizi">
+                  {{interface_ui.modal_share_label}}
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body text-center">
                   <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:15px auto*/">
                   <a href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
-                  <a class="btn btn-primary btn-lg btn_to_track" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fa fa-facebook-square" aria-hidden="true"></i> {{interface_ui.btn_share}}</a>
+                  <a class="btn btn-primary btn-lg btn_to_track" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer; margin-top:0.7em; font-size:2em;"  data-btn="share-bottom"><i class="fa fa-facebook-square" aria-hidden="true"></i> {{interface_ui.btn_share}}</a>
 
                 </div>
             </div>
