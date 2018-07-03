@@ -260,7 +260,7 @@ class HomeController extends Controller
     public function chunk($request, $response, $args){
 
 
-    
+
       $url = $this->helper->detectLang($request, $response);
       if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 
@@ -307,7 +307,7 @@ class HomeController extends Controller
               }
       }
 
-      $all_test = $sandbox->relatedTests($country_code, $exclude, $lang);
+      $all_test = $sandbox->relatedTests2($id, $country_code, $exclude, $lang);
 
       // For Facebook connect
       $helper = $this->fb->getRedirectLoginHelper();
