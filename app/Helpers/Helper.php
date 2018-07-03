@@ -428,9 +428,12 @@ class Helper
     {
       $related_tests = RelatedsTest::where('id_test','=',$id)->first();
       $array_ids = explode('-',$related_tests->related_ids);
+      self::debug($array_ids);
+      $array_ids = array_map(create_function('$value', 'return (int)$value;'),$array_ids);
+      self::debug($array_ids);
+
       self::debug($related_tests);
       self::debug($related_tests->related_ids);
-      self::debug($array_ids);
 
       // Récuperation des tests pour langue $lang;
       $tests_from_json = self::getAllTestJson($lang);
