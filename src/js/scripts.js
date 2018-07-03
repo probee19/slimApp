@@ -177,18 +177,17 @@ function openModal(id){
 
 function openModalDiscovery(){
     //var mymodal = $('#discovery-tests-modal');
-
-    if($('#discovery-share-modal').length > 0)
-      setTimeout(function () {
-        $('#discovery-share-modal').modal('show');
-      }, 4000);
+    if($('#discovery-tests-modal').length > 0)
+        $('#discovery-tests-modal').modal('show');
 }
 
 
 function openModalShare(){
     //var mymodal = $('#discovery-tests-modal');
-    if($('#discovery-tests-modal').length > 0)
-        $('#discovery-tests-modal').modal('show');
+    if($('#discovery-share-modal').length > 0)
+      setTimeout(function () {
+        $('#discovery-share-modal').modal('show');
+      }, 4000);
 }
 
 function clickButton(btn) {
