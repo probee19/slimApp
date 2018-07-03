@@ -458,6 +458,7 @@ class Helper
       if(count($related_tests) >= 1)
         foreach ($related_tests as $test)
           $exclude[] = $test['id_test'];
+      self::debug(count($related_tests));
       self::debug($related_tests);
 
       if(in_array($countryCode, ['SN','CI','FR','CD','BE','CM'], true)){
@@ -533,13 +534,14 @@ class Helper
         shuffle($besttests);
 
         $tests_to_discover = array();
-        if($choosen_some_tests != null)
-          $tests_to_discover   = $choosen_some_tests;
+
+        if($related_tests != null || count($related_tests) >= 1)
+          $tests_to_discover   = $related_tests;
 
         //if($choosen_tests_with_img_treatment != null)
           //$tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_img_treatment);
 
-        $tests_to_discover   = array_merge($tests_to_discover, $related_tests);
+        $tests_to_discover   = array_merge($tests_to_discover, $choosen_some_tests);
 
         $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_1);
 
