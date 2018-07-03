@@ -315,7 +315,7 @@ class Helper
       return $tests;
     }
 
-    public function relatedTests($countryCode, $exclude, $lang, $total = 33){
+    public function relatedTests2($countryCode, $exclude, $lang, $total = 33){
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
       if(in_array($countryCode, ['SN','CI','FR','CD','BE','CM'], true)){
@@ -429,9 +429,6 @@ class Helper
       $related_tests = RelatedsTest::where('id_test','=',$id)->first();
       $array_ids = explode('-',$related_tests->related_ids);
       $array_ids = array_map('intval', explode('-', $related_tests->related_ids));
-      //$array_ids = array_map(create_function('$value', 'return (int)$value;'),$array_ids);
-      self::debug($array_ids);
-
       // Récuperation des tests pour langue $lang;
       $tests_from_json = self::getAllTestJson($lang);
       //krsort($tests_from_json);
@@ -450,7 +447,7 @@ class Helper
       return $tests;
     }
 
-    public function relatedTests2($id, $countryCode, $exclude, $lang, $total = 33){
+    public function relatedTests($id, $countryCode, $exclude, $lang, $total = 33){
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
       $related_tests = array();
@@ -458,12 +455,9 @@ class Helper
       if(count($related_tests) >= 1)
         foreach ($related_tests as $test)
           $exclude[] = $test['id_test'];
-      self::debug(count($related_tests));
-      self::debug($related_tests);
 
       if(in_array($countryCode, ['SN','CI','FR','CD','BE','CM'], true)){
         $choosen_some_tests = array();
-        //$array_tests = array(351, 353, 354, 357, 360, 361, 362, 364, 365, 366, 363, 368, 369);
         $array_tests = array(353, 354, 357, 360, 361, 362, 364, 366, 363, 375, 376, 377, 378, 379, 380, 381);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)

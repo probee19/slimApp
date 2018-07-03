@@ -92,7 +92,7 @@ class ResultController extends Controller
                   $exclude [] = $top_test["id_test"];
                 }
 
-                $all_test = $helper->relatedTests($country_code, $exclude, $lang);
+                $all_test = $helper->relatedTests($test->test_id, $country_code, $exclude, $lang);
             }
             else{
                 $exclude = [$test->test_id];
@@ -110,7 +110,7 @@ class ResultController extends Controller
                   $exclude [] = $top_test["id_test"];
                 }
 
-                $all_test = $helper->relatedTests($country_code, $exclude, $lang);
+                $all_test = $helper->relatedTests($test->test_id, $country_code, $exclude, $lang);
             }
             $testId = $test->test_id;
             $unique_result = $test->testInfo->unique_result;

@@ -56,7 +56,7 @@ class TestController extends Controller
                 }
         }
 
-        $all_test = $sandbox->relatedTests($country_code, $exclude, $lang);
+        $all_test = $sandbox->relatedTests($id, $country_code, $exclude, $lang);
 
         // For Facebook connect
         $helper = $this->fb->getRedirectLoginHelper();

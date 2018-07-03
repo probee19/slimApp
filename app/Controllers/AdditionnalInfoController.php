@@ -75,8 +75,6 @@ class AdditionnalInfoController extends Controller
             'teams'     => $team_array
           ];
 
-          $this->helper->debug($_SESSION);
-          $this->helper->debug($_SESSION['fav_team']);
           $fav_team = json_decode($_SESSION['fav_team']);
           foreach ($fav_team as $key => $value){
             $this->helper->debug($value);
@@ -99,7 +97,7 @@ class AdditionnalInfoController extends Controller
             }
       }
 
-      $all_test = $this->helper->relatedTests($country_code, $exclude, $lang);
+      $all_test = $this->helper->relatedTests($id_test, $country_code, $exclude, $lang);
 
       //$all_test = $this->helper->relatedTests($country_code, $exclude, $lang);
       //User Id

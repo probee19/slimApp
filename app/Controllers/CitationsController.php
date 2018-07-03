@@ -150,8 +150,8 @@ class CitationsController extends Controller
       $url_to_share = urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
 
       $url_redirect_share = $url_to_share;
-
-      $all_test = $sandbox->relatedTests($country_code, $exclude, $lang);
+      $id_test = 0;
+      $all_test = $sandbox->relatedTests($id_test, $country_code, $exclude, $lang);
 
 
       $all_lang = $this->helper->getActivatedLanguages();
