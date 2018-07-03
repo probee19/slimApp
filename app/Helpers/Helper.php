@@ -428,13 +428,9 @@ class Helper
     {
       $related_tests = RelatedsTest::where('id_test','=',$id)->first();
       $array_ids = explode('-',$related_tests->related_ids);
-      self::debug($array_ids);
       $array_ids = array_map('intval', explode('-', $related_tests->related_ids));
       //$array_ids = array_map(create_function('$value', 'return (int)$value;'),$array_ids);
       self::debug($array_ids);
-
-      self::debug($related_tests);
-      self::debug($related_tests->related_ids);
 
       // Récuperation des tests pour langue $lang;
       $tests_from_json = self::getAllTestJson($lang);
@@ -457,14 +453,13 @@ class Helper
     public function relatedTests2($id, $countryCode, $exclude, $lang, $total = 33){
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
+      $related_tests = array();
       $related_tests = self::getRelatedTest($id, $countryCode, $exclude, $lang);
-      if(count($choosen_some_tests) >= 1)
-        foreach ($choosen_some_tests as $test)
+      if(count($related_tests) >= 1)
+        foreach ($related_tests as $test)
           $exclude[] = $test['id_test'];
-
-
       self::debug($related_tests);
-      exit;
+
       if(in_array($countryCode, ['SN','CI','FR','CD','BE','CM'], true)){
         $choosen_some_tests = array();
         //$array_tests = array(351, 353, 354, 357, 360, 361, 362, 364, 365, 366, 363, 368, 369);
@@ -474,7 +469,7 @@ class Helper
           foreach ($choosen_some_tests as $test)
             $exclude[] = $test['id_test'];
 
-          $nb_restant = $total - count($choosen_some_tests);
+          $nb_restant = $total - count($choosen_some_tests) - count($related_tests);
           $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
           //
             $best_local_test = self::getBestLocalTest($lang, $exclude, $countryCode, $nb_restant);
@@ -482,6 +477,7 @@ class Helper
               foreach ($best_local_test as $test)
                 $exclude[] = $test['id_test'];
             $nb_restant = $nb_restant - count($best_local_test);
+            $choosen_some_tests   = array_merge($related_tests, $choosen_some_tests);
             $choosen_some_tests   = array_merge($choosen_some_tests, $best_local_test);
             $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
           //
@@ -542,6 +538,8 @@ class Helper
 
         //if($choosen_tests_with_img_treatment != null)
           //$tests_to_discover   = array_merge($tests_to_discover, $choosen_tests_with_img_treatment);
+
+        $tests_to_discover   = array_merge($tests_to_discover, $related_tests);
 
         $tests_to_discover   = array_merge($tests_to_discover, $choosen_new_tests_1);
 
