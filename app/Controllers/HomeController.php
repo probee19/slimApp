@@ -283,8 +283,8 @@ class HomeController extends Controller
 
       $tests_from_json = $this->helper->getAllTestJson($lang, true);
       $test  = $tests_from_json[$id];
-      $this->helper->debug($test);
-      $this->helper->debug($tests_from_json);
+      //$this->helper->debug($test);
+      //$this->helper->debug($tests_from_json);
 
       $permission = $test['permissions'];
       if((!$test || $test['statut'] != 1 ) && (!isset($_GET['admin'])) ){
