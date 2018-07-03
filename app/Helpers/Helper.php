@@ -22,7 +22,7 @@ use App\Models\Language;
 use App\Models\InterfaceUi;
 use App\Models\InterfaceUiTranslations;
 use App\Models\TestInfo;
-use App\Models\RelatedsTests;
+use App\Models\RelatedsTest;
 use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;
 
@@ -426,7 +426,7 @@ class Helper
 
     public static function getRelatedTest($id, $countryCode, $exclude, $lang)
     {
-      $related_tests = RelatedsTests::where('id_test','=',$id)->first();
+      $related_tests = RelatedsTest::where('id_test','=',$id)->first();
       $array_ids = explode('-',$related_tests->related_ids);
 
       // Récuperation des tests pour langue $lang;
