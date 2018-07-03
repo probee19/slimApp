@@ -541,8 +541,8 @@ body{
   background-color: #3b5999;
 }
 .modal{
-  display: flex;
-  align-items: center;
+  #display: flex;
+  #align-items: center;
 }
 /* modal */
 
