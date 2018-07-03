@@ -208,7 +208,7 @@
 
                 </div>
                 <div  class="test-title-gallery">
-                  <span style="font-size:14px;">{{ single_test.titre_test }}</span>
+                  <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" ><span style="font-size:14px;">{{ single_test.titre_test }}</span></a>
                 </div>
           </div>
 
