@@ -562,7 +562,7 @@ a:hover{
     display: table-cell;
     vertical-align: middle;
 }
-.modal-content {
+.vertical-align-center .modal-content {
     /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
     width:inherit;
     height:inherit;
