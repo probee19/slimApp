@@ -12,7 +12,7 @@
      <meta property="og:image:height" content="420" />
      <meta property="og:image:type" content="image/jpeg" />
      <meta property="og:type" content="website">
-     <meta property="fb:app_id" content="348809548888116">
+     <meta property="fb:app_id" content="{{fb_app_id}}">
  {% endblock %}
 {% block googletagmanager %}
  <script>
@@ -32,6 +32,7 @@
             {% if is_result == true %}
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-top:15px;margin-bottom:15px;">
                     <p>{{ titre_test }}</p>
+                    <a href=”fb-messenger://share/?link={{ url_to_share }}&app_id={{fb_app_id}}”>Send In Messenger</a>
                     <a class="btn btn-primary btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "top")'  style="cursor:pointer;" data-btn="share-top"><i class="fa fa-facebook-square" aria-hidden="true"></i> {{interface_ui.btn_share}}</a>
                 </div>
                 <div class="col-sm-10 col-sm-offset-1" style="clear: both; position: relative;">
