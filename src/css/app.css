@@ -371,6 +371,16 @@ a:hover{
     background-color: #0d2456 \9 !important;
 }
 
+/**/
+.btn_share{
+  font-size: 2em;
+  padding: 0.5em 1em;
+  margin-top:0.7em;
+  background-color: #3b5999;
+}
+.modal{
+
+}
 @media(max-width: 769px){
     body{
         padding-top:50px;
@@ -521,7 +531,7 @@ a:hover{
     font-size: 1.5em;
   }
 }
-@media(max-width: 360px){
+@media screen and (max-width: 360px){
     #btn-result {
         font-size: 1em;
     }
@@ -545,16 +555,6 @@ a:hover{
     }
 }
 
-/**/
-.btn_share{
-  font-size: 2em;
-  padding: 0.5em 1em;
-  margin-top:0.7em;
-  background-color: #3b5999;
-}
-.modal{
-
-}
 /* modal */
 
 .vertical-alignment-helper {
