@@ -516,6 +516,11 @@ a:hover{
         left:65%;
     }
 }
+@media (max-width: 527px) {
+  .btn_share {
+    font-size: 1.5em;
+  }
+}
 @media(max-width: 360px){
     #btn-result {
         font-size: 1em;
