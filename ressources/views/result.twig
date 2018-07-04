@@ -127,7 +127,7 @@
                     </div>
                     <div class="modal-body text-center">
                       <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:15px auto*/">
-                      <a href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link_modal" onclick='partage("{{ code }}", "{{ lang }}", "modal_img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-modal-img"></a>
+                      <!--a href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link_modal" onclick='partage("{{ code }}", "{{ lang }}", "modal_img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-modal-img"></a-->
                       {% if is_mobile() or is_tablet() %}
                           <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "modal_messenger")'><i class="fab fa-facebook-messenger"></i>  {{interface_ui.btn_share_msg}}</a>
                       {% else %}
