@@ -31,7 +31,7 @@
 .nom{text-transform:capitalize;font-weight:700;}
 .signification{text-transform:capitalize;font-weight:500;}
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;
@@ -71,10 +71,10 @@
           <div class='main'>
       
 <?php     
-          $nom = urldecode($_GET['full_user_name']);
+          $nom = $_GET['full_user_name']; 
           $chaine = trim($nom);
           $chaine = str_replace("###antiSlashe###t", " ", $chaine);
-          $chaine = eregi_replace("[ ]+", " ", $chaine);
+         //$chaine = preg_replace("[ ]+", " ", $chaine);
           $nom = explode(' ',$chaine);
           $couleurs= ['#FFBB00','#3182FC','#FD2C25','#00AC47'];
           $nb_mots = count($nom);

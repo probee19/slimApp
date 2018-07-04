@@ -35,7 +35,7 @@
 #footer{z-index:1; font-family: 'Titillium Web', sans-serif;position: absolute; right: 0; top: 320px; color:#000; font-size:20px; line-height:44px; width:500px ; height:40px ; display:flex; align-items:flex-end; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
 
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;
@@ -80,10 +80,10 @@
 ?>
 <!DOCTYPE HTML>
 
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
 <div class="mask"></div>
 
-<div class="texte" id="header"><?php echo urldecode($_GET['user_name']); ?> ، استنادًا إلى تحليلنا العميق ، الجودة التي تصفك أفضل شيئ هي:</div>
+<div class="texte" id="header"><?php echo $_GET['user_name']; ?> ، استنادًا إلى تحليلنا العميق ، الجودة التي تصفك أفضل شيئ هي:</div>
 
 <div class="texte" id="quality"><?=$qualites[0]?></div>
 
