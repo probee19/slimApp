@@ -32,7 +32,7 @@
             {% if is_result == true %}
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-top:15px;margin-bottom:15px;">
                     <p>{{ titre_test }}</p>
-                    <a href="http://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-primary btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "top_messenger")'><i class="fab fa-facebook-messenger"></i>  {{interface_ui.btn_share_msg}}</a>
+                    <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-primary btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "top_messenger")'><i class="fab fa-facebook-messenger"></i>  {{interface_ui.btn_share_msg}}</a>
 
                     <a class="btn btn-primary btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "top")'  style="cursor:pointer;" data-btn="share-top"><i class="fab fa-facebook-square"></i> </a>
                 </div>

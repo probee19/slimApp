@@ -72,7 +72,7 @@
                     <input type="text" id="additionnal_input_text" name="additionnal_input_text" value="" placeholder="{{input_text.label}}" class="form-control" style="max-width:400px; margin:0 auto;text-align: center;">
                   </div>
                   <div class="form-group">
-                    <a id="btn-result" href="{{ domain_url }}/start/{{ test.id_test }}" onclick="setSessionVar('additionnal_input_text',$('#additionnal_input_text').val(),{{id_test}}, true);" class="btn btn-primary btn-lg btn_to_track gtm_btn-test" data-btn="process" style="">
+                    <a id="btn-result" href="{{ domain_url }}/start/{{ test.id_test }}" onclick="setSessionVar('additionnal_input_text',$('#additionnal_input_text').val(),{{id_test}}, true);" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="">
                         <i class="fa fa-facebook-square"></i>
                             {{interface_ui.btn_continue | capitalize}} {{ session.name | capitalize }}
                     </a>
