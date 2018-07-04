@@ -29,7 +29,6 @@ class AllTestsController extends Controller
     $tests = Test::where('statut','!=',-1)
       ->with('defaultLangInfo')
       ->orderBy('id_test','DESC')
-      ->take(60)
       ->get();
     else
     $tests = Test::where('statut','!=',-1)
