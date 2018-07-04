@@ -73,18 +73,18 @@
                   <div  class="col-xs-12 btn-action text-center" style="margin-top:1em; margin-bottom: 2em; padding:0; ">
                       {% if session.name %}
                           {% if (permission == 0) or (session.accepted == true)  %}
-                              <a id="btn-result" href="{{ domain_url }}/start{% if test.if_additionnal_info == 1 %}/1{% endif %}/{{ test.id_test }}" onclick="loader()" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="background-color: #3b5999;">
+                        <a id="btn-result" href="{{ domain_url }}/start{% if test.if_additionnal_info == 1 %}/1{% endif %}/{{ test.id_test }}" onclick="loader()" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="background-color: #3b5999; color:#fff">
                                   <i class="fab fa-facebook-square"></i>
                                       {{interface_ui.btn_continue | capitalize}} {{ session.name | capitalize }}
                               </a>
                           {% else %}
-                              <a id="btn-result" href="{{ loginUrl }}"  onclick="loader()" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="background-color: #3b5999;">
+                              <a id="btn-result" href="{{ loginUrl }}"  onclick="loader()" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="background-color: #3b5999; color:#fff">
                                   <i class="fab fa-facebook-square"></i>
                                   {{interface_ui.btn_continue | capitalize}} {{ session.name | capitalize }}
                               </a>
                           {% endif %}
                       {% else %}
-                          <a id="btn-result" href="{{ loginUrl }}"  onclick="loader()" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="background-color: #3b5999;">
+                          <a id="btn-result" href="{{ loginUrl }}"  onclick="loader()" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="background-color: #3b5999; color:#fff">
                               <i class="fab fa-facebook-square"></i>
                               {{interface_ui.btn_login_test | capitalize}}
                           </a>
