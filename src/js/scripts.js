@@ -73,17 +73,6 @@ $(document).ready(function () {
     openModalDiscovery();
     openModalShare();
 
-    // Get the modal
-    var modalF = $("#discovery-share-modal");
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modalF) {
-            //modalF.style.display = "none";
-            $("#discovery-share-modal").css('display','none');
-            $(".vertical-alignment-helper").css('display','unset');
-        }
-    }
 
     $(".btn_to_track").on("click", function () {
         //clickButton($(this).attr("data-btn"));
@@ -117,8 +106,21 @@ $(document).ready(function () {
     });
 
 
+    // Align modal when it is displayed
+    $(".modal").on("shown.bs.modal", alignModal);
+
+    // Align modal when user resize the window
+    $(window).on("resize", function(){
+        $(".modal:visible").each(alignModal);
+    });
+
 });
 
+function alignModal(){
+      var modalDialog = $(this).find(".modal-dialog");
+      /* Applying the top margin on modal dialog to align it vertically center */
+      modalDialog.css("margin-top", Math.max(0, ($(window).height() - modalDialog.height()) / 2));
+  }
 
 
 function setSessionVar (varName, value, id, loader_on = false){
