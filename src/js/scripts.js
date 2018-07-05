@@ -73,6 +73,17 @@ $(document).ready(function () {
     openModalDiscovery();
     openModalShare();
 
+    // Get the modal
+    var modalF = $("#discovery-share-modal");
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modalF) {
+            //modalF.style.display = "none";
+            $("#discovery-share-modal").css('display','none');
+            $(".vertical-alignment-helper").css('display','unset');
+        }
+    }
 
     $(".btn_to_track").on("click", function () {
         //clickButton($(this).attr("data-btn"));
@@ -107,6 +118,7 @@ $(document).ready(function () {
 
 
 });
+
 
 
 function setSessionVar (varName, value, id, loader_on = false){
