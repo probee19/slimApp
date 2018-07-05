@@ -533,7 +533,7 @@ a:hover{
 
 @media (max-width: 527px) {
   .btn_share {
-    font-size: 1.3em;
+    font-size: 1.1em;
   }
 }
 
@@ -542,7 +542,7 @@ a:hover{
         font-size: 1em;
     }
     .btn_share {
-      font-size: 1.2em;
+      font-size: 1em;
     }
     .gallery-fb{
       width: calc(100% * 0.48);
