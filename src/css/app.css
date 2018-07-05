@@ -374,7 +374,7 @@ a:hover{
 /**/
 .btn_share{
   font-size: 2em;
-  padding: 0.5em 1em;
+  /*padding: 0.5em 1em;*/
   margin-top:0.7em;
   background-color: #3b5999;
   color: #FFF;

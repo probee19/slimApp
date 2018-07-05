@@ -1135,6 +1135,7 @@ class Helper
     }
 
 
+
     public static function curl_get_fields($url, $fields, $header=false){
 				$get_array = [];
 				if ( is_array($fields) ) {
@@ -1166,6 +1167,68 @@ class Helper
 		 			curl_close ($CURL);
 		 		 return $content;
 			 // Fermeture de la session cURL
+     }
+
+    public function bitly_shorten($url) {
+       $login = "bitly_login";
+       $apikey = "e99e986a530f8511a38adb57aaed71b786ea5325";
+       $format = "text";
+       $query = array("access_token"  => $apikey,
+                      "longUrl" => urlencode($url),
+                      "format"  => $format);
+       $query = http_build_query($query);
+       $final_url = "http://api.bitly.com/v3/shorten?".$query;
+       if (function_exists("file_get_contents"))
+           $response = file_get_contents($final_url);
+       else {
+           $ch = curl_init();
+           $timeout = 5;
+           curl_setopt($ch, CURLOPT_URL, $final_url);
+           curl_setopt($ch, CURLOPT_HEADER, 0);
+           curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+           curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+           $response = curl_exec($ch);
+           curl_close($ch);
+       }
+       $response = json_decode($response);
+       if($response->status_code == 0 && $response->status_txt == "OK")
+           return $response->data->url;
+       else
+           return null;
+   }
+
+    function curlAPI($method, $url, $data, $header = null){
+       $curl = curl_init();
+       switch ($method){
+          case "POST":
+             curl_setopt($curl, CURLOPT_POST, 1);
+             if ($data)
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+             break;
+          case "PUT":
+             curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+             if ($data)
+                curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+             break;
+          default:
+             if ($data)
+                $url = sprintf("%s?%s", $url, http_build_query($data));
+       }
+       // OPTIONS:
+       curl_setopt($curl, CURLOPT_URL, $url);
+
+       if($header)
+       curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+          'APIKEY: 111111111111111111111',
+          'Content-Type: application/json',
+       ));
+       curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+       curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+       // EXECUTE:
+       $result = curl_exec($curl);
+       if(!$result){die("Connection Failure");}
+       curl_close($curl);
+       return $result;
     }
 
 }
