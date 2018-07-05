@@ -12,7 +12,7 @@
      <meta property="og:image:height" content="420" />
      <meta property="og:image:type" content="image/jpeg" />
      <meta property="og:type" content="website">
-     <meta property="fb:app_id" content="{{fb_app_id}}">
+     <meta property="fb:app_id" content="{{ fb_app_id }}">
  {% endblock %}
 {% block googletagmanager %}
  <script>
@@ -32,17 +32,19 @@
             {% if is_result == true %}
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-top:15px;margin-bottom:15px;">
                     <p>{{ titre_test }}</p>
-                    <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-primary btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "top_messenger")'><i class="fab fa-facebook-messenger"></i>  {{interface_ui.btn_share_msg}}</a>
-
-                    <a class="btn btn-primary btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "top")'  style="cursor:pointer;" data-btn="share-top"><i class="fab fa-facebook-square"></i> </a>
+                    <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "top")'  style="cursor:pointer;" data-btn="share-top"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
+                    {% if is_mobile() or is_tablet() %}
+                        <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "top_messenger")'><i class="fab fa-facebook-messenger"></i>  {{interface_ui.btn_share_msg}}</a>
+                    {% else %}
+                      <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "top_messenger")'><i class="fab fa-facebook-messenger"></i></a>
+                    {% endif %}
                 </div>
                 <div class="col-sm-10 col-sm-offset-1" style="clear: both; position: relative;">
                     <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="margin:auto -30px; max-width: calc(100% + 60px);">
-                    <a href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
-
+                    <a href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
                     <div class="overlay-share">
-                      <a class="overlay-btn-share" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "overlay")'  >
-                        <i class="fa fa-facebook-f" aria-hidden="true" style="font-size:2em;"></i> &nbsp;{{interface_ui.label_short_share}}
+                      <a class="overlay-btn-share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "overlay")'  >
+                        <i class="fab fa-facebook-square" aria-hidden="true" style="font-size:2em;"></i> &nbsp;{{interface_ui.label_short_share}}
                       </a>
                       <span class="overlay-btn-close" onclick='$(".overlay-share").fadeOut("slow")'>
                         <i class="fa fa-times" aria-hidden="true"></i>
@@ -74,9 +76,13 @@
                 {% endif %}
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center"
                         {% if is_mobile() or is_tablet() %} style="margin-top:.8em;" {% endif %}>
-                        <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}">Send In Messenger</a>
-                    <a href="http://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-primary btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i>  {{interface_ui.btn_share_msg}}</a>
-                    <a class="btn btn-primary btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fab fa-facebook-square"></i></a>
+
+                    <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
+                    {% if is_mobile() or is_tablet() %}
+                        <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i>  {{interface_ui.btn_share_msg}}</a>
+                    {% else %}
+                      <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i></a>
+                    {% endif %}
                 </div>
                 {% if unique_result == 1 %}
                   <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em;" id="block_redo">
@@ -112,6 +118,28 @@
 
     </div>
 
+    <div id="discovery-share-modal" class="modal fade" role="dialog">
+        <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+                <div class="modal-content">
+                    <div class="modal-header" style="font-size:1.3em">
+                      {{interface_ui.modal_share_label}}
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body text-center">
+                      <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:15px auto*/">
+                      <!--a href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link_modal" onclick='partage("{{ code }}", "{{ lang }}", "modal_img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-modal-img"></a-->
+                      <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "modal_bottom")' style="cursor:pointer;color:#fff "  data-btn="share-modal-bottom"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
+                      {% if is_mobile() or is_tablet() %}
+                          <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "modal_messenger")'><i class="fab fa-facebook-messenger"></i>  {{interface_ui.btn_share_msg}}</a>
+                      {% else %}
+                        <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "modal_messenger")'><i class="fab fa-facebook-messenger"></i></a>
+                      {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% else %}
           <!-- Modal top 3 tests -->
           {% if top_tests is not empty %}
@@ -212,7 +240,7 @@
 
                 </div>
                 <div  class="test-title-gallery">
-                  <span style="font-size:14px;">{{ single_test.titre_test }}</span>
+                  <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" ><span style="font-size:14px;">{{ single_test.titre_test }}</span></a>
                 </div>
           </div>
 
@@ -237,24 +265,6 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top:1em; margin-bottom:2em"><a class="btn btn-default btn-lg btn_to_track" href="{{ path_for('accueil') }}?utm=all_test"  data-btn="btn-home"><i class="fa fa-home"></i>{{interface_ui.btn_home | capitalize}}</a></div>
 
-
-    <div id="discovery-share-modal" class="modal fade" role="dialog">
-        <div class="vertical-alignment-helper">
-            <div class="modal-dialog vertical-align-center">
-                <div class="modal-content">
-                    <div class="modal-header" style="font-size:1.3em">
-                      {{interface_ui.modal_share_label}}
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body text-center">
-                      <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:15px auto*/">
-                      <a href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link_modal" onclick='partage("{{ code }}", "{{ lang }}", "modal_img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-modal-img"></a>
-                      <a class="btn btn-primary btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "modal_bottom")' style="cursor:pointer; "  data-btn="share-modal-bottom"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 {% endblock %}
