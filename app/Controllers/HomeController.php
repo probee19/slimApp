@@ -270,12 +270,15 @@ class HomeController extends Controller
       }else{
         $country_code = $helper->getCountryCode();
       }
-    if(isset($args['code'])){
-    $code = $args['code'];
-    }
-    if(isset($args['new'])){
-    $new = $args['new'];
-    }
+
+      $this->helper->debug($_GET['pays']);
+      $this->helper->debug($country_code);
+      if(isset($args['code'])){
+      $code = $args['code'];
+      }
+      if(isset($args['new'])){
+      $new = $args['new'];
+      }
 
       $is_result = true;
       $date = date('Y-m-d');
