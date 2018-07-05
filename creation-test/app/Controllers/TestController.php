@@ -60,7 +60,7 @@ class TestController extends Controller
         }
 
         $data_test['fb_url_campaign'] = 'http://fr.funizi.com/test/'.$this->helper->cleanUrl($this_test->titre_test).'/'.$this_test->id_test.'?utm_source=facebook&utm_medium=post&utm_campaign=organic_'.date("Y-m-d").'&utm_content=test_'.$this_test->id_test;
-        $data_test['twitter_url_campaign'] = 'http://fr.funizi.com/test/'.$this->helper->cleanUrl($this_test->titre_test).'/'.$this_test->id_test.'?utm_source=twitter&utm_medium=post&utm_campaign=organic_'.date("Y-m-d").'&utm_content=test_'.$this_test->id_test;
+        $data_test['twitter_url_campaign'] = 'http://fr.funizi.com/test/'.$this->helper->cleanUrl($this_test->titre_test).'/'.$this_test->id_test.'?utm_source=twitter&utm_medium=tweet&utm_campaign=organic_'.date("Y-m-d").'&utm_content=test_'.$this_test->id_test;
         $data_test['ads_fb_url_campaign'] = 'http://fr.funizi.com/test/'.$this->helper->cleanUrl($this_test->titre_test).'/'.$this_test->id_test.'?utm_source=facebook&utm_medium=ads&utm_campaign=funizi_ads_'.date("Y-m-d").'&utm_content=test_'.$this_test->id_test;
         $data_test['newsletter_url_campaign'] = 'http://fr.funizi.com/test/'.$this->helper->cleanUrl($this_test->titre_test).'/'.$this_test->id_test.'?utm_source=newsletter&utm_medium=email&utm_campaign=mailchimp_'.date("Y-m-d").'&utm_content=test_'.$this_test->id_test;
 
