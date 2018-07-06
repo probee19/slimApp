@@ -450,7 +450,7 @@ class Helper
     public function relatedTests($id, $countryCode, $exclude, $lang, $total = 33){
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
-      $related_tests = array();
+      $related_tests = array(); $alltests_total = array();
       $related_tests = self::getRelatedTest($id, $countryCode, $exclude, $lang);
       if(count($related_tests) >= 1)
         foreach ($related_tests as $test)
@@ -564,9 +564,30 @@ class Helper
         $alltests_total = array_slice($alltests, 0, $total);
       }
 
+      if(count($alltests_total) == 0 )
+         $alltests_total = self::getAlternateTests($countryCode, $exclude, $lang);
+
       return $alltests_total;
     }
 
+    public static function getAlternateTests($countryCode, $exclude, $lang, $total = 33)
+    {
+      $tests_from_json = self::getAllTestJson($lang);
+      $nb_taken = 0; $alltests = array();
+      foreach ($tests_from_json as $test) {
+        if(!in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total){
+          $alltests[$test['id_test']] = [
+            'url_image_test'        => $test['url_image_test'],
+            'id_test'               => $test['id_test'],
+            'titre_test'            => $test['titre_test']
+          ];
+        }
+      }
+      if(count($alltests) > 0)
+        shuffle($alltests);
+
+      return $alltests;
+    }
     public static function getLovedTests($countryCode, $exclude, $lang, $total = 3){
       //$file = "ressources/views/json_files/best_tests/".$lang."_best_tests.json";
       $file = $_SERVER['STORAGE_BASE'] . "/json_files/best_tests/" . $lang . "_best_tests.json";

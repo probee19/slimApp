@@ -341,20 +341,6 @@ class HomeController extends Controller
               }
 
 
-              $tests_from_json = $this->helper->getAllTestJson($lang);
-              $nb_taken = 0; $total = 33; $all_test = array();
-              foreach ($tests_from_json as $test) {
-                if(!in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $country_code) != false ) && ++$nb_taken <= $total){
-                  $all_test[$test['id_test']] = [
-                    'url_image_test'        => $test['url_image_test'],
-                    'id_test'               => $test['id_test'],
-                    'titre_test'            => $test['titre_test']
-                  ];
-                }
-              }
-              shuffle($all_test);
-
-
 
               //$all_test = $helper->relatedTests($test->test_id, $country_code, $exclude, $lang);
           }
@@ -374,19 +360,6 @@ class HomeController extends Controller
                 $exclude [] = $top_test["id_test"];
               }
 
-              $tests_from_json = $this->helper->getAllTestJson($lang);
-              $nb_taken = 0; $total = 33; $all_test = array();
-              foreach ($tests_from_json as $test) {
-                if(!in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $country_code) != false ) && ++$nb_taken <= $total){
-                  $all_test[$test['id_test']] = [
-                    'url_image_test'        => $test['url_image_test'],
-                    'id_test'               => $test['id_test'],
-                    'titre_test'            => $test['titre_test']
-                  ];
-                }
-              }
-              shuffle($all_test);
-              
               //$all_test = $helper->relatedTests($test->test_id, $country_code, $exclude, $lang);
           }
           $testId = $test->test_id;
