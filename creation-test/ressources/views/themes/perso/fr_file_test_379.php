@@ -90,6 +90,7 @@
                     return $adverbe;
          } 
          $texte = '';
+         $slogan = array('hrv'=>' Petit pays, grands rêves ','fra'=>' VOTRE FORCE, NOTRE PASSION. ALLEZ LES BLEUS !!! ','bel'=>' Diables Rouges en mission ','eng'=>' Emmenez-nous vers la victoire ');
  ?>
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1529368399.jpg" id="back"> 
@@ -101,7 +102,7 @@
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="support" ><span style="color:#FFF"><?php echo $_GET['user_name']; ?> supporte</span>  <span style="color:#f1c40f; text-transform:uppercase;"><?=getAdverb($_GET['cn'])?> <?php echo $_GET['cn']; ?> </span></div>
 
-<div class="texte" id="slog"> Toujours gagnants  </div>
+<div class="texte" id="slog"><?= $slogan[<?php echo $_GET['cc']; ?>]?> </div>
  
 
         </div>

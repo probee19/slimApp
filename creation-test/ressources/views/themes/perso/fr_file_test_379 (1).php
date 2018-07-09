@@ -90,7 +90,7 @@
                     return $adverbe;
          } 
          $texte = '';
-         $slogan = array('hrv'=>'Small country, big dreams','fra'=>'YOUR STRENGTH, OUR PASSION. GO BLUES !!!','bel'=>'Red Devils on a mission','eng'=>'Take us to victory');
+         $slogan = array('hrv'=>' Petit pays, grands rêves ','fra'=>' VOTRE FORCE, NOTRE PASSION. ALLEZ LES BLEUS !!! ','bel'=>' Diables Rouges en mission ','eng'=>' Emmenez-nous vers la victoire ');
  ?>
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1529368399.jpg" id="back"> 

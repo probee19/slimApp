@@ -35,7 +35,7 @@
 #support{position:absolute; z-index:1;font-family: 'Kaushan Script', cursive; left: 0px; top: 180px; font-size:45px; line-height:55px; color:#FFF; width:400px; height:200px;  display:flex; flex-direction:column;align-items:center; justify-content:center; text-align:center;} 
 .team{color:#f1c40f; text-transform:uppercase;}
 
-#slog{z-index:1; position: absolute; font-family: 'Kaushan Script', cursive; right:0px; bottom: 80px; font-weight:700; color:#FFF; font-size:30px; text-transform:uppercase; width:400px ; height:50px ;  text-align:center;}
+#slog{z-index:1; position: absolute; font-family: 'Kaushan Script', cursive; right:0px; bottom: 80px; font-weight:700; color:#FFF; font-size:27px; text-transform:uppercase; width:400px ; height:50px ;  text-align:center;}
 
 
 
@@ -90,6 +90,7 @@
                     return $adverbe;
          } 
          $texte = '';
+         $slogan = array('hrv'=>'Kleines Land, große Träume','fra'=>'DEINE STÄRKE, UNSERE LEIDENSCHAFT. LASS BLUES !!!','bel'=>'Rote Teufel auf einer Mission','eng'=>'Bring uns zum Sieg');
  ?>
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1529368399.jpg" id="back"> 
@@ -101,7 +102,7 @@
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 <div class="name texte" id="support" ><span style="color:#FFF"><?php echo $_GET['user_name']; ?> supporte</span>  <span style="color:#f1c40f; text-transform:uppercase;"><?=getAdverb($_GET['cn'])?> <?php echo $_GET['cn']; ?> </span></div>
 
-<div class="texte" id="slog">Immer Gewinner </div>
+<div class="texte" id="slog"><?= $slogan[$_GET['cc']]?> </div>
  
 
         </div>
