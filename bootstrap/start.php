@@ -179,7 +179,7 @@ $container['StartController'] = function ($container) {
     return new StartController($container);
 };
 $container['ClickController'] = function ($container) {
-    return new StartController($container);
+    return new ClickController($container);
 };
 $container['GrabzitController'] = function ($container) {
     return new GrabzitController($container);
