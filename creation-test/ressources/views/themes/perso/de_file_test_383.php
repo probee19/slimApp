@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+              <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -22,22 +22,15 @@
               }
               .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
-.main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
-.main img{ position:absolute; max-height:420px; max-width:800px; }
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
+#selbe{position:absolute; z-index:1; left:30px; bottom:30px; border-radius:200px; border:10px solid #FFF;  width:200px; max-height:200px; }
 
-#coupe{position:absolute; z-index:1; left:345px; top:110px;   height:200px; }
+#bubble{position:absolute; z-index:1; right:0; top:10px;  width:630px; max-height:420px; }
 
-.flag_team{z-index:1; position: absolute; right:75px; top:128px;   text-align:center; width:250px;   }
+#voyance{z-index:1;font-family: 'Boogaloo', cursive;position: absolute; right: 50px; top: 50px; color:#fff; font-size:40px; line-height:45px; width:500px ; height:170px ; display:flex; align-items:center; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
 
-#fb_id_user{position: absolute; z-index:1; left: 125px; top: 30px; width:150px ;  height:150px ; object-fit: cover; object-position: 50% 10%; border-radius:150px; border:5px solid #FFF;}
-#support{position:absolute; z-index:1;font-family: 'Kaushan Script', cursive; left: 0px; top: 180px; font-size:45px; line-height:55px; color:#FFF; width:400px; height:200px;  display:flex; flex-direction:column;align-items:center; justify-content:center; text-align:center;} 
-.team{color:#f1c40f; text-transform:uppercase;}
-
-#slog{z-index:1; position: absolute; font-family: 'Kaushan Script', cursive; right:0px; bottom: 80px; font-weight:700; color:#FFF; font-size:30px; text-transform:uppercase; width:400px ; height:50px ;  text-align:center;}
-
-
+#fb_id_user{position: absolute; z-index:1; right: 20px; bottom: 20px; width:100px ;  height:100px ; object-fit: cover; object-position: 50% 10%; border-radius:100px; border:10px solid #FFF; max-width:800px; max-height:420px;}
 
               </style>
               <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
@@ -80,30 +73,23 @@
           <div class='main'>
       
 <?php
-         function getAdverb($team, $adverbe="l'"){ 
-                   $feminin = array('Belgique','Colombie','Corée','Croitie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
-                   $masculin = array('Brésil','Costa Rica','Danemark','Japon','Maroc','Nigeria','Panama','Péru','Portugal','Sénégal');
-                    if(in_array($team,$feminin,true ))
-                              $adverbe = 'la '; 
-                    elseif(in_array($team,$masculin,true ))
-                              $adverbe = 'le '; 
-                    return $adverbe;
-         } 
-         $texte = '';
-         $slogan = array('hrv'=>' Petit pays, grands rêves ','fra'=>' VOTRE FORCE, NOTRE PASSION. ALLEZ LES BLEUS !!! ','bel'=>' Diables Rouges en mission ','eng'=>' Emmenez-nous vers la victoire ');
- ?>
+          $voyance = array('Yaw guissna gua nékk Président de la République',
+          'Dingua guén réww mi si fane yu néééwe pour guissé ak Obama',
+          '15 millions yila Macky di diokh mangui niii diko guiss mouy nieuw',
+          'Demb wane nagnuma si guent ni dingua gagné 100 millions');
+          shuffle($voyance);
+?>
 <!DOCTYPE HTML>
-<img src="https://creation.funizi.com/images-theme-perso/1529368399.jpg" id="back"> 
- 
-<img src="https://creation.funizi.com/images-theme-perso/1529368950.png" id="coupe"> 
-<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags_big/<?php echo $_GET['cc']; ?>.png" id="" class="flag_team"> 
-                                       
- 
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="support" ><span style="color:#FFF"><?php echo $_GET['user_name']; ?> supporte</span>  <span style="color:#f1c40f; text-transform:uppercase;"><?=getAdverb($_GET['cn'])?> <?php echo $_GET['cn']; ?> </span></div>
 
-<div class="texte" id="slog"><?= $slogan[<?php echo $_GET['cc']; ?>]?> </div>
- 
+<img src="https://creation.funizi.com/images-theme-perso/1531309051.jpg" id="back"> 
+
+
+<div class="texte" id="voyance"><?=$voyance[0]?></div>
+
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
+
+
+
 
         </div>
         

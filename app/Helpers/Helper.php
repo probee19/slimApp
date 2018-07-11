@@ -485,7 +485,7 @@ class Helper
         // Selection de quelques tests
         $choosen_some_tests = array();
         //$array_tests = array(207,112);
-        $array_tests = array(370, 347, 207, 361, 362, 366, 363, 371, 376, 377, 379, 380, 381);
+        $array_tests = array(370, 347, 207, 361, 362, 366, 363, 371, 376, 377, 379, 380, 381, 383);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
