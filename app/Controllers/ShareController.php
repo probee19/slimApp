@@ -28,7 +28,7 @@ class ShareController extends Controller
                 $share = Share::where('result_code','=', "$code")->firstOrFail();
                 if($share)
                 Share::where('result_code','=', "$code")->increment('partages_count');
-                Test::where('id_test','=', $test_id)->increment('nb_partages');
+                //Test::where('id_test','=', $test_id)->increment('nb_partages');
 
             } catch (\Exception $e) {
                 $share = Share::create([
