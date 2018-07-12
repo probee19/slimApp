@@ -36,15 +36,15 @@ class ResultController extends Controller
 
         $is_result = true;
         $date = date('Y-m-d');
-        $test = UserTest::where('uuid', "$code")->with('testInfo')->first();
+        $test = UserTest::on('reader')->where('uuid', "$code")->with('testInfo')->first();
         //$testInfo = Test::where('id_test', $test->testInfo->id_test)->first();
-        $testInfo = Test::selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.unique_result AS unique_result, tests.id_theme AS id_theme, tests.id_rubrique AS id_rubrique, tests.id_test AS id_test')
+        $testInfo = Test::on('reader')->selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.unique_result AS unique_result, tests.id_theme AS id_theme, tests.id_rubrique AS id_rubrique, tests.id_test AS id_test')
           ->join('test_info','test_info.id_test','tests.id_test')
           ->Where([['tests.id_test', '=', $test->testInfo->id_test],['test_info.lang','=',$lang]])->first();
         if(isset($test))
             $result_description = $test->result_description;
         if(!isset($test)){
-            $test = BotTests::where('uuid', "$code")->with('testInfo')->first();
+            $test = BotTests::on('reader')->where('uuid', "$code")->with('testInfo')->first();
             $result_description = "<strong>N’oublie pas de PARTAGER ça maintenant avec tes amis et tes proches !</strong>";
         }
         $img_url = $test->img_url;
@@ -85,7 +85,7 @@ class ResultController extends Controller
                 $exclude = [$test->test_id];
                 if(!empty($_SESSION['uid'])){
                     //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
-                    $testUser = User::where('facebook_id', '=', $_SESSION['uid'])
+                    $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
                         ->with('usertests')->first();
                     foreach($testUser->usertests as $user){
                         $exclude [] = $user->test_id;
@@ -102,7 +102,7 @@ class ResultController extends Controller
                 $exclude = [$test->test_id];
                 if(!empty($_SESSION['uid'])){
                     //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
-                    $testUser = User::where('facebook_id', '=', $_SESSION['uid'])
+                    $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
                         ->with('usertests')->first();
                     foreach($testUser->usertests as $user){
                         $exclude [] = $user->test_id;
