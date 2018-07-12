@@ -81,7 +81,7 @@ class StartController extends Controller
             return $response->withStatus(302)->withHeader('Location', $result_url );
         }else{
 
-          $test = Test::selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.has_treatment AS has_treatment, tests.unique_result AS unique_result, tests.if_additionnal_info AS if_additionnal_info, tests.id_theme AS id_theme, tests.id_test AS id_test')
+          $test = Test::on('reader')->selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.has_treatment AS has_treatment, tests.unique_result AS unique_result, tests.if_additionnal_info AS if_additionnal_info, tests.id_theme AS id_theme, tests.id_test AS id_test')
             ->join('test_info','test_info.id_test','tests.id_test')
             ->Where([['tests.id_test', '=', $test_id],['test_info.lang','=',$lang]])->first();
 
@@ -363,7 +363,7 @@ class StartController extends Controller
     private function saveOrUpdate($id, $name, $lastname, $genre, $ip){
         $country = $this->helper->getCountry($ip);
         try{
-            $user_in = User::where('facebook_id', $id)->firstOrFail();
+            $user_in = User::on('reader')->where('facebook_id', $id)->firstOrFail();
         }catch(\Exception $e){
             $user_in = User::create([
                 'first_name'    =>  $name,

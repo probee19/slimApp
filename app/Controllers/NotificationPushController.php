@@ -42,7 +42,7 @@ class NotificationPushController extends Controller
 
     $token = $_POST['subscription'];
     try{
-      $test_token = NotificationSubscriptions::where('token','=',$token)->firstOrFail();
+      $test_token = NotificationSubscriptions::on('reader')->where('token','=',$token)->firstOrFail();
     }catch(\Exception $e){
       NotificationSubscriptions::create([
         'browser'         =>  "$navigateur" ,
@@ -57,7 +57,7 @@ class NotificationPushController extends Controller
 
   public function getNotification($request, $response, $arg)
   {
-    $test = NotificationCampaigns::where('status','=','sent')->orWhere('nb_endpoints','=',1)->orderBy('id','DESC')->first();
+    $test = NotificationCampaigns::on('reader')->where('status','=','sent')->orWhere('nb_endpoints','=',1)->orderBy('id','DESC')->first();
 
     $data = array(
       'body'        =>  $test->body,

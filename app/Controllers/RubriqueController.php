@@ -53,7 +53,7 @@ class RubriqueController extends Controller
 
         //
         if(isset($lang) && $lang!= 'fr'){
-          $alltest = Test::where([
+          $alltest = Test::on('reader')->where([
               ['if_translated', '=','1'],
               ['statut', '=','1'],
               ['id_rubrique', '=',$rubrique],
@@ -67,7 +67,7 @@ class RubriqueController extends Controller
           $prefixe_page = $rubrique."_".$lang;
         }
         else {
-          $alltest = Test::where([
+          $alltest = Test::on('reader')->where([
               ['default_lang', '=', 'fr'],
               ['statut', '=', '1'],
               ['id_rubrique', '=',$rubrique],
@@ -90,7 +90,7 @@ class RubriqueController extends Controller
 
         if(isset($_SESSION[$name_session_page]) && !empty($_SESSION[$name_session_page]) ){
           $include = $_SESSION[$name_session_page];
-          $tests = Test::selectRaw('tests.titre_test AS titre_test_fr, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
+          $tests = Test::on('reader')->selectRaw('tests.titre_test AS titre_test_fr, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
                   ->join('test_info','test_info.id_test','tests.id_test')
                   ->where([['test_info.lang','=',$lang],['tests.id_rubrique', '=',$rubrique]])->whereIn('test_info.id_test', $include)->get()->sortBy(function($item, $index) use($include){
                     $arrayToSortBy = array_flip($include);
@@ -103,7 +103,7 @@ class RubriqueController extends Controller
           if(isset($_SESSION['seen']))
             $exclude = $_SESSION['seen'];
 
-          $tests = Test::selectRaw('tests.titre_test AS titre_test_fr, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
+          $tests = Test::on('reader')->selectRaw('tests.titre_test AS titre_test_fr, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
                      ->join('test_info','test_info.id_test','tests.id_test')
                      ->where(function($q) use ($exclude, $country_code,$lang,$rubrique){ $q->where([['tests.statut', '=', '1'],['tests.id_rubrique', '=',$rubrique],['tests.codes_countries', 'LIKE', "%$country_code%"],['test_info.lang','=',$lang]])->whereNotIn('tests.id_test', $exclude); })
                      ->orWhere(function($q) use ($exclude,$lang,$rubrique){ $q->where([['tests.statut', '=', '1'],['tests.id_rubrique', '=',$rubrique],['tests.codes_countries', '=', ''],['test_info.lang','=',$lang]])->whereNotIn('tests.id_test', $exclude);  })

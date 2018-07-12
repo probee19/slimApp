@@ -25,7 +25,7 @@ class ShareController extends Controller
         $share = 1;
         if($is_code) {
             try {
-                $share = Share::where('result_code','=', "$code")->firstOrFail();
+                $share = Share::on('reader')->where('result_code','=', "$code")->firstOrFail();
                 if($share)
                 Share::where('result_code','=', "$code")->increment('partages_count');
                 //Test::where('id_test','=', $test_id)->increment('nb_partages');
@@ -40,7 +40,7 @@ class ShareController extends Controller
                 ]);
             }
             try{
-                $daily = DailyStat::where([
+                $daily = DailyStat::on('reader')->where([
                         ['result_code', '=', "$code"],
                         ['created_at', 'LIKE', $date.'%']
                     ]
