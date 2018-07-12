@@ -33,7 +33,7 @@ class LoadStatsController extends Controller
       $test_id = $_GET['id'];
       $theme = $_GET['theme'];
       if($tab == 'global'){
-        $resultats = Resultat::where('id_test',$test_id)->with('stats')->with('test')->get();
+        $resultats = Resultat::on('reader')->where('id_test',$test_id)->with('stats')->with('test')->get();
         $data_resultats = array();
         if($resultats)
           foreach ($resultats as $resultat) {
@@ -69,7 +69,7 @@ class LoadStatsController extends Controller
       }
 
       if($tab == 'daily'){
-        $data_days = DailyStatPerTest::where('id_test',$test_id)->orderBy('created_at','DESC')->get();
+        $data_days = DailyStatPerTest::on('reader')->where('id_test',$test_id)->orderBy('created_at','DESC')->get();
         return $this->view->render($response, 'ajaxviews/dailyStatOneTest.twig', compact('theme','data_days'));
       }
 
@@ -78,10 +78,10 @@ class LoadStatsController extends Controller
       }
 
       if($tab == 'last_share'){
-          $data = Share::where('test_id', $test_id)->with('userInfo')->with('testInfo')->with('userTestInfo')->orderBy('created_at','DESC')->take(20)->get();
+          $data = Share::on('reader')->where('test_id', $test_id)->with('userInfo')->with('testInfo')->with('userTestInfo')->orderBy('created_at','DESC')->take(20)->get();
           $data_share = array();
           foreach ($data as $share) {
-            $resultat = Resultat::where('id_resultat','=',$share->userTestInfo->result_id)->first();
+            $resultat = Resultat::on('reader')->where('id_resultat','=',$share->userTestInfo->result_id)->first();
             $data_share[] = [
               "titre_resultat"    =>  $resultat->titre_resultat,
               "texte_resultat"    =>  $resultat->texte_resultat,
@@ -117,7 +117,7 @@ class LoadStatsController extends Controller
     public static function getGeoDataCharts($start,$end, $nb_tests_all, $nb_player_all , $lang = "")
     {
       // Data For Geo Chart
-      $countries = UserTest::selectRaw('country_code, country_name, COUNT(DISTINCT users_tests.user_id) AS nb_player, COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
+      $countries = UserTest::on('reader')->selectRaw('country_code, country_name, COUNT(DISTINCT users_tests.user_id) AS nb_player, COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
                 ->join('users', 'users.id', '=', 'users_tests.user_id')
                 ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"],['country_code','!=',NULL],['country_code','!=','']])
                 ->groupBy('country_code')
@@ -131,7 +131,7 @@ class LoadStatsController extends Controller
 
           $country_names = Helper::getNameContry($country->country_code);
 
-          $country_shares = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+          $country_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
               ->join('users','users.id','=','shares.user_id')
               ->where([['shares.created_at',">=","$start"],['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"],['country_code','=',"$country->country_code"]])
               ->first();
@@ -185,7 +185,7 @@ class LoadStatsController extends Controller
     public static function getLineChartData($start, $end, $lang = "")
     {
        CronController::updateDailyGlobalStat();
-       $all_data = DailyGlobalStats::where([['day',">=","$start"],['day',"<=","$end"]])->orderBy('day','ASC')->get();
+       $all_data = DailyGlobalStats::on('reader')->where([['day',">=","$start"],['day',"<=","$end"]])->orderBy('day','ASC')->get();
        $stats = array();
        foreach ($all_data as $data) {
          $day = date_create($data->day);
@@ -216,7 +216,7 @@ class LoadStatsController extends Controller
 
     public static function getLangPieChart($start,$end)
     {
-      $ut = UserTest::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done, lang AS lang')
+      $ut = UserTest::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done, lang AS lang')
           ->groupBy('lang')
           ->where([['created_at',">=","$start"],['created_at',"<=","$end"]])
           ->get();
@@ -244,16 +244,16 @@ class LoadStatsController extends Controller
       $e = date_format($e, 'd/m/Y');
 
       // Nombre de tests crées
-      $counts_tests_created = Test::where([['created_at',">=","$start"],['created_at',"<=","$end"],['statut','!=', -1] ])
+      $counts_tests_created = Test::on('reader')->where([['created_at',">=","$start"],['created_at',"<=","$end"],['statut','!=', -1] ])
                 ->count();
       // Nombre de  tests effectués pour cette période
-      $counts_wt = UserTest::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
+      $counts_wt = UserTest::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
                 ->where([['created_at',">=","$start"],['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"]])
                 ->first();
       $taux_diff_test = 0;
 
       if($s == $e){
-        $counts_wty = UserTest::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
+        $counts_wty = UserTest::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
                 ->where([['created_at',">=","$last_day_start"],['created_at',"<=","$last_day_end"], ['lang','LIKE',"%$lang%"] ])
                 ->first();
 
@@ -269,21 +269,21 @@ class LoadStatsController extends Controller
       }
 
       // Nombre de  tests effectués à travers le bot messenger
-      $counts_bt = BotTests::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct messenger_user_id) AS nb_player, COUNT(DISTINCT messenger_user_id, test_id) AS nb_test_unique_done ')
+      $counts_bt = BotTests::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct messenger_user_id) AS nb_player, COUNT(DISTINCT messenger_user_id, test_id) AS nb_test_unique_done ')
                 ->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
                 ->first();
 
       // Nombre d'utilisateurs inscrits pour cette période
-      $counts_new_users = User::where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
+      $counts_new_users = User::on('reader')->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
                          ->count();
 
       // Nombre de partage directs pour cette période
-      $counts_shares = Share::selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
+      $counts_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
                         ->where([['created_at',">=","$start"],['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"] ])
                         ->first();
 
       // Nombre de partages, de commentaires, de réactions, de clics pour cette période
-      $counts_stats = DailyStat::selectRaw('SUM(shares_count) AS shares_count, SUM(comments_count) AS comments_count , SUM(reactions_count) AS reactions_count, SUM(clicks_count) AS clicks_count ')
+      $counts_stats = DailyStat::on('reader')->selectRaw('SUM(shares_count) AS shares_count, SUM(comments_count) AS comments_count , SUM(reactions_count) AS reactions_count, SUM(clicks_count) AS clicks_count ')
                         ->where([['created_at',">=","$start"],['created_at',"<=","$end"] , ['lang','LIKE',"%$lang%"]])
                         ->first();
 
@@ -327,13 +327,13 @@ class LoadStatsController extends Controller
       date_sub($e,date_interval_create_from_date_string("1 day"));
       $e = date_format($e, 'd/m/Y');
       // Nombre de  tests effectués pour cette période
-      $counts_wt = UserTest::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
+      $counts_wt = UserTest::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
             ->where([['created_at',">=","$start"],['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"] ])
             ->first();
 
       $taux_diff_test = 0;
       if($s == $e){
-        $counts_wty = UserTest::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
+        $counts_wty = UserTest::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
                 ->where([['created_at',">=","$last_day_start"],['created_at',"<=","$last_day_end"], ['lang','LIKE',"%$lang%"] ])
                 ->first();
         if($counts_wt->nb_test_done > $counts_wty->nb_test_done)
@@ -348,11 +348,11 @@ class LoadStatsController extends Controller
       }
 
       // Nombre d'utilisateurs inscrits pour cette période
-      $counts_new_users = User::where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
+      $counts_new_users = User::on('reader')->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
              ->count();
 
        // Nombre de partage directs pour cette période
-       $counts_shares = Share::selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
+       $counts_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
              ->where([['created_at',">=","$start"],['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"] ])
              ->first();
 
@@ -451,7 +451,7 @@ class LoadStatsController extends Controller
       $data_best_shares_countries = array_slice($best_shares_countries, 0, 10);
 
       // Data For Best Tests
-      $best_tests_col = UserTest::selectRaw('test_id, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.$data_global["nb_tests_done_all"].' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
+      $best_tests_col = UserTest::on('reader')->selectRaw('test_id, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.$data_global["nb_tests_done_all"].' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
             ->join('tests','tests.id_test','=','users_tests.test_id')
             ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"] , ['users_tests.lang','LIKE',"%$lang%"]])
             ->groupBy('test_id')
@@ -459,7 +459,7 @@ class LoadStatsController extends Controller
             ->get();
 
       foreach ($best_tests_col as $data_bests) {
-        $best_shares_col = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+        $best_shares_col = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
             ->where([['created_at',">=","$start"], ['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"],  ['test_id','=',$data_bests->test_id]])
             ->groupBy('test_id')
             ->first();
@@ -527,7 +527,7 @@ class LoadStatsController extends Controller
         $data_global = self::getGlobalStatMini($start, $end, $last_day_start , $last_day_end, $lang);
 
         // Data For Best Tests
-        $best_tests_col = UserTest::selectRaw('test_id, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.$data_global["nb_tests_done_all"].' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
+        $best_tests_col = UserTest::on('reader')->selectRaw('test_id, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.$data_global["nb_tests_done_all"].' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
               ->join('tests','tests.id_test','=','users_tests.test_id')
               ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"] ])
               ->groupBy('test_id')
@@ -535,7 +535,7 @@ class LoadStatsController extends Controller
               ->get();
 
         foreach ($best_tests_col as $data_bests) {
-          $best_shares_col = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+          $best_shares_col = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
               ->where([['created_at',">=","$start"], ['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"], ['test_id','=',$data_bests->test_id]])
               ->groupBy('test_id')
               ->first();
@@ -599,7 +599,7 @@ class LoadStatsController extends Controller
       $data_global = self::getGlobalStatMini($start, $end, $last_day_start , $last_day_end, $lang);
 
       // Data For Best Tests
-      $best_tests_col = UserTest::selectRaw('test_id, tests.codes_countries AS codes_countries, tests.url_image_test AS url_image_test, tests.unique_result AS unique_result, tests.statut AS statut, tests.id_theme AS id_theme, tests.id_rubrique AS id_rubrique, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.$data_global["nb_tests_done_all"].' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
+      $best_tests_col = UserTest::on('reader')->selectRaw('test_id, tests.codes_countries AS codes_countries, tests.url_image_test AS url_image_test, tests.unique_result AS unique_result, tests.statut AS statut, tests.id_theme AS id_theme, tests.id_rubrique AS id_rubrique, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.$data_global["nb_tests_done_all"].' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
             ->join('tests','tests.id_test','=','users_tests.test_id')
             ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"] ])
             ->groupBy('test_id')
@@ -607,7 +607,7 @@ class LoadStatsController extends Controller
             ->get();
 
       foreach ($best_tests_col as $data_bests) {
-        $best_shares_col = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+        $best_shares_col = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
             ->where([['created_at',">=","$start"], ['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"], ['test_id','=',$data_bests->test_id]])
             ->groupBy('test_id')
             ->first();
@@ -680,7 +680,7 @@ class LoadStatsController extends Controller
         $data_global = self::getGlobalStatMini($start, $end, $last_day_start , $last_day_end, $lang, $list_tests);
 
         // Data For Best Tests
-        $best_tests_col = UserTest::selectRaw('test_id, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.$data_global["nb_tests_done_all"].' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
+        $best_tests_col = UserTest::on('reader')->selectRaw('test_id, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.$data_global["nb_tests_done_all"].' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
               ->join('tests','tests.id_test','=','users_tests.test_id')
               ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"] ])
               ->whereIn('test_id',$list_tests)
@@ -689,7 +689,7 @@ class LoadStatsController extends Controller
               ->get();
 
         foreach ($best_tests_col as $data_bests) {
-          $best_shares_col = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+          $best_shares_col = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
               ->where([['created_at',">=","$start"], ['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"], ['test_id','=',$data_bests->test_id]])
               ->whereIn('test_id',$list_tests)
               ->groupBy('test_id')
@@ -755,7 +755,7 @@ class LoadStatsController extends Controller
         $data_chart_users 	= "['Country', 'Utilisateurs']";
 
         // Best Countries
-        $countries = UserTest::selectRaw('country_code, country_name, COUNT(DISTINCT users_tests.user_id) AS nb_player,  COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
+        $countries = UserTest::on('reader')->selectRaw('country_code, country_name, COUNT(DISTINCT users_tests.user_id) AS nb_player,  COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
                   ->join('users', 'users.id', '=', 'users_tests.user_id')
                   ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"],['country_code','!=',NULL],['country_code','!=','']])
                   ->groupBy('country_code')
@@ -764,7 +764,7 @@ class LoadStatsController extends Controller
 
         foreach ($countries as $country) {
 
-            $country_shares = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+            $country_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
                 ->join('users','users.id','=','shares.user_id')
                 ->where([['shares.created_at',">=","$start"],['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"],['country_code','=',"$country->country_code"]])
                 ->first();
@@ -837,7 +837,7 @@ class LoadStatsController extends Controller
       $best_users = array();
 
       $data_global = self::getGlobalStatMini($start, $end, $last_day_start , $last_day_end, $lang);
-        $users = UserTest::selectRaw('users.facebook_id, users.id AS user_id, users.first_name AS first_name, users.last_name AS last_name, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id, users_tests.test_id) AS nb_test_unique_done')
+        $users = UserTest::on('reader')->selectRaw('users.facebook_id, users.id AS user_id, users.first_name AS first_name, users.last_name AS last_name, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id, users_tests.test_id) AS nb_test_unique_done')
                   ->join('users', 'users.id', '=', 'users_tests.user_id')
                   ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"]])
                   ->groupBy('user_id')
@@ -846,7 +846,7 @@ class LoadStatsController extends Controller
 $nbnb = 0;
         foreach ($users as $user) {
 
-            $user_shares = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+            $user_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
                 ->where([['shares.created_at',">=","$start"],['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"],['user_id','=',$user->user_id]])
                 ->first();
             $taux_share  = round((intval($user_shares->nb_share) / $user->nb_test_done)*100, 2) ;
@@ -895,12 +895,12 @@ $nbnb = 0;
     	$facebook_id = $_GET['fb_id'];
       $tests_users = array();
       // Nombre de  tests effectués pour cette période
-      $counts_wt = UserTest::selectRaw('COUNT(*) AS nb_test_done, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
+      $counts_wt = UserTest::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
             ->where([['created_at',">=","$start"],['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"],['user_id','=',$user_id]])
             ->first();
 
        // Nombre de partage directs pour cette période
-       $counts_shares = Share::selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
+       $counts_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
              ->where([['created_at',">=","$start"],['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"],['user_id','=',$user_id]])
              ->first();
 
@@ -919,7 +919,7 @@ $nbnb = 0;
           "taux_test_per_user_all"     =>    round($counts_wt->nb_test_done  / $counts_wt->nb_player, 2)
         ];
 
-        $users_tests = UserTest::selectRaw('titre_test, test_id, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id) AS nb_test_unique_done')
+        $users_tests = UserTest::on('reader')->selectRaw('titre_test, test_id, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id) AS nb_test_unique_done')
             ->join('tests','id_test','=','test_id')
             ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"],['users_tests.user_id','=',$user_id]])
             ->groupBy('test_id')
@@ -927,7 +927,7 @@ $nbnb = 0;
             ->get();
 
         foreach ($users_tests as $test) {
-          $user_shares = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+          $user_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
               ->where([['shares.created_at',">=","$start"],['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"],['user_id','=',$user_id],['test_id','=',$test->test_id]])
               ->first();
 
@@ -1001,33 +1001,33 @@ $nbnb = 0;
 
       if (($test != '' && $test != 0) && $nb_countries == 0 ) {
         // Nombre de  tests effectués pour cette période
-        $counts_wt = UserTest::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
+        $counts_wt = UserTest::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
               ->where([['created_at',">=","$start"],['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"],['test_id','=', $test] ] )
               ->first();
 
         // Nombre d'utilisateurs inscrits pour cette période
-        $counts_new_users = User::where([['users.created_at',">=","$start"],['users.created_at',"<=","$end"],['test_id','=', $test]])
+        $counts_new_users = User::on('reader')->where([['users.created_at',">=","$start"],['users.created_at',"<=","$end"],['test_id','=', $test]])
               ->join('users_tests','users_tests.user_id','=','users.id')
               ->count();
 
         // Nombre de partage directs pour cette période
-        $counts_shares = Share::selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
+        $counts_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
               ->where([['created_at',">=","$start"],['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"],['test_id','=', $test]])
               ->first();
       }
       elseif($nb_countries != 0 && ($test == '' || $test == 0) ){
         // Nombre de  tests effectués pour cette période
-        $counts_wt = UserTest::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
+        $counts_wt = UserTest::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
               ->join('users','users.id','=','user_id')
               ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"] ] )
               ->whereIn('country_code',$countries_filter)
               ->first();
         // Nombre d'utilisateurs inscrits pour cette période
-        $counts_new_users = User::where([['created_at',">=","$start"],['created_at',"<=","$end"]])
+        $counts_new_users = User::on('reader')->where([['created_at',">=","$start"],['created_at',"<=","$end"]])
               ->whereIn('country_code',$countries_filter)
               ->count();
         // Nombre de partage directs pour cette période
-        $counts_shares = Share::selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
+        $counts_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
               ->join('users','users.id','=','user_id')
               ->where([['shares.created_at',">=","$start"],['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"] ])
               ->whereIn('country_code',$countries_filter)
@@ -1035,18 +1035,18 @@ $nbnb = 0;
       }
       elseif($nb_countries != 0 && ($test != '' && $test != 0) ) {
         // Nombre de  tests effectués pour cette période
-        $counts_wt = UserTest::selectRaw('COUNT(users_tests.id) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
+        $counts_wt = UserTest::on('reader')->selectRaw('COUNT(users_tests.id) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
               ->join('users','users.id','=','user_id')
               ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"],['users_tests.test_id','=', $test] ] )
               ->whereIn('country_code',$countries_filter)
               ->first();
         // Nombre d'utilisateurs inscrits pour cette période
-        $counts_new_users = User::where([['users.created_at',">=","$start"],['users.created_at',"<=","$end"],['test_id','=', $test]])
+        $counts_new_users = User::on('reader')->where([['users.created_at',">=","$start"],['users.created_at',"<=","$end"],['test_id','=', $test]])
               ->join('users_tests','users_tests.user_id','=','users.id')
               ->whereIn('country_code',$countries_filter)
               ->count();
         // Nombre de partage directs pour cette période
-        $counts_shares = Share::selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
+        $counts_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
               ->join('users','users.id','=','user_id')
               ->where([['shares.created_at',">=","$start"],['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"],['test_id','=', $test]])
               ->whereIn('country_code',$countries_filter)
@@ -1073,7 +1073,7 @@ $nbnb = 0;
 
       if($test == '' || $test == 0){
         // Data For Best Tests
-        $best_tests_col = UserTest::selectRaw('test_id, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.intval($counts_wt->nb_test_done).' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
+        $best_tests_col = UserTest::on('reader')->selectRaw('test_id, COUNT(users_tests.id) AS nb_test_done, ROUND((COUNT(users_tests.id) / '.intval($counts_wt->nb_test_done).' * 100), 2) AS taux_test, COUNT(DISTINCT user_id) AS nb_test_unique_done, titre_test')
               ->join('tests','tests.id_test','=','users_tests.test_id')
               ->join('users','users.id','=','users_tests.user_id')
               ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"] ])
@@ -1083,7 +1083,7 @@ $nbnb = 0;
               ->get();
 
         foreach ($best_tests_col as $data_bests) {
-          $best_shares_col = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+          $best_shares_col = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
               ->join('users','users.id','=','shares.user_id')
               ->where([['shares.created_at',">=","$start"], ['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"], ['test_id','=',$data_bests->test_id]])
               ->whereIn('country_code',$countries_filter)
@@ -1110,7 +1110,7 @@ $nbnb = 0;
       if($nb_countries > 1 || $test != '' || $test != 0 ){
         // Best Countries
         if (($test != '' && $test != 0) && $nb_countries == 0 ){
-          $countries = UserTest::selectRaw('country_code,  COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
+          $countries = UserTest::on('reader')->selectRaw('country_code,  COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
                   ->join('users', 'users.id', '=', 'users_tests.user_id')
                   ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"],['users_tests.test_id','=', $test]])
                   ->groupBy('country_code')
@@ -1118,7 +1118,7 @@ $nbnb = 0;
                   ->get();
         }
         elseif($nb_countries != 0 && ($test == '' || $test == 0)){
-          $countries = UserTest::selectRaw('country_code,  COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
+          $countries = UserTest::on('reader')->selectRaw('country_code,  COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
                   ->join('users', 'users.id', '=', 'users_tests.user_id')
                   ->where([['users_tests.created_at',">=","$start"], ['users_tests.lang','LIKE',"%$lang%"],['users_tests.created_at',"<=","$end"]])
                   ->whereIn('country_code',$countries_filter)
@@ -1127,7 +1127,7 @@ $nbnb = 0;
                   ->get();
         }
         elseif($nb_countries != 0 && ($test != '' && $test != 0) ) {
-          $countries = UserTest::selectRaw('country_code,  COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
+          $countries = UserTest::on('reader')->selectRaw('country_code,  COUNT(users_tests.id) AS nb_test_done , COUNT(DISTINCT users_tests.user_id, users_tests.test_id ) AS nb_test_unique_done')
                   ->join('users', 'users.id', '=', 'users_tests.user_id')
                   ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"],['users_tests.test_id','=', $test]])
                   ->whereIn('country_code',$countries_filter)
@@ -1137,16 +1137,16 @@ $nbnb = 0;
         }
 
         foreach ($countries as $country) {
-            $country_name = Countries::selectRaw('langFR AS country_name_fr')
+            $country_name = Countries::on('reader')->selectRaw('langFR AS country_name_fr')
                 ->where('alpha2','=',$country->country_code)
                 ->first();
             if($test == '')
-              $country_shares = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+              $country_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
                   ->join('users','users.id','=','shares.user_id')
                   ->where([['shares.created_at',">=","$start"],['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"],['country_code','=',"$country->country_code"]])
                   ->first();
             else
-              $country_shares = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+              $country_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
                   ->join('users','users.id','=','shares.user_id')
                   ->where([['shares.created_at',">=","$start"],['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"],['test_id','=', $test],['country_code','=',"$country->country_code"]])
                   ->first();
@@ -1172,7 +1172,7 @@ $nbnb = 0;
 
       // Top Users
       if (($test != '' && $test != 0) && $nb_countries == 0 ){
-        $users = UserTest::selectRaw('facebook_id, users.id AS user_id, first_name AS first_name, last_name AS last_name, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id, users_tests.test_id) AS nb_test_unique_done')
+        $users = UserTest::on('reader')->selectRaw('facebook_id, users.id AS user_id, first_name AS first_name, last_name AS last_name, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id, users_tests.test_id) AS nb_test_unique_done')
                 ->join('users', 'users.id', '=', 'users_tests.user_id')
                 ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"],['users_tests.test_id','=', $test] ])
                 ->groupBy('user_id')
@@ -1180,7 +1180,7 @@ $nbnb = 0;
                 ->get();
       }
       elseif($nb_countries != 0 && ($test == '' && $test == 0)){
-        $users = UserTest::selectRaw('facebook_id, users.id AS user_id, first_name AS first_name, last_name AS last_name, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id, users_tests.test_id) AS nb_test_unique_done')
+        $users = UserTest::on('reader')->selectRaw('facebook_id, users.id AS user_id, first_name AS first_name, last_name AS last_name, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id, users_tests.test_id) AS nb_test_unique_done')
                 ->join('users', 'users.id', '=', 'users_tests.user_id')
                 ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"]])
                 ->whereIn('country_code',$countries_filter)
@@ -1189,7 +1189,7 @@ $nbnb = 0;
                 ->get();
       }
       elseif($nb_countries != 0 && ($test != '' && $test != 0) ) {
-        $users = UserTest::selectRaw('facebook_id, users.id AS user_id, first_name AS first_name, last_name AS last_name, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id, users_tests.test_id) AS nb_test_unique_done')
+        $users = UserTest::on('reader')->selectRaw('facebook_id, users.id AS user_id, first_name AS first_name, last_name AS last_name, COUNT(users_tests.id) AS nb_test_done, COUNT(DISTINCT users_tests.user_id, users_tests.test_id) AS nb_test_unique_done')
                 ->join('users', 'users.id', '=', 'users_tests.user_id')
                 ->where([['users_tests.created_at',">=","$start"],['users_tests.created_at',"<=","$end"], ['users_tests.lang','LIKE',"%$lang%"],['users_tests.test_id','=', $test] ])
                 ->whereIn('country_code',$countries_filter)
@@ -1200,11 +1200,11 @@ $nbnb = 0;
 
       foreach ($users as $user) {
         if($test == '')
-          $user_shares = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+          $user_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
               ->where([['shares.created_at',">=","$start"],['shares.created_at',"<=","$end"], ['shares.lang','LIKE',"%$lang%"],['user_id','=',$user->user_id]])
               ->first();
         else
-        $user_shares = Share::selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
+        $user_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
             ->where([['created_at',">=","$start"],['created_at',"<=","$end"], ['lang','LIKE',"%$lang%"],['user_id','=',$user->user_id],['test_id','=', $test]])
             ->first();
 
@@ -1237,7 +1237,7 @@ $nbnb = 0;
 
     public function loadStatForDays($request, $response, $args)
     {
-       $all_data = DailyGlobalStats::orderBy('day','DESC')->get();
+       $all_data = DailyGlobalStats::on('reader')->orderBy('day','DESC')->get();
        return $this->view->render($response, 'allDays.twig', compact('all_data'));
        //return $this->view->render($response, 'chunk.twig', compact('all_data'));
 
@@ -1258,30 +1258,30 @@ $nbnb = 0;
 
 
         // Nombre de tests crées
-        $counts_tests_created = Test::where([['created_at',">=","$start"],['created_at',"<=","$end"],['statut','!=', -1] ])
+        $counts_tests_created = Test::on('reader')->where([['created_at',">=","$start"],['created_at',"<=","$end"],['statut','!=', -1] ])
                   ->count();
 
         // Nombre de  tests effectués pour cette période
-        $counts_wt = UserTest::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
+        $counts_wt = UserTest::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct user_id) AS nb_player, COUNT(DISTINCT user_id, test_id) AS nb_test_unique_done ')
                   ->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
                   ->first();
 
         // Nombre de  tests effectués à travers le bot messenger
-        $counts_bt = BotTests::selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct messenger_user_id) AS nb_player, COUNT(DISTINCT messenger_user_id, test_id) AS nb_test_unique_done ')
+        $counts_bt = BotTests::on('reader')->selectRaw('COUNT(*) AS nb_test_done, COUNT(distinct messenger_user_id) AS nb_player, COUNT(DISTINCT messenger_user_id, test_id) AS nb_test_unique_done ')
                   ->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
                   ->first();
 
         // Nombre d'utilisateurs inscrits pour cette période
-        $counts_new_users = User::where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
+        $counts_new_users = User::on('reader')->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
                            ->count();
 
         // Nombre de partage directs pour cette période
-        $counts_shares = Share::selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
+        $counts_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS partages_count, COUNT(DISTINCT user_id, test_id) AS partages_count_unique')
                           ->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
                           ->first();
 
         // Nombre de partages, de commentaires, de réactions, de clics pour cette période
-        $counts_stats = DailyStat::selectRaw('SUM(shares_count) AS shares_count, SUM(comments_count) AS comments_count , SUM(reactions_count) AS reactions_count, SUM(clicks_count) AS clicks_count ')
+        $counts_stats = DailyStat::on('reader')->selectRaw('SUM(shares_count) AS shares_count, SUM(comments_count) AS comments_count , SUM(reactions_count) AS reactions_count, SUM(clicks_count) AS clicks_count ')
                           ->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
                           ->first();
 
