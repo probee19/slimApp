@@ -1,4 +1,3 @@
-$capsule->addConnection($config['db_new'],'reader');
 <?php
 
 use App\Controllers\ConnectController;
