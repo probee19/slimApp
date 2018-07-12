@@ -92,20 +92,20 @@ class StartController extends Controller
             $has_treatment = $test->has_treatment;
 
 
-            try{
-                if($test->unique_result == 1) {
-                    $user_test = UserTest::where([
-                        ['user_id', $user->id],
-                        ['test_ids', 0]
-                    ])->get();
-                }else{
-                    $user_test = UserTest::where([
-                        ['user_id', $user->id],
-                        ['test_id', $test_id]
-                    ])->firstOrFail();
-                }
+            //try{
+                //if($test->unique_result == 1) {
+                    //$user_test = UserTest::where([
+                        //['user_id', $user->id],
+                        //['test_ids', 0]
+                    //])->get();
+                //}else{
+                    //$user_test = UserTest::where([
+                        //['user_id', $user->id],
+                        //['test_id', $test_id]
+                    //])->firstOrFail();
+                //}
 
-            }catch(\Exception $e){
+            //}catch(\Exception $e){
                 if($genre == 'male' || $genre == 'homme'){
                     $filter = 'feminin';
                 }
@@ -346,7 +346,9 @@ class StartController extends Controller
                     echo "Une erreur inattendue s'est produite, veuillez réessayer encore";
                     exit;
                 }
-            }
+            //}
+
+
             $result_url = $this->router->pathFor('resultat', [
                 'name'      => $this->helper->cleanUrl($test_name),
                 'code'      =>  $user_test->uuid
