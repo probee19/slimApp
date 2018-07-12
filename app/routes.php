@@ -48,7 +48,7 @@ $app->get('/json', 'HomeController:setTestsJSON');
 $app->get('/chunk', 'HomeController:chunk');
 $app->get('/chunkresult/{name}/{code}', 'HomeController:chunk');
 $app->get('/chunk/{name}/{id}', 'HomeController:chunk');
-$app->get('/chunk/{id}', 'HomeController:chunk');
+$app->get('/chunk/{method}', 'HomeController:chunk');
 //$app->post('/chunk/loadMore/{bloc}', 'HomeController:chunk2');
 //$app->get('/chunk/page/{pageid}', 'HomeController:chunk');
 //$app->get('/chunk/{name}/{id}', 'HomeController:chunk');

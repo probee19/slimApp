@@ -258,8 +258,12 @@ class HomeController extends Controller
 
 
     public function chunk($request, $response, $args){
+      if($args['method'] == 1)
+        $user_test = Test::on('writer')->first();
+      elseif ($args['method'] == 2)
+        $user_test = Test::first();
 
-      $user_test = Test::where('id_test','=',383)->first();
+
       $this->helper->debug($user_test->toArray());
         //
         //$this->helper->getScore($args['id']);
