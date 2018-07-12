@@ -100,7 +100,7 @@ $container = $app->getContainer();
 
 $capsule = new Capsule;
 $capsule->addConnection($config['db']);
-//$capsule->addConnection($config['db_new'],'reader');
+$capsule->addConnection($config['db_new'],'reader');
 $capsule->setEventDispatcher(new Dispatcher(new Container));
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
