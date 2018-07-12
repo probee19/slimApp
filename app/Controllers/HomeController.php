@@ -259,7 +259,7 @@ class HomeController extends Controller
 
     public function chunk($request, $response, $args){
       if($args['method'] == 1)
-        $user_test = Test::on('writer')->first();
+        $user_test = User::on('writer')->first();
       elseif ($args['method'] == 2)
         $user_test = Test::first();
 
