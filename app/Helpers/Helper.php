@@ -129,7 +129,7 @@ class Helper
             ];
 
 
-            $cookie = Visitors::create($data);
+            //$cookie = Visitors::create($data);
         }
 
         //return $data;
