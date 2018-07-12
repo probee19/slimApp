@@ -39,7 +39,7 @@ class Helper
 
         // Instanciate a new DBIP object with the database connection
         // Instanciate a new DBIP object with the database connection
-        $db = new \PDO("mysql:host=". $_SERVER['RDS_HOSTNAME'] .";dbname=". $_SERVER['RDS_DB_NAME'], $_SERVER['RDS_USERNAME'], $_SERVER['RDS_PASSWORD']);
+        $db = new \PDO("mysql:host=". $_SERVER['RDS_HOSTNAME_NEW'] .";dbname=". $_SERVER['RDS_DB_NAME'], $_SERVER['RDS_USERNAME'], $_SERVER['RDS_PASSWORD']);
         $dbip = new DBIP($db);
 
 
@@ -432,6 +432,7 @@ class Helper
       // Récuperation des tests pour langue $lang;
       $tests_from_json = self::getAllTestJson($lang);
       //krsort($tests_from_json);
+      $tests = array();
       foreach ($tests_from_json as $test) {
         if(in_array($test['id_test'], $array_ids, true) && !in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) ){
           $tests[$test['id_test']] = [
