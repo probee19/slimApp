@@ -38,6 +38,7 @@ session_start();
 // RDS CONST
 
 define('RDS_HOSTNAME', $_SERVER['RDS_HOSTNAME']);
+define('RDS_HOSTNAME_NEW', $_SERVER['RDS_HOSTNAME_NEW']);
 define('RDS_USERNAME', $_SERVER['RDS_USERNAME']);
 define('RDS_PASSWORD', $_SERVER['RDS_PASSWORD']);
 define('RDS_DB_NAME',  $_SERVER['RDS_DB_NAME']);
@@ -68,6 +69,16 @@ $config = [
         'collation' =>  'utf8mb4_unicode_ci',
         'prefix'    =>  '',
     ],
+    'db_new'    =>  [
+        'driver'    =>  'mysql',
+        'host'      =>  RDS_HOSTNAME_NEW,
+        'database'  =>  RDS_DB_NAME,
+        'username'  =>  RDS_USERNAME,
+        'password'  =>  RDS_PASSWORD,
+        'charset'   =>  'utf8mb4',
+        'collation' =>  'utf8mb4_unicode_ci',
+        'prefix'    =>  '',
+    ],
     'test_per_page'     =>  12,
     'citation_per_page' =>  12,
     'storage_base'      =>  "https://funiziuploads.s3.us-east-2.amazonaws.com",
@@ -88,6 +99,7 @@ $container = $app->getContainer();
 
 $capsule = new Capsule;
 $capsule->addConnection($config['db']);
+$capsule->addConnection($config['db_new'],'writer');
 $capsule->setEventDispatcher(new Dispatcher(new Container));
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
