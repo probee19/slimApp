@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Test extends Eloquent
 {
+    protected $connection = 'writer';
 
     protected $table = 'tests';
 

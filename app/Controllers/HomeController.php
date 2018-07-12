@@ -259,8 +259,8 @@ class HomeController extends Controller
 
     public function chunk($request, $response, $args){
 
-      $user_test = UserTest::connection('writer')->where('test_id','=',383)->first();
-      $this->helper->debug($user_test);
+      $user_test = Test::where('id_test','=',383)->first();
+      $this->helper->debug($user_test->toArray());
         //
         //$this->helper->getScore($args['id']);
         //exit;
