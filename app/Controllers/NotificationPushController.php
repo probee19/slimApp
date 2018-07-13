@@ -71,20 +71,25 @@ class NotificationPushController extends Controller
 
   public function saveErrorNotification($request, $response, $arg)
   {
+    if(isset($_POST['err'])){
+      $data_array = json_decode($_POST['err'], true);
+      if(isset($data_array['code'])){
 
-    $data_array = json_decode($_POST['err'], true);
-    if($data_array['code'] == "messaging/permission-blocked"){
-      $file = file_get_contents("ressources/views/error-notification.txt");
-      $count = intval($file);
-      $log = fopen("ressources/views/error-notification.txt", "w+");
-      $count = $count +1;
-      fputs($log, $count);
+        if($data_array['code'] == "messaging/permission-blocked"){
+          $file = file_get_contents("ressources/views/error-notification.txt");
+          $count = intval($file);
+          $log = fopen("ressources/views/error-notification.txt", "w+");
+          $count = $count +1;
+          fputs($log, $count);
+        }
+
+        $log2 = fopen("ressources/views/error-notification2.txt", "a+");
+
+        $data_log = "\n".date('H:i:s')." Erreur: ".$data_array['code']."\n";
+        fputs($log2, $data_log);
+      }
     }
 
-    $log2 = fopen("ressources/views/error-notification2.txt", "a+");
-
-    $data_log = "\n".date('H:i:s')." Erreur: ".$data_array['code']."\n";
-    fputs($log2, $data_log);
 
   }
 
