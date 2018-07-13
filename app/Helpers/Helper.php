@@ -426,25 +426,26 @@ class Helper
 
     public static function getRelatedTest($id, $countryCode, $exclude, $lang)
     {
-      $related_tests = RelatedsTest::where('id_test','=',$id)->first();
-      $array_ids = explode('-',$related_tests->related_ids);
-      $array_ids = array_map('intval', explode('-', $related_tests->related_ids));
-      // Récuperation des tests pour langue $lang;
-      $tests_from_json = self::getAllTestJson($lang);
-      //krsort($tests_from_json);
       $tests = array();
-      foreach ($tests_from_json as $test) {
-        if(in_array($test['id_test'], $array_ids, true) && !in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) ){
-          $tests[$test['id_test']] = [
-            'url_image_test' => $test['url_image_test'],
-            'id_test'        => $test['id_test'],
-            'titre_test'     => $test['titre_test']
-          ];
+      $related_tests = RelatedsTest::where('id_test','=',$id)->first();
+      if($related_tests){
+        $array_ids = explode('-',$related_tests->related_ids);
+        $array_ids = array_map('intval', explode('-', $related_tests->related_ids));
+        // Récuperation des tests pour langue $lang;
+        $tests_from_json = self::getAllTestJson($lang);
+        //krsort($tests_from_json);
+        foreach ($tests_from_json as $test) {
+          if(in_array($test['id_test'], $array_ids, true) && !in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) ){
+            $tests[$test['id_test']] = [
+              'url_image_test' => $test['url_image_test'],
+              'id_test'        => $test['id_test'],
+              'titre_test'     => $test['titre_test']
+            ];
+          }
         }
+        if(count($tests) > 0)
+          shuffle($tests);
       }
-
-      if(count($tests) > 0)
-        shuffle($tests);
       return $tests;
     }
 
@@ -1217,7 +1218,8 @@ class Helper
         if($response->status_code == 200 && $response->status_txt == "OK")
             return $response->data->url;
         else
-            return $response;
+            return $url;
+
     }
 
     function curlAPI($method, $url, $data, $header = null){
