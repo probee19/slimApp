@@ -182,10 +182,10 @@ class NotificationPushController extends Controller
     // Get subscribers to send campaign
 
     if(!isset($_POST['countries']) || $data_countries == '' )
-      $subscriptions = NotificationSubscriptions::orderBy('rand()')->take(1000)->get();
+      $subscriptions = NotificationSubscriptions::take(1000)->get();
       //$subscriptions = NotificationSubscriptions::whereIn('id',[54,56,57,58])->get();
     else
-      $subscriptions = NotificationSubscriptions::whereIn('country_code',$countries_filter)->orderBy('rand()')->take(1000)->get();
+      $subscriptions = NotificationSubscriptions::whereIn('country_code',$countries_filter)->take(1000)->get();
 
     foreach ($subscriptions as $endpoint) {
       $registrationIds []= $endpoint->token;
