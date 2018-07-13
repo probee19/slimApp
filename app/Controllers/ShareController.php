@@ -39,6 +39,7 @@ class ShareController extends Controller
                     'lang'          => "$lang",
                 ]);
             }
+            /*
             try{
                 $daily = DailyStat::on('reader')->where([
                         ['result_code', '=', "$code"],
@@ -56,6 +57,7 @@ class ShareController extends Controller
                     'partages_count'  => 1
                 ]);
             }
+            */
 
 
         }

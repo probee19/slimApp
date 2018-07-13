@@ -124,7 +124,7 @@ class HomeController extends Controller
       $interface_ui = $this->helper->getUiLabels($lang);
       $all_lang = $this->helper->getActivatedLanguages();
       //$this->helper->debug($all_lang);
-      if($_GET['debug'] && $_GET['debug'] == true)
+      if(isset($_GET['debug']) && $_GET['debug'] == true)
         $this->helper->debug($tests);
       return $this->view->render($response, 'home.twig', compact('tests_on_top', 'lang', 'tests', 'pagecount', 'pageid', 'interface_ui', 'all_lang'));
 

@@ -283,9 +283,9 @@ class LoadStatsController extends Controller
                         ->first();
 
       // Nombre de partages, de commentaires, de réactions, de clics pour cette période
-      $counts_stats = DailyStat::on('reader')->selectRaw('SUM(shares_count) AS shares_count, SUM(comments_count) AS comments_count , SUM(reactions_count) AS reactions_count, SUM(clicks_count) AS clicks_count ')
-                        ->where([['created_at',">=","$start"],['created_at',"<=","$end"] , ['lang','LIKE',"%$lang%"]])
-                        ->first();
+      //$counts_stats = DailyStat::on('reader')->selectRaw('SUM(shares_count) AS shares_count, SUM(comments_count) AS comments_count , SUM(reactions_count) AS reactions_count, SUM(clicks_count) AS clicks_count ')
+                        //->where([['created_at',">=","$start"],['created_at',"<=","$end"] , ['lang','LIKE',"%$lang%"]])
+                        //->first();
 
     	// Calcul des pourcentages pour cette période
     	$taux_sharing_all  			= ($counts_shares->partages_count  / $counts_wt->nb_test_done )*100;
@@ -312,9 +312,9 @@ class LoadStatsController extends Controller
         "nb_new_users_all"                          =>    $counts_new_users    ,
         "taux_test_per_user_all"                    =>    round($taux_test_per_user_all, 2)    ,
         "share_count_2_all"                         =>    intval($counts_stats->shares_count )   ,
-        "click_count_all"                           =>    $counts_stats->clicks_count    ,
-        "comment_count_all"                         =>    $counts_stats->comments_count   ,
-        "reaction_count_all"                        =>    $counts_stats->reactions_count
+        "click_count_all"                           =>    0 /*$counts_stats->clicks_count*/    ,
+        "comment_count_all"                         =>    0 /*$counts_stats->comments_count*/   ,
+        "reaction_count_all"                        =>    0 /*$counts_stats->reactions_count*/
       ];
       return $data_global;
     }
@@ -1281,9 +1281,9 @@ $nbnb = 0;
                           ->first();
 
         // Nombre de partages, de commentaires, de réactions, de clics pour cette période
-        $counts_stats = DailyStat::on('reader')->selectRaw('SUM(shares_count) AS shares_count, SUM(comments_count) AS comments_count , SUM(reactions_count) AS reactions_count, SUM(clicks_count) AS clicks_count ')
-                          ->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
-                          ->first();
+        //$counts_stats = DailyStat::on('reader')->selectRaw('SUM(shares_count) AS shares_count, SUM(comments_count) AS comments_count , SUM(reactions_count) AS reactions_count, SUM(clicks_count) AS clicks_count ')
+                          //->where([['created_at',">=","$start"],['created_at',"<=","$end"] ])
+                          //->first();
 
 
       	// Calcul des pourcentages pour cette période
