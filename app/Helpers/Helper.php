@@ -460,7 +460,7 @@ class Helper
 
       if(in_array($countryCode, ['SN','CI','FR','CD','BE','CM'], true)){
         $choosen_some_tests = array();
-        $array_tests = array(353, 354, 357, 360, 361, 362, 364, 366, 363, 375, 376, 377, 378, 379, 380, 381, 383);
+        $array_tests = array(353, 354, 357, 360, 361, 362, 364, 366, 363, 375, 376, 377, 378, 379, 380, 381, 383, 384);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
