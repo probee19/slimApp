@@ -104,9 +104,10 @@ class ResultController extends Controller
                     //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
                     $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
                         ->with('usertests')->first();
-                    foreach($testUser->usertests as $user){
-                        $exclude [] = $user->test_id;
-                    }
+                    if($testUser && count($testUser->usertests) > 0)
+                      foreach($testUser->usertests as $user)
+                          $exclude [] = $user->test_id;
+
                 }
                 $top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
                 if(count($top_tests) > 0)

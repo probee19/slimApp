@@ -50,7 +50,7 @@ class TestController extends Controller
             //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
             $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
                 ->with('usertests')->first();
-            if(count($testUser->usertests) > 0)
+            if($testUser && count($testUser->usertests) > 0)
                 foreach($testUser->usertests as $user){
                     $exclude [] = $user->test_id;
                 }

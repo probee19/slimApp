@@ -38,9 +38,9 @@ class AdditionnalInfoController extends Controller
 
       $id_test = (int) $arg['id'];
 
-      $test = TestInfo::where([['id_test','=',$id_test],['lang','=',$lang]])->first();
+      $test = TestInfo::on('reader')->where([['id_test','=',$id_test],['lang','=',$lang]])->first();
 
-      $additionnal_infos = TestAdditionnalInfos::where([['id_test','=',$id_test],['lang','=',$lang]])->with('additionalInfos')->get();
+      $additionnal_infos = TestAdditionnalInfos::on('reader')->where([['id_test','=',$id_test],['lang','=',$lang]])->with('additionalInfos')->get();
 
       foreach ($additionnal_infos as $info) {
         if($info->additionalInfos->typeinput == 'gallery_fb_profile'){ // La sélection d'une image de profil est demandée
@@ -61,7 +61,7 @@ class AdditionnalInfoController extends Controller
           ];
         }
         elseif ($info->additionalInfos->typeinput == 'team_wc') {
-          $teams = TeamCDM::all();
+          $teams = TeamCDM::on('reader')->all();
           foreach ($teams as $team) {
               $team_array []=[
                 'cc'        =>  $team->cc,
@@ -75,26 +75,17 @@ class AdditionnalInfoController extends Controller
             'teams'     => $team_array
           ];
 
-          $fav_team = json_decode($_SESSION['fav_team']);
-          foreach ($fav_team as $key => $value){
-            $this->helper->debug($value);
-          }
-
-
         }
       }
-
-
 
       $country_code = $this->helper->getCountryCode();
       $exclude = [$id_test];
       if(!empty($_SESSION['uid'])){
-          $testUser = User::where('facebook_id', '=', $_SESSION['uid'])
+          $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
               ->with('usertests')->first();
-          if(count($testUser->usertests) > 0)
-            foreach($testUser->usertests as $user){
-                $exclude [] = $user->test_id;
-            }
+          if($testUser && count($testUser->usertests) > 0)
+              foreach($testUser->usertests as $user)
+                  $exclude [] = $user->test_id;
       }
 
       $all_test = $this->helper->relatedTests($id_test, $country_code, $exclude, $lang);

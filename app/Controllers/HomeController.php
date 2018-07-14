@@ -217,7 +217,10 @@ class HomeController extends Controller
         $accepted = false;
         if(isset($_SESSION['accepted'])) $accepted = $_SESSION['accepted'];
 
-        $data = [$id, $name, $lastname, $gender, $friends, $posts, $photos, $accepted, $_SESSION['fb_access_token'] ];
+        $fb_access_token = "";
+        if(isset($_SESSION['fb_access_token'])) $fb_access_token = $_SESSION['fb_access_token'];
+
+        $data = [$id, $name, $lastname, $gender, $friends, $posts, $photos, $accepted, $fb_access_token ];
         return $response->withStatus(201)
             ->withHeader('Content-Type', 'application/json')
             ->write(json_encode($data));
