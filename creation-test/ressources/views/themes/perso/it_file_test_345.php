@@ -31,7 +31,7 @@
 #fb_id_user{position: absolute; z-index:1; left: 348px; top: 16px; width:85px ;  height:134px ; transform:rotate(-0.8deg);  object-fit: cover; object-position: 50% 10%; border-radius:0px; max-width:800px; max-height:420px;}
 
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;

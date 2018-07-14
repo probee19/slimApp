@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              
+              <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -22,13 +22,22 @@
               }
               .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
+.main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
+.main img{ position:absolute; max-height:420px; max-width:800px; }
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
-#fb_id_friend_2{position: absolute; z-index:0; right: 113px; top: 14px; width:90px ;  height:136px ; transform:rotate(-0.6deg);  object-fit: cover; object-position: 50% 10%; border-radius:0px; max-width:800px; max-height:420px;}
- 
 
-#fb_id_friend_1{position: absolute; z-index:1; left: 104px; top: 16px; width:85px ;  height:134px ; transform:rotate(-1.4deg);  object-fit: cover; object-position: 50% 10%; border-radius:0px; max-width:800px; max-height:420px;}
-#fb_id_user{position: absolute; z-index:1; left: 348px; top: 16px; width:85px ;  height:134px ; transform:rotate(-0.8deg);  object-fit: cover; object-position: 50% 10%; border-radius:0px; max-width:800px; max-height:420px;}
+#coupe{position:absolute; z-index:1; left:345px; top:110px;   height:200px; }
+
+.flag_team{z-index:1; position: absolute; right:75px; top:128px;   text-align:center; width:250px;   }
+
+#fb_id_user{position: absolute; z-index:1; left: 125px; top: 30px; width:150px ;  height:150px ; object-fit: cover; object-position: 50% 10%; border-radius:150px; border:5px solid #FFF;}
+#support{position:absolute; z-index:1;font-family: 'Kaushan Script', cursive; left: 0px; top: 180px; font-size:45px; line-height:55px; color:#FFF; width:400px; height:200px;  display:flex; flex-direction:column;align-items:center; justify-content:center; text-align:center;} 
+.team{color:#f1c40f; text-transform:uppercase;}
+
+#slog{z-index:1; position: absolute; font-family: 'Kaushan Script', cursive; right:0px; bottom: 80px; font-weight:700; color:#FFF; font-size:27px; text-transform:uppercase; width:400px ; height:50px ;  text-align:center;}
+
+
 
               </style>
               <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
@@ -70,19 +79,31 @@
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
       
+<?php
+         function getAdverb($team, $adverbe="l'"){ 
+                   $feminin = array('Belgique','Colombie','Corée','Croitie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
+                   $masculin = array('Brésil','Costa Rica','Danemark','Japon','Maroc','Nigeria','Panama','Péru','Portugal','Sénégal');
+                    if(in_array($team,$feminin,true ))
+                              $adverbe = 'la '; 
+                    elseif(in_array($team,$masculin,true ))
+                              $adverbe = 'le '; 
+                    return $adverbe;
+         } 
+         $texte = '';
+         $slogan = array('hrv'=>' Petit pays, grands rêves ','fra'=>' VOTRE FORCE, NOTRE PASSION. ALLEZ LES BLEUS !!! ','bel'=>' Diables Rouges en mission ','eng'=>' Emmenez-nous vers la victoire ');
+ ?>
 <!DOCTYPE HTML>
-
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<img src="https://creation.funizi.com/images-theme-perso/1529368399.jpg" id="back"> 
  
-<img src="https://creation.funizi.com/images-theme-perso/1525784882.png" id="back"> 
+<img src="https://creation.funizi.com/images-theme-perso/1529368950.png" id="coupe"> 
+<img src="https://s3.us-east-2.amazonaws.com/funiziuploads/api/flags_big/<?php echo $_GET['cc']; ?>.png" id="" class="flag_team"> 
+                                       
+ 
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<!-- https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275 -->
-<!-- https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275   img_profile -->
-<img src="https://creation.funizi.com/images-theme-perso/dec_1.jpg" class="" id="fb_id_friend_1">
+<div class="name texte" id="support" ><span style="color:#FFF"><?php echo $_GET['user_name']; ?> supporte</span>  <span style="color:#f1c40f; text-transform:uppercase;"><?=getAdverb($_GET['cn'])?> <?php echo $_GET['cn']; ?> </span></div>
 
-<img src="https://creation.funizi.com/images-theme-perso/dec_2.jpg" class="" id="fb_id_friend_2">
-
-
+<div class="texte" id="slog"><?= $slogan[$_GET['cc']]?> </div>
+ 
 
         </div>
         

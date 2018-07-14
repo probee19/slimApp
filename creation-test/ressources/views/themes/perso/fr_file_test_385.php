@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              
+              <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -23,13 +23,15 @@
               .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
 
-#back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
-#fb_id_friend_2{position: absolute; z-index:0; right: 113px; top: 14px; width:90px ;  height:136px ; transform:rotate(-0.6deg);  object-fit: cover; object-position: 50% 10%; border-radius:0px; max-width:800px; max-height:420px;}
- 
+#back{position:absolute; z-index:1; left:0; top:0;  width:800px;  }
 
-#fb_id_friend_1{position: absolute; z-index:1; left: 104px; top: 16px; width:85px ;  height:134px ; transform:rotate(-1.4deg);  object-fit: cover; object-position: 50% 10%; border-radius:0px; max-width:800px; max-height:420px;}
-#fb_id_user{position: absolute; z-index:1; left: 348px; top: 16px; width:85px ;  height:134px ; transform:rotate(-0.8deg);  object-fit: cover; object-position: 50% 10%; border-radius:0px; max-width:800px; max-height:420px;}
+#fb_id_user{position: absolute; z-index:1; right: 20px; top: 20px; width:100px ;  height:100px ; object-fit: cover; object-position: 50% 10%; border-radius:100px; max-width:800px; max-height:420px;}
+#name_user{left: 205px; top: 120px; color:#D32F2F; align-items:flex-end; justify-content:center;  font-size:40px; line-height:35px; width:600px ; height:90px ; } 
 
+.texte{z-index:1; font-family: 'Chicle', cursive;text-transform:uppercase; display:flex; position: absolute; background:transparent; text-align:center;}
+#texte1{left: 205px; top: 200px; color:#D32F2F; align-items:flex-end; justify-content:center;  font-size:40px; line-height:35px; width:600px ; height:90px ; }
+#texte2{left: 200px; top: 310px; color:#D32F2F; align-items:center; justify-content:center; font-size:60px; line-height:30px; letter-spacing:1.3px; width:600px ; height:50px ; }
+#texte3{left: 200px; top: 470px; color:#D32F2F; align-items:center; justify-content:center; font-size:40px; line-height:40px; letter-spacing:1.7px;width:600px ; height:50px ; }
               </style>
               <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
@@ -72,17 +74,16 @@
       
 <!DOCTYPE HTML>
 
-<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
- 
-<img src="https://creation.funizi.com/images-theme-perso/1525784882.png" id="back"> 
+<img src="https://creation.funizi.com/images-theme-perso/1531574134.jpg" id="back"> 
+
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-<!-- https://graph.facebook.com/<?php echo $_GET['fb_id_friend_1']; ?>/picture/?width=275&height=275 -->
-<!-- https://graph.facebook.com/<?php echo $_GET['fb_id_friend_2']; ?>/picture/?width=275&height=275   img_profile -->
-<img src="https://creation.funizi.com/images-theme-perso/dec_1.jpg" class="" id="fb_id_friend_1">
 
-<img src="https://creation.funizi.com/images-theme-perso/dec_2.jpg" class="" id="fb_id_friend_2">
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
+<div class="name texte" id="name_user" ><?php echo $_GET['user_name']; ?></div>
+<div class="texte" id="texte1"> vous souhaite une Joyeuse  </div>
 
+<div class="texte" id="texte2"> Fête de la nation </div>
 
         </div>
         

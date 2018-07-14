@@ -138,9 +138,9 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     $view->getEnvironment()->addGlobal('session', $_SESSION);
     $view->getEnvironment()->addGlobal('cookie', $_COOKIE);
-    $view->getEnvironment()->addGlobal('cookie_id_user', $_COOKIE['id_user']);
-    $view->getEnvironment()->addGlobal('cookie_prenom_user', $_COOKIE['prenom_user']);
-    $view->getEnvironment()->addGlobal('cookie_img_user', $_COOKIE['url_photo_user']);
+    //$view->getEnvironment()->addGlobal('cookie_id_user', $_COOKIE['id_user']);
+    //$view->getEnvironment()->addGlobal('cookie_prenom_user', $_COOKIE['prenom_user']);
+    //$view->getEnvironment()->addGlobal('cookie_img_user', $_COOKIE['url_photo_user']);
     $view->getEnvironment()->addGlobal('now', new DateTime());
     $view->getEnvironment()->addGlobal('storage_base', "https://funiziuploads.s3.us-east-2.amazonaws.com");
     $domaine_url = str_replace( 'http://', 'https://', $container->request->getUri()->getBaseUrl());

@@ -56,10 +56,10 @@
                         <div class="nopaddingright col-lg-6 col-md-6 col-sm-6 col-xs-6  img-profil">
                             {% if test.id_theme == 1 %}
                                 <div class="header-img text-center">
-                                    <span >{{cookie_prenom_user}}</span>
+                                    <span >{{cookie.prenom_user}}</span>
                                 </div>
                             {% endif %}
-                            <img src="https://graph.facebook.com/{{cookie_id_user}}/picture?height=200&width=200" id="" class="img_resulat" />
+                            <img src="https://graph.facebook.com/{{cookie.id_user}}/picture?height=200&width=200" id="" class="img_resulat" />
                         </div>
                         <div class="form-group nopaddingleft col-lg-6 col-md-6 col-sm-6 col-xs-6 img-resulat">
                             {% if test.id_theme == 1 %}
@@ -419,10 +419,10 @@
                                     <div class="nopaddingright col-lg-6 col-md-6 col-sm-6 col-xs-6 img-profil">
                                         {% if test.id_theme == 1 %}
                                             <div class="header-img text-center">
-                                                <span >{{cookie_prenom_user}}</span>
+                                                <span >{{cookie.prenom_user}}</span>
                                             </div>
                                         {% endif %}
-                                        <img src="https://graph.facebook.com/{{cookie_id_user}}/picture?height=200&width=200" id="" class="img_resulat" />
+                                        <img src="https://graph.facebook.com/{{cookie.id_user}}/picture?height=200&width=200" id="" class="img_resulat" />
                                     </div>
                                     <div class="form-group nopaddingleft col-lg-6 col-md-6 col-sm-6 col-xs-6 img-resulat">
                                         {% if test.id_theme == 1 %}
@@ -539,7 +539,7 @@
 
 
   </script>
-  
+
   {% if test.id_theme == 4 %}
           <!-- Modal pour ajouter une image du thème personnalisé-->
           <div id="modalOpenImagePerso" class="modal fade" role="dialog">
