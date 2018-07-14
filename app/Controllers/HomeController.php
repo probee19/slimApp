@@ -95,29 +95,33 @@ class HomeController extends Controller
         $tests = array_replace(array_flip($include), $tests);
       }
       else {// Si cette page n'est pas en session
-
-        if($alltest == count($_SESSION["seen"]) || $alltest <= count($_SESSION["seen"]))
-        	$_SESSION["seen"] = array();
         $exclude = array();
-        if(isset($_SESSION['seen']))
-          $exclude = $_SESSION['seen'];
-          shuffle($tests_from_json);
-          $nb_taken = 0;
-          $page_tests = array();
-          foreach ($tests_from_json as $test) {
-            if(($test['codes_countries'] == "" || strpos($test['codes_countries'], $country_code) != false ) && !in_array($test['id_test'], $exclude, true) && ++$nb_taken <= $this->test_per_page){
-              $tests[$test['id_test']] = [
-                'url_image_test' => $test['url_image_test'],
-                'id_test'        => $test['id_test'],
-                'titre_test'     => $test['titre_test']
-              ];
-              if(!in_array($test['id_test'], $exclude, true)) $exclude[] = $test['id_test'];
-              $page_tests[] = $test['id_test'];
-            }
-          }
+        if(isset($_SESSION["seen"])) $exclude = $_SESSION["seen"];
 
-          $_SESSION['seen'] = $exclude;
-          $_SESSION[$name_session_page] = $page_tests;
+        if($alltest <= count($exclude))
+        	$exclude = array();
+        //if(isset($_SESSION['seen']))
+        //$exclude = $seen;
+
+        shuffle($tests_from_json);
+        $nb_taken = 0;
+        $page_tests = array();
+        foreach ($tests_from_json as $test) {
+          if(($test['codes_countries'] == "" || strpos($test['codes_countries'], $country_code) != false ) && !in_array($test['id_test'], $exclude, true) && ++$nb_taken <= $this->test_per_page){
+            $tests[$test['id_test']] = [
+              'url_image_test' => $test['url_image_test'],
+              'id_test'        => $test['id_test'],
+              'titre_test'     => $test['titre_test']
+            ];
+            if(!in_array($test['id_test'], $exclude, true)) $exclude[] = $test['id_test'];
+            $page_tests[] = $test['id_test'];
+          }
+        }
+
+        //$seen = $exclude;
+
+        $_SESSION["seen"] = $exclude;
+        $_SESSION[$name_session_page] = $page_tests;
       }
 
       // Traduction des éléments de l'interface
