@@ -25,7 +25,7 @@
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; } 
 
-#message{z-index:1; position: absolute;font-family: 'Exo 2', sans-serif;  text-transform:uppercase; left: 10px; bottom: 140px; color:#FFF; font-size:40px; line-height:49px; width:490px ; height:120px ;  display:flex; align-items:center; justify-content:center; text-align:center; }
+#message{z-index:1; position: absolute;font-family: 'Exo 2', sans-serif;   text-transform:uppercase; left: 10px; bottom: 100px; color:#FFF; font-size:36px; line-height:40px; width:355px ; height:220px ;  display:flex; align-items:center; justify-content:center; text-align:center; }
 
 #fb_id_user{position: absolute; z-index:1; left: 5px; bottom: 5px; width:70px ;  height:70px ; object-fit: cover; object-position: 50% 10%; border-radius:70px; }
 
@@ -75,7 +75,7 @@
 ?>
 <!DOCTYPE HTML>
 
-<img src="https://creation.funizi.com/images-theme-perso/1531674347.jpg" id="back"> 
+<img src="https://creation.funizi.com/images-theme-perso/1531676794.jpg" id="back"> 
 
 <div class="texte" id="message"><?=$messages[0]?> </div>
 
