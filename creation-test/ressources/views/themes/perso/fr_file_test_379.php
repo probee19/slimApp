@@ -81,7 +81,7 @@
       
 <?php
          function getAdverb($team, $adverbe="l'"){ 
-                   $feminin = array('Belgique','Colombie','Corée','Croitie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
+                   $feminin = array('Belgique','Colombie','Corée','Croatie','France','Corée du nord','Mexique','Pologne','Russie','Serbie','Suède','Suisse','Tunisie');
                    $masculin = array('Brésil','Costa Rica','Danemark','Japon','Maroc','Nigeria','Panama','Péru','Portugal','Sénégal');
                     if(in_array($team,$feminin,true ))
                               $adverbe = 'la '; 
