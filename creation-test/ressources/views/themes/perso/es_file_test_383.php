@@ -76,12 +76,15 @@
           $voyance = array('Yaw guissna gua djitté reew mi si samay guéntt',
           'Dingua guén réww mi si fane yu néééwe pour guissé ak Obama',
           '15 millions yila Macky di diokh mangui niii diko guiss mouy nieuw',
-          'Demb wane nagnuma si guéntt ni dingua gagné 100 millions',
+          'Demb wane nagnuma si guéntt ni dingua gagné 50 millions',
           'Guiss na yaw danguay dém té kénneu doula téyé',
           'Guissna kou baax koulay mayy bén auto',
           'Sa keur gui wara tabakh Almadie guiss nako si samay guéntt',
           'Guissnala si guéntt gua nékki kou amm baatt si réww mi',
-          'Samay guéntt wane naniouma gua dieund Radisson fi si ay att you nééééwe');
+          'Samay guéntt wane naniouma gua dieund Radisson fi si ay att you nééééwe',
+          'Balaa Adiouma digua ame bén xéweul bou taakou',
+          'Si samay guéntt digua diott si bén chéque bou 25 millions bala semaine bi di diékh',
+          'Guissna bala guinaw soubeu gua ame guaan bo geudieu guiss té name ko');
           shuffle($voyance);
 ?>
 <!DOCTYPE HTML>

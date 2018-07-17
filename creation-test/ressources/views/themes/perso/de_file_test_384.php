@@ -23,10 +23,10 @@
               .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
 
-#danse{z-index:1;font-family: 'Titillium Web', sans-serif; position: absolute; left: 0px; top: 0px; color:#fff; font-size:44px; line-height:54px; width:800px ; height:300px ; display:flex; align-items:center; justify-content:center; text-align:center; }
+#danse{z-index:1;font-family: 'Titillium Web', sans-serif;  position: absolute; left: 0px; top: 0px; color:#fff; font-size:44px; line-height:54px; width:800px ; height:250px ; display:flex; align-items:center; justify-content:center; text-align:center; }
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
-#fb_id_user{position: absolute; z-index:1; left: 350px; bottom: 20px; width:100px ;  height:100px ; object-fit: cover; object-position: 50% 10%; border-radius:100px; max-width:800px; max-height:420px;}
+#fb_id_user{position: absolute; z-index:1; left: 315px; bottom: 20px; width:150px ;  height:150px ; object-fit: cover; object-position: 50% 10%; border-radius:150px; max-width:800px; max-height:420px;}
 
               </style>
               <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
@@ -69,10 +69,10 @@
           <div class='main'>
       
 <?php
-          $danses = array('Nékété yow Rigou Rigou kén dakkoulako','Aka ya meunone Goana','Néké Oupoukay dina indi guélaw ...<br> Guay oupou di oupou bay nélaw... <br> '.$_GET['user_name'].' dafay Oupou... <br> '.$_GET['user_name'].'  ba feekh gua...',
-          'Ay khalé yi statue lén ... <br> MBAARASSS','Khiiss Mbacc <br> Khiiss Khiiss Mbacc ','Yaw aka ya meunone Jaalguati','Kay kay kay gneuweul gnu bloqué...<br>Aka ya meunone Blokass',
+          $danses = array('Rigou Rigou, Rigou Rigou <br> Nékété yow Rigou Rigou kén dakkoulako','Aka ya meunone Goana','Néké Oupoukay dina indi guélaw ...<br> Guay oupou di oupou bay nélaw... <br> '.$_GET['user_name'].' dafay Oupou... <br> '.$_GET['user_name'].'  ba feekh gua...',
+          'Ay khalé yi statue lén ... <br> MBAARASSS','Khiiss Mbacc <br> Khiiss Khiiss Mbacc ','Jaalguati héééé, Jaalguati...<br>Yaw aka ya meunone Jaalguati','Kay kay kay gneuweul gnu bloqué...<br>Aka ya meunone Blokass',
           'Aythia léééén na rang yi juub <br> Maana yéna barri maana... ','Diaabiraa <br> Yaw féthial diaabira...','Linguay paaxa nekh <br>Rimbaax Paapax','Sama diouni bi...<br> Thiakhagun gou tathie',
-          'Yuza Yuza Yuza ...<br> Yaw ya meunone Yuza', 'Sama doom dafa rérr, <br>Lumu tudu : thiakhagoun <br>Lumu sant : gu tathie <br> Toureum deugue :  Mborokhé Mborokhé <br> Mborokhé Mborokhé', 'Raass dafa khéw <br> Raass dafa nékh <br> Aythia lénn gnu Raass','Kou nékk ak kala gnopati, kala gaadji, kala khourii.. ba wookk la <br> Wookkal Wookkal Wookkal');
+          'Yuza Yuza Yuza ...<br> Yaw ya meunone Yuza', ' Mborokhé Mborokhé <br> Mborokhé Mborokhé', 'Raass dafa khéw <br> Raass dafa nékh <br> Aythia lénn gnu Raass','Kou nékk ak kala gnopati, kala gaadji, kala khourii.. ba wookk la <br> Wookkal Wookkal Wookkal');
           shuffle($danses);
 ?>
 <!DOCTYPE HTML>

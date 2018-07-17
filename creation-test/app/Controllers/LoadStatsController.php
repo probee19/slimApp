@@ -417,7 +417,7 @@ class LoadStatsController extends Controller
 
       $data_best_tests = array(); $data_best_tests_countries = array(); $data_best_shares_countries = array(); $best_tests_countries= array();
       $best_shares_countries = array();
-      $date_time = date();
+      $date_time = date("Y-m-d H:i:s");
 
       // Global Statistics
         $data_global = self::getGlobalStat($start, $end, $last_day_start, $last_day_end, $lang);

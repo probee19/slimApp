@@ -25,15 +25,19 @@
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
 
-#maillot{position:absolute; z-index:1; right:30px; top:0;  max-width:800px; max-height:420px; }
+#maillot{position:absolute; z-index:1; right:30px; top:50px;   height:370px; }
 
 .flag_team{z-index:1; position: absolute; left:200px; top:250px;   text-align:center; width:150px;   }
 
 #fb_id_user{position: absolute; z-index:1; left: 100px; top: 110px; width:200px ;  height:200px ; object-fit: cover; object-position: 50% 10%; border-radius:200px;border:10px solid #25336d;}
-#name_user{position:absolute;font-family: 'Titillium Web', sans-serif; text-transform:uppercase;z-index:1; right:140px; top: 90px; font-size:25px;line-height:25px; color:#FFF; width:180px; height:60px; text-align:center;} 
-#number{position:absolute;font-family: 'Titillium Web', sans-serif; z-index:1; right:160px; top: 150px; font-size:130px; line-height:100px; color:#FFF; width:140px; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
+#name_user{position:absolute;font-family: 'Titillium Web', sans-serif; text-transform:uppercase;z-index:1; right:125px; top: 115px; font-size:23px;line-height:25px; color:#FFF; width:180px; height:60px; text-align:center;} 
+#number{position:absolute;font-family: 'Titillium Web', sans-serif; z-index:1; right:150px; top: 190px; font-size:130px; line-height:100px; color:#FFF; width:140px; height:160px; display:flex; align-items:flex-start; justify-content:center; text-align:center;}
+
+#message{z-index:1; position: absolute;font-family: 'Titillium Web', sans-serif; text-transform:uppercase; right: 0; top: 0; color:#fff;  background-color:#25336d; font-size:30px; font-weight:700; display:flex; align-items:center; justify-content:center; width:800px ; height:60px ; text-align:center; }
+
+
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;
@@ -77,6 +81,7 @@
 
 <img src="https://creation.funizi.com/images-theme-perso/1529414005.jpg" id="back"> 
  
+<div class="texte" id="message"> CHAMPION DU MONDE 2018 </div>
 <img src="https://creation.funizi.com/images-theme-perso/1529943915.png" id="maillot"> 
  
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">

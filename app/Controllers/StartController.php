@@ -38,23 +38,26 @@ class StartController extends Controller
         if(isset($_GET['ref']))
           $test_id = (int)$_GET['ref'];
         //$country = $arg['country'];
-        if($_SESSION['name'] && $_SESSION['name'] !='')
+        $last_name = ''; $name = '';
+        if(isset($_SESSION['last_name']) && $_SESSION['last_name'] !='')
+            $last_name = $_SESSION['last_name'];
+        if(isset($_SESSION['name']) && $_SESSION['name'] !='')
             $name = $_SESSION['name'];
-        if($_SESSION['uid'] && $_SESSION['uid'] != '')
+        if(isset($_SESSION['uid']) && $_SESSION['uid'] != '')
             $user_id  = $_SESSION['uid'];
-        if($_SESSION['gender'] && $_SESSION['gender'] != '')
+        if(isset($_SESSION['gender']) && $_SESSION['gender'] != '')
             $genre  = $_SESSION['gender'];
-        if($_SESSION['last_name'] && $_SESSION['last_name'] != '')
+        if(isset($_SESSION['last_name']) && $_SESSION['last_name'] != '')
             $last_name = $_SESSION['last_name'];
 
         //$_SESSION['pic'] = $profile['picture']['url'];
         $_SESSION['user_has_disconnected'] = null;
         //echo $_SESSION['name'];
-        $name = $_SESSION['name'];
-        $last_name = $_SESSION['last_name'];
+        //$name = $_SESSION['name'];
+        //$last_name = $_SESSION['last_name'];
         $full_name = $name.' '.$last_name;
-        $user_id  = $_SESSION['uid'];
-        $genre  = $_SESSION['gender'];
+        //$user_id  = $_SESSION['uid'];
+        //$genre  = $_SESSION['gender'];
         $tags = array();
         $tags['user_name'] = $name;
         $tags['full_user_name'] = $full_name;

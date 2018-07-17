@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              <link href="https://fonts.googleapis.com/css?family=Boogaloo" rel="stylesheet">
+              <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -24,13 +24,15 @@
 .main img{ position:absolute; max-height:420px; max-width:800px; }
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
-#selbe{position:absolute; z-index:1; left:30px; bottom:30px; border-radius:200px; border:10px solid #FFF;  width:200px; max-height:200px; }
+ 
+#fb_id_user{position: absolute; z-index:1; left:50px; bottom:110px; width:250px ;  height:250px ; object-fit: cover; object-position: 50% 10%; border-radius:250px;border:10px solid #fff;}
+#player{position:absolute; z-index:1; right:50px; bottom:110px; border-radius:250px;border:10px solid #fff; width:250px; height:250px; }
 
-#bubble{position:absolute; z-index:1; right:0; top:10px;  width:630px; max-height:420px; }
+.name{z-index:1; position: absolute; text-transform:uppercase; bottom: 40px; font-family: 'Play', sans-serif; color:#fff; font-size:35px; line-height:50px; width:310px ; height:50px ; text-align:center;}
+#player_name{right: 20px; }
+#user{left: 20px; }
 
-#voyance{z-index:1;font-family: 'Boogaloo', cursive;position: absolute; right: 50px; top: 50px; color:#fff; font-size:40px; line-height:45px; width:500px ; height:170px ; display:flex; align-items:center; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
 
-#fb_id_user{position: absolute; z-index:1; right: 20px; bottom: 20px; width:100px ;  height:100px ; object-fit: cover; object-position: 50% 10%; border-radius:100px; border:10px solid #FFF; max-width:800px; max-height:420px;}
 
               </style>
               <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
@@ -73,31 +75,23 @@
           <div class='main'>
       
 <?php
-          $voyance = array('Yaw guissna gua djitté reew mi si samay guéntt',
-          'Dingua guén réww mi si fane yu néééwe pour guissé ak Obama',
-          '15 millions yila Macky di diokh mangui niii diko guiss mouy nieuw',
-          'Demb wane nagnuma si guéntt ni dingua gagné 50 millions',
-          'Guiss na yaw danguay dém té kénneu doula téyé',
-          'Guissna kou baax koulay mayy bén auto',
-          'Sa keur gui wara tabakh Almadie guiss nako si samay guéntt',
-          'Guissnala si guéntt gua nékki kou amm baatt si réww mi',
-          'Samay guéntt wane naniouma gua dieund Radisson fi si ay att you nééééwe',
-          'Balaa Adiouma digua ame bén xéweul bou taakou',
-          'Si samay guéntt digua diott si bén chéque bou 25 millions bala semaine bi di diékh',
-          'Guissna bala guinaw soubeu gua ame guaan bo geudieu guiss té name ko');
-          shuffle($voyance);
+          $img = array('1531760043','1531760386','1531760454','1531760703');
+          $players = array('Paul Pogba','B. Matuidi','Kylian Mbappe','A. Griezmann');
+          $ind = mt_rand(0,3);
 ?>
 <!DOCTYPE HTML>
+<img src="https://creation.funizi.com/images-theme-perso/1531758879.jpg" id="back"> 
 
-<img src="https://creation.funizi.com/images-theme-perso/1531309051.jpg" id="back"> 
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user"> 
+ 
+<div class="texte name" id="player_name"><?=$players[$ind]?> </div>
+ 
+<div class="texte name" id="user"><?php echo $_GET['user_name']; ?></div>
 
-
-<div class="texte" id="voyance"><?=$voyance[0]?></div>
-
-<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
-
-
-
+<img src="https://creation.funizi.com/images-theme-perso/<?=$img[$ind]?>.jpg" id="player"> 
+ 
+ 
+ 
 
         </div>
         
