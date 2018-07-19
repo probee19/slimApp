@@ -374,8 +374,13 @@
         function putData(data){
           $('#title').val(data.title);
           $('#body').val(data.body);
-          $('#img_test').prop('src','{{storage_base}}' + '/images/' + data.url_img);
-          $('#icon_cmapaign_test').val('{{storage_base}}' + '/images/' + data.url_img);
+          if(data.test_id != 0){
+            $('#img_test').prop('src','{{storage_base}}' + '/images/' + data.url_img);
+            $('#icon_cmapaign_test').val('{{storage_base}}' + '/images/' + data.url_img);
+          }
+          else
+            $('#img_test').prop('src','https://funizi.com/creation-test/src/img/funizi-blue.png');
+
           $('#icon_cmapaign_default').prop('checked',true);
           changeIcon();
         }
