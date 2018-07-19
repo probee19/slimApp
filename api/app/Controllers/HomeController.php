@@ -117,19 +117,19 @@ class HomeController extends Controller
           "forfait"   =>  "Forfait Journalier",
           "volume"    =>  "20 Mo",
           "code"      =>  "*103*225#",
-          "validite"  =>  "le lendemain à 23h59"
+          "validite"  =>  "jusqu'au lendemain à 23h59"
         ],
         [
           "forfait"   =>  "Forfait Journalier",
           "volume"    =>  "100 Mo",
           "code"      =>  "*103*525#",
-          "validite"  =>  "le lendemain à 23h59"
+          "validite"  =>  "jusqu'au lendemain à 23h59"
         ],
         [
           "forfait"   =>  "Forfait Journalier",
           "volume"    =>  "500 Mo",
           "code"      =>  "*103*1025#",
-          "validite"  =>  "le lendemain à 23h59"
+          "validite"  =>  "jusqu'au lendemain à 23h59"
         ],
         [
           "forfait"   =>  "Forfait Classique",
@@ -234,6 +234,7 @@ class HomeController extends Controller
         $url = "https://fr.funizi.com/api/start/390";
         $result = $this->helper->curlPost($url, $value );
         $nb++;
+        if($nb == 6) break;
       }
 
       $this->helper->debug($nb);
