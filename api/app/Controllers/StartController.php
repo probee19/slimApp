@@ -135,9 +135,7 @@ class StartController extends Controller
            }
            $url .= '&date=' . urlencode($_POST['date']);
            $this->helper->debug($url);
-
           //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
-
          }
 
         if($test_id == 359)
@@ -147,6 +145,13 @@ class StartController extends Controller
         if($test_id == 367)
           $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&score=' . urlencode($_POST['point_pronostic']) .'&rank='.$_POST['rank'] ;
 
+
+        if($test_id == 390){
+          
+          $this->helper->debug($_POST);
+          $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&volume=' . urlencode($_POST['volume']) . '&forfait='. urlencode($_POST['forfait']) . '&code=' . urlencode($_POST['code']) . '&validite='. urlencode($_POST['validite']);
+
+        }
 
            //$resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
 
@@ -182,6 +187,12 @@ class StartController extends Controller
             $filepath = "uploads/score_". $code . '.jpg';
 
 
+          if($test_id == 390){
+            $code = $this->helper->cleanUrl($_POST['forfait']).'_'.$this->helper->cleanUrl($_POST['volume']);
+            $filepath = "uploads/score_". $code . '.jpg';
+          }
+
+
           //Grabzit Options
           $options = new GrabzItImageOptions();
           $options->setBrowserwidth(800);
@@ -202,6 +213,9 @@ class StartController extends Controller
 
               if($test_id == 367)
                 $resultUrl = $this->helper->uploadToS3($filepath_, 'api/score_footbot/');
+
+              if($test_id == 390)
+                $resultUrl = $this->helper->uploadToS3($filepath_, 'api/orange_bf/');
           }
           $data = [
               'messenger_user_id'     => $user_id,
