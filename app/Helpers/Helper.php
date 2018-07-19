@@ -572,6 +572,48 @@ class Helper
       return $alltests_total;
     }
 
+
+    public function relatedTestsSN($id, $countryCode, $exclude, $lang, $total = 33){
+      $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
+
+      $related_tests = array(); $alltests_total = array();
+      $related_tests = self::getRelatedTest($id, $countryCode, $exclude, $lang);
+      if(count($related_tests) >= 1)
+        foreach ($related_tests as $test)
+          $exclude[] = $test['id_test'];
+
+      if(in_array($countryCode, ['SN'], true)){
+        $choosen_some_tests = array();
+        $array_tests = array(353, 354, 357, 360, 361, 362, 364, 366, 363, 375, 376, 377, 378, 379, 380, 381, 383, 384, 385);
+        $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
+        if(count($choosen_some_tests) >= 1)
+          foreach ($choosen_some_tests as $test)
+            $exclude[] = $test['id_test'];
+
+          $nb_restant = $total - count($choosen_some_tests) - count($related_tests);
+          $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
+          //
+            $best_local_test = self::getBestLocalTest($lang, $exclude, $countryCode, $nb_restant);
+            if(count($best_local_test) >= 1)
+              foreach ($best_local_test as $test)
+                $exclude[] = $test['id_test'];
+            $nb_restant = $nb_restant - count($best_local_test);
+
+            if($related_tests != null)
+              $choosen_some_tests   = array_merge($related_tests, $choosen_some_tests);
+            $choosen_some_tests   = array_merge($choosen_some_tests, $best_local_test);
+            $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
+          //
+          if($choosen_some_tests != null)
+            $alltests_total   = array_merge($choosen_some_tests, $alltests_total);
+      }
+
+      if(count($alltests_total) == 0 )
+         $alltests_total = self::getAlternateTests($countryCode, $exclude, $lang);
+
+      return $alltests_total;
+    }
+
     public static function getAlternateTests($countryCode, $exclude, $lang, $total = 33)
     {
       $tests_from_json = self::getAllTestJson($lang);
@@ -1021,7 +1063,7 @@ class Helper
        $most_tested = array();
        $nb_taken = 0;
        foreach ($arr_data as $test) {
-         if(!in_array($test->id_test, $exclude, true) && ($test->codes_countries == "" || strpos($test->codes_countries, $countryCode) != false ) && ++$nb_taken <= $total){
+         if(!in_array($test->id_test, $exclude, true) && ($test->codes_countries == "" || strpos($test->codes_countries, $countryCode) != false ) && ($test->statut == 1) && ++$nb_taken <= $total){
            $most_tested[$test->id_test] = [
              'url_image_test' => $test->url_image_test,
              'id_test'        => $test->id_test,
