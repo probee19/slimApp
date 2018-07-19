@@ -108,60 +108,6 @@ class HomeController extends Controller
     {
       $forfaits = [
         [
-          "forfait"   =>  "Forfait Journalier",
-          "volume"    =>  "5 Mo",
-          "code"      =>  "*103*100#",
-          "validite"  =>  "le même jour à 23h59"
-        ],
-        [
-          "forfait"   =>  "Forfait Journalier",
-          "volume"    =>  "20 Mo",
-          "code"      =>  "*103*225#",
-          "validite"  =>  "jusqu'au lendemain à 23h59"
-        ],
-        [
-          "forfait"   =>  "Forfait Journalier",
-          "volume"    =>  "100 Mo",
-          "code"      =>  "*103*525#",
-          "validite"  =>  "jusqu'au lendemain à 23h59"
-        ],
-        [
-          "forfait"   =>  "Forfait Journalier",
-          "volume"    =>  "500 Mo",
-          "code"      =>  "*103*1025#",
-          "validite"  =>  "jusqu'au lendemain à 23h59"
-        ],
-        [
-          "forfait"   =>  "Forfait Classique",
-          "volume"    =>  "5 Mo",
-          "code"      =>  "*103*200#",
-          "validite"  =>  "7 jours"
-        ],
-        [
-          "forfait"   =>  "Forfait Classique",
-          "volume"    =>  "10 Mo",
-          "code"      =>  "*103*250#",
-          "validite"  =>  "7 jours"
-        ],
-        [
-          "forfait"   =>  "Forfait Classique",
-          "volume"    =>  "30 Mo",
-          "code"      =>  "*103*500#",
-          "validite"  =>  "7 jours"
-        ],
-        [
-          "forfait"   =>  "Forfait Classique",
-          "volume"    =>  "400 Mo",
-          "code"      =>  "*103*2025#",
-          "validite"  =>  "7 jours"
-        ],
-        [
-          "forfait"   =>  "Forfait Classique",
-          "volume"    =>  "65 Mo",
-          "code"      =>  "*103*1000#",
-          "validite"  =>  "15 jours"
-        ],
-        [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "100 Mo",
           "code"      =>  "*103*1500#",
@@ -234,7 +180,7 @@ class HomeController extends Controller
         $url = "https://fr.funizi.com/api/start/390";
         $result = $this->helper->curlPost($url, $value );
         $nb++;
-        if($nb == 10) break;
+        if($nb == 20) break;
       }
 
       $this->helper->debug($nb);

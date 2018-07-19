@@ -3,6 +3,7 @@
 $app->get('/', 'HomeController:index')->setName('accueil');
 $app->get('/uds', 'DailyStatsController:index');
 $app->get('/dev', 'HomeController:devEnv')->setName('dev');
+$app->get('/games', 'HomeController:games')->setName('games');
 $app->get('/privacy-policy', 'HomeController:privacyPolicy')->setName('privacypolicy');
 $app->get('/page/{pageid}', 'HomeController:index')->setName('paginatation');
 $app->get('/test/{name}/{id}', 'TestController:index')->setName('single');

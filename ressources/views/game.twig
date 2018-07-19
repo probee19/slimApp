@@ -58,26 +58,10 @@
                   {% if session.name == '' %}
                   <span class="info-test text-center">{{interface_ui.label_info_test | capitalize}}</span>
                   {% endif %}
+
                   <!--div class="test-image text-center col-xs-10 col-xs-offset-1 col-sm-12 col-sm-offset-0"></div-->
                   <div  class="col-xs-12 btn-action text-center" style="margin-top:1em; margin-bottom: 2em; padding:0; ">
-                      {% if session.name %}
-                          {% if (permission == 0) or (session.accepted == true)  %}
-                        <a id="btn-result" href="{{ domain_url }}/start{% if test.if_additionnal_info == 1 %}/1{% endif %}/{{ test.id_test }}" onclick="loader()" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="background-color: #3b5999; color:#fff">
-                                  <i class="fab fa-facebook-square"></i>
-                                      {{interface_ui.btn_continue | capitalize}} {{ session.name | capitalize }}
-                              </a>
-                          {% else %}
-                              <a id="btn-result" href="{{ loginUrl }}"  onclick="loader()" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="background-color: #3b5999; color:#fff">
-                                  <i class="fab fa-facebook-square"></i>
-                                  {{interface_ui.btn_continue | capitalize}} {{ session.name | capitalize }}
-                              </a>
-                          {% endif %}
-                      {% else %}
-                          <a id="btn-result" href="{{ loginUrl }}"  onclick="loader()" class="btn btn-lg btn_to_track gtm_btn-test" data-btn="process" style="background-color: #3b5999; color:#fff">
-                              <i class="fab fa-facebook-square"></i>
-                              {{interface_ui.btn_login_test | capitalize}}
-                          </a>
-                      {% endif %}
+                    <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="100%" data-numposts="3"></div>
                   </div>
 
                 </div>

@@ -264,7 +264,30 @@ class HomeController extends Controller
       return 'Session setted.';
     }
 
+    public function games($request, $response, $arg)
+    {
+      $url = $this->helper->detectLang($request, $response);
+      if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 
+      $sandbox = new Helper();
+      $lang = $this->helper->getLangSubdomain($request);
+      $interface_ui = $this->helper->getUiLabels($lang);
+      $baseDomain = "https://" . $lang . ".".$this->base_domain;
+
+      $country_code = $sandbox->getCountryCode();
+
+
+      $all_test = $sandbox->relatedTests($id, $country_code, $exclude, $lang);
+
+
+      $id_user = 0;
+      if(isset($_SESSION['uid']))
+          $id_user = $_SESSION['uid'];
+
+      $all_lang = $this->helper->getActivatedLanguages();
+      return $this->view->render($response, 'game.twig', compact( 'lang', 'url','id_user', 'all_test', 'interface_ui','lang','all_lang'));
+
+    }
 
     public function chunk($request, $response, $args){
 
@@ -381,7 +404,7 @@ class HomeController extends Controller
         //$this->helper->getScore($args['id']);
         //exit;
     }
-  }
+    }
 
     public function saveSubNewsletter($request, $response, $arg)
     {
