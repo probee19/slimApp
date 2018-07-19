@@ -277,7 +277,7 @@ class HomeController extends Controller
       $country_code = $sandbox->getCountryCode();
 
 
-      $all_test = $sandbox->relatedTests($id, $country_code, $exclude, $lang);
+      $all_test = $sandbox->relatedTestsSN($id, $country_code, $exclude, $lang);
 
 
       $id_user = 0;
