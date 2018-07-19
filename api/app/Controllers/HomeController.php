@@ -234,7 +234,7 @@ class HomeController extends Controller
         $url = "https://fr.funizi.com/api/start/390";
         $result = $this->helper->curlPost($url, $value );
         $nb++;
-        if($nb == 6) break;
+        if($nb == 10) break;
       }
 
       $this->helper->debug($nb);
