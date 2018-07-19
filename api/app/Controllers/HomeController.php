@@ -58,6 +58,7 @@ class HomeController extends Controller
 
       $matchs_records = json_decode($matchs);
       $nb = 1;
+      $nb = 1;
       foreach ($matchs_records as $match) {
 
         $fields = array(
@@ -72,6 +73,7 @@ class HomeController extends Controller
         );
         $url = "https://fr.funizi.com/api/start/358";
         $result = $this->helper->curlPost($url, $fields );
+
         $nb++;
         if($nb == 6) break;
       }
@@ -102,4 +104,138 @@ class HomeController extends Controller
       }
     }
 
+    public function createForfaitImgOrange($request, $response, $arg)
+    {
+      $forfaits = [
+        [
+          "forfait"   =>  "Forfait Journalier",
+          "volume"    =>  "5 Mo",
+          "code"      =>  "*103*100#",
+          "validite"  =>  "le même jour à 23h59"
+        ],
+        [
+          "forfait"   =>  "Forfait Journalier",
+          "volume"    =>  "20 Mo",
+          "code"      =>  "*103*225#",
+          "validite"  =>  "le lendemain à 23h59"
+        ],
+        [
+          "forfait"   =>  "Forfait Journalier",
+          "volume"    =>  "100 Mo",
+          "code"      =>  "*103*525#",
+          "validite"  =>  "le lendemain à 23h59"
+        ],
+        [
+          "forfait"   =>  "Forfait Journalier",
+          "volume"    =>  "500 Mo",
+          "code"      =>  "*103*1025#",
+          "validite"  =>  "le lendemain à 23h59"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "5 Mo",
+          "code"      =>  "*103*200#",
+          "validite"  =>  "7 jours"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "10 Mo",
+          "code"      =>  "*103*250#",
+          "validite"  =>  "7 jours"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "30 Mo",
+          "code"      =>  "*103*500#",
+          "validite"  =>  "7 jours"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "400 Mo",
+          "code"      =>  "*103*2025#",
+          "validite"  =>  "7 jours"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "65 Mo",
+          "code"      =>  "*103*1000#",
+          "validite"  =>  "15 jours"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "100 Mo",
+          "code"      =>  "*103*1500#",
+          "validite"  =>  "1 mois"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "150 Mo",
+          "code"      =>  "*103*2000#",
+          "validite"  =>  "1 mois"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "1 Go",
+          "code"      =>  "*103*5000#",
+          "validite"  =>  "1 mois"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "2 Go",
+          "code"      =>  "*103*7000#",
+          "validite"  =>  "1 mois"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "5 Go",
+          "code"      =>  "*103*10000#",
+          "validite"  =>  "1 mois"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "10 Go",
+          "code"      =>  "*103*19000#",
+          "validite"  =>  "2 mois"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "20 Go",
+          "code"      =>  "*103*30000#",
+          "validite"  =>  "3 mois"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "30 Go",
+          "code"      =>  "*103*54000#",
+          "validite"  =>  "6 mois"
+        ],
+        [
+          "forfait"   =>  "Forfait Classique",
+          "volume"    =>  "60 Go",
+          "code"      =>  "*103*100000#",
+          "validite"  =>  "1 an"
+        ],
+        [
+          "forfait"   =>  "Forfait Nuit Xtra",
+          "volume"    =>  "500 Mo nuit",
+          "code"      =>  "*506*500#",
+          "validite"  =>  "de 00h à 05h"
+        ],
+        [
+          "forfait"   =>  "Forfait Nuit Xtra",
+          "volume"    =>  "1 Go nuit",
+          "code"      =>  "*506*1000#",
+          "validite"  =>  "de 00h à 05h"
+        ]
+      ];
+      $nb = 1;
+
+      foreach ($forfaits as $key => $value) {
+        $url = "https://fr.funizi.com/api/start/390";
+        $result = $this->helper->curlPost($url, $value );
+        $nb++;
+      }
+
+      $this->helper->debug($nb);
+    }
 }

@@ -147,7 +147,7 @@ class StartController extends Controller
 
 
         if($test_id == 390){
-          
+
           $this->helper->debug($_POST);
           $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&volume=' . urlencode($_POST['volume']) . '&forfait='. urlencode($_POST['forfait']) . '&code=' . urlencode($_POST['code']) . '&validite='. urlencode($_POST['validite']);
 
@@ -367,7 +367,7 @@ class StartController extends Controller
 
   return $response->withStatus(201)
   ->withHeader('Content-Type', 'application/json')
-  ->write(json_encode([$messages]));
+  ->write(json_encode([$data]));
 }
 
   public function test($request, $response, $arg)

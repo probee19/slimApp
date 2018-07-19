@@ -14,3 +14,4 @@ $app->get('/share/footbot', 'ShareApiController:index');
 $app->post('/start/{ref}', 'StartController:index');
 $app->post('/match', 'HomeController:createPicMatch');
 $app->post('/gameday', 'HomeController:createGameDays');
+$app->post('/orange_forfaits', 'HomeController:createForfaitImgOrange');
