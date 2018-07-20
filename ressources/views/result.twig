@@ -140,6 +140,11 @@
                       {% else %}
                         <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "modal_messenger")'><i class="fab fa-facebook-messenger"></i></a>
                       {% endif %}
+                      {% if country_code == 'SN' %}
+                        <div class="row text-center" style="margin-top:1em">
+                          <a href="http://bit.ly/concoursSn5000" target="_self"><img src="{{storage_base}}/images/banner/jeu_concours_sn.gif" style="max-width: 95%;" alt="Senegal"></a>
+                        </div>
+                      {% endif %}
                     </div>
                 </div>
             </div>
@@ -181,11 +186,6 @@
 
     {% endif %}
 
-    {% if country_code == 'SN' %}
-      <div class="row text-center" style="margin-top:1em">
-        <a href="http://bit.ly/concoursSn5000" target="_self"><img src="{{storage_base}}/images/banner/jeu_concours_sn.gif" style="max-width: 95%;" alt="Senegal"></a>
-      </div>
-    {% endif %}
 
     <div class="col-sm-10 col-sm-offset-1 subscrip_newltr_block">
       <div class="row label_notif_block"> {{interface_ui.sign_up_newsletter_label}} </div>
