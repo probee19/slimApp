@@ -189,7 +189,7 @@ class StartController extends Controller
 
           if($test_id == 390){
             $code = $this->helper->cleanUrl($_POST['forfait']).'_'.$this->helper->cleanUrl($_POST['volume']);
-            $filepath = "uploads/orange_bf_". $code . '.jpg';
+            $filepath = "uploads/orange_bf_". $code . '_v2.jpg';
           }
 
 
