@@ -237,7 +237,7 @@ class HomeController extends Controller
           "forfait"   =>  "Forfait Nuit Xtra",
           "volume"    =>  "500 Mo nuit",
           "code"      =>  "*506*500#",
-          "prix"      =>  "50 FCFA",
+          "prix"      =>  "500 FCFA",
           "validite"  =>  "de 00h à 05h"
         ],
         [
