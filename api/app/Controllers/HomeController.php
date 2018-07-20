@@ -111,120 +111,140 @@ class HomeController extends Controller
           "forfait"   =>  "Forfait Journalier",
           "volume"    =>  "5 Mo",
           "code"      =>  "*103*100#",
+          "prix"      =>  "100 FCFA",
           "validite"  =>  "le même jour à 23h59"
         ],
         [
           "forfait"   =>  "Forfait Journalier",
           "volume"    =>  "20 Mo",
           "code"      =>  "*103*225#",
+          "prix"      =>  "225 FCFA",
           "validite"  =>  "jusqu'au lendemain à 23h59"
         ],
         [
           "forfait"   =>  "Forfait Journalier",
           "volume"    =>  "100 Mo",
           "code"      =>  "*103*525#",
+          "prix"      =>  "525 FCFA",
           "validite"  =>  "jusqu'au lendemain à 23h59"
         ],
         [
           "forfait"   =>  "Forfait Journalier",
           "volume"    =>  "500 Mo",
           "code"      =>  "*103*1025#",
+          "prix"      =>  "1 025 FCFA",
           "validite"  =>  "jusqu'au lendemain à 23h59"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "5 Mo",
           "code"      =>  "*103*200#",
+          "prix"      =>  "200 FCFA",
           "validite"  =>  "7 jours"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "10 Mo",
           "code"      =>  "*103*250#",
+          "prix"      =>  "250 FCFA",
           "validite"  =>  "7 jours"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "30 Mo",
           "code"      =>  "*103*500#",
+          "prix"      =>  "500 FCFA",
           "validite"  =>  "7 jours"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "400 Mo",
           "code"      =>  "*103*2025#",
+          "prix"      =>  "2 025 FCFA",
           "validite"  =>  "7 jours"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "65 Mo",
           "code"      =>  "*103*1000#",
+          "prix"      =>  "1 000 FCFA",
           "validite"  =>  "15 jours"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "100 Mo",
           "code"      =>  "*103*1500#",
+          "prix"      =>  "1 500 FCFA",
           "validite"  =>  "1 mois"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "150 Mo",
           "code"      =>  "*103*2000#",
+          "prix"      =>  "2 000 FCFA",
           "validite"  =>  "1 mois"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "1 Go",
           "code"      =>  "*103*5000#",
+          "prix"      =>  "5 000 FCFA",
           "validite"  =>  "1 mois"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "2 Go",
           "code"      =>  "*103*7000#",
+          "prix"      =>  "7 000 FCFA",
           "validite"  =>  "1 mois"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "5 Go",
           "code"      =>  "*103*10000#",
+          "prix"      =>  "10 000 FCFA",
           "validite"  =>  "1 mois"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "10 Go",
           "code"      =>  "*103*19000#",
+          "prix"      =>  "19 000 FCFA",
           "validite"  =>  "2 mois"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "20 Go",
           "code"      =>  "*103*30000#",
+          "prix"      =>  "30 000 FCFA",
           "validite"  =>  "3 mois"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "30 Go",
           "code"      =>  "*103*54000#",
+          "prix"      =>  "54 000 FCFA",
           "validite"  =>  "6 mois"
         ],
         [
           "forfait"   =>  "Forfait Classique",
           "volume"    =>  "60 Go",
           "code"      =>  "*103*100000#",
+          "prix"      =>  "100 000 FCFA",
           "validite"  =>  "1 an"
         ],
         [
           "forfait"   =>  "Forfait Nuit Xtra",
           "volume"    =>  "500 Mo nuit",
           "code"      =>  "*506*500#",
+          "prix"      =>  "50 FCFA",
           "validite"  =>  "de 00h à 05h"
         ],
         [
           "forfait"   =>  "Forfait Nuit Xtra",
           "volume"    =>  "1 Go nuit",
           "code"      =>  "*506*1000#",
+          "prix"      =>  "1 000 FCFA",
           "validite"  =>  "de 00h à 05h"
         ]
       ];
