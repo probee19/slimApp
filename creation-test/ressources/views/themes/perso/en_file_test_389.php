@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              
+              <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -20,20 +20,14 @@
               .texte2{
                 width: 200px;
               }
-              @font-face {
-    font-family: orange;
-    src: url("http://fr.funizi.com/src/fonts/orange/HelvNeue75_W1G.woff");
-}
-.main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
+              .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
-
-#back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
-
-#volume{z-index:1; font-family:"Arial",sans-serif;letter-spacing: -0.015em; font-weight: bold;position: absolute; left: 38px; top: 38px; color:#fff; font-size:70px; line-height:65px; width:350px ; height:350px ; border-radius:350px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
-.prix{font-size:50px;}
-.code{font-size:60px; color:#000;}
-#forfait{z-index:1; font-family:"Arial",sans-serif; letter-spacing: -0.015em;font-weight: bold;position: absolute; right: 38px; top: 38px; color:#000; font-size:35px; line-height:55px; width:350px ; height:350px ;  display:flex; align-items:center; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
-
+#background{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
+#fb_id_user{position: absolute; z-index:1; right: 20px; top: 20px; width:80px ;  height:80px ; border:4px solid #666;object-fit: cover; object-position: 50% 10%; border-radius:80px; }
+#name_user{position:absolute; z-index:1; left: 0px; top: 0px; font-size:30px; color:#FFF;} 
+#titretest{position:absolute; font-family: 'Fira Sans', sans-serif;z-index:1; left: 50px; width:650px; height:150px; top: 20px; font-size:33px; line-height:37px; color:#000;;} 
+ol{font-family: 'Fira Sans', sans-serif; position:absolute; z-index:1; left: 50px; width:700px; height:150px; top: 120px; font-size:25px; line-height:25px; color:#000;} 
+ol li{height:55px;} 
               </style>
               <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
@@ -75,15 +69,26 @@
           <div class='main'>
       
 <?php
-          $postes = array('');
-          $img = array();
+ 
+  $texte = array(''.$_GET['user_name'].' keep secrets!', 'With '.$_GET['User_name'].' We never get bored!', ''.$_GET['user_name'].' is just adorable!',
+  ''.$_GET['user_name'].' can give everything by friendship!',''.$_GET['user_name'].' knows how to give good advice!', 
+  ''.$_GET['user_name'].' prepares wonderful surprises!',''.$_GET['user_name'].' knows how to make life more beautiful!');
+shuffle($texte);
 ?>
-<!DOCTYPE HTML>
-<img src="https://creation.funizi.com/images-theme-perso/1532004362.png" id="back"> 
+<img src="http://creation.funizi.com/images-theme-perso/1531932164.jpg" id="background"> 
 
-<div class="texte" id="volume"> <?php echo $_GET['volume']; ?> <span class="prix"> à <?php echo $_GET['prix']; ?></span>  <span class="code"> <?php echo $_GET['code']; ?></span> </div>
+<img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
-<div class="texte" id="forfait"><?php echo $_GET['forfait']; ?> <br> Valable <?php echo $_GET['validite']; ?> </div>
+<div id="titretest" >The <span style="color:#D90000">5 reasons</span> to be friends with <br><?php echo $_GET['full_user_name']; ?></div>
+
+<ol>
+<li><?php echo $texte[0]; ?> </li> 
+<li><?php echo $texte[1]; ?> </li> 
+<li style="color:#D90000"><?php echo $texte[2]; ?> </li> 
+<li><?php echo $texte[3]; ?> </li> 
+<li><?php echo $texte[4]; ?> </li> 
+</ol>
+
 
         </div>
         

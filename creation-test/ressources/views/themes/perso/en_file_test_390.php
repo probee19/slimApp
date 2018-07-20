@@ -29,8 +29,9 @@
 
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
 
-#volume{z-index:1; font-family:"Arial",sans-serif;letter-spacing: -0.015em; font-weight: bold;position: absolute; left: 38px; top: 38px; color:#000; font-size:60px; width:350px ; height:350px ; border-radius:350px; display:flex; align-items:center; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
-
+#volume{z-index:1; font-family:"Arial",sans-serif;letter-spacing: -0.015em; font-weight: bold;position: absolute; left: 38px; top: 38px; color:#fff; font-size:70px; line-height:65px; width:350px ; height:350px ; border-radius:350px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
+.prix{font-size:50px;}
+.code{font-size:60px; color:#000;}
 #forfait{z-index:1; font-family:"Arial",sans-serif; letter-spacing: -0.015em;font-weight: bold;position: absolute; right: 38px; top: 38px; color:#000; font-size:35px; line-height:55px; width:350px ; height:350px ;  display:flex; align-items:center; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
 
               </style>
@@ -80,9 +81,9 @@
 <!DOCTYPE HTML>
 <img src="https://creation.funizi.com/images-theme-perso/1532004362.png" id="back"> 
 
-<div class="texte" id="volume"> <?php echo $_GET['volume']; ?></div>
+<div class="texte" id="volume"> <?php echo $_GET['volume']; ?> <span class="prix"> à <?php echo $_GET['prix']; ?></span>  <span class="code"> <?php echo $_GET['code']; ?></span> </div>
 
-<div class="texte" id="forfait"><?php echo $_GET['forfait']; ?> <br> <?php echo $_GET['code']; ?> <br> Valable <?php echo $_GET['validite']; ?> </div>
+<div class="texte" id="forfait"><?php echo $_GET['forfait']; ?> <br> Valable <?php echo $_GET['validite']; ?> </div>
 
         </div>
         
