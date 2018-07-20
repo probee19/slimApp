@@ -1034,7 +1034,7 @@ class Helper
        $most_tested = array();
        $nb_taken = 0;
        foreach ($arr_data as $test) {
-         if(!in_array($test->id_test, $exclude, true) && (strpos($test->codes_countries, $countryCode) != false ) && ++$nb_taken <= $total){
+         if(!in_array($test->id_test, $exclude, true) && (strpos($test->codes_countries, $countryCode) != false ) && ($test->statut == 1) && ++$nb_taken <= $total){
            $most_tested[$test->id_test] = [
              'url_image_test' => $test->url_image_test,
              'id_test'        => $test->id_test,
