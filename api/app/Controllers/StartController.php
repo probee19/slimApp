@@ -149,7 +149,7 @@ class StartController extends Controller
         if($test_id == 390){
 
           $this->helper->debug($_POST);
-          $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&volume=' . urlencode($_POST['volume']) . '&forfait='. urlencode($_POST['forfait']) . '&code=' . urlencode($_POST['code']) . '&validite='. urlencode($_POST['validite']);
+          $url .= '&url_img_profile_user='.urlencode($_POST['link_picture']).'&volume=' . urlencode($_POST['volume']) . '&forfait='. urlencode($_POST['forfait']) . '&code=' . urlencode($_POST['code']) . '&validite='. urlencode($_POST['validite']). '&prix='. urlencode($_POST['prix']);
 
         }
 
