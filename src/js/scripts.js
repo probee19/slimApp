@@ -73,6 +73,11 @@ $(document).ready(function () {
     openModalDiscovery();
     openModalShare();
 
+    $("#btn-show-discover-block").click(function (){
+        $('html, body').animate({
+            scrollTop: $("#discover-section").offset().top
+        }, 1500);
+    });
 
     $(".btn_to_track").on("click", function () {
         //clickButton($(this).attr("data-btn"));

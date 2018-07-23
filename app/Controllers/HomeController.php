@@ -359,8 +359,10 @@ class HomeController extends Controller
                   $is_result = false;
               }
 
-              $suggestions = $this->helper->getLovedTests($country_code, $exclude, $lang, 3);
-              $this->helper->debug($suggestions);
+              //$suggestions = $this->helper->getLovedTests($country_code, $exclude, $lang, 3);
+              //$this->helper->debug($suggestions);
+              $ab_testing = $test->ab_testing;
+
 
               if($test->testInfo->codes_countries !=''){
                   $exclude = [$test->test_id];
@@ -405,7 +407,7 @@ class HomeController extends Controller
 
               $interface_ui = $this->helper->getUiLabels($lang);
               $all_lang = $this->helper->getActivatedLanguages();
-              return $this->view->render($response, 'chunk.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'id_rubrique', 'img_url', 'result_description', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share', 'top_tests', 'suggestions', 'interface_ui','lang','all_lang'));
+              return $this->view->render($response, 'chunk.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'id_rubrique', 'img_url', 'result_description', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share', 'top_tests', 'ab_testing', 'interface_ui','lang','all_lang'));
           }
 
     }
