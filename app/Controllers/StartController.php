@@ -327,6 +327,7 @@ class StartController extends Controller
                 // Saving the test result of user
                 $referal = 'direct';
                 if(isset($_SESSION['referal'])) $referal = $_SESSION['referal'];
+
                 $data = [
                     'user_id'               => $user->id,
                     'test_id'               => $test_id,
@@ -335,8 +336,13 @@ class StartController extends Controller
                     'shared_link'           => $code,
                     'result_description'    => $result_description,
                     'test_from'             => $referal,
-                    'lang'                  => $lang
+                    'lang'                  => $lang,
+                    'ab_testing'            => 'a' // for A/B Testing
                 ];
+
+                $last_users_test = UserTest::on('reader')->orderBy('id','DESC')->first();
+                if($last_users_test->ab_testing == 'a') $data['ab_testing'] = 'b';
+
                 if($save){
                     $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
                     $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');

@@ -18,7 +18,8 @@ class UserTest extends Eloquent
         'result_description',
         'img_url',
         'test_from',
-        'lang'
+        'lang',
+        'ab_testing'
     ];
 
     public function testInfo(){
