@@ -76,7 +76,7 @@ $(document).ready(function () {
     $("#btn-show-discover-block").click(function (){
         $('html, body').animate({
             scrollTop: $("#discover-section").offset().top
-        }, 1500);
+        }, 800);
     });
 
     $(".btn_to_track").on("click", function () {
