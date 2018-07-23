@@ -63,8 +63,16 @@
                 {% if is_mobile() or is_tablet() %}
                   {% if ab_testing == 'b' or ab_testing == 'a' %}
                     <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em; margin-bottom: 1em;" >
-                      <div class="cta" id="btn-show-discover-block" style="cursor:pointer;" >
-                          <span><a class="" style="cursor:pointer;"> Découvrir d'autres tests</a></span>
+                      <div class="" id="btn-show-discover-block" style=" background: #337ab7;
+                      font-weight: bold;
+                      border-radius: 25px;
+                      line-height: 40px;
+                      width: 200px;
+                      padding: 0 15px;
+                      margin: 0 auto;
+                      text-align: center;
+                      cursor:pointer;" >
+                          <span><a class="" style="cursor:pointer;"> {{interface_ui.btn_goto_discover | capitalize}}</a></span>
                       </div>
                     </div>
                   {% else %}
