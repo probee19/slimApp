@@ -55,11 +55,17 @@
                       //setTimeout(function(){ $(".overlay-share").css("display","flex").fadeIn("slow") }, 7000);
                     </script>
                 </div>
-
+                {% if unique_result == 1 %}
+                  <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em;" id="block_redo">
+                      <a id="btn-redo" class="btn btn-default btn_to_track" href="{{ domain_url }}/start{% if if_additionnal_info == 1 %}/1{% endif %}/{{ testId }}" onclick="loaderReTest();" style="cursor:pointer;"  data-btn="re-process"><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_retest | capitalize}}</a>
+                  </div>
+                {% endif %}
                 {% if is_mobile() or is_tablet() %}
                   {% if ab_testing == 'b' or ab_testing == 'a' %}
-                    <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em; margin-bottom: :1em;" >
-                      <a id="btn-show-discover-block" class=""   style="cursor:pointer;" > {{interface_ui.btn_goto_discover | capitalize}}</a>
+                    <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em; margin-bottom: :2em;" >
+                      <div class="cta" id="btn-show-discover-block" style="cursor:pointer;" >
+                          <span><a class="" style="cursor:pointer;"> Découvrir d'autres tests</a></span>
+                      </div>
                     </div>
                   {% else %}
                     <!-- Le texte d'incitation est affiché pour la version a -->
@@ -102,11 +108,7 @@
                     {% endif %}
                 </div>
 
-                {% if unique_result == 1 %}
-                  <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em;" id="block_redo">
-                      <a id="btn-redo" class="btn btn-default btn_to_track" href="{{ domain_url }}/start{% if if_additionnal_info == 1 %}/1{% endif %}/{{ testId }}" onclick="loaderReTest();" style="cursor:pointer;"  data-btn="re-process"><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_retest | capitalize}}</a>
-                  </div>
-                {% endif %}
+
                 {% if test_owner %}
                     <div class="col-sm-12" style="margin-top: 5px; font-size: 10px;">
                         Avertissement : Ce test a été créé et publié par <a href="https://facebook.com/{{ test_owner.facebook_id}}" target="_blank">{{ test_owner.first_name}} {{ test_owner.last_name}} </a>
