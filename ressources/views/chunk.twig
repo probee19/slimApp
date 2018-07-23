@@ -61,7 +61,7 @@
                 {% if is_mobile() or is_tablet() %}
                   {% if ab_testing == 'b' or ab_testing == 'a' %}
                     <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em;" id="block_redo">
-                      <a id="btn-show-discover-block" class="btn btn-default btn_to_track"  style="cursor:pointer;" ><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_retest | capitalize}}</a>
+                      <a id="btn-show-discover-block" class=""   style="cursor:pointer;" ><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_goto_discover | capitalize}}</a>
                     </div>
                   {% endif %}
                 {% endif %}
