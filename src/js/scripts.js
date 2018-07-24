@@ -206,7 +206,7 @@ function openModalShare(){
     if($('#discovery-share-modal').length > 0)
       setTimeout(function () {
         $('#discovery-share-modal').modal('show');
-      }, 8000);
+      }, 8000); 
 }
 
 function clickButton(btn) {
