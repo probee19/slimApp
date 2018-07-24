@@ -69,7 +69,7 @@ class StartController extends Controller
           fwrite($log, $data_log);
         }
 
-        $user = $this->saveOrUpdate($user_id, $name, $last_name, $genre, $ipadd, $this->helper->getAB());
+        $user = $this->saveOrUpdate($user_id, $name, $last_name, $genre, $ipadd);
         if($test_id == 0 ){
             $result_url = $this->router->pathFor('accueil');
 
@@ -366,7 +366,7 @@ class StartController extends Controller
         return $response->withStatus(302)->withHeader('Location', $result_url );
     }
 
-    private function saveOrUpdate($id, $name, $lastname, $genre, $ip, $ab_testing){
+    private function saveOrUpdate($id, $name, $lastname, $genre, $ip){
         $country = $this->helper->getCountry($ip);
         try{
             $user_in = User::on('reader')->where('facebook_id', $id)->firstOrFail();
@@ -379,7 +379,6 @@ class StartController extends Controller
                 'ip_address'    =>  $ip,
                 'country_code'  =>  $country['countryCode'],
                 'country_name'  =>  $country['countryName'],
-                'ab_testing'    =>  $ab_testing
             ]);
         }
         return $user_in;
