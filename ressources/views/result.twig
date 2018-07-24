@@ -22,7 +22,7 @@
  </script>
 {% endblock %}
 {% block banner_mobile_top %}
-  {% if ab_testing == 'a' %}{% include 'banners/banner_320x100_top_result_page.twig' %}{% endif %}
+  {% if ab_testing != 'b' %}{% include 'banners/banner_320x100_top_result_page.twig' %}{% endif %}
 {% endblock %}
 {% block content %}
     {% if not new %}
@@ -147,7 +147,7 @@
 
         </div>
 
-        {% if ab_testing == 'a' %}
+        {% if ab_testing != 'b' %}
           <div id="discovery-share-modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
