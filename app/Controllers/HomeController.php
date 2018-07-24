@@ -361,7 +361,10 @@ class HomeController extends Controller
 
               //$suggestions = $this->helper->getLovedTests($country_code, $exclude, $lang, 3);
               //$this->helper->debug($suggestions);
-              $ab_testing = $test->ab_testing;
+              if(isset($_GET['ab']))
+                $ab_testing =$_GET['ab'];
+              else
+                $ab_testing = $test->ab_testing;
 
 
               if($test->testInfo->codes_countries !=''){

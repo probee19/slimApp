@@ -69,7 +69,7 @@ class StartController extends Controller
           fwrite($log, $data_log);
         }
 
-        $user = $this->saveOrUpdate($user_id, $name, $last_name, $genre, $ipadd);
+        $user = $this->saveOrUpdate($user_id, $name, $last_name, $genre, $ipadd, $this->helper->getAB());
         if($test_id == 0 ){
             $result_url = $this->router->pathFor('accueil');
 
@@ -337,11 +337,8 @@ class StartController extends Controller
                     'result_description'    => $result_description,
                     'test_from'             => $referal,
                     'lang'                  => $lang,
-                    'ab_testing'            => 'a' // for A/B Testing
+                    'ab_testing'            => $this->helper->getAB() // for A/B Testing
                 ];
-
-                $last_users_test = UserTest::on('reader')->orderBy('id','DESC')->first();
-                if($last_users_test->ab_testing == 'a') $data['ab_testing'] = 'b';
 
                 if($save){
                     $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
@@ -369,7 +366,7 @@ class StartController extends Controller
         return $response->withStatus(302)->withHeader('Location', $result_url );
     }
 
-    private function saveOrUpdate($id, $name, $lastname, $genre, $ip){
+    private function saveOrUpdate($id, $name, $lastname, $genre, $ip, $ab_testing){
         $country = $this->helper->getCountry($ip);
         try{
             $user_in = User::on('reader')->where('facebook_id', $id)->firstOrFail();
@@ -379,10 +376,10 @@ class StartController extends Controller
                 'facebook_id'   =>  $id,
                 'last_name'     =>  $lastname,
                 'genre'         =>  $genre,
-                'ip_address'     =>  $ip,
+                'ip_address'    =>  $ip,
                 'country_code'  =>  $country['countryCode'],
-                'country_name'  =>  $country['countryName']
-
+                'country_name'  =>  $country['countryName'],
+                'ab_testing'    =>  $ab_testing
             ]);
         }
         return $user_in;

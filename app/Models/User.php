@@ -17,6 +17,7 @@ class User extends Eloquent
         'ip_address',
         'country_code',
         'country_name',
+        'ab_testing'
     ];
 
     public function usertests(){

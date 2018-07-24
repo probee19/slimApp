@@ -17,7 +17,8 @@ class Share extends Eloquent
         'shares_count',
         'comments_count',
         'reactions_count',
-        'lang'
+        'lang',
+        'ab_testing'
     ];
 
     public function testInfo(){

@@ -572,7 +572,6 @@ class Helper
       return $alltests_total;
     }
 
-
     public function relatedTestsSN($id, $countryCode, $exclude, $lang, $total = 33){
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
@@ -632,6 +631,7 @@ class Helper
 
       return $alltests;
     }
+
     public static function getLovedTests($countryCode, $exclude, $lang, $total = 3){
       //$file = "ressources/views/json_files/best_tests/".$lang."_best_tests.json";
       $file = $_SERVER['STORAGE_BASE'] . "/json_files/best_tests/" . $lang . "_best_tests.json";
@@ -772,6 +772,7 @@ class Helper
 
       return $all_lang;
     }
+
     public static function getActivatedLanguages2(){
       $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_languages/all_lang.json";
 
@@ -1179,8 +1180,7 @@ class Helper
 
     }
 
-    public function getScore($team)
-    {
+    public function getScore($team){
       //$idTeam = $arg['id'];
       self::debug($team);
       $result = json_decode(self::curl_get_fields("https://wizili.com/worldcupru/teamfeed/$team",[]));
@@ -1199,39 +1199,37 @@ class Helper
 
     }
 
-
-
     public static function curl_get_fields($url, $fields, $header=false){
-				$get_array = [];
-				if ( is_array($fields) ) {
-					 foreach ($fields as $key => $value) {
-						   $value = str_replace("'", "%27", $value);
-							 $value = str_replace(' ', '%20', $value);
-					 	   $get_array[] = "$key=$value";
-					 }
-					 $soo =  implode('&', $get_array);
-					 $url .= "?$soo";
-				}
-			 // Tableau contenant les options de téléchargement
-			 $options=array(
-			       CURLOPT_URL            => $url,     // Url cible (l'url la page que vous voulez télécharger)
-			       CURLOPT_RETURNTRANSFER => true,    // Retourner le contenu téléchargé dans une chaine (au lieu de l'afficher directement)
-			       CURLOPT_HEADER         => $header // Ne pas inclure l'entête de réponse du serveur dans la chaine retournée
-			 );
-			 ////////// MAIN
-			 // Création d'un nouvelle ressource cURL
-			 $CURL = curl_init();
-			       // Configuration des options de téléchargement
-			       curl_setopt_array($CURL,$options);
-			       // Exécution de la requête
-			       $content=curl_exec($CURL);      // Le contenu téléchargé est enregistré dans la variable $content. Libre à vous de l'afficher.
-						 if (curl_errno($CURL)) {
-		 					 curl_close($CURL);
-		 						return false;
-		 				}
-		 			curl_close ($CURL);
-		 		 return $content;
-			 // Fermeture de la session cURL
+        $get_array = [];
+  				if ( is_array($fields) ) {
+  					 foreach ($fields as $key => $value) {
+  						   $value = str_replace("'", "%27", $value);
+  							 $value = str_replace(' ', '%20', $value);
+  					 	   $get_array[] = "$key=$value";
+  					 }
+  					 $soo =  implode('&', $get_array);
+  					 $url .= "?$soo";
+  				}
+  			 // Tableau contenant les options de téléchargement
+  			 $options=array(
+  			       CURLOPT_URL            => $url,     // Url cible (l'url la page que vous voulez télécharger)
+  			       CURLOPT_RETURNTRANSFER => true,    // Retourner le contenu téléchargé dans une chaine (au lieu de l'afficher directement)
+  			       CURLOPT_HEADER         => $header // Ne pas inclure l'entête de réponse du serveur dans la chaine retournée
+  			 );
+  			 ////////// MAIN
+  			 // Création d'un nouvelle ressource cURL
+  			 $CURL = curl_init();
+  			       // Configuration des options de téléchargement
+  			       curl_setopt_array($CURL,$options);
+  			       // Exécution de la requête
+  			       $content=curl_exec($CURL);      // Le contenu téléchargé est enregistré dans la variable $content. Libre à vous de l'afficher.
+  						 if (curl_errno($CURL)) {
+  		 					 curl_close($CURL);
+  		 						return false;
+  		 				}
+  		 			curl_close ($CURL);
+  		 		 return $content;
+  			 // Fermeture de la session cURL
      }
 
      public function bitly_shorten($url) {
@@ -1264,7 +1262,7 @@ class Helper
 
     }
 
-    function curlAPI($method, $url, $data, $header = null){
+    public function curlAPI($method, $url, $data, $header = null){
        $curl = curl_init();
        switch ($method){
           case "POST":
@@ -1298,4 +1296,14 @@ class Helper
        return $result;
     }
 
+    public function getAB(){
+      if(!isset($_SESSION['ab_testing'])){
+        $last_users_test = UserTest::on('reader')->orderBy('id','DESC')->first();
+        if($last_users_test->ab_testing == 'a')
+          $_SESSION['ab_testing'] = 'b';
+        else
+          $_SESSION['ab_testing'] = 'a';
+      }
+      return $_SESSION['ab_testing'];
+    }
 }

@@ -20,8 +20,6 @@ class ShareController extends Controller
         if(! $is_code)
             $is_code = BotTests::where('uuid', $code)->first();
         $test_id = $is_code->test_id;
-        //var_dump($is_code->user_id);
-        //die();
         $share = 1;
         if($is_code) {
             try {
@@ -37,6 +35,7 @@ class ShareController extends Controller
                     'test_id'       => $is_code->test_id,
                     'btn_share'     => "$btn_share",
                     'lang'          => "$lang",
+                    'ab_testing'    =>  $this->helper->getAB(),
                 ]);
             }
             /*
