@@ -26,128 +26,129 @@
 {% endblock %}
 {% block content %}
     {% if not new %}
-    {% set i = 0 %}
-    <div class="row">
-        <div class="col-sm-12 text-center" id="result_block">
-            {% if is_result == true %}
-                <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-top:15px;margin-bottom:15px; padding:0;">
-                    <p>{{ titre_test }}</p>
-                    <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "top")'  style="cursor:pointer;" data-btn="share-top"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
-                    {% if is_mobile() or is_tablet() %}
-                        <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "top_messenger")'><i class="fab fa-facebook-messenger"></i></a>
-                        <a href="whatsapp://send?text=Viens voir mon résultat en cliquant ici : {{ url_to_share_wtsp }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#25d366;" onclick='partage("{{ code }}", "{{ lang }}", "top_whatsapp")'><i class="fab fa-whatsapp"></i></a>
-                    {% else %}
-                      <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "top_messenger")'><i class="fab fa-facebook-messenger"></i></a>
-                    {% endif %}
-                </div>
-                <div class="col-sm-10 col-sm-offset-1" style="clear: both; position: relative;">
-                    <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="margin:auto -30px; max-width: calc(100% + 60px);">
-                    <a href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
-                    <div class="overlay-share">
-                      <a class="overlay-btn-share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "overlay")'  >
-                        <i class="fab fa-facebook-square" aria-hidden="true" style="font-size:2em;"></i> &nbsp;{{interface_ui.label_short_share}}
-                      </a>
-                      <span class="overlay-btn-close" onclick='$(".overlay-share").fadeOut("slow")'>
-                        <i class="fa fa-times" aria-hidden="true"></i>
-                      </span>
+        {% set i = 0 %}
+        <div class="row">
+            <div class="col-sm-12 text-center" id="result_block">
+                {% if is_result == true %}
+                    <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-top:15px;margin-bottom:15px; padding:0;">
+                        <p>{{ titre_test }}</p>
+                        <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "top")'  style="cursor:pointer;" data-btn="share-top"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
+                        {% if is_mobile() or is_tablet() %}
+                            <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "top_messenger")'><i class="fab fa-facebook-messenger"></i></a>
+                            <a href="whatsapp://send?text=Viens voir mon résultat en cliquant ici : {{ url_to_share_wtsp }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#25d366;" onclick='partage("{{ code }}", "{{ lang }}", "top_whatsapp")'><i class="fab fa-whatsapp"></i></a>
+                        {% else %}
+                          <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "top_messenger")'><i class="fab fa-facebook-messenger"></i></a>
+                        {% endif %}
                     </div>
-                    <script>
-                      //setTimeout(function(){ $(".overlay-share").css("display","flex").fadeIn("slow") }, 7000);
-                    </script>
-                </div>
-                {% if unique_result == 1 %}
-                  <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em;" id="block_redo">
-                      <a id="btn-redo" class="btn btn-default btn_to_track" href="{{ domain_url }}/start{% if if_additionnal_info == 1 %}/1{% endif %}/{{ testId }}" onclick="loaderReTest();" style="cursor:pointer;"  data-btn="re-process"><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_retest | capitalize}}</a>
-                  </div>
-                {% endif %}
-                {% if is_mobile() or is_tablet() %}
-                  {% if ab_testing == 'b' %}
-                    <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em; margin-bottom: 1em;" >
-                      <div class="" id="btn-show-discover-block" style=" background: #337ab7;
-                      font-weight: bold; color:#fff;
-                      border-radius: 25px;
-                      line-height: 40px;
-                      width: 200px;
-                      padding: 0 15px;
-                      margin: 0 auto;
-                      text-align: center;
-                      cursor:pointer;" >
-                          <span><a class="" style="cursor:pointer;"> {{interface_ui.btn_goto_discover | capitalize}}</a></span>
+                    <div class="col-sm-10 col-sm-offset-1" style="clear: both; position: relative;">
+                        <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="margin:auto -30px; max-width: calc(100% + 60px);">
+                        <a href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
+                        <div class="overlay-share">
+                          <a class="overlay-btn-share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "overlay")'  >
+                            <i class="fab fa-facebook-square" aria-hidden="true" style="font-size:2em;"></i> &nbsp;{{interface_ui.label_short_share}}
+                          </a>
+                          <span class="overlay-btn-close" onclick='$(".overlay-share").fadeOut("slow")'>
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                          </span>
+                        </div>
+                        <script>
+                          //setTimeout(function(){ $(".overlay-share").css("display","flex").fadeIn("slow") }, 7000);
+                        </script>
+                    </div>
+                    {% if unique_result == 1 %}
+                      <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em;" id="block_redo">
+                          <a id="btn-redo" class="btn btn-default btn_to_track" href="{{ domain_url }}/start{% if if_additionnal_info == 1 %}/1{% endif %}/{{ testId }}" onclick="loaderReTest();" style="cursor:pointer;"  data-btn="re-process"><i class="fa fa-repeat" aria-hidden="true"></i> {{interface_ui.btn_retest | capitalize}}</a>
                       </div>
-                    </div>
-                  {% else %}
-                    <!-- Le texte d'incitation est affiché pour la version a -->
-                    {% if result_description %}
-                        <div class="col-sm-10 col-sm-offset-1" style="clear: both; font-size: 1.2em; margin-top: 15px; margin-bottom: 10px; text-align: center;">
-                        {% autoescape %}
-                            {{result_description | raw | nl2br }}
-                        {% endautoescape %}
+                    {% endif %}
+                    {% if is_mobile() or is_tablet() %}
+                      {% if ab_testing == 'b' %}
+                        <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em; margin-bottom: 1em;" >
+                          <div class="" id="btn-show-discover-block" style=" background: #337ab7;
+                          font-weight: bold; color:#fff;
+                          border-radius: 25px;
+                          line-height: 40px;
+                          width: 200px;
+                          padding: 0 15px;
+                          margin: 0 auto;
+                          text-align: center;
+                          cursor:pointer;" >
+                              <span><a class="" style="cursor:pointer;"> {{interface_ui.btn_goto_discover | capitalize}}</a></span>
+                          </div>
+                        </div>
+                      {% else %}
+                        <!-- Le texte d'incitation est affiché pour la version a -->
+                        {% if result_description %}
+                            <div class="col-sm-10 col-sm-offset-1" style="clear: both; font-size: 1.2em; margin-top: 15px; margin-bottom: 10px; text-align: center;">
+                            {% autoescape %}
+                                {{result_description | raw | nl2br }}
+                            {% endautoescape %}
+                            </div>
+                        {% endif %}
+
+                      {% endif %}
+                    {% else %}
+
+                    {% endif %}
+
+
+
+                    <p><a href=""></a></p>
+                    {% if is_mobile() or is_tablet() %}
+                        {% if country_code == 'SN' and 3==4 %}
+                          <div class="row text-center" style="margin-top:1em">
+                            <a href="http://bit.ly/MyFavTeam2018" target="_blank"><img src="{{storage_base}}/images/banner/image_Filtre600x188.jpg" style="max-width: 95%;" alt="Senegal"></a>
+                          </div>
+                        {% endif %}
+                        {% set banner = random(['banners/banner_320x50_middle_top_mobile.twig', 'banners/banner_300x250_middle_top_mobile.twig']) %}
+
+                      <div class="row text-center" style="margin-top:0.5em; {% if ab_testing == 'b' %} display:none {% endif %}">
+                            {% include banner %}
                         </div>
                     {% endif %}
+                    <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center"
+                      {% if is_mobile() or is_tablet() %} style="margin-top:.8em; padding:0;" {% endif %}>
 
-                  {% endif %}
+                        <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
+                        {% if is_mobile() or is_tablet() %}
+                            <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i></a>
+                            <a href="whatsapp://send?text=Viens voir mon résultat en cliquant ici : {{ url_to_share_wtsp }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#25d366;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_whatsapp")'><i class="fab fa-whatsapp"></i></a>
+                        {% else %}
+                          <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i></a>
+                        {% endif %}
+                    </div>
+
+
+                    {% if test_owner %}
+                        <div class="col-sm-12" style="margin-top: 5px; font-size: 10px;">
+                            Avertissement : Ce test a été créé et publié par <a href="https://facebook.com/{{ test_owner.facebook_id}}" target="_blank">{{ test_owner.first_name}} {{ test_owner.last_name}} </a>
+                        </div>
+                    {% endif %}
                 {% else %}
-
+                    Aucun résultat correspondant, <a href="{{ domain_url }}">retour à la page des tests</a>
                 {% endif %}
 
+            </div>
 
+            <div id="div_loader" class="col-xs-12 col-sm-10 col-sm-offset-1" style="display:none; margin-top: 30px; ">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 " >
+                    <img src="{{ domain_url }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
+                    <div style="font-weight: 500; font-size:1.2em; ">{{ interface_ui.label_loading_fixed | capitalize }} </div>
+                    <div id="div_tasks" style="display:block; font-weight: 500; margin-top:0px; clear: both; font-size:1em;" >{{ interface_ui.label_loading_1 }} </div>
+                    <span class="info-partage text-center" style="display:block; clear: both; margin-top:8px; font-family: 'Helvetica Neue';color: #2e5085; font-weight: 500; font-size:1.1em; ">{{interface_ui.label_like_1}} {{ session.name }} ! <br> ! {{interface_ui.label_like_2}} !</span>
+                    <div style="width:250px; margin: 5px auto;  position: relative;">
+                        <div class="div_left_hand"> <img src="{{ domain_url }}/src/img/hand_left.png" class="left_hand"/> </div>
 
-                <p><a href=""></a></p>
-                {% if is_mobile() or is_tablet() %}
-                    {% if country_code == 'SN' and 3==4 %}
-                      <div class="row text-center" style="margin-top:1em">
-                        <a href="http://bit.ly/MyFavTeam2018" target="_blank"><img src="{{storage_base}}/images/banner/image_Filtre600x188.jpg" style="max-width: 95%;" alt="Senegal"></a>
-                      </div>
-                    {% endif %}
-                    {% set banner = random(['banners/banner_320x50_middle_top_mobile.twig', 'banners/banner_300x250_middle_top_mobile.twig']) %}
-
-                  <div class="row text-center" style="margin-top:0.5em; {% if ab_testing == 'b' %} display:none {% endif %}">
-                        {% include banner %}
+                        <div class="fb-like" data-href="https://www.facebook.com/funizi/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
+                        <div class="div_right_hand"> <img src="{{ domain_url }}/src/img/hand_right.png"  class="right_hand"/></div>
                     </div>
-                {% endif %}
-                <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center"
-                  {% if is_mobile() or is_tablet() %} style="margin-top:.8em; padding:0;" {% endif %}>
-
-                    <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
-                    {% if is_mobile() or is_tablet() %}
-                        <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i></a>
-                        <a href="whatsapp://send?text=Viens voir mon résultat en cliquant ici : {{ url_to_share_wtsp }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#25d366;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_whatsapp")'><i class="fab fa-whatsapp"></i></a>
-                    {% else %}
-                      <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i></a>
-                    {% endif %}
-                </div>
-
-
-                {% if test_owner %}
-                    <div class="col-sm-12" style="margin-top: 5px; font-size: 10px;">
-                        Avertissement : Ce test a été créé et publié par <a href="https://facebook.com/{{ test_owner.facebook_id}}" target="_blank">{{ test_owner.first_name}} {{ test_owner.last_name}} </a>
-                    </div>
-                {% endif %}
-            {% else %}
-                Aucun résultat correspondant, <a href="{{ domain_url }}">retour à la page des tests</a>
-            {% endif %}
-
-        </div>
-
-        <div id="div_loader" class="col-xs-12 col-sm-10 col-sm-offset-1" style="display:none; margin-top: 30px; ">
-            <div class="col-xs-12 col-sm-10 col-sm-offset-1 " >
-                <img src="{{ domain_url }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
-                <div style="font-weight: 500; font-size:1.2em; ">{{ interface_ui.label_loading_fixed | capitalize }} </div>
-                <div id="div_tasks" style="display:block; font-weight: 500; margin-top:0px; clear: both; font-size:1em;" >{{ interface_ui.label_loading_1 }} </div>
-                <span class="info-partage text-center" style="display:block; clear: both; margin-top:8px; font-family: 'Helvetica Neue';color: #2e5085; font-weight: 500; font-size:1.1em; ">{{interface_ui.label_like_1}} {{ session.name }} ! <br> ! {{interface_ui.label_like_2}} !</span>
-                <div style="width:250px; margin: 5px auto;  position: relative;">
-                    <div class="div_left_hand"> <img src="{{ domain_url }}/src/img/hand_left.png" class="left_hand"/> </div>
-
-                    <div class="fb-like" data-href="https://www.facebook.com/funizi/" data-layout="button" data-action="like" data-size="large" data-show-faces="false" data-share="false"></div>
-                    <div class="div_right_hand"> <img src="{{ domain_url }}/src/img/hand_right.png"  class="right_hand"/></div>
                 </div>
             </div>
+
+
         </div>
 
-
-    </div>
-
-    <div id="discovery-share-modal" class="modal fade" role="dialog">
+        {% if ab_testing == 'a' %}
+          <div id="discovery-share-modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" style="font-size:1.3em">
@@ -176,6 +177,7 @@
                 </div>
             </div>
     </div>
+        {% endif %}
     {% else %}
           <!-- Modal top 3 tests -->
           {% if top_tests is not empty %}

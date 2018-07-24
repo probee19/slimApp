@@ -95,9 +95,8 @@ class CitationsController extends Controller
 
 
     }
-    public function onecitation($request, $response, $args)
-    {
-      // code...
+
+    public function oneQuote($request, $response, $args){
       $sandbox = new Helper();
 
       $url = $sandbox->detectLang($request, $response);
