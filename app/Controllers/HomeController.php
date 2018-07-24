@@ -367,6 +367,10 @@ class HomeController extends Controller
                 $ab_testing = $test->ab_testing;
 
 
+              $this->helper->debug($_SESSION);
+              $this->helper->debug($ab_testing);
+
+
               if($test->testInfo->codes_countries !=''){
                   $exclude = [$test->test_id];
                   if(!empty($_SESSION['uid'])){
