@@ -81,6 +81,12 @@ class ResultController extends Controller
                 $is_result = false;
             }
 
+            if(isset($_GET['ab']))
+              $ab_testing =$_GET['ab'];
+            else
+              $ab_testing = $test->ab_testing;
+
+
             if($test->testInfo->codes_countries !=''){
                 $exclude = [$test->test_id];
                 if(!empty($_SESSION['uid'])){

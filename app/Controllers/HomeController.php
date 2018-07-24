@@ -368,6 +368,7 @@ class HomeController extends Controller
 
 
               $this->helper->debug($_SESSION);
+              $this->helper->debug($_SESSION);
               $this->helper->debug($ab_testing);
 
 
