@@ -1018,6 +1018,7 @@ class Helper
            "default_lang"          => $citation->default_lang,
            "titre_citation"        => stripslashes((string)$citation->titre_citation),
            "url_image_citation"    => $citation->url_image_citation,
+           "url_thumb_img_citation"=> $citation->url_thumb_img_citation,
            "codes_countries"       => $citation->codes_countries
          ];
        }
