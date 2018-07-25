@@ -99,6 +99,7 @@ class LoadStatsController extends Controller
 
 
     }
+
     public function get_lundi_dimanche_from_week($week,$year,$format="d/m/Y") {
 
     	$firstDayInYear=date("N",mktime(0,0,0,1,1,$year));
@@ -181,7 +182,6 @@ class LoadStatsController extends Controller
 
     }
 
-
     public static function getLineChartData($start, $end, $lang = "")
     {
        CronController::updateDailyGlobalStat();
@@ -232,8 +232,6 @@ class LoadStatsController extends Controller
       }
       return $data_pie;
     }
-
-
 
     public static function getGlobalStat($start, $end, $last_day_start, $last_day_end, $lang = "")
     {
@@ -379,6 +377,7 @@ class LoadStatsController extends Controller
         return $data_global;
         // Data For Best Tests
     }
+
     public function loadstatforthisrange($request, $response, $args)
     {
       $lang = $_GET['lang'];
@@ -563,7 +562,6 @@ class LoadStatsController extends Controller
 
     }
 
-
     public function loadBestTests($request, $response, $args)
     {
       $lang = $_GET['lang']; $btn_maj = 0;
@@ -647,7 +645,6 @@ class LoadStatsController extends Controller
       return $this->view->render($response, 'topTests.twig', compact('data_global', 'data_best_tests', 'btn_maj'));
     }
 
-
     public function loadStatsForSomeTests($request, $response, $args)
     {
       $lang = $_GET['lang'];
@@ -717,7 +714,6 @@ class LoadStatsController extends Controller
 
 
     }
-
 
     public function loadTopContries($request, $response, $args)
     {
@@ -843,7 +839,7 @@ class LoadStatsController extends Controller
                   ->groupBy('user_id')
                   ->orderBy('nb_test_done', 'DESC')
                   ->get();
-$nbnb = 0;
+        $nbnb = 0;
         foreach ($users as $user) {
 
             $user_shares = Share::on('reader')->selectRaw('SUM(partages_count) AS nb_share, COUNT(DISTINCT user_id, test_id) AS nb_share_unique')
@@ -947,7 +943,6 @@ $nbnb = 0;
         return $this->view->render($response, 'userStats.twig', compact('data_global','tests_users'));
 
     }
-
 
     public function loadStatForThisTestForCountries($request, $response, $args)
     {
@@ -1321,4 +1316,23 @@ $nbnb = 0;
     }
 
 
+    public function loadABTestingStat($request, $response, $args)
+    {
+
+
+      if(isset($args['start'])) $start = $args['start'];
+      if(isset($args['end'])) $end = $args['end'];
+
+      $start = date_create($start);
+      $start = date_format($start, 'Y-m-d');
+
+      $end = date_create($end);
+      date_add($end,date_interval_create_from_date_string("1 day"));
+      $end = date_format($end, 'Y-m-d');
+
+      $nb_test = UserTest::selectRaw('COUNT(*) AS nb, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
+
+      Helper::debug($nb_test);
+      exit;
+    }
 }

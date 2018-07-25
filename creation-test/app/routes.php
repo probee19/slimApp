@@ -50,6 +50,7 @@ $app->get('/action/updatejsonlanguages', 'JsonController:setLangsJson');
 
 
 $app->get('/load/days', 'LoadStatsController:loadStatForDays');
+$app->get('/load/ab/{start}/{end}', 'LoadStatsController:loadABTestingStat');
 $app->get('/load/linechart', 'LoadStatsController:lineChart');
 $app->get('/load/days/cron', 'CronController:updateDailyGlobalStat');
 
