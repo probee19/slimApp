@@ -250,7 +250,8 @@ class HomeController extends Controller
       ];
       $nb = 1;
 
-      $forfaits_yam =  [[
+      $forfaits_yam =  [
+        [
          "forfait"   =>  "Son's Yam_1500",
          "volume"    =>  "120min",
          "code"      =>  "*106*1500#",
@@ -305,7 +306,7 @@ class HomeController extends Controller
       for ($i = $arg['begin']; $i < $arg['end']; $i++) {
         if(isset($forfaits_yam[$i])){
           $url = "https://fr.funizi.com/api/start/390";
-          $result = $this->helper->curlPost($url, $forfaits[$i]);
+          $result = $this->helper->curlPost($url, $forfaits_yam[$i]);
           $nb++;
         }
         else
