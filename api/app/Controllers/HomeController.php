@@ -291,7 +291,7 @@ class HomeController extends Controller
          "volume"    =>  "3min + 5sms <br> + 5Mo",
          "code"      =>  "*106*100#",
          "prix"      =>  "100 FCFA",
-         "validite"  =>  "1 jours"
+         "validite"  =>  "1 jour"
        ],
 
        [
@@ -299,7 +299,7 @@ class HomeController extends Controller
          "volume"    =>  "30min + 30sms <br> + 30Mo",
          "code"      =>  "*106*500#",
          "prix"      =>  "500 FCFA",
-         "validite"  =>  "1 jours"
+         "validite"  =>  "1 jour"
        ],
      ];
 
