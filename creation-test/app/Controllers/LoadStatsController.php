@@ -1355,7 +1355,7 @@ class LoadStatsController extends Controller
         "end"               => $e
       ];
 
-      Helper::debug($all_data);
+      //Helper::debug($all_data);
       return $this->view->render($response, 'abTestingResults.twig', compact('all_data'));
     }
 }
