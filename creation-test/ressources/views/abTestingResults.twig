@@ -13,7 +13,7 @@
 
 {%block content%}
 
-    
+
 
     <div class="row">
          <table id="liste_test" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
@@ -29,7 +29,7 @@
               {% for data in all_data.data_count %}
                 <tr>
                   <td > {{data.ab_testing | upper}} </td>
-                  <td > {{all_data.start | date("d/m/Y")}}{% if all_data.start != all_data.end %} au {{all_data.end | date("d/m/Y")}}{% endif %} </td>
+                  <td > {{all_data.start}}{% if all_data.start != all_data.end %} au {{all_data.end}}{% endif %} </td>
                   <td > {{data.tests_count}}</td>
                   <td > {{data.shares_count}}</td>
                 </tr>
