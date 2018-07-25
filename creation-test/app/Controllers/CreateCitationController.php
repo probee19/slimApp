@@ -203,7 +203,7 @@ class CreateCitationController extends Controller
         ];
       }
       CitationInfo::insert($data_ci);
-      Helper::curl_get_fields("https://creation.funizi.com/action/jsonallquotes",[]);
+      Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonallquotes",[]);
 
   }
 
@@ -321,7 +321,7 @@ class CreateCitationController extends Controller
           $update_citation_info = CitationInfo::where([['id_citation','=',$id_citation],['lang','=',$_POST['langs_citations_edit']]])->update($new_data_ci);
         }
       }
-      Helper::curl_get_fields("https://creation.funizi.com/action/jsonallquotes",[]);
+      Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonallquotes",[]);
       return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('alltcitations') );
   }
 
