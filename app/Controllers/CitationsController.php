@@ -28,9 +28,10 @@ class CitationsController extends Controller
       foreach ($citations_from_json as $citation) {
         if($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ){
           $citations_json[] = [
-            'url_image_citation' => $citation['url_image_citation'],
-            'id_citation'        => $citation['id_citation'],
-            'titre_citation'     => $citation['titre_citation']
+            'url_image_citation'      => $citation['url_image_citation'],
+            'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
+            'id_citation'             => $citation['id_citation'],
+            'titre_citation'          => $citation['titre_citation']
           ];
         }
       }
@@ -53,9 +54,10 @@ class CitationsController extends Controller
         foreach ($citations_from_json as $citation) {
           if(in_array($citation['id_citation'], $include, true)){
             $citations[$citation['id_citation']] = [
-              'url_image_citation' => $citation['url_image_citation'],
-              'id_citation'        => $citation['id_citation'],
-              'titre_citation'     => $citation['titre_citation']
+              'url_image_citation'      => $citation['url_image_citation'],
+              'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
+              'id_citation'             => $citation['id_citation'],
+              'titre_citation'          => $citation['titre_citation']
             ];
           }
         }
@@ -74,9 +76,10 @@ class CitationsController extends Controller
           foreach ($citations_from_json as $citation) {
             if(($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ) && !in_array($citation['id_citation'], $exclude, true) && ++$nb_taken <= $this->citation_per_page){
               $citations[$citation['id_citation']] = [
-                'url_image_citation' => $citation['url_image_citation'],
-                'id_citation'        => $citation['id_citation'],
-                'titre_citation'     => $citation['titre_citation']
+                'url_image_citation'      => $citation['url_image_citation'],
+                'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
+                'id_citation'             => $citation['id_citation'],
+                'titre_citation'          => $citation['titre_citation']
               ];
               if(!in_array($citation['id_citation'], $exclude, true)) $exclude[] = $citation['id_citation'];
               $page_citations[] = $citation['id_citation'];

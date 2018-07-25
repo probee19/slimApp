@@ -203,6 +203,8 @@ class CreateCitationController extends Controller
         ];
       }
       CitationInfo::insert($data_ci);
+      Helper::curl_get_fields("https://creation.funizi.com/action/jsonallquotes",[]);
+
   }
 
   public function updateCitation($request, $response, $arg)
@@ -319,6 +321,7 @@ class CreateCitationController extends Controller
           $update_citation_info = CitationInfo::where([['id_citation','=',$id_citation],['lang','=',$_POST['langs_citations_edit']]])->update($new_data_ci);
         }
       }
+      Helper::curl_get_fields("https://creation.funizi.com/action/jsonallquotes",[]);
       return $response->withStatus(302)->withHeader('Location', $this->router->pathFor('alltcitations') );
   }
 
@@ -359,12 +362,13 @@ class CreateCitationController extends Controller
     Helper::uploadToS3($filepath, 'images/images-citations/');
     //...
     // For thumbnail image
-    $options->setBrowserwidth(345);
-    $options->setBrowserHeight(182);
-    $options->setQuality(70);
+    $options->setWidth(345);
+    $options->setHeight(182);
+
+    $options->setQuality(90);
     //Grab the image result here and save it
     $generated = $grabzit->URLToImage($file_src, $options);
-    $save = $grabzit->SaveTo($filepath);
+    $save = $grabzit->SaveTo($filepath_thumb);
     // Upload to S3 AWS
     Helper::uploadToS3($filepath_thumb, 'images/images-citations/');
 

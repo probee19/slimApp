@@ -251,6 +251,7 @@ class JsonController extends Controller
             'id_citation'           =>  $citation->id_citation,
             'titre_citation'        =>  $citation->titre_citation,
             'url_image_citation'    =>  $citation->url_image_citation,
+            'url_thumb_img_citation'=>  $citation->url_thumbnail_citation,
             "default_lang"          =>  $citation->citationInfos->default_lang,
             "if_translated"         =>  $citation->citationInfos->if_translated,
             "if_personalizable"     =>  $citation->citationInfos->if_personalizable,
