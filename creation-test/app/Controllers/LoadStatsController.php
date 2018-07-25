@@ -1349,7 +1349,7 @@ class LoadStatsController extends Controller
 
       foreach ($nb_shares as $share){
         $data[$share->ab_testing]["shares_count"]= $share->nb;
-        $data[$share->ab_testing]["taux_partage"]= round($share->nb / $data[$share->ab_testing]["tests_count"], 2);
+        $data[$share->ab_testing]["taux_partage"]= round(($share->nb / $data[$share->ab_testing]["tests_count"])*100, 2);
       }
 
       $all_data = [
