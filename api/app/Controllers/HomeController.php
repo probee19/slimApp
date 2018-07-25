@@ -277,27 +277,27 @@ class HomeController extends Controller
          "volume"    =>  "30min",
          "code"      =>  "*106*400#",
          "prix"      =>  "400 FCFA",
-         "validite"  =>  "1 jours"
+         "validite"  =>  "1 jour"
        ],
        [
          "forfait"   =>  "Son's Yam_120",
-         "volume"    =>  "5min",
-         "code"      =>  "5",
+         "volume"    =>  "5min + 5sms <br> + 5Mo",
+         "code"      =>  "*106*120#",
          "prix"      =>  "120 FCFA",
-         "validite"  =>  "1 jours"
+         "validite"  =>  "1 jour"
        ],
        [
          "forfait"   =>  "Son's Yam_100",
-         "volume"    =>  "3min",
-         "code"      =>  "5",
+         "volume"    =>  "3min + 5sms <br> + 5Mo",
+         "code"      =>  "*106*100#",
          "prix"      =>  "100 FCFA",
          "validite"  =>  "1 jours"
        ],
 
        [
          "forfait"   =>  "Son's Yam_500",
-         "volume"    =>  "30min",
-         "code"      =>  "30",
+         "volume"    =>  "30min + 30sms <br> + 30Mo",
+         "code"      =>  "*106*500#",
          "prix"      =>  "500 FCFA",
          "validite"  =>  "1 jours"
        ],
