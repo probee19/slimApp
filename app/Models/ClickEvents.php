@@ -10,9 +10,9 @@ class ClickEvents extends Eloquent
 
     protected $fillable = [
         'cookie_code',
-		'button',
-		'ip_address',
-        'browser', 
+    		'button',
+    		'ip_address',
+        'browser',
     ];
 
 }

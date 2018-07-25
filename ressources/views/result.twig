@@ -230,9 +230,10 @@
                     <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test">
                     <span class="mobile-layer"></span>
                   <!--a class="test__link btn_to_track" href="{{ path_for('singledis', { 'from': 'discover', 'id': single_test.id_test, 'name': single_test.titre_test | twig_title_url(single_test.id_test, lang) }) }}{% if ab_testing == 'b' %}?utm_source=direct&utm_medium=discover&utm_campaign=ab_testing&utm_content={{ code }}{% endif %}" data-btn="btn-test"></a-->
-                  <a class="test__link btn_to_track" href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}{% if ab_testing == 'b' %}?utm_source=direct&utm_medium=discover&utm_campaign=ab_testing&utm_content={{ code }}{% endif %}" data-btn="btn-test"></a>
+                  <a class="test__link btn_to_track {% if ab_testing == 'b' %} btn_ab_b {% else %} btn_ab_a {% endif %}" href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}{% if ab_testing == 'b' %}?utm_source=direct&utm_medium=discover&utm_campaign=ab_testing&utm_content={{ code }}{% endif %}" data-btn="btn-test"></a>
                     <h3 class="test-title">{{ single_test.titre_test }}</h3>
-                  <div class="test__next"><a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}{% if ab_testing == 'b' %}?utm_source=direct&utm_medium=discover&utm_campaign=ab_testing&utm_content={{ code }}{% endif %}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track"  data-btn="btn-test">{{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
+                  <div class="test__next"><a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}{% if ab_testing == 'b' %}?utm_source=direct&utm_medium=discover&utm_campaign=ab_testing&utm_content={{ code }}{% endif %}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track {% if ab_testing == 'b' %} btn_ab_b {% else %} btn_ab_a {% endif %}"  data-btn="btn-test">
+                  {{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
                 </div>
             </div>
             {% set i = i+1 %}
@@ -255,11 +256,11 @@
                     <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test" style="width: 100%; height: 100%; object-fit: cover; object-position: 0 30%;">
                     <span class="mobile-layer"></span>
                     <!-- <a href="{{ path_for('single', { 'id': single_test.id_test, 'name': single_test.titre_test | twig_clean_url }) }}" class="test__link" data-btn="btn-test"></a> -->
-                    <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}{% if ab_testing == 'b' %}?utm_source=direct&utm_medium=discover&utm_campaign=ab_testing&utm_content={{ code }}{% endif %}" class="test__link" data-btn="btn-test"></a>
+                  <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}{% if ab_testing == 'b' %}?utm_source=direct&utm_medium=discover&utm_campaign=ab_testing&utm_content={{ code }}{% endif %}" class="test__link {% if ab_testing == 'b' %} btn_ab_b {% else %} btn_ab_a {% endif %}" data-btn="btn-test"></a>
 
                 </div>
                 <div  class="test-title-gallery">
-                  <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}{% if ab_testing == 'b' %}?utm_source=direct&utm_medium=discover&utm_campaign=ab_testing&utm_content={{ code }}{% endif %}" ><span style="font-size:14px;">{{ single_test.titre_test }}</span></a>
+              <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}{% if ab_testing == 'b' %}?utm_source=direct&utm_medium=discover&utm_campaign=ab_testing&utm_content={{ code }}{% endif %}" class="{% if ab_testing == 'b' %} btn_ab_b {% else %} btn_ab_a {% endif %}" ><span style="font-size:14px;">{{ single_test.titre_test }}</span></a>
                 </div>
           </div>
 
