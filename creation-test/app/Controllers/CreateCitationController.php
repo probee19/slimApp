@@ -150,7 +150,9 @@ class CreateCitationController extends Controller
       );
 
       // Do capture with url
-      $citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang);
+      $imgs_citation =  self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang);
+      $citation_img_name = $imgs_citation[0];
+      $citation_thumb_img_name = $imgs_citation[1];
 
       // Sauvegarde des informations de la citation pour chaque langue activée
       $data_ci = array();
@@ -159,6 +161,7 @@ class CreateCitationController extends Controller
         'lang'                    =>  "fr",
         'code_php'                =>  $this->helper->translateWithTags("fr", $_POST['codePHPHTML']),
         'url_image_citation'      =>  $citation_img_name,
+        '	url_thumbnail_citation' =>  $citation_thumb_img_name,
         "titre_citation"          =>  $_POST['titre'],
         "citation_description"    =>  $_POST['texte_for_share'],
         "created_at"              =>  \date("Y-m-d H:i:s"), # \Datetime()
@@ -182,13 +185,17 @@ class CreateCitationController extends Controller
           $_POST['codeRequireBottom']
         );
         // Création de l'image de la citation dans la langue $lang->code
-        $citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
+        //$citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
+        $imgs_citation =  self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
+        $citation_img_name = $imgs_citation[0];
+        $citation_thumb_img_name = $imgs_citation[1];
 
         $data_ci[] = [
           'id_citation'             =>  $id_citation,
           'lang'                    =>  $lang->code,
           'code_php'                =>  $this->helper->translateWithTags($lang->code, $_POST['codePHPHTML']),
           'url_image_citation'      =>  $citation_img_name,
+          'url_thumbnail_citation'  =>  $citation_thumb_img_name,
           "titre_citation"          =>  $this->helper->GoogleTranslate($lang->code, stripslashes($titre_citation_en), "en"),
           "citation_description"    =>  $this->helper->GoogleTranslate($lang->code, stripslashes($test_for_share_en), "en"),
           "created_at"              =>  \date("Y-m-d H:i:s"), # \Datetime()
@@ -269,11 +276,16 @@ class CreateCitationController extends Controller
             else
               $url_file = $this->helper->getUrlCitationFile($lang->code, $id_citation, "ressources/views/themes/citations/", $code_php, $_POST['codeCSS'], $_POST['codeJS'], $_POST['codeRequireTop'], $_POST['codeRequireBottom']);
             // Do capture
-            $citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
+            //$citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
+            $imgs_citation =  self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
+            $citation_img_name = $imgs_citation[0];
+            $citation_thumb_img_name = $imgs_citation[1];
+
             if( $lang->code == $_POST['default_lang'])
               $new_data_ci = [
                 "code_php"                =>  $this->helper->translateWithTags($lang->code, $_POST['codePHPHTML']),
                 "url_image_citation"      =>  $citation_img_name,
+                'url_thumbnail_citation'  =>  $citation_thumb_img_name,
                 "titre_citation"          =>  $_POST['titre'],
                 "citation_description"    =>  $_POST['texte_for_share']
               ];
@@ -291,10 +303,15 @@ class CreateCitationController extends Controller
         } else {// Mise à jour de la citation dans la langue choisie
           $url_file = $this->helper->getUrlCitationFile($_POST['langs_citations_edit'], $id_citation, "ressources/views/themes/citations/", $_POST['codePHPHTML'], $_POST['codeCSS'], $_POST['codeJS'], $_POST['codeRequireTop'], $_POST['codeRequireBottom']);
           // Do capture
-          $citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
+          //$citation_img_name = self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
+          $imgs_citation =  self::captureWithGrabzit($this->grabzit, $url_file, $id_citation, $lang->code);
+          $citation_img_name = $imgs_citation[0];
+          $citation_thumb_img_name = $imgs_citation[1];
+
           $new_data_ci = [
             "code_php"                =>  $_POST['codePHPHTML'],
             "url_image_citation"      =>  $citation_img_name,
+            'url_thumbnail_citation'  =>  $citation_thumb_img_name,
             "titre_citation"          =>  $_POST['titre'],
             "citation_description"    =>  $_POST['texte_for_share']
           ];
@@ -323,8 +340,10 @@ class CreateCitationController extends Controller
   public static function captureWithGrabzit($grabzit, $filesrc, $id_citation,  $lang)
   {
     $citation_img_name = $lang.'_img_citation_'.$id_citation.'.jpg';
+    $citation_thumb_name = $lang.'_thumb_citation_'.$id_citation.'.jpg';
     // Path of the saved image result
     $filepath = "ressources/views/themes/citations/". $citation_img_name ;
+    $filepath_thumb = "ressources/views/themes/citations/". $citation_thumb_name ;
 
     $options = new GrabzItImageOptions();
     $options->setBrowserwidth(800);
@@ -336,12 +355,20 @@ class CreateCitationController extends Controller
     $file_src = 'http://creation.funizi.com/'.$filesrc;
     $generated = $grabzit->URLToImage($file_src, $options);
     $save = $grabzit->SaveTo($filepath);
-    Helper::uploadToS3($filepath, 'images/images-citations/');
     // Upload to S3 AWS
+    Helper::uploadToS3($filepath, 'images/images-citations/');
     //...
-    //
+    // For thumbnail image
+    $options->setBrowserwidth(345);
+    $options->setBrowserHeight(182);
+    $options->setQuality(70);
+    //Grab the image result here and save it
+    $generated = $grabzit->URLToImage($file_src, $options);
+    $save = $grabzit->SaveTo($filepath);
+    // Upload to S3 AWS
+    Helper::uploadToS3($filepath_thumb, 'images/images-citations/');
 
-    return './images-citations/'.$citation_img_name;
+    return ['./images-citations/'.$citation_img_name,'./images-citations/'.$citation_thumb_name];
   }
 
 	public static function decode ($code,$pathname) {
