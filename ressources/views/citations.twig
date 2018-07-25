@@ -1,5 +1,5 @@
 {% extends 'templates/layout.twig' %}
-{% block title %}{{interface_ui.title_home | capitalize}}{% endblock %}
+{% block title %}{{interface_ui.title_home_citation | capitalize}}{% endblock %}
 {% block googletagmanager %}
 <script>
   dataLayer = [{
@@ -56,6 +56,12 @@
                   <a href="{{ domain_url }}/citation/{{citation.titre_citation | twig_title_url(citation.id_citation, lang)}}/{{citation.id_citation}}" class="test__link" data-btn="btn-test"></a>
               </div>
           </div>
+          {% if i == 2 or i == 8 %}
+                <div class="" style="margin:10px auto 10px">
+                    {% set banner = random(['banners/banner_360x300_responsive_bottom.twig', 'banners/banner_300x250_bottom.twig']) %}
+                    {% include  banner %}
+                </div>
+          {% endif %}
       {% else %}
           <div class="col-sm-6 col-md-6 portfolio-item-gallery">
                 <div class="border_gallery" style="height:auto">
@@ -70,14 +76,6 @@
                 </div-->
           </div>
           {% set i = i+1 %}
-          {% if i == 3 or i == 9 %}
-              {% if is_mobile() or is_tablet()  %}
-                  <div class="" style="margin:10px auto 10px">
-                      {% set banner = random(['banners/banner_360x300_responsive_bottom.twig', 'banners/banner_300x250_bottom.twig']) %}
-                      {% include  banner %}
-                  </div>
-              {% endif %}
-          {% endif %}
       {% endif %}
 
   {% endfor %}

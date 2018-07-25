@@ -1,0 +1,84 @@
+{% extends 'templates/layoutCreationTest.twig' %}
+{% block title %} A/B Testing {% endblock %}
+{% block additionalstyle %}
+  <style>
+    .hidden_{
+        display: none;
+  }
+  #liste_test{
+      font-size: 12px;
+  }
+  </style>
+{% endblock %}
+
+{%block content%}
+
+    <div class="row">
+      <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8">
+       <div class="alert alert-warning alert-dismissable " >
+           <span id="texte_notif_del_result">
+               T/U    = taux de tests par utilisateurs <br/>
+               U      = Utilisateurs <br/>
+               NU     = Nouveaux utilisateurs <br/>
+               Com.   = Commentaires sur les partages <br/>
+               Sh.    = Partages dans Facebook <br/>
+               Reac.  = Réactions sur les partages <br/>
+            </span>
+       </div>
+     </div>
+    </div>
+
+    <div class="row">
+         <table id="liste_test" class="table table-bordered table-striped table-condensed" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Versions</th>
+                    <th>Périodes</th>
+                    <th>Tests</th>
+                    <th>Partage</th>
+                </tr>
+            </thead>
+            <tbody id="more">
+              {% for data in all_data.data_count %}
+                <tr>
+                  <td > {{data.ab_testing}} </td>
+                  <td > {{data.start | date("d/m/Y")}}{% if all_data.start != all_data.end %} au {{all_data.end}}{% endif %} </td>
+                  <td > {{data.tests_count}}</td>
+                  <td > {{data.shares_count}}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
+
+
+{% block additionalfooter %}
+
+  <script src="{{ base_url() }}/src/js/alltest.js?v=1.0002"></script>
+
+  <script type="text/javascript" language="javascript" src="{{ domain_url }}/src/js/DataTables/jquery.dataTables.js"></script>
+  <script type="text/javascript" language="javascript" src="{{ domain_url }}/src/js/DataTables/dataTables.bootstrap.js"></script>
+  <script type="text/javascript" language="javascript" class="init">
+    $(document).ready(function() {
+        $('#liste_test').DataTable( {
+            "order": [[ 0, "asc" ]],
+            "language": {
+               "lengthMenu": "Afficher  _MENU_  tests par page",
+               "zeroRecords": "Aucun test trouvé ! ",
+               "info": "Voir page _PAGE_ à _PAGES_ ( test _START_ à _END_ sur _TOTAL_ )",
+               "infoEmpty": "Aucun test trouvé",
+               "infoFiltered": "(recherche effectuée sur _MAX_ tests)"
+             }
+        } );
+        $('[data-toggle="tooltip"]').tooltip();
+
+
+    } );
+
+
+
+  </script>
+{%endblock%}

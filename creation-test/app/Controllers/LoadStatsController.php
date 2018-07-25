@@ -1323,16 +1323,41 @@ class LoadStatsController extends Controller
       if(isset($args['start'])) $start = $args['start'];
       if(isset($args['end'])) $end = $args['end'];
 
-      $start = date_create($start);
-      $start = date_format($start, 'Y-m-d');
+      $start = date_create($args['start']);
+      $start = date_format($start, 'Y-m-d H:i:s');
+
+      $s = date_create($args['start']);
+      $s = date_format($s, 'd/m/Y');
 
       $end = date_create($end);
       date_add($end,date_interval_create_from_date_string("1 day"));
-      $end = date_format($end, 'Y-m-d');
+      $end = date_format($end, 'Y-m-d H:i:s');
 
-      $nb_test = UserTest::selectRaw('COUNT(*) AS nb, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
+      $e = date_create($args['end']);
+      $e = date_format($e, 'd/m/Y');
 
-      Helper::debug($nb_test);
-      exit;
+      $nb_tests = UserTest::selectRaw('COUNT(*) AS nb, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
+      $nb_shares = Share::selectRaw('COUNT(*) AS nb, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
+
+      $data = [];
+      foreach ($nb_tests as $test)
+        $data[$test->ab_testing] = [
+          "tests_count"     => $test->nb,
+          "ab_testing"      => $test->ab_testing
+        ];
+
+      foreach ($nb_shares as $share)
+        $data[$share->ab_testing] = [
+          "shares_count"     => $share->nb
+        ];
+
+      $all_data = [
+        "data_count"        => $data,
+        "start"             => $s,
+        "end"               => $e
+      ];
+
+      Helper::debug($all_data);
+      return $this->view->render($response, 'abTestingResults.twig', compact('all_data'));
     }
 }
