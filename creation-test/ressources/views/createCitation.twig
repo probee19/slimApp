@@ -145,11 +145,23 @@
                   	  			  <!-- Tab panes -->
                   	  			<div class="tab-content">
                   	  			    <div role="tabpanel" class="tab-pane active" id="tab_html">
-                                        <textarea id="editor_html"  name="" value=""  placeholder="Code HTML"   class="form-control noresize"><!DOCTYPE HTML></textarea>
+                                        <textarea id="editor_html"  name="" value=""  placeholder="Code HTML"   class="form-control noresize">
+                                        <!DOCTYPE HTML>
+<img src="https://creation.funizi.com/images-theme-perso/1528821641.jpg" id="back">
+<div class="overlay"></div>
+<img src="https://creation.funizi.com/images-theme-perso/1527246526.png" id="logo_funizi">
+<div class="texte" id="citation">Texte de la citation</div>
+                                        </textarea>
                                     </div>
                   	  			    <div role="tabpanel" class="tab-pane" id="tab_css">
                                         <textarea id="editor_css"   name="" value=""  placeholder="Code CSS"    class="form-control noresize ">.main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
+
+#back{position:absolute; z-index:1; left:0; top:0;  width:800px;  }
+.overlay{position:absolute; z-index:1; left:0; top:0;  width:800px; height:420px; background:#000; opacity:0.6;}
+
+#logo_funizi{position:absolute; z-index:1; left:342px; top:10px;  max-width:800px; max-height:420px; }
+#citation{z-index:1; font-family: 'Roboto Condensed', sans-serif; position: absolute; left: 50px; bottom: 50px; color:#FFF; font-size:45px; line-height:55px; width:700px ; height:300px ;display:flex; align-items:center; justify-content:center; text-align:center; }
                                         </textarea>
                                     </div>
                   	  			    <div role="tabpanel" class="tab-pane" id="tab_js">
