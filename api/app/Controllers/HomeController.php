@@ -250,8 +250,60 @@ class HomeController extends Controller
       ];
       $nb = 1;
 
+      $forfaits_yam =  [[
+         "forfait"   =>  "Son's Yam_1500",
+         "volume"    =>  "120min",
+         "code"      =>  "*106*1500#",
+         "prix"      =>  "1 500 FCFA",
+         "validite"  =>  "7 jours"
+       ],
+       [
+         "forfait"   =>  "Son's Yam_1000",
+         "volume"    =>  "90min",
+         "code"      =>  "*106*1000#",
+         "prix"      =>  "1 000 FCFA",
+         "validite"  =>  "3 jours"
+       ],
+       [
+         "forfait"   =>  "Son's Yam_700",
+         "volume"    =>  "1h",
+         "code"      =>  "*106*700#",
+         "prix"      =>  "700 FCFA",
+         "validite"  =>  "2 jours"
+       ],
+       [
+         "forfait"   =>  "Son's Yam_400",
+         "volume"    =>  "30min",
+         "code"      =>  "*106*400#",
+         "prix"      =>  "400 FCFA",
+         "validite"  =>  "1 jours"
+       ],
+       [
+         "forfait"   =>  "Son's Yam_120",
+         "volume"    =>  "5min",
+         "code"      =>  "5",
+         "prix"      =>  "120 FCFA",
+         "validite"  =>  "1 jours"
+       ],
+       [
+         "forfait"   =>  "Son's Yam_100",
+         "volume"    =>  "3min",
+         "code"      =>  "5",
+         "prix"      =>  "100 FCFA",
+         "validite"  =>  "1 jours"
+       ],
+
+       [
+         "forfait"   =>  "Son's Yam_500",
+         "volume"    =>  "30min",
+         "code"      =>  "30",
+         "prix"      =>  "500 FCFA",
+         "validite"  =>  "1 jours"
+       ],
+     ];
+
       for ($i = $arg['begin']; $i < $arg['end']; $i++) {
-        if(isset($forfaits[$i])){
+        if(isset($forfaits_yam[$i])){
           $url = "https://fr.funizi.com/api/start/390";
           $result = $this->helper->curlPost($url, $forfaits[$i]);
           $nb++;
