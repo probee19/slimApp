@@ -1347,9 +1347,7 @@ class LoadStatsController extends Controller
         ];
 
       foreach ($nb_shares as $share)
-        $data[$share->ab_testing] = [
-          "shares_count"     => $share->nb
-        ];
+        $data[$share->ab_testing]["shares_count"]= $share->nb;
 
       $all_data = [
         "data_count"        => $data,
