@@ -1343,6 +1343,7 @@ class LoadStatsController extends Controller
       foreach ($nb_tests as $test)
         $data[$test->ab_testing] = [
           "tests_count"     => $test->nb,
+          "users_count"     => $test->nb_users,
           "ab_testing"      => $test->ab_testing,
           "taux"            => round($test->nb / $test->nb_users , 2),
         ];

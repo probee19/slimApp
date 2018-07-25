@@ -21,6 +21,7 @@
                 <tr>
                     <th>Versions</th>
                     <th>Périodes</th>
+                    <th>Utilisateurs</th>
                     <th>Tests</th>
                     <th>T/U</th>
                     <th>Partage</th>
@@ -33,6 +34,7 @@
                   <td > {{data.ab_testing | upper}} </td>
                   <td > {{all_data.start}}{% if all_data.start != all_data.end %} au {{all_data.end}}{% endif %} </td>
                   <td > {{data.tests_count}}</td>
+                  <td > {{data.users_count}}</td>
                   <td > {{data.taux}}</td>
                   <td > {{data.shares_count}}</td>
                   <td > {{data.taux_partage}} %</td>
