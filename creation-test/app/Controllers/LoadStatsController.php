@@ -1336,18 +1336,21 @@ class LoadStatsController extends Controller
       $e = date_create($args['end']);
       $e = date_format($e, 'd/m/Y');
 
-      $nb_tests = UserTest::selectRaw('COUNT(*) AS nb, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
+      $nb_tests = UserTest::selectRaw('COUNT(*) AS nb, COUNT(DISTINCT user_id) AS nb_users, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
       $nb_shares = Share::selectRaw('COUNT(*) AS nb, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
 
       $data = [];
       foreach ($nb_tests as $test)
         $data[$test->ab_testing] = [
           "tests_count"     => $test->nb,
-          "ab_testing"      => $test->ab_testing
+          "ab_testing"      => $test->ab_testing,
+          "taux"            => round($test->nb / $test->nb_users , 2),
         ];
 
-      foreach ($nb_shares as $share)
+      foreach ($nb_shares as $share){
         $data[$share->ab_testing]["shares_count"]= $share->nb;
+        $data[$share->ab_testing]["taux_partage"]= round($share->nb / $data[$share->ab_testing]["tests_count"], 2);
+      }
 
       $all_data = [
         "data_count"        => $data,

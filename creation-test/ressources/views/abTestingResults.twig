@@ -22,7 +22,9 @@
                     <th>Versions</th>
                     <th>Périodes</th>
                     <th>Tests</th>
+                    <th>T/U</th>
                     <th>Partage</th>
+                    <th>P%</th>
                 </tr>
             </thead>
             <tbody id="more">
@@ -31,7 +33,9 @@
                   <td > {{data.ab_testing | upper}} </td>
                   <td > {{all_data.start}}{% if all_data.start != all_data.end %} au {{all_data.end}}{% endif %} </td>
                   <td > {{data.tests_count}}</td>
+                  <td > {{data.taux}}</td>
                   <td > {{data.shares_count}}</td>
+                  <td > {{data.taux_partage}}</td>
                 </tr>
               {% endfor %}
             </tbody>
