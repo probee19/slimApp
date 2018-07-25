@@ -1337,7 +1337,7 @@ class LoadStatsController extends Controller
       $e = date_format($e, 'd/m/Y');
 
       $nb_tests = UserTest::selectRaw('COUNT(*) AS nb, COUNT(DISTINCT user_id) AS nb_users, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
-      $nb_shares = Share::selectRaw('SUM(partage_count) AS nb, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
+      $nb_shares = Share::selectRaw('SUM(partages_count) AS nb, ab_testing')->where([['ab_testing','!=',NULL],['created_at',">=","$start"],['created_at',"<=","$end"]])->groupBy('ab_testing')->get();
 
       $data = [];
       foreach ($nb_tests as $test)
