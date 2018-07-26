@@ -318,7 +318,7 @@ class StartController extends Controller
                 //$options->setHeight(315);
                 $options->setBrowserwidth(800);
                 $options->setBrowserHeight(420);
-                $options->setQuality(90);
+                $options->setQuality(80);
                 $options->setFormat("jpg");
                 //Grab the image result here and save it
 
