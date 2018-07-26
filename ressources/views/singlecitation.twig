@@ -58,12 +58,12 @@
                 </span>
               </div>
               <script>
-                setTimeout(function(){ $(".overlay-share").css("display","flex").fadeIn("slow") }, 8000);
+                setTimeout(function(){ $(".overlay-share").css("display","flex").fadeIn("slow") }, 10000);
               </script>
           </div>
 
           <div class="col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center"
-            {% if is_mobile() or is_tablet() %} style="margin-top:.8em; padding:0;" {% endif %}>
+            style="{% if is_mobile() or is_tablet() %} margin-top:.8em; padding:0; {% endif %}margin-bottom: 1em;" >
 
               <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
               {% if is_mobile() or is_tablet() %}

@@ -158,8 +158,8 @@ class CreateCitationController extends Controller
       $data_ci = array();
       $data_ci[] = [
         'id_citation'             =>  $id_citation,
-        'lang'                    =>  "fr",
-        'code_php'                =>  $this->helper->translateWithTags("fr", $_POST['codePHPHTML']),
+        'lang'                    =>  $lang,
+        'code_php'                =>  $this->helper->translateWithTags($lang, $_POST['codePHPHTML']),
         'url_image_citation'      =>  $citation_img_name,
         '	url_thumbnail_citation' =>  $citation_thumb_img_name,
         "titre_citation"          =>  $_POST['titre'],
@@ -174,6 +174,7 @@ class CreateCitationController extends Controller
       $test_for_share_en = $this->helper->toEn($_POST['texte_for_share'], false);
       $_POST['codePHPHTML'] = $this->helper->toEn($_POST['codePHPHTML']);
       foreach ($langs as $lang) {
+        break;
         $url_file = $this->helper->getUrlCitationFile(
           $lang->code,
           $id_citation,

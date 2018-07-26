@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="langs">Langue de la citation :</label>
-                    <select class="select-langs form-control" id="default_lang" name="default_lang">
+                    <select class="select-langs form-control" id="default_lang" name="default_lang" >
                         {% for lang in langs %}
                           <option value="{{lang.code}}"  {% if lang.code == 'fr' %}selected{% endif %}> {{lang.name}} ({{lang.fr_name}})</option>
                         {% endfor %}
@@ -70,7 +70,7 @@
                 </div>
                 <div class="form-group">
                     <div class="checkbox">
-                        <label><input type="checkbox" name="if_translated" id="if_translated" value="1" checked> Cette citation est à traduire pour toutes les langues activées.  </label>
+                        <label><input type="checkbox" name="if_translated" id="if_translated" value="1" disabled> Cette citation est à traduire pour toutes les langues activées.  </label>
                     </div>
                 </div>
 
