@@ -41,13 +41,14 @@
                         {% endif %}
                     </div>
                     <div class="col-sm-10 col-sm-offset-1" style="clear: both; position: relative;">
-                        <span style="width: 800px; height: 420px; margin:auto -30px; max-width: calc(100% + 60px);" ></span>
-                        <div class="" style="width: 800px; height: 420px; margin:auto -30px; max-width: calc(100% + 60px);">
-                            <div class="col-xs-12 col-sm-10 col-sm-offset-1 " >
-                                <img src="{{ domain_url }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
-                                <div style="font-weight: 500; font-size:1.2em; "> Chargement de l'image </div>
-                            </div>
+
+                        <div class="loader-img-block" style="position: absolute; z-index: -1; width: calc(100% + 60px); padding-top: 52,5%;">
+                         <div class="loader-img-img" style="position: absolute; top: 0; left: 0; bottom: 0; right: 0; display:flex; align-items: center; justify-content: center; text-align: center;">
+                           <img src="{{ domain_url }}/src/img/rolling.gif" style=" max-height: 30px; margin: 0;  ">
+                           <div style="font-weight: 500; font-size:1.2em; "> Chargement de l'image </div>
+                         </div>
                         </div>
+
                         <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="margin:auto -30px; max-width: calc(100% + 60px);">
                         <a href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
                         <div class="overlay-share">
