@@ -46,7 +46,7 @@
               {% endif %}
           </div>
           <div class="col-sm-10 col-sm-offset-1" style="clear: both; position: relative;">
-              <img src="{{storage_base}}{{ citation.url_image_citation }}" alt="" class="img-responsive" id="result_img" style="margin:15px auto">
+              <img src="{{storage_base}}{{ citation.url_image_citation }}" alt="" class="img-responsive" id="result_img" style="margin:auto -30px; max-width: calc(100% + 60px);">
               <a href="https://www.facebook.com/dialog/share?app_id=348809548888116&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
 
               <div class="overlay-share">
@@ -62,28 +62,7 @@
               </script>
           </div>
 
-          <div>
-
-              <div class="row text-center">
-                  <ul class="text-center pager" style="margin-bottom: 0; margin-top:15px;">
-                      {% if previous_citation %}
-                          <li class="btn-next" style="margin-bottom: 20px">
-                              <a href="{{ domain_url }}/citation/{{previous_citation.titre_citation | twig_title_citation_url(previous_citation.id_citation, lang) }}/{{previous_citation.id_citation}}" class="btn_to_track" data-btn="next"> <i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
-                          </li>
-                      {% endif %}
-                      <li class="btn-next" style="margin-bottom: 20px">
-                          <a href="{{ domain_url }}/citations" class="btn_to_track" data-btn="all_quotes">{{interface_ui.btn_all_quotes}}</a>
-                      </li>
-                      {% if next_citation %}
-                          <li class="btn-next" style="margin-bottom: 20px">
-                              <a href="{{ domain_url }}/citation/{{next_citation.titre_citation | twig_title_citation_url(next_citation.id_citation, lang) }}/{{next_citation.id_citation}}" class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
-                          </li>
-                      {% endif %}
-                  </ul>
-              </div>
-          </div>
-
-          <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center"
+          <div class="col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 text-center"
             {% if is_mobile() or is_tablet() %} style="margin-top:.8em; padding:0;" {% endif %}>
 
               <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
@@ -94,6 +73,27 @@
                 <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ code }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i></a>
               {% endif %}
           </div>
+
+          <div>
+            <div class="row text-center">
+                <ul class="text-center pager" style="margin-bottom: 0; margin-top:15px;">
+                    {% if previous_citation %}
+                        <li class="btn-next" style="margin-bottom: 20px">
+                            <a href="{{ domain_url }}/citation/{{previous_citation.titre_citation | twig_title_citation_url(previous_citation.id_citation, lang) }}/{{previous_citation.id_citation}}" class="btn_to_track" data-btn="next"> <i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                        </li>
+                    {% endif %}
+                    <li class="btn-next" style="margin-bottom: 20px">
+                        <a href="{{ domain_url }}/citations" class="btn_to_track" data-btn="all_quotes">{{interface_ui.btn_all_quotes}}</a>
+                    </li>
+                    {% if next_citation %}
+                        <li class="btn-next" style="margin-bottom: 20px">
+                            <a href="{{ domain_url }}/citation/{{next_citation.titre_citation | twig_title_citation_url(next_citation.id_citation, lang) }}/{{next_citation.id_citation}}" class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+          </div>
+
         </div>
 
 
