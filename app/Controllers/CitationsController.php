@@ -149,15 +149,18 @@ class CitationsController extends Controller
                 $exclude [] = $user->test_id;
       }
 
-      $url_to_share = urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
+      $url_to_share = urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
 
       $url_redirect_share = $url_to_share;
       $id_test = 0;
       $all_test = $sandbox->relatedTests($id_test, $country_code, $exclude, $lang);
 
+      $url_to_share_msg =  urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
+      $url_to_share_wtsp = urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
+
 
       $all_lang = $this->helper->getActivatedLanguages();
-      return $this->view->render($response, 'singlecitation.twig', compact('citation', 'next_citation', 'previous_citation','id_user', 'all_test', 'interface_ui', 'lang', 'all_lang', 'url_to_share', 'url_redirect_share'));
+      return $this->view->render($response, 'singlecitation.twig', compact('citation', 'next_citation', 'previous_citation','id_user', 'all_test', 'interface_ui', 'lang', 'all_lang', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share' ));
 
     }
 
