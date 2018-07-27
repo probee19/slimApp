@@ -334,7 +334,9 @@ a:hover{
 }
 .test__next{
     z-index:30;
-    float: left;
+}
+.test__next a{
+  float: left;
 }
 .back_layer {
     background-color: rgba(28, 48, 79, 0.4);
