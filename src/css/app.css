@@ -333,7 +333,8 @@ a:hover{
     z-index: 20;
 }
 .test__next{
-    z-index:30
+    z-index:30;
+    float: left;
 }
 .back_layer {
     background-color: rgba(28, 48, 79, 0.4);
