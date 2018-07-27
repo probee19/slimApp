@@ -5,7 +5,8 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              
+              <link href="https://fonts.googleapis.com/css?family=Exo:900" rel="stylesheet">
+
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -20,19 +21,14 @@
               .texte2{
                 width: 200px;
               }
-              @font-face {
-    font-family: orange;
-    src: url("http://fr.funizi.com/src/fonts/orange/HelvNeue75_W1G.woff");
-}
-.main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
+              .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
-
-#back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
-
-#volume{z-index:1; font-family:"Arial",sans-serif;letter-spacing: -0.015em; font-weight: bold;position: absolute; left: 38px; top: 38px; color:#fff; font-size:40px; line-height:55px; width:350px ; height:350px ; border-radius:350px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
-.prix{font-size:40px;}
-.code{font-size:50px; color:#000;}
-#forfait{z-index:1; font-family:"Arial",sans-serif; letter-spacing: -0.015em;font-weight: bold;position: absolute; right: 38px; top: 38px; color:#000; font-size:35px; line-height:55px; width:350px ; height:350px ;  display:flex; align-items:center; justify-content:center; text-align:center; max-width:800px; max-height:420px;}
+#background_1{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
+#background_2{position:absolute; z-index:1; right:0; top:0;  max-width:800px; max-height:420px; }
+#result_container{position:absolute; z-index:1;top:0;  width:400px; height:420px; background:#000;opacity: 0.7; }
+#nom_vainqueur{position:absolute; z-index:2;top:90px; left:5px;  width:400px; height:420px; font-family: 'Exo', sans-serif; color:#FFF; text-align:center; font-size:50px; }
+#action{position:absolute; z-index:2;top:160px;  width:390px; height:420px; font-family: 'Exo', sans-serif; color:#FFFF00; text-align:center; font-size:30px; line-height:30px; }
+#time{position:absolute; z-index:3;top:240px;  width:400px; height:420px; font-family: 'Exo', sans-serif; color:#FFF; text-align:center; font-size:30px; line-height:30px; }
 
               </style>
               <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
@@ -75,15 +71,23 @@
           <div class='main'>
       
 <?php
-          $postes = array('');
-          $img = array();
+          $result_container_position = array('0','400');
+          $nom_vainqueur = array('Bombardier', 'Eumeu Sene');
+          $action = array('gagne grâce à un crochet du droit', 'Vainqueur par KO','terrasse son adversaire','Renverse son adversaire');
+          $timing = array('à la 32ie seconde','aprés 1m30 de combat','à la 15ie seconde','aprés 1m55 de combat');
+          $id = mt_rand(0,1);
+          $id2 = mt_rand(0,3);
+          
 ?>
-<!DOCTYPE HTML>
-<img src="https://creation.funizi.com/images-theme-perso/1532004362.png" id="back"> 
 
-<div class="texte" id="volume"> <?php echo $_GET['volume']; ?> <span class="prix"> à <?php echo $_GET['prix']; ?></span>  <span class="code"> <?php echo $_GET['code']; ?></span> </div>
+<img src="http://creation.funizi.com/images-theme-perso/1532620091.jpg" id="background_1"> 
+<img src="http://creation.funizi.com/images-theme-perso/1532620107.jpg" id="background_2"> 
+<div id='result_container' style="left:<?php echo $result_container_position[$id] ?>px"></div>
+<div id='nom_vainqueur' style="left:<?php echo $result_container_position[$id] ?>px"><?php echo $nom_vainqueur[$id] ?></div>
+<div id='action' style="left:<?php echo $result_container_position[$id] ?>px"><?php echo $action[$id2] ?></div>
+<div id='time' style="left:<?php echo $result_container_position[$id] ?>px"><?php echo $timing[$id2] ?></div>
 
-<div class="texte" id="forfait"><?php echo $_GET['forfait']; ?> <br> Valable <?php echo $_GET['validite']; ?> </div>
+
 
         </div>
         

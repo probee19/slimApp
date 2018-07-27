@@ -156,7 +156,7 @@ class CreateCitationController extends Controller
 
       // Sauvegarde des informations de la citation pour chaque langue activée
       $data_ci = array();
-      $data_ci[] = [
+      $data_ci = [
         'id_citation'             =>  $id_citation,
         'lang'                    =>  $lang,
         'code_php'                =>  $this->helper->translateWithTags($lang, $_POST['codePHPHTML']),
@@ -168,13 +168,14 @@ class CreateCitationController extends Controller
         "updated_at"              =>  \date("Y-m-d H:i:s")  # \Datetime()
       ];
 
-      $langs = Language::selectRaw('code')->where([['status',1], ['code','!=','fr']])->get();
-      // Traduction du code en anglais pour les prochaines traductions
-      $titre_citation_en = $this->helper->toEn($_POST['titre'], false);
-      $test_for_share_en = $this->helper->toEn($_POST['texte_for_share'], false);
-      $_POST['codePHPHTML'] = $this->helper->toEn($_POST['codePHPHTML']);
-      foreach ($langs as $lang) {
-        break;
+      if($test_to_translate){
+        $langs = Language::selectRaw('code')->where([['status',1], ['code','!=','fr']])->get();
+        // Traduction du code en anglais pour les prochaines traductions
+        $titre_citation_en = $this->helper->toEn($_POST['titre'], false);
+        $test_for_share_en = $this->helper->toEn($_POST['texte_for_share'], false);
+        $_POST['codePHPHTML'] = $this->helper->toEn($_POST['codePHPHTML']);
+        foreach ($langs as $lang) {
+
         $url_file = $this->helper->getUrlCitationFile(
           $lang->code,
           $id_citation,
@@ -202,6 +203,7 @@ class CreateCitationController extends Controller
           "created_at"              =>  \date("Y-m-d H:i:s"), # \Datetime()
           "updated_at"              =>  \date("Y-m-d H:i:s")  # \Datetime()
         ];
+      }
       }
       CitationInfo::insert($data_ci);
       Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonallquotes",[]);
