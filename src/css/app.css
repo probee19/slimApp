@@ -405,6 +405,14 @@ a:hover{
   background-color: #3b5999;
   color: #FFF;
 }
+
+.btn_share_quote{
+  font-size: 1em;
+  /*padding: 0.5em 1em;*/
+  margin-top:0;
+  background-color: #3b5999;
+  color: #FFF;
+}
 .modal{
 
 }
@@ -558,6 +566,9 @@ a:hover{
   .btn_share {
     font-size: 1.1em;
   }
+  .btn_share_quote {
+    font-size: 1.1em;
+  }
 }
 
 @media screen and (max-width: 360px){
@@ -565,6 +576,9 @@ a:hover{
         font-size: 1em;
     }
     .btn_share {
+      font-size: 1em;
+    }
+    .btn_share_quote {
       font-size: 1em;
     }
     .gallery-fb{

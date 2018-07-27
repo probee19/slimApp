@@ -53,11 +53,18 @@ class CitationsController extends Controller
         $include = $_SESSION[$name_session_page];
         foreach ($citations_from_json as $citation) {
           if(in_array($citation['id_citation'], $include, true)){
+            //$url_to_share =      urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
+            //$url_to_share_msg =  urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
+            //$url_to_share_wtsp = urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
+
             $citations[$citation['id_citation']] = [
               'url_image_citation'      => $citation['url_image_citation'],
               'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
               'id_citation'             => $citation['id_citation'],
-              'titre_citation'          => $citation['titre_citation']
+              'titre_citation'          => $citation['titre_citation'],
+              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation'])
             ];
           }
         }
@@ -79,7 +86,10 @@ class CitationsController extends Controller
                 'url_image_citation'      => $citation['url_image_citation'],
                 'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
                 'id_citation'             => $citation['id_citation'],
-                'titre_citation'          => $citation['titre_citation']
+                'titre_citation'          => $citation['titre_citation'],
+                'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+                'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+                'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation'])
               ];
               if(!in_array($citation['id_citation'], $exclude, true)) $exclude[] = $citation['id_citation'];
               $page_citations[] = $citation['id_citation'];
@@ -136,10 +146,6 @@ class CitationsController extends Controller
           "id_citation"             =>  $previous_citation_col->id_citation,
           "titre_citation"          =>  $previous_citation_col->titre_citation,
         ];
-
-      $sandbox->debug($previous_citation);
-      $sandbox->debug($citation);
-      $sandbox->debug($next_citation);
 
       $exclude = [];
       if(!empty($_SESSION['uid'])){
