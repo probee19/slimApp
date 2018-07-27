@@ -863,7 +863,7 @@ class LoadStatsController extends Controller
                   "taux_share_unique"       =>  $taux_share_unique,
                   "taux_test"               =>  round(($user->nb_test_done/ $data_global["nb_tests_done_all"]) * 100, 2)
               ];
-              if($nbnb++ == 100) break;
+            //  if($nbnb++ == 100) break;
         }
         $best_users = Helper::array_msort($best_users, array('nb_test_done'=>SORT_DESC, 'nb_test_unique_done'=>SORT_DESC));
 
