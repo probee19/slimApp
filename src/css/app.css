@@ -544,7 +544,7 @@ a:hover{
         align-items: flex-start;
         justify-content: flex-start;
     }
-    .border div, #discovery-tests-modal .border div {
+    .border div.test-title-top, .border div.test__next #discovery-tests-modal .border div {
         position: absolute;
         width: 60%;
         top: 75px;
