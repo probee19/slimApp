@@ -161,7 +161,7 @@ class CreateCitationController extends Controller
         'lang'                    =>  $lang,
         'code_php'                =>  $this->helper->translateWithTags($lang, $_POST['codePHPHTML']),
         'url_image_citation'      =>  $citation_img_name,
-        '	url_thumbnail_citation' =>  $citation_thumb_img_name,
+        'url_thumbnail_citation'  =>  $citation_thumb_img_name,
         "titre_citation"          =>  $_POST['titre'],
         "citation_description"    =>  $_POST['texte_for_share'],
         "created_at"              =>  \date("Y-m-d H:i:s"), # \Datetime()
@@ -267,7 +267,7 @@ class CreateCitationController extends Controller
       ];
       $update_citation = Citation::where('id_citation', '=', $id_citation)->update($new_data);
 
-      if($if_translated == 1){
+      if($if_translated == 1 || 4==4 ){
         if ($_POST['default_lang'] == $_POST['langs_citations_edit'] ) {
           $langs = Language::selectRaw('code')->where('status','=', 1)->get();
           // Traduction du code en anglais pour les prochaines traductions
