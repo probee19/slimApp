@@ -291,6 +291,7 @@ class HomeController extends Controller
 
     public function chunk($request, $response, $args){
 
+
           $url = $this->helper->detectLang($request, $response);
           if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 
@@ -300,20 +301,18 @@ class HomeController extends Controller
           if(isset($_GET['pays']) && !empty($_GET['pays'])){
               $country_code = strtoupper($_GET['pays']);
           }else{
-  	        $country_code = $helper->getCountryCode();
+            $country_code = $helper->getCountryCode();
           }
-
-      		if(isset($args['code'])){
-      			$code = $args['code'];
-      		}
-      		if(isset($args['new'])){
-      			$new = $args['new'];
-      		}
+          if(isset($args['code'])){
+            $code = $args['code'];
+          }
+          if(isset($args['new'])){
+            $new = $args['new'];
+          }
 
           $is_result = true;
           $date = date('Y-m-d');
           $test = UserTest::on('reader')->where('uuid', "$code")->with('testInfo')->first();
-
           //$testInfo = Test::where('id_test', $test->testInfo->id_test)->first();
           $testInfo = Test::on('reader')->selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.unique_result AS unique_result, tests.id_theme AS id_theme, tests.id_rubrique AS id_rubrique, tests.id_test AS id_test')
             ->join('test_info','test_info.id_test','tests.id_test')
@@ -338,8 +337,7 @@ class HomeController extends Controller
 
               return $response->withStatus(302)->withHeader('Location', $result_url );
 
-          }
-          else{
+          }else{
               $titre_test = $testInfo->titre_test;
               $test_id = $test->test_id;
               $title_url = $this->helper->getUrlTest($titre_test, $test_id, $lang);
@@ -359,17 +357,10 @@ class HomeController extends Controller
                   $is_result = false;
               }
 
-              //$suggestions = $this->helper->getLovedTests($country_code, $exclude, $lang, 3);
-              //$this->helper->debug($suggestions);
               if(isset($_GET['ab']))
                 $ab_testing =$_GET['ab'];
               else
                 $ab_testing = $test->ab_testing;
-
-
-              $this->helper->debug($_SESSION);
-              $this->helper->debug($_SESSION);
-              $this->helper->debug($ab_testing);
 
 
               if($test->testInfo->codes_countries !=''){
@@ -415,7 +406,7 @@ class HomeController extends Controller
 
               $interface_ui = $this->helper->getUiLabels($lang);
               $all_lang = $this->helper->getActivatedLanguages();
-              return $this->view->render($response, 'chunk.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'id_rubrique', 'img_url', 'result_description', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share', 'top_tests', 'ab_testing', 'interface_ui','lang','all_lang'));
+              return $this->view->render($response, 'chunk.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'id_rubrique', 'img_url', 'result_description', 'ab_testing', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
           }
 
     }

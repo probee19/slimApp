@@ -27,12 +27,12 @@ class ResultController extends Controller
         }else{
 	        $country_code = $helper->getCountryCode();
         }
-		if(isset($args['code'])){
-			$code = $args['code'];
-		}
-		if(isset($args['new'])){
-			$new = $args['new'];
-		}
+    		if(isset($args['code'])){
+    			$code = $args['code'];
+    		}
+    		if(isset($args['new'])){
+    			$new = $args['new'];
+    		}
 
         $is_result = true;
         $date = date('Y-m-d');
