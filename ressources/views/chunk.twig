@@ -133,7 +133,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" style="font-size:1.6em; font-weight: 700;letter-spacing: -0.5px;">
-                    {% if ab_testing == 'b' %}
+                    {% if ab_testing == 'd' %}
                       ▼ Tu as aimé ? Partage avec tes amis! ▼
                     {% else %}
                       {% autoescape %}
@@ -159,9 +159,9 @@
                         </div>
                       {% endif %}
 
-                      {% if ab_testing == 'b' %}
+                      {% if ab_testing == 'd' %}
                         <div class="text-center" style=" margin-top:.8em;" >
-                          <div class="" id="btn-show-discover-block" style=" 
+                          <div class="" id="btn-show-discover-block" style="
                             font-weight: bold;
                             color:#000;
                             margin: 0 auto;
