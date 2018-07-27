@@ -132,9 +132,9 @@
           <div id="discovery-share-modal" class="modal fade" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header" style="font-size:1.3em">
+                    <div class="modal-header" style="font-size:1.6em; font-weight: 700;letter-spacing: -0.5px;">
                     {% if ab_testing == 'b' %}
-                      {{interface_ui.modal_share_label}}
+                      ▼ Tu as aimé ? Partage avec tes amis! ▼
                     {% else %}
                       {% autoescape %}
                           {{result_description | raw }}
@@ -160,17 +160,20 @@
                       {% endif %}
 
                       {% if ab_testing == 'b' %}
-                        <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style=" margin-top:.8em; margin-bottom: 1em;" >
+                        <div class="text-center" style=" margin-top:.8em;" >
                           <div class="" id="btn-show-discover-block" style=" background: #337ab7;
-                          font-weight: bold; color:#fff;
-                          border-radius: 25px;
-                          line-height: 40px;
-                          width: 200px;
-                          padding: 0 15px;
-                          margin: 0 auto;
-                          text-align: center;
-                          cursor:pointer;" >
-                              <span><a class="" style="cursor:pointer;" data-dismiss="modal"> {{interface_ui.btn_goto_discover | capitalize}}</a></span>
+                            font-weight: bold;
+                            color:#000;
+                            margin: 0 auto;
+                            text-align: center;
+                            cursor: pointer;
+                            text-decoration: underline;
+                            font-size: 1.4em;
+                          " >
+                              <span><a class="" style="cursor:pointer;" data-dismiss="modal">
+                              J'ai envie de faire d'autres tests !!
+                              <!--{{interface_ui.btn_goto_discover | capitalize}}-->
+                              </a></span>
                           </div>
                         </div>
                       {% endif %}
