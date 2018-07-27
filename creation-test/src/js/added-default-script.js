@@ -50,11 +50,8 @@ function chargerImageCropee(id) {
             $('#img_resultat_base_64_'+id).val(imageData);
             $('#btn_crop_'+id).val("Changer l'image");
         }
-
-
     }
     else { // Pour l'image du test
-
         $('#img_test_preview').attr("src",imageData).load(function(){
             $('#img_test_base_64').val(imageData);
             $('.btn_add_image').val("Changer l'image");

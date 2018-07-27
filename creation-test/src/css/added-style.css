@@ -122,8 +122,8 @@ img#img_test_preview {
     border: 1px solid #ccc;
     border-radius: 3px;
     margin-top: 15px;
-    width: 302px;
-    height: 302px;
+    width: 600px;
+    height: 600px;
 }
 
 .cropit-preview-image-container {
