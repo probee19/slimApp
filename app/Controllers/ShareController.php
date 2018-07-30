@@ -74,7 +74,7 @@ class ShareController extends Controller
       $btn_share = $args['btn'];
       $lang = $args['lang'];
       $date = date('Y-m-d');
-      $is_quote = Citation::where('id', $id)->first();
+      $is_quote = Citation::where('id_citation','=', $id)->first();
 
       $share = 1;
       if($is_quote) {
