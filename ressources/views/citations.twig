@@ -106,7 +106,7 @@
 
       {% endif %}
 
-    {% if i == 5 %}
+    {% if i == 5 and (is_mobile() or is_tablet()) %}
           <div class="" style="margin:10px auto 10px;">
               {% set banner = random(['banners/banner_360x300_responsive_bottom.twig', 'banners/banner_300x250_bottom.twig']) %}
               {% include  banner %}
