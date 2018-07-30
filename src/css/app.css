@@ -56,6 +56,12 @@ a:hover{
   object-fit: cover;
   object-position: 0 30%;
 }
+.test_over{
+ position: absolute; 
+ width: 100%;
+ height: 100%;
+ left: 0;
+}
 .privacy_content{
   font-style: 1.3em;
   text-align: justify;
