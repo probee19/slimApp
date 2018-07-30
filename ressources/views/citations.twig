@@ -91,7 +91,7 @@
       {% endif %}
 
       {% if i == 2 or i == 8 or i == 11 %}
-            <div class="col-sm-6 col-md-4 portfolio-item">
+            <div class="col-sm-6 col-md-6 portfolio-item">
                   <div class="border_gallery_responsive" >
                       <img class="img-responsive" src="{{ storage_base }}/images{{ tests[0].url_image_test |trim('.', 'left') }}" alt="image du test" style="">
                       <span class="mobile-layer"></span>
@@ -112,7 +112,7 @@
               {% include  banner %}
           </div>
     {% endif %}
-    
+
       {% set i = i+1 %}
   {% endfor %}
   </div>
