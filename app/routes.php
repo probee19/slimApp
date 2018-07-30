@@ -34,6 +34,8 @@ $app->get('/phantomtest', 'DevtestController:phantomTest');
 $app->post('/login', 'HomeController:login')->setName('login');
 $app->post('/share/{btn}', 'ShareController:index');
 $app->post('/share/{btn}/{lang}', 'ShareController:index');
+$app->post('/shareCitation/{btn}', 'ShareController:shareQuote');
+$app->post('/shareCitation/{btn}/{lang}', 'ShareController:shareQuote');
 $app->post('/grabimage', 'GrabzitController:getImageFromUrl');
 $app->post('/setsession', 'HomeController:createSession');
 $app->post('/connect_user', 'ConnectController:index');

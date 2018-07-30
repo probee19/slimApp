@@ -175,19 +175,32 @@ function changeLang(lang) {
 
 
 function partage(id, lang, btn){
-            $.ajax({
-                url: domain+'/share/'+btn+'/'+lang,
-                type: 'post',
-                data: {'code': id},
-                success:function(data){
-                    console.log(data);
-                },
-                error:function(response){
-                    console.log(response);
-                }
-            });
+      $.ajax({
+          url: domain+'/share/'+btn+'/'+lang,
+          type: 'post',
+          data: {'code': id},
+          success:function(data){
+              console.log(data);
+          },
+          error:function(response){
+              console.log(response);
+          }
+      });
 }
 
+function partageCitation(id, lang, btn){
+      $.ajax({
+          url: domain+'/shareCitation/'+btn+'/'+lang,
+          type: 'post',
+          data: {'code': id},
+          success:function(data){
+              console.log(data);
+          },
+          error:function(response){
+              console.log(response);
+          }
+      });
+}
 function openModal(id){
     var mymodal = $('#facebook-login-modal');
     $('#btn_log_fb').attr('onClick', 'seConnecterFacebook('+id+', '+ 0 + ')');
@@ -206,7 +219,7 @@ function openModalShare(){
     if($('#discovery-share-modal').length > 0)
       setTimeout(function () {
         $('#discovery-share-modal').modal('show');
-      }, 8000); 
+      }, 8000);
 }
 
 function clickButton(btn) {

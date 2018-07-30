@@ -8,6 +8,8 @@ use App\Models\Share;
 use App\Models\UserTest;
 use App\Models\Test;
 use App\Models\BotTests;
+use App\Models\Citation;
+use App\Models\ShareCitation;
 
 class ShareController extends Controller
 {
@@ -63,5 +65,31 @@ class ShareController extends Controller
         return $response->withStatus(200)
             ->withHeader('Content-Type', 'application/json')
             ->write(json_encode($share));
+    }
+
+
+    public function shareQuote($request, $response, $args)
+    {
+      $id = $request->getParam('code');
+      $btn_share = $args['btn'];
+      $lang = $args['lang'];
+      $date = date('Y-m-d');
+      $is_quote = Citation::where('id', $id)->first();
+
+      $share = 1;
+      if($is_quote) {
+          $uid = 0;
+          if(isset($_SESSION['uid'])) $uid = $_SESSION['uid'];
+          $share = shareCitation::create([
+              'user_id'       => $uid,
+              'citation_id'   => $id,
+              'btn_share'     => "$btn_share",
+              'lang'          => "$lang",
+              'ab_testing'    =>  $this->helper->getAB(),
+          ]);
+      }
+      return $response->withStatus(200)
+          ->withHeader('Content-Type', 'application/json')
+          ->write(json_encode($share));
     }
 }
