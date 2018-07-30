@@ -45,6 +45,7 @@
   {% endif %}
 
   {% set i = 0 %}
+  {% set j = 0 %}
   <div class="row">
   {% for citation in citations %}
       {% if is_mobile() or is_tablet() %}
@@ -93,17 +94,17 @@
       {% if i == 2 or i == 8 or i == 11 %}
             <div class="col-sm-6 col-md-6 portfolio-item">
                   <div class="border_gallery_responsive" >
-                      <img class="img-responsive" src="{{ storage_base }}/images{{ tests[0].url_image_test |trim('.', 'left') }}" alt="image du test" style="">
+                      <img class="img-responsive" src="{{ storage_base }}/images{{ tests[j].url_image_test |trim('.', 'left') }}" alt="image du test" style="">
                       <span class="mobile-layer"></span>
-                      <!-- <a href="{{ path_for('single', { 'id': tests[0].id_test, 'name': tests[0].titre_test | twig_clean_url }) }}" class="test__link" data-btn="btn-test"></a> -->
-                    <a href="{{ domain_url }}/test/{{tests[0].titre_test | twig_title_url(tests[0].id_test, lang)}}/{{tests[0].id_test}}" data-btn="btn-test" class="test__link"></a>
+                      <!-- <a href="{{ path_for('single', { 'id': tests[j].id_test, 'name': tests[j].titre_test | twig_clean_url }) }}" class="test__link" data-btn="btn-test"></a> -->
+                    <a href="{{ domain_url }}/test/{{tests[j].titre_test | twig_title_url(tests[j].id_test, lang)}}/{{tests[j].id_test}}" data-btn="btn-test" class="test__link"></a>
 
                   </div>
                   <div  class="test-title-gallery">
-                    <a href="{{ domain_url }}/test/{{tests[0].titre_test | twig_title_url(tests[0].id_test, lang)}}/{{tests[0].id_test}}" class="" ><span style="font-size:14px;">{{ tests[0].titre_test }}</span></a>
+                    <a href="{{ domain_url }}/test/{{tests[j].titre_test | twig_title_url(tests[j].id_test, lang)}}/{{tests[j].id_test}}" class="" ><span style="font-size:14px;">{{ tests[j].titre_test }}</span></a>
                   </div>
             </div>
-
+          {% set j = j + 1 %}
       {% endif %}
 
     {% if i == 5 and (is_mobile() or is_tablet()) %}
