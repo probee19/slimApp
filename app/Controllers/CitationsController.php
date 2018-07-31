@@ -62,6 +62,7 @@ class CitationsController extends Controller
               'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
               'id_citation'             => $citation['id_citation'],
               'titre_citation'          => $citation['titre_citation'],
+              'redirect_uri'            => urlencode($request->getUri()->getBaseUrl()."/citations/?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
               'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
               'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
               'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation'])
