@@ -25,6 +25,9 @@
             <meta property="og:url" content="{{ domain_url }}/test/{{ test.titre_test | twig_title_url(test.id_test, lang) }}/{{ test.id_test }}" >
             <meta property="og:description" content="{{interface_ui.label_share_prefixe2 | capitalize}}" />
             <meta property="og:type" content="website">
+            {% if test.id_test == 205 %}
+              <meta property="og:image" content="{{ storage_base }}/uploads/test_205_2.png" />
+            {% endif %}
             {% if test.id_test == 207 %}
               <meta property="og:image" content="{{ storage_base }}/uploads/signification_prenomv1.png" />
             {% endif %}
@@ -37,7 +40,7 @@
             {% if test.id_test == 379 %}
               <meta property="og:image" content="{{ storage_base }}/uploads/test_379_2.png" />
             {% endif %}
-            {% if test.id_test != 207 and test.id_test != 365 and test.id_test != 370 and test.id_test != 379 %}
+            {% if test.id_test != 207 and test.id_test != 205  and test.id_test != 365 and test.id_test != 370 and test.id_test != 379 %}
               <meta property="og:image" content="{{ storage_base }}/uploads/test_{{ test.id_test }}.png" />
             {% endif %}
             <meta property="fb:app_id" content="348809548888116">
@@ -169,7 +172,7 @@
                   </div>
               </div>
             {% endif %}
-            
+
             {% set i = i+1 %}
             {% if i is divisible by(3) %}
                 {% set j = j + 1 %}
