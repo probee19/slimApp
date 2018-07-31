@@ -9,6 +9,7 @@ $app->get('/page/{pageid}', 'HomeController:index')->setName('paginatation');
 $app->get('/test/{name}/{id}', 'TestController:index')->setName('single');
 $app->get('/citation/{name}/{id}', 'CitationsController:oneQuote')->setName('singlecitation');
 $app->get('/citations', 'CitationsController:index')->setName('citations');
+$app->get('/citations/{name}/{id}', 'CitationsController:index')->setName('sharedcitation');
 $app->get('/citations/page/{pageid}', 'CitationsController:index');
 $app->get('/test/{name}/{id}/{from}', 'TestController:index')->setName('singledis');
 $app->get('/test/{name}/{id}/ref/{code}', 'TestController:index')->setName('shareduri');
