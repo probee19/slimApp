@@ -115,7 +115,6 @@ class CitationsController extends Controller
       //
       $tests = $sandbox->relatedTests(0, $country_code, [], $lang);
 
-      $this->helper->debug($citations);
       $all_lang = $this->helper->getActivatedLanguages();
       return $this->view->render($response, 'citations.twig', compact('citations', 'id_shared_citation','img_shared_citation', 'tests', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
 
