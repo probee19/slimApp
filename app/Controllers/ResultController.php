@@ -84,7 +84,7 @@ class ResultController extends Controller
             if(isset($_GET['ab']))
               $ab_testing =$_GET['ab'];
             else
-              $ab_testing = $test->ab_testing;
+              $ab_testing = $this->helper->getAB();
 
 
             if($test->testInfo->codes_countries !=''){

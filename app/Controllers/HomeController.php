@@ -130,7 +130,13 @@ class HomeController extends Controller
       //$this->helper->debug($all_lang);
       if(isset($_GET['debug']) && $_GET['debug'] == true)
         $this->helper->debug($tests);
-      return $this->view->render($response, 'home.twig', compact('tests_on_top', 'lang', 'tests', 'pagecount', 'pageid', 'interface_ui', 'all_lang'));
+
+      if(isset($_GET['ab']))
+        $ab_testing =$_GET['ab'];
+      else
+        $ab_testing = $this->helper->getAB();
+
+      return $this->view->render($response, 'home.twig', compact('tests_on_top', 'ab_testing', 'lang', 'tests', 'pagecount', 'pageid', 'interface_ui', 'all_lang'));
 
     }
 

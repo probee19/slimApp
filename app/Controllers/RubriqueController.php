@@ -121,6 +121,12 @@ class RubriqueController extends Controller
         //$interface_ui = $this->helper->getUiLabels($this->helper->getLangSubdomain($request));
         $all_lang = $this->helper->getActivatedLanguages();
         $interface_ui = $this->helper->getUiLabels($lang);
-        return $this->view->render($response, 'rubrique.twig', compact('lang', 'tests', 'rubrique', 'rubrique_name', 'pagecount', 'pageid', 'mode','interface_ui','all_lang'));
+
+        if(isset($_GET['ab']))
+          $ab_testing =$_GET['ab'];
+        else
+          $ab_testing = $this->helper->getAB();
+
+        return $this->view->render($response, 'rubrique.twig', compact('lang','ab_testing', 'tests', 'rubrique', 'rubrique_name', 'pagecount', 'pageid', 'mode','interface_ui','all_lang'));
     }
 }

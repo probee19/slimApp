@@ -82,7 +82,12 @@ class TestController extends Controller
         if(isset($_SESSION['uid']))
             $id_user = $_SESSION['uid'];
 
+        if(isset($_GET['ab']))
+          $ab_testing =$_GET['ab'];
+        else
+          $ab_testing = $this->helper->getAB();
+
         $all_lang = $this->helper->getActivatedLanguages();
-        return $this->view->render($response, 'single.twig', compact('no_ads', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
+        return $this->view->render($response, 'single.twig', compact('no_ads','ab_testing', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
         }
 }
