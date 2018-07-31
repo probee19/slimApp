@@ -20,13 +20,16 @@ class CitationsController extends Controller
       $lang = $sandbox->getLangSubdomain($request);
       $interface_ui = $sandbox->getUiLabels($lang);
 
-      $id ='';
-      if(isset($arg['id']))
-          $id = $arg['id'];
 
       $country_code = $sandbox->getCountryCode();
       $pagecount = $this->citation_per_page;
       $citations_from_json = $this->helper->getAllCitationJson($lang);
+
+      $id_shared_citation ='';
+      if(isset($arg['id'])){
+        $id_shared_citation = $arg['id'];
+        $img_shared_citation = $citations_from_json[$id_shared_citation]['url_image_citation'];
+      }
 
       // Calcul du nombre total de ciataions
       foreach ($citations_from_json as $citation) {
@@ -67,9 +70,9 @@ class CitationsController extends Controller
               'id_citation'             => $citation['id_citation'],
               'titre_citation'          => $citation['titre_citation'],
               'redirect_uri'            => urlencode($request->getUri()->getBaseUrl()."/citations/"),
-              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citations/".$citation['titre_citation']."/".$citation['id_citation']."/?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citations/".$citation['titre_citation']."/".$citation['id_citation']."/?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citations/".$citation['titre_citation']."/".$citation['id_citation']."/?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
               //'redirect_uri'            => urlencode($request->getUri()->getBaseUrl()."/citations/?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
               //'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
               //'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
@@ -114,7 +117,7 @@ class CitationsController extends Controller
 
       $this->helper->debug($citations);
       $all_lang = $this->helper->getActivatedLanguages();
-      return $this->view->render($response, 'citations.twig', compact('citations', 'id', 'tests', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
+      return $this->view->render($response, 'citations.twig', compact('citations', 'id_shared_citation','img_shared_citation', 'tests', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
 
 
     }
