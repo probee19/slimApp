@@ -185,7 +185,7 @@ function activeCitation(id){
        loadingProgress ('0%', 'Activation de la citation en cours...');
      }
    }).done(function (data) {
-     //updateJsonTestFiles();
+     updateJsonTestFiles();
      setTimeout(function(){
        loadingProgress ('100%', 'Opération terminée avec succès.', 'reload');
      },1000);
@@ -203,7 +203,7 @@ function desactiveCitation(id){
        loadingProgress('0%', 'Désactivation de la citation en cours...');
      }
    }).done(function (data) {
-     //updateJsonTestFiles();
+     updateJsonTestFiles();
      setTimeout(function(){
        loadingProgress('100%', 'Opération terminée avec succès.', 'reload');
      },1000);

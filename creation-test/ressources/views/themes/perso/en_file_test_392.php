@@ -87,9 +87,9 @@
 
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
-<div class="texte" id="aime"><?=$aimes[0]?></div>
+<div class="texte" id="aime"><?=$detestes[0]?></div>
 
-<div class="texte" id="deteste"><?=$detestes[0]?></div>
+<div class="texte" id="deteste"><?=$aimes[0]?></div>
 
 <div class="texte" id="phrase"><?php echo $_GET['user_name']; ?> knows what\'s good and not good in his life</div>
  
