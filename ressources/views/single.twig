@@ -125,7 +125,7 @@
 
 
     </div>
-    
+
     {% if is_mobile() or is_tablet() %}
         {% if country_code == 'SN'  and 3==4 %}
           <div class="row text-center" style="margin-top:1em">
@@ -145,15 +145,31 @@
     {% if all_test %}
         {% for single_test in all_test %}
           {% if is_mobile() or is_tablet() %}
-            <div class="col-md-4 portfolio-item">
-                <div class="border" data-test-id="{{single_test.id_test}}">
-                    <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test">
-                    <span class="mobile-layer"></span>
-                    <a class="test__link btn_to_track" href="{{ path_for('singledis', { 'from': 'discover', 'id': single_test.id_test, 'name': single_test.titre_test | twig_title_url(single_test.id_test, lang) }) }}" data-btn="btn-test"></a>
-                    <h3 class="test-title">{{ single_test.titre_test }}</h3>
-                    <div class="test__next"><a href="{{ path_for('singledis', { 'from': 'discover', 'id': single_test.id_test, 'name': single_test.titre_test | twig_title_url(single_test.id_test, lang) }) }}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track"  data-btn="btn-test">{{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
-                </div>
-            </div>
+
+            {% if  ab_testing == 'b' %}
+              <div class="col-md-6 portfolio-item">
+                    <div class="border_gallery_responsive" data-test-id="{{single_test.id_test}}">
+                        <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test" style="">
+                        <span class="mobile-layer"></span>
+                      <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" data-btn="btn-test" class="test__link"></a>
+                    </div>
+                    <div  class="test-title-gallery">
+                      <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" class="" ><span style="font-size:15px;">{{ single_test.titre_test }}</span></a>
+                    </div>
+              </div>
+            {% else %}
+              <div class="col-md-4 portfolio-item">
+                  <div class="border" data-test-id="{{single_test.id_test}}">
+                      <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test">
+                      <span class="mobile-layer"></span>
+                    <a class="test__link btn_to_track" href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" data-btn="btn-test"></a>
+                      <h3 class="test-title">{{ single_test.titre_test }}</h3>
+                    <div class="test__next"><a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track "  data-btn="btn-test">
+                    {{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
+                  </div>
+              </div>
+            {% endif %}
+            
             {% set i = i+1 %}
             {% if i is divisible by(3) %}
                 {% set j = j + 1 %}
