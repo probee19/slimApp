@@ -79,7 +79,7 @@ $config = [
         'collation' =>  'utf8mb4_unicode_ci',
         'prefix'    =>  '',
     ],
-    'test_per_page'     =>  12,
+    'test_per_page'     =>  15,
     'citation_per_page' =>  12,
     'storage_base'      =>  "https://funiziuploads.s3.us-east-2.amazonaws.com",
     'default_lang'      =>  "en",
