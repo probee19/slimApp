@@ -460,7 +460,8 @@ class Helper
 
       if(in_array($countryCode, ['SN','CI','FR','CD','BE','CM'], true)){
         $choosen_some_tests = array();
-        $array_tests = array(353, 354, 357, 360, 361, 362, 364, 366, 363, 375, 376, 377, 378, 379, 380, 381, 383, 384, 385);
+        //$array_tests = array(353, 354, 357, 360, 361, 362, 364, 366, 363, 375, 376, 377, 378, 379, 380, 381, 383, 384, 385);
+        $array_tests = array(393,394,392,354,360,362,364,384,383,380,207);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
@@ -487,7 +488,8 @@ class Helper
         // Selection de quelques tests
         $choosen_some_tests = array();
         //$array_tests = array(207,112);
-        $array_tests = array(370, 347, 207, 361, 362, 366, 363, 371, 376, 377, 379, 380, 381);
+        //$array_tests = array(370, 347, 207, 361, 362, 366, 363, 371, 376, 377, 379, 380, 381);
+        $array_tests = array(393,394,392,207,362,380);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
