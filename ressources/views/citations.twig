@@ -35,29 +35,29 @@
           {{ flash.getMessage('invalid_test')[0] }}
   </div>
   {% if pagecount > 1 %}
-      <div class="row text-center">
-          <ul class="text-center pager" style="margin-bottom: 0; margin-top:15px;">
-              {% if pageid == 1 %}
-                  <li class="btn-next" style="margin-bottom: 20px">
-                      <a href="{{ domain_url }}/page/{{ pageid + 1 }}" class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
-                  </li>
-              {% elseif pageid == pagecount %}
-                  <li class="btn-prev" style="margin-bottom: 20px">
-                      <a href="{{ domain_url }}/page/{{ pageid - 1 }}" class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
-                  </li>
-                  <li style="margin-bottom: 20px">
-                      <a href="{{ domain_url }}/page/{{ pageid + 1 }}" class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
-                  </li>
-              {% else %}
-                  <li class="btn-prev" style="margin-bottom: 20px">
-                    <a href="{{ domain_url }}/page/{{ pageid - 1 }}" class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
-                  </li>
-                  <li style="margin-bottom: 20px">
-                      <a href="{{ domain_url }}/page/{{ pageid + 1 }}" class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
-                  </li>
-              {% endif %}
-          </ul>
-      </div>
+    <div class="row text-center">
+        <ul class="text-center pager" style="margin-bottom: 0; margin-top:15px;">
+            {% if pageid == 1 %}
+                <li class="btn-next">
+                    <a href="{{ domain_url }}/citations/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                </li>
+            {% elseif pageid == pagecount %}
+                <li class="btn-prev">
+                    <a href="{{ domain_url }}/citations/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                </li>
+                <li>
+                    <a href="{{ domain_url }}/citations/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                </li>
+            {% else %}
+                <li class="btn-prev">
+                    <a href="{{ domain_url }}/citations/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                </li>
+                <li>
+                    <a href="{{ domain_url }}/citations/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
   {% endif %}
 
   {% set i = 0 %}
