@@ -8,7 +8,7 @@ body{
   overflow-x: hidden !important;
   padding-top:60px;
   font-family: 'Source Sans Pro', sans-serif;
-  #font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   letter-spacing: 0.5px;
 }
 a{
@@ -304,6 +304,8 @@ a:hover{
     line-height: 34px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+
 }
 
 .test-title-top-right{
