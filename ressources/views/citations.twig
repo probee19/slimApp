@@ -36,7 +36,7 @@
   </div>
   {% if pagecount > 1 %}
     <div class="row text-center">
-        <ul class="text-center pager" style="margin-top:15px 0;">
+        <ul class="text-center pager" style="">
             {% if pageid == 1 %}
                 <li class="btn-next">
                     <a href="{{ domain_url }}/citations/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
@@ -133,7 +133,7 @@
 
   {% if pagecount > 1 %}
       <div class="text-center">
-          <ul class="text-center pager" style="margin-top:15px;">
+          <ul class="text-center pager" style="margin-top:10px;">
               {% if pageid == 1 %}
                   <li class="btn-next">
                       <a href="{{ domain_url }}/citations/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
