@@ -143,7 +143,7 @@
 
     {% if is_mobile() or is_tablet() %}
         {% set banner = random(['banners/banner_320x50_middle_top_mobile.twig', 'banners/banner_300x250_middle_top_mobile.twig']) %}
-        <div class="row text-center" style="margin-top:1.5em">
+        <div class="row text-center" style="margin-top:1em">
             {% include banner %}
         </div>
     {% endif %}

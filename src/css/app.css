@@ -4,7 +4,8 @@ html{
   overflow: auto !important;
 }
 body{
-  background: #f9f9f9;
+  #background: #f9f9f9;
+  background: #ececec;
   overflow-x: hidden !important;
   padding-top:60px;
   font-family: 'Source Sans Pro', sans-serif;
@@ -461,8 +462,7 @@ a:hover{
     .back_layer {
         padding:0 9px;
         text-align: center;
-        margin: -15px;
-        margin-top:0.2rem;
+        margin: 0 -15px;
         width: calc(100% + 30px); */
     }
     .t__title {
