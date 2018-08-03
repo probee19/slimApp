@@ -374,7 +374,6 @@ a:hover{
     padding:40px 10px;
     text-align: center;
     margin-top:2rem;
-    width: calc(100% + 30px);
 }
 .collapse__profile {
     width:40px;
@@ -464,6 +463,7 @@ a:hover{
         text-align: center;
         margin: -15px;
         margin-top:0.2rem;
+        width: calc(100% + 30px); */
     }
     .t__title {
         font-size: 2rem;
