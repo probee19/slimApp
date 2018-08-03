@@ -9,7 +9,7 @@ body{
   padding-top:60px;
   font-family: 'Source Sans Pro', sans-serif;
   font-family: 'Roboto', sans-serif;
-  letter-spacing: 0.5px;
+  #letter-spacing: 0.5px;
 }
 a{
   color: inherit;
@@ -282,11 +282,13 @@ a:hover{
   height: 45px;
   margin-bottom: 0;
   padding: 8px;
-  background-color: #337ab7;
-  color: #FFF;
+  #background-color: #337ab7;
+  #color: #FFF;
+  background-color: #FFF;
+  color: #333;
   text-align: left;
   font-size: 14px;
-  line-height: 14px;
+  line-height: 16px;
   display: flex;
   align-items: center;
 }
@@ -372,6 +374,7 @@ a:hover{
     padding:40px 10px;
     text-align: center;
     margin-top:2rem;
+    width: calc(100% + 30px);
 }
 .collapse__profile {
     width:40px;
@@ -457,9 +460,9 @@ a:hover{
         height:50px;
     }
     .back_layer {
-
         padding:0 9px;
         text-align: center;
+        margin: -15px;
         margin-top:0.2rem;
     }
     .t__title {
@@ -546,7 +549,7 @@ a:hover{
     .portfolio-item {
         padding-right: 5px;
         padding-left: 5px;
-        margin-bottom:7px;
+        margin-bottom:15px;
     }
     .container-fluid {
         padding-right: 5px;
