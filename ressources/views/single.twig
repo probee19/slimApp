@@ -154,10 +154,10 @@
                     <div class="border_gallery_responsive" data-test-id="{{single_test.id_test}}">
                         <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test" style="">
                         <span class="mobile-layer"></span>
-                      <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" data-btn="btn-test" class="test__link sgl_link_test_b"></a>
+                      <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" data-btn="btn-test" class="test__link sgl_link_test_b link_discover_test_b"></a>
                     </div>
                     <div  class="test-title-gallery">
-                      <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" class="sgl_link_test_b" ><span style="font-size:15px;font-weight: bolder;">{{ single_test.titre_test }}</span></a>
+                      <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" class="sgl_link_test_b link_discover_test_b" ><span style="font-size:15px;font-weight: bolder;">{{ single_test.titre_test }}</span></a>
                     </div>
               </div>
             {% else %}
@@ -165,9 +165,9 @@
                   <div class="border" data-test-id="{{single_test.id_test}}">
                       <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test">
                       <span class="mobile-layer"></span>
-                    <a class="test__link btn_to_track sgl_link_test_a" href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" data-btn="btn-test"></a>
+                    <a class="test__link btn_to_track sgl_link_test_a link_discover_test_a" href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" data-btn="btn-test"></a>
                       <h3 class="test-title">{{ single_test.titre_test }}</h3>
-                    <div class="test__next"><a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track sgl_link_test_a"  data-btn="btn-test">
+                    <div class="test__next"><a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track sgl_link_test_a link_discover_test_a"  data-btn="btn-test">
                     {{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
                   </div>
               </div>
