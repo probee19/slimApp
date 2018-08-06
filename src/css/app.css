@@ -339,6 +339,17 @@ a:hover{
     bottom: 0.6em;
 }
 
+.btn-accueil{
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 1.8rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.btn-accueil:hover{
+  text-decoration: none;
+  background-color: #eee;
+}
 
 .page-header{
     margin:10px 0 0px;
