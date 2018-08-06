@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+              <link href="https://fonts.googleapis.com/css?family=Dosis|Exo+2" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -23,20 +23,17 @@
               .main{ padding:0;margin:0;width: 800px;height:420px;position: relative;overflow: hidden; background: #FFF;}
 .main img{ position:absolute; max-height:420px; max-width:800px; }
 
-.club{position:absolute; z-index:1; right:240px;   width:80px; height:80px; }
-.name_club{position:absolute; font-family: 'Exo 2', sans-serif; color:#f1c40f; font-weight:700; z-index:1; left:570px; width:210px; height:80px; color:#fff; font-size:30px; display:flex; align-items:center;}
+.compet{position:absolute; z-index:1; right:125px;  top: 70px; width:130px; height:130px; }
+.name_compet{position:absolute; font-family: 'Exo 2', sans-serif; color:#f1c40f; font-weight:700; z-index:1; right:20px; bottom:155px; width:340px;height:40px ; color:#fff; font-size:30px; text-align:center;}
 .overlay{position:absolute; z-index:1; left:0; top:0; background:#000; opacity:0.7; width:800px; height:420px; }
-#club_1,#club_1_name{bottom:230px;}
-#club_2,#club_2_name{bottom:130px;}
-#club_3,#club_3_name{bottom:30px;}
+#compet_1,#compet_1_name{}
 #back{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
 
-#fb_id_user{position: absolute; z-index:1; left: 50px; top: 50px; width:200px ;  height:200px ; object-fit: cover; object-position: 50% 10%; border-radius:200px; max-width:800px; max-height:420px;}
-.texte{z-index:1;font-family: 'Exo 2', sans-serif; position: absolute; left: 30px;  color:#fff; font-size:30px; width:600px ; height:40px ;  text-align:left; }
-#joueur{bottom:110px;}
-#cout{bottom: 50px; line-height:35px;}
-#head_club{top:50px; left:500px;  text-transform:uppercase;}
-
+#fb_id_user{position: absolute; z-index:1; left: 125px; top: 70px; width:130px ;  height:130px ; object-fit: cover; object-position: 50% 10%; border-radius:130px; }
+.texte{z-index:1;font-family: 'Exo 2', sans-serif; position: absolute;  color:#fff; font-size:30px; width:600px ; height:40px ;  text-align:center; }
+#joueur{left:20px; bottom:155px; width:360px;}
+#details{bottom: 30px; left:50px; width:700px; height: 100px; line-height:40px;}
+#title{top: 0; left:0; width:800px; height: 50px; font-size:25px; line-height:40px; background-color:#f1c40f; color:#000; font-weight:700;}
 
               </style>
               <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
@@ -79,28 +76,29 @@
           <div class='main'>
       
 <?php
-          $clubs = array('1533121539'=>'PSG','1533121607'=>'Barcelone','1533125790'=>'Real Madrid','1533125753'=>'Juventus','1533121730'=>'Chelsea','1533121755'=>'Bayern Munich','1533565210'=>'Marseille');
-          $logo = array('1533121539','1533121607','1533125790','1533125753','1533121730','1533121755','1533565210');
-          $couts = mt_rand(180,232);
-          shuffle($logo);
+          $compet = array('1533566733'=>'La Liga','1533566549'=>'Ligue 1','1533566068'=>'Serie A','1533566091'=>'Premier League');
+          $logo = array('1533566733','1533566549','1533566068','1533566091');
+          $details = array('1533566733'=>array('Avec ses qualités impréssionnantes, <span style="color:#f1c40f; font-weight:700">'.$_GET['user_name'].'</span> est le rival de taille pour <span style="color:#f1c40f; font-weight:700">Messi</span>.','<span style="color:#f1c40f; font-weight:700">'.$_GET['user_name'].'</span> est le coéquipier parfait que <span style="color:#f1c40f; font-weight:700">Messi</span> cherche !'),
+          '1533566549'=>array('<span style="color:#f1c40f; font-weight:700">'.$_GET['user_name'].'</span> et <span style="color:#f1c40f; font-weight:700">Neymar</span> feront un duo de choc cette saison.'),
+          '1533566068'=>array('<span style="color:#f1c40f; font-weight:700">Ronaldo</span> a besoin des passes magiques de <span style="color:#f1c40f; font-weight:700">'.$_GET['user_name'].'</span> pour être le meilleur buteur de cette saison.','Avec ses talents hors norme, <span style="color:#f1c40f; font-weight:700">'.$_GET['user_name'].'</span> sera le rival idéal de <span style="color:#f1c40f; font-weight:700">Ronaldo</span> cette saison.'),
+          '1533566091'=>array('<span style="color:#f1c40f; font-weight:700">'.$_GET['user_name'].'</span> sera le meilleur buteur de cette saison avec <span style="color:#f1c40f; font-weight:700">Kevin De Bruyne</span> comme coéquipier.'));
+          shuffle($logo); 
+          $details = $details[$logo[0]];
+          shuffle($details);
 ?>
 <!DOCTYPE HTML>
-<img src="https://creation.funizi.com/images-theme-perso/1533563635.jpg" id="back"> 
+<img src="https://creation.funizi.com/images-theme-perso/1533569261.jpg" id="back"> 
 <div class="overlay"></div>
 
+<div class="texte" id="title"> Dans quel championnat devrais-tu jouer cette saison ?  </div>
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
 
-<div class="texte" id="head_club"> Clubes interesados :</div>
-<img src="https://creation.funizi.com/images-theme-perso/<?=$logo[0]?>.png" id="club_1" class="club"> 
-<div class="name_club" id="club_1_name"><?=$clubs[$logo[0]]?></div>
-<img src="https://creation.funizi.com/images-theme-perso/<?=$logo[1]?>.png" id="club_2" class="club"> 
-<div class="name_club" id="club_2_name"><?=$clubs[$logo[1]]?></div>
-<img src="https://creation.funizi.com/images-theme-perso/<?=$logo[2]?>.png" id="club_3" class="club"> 
-<div class="name_club" id="club_3_name"><?=$clubs[$logo[2]]?></div>
+<img src="https://creation.funizi.com/images-theme-perso/<?=$logo[0]?>.png" id="compet_1" class="compet"> 
+<div class="name_compet" id="compet_1_name"><?=$compet[$logo[0]]?></div>
 
 
 <div class="texte" id="joueur"><?php echo $_GET['full_user_name']; ?> </div>
-<div class="texte" id="cout"> Costo : <span style="color:#f1c40f; font-weight:700"><?=$couts?> M€</span> <?php if($couts>220) echo "<br><span style='color:#e74c3c; font-weight:700;text-transform:uppercase'> Récord mundial</span> ";?> </div>
+<div class="texte" id="details"> <?=$details[0]?>  </div>
 
 
 

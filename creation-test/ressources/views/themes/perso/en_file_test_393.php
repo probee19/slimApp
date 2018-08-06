@@ -5,7 +5,7 @@
               <meta charset='UTF-8'>
               <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
               <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-              <link href="https://fonts.googleapis.com/css?family=Dosis|Exo+2" rel="stylesheet">
+              <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
               <title>Theme 4</title>
               <style>
                   body{font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;}
@@ -79,8 +79,8 @@
           <div class='main'>
       
 <?php
-          $clubs = array('1533121539'=>'PSG','1533121607'=>'Barcelone','1533125790'=>'Real Madrid','1533125753'=>'Juventus','1533121730'=>'Chelsea','1533121755'=>'Bayern Munich');
-          $logo = array('1533121539','1533121607','1533125790','1533125753','1533121730','1533121755');
+          $clubs = array('1533121539'=>'PSG','1533121607'=>'Barcelone','1533125790'=>'Real Madrid','1533125753'=>'Juventus','1533121730'=>'Chelsea','1533121755'=>'Bayern Munich','1533565210'=>'Marseille');
+          $logo = array('1533121539','1533121607','1533125790','1533125753','1533121730','1533121755','1533565210');
           $couts = mt_rand(180,232);
           shuffle($logo);
 ?>
