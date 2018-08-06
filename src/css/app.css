@@ -339,14 +339,14 @@ a:hover{
     bottom: 0.6em;
 }
 
-.btn_go_home{
+.btn_go_home, #btn-redo{
   padding: 10px 15px;
   border-radius: 20px;
   font-size: 1.8rem;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
 }
-.btn_go_home:hover{
+.btn_go_home:hover, #btn-redo:hover{
   text-decoration: none;
   background-color: #eee;
 }
