@@ -85,7 +85,7 @@
           shuffle($logo);
 ?>
 <!DOCTYPE HTML>
-<img src="https://creation.funizi.com/images-theme-perso/1533122685.jpg" id="back"> 
+<img src="https://creation.funizi.com/images-theme-perso/1533563635.jpg" id="back"> 
 <div class="overlay"></div>
 
 <img src="<?php echo $_GET['url_img_profile_user']; ?>" class="img_profile" id="fb_id_user">
