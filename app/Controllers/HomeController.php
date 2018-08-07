@@ -297,10 +297,11 @@ class HomeController extends Controller
 
     public function chunk($request, $response, $args){
 
-      $id = $_GET['id']; $lang = $_GET['lang']; $total = $_GET['t']; $version = $_GET['v'];
+      $id = $_GET['id']; $lang = $_GET['lang']; $total = $_GET['t'];
+      //$version = $_GET['v'];
       $countryCode = $_GET['cc'];
 
-      $tests = $this->helper->getTestForModal($id, $lang, [], $countryCode, $total, $version);
+      $tests = $this->helper->getRelatedTest_2($id, $countryCode, [], $lang, $total = 5);
       $this->helper->debug($tests);
       exit;
 

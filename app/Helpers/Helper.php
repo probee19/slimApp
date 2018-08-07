@@ -424,10 +424,38 @@ class Helper
       return $alltests_total;
     }
 
+    public function getRelatedTest_2($id, $countryCode, $exclude, $lang, $total = 5)
+    {
+      $related_tests_src = [
+        "381" =>  ["379-376-363-362-361-388"],
+        "379" =>  ["381-376-363-362-361"],
+        "376" =>  ["381-379-363-362-361"],
+        "363" =>  ["381-379-376-362-361"],
+        "362" =>  ["381-379-376-363-361"],
+        "361" =>  ["381-379-376-363-362"],
+        "375" =>  ["378-379-376-381-364"],
+        "364" =>  ["378-379-376-381-375"],
+        "378" =>  ["364-379-376-381-375"],
+        "383" =>  ["384-354-265-263-193-363-387"],
+        "384" =>  ["383-354-265-263-193-363"],
+        "371" =>  ["385-386-388"],
+        "386" =>  ["385-371-388"],
+        "112" =>  ["393-394-392"],
+        "205" =>  ["393-394-392"],
+        "393" =>  ["395-362-207-388-371"]
+      ];
+      $related_tests = [];
+      if($related_tests_src[$id]) $related_tests = array_map('intval', explode('-', $related_tests_src[$id])) ;
+      $this->helper->debug($related_tests);
+      return $related_tests;
+    }
+
     public static function getRelatedTest($id, $countryCode, $exclude, $lang, $total = 5)
     {
       $tests = array();
       $related_tests = RelatedsTest::where('id_test','=',$id)->first();
+
+
       if($related_tests){
         $array_ids = explode('-',$related_tests->related_ids);
         $array_ids = array_map('intval', explode('-', $related_tests->related_ids));
