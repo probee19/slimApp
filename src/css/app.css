@@ -519,7 +519,7 @@ a:hover{
     vertical-align: middle;
 }
 #facebook-login-modal .modal-content, #discovery-tests-modal .modal-content{
-    background-color: #FFF;
+    background-color: #ececec;
     color: #000;
 }
 #facebook-login-modal .modal-header, #discovery-tests-modal .modal-header{

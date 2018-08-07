@@ -93,7 +93,9 @@ class ResultController extends Controller
                   foreach($testUser->usertests as $user)
                       $exclude [] = $user->test_id;
             }
-            $top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
+            $top_tests = $this->helper->getTestForModal($test_id, $lang, $exclude, $country_code, 3, $ab_testing);
+            //$top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
+
             if(count($top_tests) > 0)
             foreach ($top_tests as $top_test) {
               $exclude [] = $top_test["id_test"];
