@@ -1050,6 +1050,8 @@ class Helper
       }
       else
         $top_tests = self::getLocalTests($countryCode, $exclude, $lang, $nb_restant);
+        self::debug($related_tests);
+        self::debug($top_tests);
 
         return array_merge($related_tests, $top_tests);
     }
