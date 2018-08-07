@@ -424,7 +424,7 @@ class Helper
       return $alltests_total;
     }
 
-    public static function getRelatedTest($id, $countryCode, $exclude, $lang)
+    public static function getRelatedTest($id, $countryCode, $exclude, $lang, $total = 5)
     {
       $tests = array();
       $related_tests = RelatedsTest::where('id_test','=',$id)->first();
@@ -434,8 +434,9 @@ class Helper
         // Récuperation des tests pour langue $lang;
         $tests_from_json = self::getAllTestJson($lang);
         //krsort($tests_from_json);
+        $nb_taken = 0;
         foreach ($tests_from_json as $test) {
-          if(in_array($test['id_test'], $array_ids, true) && !in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) ){
+          if(in_array($test['id_test'], $array_ids, true) && !in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total ){
             $tests[$test['id_test']] = [
               'url_image_test' => $test['url_image_test'],
               'id_test'        => $test['id_test'],
@@ -443,8 +444,8 @@ class Helper
             ];
           }
         }
-        if(count($tests) > 0)
-          shuffle($tests);
+        //if(count($tests) > 0)
+        //  shuffle($tests);
       }
       return $tests;
     }
@@ -1026,6 +1027,31 @@ class Helper
        }
 
        return $allcitation;
+    }
+
+    public function getTestForModal($id, $lang, $exclude, $countryCode, $total, $version = 'a')
+    {
+      if(strlen($lang) > 2) $lang = 'fr'; //
+      $nb_restant = $total; $best_local_test = []; $top_tests = []; $related_tests = [];
+
+      if($version == 'b'){
+        $related_tests = self::getRelatedTest($id, $countryCode, $exclude, $lang, 2);
+        if(count($related_tests) >= 1)
+          foreach ($related_tests as $test)
+            $exclude[] = $test['id_test'];
+        $nb_restant = $nb_restant - count($related_tests);
+      }
+
+      if(in_array($countryCode, ['SN','CI','FR','CD','BE','CM'], true)){
+        $top_tests = self::getBestLocalTest($lang, $exclude, $countryCode, $nb_restant);
+        if(count($top_tests) >= 1)
+          foreach ($top_tests as $test)
+            $exclude[] = $test['id_test'];
+      }
+      else
+        $top_tests = self::getLocalTests($countryCode, $exclude, $lang, $nb_restant);
+
+        return array_merge($related_tests, $top_tests);
     }
 
     public function getBestLocalTest($lang, $exclude, $countryCode, $total = 24){

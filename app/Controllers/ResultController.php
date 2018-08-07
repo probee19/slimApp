@@ -86,43 +86,20 @@ class ResultController extends Controller
             else
               $ab_testing = $this->helper->getAB();
 
-
-            if($test->testInfo->codes_countries !=''){
-                $exclude = [$test->test_id];
-                if(!empty($_SESSION['uid'])){
-                    //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
-                    $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
-                        ->with('usertests')->first();
-                    foreach($testUser->usertests as $user){
-                        $exclude [] = $user->test_id;
-                    }
-                }
-                $top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
-                foreach ($top_tests as $top_test) {
-                  $exclude [] = $top_test["id_test"];
-                }
-
-                $all_test = $helper->relatedTests($test->test_id, $country_code, $exclude, $lang);
+            if(!empty($_SESSION['uid'])){
+                $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
+                    ->with('usertests')->first();
+                if($testUser && count($testUser->usertests) > 0)
+                  foreach($testUser->usertests as $user)
+                      $exclude [] = $user->test_id;
             }
-            else{
-                $exclude = [$test->test_id];
-                if(!empty($_SESSION['uid'])){
-                    //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
-                    $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
-                        ->with('usertests')->first();
-                    if($testUser && count($testUser->usertests) > 0)
-                      foreach($testUser->usertests as $user)
-                          $exclude [] = $user->test_id;
-
-                }
-                $top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
-                if(count($top_tests) > 0)
-                foreach ($top_tests as $top_test) {
-                  $exclude [] = $top_test["id_test"];
-                }
-
-                $all_test = $helper->relatedTests($test->test_id, $country_code, $exclude, $lang);
+            $top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
+            if(count($top_tests) > 0)
+            foreach ($top_tests as $top_test) {
+              $exclude [] = $top_test["id_test"];
             }
+            $all_test = $helper->relatedTests($test->test_id, $country_code, $exclude, $lang);
+
             $testId = $test->test_id;
             $unique_result = $test->testInfo->unique_result;
             $id_rubrique = $test->testInfo->id_rubrique;

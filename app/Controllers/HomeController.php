@@ -297,6 +297,12 @@ class HomeController extends Controller
 
     public function chunk($request, $response, $args){
 
+      $id = $_GET['id']; $lang = $_GET['lang']; $total = $_GET['t']; $version = $_GET['v'];
+      $countryCode = $_GET['cc'];
+
+      $tests = $this->helper->getTestForModal($id, $lang, [], $countryCode, $total, $version = 'a');
+      $this->helper->debug($tests);
+      exit;
 
           $url = $this->helper->detectLang($request, $response);
           if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
