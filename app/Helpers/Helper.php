@@ -424,7 +424,7 @@ class Helper
       return $alltests_total;
     }
 
-    public static function getRelatedTest($id, $countryCode, $exclude, $lang, $total = 5)
+    public static function getRelatedTest($id, $countryCode, $exclude, $lang)
     {
       $tests = array();
       $related_tests = RelatedsTest::where('id_test','=',$id)->first();
@@ -434,9 +434,8 @@ class Helper
         // Récuperation des tests pour langue $lang;
         $tests_from_json = self::getAllTestJson($lang);
         //krsort($tests_from_json);
-        $nb_taken = 0;
         foreach ($tests_from_json as $test) {
-          if(in_array($test['id_test'], $array_ids, true) && !in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total ){
+          if(in_array($test['id_test'], $array_ids, true) && !in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false )){
             $tests[$test['id_test']] = [
               'url_image_test' => $test['url_image_test'],
               'id_test'        => $test['id_test'],
@@ -1035,10 +1034,11 @@ class Helper
       $nb_restant = $total; $best_local_test = []; $top_tests = []; $related_tests = [];
 
       if($version == 'b'){
-        $related_tests = self::getRelatedTest($id, $countryCode, $exclude, $lang, 2);
+        $related_tests = self::getRelatedTest($id, $countryCode, $exclude, $lang);
         if(count($related_tests) >= 1)
           foreach ($related_tests as $test)
             $exclude[] = $test['id_test'];
+          
         $nb_restant = $nb_restant - count($related_tests);
       }
 
