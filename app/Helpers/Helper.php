@@ -446,7 +446,6 @@ class Helper
       ];
       $related_tests = [];
       if($related_tests_src[$id]) $related_tests = array_map('intval', explode('-', $related_tests_src[$id])) ;
-      $this->helper->debug($related_tests);
       return $related_tests;
     }
 
