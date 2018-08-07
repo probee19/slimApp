@@ -691,6 +691,7 @@ class Helper
       // Récuperation des tests pour langue $lang;
       $tests_from_json = self::getAllTestJson($lang);
       //krsort($tests_from_json);
+      if(!$exclude) $exclude = [];
       foreach ($tests_from_json as $test) {
         if(in_array($test['id_test'], $array_tests, true) && !in_array($test['id_test'], $exclude, true) && ($test['codes_countries'] == "" || strpos($test['codes_countries'], $countryCode) != false ) ){
           $tests[$test['id_test']] = [
@@ -714,6 +715,7 @@ class Helper
       $nb_taken = 0;
       shuffle($tests_from_json);
       $tests = [];
+      if(!$exclude) $exclude = [];
       foreach ($tests_from_json as $test) {
         if(!in_array($test['id_test'], $exclude, true) && (strpos($test['codes_countries'], $countryCode) != false ) && ++$nb_taken <= $total){
           $tests[$test['id_test']] = [
@@ -1065,6 +1067,7 @@ class Helper
        $arr_data = json_decode($jsondata);
        $most_tested = array();
        $nb_taken = 0;
+       if(!$exclude) $exclude = [];
        foreach ($arr_data as $test) {
          if(!in_array($test->id_test, $exclude, true) && (strpos($test->codes_countries, $countryCode) != false ) && ($test->statut == 1) && ++$nb_taken <= $total){
            $most_tested[$test->id_test] = [
