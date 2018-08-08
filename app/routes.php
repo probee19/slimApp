@@ -49,7 +49,7 @@ $app->post('/save-subscription-to-newsletter', 'HomeController:saveSubNewsletter
 
 // chunk
 $app->get('/json', 'HomeController:setTestsJSON');
-$app->get('/chunk/{ref}', 'HomeController:chunk');
+$app->get('/chunk', 'HomeController:chunk');
 //$app->get('/chunkresult/{name}/{code}', 'HomeController:chunk');
 //$app->get('/chunk/{name}/{id}', 'HomeController:chunk');
 //$app->get('/chunk/{method}', 'HomeController:chunk');

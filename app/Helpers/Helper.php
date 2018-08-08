@@ -74,6 +74,50 @@ class Helper
         return $country;
     }
 
+    public static function getCountry_2($ip){
+        if(isset($_COOKIE['countryCode'], $_COOKIE['countryName'])){
+            $country = [
+                'countryName'   =>  $_COOKIE['countryName'],
+                'countryCode'   =>  $_COOKIE['countryCode']
+            ];
+            self::debug($country);
+            return $country;
+        }
+
+        if ( !is_bot($_SERVER['HTTP_USER_AGENT']) )
+          $data = json_decode(file_get_contents('http://geoplugin.net/json.gp?ip='.$ip));
+
+        if($data){
+          $countryname = $data->geoplugin_countryName;
+          $countryCode = $data->geoplugin_countryCode;
+          setcookie("countryCode", $countryCode, time()+3600*24*30, '/');
+          setcookie("countryName", $countryname, time()+3600*24*30, '/');
+        }
+        else {
+          // Instanciate a new DBIP object with the database connection
+          $db = new \PDO("mysql:host=". $_SERVER['RDS_HOSTNAME_NEW'] .";dbname=". $_SERVER['RDS_DB_NAME'], $_SERVER['RDS_USERNAME'], $_SERVER['RDS_PASSWORD']);
+          $dbip = new DBIP($db);
+
+          $inf = $dbip->Lookup($ip);
+          if($inf){
+              $countryBD = Countries::where('alpha2', '=', (string)$inf->country)->first();
+              $countryCode = $inf->country;
+              $countryname = $countryBD->langFR;
+              setcookie("countryCode", $countryCode, time()+3600*24*30, '/');
+              setcookie("countryName", $countryname, time()+3600*24*30, '/');
+          }
+        }
+
+        $country = [
+            'countryName'   =>  $countryname,
+            'countryCode'   =>  $countryCode
+        ];
+        self::debug($country);
+
+        return $country;
+    }
+
+
     public static function debug($var){
         echo "<pre>";
         var_dump($var);
@@ -107,6 +151,17 @@ class Helper
           setcookie("country_user", json_encode($country), time()+3600*24*10);
       }
       //$country = self::getCountry($this->getRealUserIp());
+      return $country['countryCode'];
+    }
+
+
+    public function getCountryCode_2(){
+      if(isset($_COOKIE["country_user"]))
+          $country = (array) json_decode($_COOKIE['country_user']);
+      else {
+          $country = $this->getCountry_2($this->getRealUserIp());
+          setcookie("country_user", json_encode($country), time()+3600*24*10, "/");
+      }
       return $country['countryCode'];
     }
 
@@ -476,7 +531,7 @@ class Helper
       $related_tests = [];
       if($related_tests_src[$id])
         $related_tests = array_map('intval', explode('-', $related_tests_src[$id])) ;
-        
+
 
       if($related_tests){
         $array_ids = explode('-',$related_tests->related_ids);
