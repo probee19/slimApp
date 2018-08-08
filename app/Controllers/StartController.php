@@ -84,16 +84,27 @@ class StartController extends Controller
             return $response->withStatus(302)->withHeader('Location', $result_url );
         }else{
 
-          $test = Test::on('reader')->selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.has_treatment AS has_treatment, tests.unique_result AS unique_result, tests.if_additionnal_info AS if_additionnal_info, tests.id_theme AS id_theme, tests.id_test AS id_test')
-            ->join('test_info','test_info.id_test','tests.id_test')
-            ->Where([['tests.id_test', '=', $test_id],['test_info.lang','=',$lang]])->first();
+            /*
+              $test = Test::on('reader')->selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.has_treatment AS has_treatment, tests.unique_result AS unique_result, tests.if_additionnal_info AS if_additionnal_info, tests.id_theme AS id_theme, tests.id_test AS id_test')
+              ->join('test_info','test_info.id_test','tests.id_test')
+              ->Where([['tests.id_test', '=', $test_id],['test_info.lang','=',$lang]])->first();
 
-            $test_name = $test->titre_test;
-            $theme = $test->id_theme;
-            $result_description = $test->test_description;
-            $if_additionnal_info = $test->if_additionnal_info;
-            $has_treatment = $test->has_treatment;
+              $test_name = $test->titre_test;
+              $theme = $test->id_theme;
+              $result_description = $test->test_description;
+              $if_additionnal_info = $test->if_additionnal_info;
+              $has_treatment = $test->has_treatment;
+            */
+            
+            $tests_from_json = $this->helper->getAllTestJson($lang, true);
+            $test  = $tests_from_json[$test_id];
 
+            $test_name = $test['titre_test'];
+            $theme = $test['id_theme'];
+            $result_description = $test['test_description'];
+            $if_additionnal_info = $test['if_additionnal_info'];
+            $has_treatment = $test['has_treatment'];
+            $unique_result = $test['unique_result'];
 
             //try{
                 //if($test->unique_result == 1) {
@@ -116,7 +127,7 @@ class StartController extends Controller
                     $filter = 'masculin';
                 }
                 $notIn = [0];
-                if($test->unique_result == 1) {
+                if($unique_result == 1) {
                     $user_test = UserTest::where([
                         ['user_id', $user->id],
                         ['test_id', $test_id]
