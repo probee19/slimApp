@@ -295,7 +295,7 @@ class HomeController extends Controller
 
     }
 
-    public function chunk($request, $response, $args){
+    public function chunk($request, $response, $arg){
       $url = $this->helper->detectLang($request, $response);
       //if($url != "" ) return $response->withStatus(302)->withHeader('Location', $url );
 
@@ -692,5 +692,5 @@ class HomeController extends Controller
       return "Email reçu";
     }
 
-
+  
 }
