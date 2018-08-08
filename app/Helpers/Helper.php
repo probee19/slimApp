@@ -160,7 +160,7 @@ class Helper
       if(isset($_COOKIE["country_user"]))
           $country = (array) json_decode($_COOKIE['country_user']);
       else {
-          $country = $this->getCountry_2($this->getRealUserIp());
+          $country = $this->getCountry($this->getRealUserIp());
           setcookie("country_user", json_encode($country), time()+3600*24*10, "/");
       }
       return $country['countryCode'];
