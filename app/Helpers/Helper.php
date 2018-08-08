@@ -80,11 +80,10 @@ class Helper
                 'countryName'   =>  $_COOKIE['countryName'],
                 'countryCode'   =>  $_COOKIE['countryCode']
             ];
-            self::debug($country);
             return $country;
         }
 
-        if ( !is_bot($_SERVER['HTTP_USER_AGENT']) )
+        if ( !self::is_bot($_SERVER['HTTP_USER_AGENT']) )
           $data = json_decode(file_get_contents('http://geoplugin.net/json.gp?ip='.$ip));
 
         if($data){
@@ -112,7 +111,6 @@ class Helper
             'countryName'   =>  $countryname,
             'countryCode'   =>  $countryCode
         ];
-        self::debug($country);
 
         return $country;
     }

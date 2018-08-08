@@ -301,9 +301,9 @@ class HomeController extends Controller
       $lang = $this->helper->getLangSubdomain($request);
       $country_code = $this->helper->getCountryCode_2();
 
-      $this->helper->debug($url);
       $this->helper->debug($lang);
       $this->helper->debug($country_code);
+      $this->helper->debug($_COOKIE);
 
     }
 
