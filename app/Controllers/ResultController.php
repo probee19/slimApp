@@ -86,6 +86,9 @@ class ResultController extends Controller
             else
               $ab_testing = $this->helper->getAB();
 
+            $exclude = $this->helper->getTestsDone($test_id);
+
+            /*
             if(!empty($_SESSION['uid'])){
                 $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
                     ->with('usertests')->first();
@@ -93,6 +96,9 @@ class ResultController extends Controller
                   foreach($testUser->usertests as $user)
                       $exclude [] = $user->test_id;
             }
+            **/
+
+
             $top_tests = $this->helper->getTestForModal($test_id, $lang, $exclude, $country_code, 3, $ab_testing);
             //$top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
 

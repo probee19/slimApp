@@ -84,7 +84,11 @@ class AdditionnalInfoController extends Controller
 
 
       $country_code = $this->helper->getCountryCode();
-      $exclude = [$id_test];
+      //$exclude = [$id_test];
+      $exclude = $this->helper->getTestsDone(0);
+      $exclude[] = $id_test;
+
+      /*
       if(!empty($_SESSION['uid'])){
           $testUser = User::where('facebook_id', '=', $_SESSION['uid'])
               ->with('usertests')->first();
@@ -94,6 +98,7 @@ class AdditionnalInfoController extends Controller
                 $exclude [] = $user->test_id;
             }
       }
+      **/
 
       $all_test = $this->helper->relatedTests($id_test, $country_code, $exclude, $lang);
 

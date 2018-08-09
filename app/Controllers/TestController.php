@@ -45,6 +45,10 @@ class TestController extends Controller
         if(isset($_GET['utm']) && $_GET['utm'] !='')
             $sandbox->setUTM($_GET['utm'], "test", $id);
 
+        $exclude = $this->helper->getTestsDone(0);
+        $exclude[] = $id;
+
+        /*
         $exclude = [$id];
         if(!empty($_SESSION['uid'])){
             //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
@@ -55,6 +59,7 @@ class TestController extends Controller
                     $exclude [] = $user->test_id;
                 }
         }
+        **/
 
         $all_test = $sandbox->relatedTests($id, $country_code, $exclude, $lang);
 
