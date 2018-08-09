@@ -1091,6 +1091,7 @@ class Helper
              "statut"               => $test->statut,
              'permissions'          => $test->permissions,
              'if_additionnal_info'  => $test->if_additionnal_info,
+             'test_description'     => $test->test_description,
              "if_translated"        => $test->if_translated,
              "has_treatment"        => $test->has_treatment,
              "default_lang"         => $test->default_lang,
