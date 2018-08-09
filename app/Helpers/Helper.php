@@ -831,8 +831,9 @@ class Helper
         }
       }
 
-      if(count($tests) > 0)
-        shuffle($tests);
+      //if(count($tests) > 0)
+        //shuffle($tests);
+
       return $tests;
     }
 

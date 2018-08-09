@@ -24,7 +24,7 @@
 .main img{ position:absolute; max-height:420px; max-width:800px; }
 
 .club{position:absolute; z-index:1; right:240px;   width:80px; height:80px; }
-.name_club{position:absolute; font-family: 'Exo 2', sans-serif; color:#f1c40f; font-weight:700; z-index:1; left:570px; width:210px; height:80px; color:#fff; font-size:30px; display:flex; align-items:center;}
+.name_club{position:absolute; font-family: 'Exo 2', sans-serif; color:#f1c40f; font-weight:700; z-index:1; left:570px; width:210px; height:80px; color:#fff; font-size:30px; line-height:35px; display:flex; align-items:center;}
 .overlay{position:absolute; z-index:1; left:0; top:0; background:#000; opacity:0.7; width:800px; height:420px; }
 #club_1,#club_1_name{bottom:230px;}
 #club_2,#club_2_name{bottom:130px;}
@@ -79,8 +79,9 @@
           <div class='main'>
       
 <?php
-          $clubs = array('1533121539'=>'PSG','1533121607'=>'Barcelone','1533125790'=>'Real Madrid','1533125753'=>'Juventus','1533121730'=>'Chelsea','1533121755'=>'Bayern Munich','1533565210'=>'Marseille');
-          $logo = array('1533121539','1533121607','1533125790','1533125753','1533121730','1533121755','1533565210');
+          $clubs = array('1533121539'=>'PSG','1533121607'=>'Barcelone','1533125790'=>'Real Madrid','1533125753'=>'Juventus','1533121730'=>'Chelsea','1533121755'=>'Bayern Munich',
+          '1533565210'=>'Marseille','1533808126'=>'Manchester United ','1533808402'=>'Manchester City','1533808588'=>'AS Saint-Étienne','1533808740'=>'Liverpool FC','1533808914'=>'AS Monaco','1533809263'=>'Sporting Club');
+          $logo = array('1533121539','1533121607','1533125790','1533125753','1533121730','1533121755','1533565210','1533808126','1533808402','1533808588','1533808740','1533808914','1533809263');
           $couts = mt_rand(180,232);
           shuffle($logo);
 ?>
@@ -101,8 +102,6 @@
 
 <div class="texte" id="joueur"><?php echo $_GET['full_user_name']; ?> </div>
 <div class="texte" id="cout"> Kosten : <span style="color:#f1c40f; font-weight:700"><?=$couts?> M€</span> <?php if($couts>220) echo "<br><span style='color:#e74c3c; font-weight:700;text-transform:uppercase'> Weltrekord</span> ";?> </div>
-
-
 
 
         </div>
