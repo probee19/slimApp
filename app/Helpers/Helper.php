@@ -535,8 +535,7 @@ class Helper
 
 
       if($related_tests){
-        $array_ids = explode('-',$related_tests->related_ids);
-        $array_ids = array_map('intval', explode('-', $related_tests->related_ids));
+        $array_ids = $related_tests;
 
         // Récuperation des tests pour langue $lang;
         $tests_from_json = self::getAllTestJson($lang);
