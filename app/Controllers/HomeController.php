@@ -331,7 +331,8 @@ class HomeController extends Controller
               if(isset($_GET['utm']) && $_GET['utm'] !='')
                   $sandbox->setUTM($_GET['utm'], "test", $id);
 
-              $exclude = $this->helper->getTestsDone($id);
+              $exclude = $this->helper->getTestsDone(0);
+              $exclude[] = $id;
               $this->helper->debug($exclude);
 
               if(!empty($_SESSION['uid'])){
