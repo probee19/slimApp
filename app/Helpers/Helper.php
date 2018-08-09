@@ -79,6 +79,29 @@ class Helper
         return preg_match("/{$botRegexPattern}/", $user_agent);
     }
 
+    public function updateTestsDone($tests)
+    {
+       if($tests)
+         setcookie("tests_done", json_encode($tests, JSON_FORCE_OBJECT), time() + 30*24*3600, "/");
+    }
+
+    public function getTestsDone($id)
+    {
+       $tests_done = [];
+
+       if(isset($_COOKIE['tests_done']))
+         $tests_done = array_map('intval',json_decode($_COOKIE['tests_done'],true));
+
+       if($id != 0 && $id != '0'){
+         $id = (int) $id;
+         if(!in_array($id, $tests_done, true))
+            $tests_done[] = $id;
+         self::updateTestsDone($tests_done);
+       }
+
+       return $tests_done;
+    }
+
     public static function getCountry_2($ip){
         if(isset($_COOKIE['countryCode'], $_COOKIE['countryName'])){
             $country = [
