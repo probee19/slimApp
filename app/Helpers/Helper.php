@@ -28,7 +28,7 @@ use Aws\S3\S3Client;
 
 class Helper
 {
-    public static function getCountry_2($ip){
+    public static function getCountry($ip){
         if(isset($_COOKIE['countryCode'], $_COOKIE['countryName'])){
             $country = [
                 'countryName'   =>  $_COOKIE['countryName'],
@@ -79,7 +79,7 @@ class Helper
         return preg_match("/{$botRegexPattern}/", $user_agent);
     }
 
-    public static function getCountry($ip){
+    public static function getCountry_2($ip){
         if(isset($_COOKIE['countryCode'], $_COOKIE['countryName'])){
             $country = [
                 'countryName'   =>  $_COOKIE['countryName'],
@@ -145,7 +145,7 @@ class Helper
         return preg_replace('/-+/', '-', $url);
     }
 
-    public function getCountryCode_2(){
+    public function getCountryCode(){
       if(isset($_COOKIE["country_user"]))
           $country = (array) json_decode($_COOKIE['country_user']);
       else {
@@ -156,7 +156,7 @@ class Helper
       return $country['countryCode'];
     }
 
-    public function getCountryCode(){
+    public function getCountryCode_2(){
       if(isset($_COOKIE["country_user"]))
           $country = (array) json_decode($_COOKIE['country_user']);
       else {
