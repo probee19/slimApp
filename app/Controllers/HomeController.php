@@ -295,7 +295,7 @@ class HomeController extends Controller
 
     }
 
-    public function chunk($request, $response, $arg){
+    public function chunk($request, $response, $args){
 
               $url = $this->helper->detectLang($request, $response);
               if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
@@ -333,7 +333,7 @@ class HomeController extends Controller
 
               $exclude = $this->helper->getTestsDone($id);
               $this->helper->debug($exclude);
-              
+
               if(!empty($_SESSION['uid'])){
 
               }
