@@ -38,6 +38,7 @@ class StartController extends Controller
         if(isset($_GET['ref']))
           $test_id = (int)$_GET['ref'];
         //$country = $arg['country'];
+        $genre = "";
         $last_name = ''; $name = '';
         if(isset($_SESSION['last_name']) && $_SESSION['last_name'] !='')
             $last_name = $_SESSION['last_name'];
@@ -95,7 +96,7 @@ class StartController extends Controller
               $if_additionnal_info = $test->if_additionnal_info;
               $has_treatment = $test->has_treatment;
             */
-            
+
             $tests_from_json = $this->helper->getAllTestJson($lang, true);
             $test  = $tests_from_json[$test_id];
 
@@ -120,6 +121,7 @@ class StartController extends Controller
                 //}
 
             //}catch(\Exception $e){
+              $filter = "";
                 if($genre == 'male' || $genre == 'homme'){
                     $filter = 'feminin';
                 }
