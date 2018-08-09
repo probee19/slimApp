@@ -553,7 +553,7 @@ class Helper
         393 =>  "395-362-207-388-371"
       ];
       $related_tests = [];
-      if($related_tests_src[$id])
+      if(array_key_exists($id, $related_tests_src))
         $related_tests = array_map('intval', explode('-', $related_tests_src[$id])) ;
 
 
