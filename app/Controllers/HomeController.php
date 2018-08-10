@@ -299,7 +299,7 @@ class HomeController extends Controller
     public function chunk($request, $response, $args){
 
       // Remember the number of actived tests for an hour.
-      $tests = TestModel::where('statut','=',1)->remember(60)->get()->toArray();
+      $tests = TestModel::where('statut','=',1)->remember(60)->cacheDriver('redis')->get()->toArray();
 
       $this->helper->debug(count($tests));
       $this->helper->debug($tests);
