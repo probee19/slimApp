@@ -84,9 +84,6 @@ class TestController extends Controller
             $loginUrl = $helper->getLoginUrl($baseDomain .'/connect_user2', $permissions);
         }// Optional permissions
         $id_user = 0;
-        if(isset($_SESSION['uid']))
-            $id_user = $_SESSION['uid'];
-
 
         if(isset($_COOKIE['uid']))
             $id_user = $_COOKIE['uid'];
