@@ -40,6 +40,7 @@ class StartController extends Controller
         //$country = $arg['country'];
         $genre = "";
         $last_name = ''; $name = '';
+
         if(isset($_SESSION['last_name']) && $_SESSION['last_name'] !='')
             $last_name = $_SESSION['last_name'];
         if(isset($_SESSION['name']) && $_SESSION['name'] !='')
@@ -48,8 +49,15 @@ class StartController extends Controller
             $user_id  = $_SESSION['uid'];
         if(isset($_SESSION['gender']) && $_SESSION['gender'] != '')
             $genre  = $_SESSION['gender'];
-        if(isset($_SESSION['last_name']) && $_SESSION['last_name'] != '')
-            $last_name = $_SESSION['last_name'];
+          //
+        if(isset($_COOKIE['last_name']) && $_COOKIE['last_name'] !='')
+            $last_name = $_COOKIE['last_name'];
+        if(isset($_COOKIE['name']) && $_COOKIE['name'] !='')
+            $name = $_COOKIE['name'];
+        if(isset($_COOKIE['uid']) && $_COOKIE['uid'] != '')
+            $user_id  = $_COOKIE['uid'];
+        if(isset($_COOKIE['gender']) && $_COOKIE['gender'] != '')
+            $genre  = $_COOKIE['gender'];
 
         //$_SESSION['pic'] = $profile['picture']['url'];
         $_SESSION['user_has_disconnected'] = null;

@@ -87,6 +87,10 @@ class TestController extends Controller
         if(isset($_SESSION['uid']))
             $id_user = $_SESSION['uid'];
 
+
+        if(isset($_COOKIE['uid']))
+            $id_user = $_COOKIE['uid'];
+
         if(isset($_GET['ab']))
           $ab_testing =$_GET['ab'];
         else

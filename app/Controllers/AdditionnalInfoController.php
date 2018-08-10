@@ -108,6 +108,10 @@ class AdditionnalInfoController extends Controller
       if(isset($_SESSION['uid']))
         $id_user = $_SESSION['uid'];
 
+
+      if(isset($_COOKIE['uid']))
+        $id_user = $_COOKIE['uid'];
+
       // Traduction des éléments de l'interface
       $interface_ui = $this->helper->getUiLabels($lang);
       $all_lang = $this->helper->getActivatedLanguages();

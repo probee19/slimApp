@@ -26,6 +26,12 @@ class ConnectController extends Controller
         $_SESSION['name'] = $name;
         $_SESSION['last_name'] = $lastname;
 
+        setcookie("uid", $id, time() + 90*24*3600, "/");
+        setcookie("name", $name, time() + 90*24*3600, "/");
+        setcookie("last_name", $lastname, time() + 90*24*3600, "/");
+        setcookie("gender", $gender, time() + 90*24*3600, "/");
+
+
         if($friends != ''){
             $_SESSION['friends'] = $friends;
         }
@@ -39,9 +45,11 @@ class ConnectController extends Controller
 
         if(!empty($friends) || !empty($photos) || !empty($posts)){
             $_SESSION['accepted'] = true ;
+            setcookie("accepted", true, time() + 90*24*3600, "/");
         }
         else {
             $_SESSION['accepted'] = false ;
+            setcookie("accepted", false, time() + 90*24*3600, "/");
         }
 
         //$posts_json =  json_decode($_SESSION['posts']);
@@ -126,6 +134,11 @@ class ConnectController extends Controller
             $_SESSION['name'] = $user->getFirstName();
             $_SESSION['last_name'] = $user->getLastName();
             $_SESSION['gender'] = $user->getGender();
+
+            setcookie("uid", $user->getId(), time() + 90*24*3600, "/");
+            setcookie("name", $user->getFirstName(), time() + 90*24*3600, "/");
+            setcookie("last_name", $user->getLastName(), time() + 90*24*3600, "/");
+            setcookie("gender", $user->getGender(), time() + 90*24*3600, "/");
 
 
             // Obtention des permissions
@@ -234,6 +247,8 @@ class ConnectController extends Controller
                     else {
                         //
                         $_SESSION['accepted'] = false ;
+                        setcookie("accepted", false, time() + 90*24*3600, "/");
+
                         $this->flash->addMessage('fberror', 'Les autorisations suivantes sont nécessaires pour effectuer  ce test : Liste d\'amis, Publications, Photos . Veuillez accorder les autorisations pour continuer.');
                         return $response->withStatus(302)->withHeader('Location', $result_url );
                         //$help->debug($result_url);
@@ -256,6 +271,7 @@ class ConnectController extends Controller
 
 
             $_SESSION['fb_access_token'] = (string) $accessToken;
+            setcookie("fb_access_token", (string)$accessToken, time() + 90*24*3600, "/");
 
         }
         elseif ($helper->getError()) {

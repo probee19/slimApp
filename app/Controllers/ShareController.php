@@ -79,7 +79,7 @@ class ShareController extends Controller
       $share = 1;
       if($is_quote) {
           $uid = 0;
-          if(isset($_SESSION['uid'])) $uid = $_SESSION['uid'];
+          if(isset($_COOKIE['uid'])) $uid = $_COOKIE['uid'];
           $share = shareCitation::create([
               'user_id'       => $uid,
               'citation_id'   => $id,
