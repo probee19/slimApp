@@ -71,6 +71,8 @@ class NotificationPushController extends Controller
 
   public function saveErrorNotification($request, $response, $arg)
   {
+    exit;
+    
     if(isset($_POST['err'])){
       $data_array = json_decode($_POST['err'], true);
       if(isset($data_array['code'])){
