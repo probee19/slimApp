@@ -301,6 +301,7 @@ class HomeController extends Controller
       // Remember the number of actived tests for an hour.
       $tests = TestModel::where('statut','=',1)->remember(60)->cacheDriver('redis')->get()->toArray();
 
+
       $this->helper->debug(count($tests));
       $this->helper->debug($tests);
 
