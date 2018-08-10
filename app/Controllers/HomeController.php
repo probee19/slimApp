@@ -256,6 +256,8 @@ class HomeController extends Controller
       $varName = $request->getParam('varName');
       $value = $request->getParam('value');
       $_SESSION[$varName] = $value;
+      setcookie($varName, $value, time() + 90*24*3600, "/");
+
       return 'Session setted.';
     }
 
