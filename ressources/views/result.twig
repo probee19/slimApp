@@ -22,7 +22,7 @@
  </script>
 {% endblock %}
 {% block banner_mobile_top %}
-{% if 4 == 3 %}{% include 'banners/banner_320x100_top_result_page.twig' %}{% endif %}
+  {% if  ab_testing == 'a' %}{% include 'banners/banner_320x100_top_result_page.twig' %}{% endif %}
 {% endblock %}
 {% block content %}
     {% if not new %}
@@ -71,7 +71,7 @@
 
                     <!-- Le texte d'incitation est affiché pour la version desktop et mobile -->
                       {% if result_description %}
-                          <div class="col-sm-12 col-sm-offset-0" style="clear: both; font-size: 1.2em;  margin: 15px -15px 10px -15px; padding:1px; text-align: center;">
+                          <div class="col-sm-12 col-sm-offset-0" style="clear: both; font-size: 1.2em;  margin: 15px -15px 10px -15px; padding:1px; text-align:center;">
                           {% autoescape %}
                               {{result_description | raw | nl2br }}
                           {% endautoescape %}
@@ -79,13 +79,13 @@
                       {% endif %}
 
 
-
-                    <p><a href=""></a></p>
                     {% if is_mobile() or is_tablet() %}
                         {% set banner = random(['banners/banner_320x50_middle_top_mobile.twig', 'banners/banner_300x250_middle_top_mobile.twig']) %}
-                        <div class="row text-center" style="margin-top:0.5em; {% if  ab_testing == 'b' %} display:none; {% endif %} ">
-                            {% include banner %}
-                        </div>
+                        {% if  ab_testing == 'a' %}
+                          <div class="row text-center" style="margin-top:0.5em;">
+                              {% include banner %}
+                          </div>
+                        {% endif %}
                     {% endif %}
 
                     <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center"

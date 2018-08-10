@@ -529,7 +529,7 @@ class Helper
       return $related_tests;
     }
 
-    public static function getRelatedTest($id, $countryCode, $exclude, $lang, $total = 5)
+    public static function getRelatedTest($id, $countryCode, $exclude, $lang, $total = 3)
     {
 
       $tests = array();
@@ -834,8 +834,8 @@ class Helper
         }
       }
 
-      //if(count($tests) > 0)
-        //shuffle($tests);
+      if(count($tests) > 0)
+        shuffle($tests);
 
       return $tests;
     }
