@@ -24,18 +24,24 @@ class AllTestsController extends Controller
     $test_owner = $_COOKIE['id_user'];
     $btn_delete_test_admin = 0;
 
+    $nb = 40;
+    if(isset($_GET['nb'])) $nb = $_GET['nb'];
+
     $dataTest = array();
+
+    /*
     if($_COOKIE['prenom_user'] == 'Pedre')
-    $tests = Test::where('statut','!=',-1)
-      ->with('defaultLangInfo')
-      ->orderBy('id_test','DESC')
-      ->get();
+      $tests = Test::where('statut','!=',-1)
+        ->with('defaultLangInfo')
+        ->orderBy('id_test','DESC')
+        ->get();
     else
-    $tests = Test::where('statut','!=',-1)
-      ->with('defaultLangInfo')
-      ->orderBy('id_test','DESC')
-      ->take(60)
-      ->get();
+    */
+      $tests = Test::where('statut','!=',-1)
+        ->with('defaultLangInfo')
+        ->orderBy('id_test','DESC')
+        ->take($nb)
+        ->get();
 
     foreach ($tests as $test) {
       $btn_delete_test_admin = 0; $if_translated = "Non";
