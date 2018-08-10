@@ -98,10 +98,9 @@ class RubriqueController extends Controller
                   });
         }
         else {
-          if($alltest == count($_SESSION["seen"]) || $alltest <= count($_SESSION["seen"])) $_SESSION["seen"] = array();
+          //if($alltest == count($_SESSION["seen"]) || $alltest <= count($_SESSION["seen"])) $_SESSION["seen"] = array();
           $exclude = array();
-          if(isset($_SESSION['seen']))
-            $exclude = $_SESSION['seen'];
+          if(isset($_SESSION['seen'])) $exclude = $_SESSION['seen'];
 
           $tests = Test::on('reader')->selectRaw('tests.titre_test AS titre_test_fr, tests.id_test AS id_test, tests.url_image_test AS url_image_test, test_info.lang AS lang, test_info.titre_test AS titre_test')
                      ->join('test_info','test_info.id_test','tests.id_test')

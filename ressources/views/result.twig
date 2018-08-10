@@ -223,7 +223,7 @@
       {% set i = 0 %}
       {% set j = 0 %}
       <div class="row text-center" style="margin-top:1.5em">
-      <h3 style="margin:1em" id="discover-section">{{interface_ui.label_discover | capitalize}}</h3>
+      <h3 style="margin:1em; display:none" id="discover-section">{{interface_ui.label_discover | capitalize}}</h3>
       {% if all_test %}
           {% for single_test in all_test %}
             {% if is_mobile() or is_tablet() %}
