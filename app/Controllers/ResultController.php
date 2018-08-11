@@ -56,7 +56,7 @@ class ResultController extends Controller
               'id'      =>  $test->test_id,
               'name'    =>  $this->helper->cleanUrl($test->test_info->titre_test)
           ], ['ref' => $code] );
-          $_SESSION['referal'] = $code;
+          $_SESSION['referal'] = $code; 
 
           return $response->withStatus(302)->withHeader('Location', $result_url );
 
