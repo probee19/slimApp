@@ -72,7 +72,7 @@ align-items: center; /* align vertical */ }
 
  $jour = array('28','15','17','11','13','22','19');
  $mois = array('Décembre','Avril','Mai','Juillet','Octobre');
- $an = date(Y)+rand(1,3);
+ $an = date("Y")+rand(1,3);
  shuffle($jour);shuffle($mois);
 ?> 
 <img src="http://creation.funizi.com/images-theme-perso/1509106743.png" id="background"> 

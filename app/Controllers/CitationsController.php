@@ -68,7 +68,7 @@ class CitationsController extends Controller
               'url_image_citation'      => $citation['url_image_citation'],
               'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
               'id_citation'             => $citation['id_citation'],
-              'titre_citation'          => $citation['titre_citation'], 
+              'titre_citation'          => $citation['titre_citation'],
               'redirect_uri'            => urlencode($request->getUri()->getBaseUrl()."/citations/"),
               'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
               'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
@@ -84,29 +84,28 @@ class CitationsController extends Controller
       }
       else {// Si cette page n'est pas en session
 
-        if($allcitation == count($_SESSION["citations_seen"]) || $allcitation <= count($_SESSION["citations_seen"]))
-          $_SESSION["citations_seen"] = array();
+        //if($allcitation == count($_SESSION["citations_seen"]) || $allcitation <= count($_SESSION["citations_seen"]))
+          //$_SESSION["citations_seen"] = array();
         $exclude = array();
-        if(isset($_SESSION['citations_seen']))
-          $exclude = $_SESSION['citations_seen'];
-          shuffle($citations_from_json);
-          $nb_taken = 0;
-          $page_citations = array();
-          foreach ($citations_from_json as $citation) {
-            if(($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ) && !in_array($citation['id_citation'], $exclude, true) && ++$nb_taken <= $this->citation_per_page){
-              $citations[$citation['id_citation']] = [
-                'url_image_citation'      => $citation['url_image_citation'],
-                'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
-                'id_citation'             => $citation['id_citation'],
-                'titre_citation'          => $citation['titre_citation'],
-                'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-                'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-                'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation'])
-              ];
-              if(!in_array($citation['id_citation'], $exclude, true)) $exclude[] = $citation['id_citation'];
-              $page_citations[] = $citation['id_citation'];
-            }
+        if(isset($_SESSION['citations_seen'])) $exclude = $_SESSION['citations_seen'];
+        shuffle($citations_from_json);
+        $nb_taken = 0;
+        $page_citations = array();
+        foreach ($citations_from_json as $citation) {
+          if(($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ) && !in_array($citation['id_citation'], $exclude, true) && ++$nb_taken <= $this->citation_per_page){
+            $citations[$citation['id_citation']] = [
+              'url_image_citation'      => $citation['url_image_citation'],
+              'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
+              'id_citation'             => $citation['id_citation'],
+              'titre_citation'          => $citation['titre_citation'],
+              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation'])
+            ];
+            if(!in_array($citation['id_citation'], $exclude, true)) $exclude[] = $citation['id_citation'];
+            $page_citations[] = $citation['id_citation'];
           }
+        }
 
           $_SESSION['citations_seen'] = $exclude;
           $_SESSION[$name_session_page] = $page_citations;

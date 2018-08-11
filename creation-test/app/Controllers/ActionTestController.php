@@ -473,6 +473,7 @@ class ActionTestController extends Controller
 
     $users_tests = UserTest::with('testInfo')->with('userInfo')->orderBy('id','DESC')->skip($begin)->take($nb)->get();
     foreach ($users_tests as $user_test) {
+      $shared = false; $nb_clics = 0;
       $share = Share::where('result_code','=',$user_test->uuid)->first();
       if($share){
         $shared = true;
@@ -480,7 +481,7 @@ class ActionTestController extends Controller
       }
 
       $date_test = new \DateTime($user_test->created_at);
-      $today =new \DateTime();
+      $today =new \DateTime(); $nb_clics = "";
       if($today->format("d") == $date_test->format("d")) $jour = " Aujourd'hui";
       else $jour = $date_test->format("d").'/'.$date_test->format("m").'/'.$date_test->format("Y");
       $heure = $date_test->format("H").':'.$date_test->format("i").':'.$date_test->format("s");

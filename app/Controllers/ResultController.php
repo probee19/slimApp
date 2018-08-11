@@ -40,7 +40,7 @@ class ResultController extends Controller
         //$testInfo = Test::where('id_test', $test->testInfo->id_test)->first();
         $testInfo = Test::on('reader')->selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.unique_result AS unique_result, tests.id_theme AS id_theme, tests.id_rubrique AS id_rubrique, tests.id_test AS id_test')
           ->join('test_info','test_info.id_test','tests.id_test')
-          ->Where([['tests.id_test', '=', $test->testInfo->id_test],['test_info.lang','=',$lang]])->first();
+          ->Where([['tests.id_test', '=', $test->test_info->id_test],['test_info.lang','=',$lang]])->first();
         if(isset($test))
             $result_description = $test->result_description;
         if(!isset($test)){
