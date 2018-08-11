@@ -38,7 +38,7 @@ class StartController extends Controller
         if(isset($_GET['ref']))
           $test_id = (int)$_GET['ref'];
         //$country = $arg['country'];
-        $genre = "";
+        $genre = ""; $user_id = 0;
         $last_name = ''; $name = '';
 
         if(isset($_COOKIE['last_name']) && $_COOKIE['last_name'] !='')
@@ -345,8 +345,7 @@ class StartController extends Controller
                     'lang'                  => $lang,
                     'ab_testing'            => $this->helper->getAB() // for A/B Testing
                 ];
-                
-                sleep(1);
+
 
                 if($save){
                     $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
