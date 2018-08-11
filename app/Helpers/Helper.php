@@ -1010,8 +1010,11 @@ class Helper
     public static function getLangSubdomain($request){
       $host = $request->getUri()->getHost();
       //Helper::debug($_SERVER['REQUEST_URI']);
+      $subdomain = str_replace(array("www", $_SERVER['SERVER_DOMAIN'], "."), "", $host);
 
-        return str_replace(array("www", $_SERVER['SERVER_DOMAIN'], "."), "", $host);
+      if(strlen($subdomain) > 2) $subdomain = 'fr';
+
+      return $subdomain;
     }
 
     public static function detectLang($request, $response){
