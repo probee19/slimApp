@@ -216,7 +216,7 @@ class Helper
 
     public static function getUrlTest($titre_test, $id, $lang){
       if($lang === 'ar'){
-          return TestInfo::where([['id_test','=',$id],['lang','=','en']])->first()->titre_test;
+          return TestInfo::on('reader')->where([['id_test','=',$id],['lang','=','en']])->first()->titre_test;
       }
       else
         return $titre_test;
@@ -225,7 +225,7 @@ class Helper
 
     public static function getUrlCitation($titre_citation, $id, $lang){
       if($lang == 'ar'){
-        $citation_info = CitationInfo::where([['id_citation','=',$id],['lang','=','en']])->first();
+        $citation_info = CitationInfo::on('reader')->where([['id_citation','=',$id],['lang','=','en']])->first();
         return $citation_info->titre_citation;
       }
       else
@@ -1008,18 +1008,19 @@ class Helper
     }
 
     public static function getLangSubdomain($request){
-      $host = $request->getUri()->getHost();
-      //Helper::debug($_SERVER['REQUEST_URI']);
-      $subdomain = str_replace(array("www", $_SERVER['SERVER_DOMAIN'], "."), "", $host);
+      if(isset($_SESSION['subdomain'])) return $_SESSION['subdomain'];
 
+      $host = $request->getUri()->getHost();
+      $subdomain = str_replace(array("www", $_SERVER['SERVER_DOMAIN'], "."), "", $host);
       if(strlen($subdomain) > 2) $subdomain = 'fr';
 
+      setcookie("subdomain", $subdomain, time() + 30*24*3600, "/");
       return $subdomain;
     }
 
     public static function detectLang($request, $response){
       //$host = $request->getUri()->getHost();
-      $server = $_SERVER["HTTP_X_FORWARDED_PROTO"];
+      //$server = $_SERVER["HTTP_X_FORWARDED_PROTO"];
       $lang = self::getLangSubdomain($request);
       if($lang == ""){
           $lang = self::getLangBrowser();
@@ -1030,7 +1031,7 @@ class Helper
       return "";
     }
 
-    public static function setNbSeenPage($request, $response){
+    public static function setNbSeenPage(){
       if(isset($_SESSION['count_seen_page']))
         $_SESSION['count_seen_page'] = $_SESSION['count_seen_page'] + 1;
       else
