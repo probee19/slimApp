@@ -139,6 +139,7 @@ $container['view'] = function ($container){
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     $view->getEnvironment()->addGlobal('country_code', $container->helper->getCountryCode());
     $view->getEnvironment()->addGlobal('session', $_SESSION);
+    $view->getEnvironment()->addGlobal('cookie', $_COOKIE);
     //$view->getEnvironment()->addGlobal('domain_url', $_SERVER['HTTP_HOST']);
     $view->getEnvironment()->addGlobal('defined_base_url', "https://".SERVER_DOMAIN);
     $view->getEnvironment()->addGlobal('defined_base_domain', SERVER_DOMAIN);
