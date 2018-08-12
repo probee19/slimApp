@@ -48,7 +48,7 @@ class Helper
         //self::debug($inf);
 
         if($inf){
-            $countryBD = Countries::where('alpha2', '=', (string)$inf->country)->first();
+            $countryBD = Countries::on('reader')->where('alpha2', '=', (string)$inf->country)->first();
             $countryCode = $inf->country;
             $countryname = $countryBD->langFR;
             //setcookie("countryCode", $countryCode, time()+3600*24*30);
