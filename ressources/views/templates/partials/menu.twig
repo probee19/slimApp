@@ -54,7 +54,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        {% if session.uid %}
+                        {% if cookie.uid %}
                             <li><a class="menu-logout" href="{{ domain_url }}/logout">{{interface_ui.menu_logout}}</a></li>
                         {% else %}
                             <li><a class="menu-login" href="#" onclick="openModal(0)">{{interface_ui.menu_login}}</a></li>
