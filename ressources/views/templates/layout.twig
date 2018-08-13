@@ -226,9 +226,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
    var config={apiKey:"{{firebase_api_key}}",authDomain:"{{firebase_auth_domain}}",databaseURL:"{{firebase_database_url}}",projectId:"{{firebase_project_id}}",storageBucket:"{{firebase_storage_bucket}}",messagingSenderId:"{{firebase_messenger_sender_id}}"};firebase.initializeApp(config);var messaging=firebase.messaging();function sendSubscriptionToBackEnd(e){$.ajax({url:"{{ domain_url }}/register-to-notification",type:"post",data:{subscription:e},success:function(e){console.log(e)},error:function(e){console.log(e)}})}function saveError(e){$.ajax({url:"{{ domain_url }}/save-error-notification",type:"post",data:{err:e},success:function(e){console.log(e)},error:function(e){console.log(e)}})}messaging.requestPermission().then(function(){return console.log("Notification permission granted."),messaging.getToken()}).then(function(e){sendSubscriptionToBackEnd(e),console.log(e)}).catch(function(e){saveError(JSON.stringify(e)),console.log("Unable to get permission to notify.",e)}),messaging.onMessage(function(e){console.log("Message received. ",JSON.stringify(e))});
-   $("#btn-show-discover-block").click(function(){$("html, body").animate({scrollTop:$("#discover-section").offset().top},800)});
 </script>
 {% endif %}
+
 
 </body>
 </html>
