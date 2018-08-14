@@ -176,18 +176,11 @@ class HomeController extends Controller
         session_start();
         $_SESSION['user_has_disconnected'] = 'yes';
         // Suppression du fichier cookie
-        unset($_COOKIE['id_user']);
-        //unset($_COOKIE['email_user']);
-        unset($_COOKIE['nom_user']);
-        unset($_COOKIE['prenom_user']);
-        unset($_COOKIE['url_photo_user']);
-        setcookie('id_user', null, -1);
-        //setcookie('email_user', null, -1);
-        setcookie('nom_user', null, -1);
-        setcookie('prenom_user', null, -1);
-        setcookie('url_photo_user', null, -1);
 
-
+        foreach ($_COOKIE as $key => $value) {
+          unset($_COOKIE[$key]);
+          setcookie($key, "", time() - 3600, "/");
+        }
 
         $result_url = $this->router->pathFor('accueil');
         return $response->withStatus(302)->withHeader('Location', $result_url );
