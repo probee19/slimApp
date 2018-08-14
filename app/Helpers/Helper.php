@@ -556,6 +556,7 @@ class Helper
         388 =>  "393-400-399-395-397-362-207-388-371",
         399 =>  "393-400-395-397-362-207-388-371",
       ];
+      
       $related_tests = [];
       if(array_key_exists($id, $related_tests_src))
         $related_tests = array_map('intval', explode('-', $related_tests_src[$id])) ;
@@ -595,7 +596,8 @@ class Helper
       if(in_array($countryCode, ['SN','CI','FR','CD','BE','CM'], true)){
         $choosen_some_tests = array();
         //$array_tests = array(353, 354, 357, 360, 361, 362, 364, 366, 363, 375, 376, 377, 378, 379, 380, 381, 383, 384, 385);
-        $array_tests = array(400,393,394,392,354,360,384,383,380,207);
+        //$array_tests = array(400,393,394,392,354,360,384,383,380,207);
+        $array_tests = array(400, 393, 395);
         $choosen_some_tests = self::getSomeTests($countryCode, $array_tests, $exclude, $lang);
         if(count($choosen_some_tests) >= 1)
           foreach ($choosen_some_tests as $test)
