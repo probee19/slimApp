@@ -615,6 +615,7 @@ class Helper
 
             if($related_tests != null)
               $choosen_some_tests   = array_merge($related_tests, $choosen_some_tests);
+
             $choosen_some_tests   = array_merge($choosen_some_tests, $best_local_test);
             $alltests_total = self::getMostTestedCountry($lang, $exclude, $countryCode, $nb_restant);
           //
@@ -825,6 +826,7 @@ class Helper
 
     public static function getSomeTests($countryCode, $array_tests, $exclude, $lang){
       // Récuperation des tests pour langue $lang;
+      $tests = [];
       $tests_from_json = self::getAllTestJson($lang);
       //krsort($tests_from_json);
       if(!$exclude) $exclude = [];
