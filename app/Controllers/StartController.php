@@ -593,7 +593,7 @@ class StartController extends Controller
                 $filepath = "uploads/". $code . '.jpg';
 
                 //
-                $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
+                $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url.'&v='.mt_rand(0,10);
 
                 //
 
