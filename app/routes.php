@@ -53,6 +53,7 @@ $app->get('/chunk/{name}/{id}', 'HomeController:chunk');
 $app->get('/chunkresult/{name}/{code}', 'HomeController:chunk');
 $app->get('/chunkstart/{ref}', 'StartController:indexChunk');
 $app->get('/chunktest/{name}/{id}', 'TestController:indexChunk');
+$app->get('/chunktest/{name}/{id}/ref/{code}', 'TestController:indexChunk');
 $app->get('/chunkconnect_user2', 'ConnectController:connexionForTestChunk');
 $app->get('/chunkconnect_user_test', 'ConnectController:testChunk');
 //$app->get('/chunk/{name}/{id}', 'HomeController:chunk');
