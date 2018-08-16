@@ -295,7 +295,9 @@ class HomeController extends Controller
       $url = 'https://image.thum.io/get/allowJPG/width/800/crop/420/viewportWidth/800/http://fr.funizi.com/creation-test/ressources/views/themes/perso/fr_file_test_381.php?user_gender=undefined&fb_id_user=1815667808451001&user_name=Pedre&full_user_name=Pedre+Dieye&nb_friends=0&url_img_profile_user=https%3A%2F%2Fgraph.facebook.com%2F1815667808451001%2Fpicture%2F%3Fwidth%3D275%26height%3D275&cc=eng&cn=Angleterre';
       $saveto = "https://".$this->base_domain."/uploads/test_thum_io.jpg";
       $this->helper->debug($saveto);
-      self::grab_image($url, $saveto);
+      file_put_contents($saveto, $url);
+
+      //self::grab_image($url, $saveto);
 
 
 
