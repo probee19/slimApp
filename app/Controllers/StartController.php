@@ -594,6 +594,7 @@ class StartController extends Controller
 
                 //
                 $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/width/800/crop/420/viewportWidth/800/'.$url;
+
                 //
 
 
@@ -613,8 +614,30 @@ class StartController extends Controller
                     'ab_testing'            => $this->helper->getAB() // for A/B Testing
                 ];
 
-                $data['img_url'] = $url_thum;
-                $user_test = UserTest::create($data);
+                //
+
+                $ch = curl_init($url_thum);
+                $fp = fopen('uploads/'.$code.'.jpg', 'wb');
+                curl_setopt($ch, CURLOPT_FILE, $fp);
+                curl_setopt($ch, CURLOPT_HEADER, 0);
+                curl_exec($ch);
+                curl_close($ch);
+                fclose($fp);
+
+                $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
+                $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
+
+                if(!empty($resultUrl['ObjectURL'])){
+                    $data['img_url'] = "/uploads/$code.jpg";
+                    $user_test = UserTest::create($data);
+                }else{
+                    echo "Une erreur inattendue s'est produite, veuillez réessayer encore";
+                    exit;
+                }
+                //
+
+                //$data['img_url'] = $url_thum;
+                //$user_test = UserTest::create($data);
 
 
             $result_url = $this->router->pathFor('resultat', [
