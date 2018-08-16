@@ -84,8 +84,8 @@ class CitationsController extends Controller
       }
       else {// Si cette page n'est pas en session
 
-        //if($allcitation == count($_SESSION["citations_seen"]) || $allcitation <= count($_SESSION["citations_seen"]))
-          //$_SESSION["citations_seen"] = array();
+        if(isset($_SESSION["citations_seen"]) && $allcitation <= count($_SESSION["citations_seen"]))
+          $_SESSION["citations_seen"] = array();
         $exclude = array();
         if(isset($_SESSION['citations_seen'])) $exclude = $_SESSION['citations_seen'];
         shuffle($citations_from_json);
