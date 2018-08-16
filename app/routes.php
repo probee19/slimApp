@@ -50,10 +50,10 @@ $app->post('/save-subscription-to-newsletter', 'HomeController:saveSubNewsletter
 // chunk
 $app->get('/json', 'HomeController:setTestsJSON');
 $app->get('/chunk/{name}/{id}', 'HomeController:chunk');
-$app->get('/chunktest/{name}/{id}', 'HomeController:chunkTest');
 $app->get('/chunkresult/{name}/{code}', 'HomeController:chunk');
 $app->get('/chunkstart/{ref}', 'StartController:indexChunk');
-$app->get('/chunkconnect_user2', 'ConnectController:connexionForTestChunk'); 
+$app->get('/chunktest/{name}/{id}', 'TestController:indexChunk');
+$app->get('/chunkconnect_user2', 'ConnectController:connexionForTestChunk');
 $app->get('/chunkconnect_user_test', 'ConnectController:testChunk');
 //$app->get('/chunk/{name}/{id}', 'HomeController:chunk');
 //$app->get('/chunk/{method}', 'HomeController:chunk');
