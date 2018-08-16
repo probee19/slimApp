@@ -292,7 +292,19 @@ class HomeController extends Controller
     }
 
     public function chunk($request, $response, $args){
-      //$url = 'https://image.thum.io/get/allowJPG/width/800/crop/420/viewportWidth/800/http://fr.funizi.com/creation-test/ressources/views/themes/perso/fr_file_test_381.php?user_gender=undefined&fb_id_user=1815667808451001&user_name=Pedre&full_user_name=Pedre+Dieye&nb_friends=0&url_img_profile_user=https%3A%2F%2Fgraph.facebook.com%2F1815667808451001%2Fpicture%2F%3Fwidth%3D275%26height%3D275&cc=eng&cn=Angleterre';
+      $url_thum = 'https://image.thum.io/get/allowJPG/width/800/crop/420/viewportWidth/800/http://fr.funizi.com/creation-test/ressources/views/themes/perso/fr_file_test_381.php?user_gender=undefined&fb_id_user=1815667808451001&user_name=Pedre&full_user_name=Pedre+Dieye&nb_friends=0&url_img_profile_user=https%3A%2F%2Fgraph.facebook.com%2F1815667808451001%2Fpicture%2F%3Fwidth%3D275%26height%3D275&cc=eng&cn=Angleterre';
+
+      $ch = curl_init($url_thum);
+      $fp = fopen('uploads/test_img_thum.jpg', 'wb');
+      curl_setopt($ch, CURLOPT_FILE, $fp);
+      curl_setopt($ch, CURLOPT_HEADER, 0);
+      curl_exec($ch);
+      curl_close($ch);
+      fclose($fp);
+
+      $this->helper->debug($this->base_domain.'/uploads/test_img_thum.jpg');
+
+
       $url = $this->helper->detectLang($request, $response);
       if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
 
@@ -393,7 +405,7 @@ class HomeController extends Controller
 
           $interface_ui = $this->helper->getUiLabels($lang);
           $all_lang = $this->helper->getActivatedLanguages();
-          return $this->view->render($response, 'result.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'id_rubrique', 'img_url', 'result_description', 'ab_testing', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
+          return $this->view->render($response, 'chunkresult.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'id_rubrique', 'img_url', 'result_description', 'ab_testing', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
       }
 
 
