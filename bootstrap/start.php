@@ -58,7 +58,7 @@ define('FIREBASE_STORAGE_BUCKET', $_SERVER['FIREBASE_STORAGE_BUCKET']);
 require __DIR__ . '/../vendor/autoload.php';
 
 $config = [
-    'displayErrorDetails'   =>  true,
+    'displayErrorDetails'   =>  false,
     'db'        =>  [
         'driver'    =>  'mysql',
         'host'      =>  RDS_HOSTNAME,

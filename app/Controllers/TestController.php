@@ -114,11 +114,13 @@ class TestController extends Controller
 
         //$code = $request->getParam('ref');
         $code = "";
-        if(isset($args['code']))
-            $code = $args['code'];
-        //$user_test = UserTest::where('uuid', '=', "$code")->first();
-        //$img_url = $user_test->img_url;
-        $img_url = "/uploads/$code.jpg";
+        if(isset($args['code'])){
+          $code = $args['code'];
+          $user_test = UserTest::where('uuid', '=', "$code")->first();
+          $img_url = $user_test->img_url;
+          //$img_url = "/uploads/$code.jpg";
+        }
+
 
         $tests_from_json = $this->helper->getAllTestJson($lang, true);
         $test  = $tests_from_json[$id];
