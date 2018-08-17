@@ -140,7 +140,7 @@ class StartController extends Controller
                     $best_friends =  $theme_perso_info->best_friends;
                     $args_for_grabzit =array('theme' => $theme, 'fb_id_user' => $user_id, 'user_name' => urlencode($name), 'nb_friends' => $nb_friends_fb );
 
-                    $url = '?v='.mt_rand(0,20).'&user_gender='.$genre.'&fb_id_user='.$user_id.'&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
+                    $url = '?v='.mt_rand(1,30).'&user_gender='.$genre.'&fb_id_user='.$user_id.'&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
                     //
                     $url_img_profile = 'https://graph.facebook.com/'.$user_id.'/picture/?width=275&height=275';
 
@@ -289,7 +289,7 @@ class StartController extends Controller
                   $ab_testing =$_GET['ab'];
                 else
                   $ab_testing = $this->helper->getAB();
-                  
+
                 $data = [
                     'user_id'               => $user->id,
                     'test_id'               => $test_id,
@@ -303,8 +303,6 @@ class StartController extends Controller
                 ];
 
 
-
-
                 if($ab_testing == 'd'){
                   $callBackrUrl = $request->getUri()->getBaseUrl()."/thumcallback/".$code;
                   $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
@@ -312,9 +310,9 @@ class StartController extends Controller
                   $data['url_thum_io'] = $url_thum_without_call_back;
                   $user_test = UserTest::create($data);
 
-                  $log = fopen("ressources/views/log_thum_io_2.txt", "a+");
-                  $data_log = "\n\n".date('H:i:s')."\ncode:".$code."\nurl:".$url_thum."\nurlWithoutCallBack:".$url_thum_without_call_back."\nResultat : ".$res."\n";
-                  fwrite($log, $data_log);
+                  //$log = fopen("ressources/views/log_thum_io_2.txt", "a+");
+                  //$data_log = "\n\n".date('H:i:s')."\ncode:".$code."\nurl:".$url_thum."\nurlWithoutCallBack:".$url_thum_without_call_back."\nResultat : ".$res."\n";
+                  //fwrite($log, $data_log);
                 }
                 else {
                   //Grabzit Options

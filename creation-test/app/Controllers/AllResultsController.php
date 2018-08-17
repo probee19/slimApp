@@ -48,6 +48,7 @@ class AllResultsController extends Controller
             'day'         =>  $jour,
             'hour'        =>  $heure,
             'nb_clics'    =>  $nb_clics,
+            'ab_testing'  =>  $user_test->ab_testing,
             'facebook_id' =>  $user_test->userInfo->facebook_id
           ];
         }
