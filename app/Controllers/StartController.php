@@ -595,7 +595,7 @@ class StartController extends Controller
             //
             $callBackrUrl = $request->getUri()->getBaseUrl()."/thumcallback/".$code;
             $version = mt_rand(0,10);
-            $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl).'&v='.$version;
+            $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/prefetch/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl).'&v='.$version;
             $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url.'&v='.$version;
             //
 
@@ -639,7 +639,7 @@ class StartController extends Controller
             **/
 
             $data['img_url'] = "/uploads/$code.jpg";
-            $data['url_thum_io'] = $url_thum_without_call_back;
+            $data['url_thum_io'] = $url_thum;
             $user_test = UserTest::create($data);
 
         $result_url = $this->router->pathFor('resultat', [
