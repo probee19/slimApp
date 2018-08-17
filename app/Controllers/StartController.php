@@ -639,7 +639,7 @@ class StartController extends Controller
             **/
 
             $data['img_url'] = "/uploads/$code.jpg";
-            $data['url_thum_io'] = $url_thum;
+            $data['url_thum_io'] = $url_thum_without_call_back;
             $user_test = UserTest::create($data);
 
         $result_url = $this->router->pathFor('resultat', [
