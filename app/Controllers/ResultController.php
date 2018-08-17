@@ -47,7 +47,8 @@ class ResultController extends Controller
             $test = BotTests::on('reader')->where('uuid', "$code")->with('testInfo')->first();
             $result_description = "<strong>N’oublie pas de PARTAGER ça maintenant avec tes amis et tes proches !</strong>";
         }
-        $img_url = $test->img_url;
+        //$img_url = $test->img_url;
+        $img_url = $test->url_thum_io;
 
         if(isset($_GET['utm']) && !empty($_GET['utm']))
             $helper->setUTM($_GET['utm'], "test", $test->testInfo->id_test);

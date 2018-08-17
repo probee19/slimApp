@@ -30,6 +30,9 @@ $app->get('/get-notification', 'NotificationPushController:getNotification');
 $app->get('/devsystemi', 'DevtestController:uploadToS3');
 $app->get('/phantomtest', 'DevtestController:phantomTest');
 
+//Thum.io
+$app->get('/thumcallback/{code}', 'StartController:thumCallBack');
+
 
 //post links
 $app->post('/login', 'HomeController:login')->setName('login');

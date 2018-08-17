@@ -414,241 +414,262 @@ class StartController extends Controller
         $has_treatment = $test['has_treatment'];
         $unique_result = $test['unique_result'];
 
-              $filter = "";
-                if($genre == 'male' || $genre == 'homme'){
-                    $filter = 'feminin';
-                }
-                if($genre == 'female' || $genre == 'femme' ){
-                    $filter = 'masculin';
-                }
-                $notIn = [0];
-                if($unique_result == 1) {
-                    $user_test = UserTest::where([
-                        ['user_id', $user->id],
-                        ['test_id', $test_id]
-                    ])->get();
+          $filter = "";
+            if($genre == 'male' || $genre == 'homme'){
+                $filter = 'feminin';
+            }
+            if($genre == 'female' || $genre == 'femme' ){
+                $filter = 'masculin';
+            }
+            $notIn = [0];
+            if($unique_result == 1) {
+                $user_test = UserTest::where([
+                    ['user_id', $user->id],
+                    ['test_id', $test_id]
+                ])->get();
 
-                    foreach ($user_test as $user_tested){
-                        $notIn [] = $user_tested->result_id;
-                    }
+                foreach ($user_test as $user_tested){
+                    $notIn [] = $user_tested->result_id;
                 }
-                $result = Resultat::whereNotIn('id_test', $notIn)
-                    ->where([
+            }
+            $result = Resultat::whereNotIn('id_test', $notIn)
+                ->where([
+                    ['id_test', '=', $test_id],
+                    ['genre', '!=', $filter]
+                ])->orderByRaw("RAND()")->first();
+            if(empty($result))
+                $result = Resultat::where([
                         ['id_test', '=', $test_id],
                         ['genre', '!=', $filter]
-                    ])->orderByRaw("RAND()")->first();
-                if(empty($result))
-                    $result = Resultat::where([
-                            ['id_test', '=', $test_id],
-                            ['genre', '!=', $filter]
-                        ]
-                    )->orderByRaw("RAND()")->first();
-                $titre = $result->titre_resultat;
-                $image = $result->image_resultat;
-                $result_id = $result->id_resultat;
-                $img = substr($image, strrpos($image, '/') + 1);
-                if($theme === 2)
-                  $url = SandBox::getUrlTheme1Or2($theme, $user_id, $result_id, $name, $img);
-                elseif($theme === 3)
-                {
+                    ]
+                )->orderByRaw("RAND()")->first();
+            $titre = $result->titre_resultat;
+            $image = $result->image_resultat;
+            $result_id = $result->id_resultat;
+            $img = substr($image, strrpos($image, '/') + 1);
+            if($theme === 2)
+              $url = SandBox::getUrlTheme1Or2($theme, $user_id, $result_id, $name, $img);
+            elseif($theme === 3)
+            {
+                $user_posts =  (array) $_SESSION['posts'];
+                $user_friends =  (array) $_SESSION['friends'];
+                $user_photos = (array) $_SESSION['photos'];
+                $url = SandBox::getUrlTheme3($theme, $user_id, $name, $user_posts, $user_friends, $user_photos);
+            }
+            elseif($theme === 4){
+                $theme_perso_info = ThemePerso::where([['id_test', $test_id],['lang','=',$lang]])->first();
+
+                $nb_friends_fb =  $theme_perso_info->nb_friends_fb;
+                $max_friends =  $theme_perso_info->max_friends;
+                $best_friends =  $theme_perso_info->best_friends;
+                $args_for_grabzit =array('theme' => $theme, 'fb_id_user' => $user_id, 'user_name' => urlencode($name), 'nb_friends' => $nb_friends_fb );
+
+                $url = '?user_gender='.$genre.'&fb_id_user='.$user_id.'&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
+                //
+                $url_img_profile = 'https://graph.facebook.com/'.$user_id.'/picture/?width=275&height=275';
+
+                $url_img_profile_user = '&url_img_profile_user='.urlencode($url_img_profile);
+                $additionnal_input_text = ''; $additionnal_input_country_cdm = '';
+
+                if( $if_additionnal_info == 1){
+                  if(isset($_SESSION['url_img_profile_user']) && $_SESSION['url_img_profile_user'] != 'unset'){
+                    $url_img_profile_user = '&url_img_profile_user='.urlencode($_SESSION['url_img_profile_user']);
+                    $url_img_profile = $_SESSION['url_img_profile_user'];
+                    $_SESSION['url_img_profile_user'] = 'unset';
+                  }
+
+                  if(isset($_SESSION['additionnal_input_text']))
+                    $additionnal_input_text = '&additionnal_input_text='.urlencode($_SESSION['additionnal_input_text']);
+
+                  if(isset($_SESSION['fav_team'])){
+                    $fav_team = json_decode($_SESSION['fav_team']);
+                    foreach ($fav_team as $key => $value)
+                      if($key != 'cf') //CountryFlag
+                        $additionnal_input_country_cdm .= '&'.$key.'='.$value;
+                  }
+                }
+
+                if($has_treatment == 1 ) {
+                  $result_cmf = $this->helper->cmfTreatmentImg($url_img_profile);
+                  if($result_cmf[0] == 1)
+                    $url_img_profile_user = '&url_img_profile_user='.urlencode($result_cmf[1]).'&url_img_profile_user0='.urlencode($url_img_profile);
+                  else{
+                    $this->flash->addMessage('imgface', $result_cmf[1]);
+                    $url_back = $request->getUri()->getBaseUrl()."/start/1/".$test_id;
+                    return $response->withStatus(302)->withHeader('Location', $url_back );
+                    exit;
+                  }
+                }
+                $url .= $url_img_profile_user . $additionnal_input_text . $additionnal_input_country_cdm;
+                //
+                if($nb_friends_fb > 0){
                     $user_posts =  (array) $_SESSION['posts'];
                     $user_friends =  (array) $_SESSION['friends'];
                     $user_photos = (array) $_SESSION['photos'];
-                    $url = SandBox::getUrlTheme3($theme, $user_id, $name, $user_posts, $user_friends, $user_photos);
-                }
-                elseif($theme === 4){
-                    $theme_perso_info = ThemePerso::where([['id_test', $test_id],['lang','=',$lang]])->first();
 
-                    $nb_friends_fb =  $theme_perso_info->nb_friends_fb;
-                    $max_friends =  $theme_perso_info->max_friends;
-                    $best_friends =  $theme_perso_info->best_friends;
-                    $args_for_grabzit =array('theme' => $theme, 'fb_id_user' => $user_id, 'user_name' => urlencode($name), 'nb_friends' => $nb_friends_fb );
+                    if(!empty($user_posts) && count($user_posts) > $nb_friends_fb ){
 
-                    $url = '?user_gender='.$genre.'&fb_id_user='.$user_id.'&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
-                    //
-                    $url_img_profile = 'https://graph.facebook.com/'.$user_id.'/picture/?width=275&height=275';
+                        $volume = [];
+                        foreach ($user_posts as $key => $row) {
+                            $volume[$row['id']]  = $row['freq'];
+                        }
+                        if($best_friends == 1)
+                              arsort($volume);
 
-                    $url_img_profile_user = '&url_img_profile_user='.urlencode($url_img_profile);
-                    $additionnal_input_text = ''; $additionnal_input_country_cdm = '';
+                        $user_best_friends_reactions = array_slice($volume, 0, $max_friends, true);
 
-                    if( $if_additionnal_info == 1){
-                      if(isset($_SESSION['url_img_profile_user']) && $_SESSION['url_img_profile_user'] != 'unset'){
-                        $url_img_profile_user = '&url_img_profile_user='.urlencode($_SESSION['url_img_profile_user']);
-                        $url_img_profile = $_SESSION['url_img_profile_user'];
-                        $_SESSION['url_img_profile_user'] = 'unset';
-                      }
+                        $ids = array_rand($user_best_friends_reactions, $nb_friends_fb);
+                        $nb_friend = 1;
 
-                      if(isset($_SESSION['additionnal_input_text']))
-                        $additionnal_input_text = '&additionnal_input_text='.urlencode($_SESSION['additionnal_input_text']);
-
-                      if(isset($_SESSION['fav_team'])){
-                        $fav_team = json_decode($_SESSION['fav_team']);
-                        foreach ($fav_team as $key => $value)
-                          if($key != 'cf') //CountryFlag
-                            $additionnal_input_country_cdm .= '&'.$key.'='.$value;
-                      }
-                    }
-
-                    if($has_treatment == 1 ) {
-                      $result_cmf = $this->helper->cmfTreatmentImg($url_img_profile);
-                      if($result_cmf[0] == 1)
-                        $url_img_profile_user = '&url_img_profile_user='.urlencode($result_cmf[1]).'&url_img_profile_user0='.urlencode($url_img_profile);
-                      else{
-                        $this->flash->addMessage('imgface', $result_cmf[1]);
-                        $url_back = $request->getUri()->getBaseUrl()."/start/1/".$test_id;
-                        return $response->withStatus(302)->withHeader('Location', $url_back );
-                        exit;
-                      }
-                    }
-                    $url .= $url_img_profile_user . $additionnal_input_text . $additionnal_input_country_cdm;
-                    //
-                    if($nb_friends_fb > 0){
-                        $user_posts =  (array) $_SESSION['posts'];
-                        $user_friends =  (array) $_SESSION['friends'];
-                        $user_photos = (array) $_SESSION['photos'];
-
-                        if(!empty($user_posts) && count($user_posts) > $nb_friends_fb ){
-
-                            $volume = [];
-                            foreach ($user_posts as $key => $row) {
-                                $volume[$row['id']]  = $row['freq'];
+                        if($nb_friends_fb == 1){
+                            $friend_names = explode(" ", $user_posts[$ids]['name']);
+                            $prenoms = array_slice($friend_names, 0, count($friend_names)-1,true);
+                            $friend_first_name = '';
+                            foreach ($prenoms as $val) {
+                                $friend_first_name .= $val.' ';
                             }
-                            if($best_friends == 1)
-                                  arsort($volume);
-
-                            $user_best_friends_reactions = array_slice($volume, 0, $max_friends, true);
-
-                            $ids = array_rand($user_best_friends_reactions, $nb_friends_fb);
-                            $nb_friend = 1;
-
-                            if($nb_friends_fb == 1){
-                                $friend_names = explode(" ", $user_posts[$ids]['name']);
+                            $url .= '&fb_id_friend_'.$nb_friend.'='.$ids.'&friend_first_name_'.$nb_friend.'='.urlencode($friend_first_name).'&friend_name_'.$nb_friend.'='.urlencode($user_posts[$ids]['name']);
+                            $tags['friend_first_name_'.$nb_friend] = $friend_first_name;
+                            $tags['friend_name_'.$nb_friend] = $user_posts[$ids]['name'];
+                        }
+                        else {
+                            foreach ($ids as $id) {
+                                $friend_names = explode(" ", $user_posts[$id]['name']);
                                 $prenoms = array_slice($friend_names, 0, count($friend_names)-1,true);
                                 $friend_first_name = '';
                                 foreach ($prenoms as $val) {
                                     $friend_first_name .= $val.' ';
                                 }
-                                $url .= '&fb_id_friend_'.$nb_friend.'='.$ids.'&friend_first_name_'.$nb_friend.'='.urlencode($friend_first_name).'&friend_name_'.$nb_friend.'='.urlencode($user_posts[$ids]['name']);
+                                $url .= '&fb_id_friend_'.$nb_friend.'='.$id.'&friend_first_name_'.$nb_friend.'='.urlencode($friend_first_name).'&friend_name_'.$nb_friend.'='.urlencode($user_posts[$id]['name']);
                                 $tags['friend_first_name_'.$nb_friend] = $friend_first_name;
-                                $tags['friend_name_'.$nb_friend] = $user_posts[$ids]['name'];
-                            }
-                            else {
-                                foreach ($ids as $id) {
-                                    $friend_names = explode(" ", $user_posts[$id]['name']);
-                                    $prenoms = array_slice($friend_names, 0, count($friend_names)-1,true);
-                                    $friend_first_name = '';
-                                    foreach ($prenoms as $val) {
-                                        $friend_first_name .= $val.' ';
-                                    }
-                                    $url .= '&fb_id_friend_'.$nb_friend.'='.$id.'&friend_first_name_'.$nb_friend.'='.urlencode($friend_first_name).'&friend_name_'.$nb_friend.'='.urlencode($user_posts[$id]['name']);
-                                    $tags['friend_first_name_'.$nb_friend] = $friend_first_name;
-                                    $tags['friend_name_'.$nb_friend] = $user_posts[$id]['name'];
-                                    $nb_friend++;
-                                }
-                            }
-                            $_SESSION['tags'] = $tags;
-                        }
-                        elseif(!empty($user_friends) ) {
-                            shuffle($user_friends);
-                            $user_friends_selected = array_slice($user_friends, 0, $nb_friends_fb, true);
-                            $nb_friend = 1;
-                            if($nb_friends_fb == 1){
-                              $url .= '&fb_id_friend_'.$nb_friend.'='.$user_friends_selected[0]['id'].'&friend_first_name_'.$nb_friend.'='.urlencode($user_friends_selected[0]['first_name']).'&friend_name_'.$nb_friend.'='.urlencode($user_friends_selected[0]['first_name'].' '.$user_friends_selected[0]['last_name']);
-                              $tags['friend_first_name_'.$nb_friend] = $user_friends_selected[0]['first_name'] ;
-                              $tags['friend_name_'.$nb_friend] = $user_friends_selected[0]['first_name'].' '.$user_friends_selected[0]['last_name'];
-                            }
-                            else {
-                              foreach ($user_friends_selected as $friend) {
-                                $url .= '&fb_id_friend_'.$nb_friend.'='.$friend['id'].'&friend_first_name_'.$nb_friend.'='.urlencode($friend['first_name']).'&friend_name_'.$nb_friend.'='.urlencode($friend['first_name'].' '.$friend['last_name']);
-                                $tags['friend_first_name_'.$nb_friend] = $friend['first_name'] ;
-                                $tags['friend_name_'.$nb_friend] = $friend['first_name'].' '.$friend['last_name'];
+                                $tags['friend_name_'.$nb_friend] = $user_posts[$id]['name'];
                                 $nb_friend++;
-                              }
                             }
-                            $_SESSION['tags'] = $tags;
                         }
-                        elseif(!empty($user_photos)) {
-                        }
+                        $_SESSION['tags'] = $tags;
                     }
-                    $url = SandBox::getUrlTestPerso($test_id ,$url, $lang);
+                    elseif(!empty($user_friends) ) {
+                        shuffle($user_friends);
+                        $user_friends_selected = array_slice($user_friends, 0, $nb_friends_fb, true);
+                        $nb_friend = 1;
+                        if($nb_friends_fb == 1){
+                          $url .= '&fb_id_friend_'.$nb_friend.'='.$user_friends_selected[0]['id'].'&friend_first_name_'.$nb_friend.'='.urlencode($user_friends_selected[0]['first_name']).'&friend_name_'.$nb_friend.'='.urlencode($user_friends_selected[0]['first_name'].' '.$user_friends_selected[0]['last_name']);
+                          $tags['friend_first_name_'.$nb_friend] = $user_friends_selected[0]['first_name'] ;
+                          $tags['friend_name_'.$nb_friend] = $user_friends_selected[0]['first_name'].' '.$user_friends_selected[0]['last_name'];
+                        }
+                        else {
+                          foreach ($user_friends_selected as $friend) {
+                            $url .= '&fb_id_friend_'.$nb_friend.'='.$friend['id'].'&friend_first_name_'.$nb_friend.'='.urlencode($friend['first_name']).'&friend_name_'.$nb_friend.'='.urlencode($friend['first_name'].' '.$friend['last_name']);
+                            $tags['friend_first_name_'.$nb_friend] = $friend['first_name'] ;
+                            $tags['friend_name_'.$nb_friend] = $friend['first_name'].' '.$friend['last_name'];
+                            $nb_friend++;
+                          }
+                        }
+                        $_SESSION['tags'] = $tags;
+                    }
+                    elseif(!empty($user_photos)) {
+                    }
                 }
-                else
-                  $url = SandBox::getUrlTheme1Or2($theme, $user_id, $titre, $name, $img);
+                $url = SandBox::getUrlTestPerso($test_id ,$url, $lang);
+            }
+            else
+              $url = SandBox::getUrlTheme1Or2($theme, $user_id, $titre, $name, $img);
 
-                foreach ($tags as $key => $tag) {
-                    $result_description = str_replace('{{'.$key.'}}', $tag, $result_description );
-                }
+            foreach ($tags as $key => $tag) {
+                $result_description = str_replace('{{'.$key.'}}', $tag, $result_description );
+            }
 
-                $url = $request->getUri()->getBaseUrl().$url;
+            $url = $request->getUri()->getBaseUrl().$url;
 
-                if($user_id == '1815667808451001'){
-                  //echo $url;
-                  //exit;
-                }
-                //Generate unique code string for the test result
-                $stringen = new RandomStringGenerator();
-                $code = $stringen->generate(15);
+            if($user_id == '1815667808451001'){
+              //echo $url;
+              //exit;
+            }
+            //Generate unique code string for the test result
+            $stringen = new RandomStringGenerator();
+            $code = $stringen->generate(15);
 
-                // Path of the saved image result
-                $filepath = "uploads/". $code . '.jpg';
+            // Path of the saved image result
+            $filepath = "uploads/". $code . '.jpg';
 
-                //
-                $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url.'&v='.mt_rand(0,10);
-
-                //
-
-
-                // Saving the test result of user
-                $referal = 'direct';
-                if(isset($_SESSION['referal'])) $referal = $_SESSION['referal'];
-
-                $data = [
-                    'user_id'               => $user->id,
-                    'test_id'               => $test_id,
-                    'uuid'                  => $code,
-                    'result_id'             => $result_id,
-                    'shared_link'           => $code,
-                    'result_description'    => $result_description,
-                    'test_from'             => $referal,
-                    'lang'                  => $lang,
-                    'ab_testing'            => $this->helper->getAB() // for A/B Testing
-                ];
-
-                //
-
-                $ch = curl_init($url_thum);
-                $fp = fopen('uploads/'.$code.'.jpg', 'wb');
-                curl_setopt($ch, CURLOPT_FILE, $fp);
-                curl_setopt($ch, CURLOPT_HEADER, 0);
-                curl_exec($ch);
-                curl_close($ch);
-                fclose($fp);
-
-                $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
-                $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
-
-                if(!empty($resultUrl['ObjectURL'])){
-                    $data['img_url'] = "/uploads/$code.jpg";
-                    $user_test = UserTest::create($data);
-                }else{
-                    echo "Une erreur inattendue s'est produite, veuillez réessayer encore";
-                    exit;
-                }
-                //
-
-                //$data['img_url'] = $url_thum;
-                //$user_test = UserTest::create($data);
+            //
+            $callBackrUrl = $request->getUri()->getBaseUrl()."/thumcallback/".$code;
+            $version = mt_rand(0,10);
+            $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl).'&v='.$version;
+            $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
+            //
 
 
-            $result_url = $this->router->pathFor('resultat', [
-                'name'      => $this->helper->cleanUrl($test_name),
-                'code'      =>  $user_test->uuid
-            ]);
+            // Saving the test result of user
+            $referal = 'direct';
+            if(isset($_SESSION['referal'])) $referal = $_SESSION['referal'];
 
-            $title_url = $this->helper->getUrlTest($test_name, $test_id, $lang);
-            $result_url = $request->getUri()->getBaseUrl()."/chunkresult/".$this->helper->cleanUrl($title_url)."/".$user_test->uuid ;
+            $data = [
+                'user_id'               => $user->id,
+                'test_id'               => $test_id,
+                'uuid'                  => $code,
+                'result_id'             => $result_id,
+                'shared_link'           => $code,
+                'result_description'    => $result_description,
+                'test_from'             => $referal,
+                'lang'                  => $lang,
+                'ab_testing'            => $this->helper->getAB() // for A/B Testing
+            ];
+
+            /*
+
+            $ch = curl_init($url_thum);
+            $fp = fopen('uploads/'.$code.'.jpg', 'wb');
+            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_exec($ch);
+            curl_close($ch);
+            fclose($fp);
+
+            $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
+            $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
+
+            if(!empty($resultUrl['ObjectURL'])){
+                $data['img_url'] = "/uploads/$code.jpg";
+                $user_test = UserTest::create($data);
+            }else{
+                echo "Une erreur inattendue s'est produite, veuillez réessayer encore";
+                exit;
+            }
+            **/
+
+            $data['img_url'] = "/uploads/$code.jpg";
+            $data['url_thum_io'] = $url_thum_without_call_back;
+            $user_test = UserTest::create($data);
+
+        $result_url = $this->router->pathFor('resultat', [
+            'name'      => $this->helper->cleanUrl($test_name),
+            'code'      =>  $user_test->uuid
+        ]);
+
+        $title_url = $this->helper->getUrlTest($test_name, $test_id, $lang);
+        $result_url = $request->getUri()->getBaseUrl()."/chunkresult/".$this->helper->cleanUrl($title_url)."/".$user_test->uuid ;
 
         return $response->withStatus(302)->withHeader('Location', $result_url );
+    }
+
+    public function thumCallBack($request, $response, $arg)
+    {
+      $urlSuffix = $_GET['urlSuffix'];
+      $code = $arg['code'];
+      //$originalUrl = ;
+      $url_thum = "http://image.thum.io/get/auth/1922-Go".$urlSuffix;
+      $ch = curl_init($url_thum);
+      $fp = fopen('uploads/'.$code.'.jpg', 'wb');
+      curl_setopt($ch, CURLOPT_FILE, $fp);
+      curl_setopt($ch, CURLOPT_HEADER, 0);
+      curl_exec($ch);
+      curl_close($ch);
+      fclose($fp);
+
+      $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
+      $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
+
     }
 
     private function saveOrUpdate($id, $name, $lastname, $genre, $ip){

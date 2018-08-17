@@ -17,6 +17,7 @@ class UserTest extends Eloquent
         'result_id',
         'result_description',
         'img_url',
+        'url_thum_io',
         'test_from',
         'lang',
         'ab_testing'
