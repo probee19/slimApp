@@ -601,7 +601,10 @@ class StartController extends Controller
             $url .= $version;
 
             $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/prefetch/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl);
-            $res = $this->helper->curl_get_fields($url_thum, []);
+
+            if($this->helper->curl_get_fields($url_thum, []) != "Image is cached")
+              $res = $this->helper->curl_get_fields($url_thum, []);
+              
             $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
             //
 
