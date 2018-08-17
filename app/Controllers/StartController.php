@@ -284,6 +284,12 @@ class StartController extends Controller
                 $referal = 'direct';
                 if(isset($_SESSION['referal'])) $referal = $_SESSION['referal'];
 
+
+                if(isset($_GET['ab']))
+                  $ab_testing =$_GET['ab'];
+                else
+                  $ab_testing = $this->helper->getAB();
+                  
                 $data = [
                     'user_id'               => $user->id,
                     'test_id'               => $test_id,
@@ -298,10 +304,6 @@ class StartController extends Controller
 
 
 
-                if(isset($_GET['ab']))
-                  $ab_testing =$_GET['ab'];
-                else
-                  $ab_testing = $this->helper->getAB();
 
                 if($ab_testing == 'd'){
                   $callBackrUrl = $request->getUri()->getBaseUrl()."/thumcallback/".$code;
