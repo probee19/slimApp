@@ -661,8 +661,8 @@ class StartController extends Controller
     {
       $urlSuffix = $_GET['urlSuffix'];
       $code = $arg['code'];
-      //$originalUrl = ;
-      $url_thum = "http://image.thum.io/get/auth/1922-Go/width/800/crop/420/viewportWidth/800/".$urlSuffix;
+      $originalUrl = $_GET['originalUrl'];
+      $url_thum = "http://image.thum.io/get/auth/1922-Go/width/800/crop/420/viewportWidth/800/".$originalUrl;
       $ch = curl_init($url_thum);
       $fp = fopen('uploads/'.$code.'.jpg', 'wb');
       curl_setopt($ch, CURLOPT_FILE, $fp);
