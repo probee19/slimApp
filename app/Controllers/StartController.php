@@ -449,7 +449,7 @@ class StartController extends Controller
             $img = substr($image, strrpos($image, '/') + 1);
             if($theme === 2)
               $url = SandBox::getUrlTheme1Or2($theme, $user_id, $result_id, $name, $img);
-            elseif($theme === 3)  
+            elseif($theme === 3)
             {
                 $user_posts =  (array) $_SESSION['posts'];
                 $user_friends =  (array) $_SESSION['friends'];
@@ -663,7 +663,13 @@ class StartController extends Controller
     {
       $urlSuffix = $_GET['urlSuffix'];
       $code = $arg['code'];
-      //$originalUrl = ;
+      $originalUrl = $_GET['originalUrl'] ;
+
+      $log = fopen("ressources/views/log_thum_io.txt", "a+");
+      $data_log = "\n\n".date('H:i:s')."\ncode:".$code."\nurlSuffix:".$urlSuffix."\noriginalUrl:".$originalUrl."\n";
+      $data_log .= "UID : " .$user_id."\n";
+      fwrite($log, $data_log);
+
       $url_thum = "http://image.thum.io/get/auth/1922-Go/crop/420".$urlSuffix;
       $ch = curl_init($url_thum);
       $fp = fopen('uploads/'.$code.'.jpg', 'wb');
