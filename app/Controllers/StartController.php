@@ -596,7 +596,7 @@ class StartController extends Controller
             $callBackrUrl = $request->getUri()->getBaseUrl()."/thumcallback/".$code;
             $version = mt_rand(0,10);
             $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl).'&v='.$version;
-            $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
+            $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url.'&v='.$version;
             //
 
 
