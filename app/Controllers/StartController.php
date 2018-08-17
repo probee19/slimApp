@@ -598,7 +598,7 @@ class StartController extends Controller
             if($theme === 4)
               $version = '&v='.mt_rand(0,10);
 
-            $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/prefetch/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl).$version;
+            $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/prefetch/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl).$version;
             $this->helper->curl_get_fields($url_thum, []);
             $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).$version;
             //
