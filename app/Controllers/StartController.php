@@ -596,11 +596,11 @@ class StartController extends Controller
             $callBackrUrl = $request->getUri()->getBaseUrl()."/thumcallback/".$code;
 
 
-            $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/prefetch/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl);
+            //$url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/prefetch/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl);
 
-            $res = 'Ok on first call !';
-            if($this->helper->curl_get_fields($url_thum, []) != "Image is cached")
-              $res = $this->helper->curl_get_fields($url_thum, []);
+            //$res = 'Ok on first call !';
+            //if($this->helper->curl_get_fields($url_thum, []) != "Image is cached")
+              //$res = $this->helper->curl_get_fields($url_thum, []);
 
             $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
             //
@@ -647,7 +647,8 @@ class StartController extends Controller
             }
             **/
 
-            $data['img_url'] = "/uploads/$code.jpg";
+            //$data['img_url'] = "/uploads/$code.jpg";
+            $data['img_url'] = $url_thum_without_call_back;
             $data['url_thum_io'] = $url_thum_without_call_back;
             $user_test = UserTest::create($data);
 
