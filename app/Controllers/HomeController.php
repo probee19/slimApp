@@ -324,9 +324,9 @@ class HomeController extends Controller
                   $test = BotTests::on('reader')->where('uuid', "$code")->with('testInfo')->first();
                   $result_description = "<strong>N’oublie pas de PARTAGER ça maintenant avec tes amis et tes proches !</strong>";
               }
-              $img_url = $test->img_url;
-              //$img_url = $test->url_thum_io;
-              //
+              //$img_url = $test->img_url;
+              $img_url = $test->url_thum_io;
+              /*
               $ch = curl_init($test->url_thum_io);
               $fp = fopen('uploads/'.$code.'.jpg', 'wb');
               curl_setopt($ch, CURLOPT_FILE, $fp);
@@ -337,7 +337,7 @@ class HomeController extends Controller
 
               $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
               $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
-              //
+              **/
 
               if(isset($_GET['utm']) && !empty($_GET['utm']))
                   $helper->setUTM($_GET['utm'], "test", $test->testInfo->id_test);
