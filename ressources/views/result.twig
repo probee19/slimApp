@@ -7,7 +7,7 @@
      <meta property="og:site_name" content="Funizi.com" />
      <meta property="og:url" content="{{ domain_url }}/result/{{ titre_url }}/{{ code }}?ref=fb" >
      <meta property="og:description" content="{% if id_rubrique != 9 %}{{interface_ui.label_share_prefixe | capitalize}} :{% endif %} {{ titre_test }}" />
-     <meta property="og:image" content="{{ storage_base }}{{ img_url }}" />
+     <meta property="og:image" content="{% if ab_testing != 'd' %}{{ storage_base }}{% endif %}{{ img_url }}" />
      <meta property="og:image:width" content="800" />
      <meta property="og:image:height" content="420" />
      <meta property="og:image:type" content="image/jpeg" />
@@ -22,7 +22,6 @@
  </script>
 {% endblock %}
 {% block banner_mobile_top %}
-  {% if  ab_testing == 'a' %}{% include 'banners/banner_320x100_top_result_page.twig' %}{% endif %}
 {% endblock %}
 {% block content %}
     {% if not new %}
@@ -49,7 +48,7 @@
                          </div>
                         </div>
 
-                        <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:auto -30px; max-width: calc(100% + 60px);*/position: absolute; width: 100%; margin: 0;">
+                        <img src="{% if ab_testing != 'd' %}{{ storage_base }}{% endif %}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:auto -30px; max-width: calc(100% + 60px);*/position: absolute; width: 100%; margin: 0;">
                         <a href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link" onclick='partage("{{ code }}", "{{ lang }}", "img")' style="display: block; position: absolute; width: 100% ; height: 100%; cursor: pointer;" class="btn_to_track" data-btn="share-img"></a>
                         <div class="overlay-share">
                           <a class="overlay-btn-share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}"  onclick='partage("{{ code }}", "{{ lang }}", "overlay")'  >
@@ -81,11 +80,9 @@
 
                     {% if is_mobile() or is_tablet() %}
                         {% set banner = random(['banners/banner_320x50_middle_top_mobile.twig', 'banners/banner_300x250_middle_top_mobile.twig']) %}
-                        {% if  ab_testing == 'a' %}
                           <div class="row text-center" style="margin-top:0.5em;">
                               {% include banner %}
                           </div>
-                        {% endif %}
                     {% endif %}
 
                     <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center"
@@ -139,7 +136,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body text-center">
-                      <img src="{{ storage_base }}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:15px auto*/">
+                      <img src="{% if ab_testing != 'd' %}{{ storage_base }}{% endif %}{{ img_url }}" alt="" class="img-responsive" id="result_img" style="/*margin:15px auto*/">
                       <!--a href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" id="share_link_modal" onclick='partage("{{ code }}", "{{ lang }}", "modal_img")' style="display: block; position: absolute; width: calc(100% - 30px); height: 100%; top:0; left:15px; cursor: pointer;" class="btn_to_track" data-btn="share-modal-img"></a-->
                       <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ code }}", "{{ lang }}", "modal_bottom")' style="cursor:pointer;color:#fff "  data-btn="share-modal-bottom"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
                       {% if is_mobile() or is_tablet() %}
@@ -185,7 +182,6 @@
       	                </p>
                         <div class="row text-center" style="margin-top:1.5em">
                           {% for test in top_tests %}
-                              {% if  ab_testing == 'b' %}
                                 <div class="col-md-4 portfolio-item">
                                       <div class="border_gallery_responsive" data-test-id="{{test.id_test}}">
                                           <img class="img-responsive" src="{{ storage_base }}/images{{ test.url_image_test |trim('.', 'left') }}" alt="image du test" style="">
@@ -196,19 +192,6 @@
                                         <a href="{{ domain_url }}/test/{{test.titre_test | twig_title_url(test.id_test, lang)}}/{{test.id_test}}" class="rslt_link_test_b link_modal_test_b" ><span style="font-size:15px;font-weight: bolder;">{{ test.titre_test }}</span></a>
                                       </div>
                                 </div>
-                              {% else %}
-                                <div class="col-sm-6 col-md-4 portfolio-item">
-                                    <div class="border">
-                                        <img class="img-responsive" src="{{ storage_base }}/images{{ test.url_image_test |trim('.', 'left') }}" alt="image du test">
-                                        <span class="mobile-layer"></span>
-                                        <a href="{{ path_for('single', { 'id': test.id_test, 'name': test.titre_test | twig_title_url(test.id_test, lang) }) }}?utm=d_test" class="test__link link_modal_test_a" data-btn="btn-test"></a>
-                                        <h3 class="test-title">{{ test.titre_test }}</h3>
-                                        <div class="test__next"><a href="{{ path_for('single', { 'id': test.id_test, 'name': test.titre_test | twig_title_url(test.id_test, lang) }) }}?utm=d_test" class="btn btn-primary col-sm-8 col-sm-offset-2 link_modal_test_a" data-btn="btn-test" style="font-size: 12px;">{{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
-                                    </div>
-                                </div>
-                              {% endif %}
-
-
                           {% endfor %}
                         </div>
                       </div>
@@ -227,8 +210,6 @@
         {% if all_test %}
             {% for single_test in all_test %}
               {% if is_mobile() or is_tablet() %}
-
-                {% if  ab_testing == 'b' %}
                   <div class="col-md-6 portfolio-item">
                         <div class="border_gallery_responsive" data-test-id="{{single_test.id_test}}">
                             <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test" style="">
@@ -239,18 +220,6 @@
                           <a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" class="rslt_link_test_b link_discover_test_b" ><span style="font-size:15px;font-weight: bolder;">{{ single_test.titre_test }}</span></a>
                         </div>
                   </div>
-                {% else %}
-                  <div class="col-md-4 portfolio-item">
-                      <div class="border" data-test-id="{{single_test.id_test}}">
-                          <img class="img-responsive" src="{{ storage_base }}/images{{ single_test.url_image_test |trim('.', 'left') }}" alt="image du test">
-                          <span class="mobile-layer"></span>
-                        <a class="test__link btn_to_track rslt_link_test_a link_discover_test_a" href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" data-btn="btn-test"></a>
-                          <h3 class="test-title">{{ single_test.titre_test }}</h3>
-                        <div class="test__next"><a href="{{ domain_url }}/test/{{single_test.titre_test | twig_title_url(single_test.id_test, lang)}}/{{single_test.id_test}}" class="btn btn-primary col-sm-8 col-sm-offset-2 btn_to_track rslt_link_test_a link_discover_test_a"  data-btn="btn-test">
-                        {{interface_ui.btn_do_test}} <i class="fa fa-arrow-right"></i></a></div>
-                      </div>
-                  </div>
-                {% endif %}
 
                 {% set i = i+1 %}
                 {% if i is divisible by(3) %}
@@ -321,5 +290,5 @@
     </div>
     <!-- /Newsletter subscription section -->
 
-  <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top:1em; margin-bottom:2em"><a class="btn_go_home {% if  ab_testing == 'b' %}btn_go_home_b{% else %}btn_go_home_a{% endif %}" href="{{ path_for('accueil') }}?utm=all_test"  data-btn="btn-home"><i class="fa fa-home"></i>{{interface_ui.btn_home | capitalize}}</a></div>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top:1em; margin-bottom:2em"><a class="btn_go_home " href="{{ path_for('accueil') }}?utm=all_test"  data-btn="btn-home"><i class="fa fa-home"></i>{{interface_ui.btn_home | capitalize}}</a></div>
 {% endblock %}

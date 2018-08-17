@@ -78,18 +78,6 @@ class StartController extends Controller
             return $response->withStatus(302)->withHeader('Location', $result_url );
         }else{
 
-            /*
-              $test = Test::on('reader')->selectRaw('test_info.titre_test AS titre_test, test_info.test_description AS test_description, tests.has_treatment AS has_treatment, tests.unique_result AS unique_result, tests.if_additionnal_info AS if_additionnal_info, tests.id_theme AS id_theme, tests.id_test AS id_test')
-              ->join('test_info','test_info.id_test','tests.id_test')
-              ->Where([['tests.id_test', '=', $test_id],['test_info.lang','=',$lang]])->first();
-
-              $test_name = $test->titre_test;
-              $theme = $test->id_theme;
-              $result_description = $test->test_description;
-              $if_additionnal_info = $test->if_additionnal_info;
-              $has_treatment = $test->has_treatment;
-            */
-
             $tests_from_json = $this->helper->getAllTestJson($lang, true);
             $test  = $tests_from_json[$test_id];
 
@@ -100,20 +88,7 @@ class StartController extends Controller
             $has_treatment = $test['has_treatment'];
             $unique_result = $test['unique_result'];
 
-            //try{
-                //if($test->unique_result == 1) {
-                    //$user_test = UserTest::where([
-                        //['user_id', $user->id],
-                        //['test_ids', 0]
-                    //])->get();
-                //}else{
-                    //$user_test = UserTest::where([
-                        //['user_id', $user->id],
-                        //['test_id', $test_id]
-                    //])->firstOrFail();
-                //}
 
-            //}catch(\Exception $e){
               $filter = "";
                 if($genre == 'male' || $genre == 'homme'){
                     $filter = 'feminin';
@@ -146,8 +121,7 @@ class StartController extends Controller
                 $titre = $result->titre_resultat;
                 $image = $result->image_resultat;
                 $result_id = $result->id_resultat;
-                //$theme = 1;
-                //$this->saveOrUpdate($user_id, $name);
+
                 $img = substr($image, strrpos($image, '/') + 1);
                 if($theme === 2)
                   $url = SandBox::getUrlTheme1Or2($theme, $user_id, $result_id, $name, $img);
@@ -166,22 +140,10 @@ class StartController extends Controller
                     $best_friends =  $theme_perso_info->best_friends;
                     $args_for_grabzit =array('theme' => $theme, 'fb_id_user' => $user_id, 'user_name' => urlencode($name), 'nb_friends' => $nb_friends_fb );
 
-
-
-                    $url = '?user_gender='.$genre.'&fb_id_user='.$user_id.'&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
+                    $url = '?v='.mt_rand(0,20).'&user_gender='.$genre.'&fb_id_user='.$user_id.'&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
                     //
                     $url_img_profile = 'https://graph.facebook.com/'.$user_id.'/picture/?width=275&height=275';
-                    /*
-                    if(isset($_SESSION['url_pic_profile']))
-                      $url_img_profile = $_SESSION['url_pic_profile'];
-                    else{
-                      $url_img_profile = SandBox::getProfilePic($user_id, $_SESSION['fb_access_token']);
-                      $_SESSION['url_pic_profile'] = $url_img_profile;
-                    }
-                    */
 
-
-                    //$url_img_profile_user = '&url_img_profile_user='.urlencode('https://graph.facebook.com/'.$user_id.'/picture/?width=275&height=275');
                     $url_img_profile_user = '&url_img_profile_user='.urlencode($url_img_profile);
                     $additionnal_input_text = ''; $additionnal_input_country_cdm = '';
 
@@ -318,18 +280,6 @@ class StartController extends Controller
                 // Path of the saved image result
                 $filepath = "uploads/". $code . '.jpg';
 
-                //Grabzit Options
-                $options = new GrabzItImageOptions();
-                //$options->setWidth(600);
-                //$options->setHeight(315);
-                $options->setBrowserwidth(800);
-                $options->setBrowserHeight(420);
-                $options->setQuality(80);
-                $options->setFormat("jpg");
-                //Grab the image result here and save it
-
-                $generated = $this->grabzit->URLToImage($url, $options);
-                $save = $this->grabzit->SaveTo($filepath);
                 // Saving the test result of user
                 $referal = 'direct';
                 if(isset($_SESSION['referal'])) $referal = $_SESSION['referal'];
@@ -343,24 +293,47 @@ class StartController extends Controller
                     'result_description'    => $result_description,
                     'test_from'             => $referal,
                     'lang'                  => $lang,
-                    'ab_testing'            => $this->helper->getAB() // for A/B Testing
+                    'ab_testing'            => $ab_testing // for A/B Testing
                 ];
 
 
-                if($save){
-                    $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
-                    $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
-                }
 
-                if(!empty($resultUrl['ObjectURL'])){
-                    $data['img_url'] = "/uploads/$code.jpg";
-                    $user_test = UserTest::create($data);
-                }else{
-                    echo "Une erreur inattendue s'est produite, veuillez réessayer encore";
-                    exit;
-                }
-            //}
+                $ab_testing = $this->helper->getAB();
+                if($ab_testing == 'd'){
+                  $callBackrUrl = $request->getUri()->getBaseUrl()."/thumcallback/".$code;
+                  $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
+                  $data['img_url'] = $url_thum_without_call_back;
+                  $data['url_thum_io'] = $url_thum_without_call_back;
+                  $user_test = UserTest::create($data);
 
+                  $log = fopen("ressources/views/log_thum_io_2.txt", "a+");
+                  $data_log = "\n\n".date('H:i:s')."\ncode:".$code."\nurl:".$url_thum."\nurlWithoutCallBack:".$url_thum_without_call_back."\nResultat : ".$res."\n";
+                  fwrite($log, $data_log);
+                }
+                else {
+                  //Grabzit Options
+                  $options = new GrabzItImageOptions();
+                  $options->setBrowserwidth(800);
+                  $options->setBrowserHeight(420);
+                  $options->setQuality(80);
+                  $options->setFormat("jpg");
+                  //Grab the image result here and save it
+                  $generated = $this->grabzit->URLToImage($url, $options);
+                  $save = $this->grabzit->SaveTo($filepath);
+
+                  if($save){
+                      $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
+                      $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
+                  }
+
+                  if(!empty($resultUrl['ObjectURL'])){
+                      $data['img_url'] = "/uploads/$code.jpg";
+                      $user_test = UserTest::create($data);
+                  }else{
+                      echo "Une erreur inattendue s'est produite, veuillez réessayer encore";
+                      exit;
+                  }
+                }
 
             $result_url = $this->router->pathFor('resultat', [
                 'name'      => $this->helper->cleanUrl($test_name),

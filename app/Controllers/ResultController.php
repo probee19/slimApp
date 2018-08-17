@@ -67,8 +67,7 @@ class ResultController extends Controller
             $title_url = $this->helper->getUrlTest($titre_test, $test_id, $lang);
             $titre_url = $this->helper->cleanUrl($title_url);
             $url_redirect_share = "";
-            //$url_to_share = "";
-            //$url_to_share = urlencode("http://www.funizi.com/result/".$titre_url."/".$code."?ref=fb");
+
             $url_to_share = urlencode($request->getUri()->getBaseUrl()."/test/".$titre_url."/".$test_id."/ref/".$code."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_".date('Y-m-d')."&utm_content=test_".$test_id);
             $url_to_share_msg = urlencode($request->getUri()->getBaseUrl()."/test/".$titre_url."/".$test_id."/ref/".$code."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share".date('Y-m-d')."&utm_content=test_".$test_id);
             $url_to_share_wtsp = urlencode($this->helper->bitly_shorten($request->getUri()->getBaseUrl()."/test/".$titre_url."/".$test_id."/ref/".$code."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share".date('Y-m-d')."&utm_content=test_".$test_id));
@@ -88,19 +87,7 @@ class ResultController extends Controller
 
             $exclude = $this->helper->getTestsDone($test_id);
 
-            /*
-            if(!empty($_SESSION['uid'])){
-                $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
-                    ->with('usertests')->first();
-                if($testUser && count($testUser->usertests) > 0)
-                  foreach($testUser->usertests as $user)
-                      $exclude [] = $user->test_id;
-            }
-            **/
-
-
             $top_tests = $this->helper->getTestForModal($test_id, $lang, $exclude, $country_code, 3, $ab_testing);
-            //$top_tests = $this->helper->getLocalTests($country_code, $exclude, $lang, 3);
 
             if(count($top_tests) > 0)
             foreach ($top_tests as $top_test) {

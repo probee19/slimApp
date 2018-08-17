@@ -28,9 +28,20 @@ class TestController extends Controller
         $code = "";
         if(isset($args['code']))
             $code = $args['code'];
+
+        $code = "";
+        if(isset($args['code'])){
+          $code = $args['code'];
+          $user_test = UserTest::where('uuid', '=', "$code")->first();
+          if($user_test->img_url != $user_test->url_thum_io)
+            $img_url = $this->storage_base."/uploads/$code.jpg";
+          else
+            $img_url = $user_test->img_url;
+        }
+
         //$user_test = UserTest::where('uuid', '=', "$code")->first();
         //$img_url = $user_test->img_url;
-        $img_url = "/uploads/$code.jpg";
+        //$img_url = "/uploads/$code.jpg";
 
         $tests_from_json = $this->helper->getAllTestJson($lang, true);
         $test  = $tests_from_json[$id];
@@ -48,18 +59,6 @@ class TestController extends Controller
         $exclude = $this->helper->getTestsDone(0);
         $exclude[] = $id;
 
-        /*
-        $exclude = [$id];
-        if(!empty($_SESSION['uid'])){
-            //$sandbox->getRelatedTest( $request,31, $_SESSION['uid'], 9, 2);
-            $testUser = User::on('reader')->where('facebook_id', '=', $_SESSION['uid'])
-                ->with('usertests')->first();
-            if($testUser && count($testUser->usertests) > 0)
-                foreach($testUser->usertests as $user){
-                    $exclude [] = $user->test_id;
-                }
-        }
-        **/
 
         $all_test = $sandbox->relatedTests($id, $country_code, $exclude, $lang);
 
