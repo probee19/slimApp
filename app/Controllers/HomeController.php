@@ -324,8 +324,8 @@ class HomeController extends Controller
                   $test = BotTests::on('reader')->where('uuid', "$code")->with('testInfo')->first();
                   $result_description = "<strong>N’oublie pas de PARTAGER ça maintenant avec tes amis et tes proches !</strong>";
               }
-              //$img_url = $test->img_url;
-              $img_url = $test->url_thum_io;
+              $img_url = $test->img_url;
+              //$img_url = $test->url_thum_io;
               //
               $ch = curl_init($test->url_thum_io);
               $fp = fopen('uploads/'.$code.'.jpg', 'wb');
