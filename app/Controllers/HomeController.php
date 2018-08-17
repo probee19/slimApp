@@ -326,18 +326,6 @@ class HomeController extends Controller
               }
               //$img_url = $test->img_url;
               $img_url = $test->url_thum_io;
-              /*
-              $ch = curl_init($test->url_thum_io);
-              $fp = fopen('uploads/'.$code.'.jpg', 'wb');
-              curl_setopt($ch, CURLOPT_FILE, $fp);
-              curl_setopt($ch, CURLOPT_HEADER, 0);
-              curl_exec($ch);
-              curl_close($ch);
-              fclose($fp);
-
-              $filepath = "https://".$this->base_domain."/uploads/". $code . '.jpg';
-              $resultUrl = $this->helper->uploadToS3($filepath, 'uploads/');
-              **/
 
               if(isset($_GET['utm']) && !empty($_GET['utm']))
                   $helper->setUTM($_GET['utm'], "test", $test->testInfo->id_test);
