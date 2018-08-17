@@ -449,14 +449,14 @@ class StartController extends Controller
             $img = substr($image, strrpos($image, '/') + 1);
             if($theme === 2)
               $url = SandBox::getUrlTheme1Or2($theme, $user_id, $result_id, $name, $img);
-            elseif($theme === 3)
+            elseif($theme === 3) 
             {
                 $user_posts =  (array) $_SESSION['posts'];
                 $user_friends =  (array) $_SESSION['friends'];
                 $user_photos = (array) $_SESSION['photos'];
                 $url = SandBox::getUrlTheme3($theme, $user_id, $name, $user_posts, $user_friends, $user_photos);
             }
-            elseif($theme === 4 === 4){
+            elseif($theme === 4){
                 $theme_perso_info = ThemePerso::where([['id_test', $test_id],['lang','=',$lang]])->first();
 
                 $nb_friends_fb =  $theme_perso_info->nb_friends_fb;
