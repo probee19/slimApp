@@ -290,7 +290,12 @@ class HomeController extends Controller
       return $this->view->render($response, 'game.twig', compact( 'lang', 'url','id_user', 'all_test', 'interface_ui','lang','all_lang'));
 
     }
-
+    public function chunkData($request, $response, $args)
+    {
+      // code...
+      $helper->debug($_SESSION);
+      $helper->debug($_COOKIE);
+    }
     public function chunk($request, $response, $args){
 
               $url = $this->helper->detectLang($request, $response);
