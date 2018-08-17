@@ -456,7 +456,7 @@ class StartController extends Controller
                 $user_photos = (array) $_SESSION['photos'];
                 $url = SandBox::getUrlTheme3($theme, $user_id, $name, $user_posts, $user_friends, $user_photos);
             }
-            elseif($theme === 4){
+            elseif($theme === 4 === 4){
                 $theme_perso_info = ThemePerso::where([['id_test', $test_id],['lang','=',$lang]])->first();
 
                 $nb_friends_fb =  $theme_perso_info->nb_friends_fb;
@@ -594,10 +594,15 @@ class StartController extends Controller
 
             //
             $callBackrUrl = $request->getUri()->getBaseUrl()."/thumcallback/".$code;
-            $version = mt_rand(0,10);
-            $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/prefetch/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl).'&v='.$version;
+            $version = '';
+            if($theme === 4)
+              $version = '&v='.mt_rand(0,10);
+
+            $url .= $version;
+
+            $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/prefetch/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl);
             $this->helper->curl_get_fields($url_thum, []);
-            $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url.'&v='.$version;
+            $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
             //
 
 
