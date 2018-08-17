@@ -601,10 +601,13 @@ class StartController extends Controller
             $url .= $version;
 
             $url_thum = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/prefetch/width/800/crop/420/viewportWidth/800/?url='.urlencode($url).'&callbackUrl='.urlencode($callBackrUrl);
-            $this->helper->curl_get_fields($url_thum, []);
+            $res = $this->helper->curl_get_fields($url_thum, []);
             $url_thum_without_call_back = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
             //
 
+            $log = fopen("ressources/views/log_thum_io_2.txt", "a+");
+            $data_log = "\n\n".date('H:i:s')."\ncode:".$code."\nurl:".$url_thum."\nurlWithoutCallBack:".$url_thum_without_call_back."\nResultat : ".$res."\n";
+            fwrite($log, $data_log);
 
             // Saving the test result of user
             $referal = 'direct';
