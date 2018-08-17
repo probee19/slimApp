@@ -1480,9 +1480,10 @@ class Helper
         $last_users_test = UserTest::on('reader')->orderBy('id','DESC')->first();
         if($last_users_test->ab_testing == 'c')
           $_SESSION['ab_testing'] = 'd';
-        else 
+        else
           $_SESSION['ab_testing'] = 'c';
       }
+      $_SESSION['ab_testing'] = 'c';
       return $_SESSION['ab_testing'];
     }
 }
