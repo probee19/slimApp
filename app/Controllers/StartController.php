@@ -449,7 +449,7 @@ class StartController extends Controller
             $img = substr($image, strrpos($image, '/') + 1);
             if($theme === 2)
               $url = SandBox::getUrlTheme1Or2($theme, $user_id, $result_id, $name, $img);
-            elseif($theme === 3) 
+            elseif($theme === 3)  
             {
                 $user_posts =  (array) $_SESSION['posts'];
                 $user_friends =  (array) $_SESSION['friends'];
