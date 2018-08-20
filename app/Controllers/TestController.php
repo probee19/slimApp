@@ -175,26 +175,9 @@ class TestController extends Controller
         $all_lang = $this->helper->getActivatedLanguages();
 
 
-        $name = "Lucien";
-        $full_name = '...';
-        $nb_friends_fb = 0;
-        $url = '?v='.mt_rand(1,30).'&user_gender=male&fb_id_user=101647973947108&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
-        //
-        $url_img_profile = 'https://funizi.com/src/img/default_profile.jpg';
+        $img_preview = $this->helper->getImgPreview($request, $id);
 
-        $additionnal_input_text = '...';
-        $additionnal_input_country_cdm = '&cc=fra&cn=France';
-
-        $url_img_profile_user = '&url_img_profile_user='.urlencode($url_img_profile);
-        $additionnal_input_text = '&additionnal_input_text='.urlencode($additionnal_input_text);
-        $url .= $url_img_profile_user . $additionnal_input_text . $additionnal_input_country_cdm;
-
-        $url = SandBox::getUrlTestPerso($id ,$url, $lang);
-        $url = $request->getUri()->getBaseUrl().$url;
-
-        $img_preview = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
-
-        $this->helper->debug($url);
+        //$this->helper->debug($url);
         $this->helper->debug($img_preview);
 
 
