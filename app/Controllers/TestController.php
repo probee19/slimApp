@@ -183,14 +183,16 @@ class TestController extends Controller
         $url_img_profile = 'https://funizi.com/src/img/default_profile.jpg';
 
         $additionnal_input_text = '...';
-        $additionnal_input_country_cdm = 'fra';
+        $additionnal_input_country_cdm = '&cc=fra&cn=France';
+
         $url_img_profile_user = '&url_img_profile_user='.urlencode($url_img_profile);
+        $additionnal_input_text = '&additionnal_input_text='.urlencode($additionnal_input_text);
         $url .= $url_img_profile_user . $additionnal_input_text . $additionnal_input_country_cdm;
 
         $url = SandBox::getUrlTestPerso($id ,$url, $lang);
         $url = $request->getUri()->getBaseUrl().$url;
 
-        $img_preview = 'http://image.thum.io/get/auth/1922-Go/allowJPG/width/800/crop/420/viewportWidth/800/'.$url;
+        $img_preview = 'http://image.thum.io/get/auth/1922-Go/allowJPG/noanimate/width/800/crop/420/viewportWidth/800/'.$url;
 
         $this->helper->debug($url);
         $this->helper->debug($img_preview);
