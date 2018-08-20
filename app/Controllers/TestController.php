@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use App\Helpers\RandomStringGenerator;
 use App\Helpers\Helper;
+use App\Helpers\SandBox;
 use App\Models\Test;
 use App\Models\User;
 use App\Models\UserTest;
@@ -148,6 +149,7 @@ class TestController extends Controller
           "permission"  => $permission
         ];
 
+
         $state = json_encode($state);
         $pdata->set('state', $state);
 
@@ -171,7 +173,30 @@ class TestController extends Controller
           $ab_testing = $this->helper->getAB();
 
         $all_lang = $this->helper->getActivatedLanguages();
-        return $this->view->render($response, 'chunksingle.twig', compact('no_ads','ab_testing', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
+
+
+        $name = "...";
+        $full_name = '...';
+        $nb_friends_fb = 0;
+        $url = '?v='.mt_rand(1,30).'&user_gender=male&fb_id_user=0&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
+        //
+        $url_img_profile = 'https://funizi.com/src/img/default_profile.jpg';
+
+        $additionnal_input_text = '...';
+        $additionnal_input_country_cdm = 'fra';
+        $url_img_profile_user = '&url_img_profile_user='.urlencode($url_img_profile);
+        $url .= $url_img_profile_user . $additionnal_input_text . $additionnal_input_country_cdm;
+
+        $url = SandBox::getUrlTestPerso($id ,$url, $lang);
+        $url = $request->getUri()->getBaseUrl().$url;
+
+        $img_preview = 'http://image.thum.io/get/auth/1922-Go/allowJPG/width/800/crop/420/viewportWidth/800/'.$url;
+
+        $this->helper->debug($url);
+        $this->helper->debug($img_preview);
+
+
+        return $this->view->render($response, 'chunksingle.twig', compact('img_preview','no_ads','ab_testing', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
         }
 
 }
