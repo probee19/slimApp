@@ -100,10 +100,12 @@
                   </div>
 
                 </div>
+              {% if test.id_theme == 4 %}
                 <div class="text-center col-xs-12">
                   <h3 class="label_preview text-center" style="margin-bottom: 1.7em;">{{ interface_ui.label_preview_result }}</h3>
                   <img src="{{ img_preview }}" alt="" class="img-responsive" id="preview_img" style=" width: 100%; margin: 0;">
                 </div>
+              {% endif %}
             </div>
 
             <div id="div_loader" class="col-xs-12 col-sm-10 col-sm-offset-1" style="display:none; margin-top:30px;">

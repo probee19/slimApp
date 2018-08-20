@@ -173,9 +173,9 @@ class TestController extends Controller
           $ab_testing = $this->helper->getAB();
 
         $all_lang = $this->helper->getActivatedLanguages();
-
-
-        $img_preview = $this->helper->getImgPreview($request, $id);
+        
+        if($test['id_theme'] == 4)
+          $img_preview = $this->helper->getImgPreview($request, $id);
 
         //$this->helper->debug($url);
         $this->helper->debug($img_preview);
