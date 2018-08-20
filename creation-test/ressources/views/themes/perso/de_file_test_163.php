@@ -26,9 +26,9 @@
 #background{position:absolute; z-index:1; left:0; top:0;  max-width:800px; max-height:420px; }
 .titre{position:absolute;  z-index:2; top: 0; left: 0;width:100%; padding-top:10px; padding-bottom:10px; text-align:center; font-size:30px; color: #000;font-family: 'Lobster', cursive; }
 #fb_id_user{position: absolute; z-index:1; left: 60px; top: 100px; width:200px ; border-radius:100px; border:4px solid #000; max-width:800px; max-height:420px; box-shadow: 0px 0px 55px #000;}
-#name_friend_1{position:absolute; z-index:2; right: 0px; top: 140px; left:220px; font-size:60px; line-height:120px; color:#000;font-family: 'Lobster', cursive;  text-align:center; width:580px; height:120px; font-weight:400px} 
+#name_friend_1{position:absolute; z-index:2; right: 0px; top: 140px; left:220px; font-size:80px; line-height:120px; color:#000;font-family: 'Lobster', cursive;  text-align:center; width:580px; height:120px; font-weight:400px} 
               </style>
-              <script src='../../../src/js/jquery.js'></script>
+              <script src='https://code.jquery.com/jquery-1.12.0.min.js'></script>
               <script>
                   $(document).ready(function(){
                 var autoSizeText;
@@ -67,10 +67,14 @@
           <body style='width: 800px; height:420px; margin:0; padding:0; overflow: hidden;'>
           <div class='main'>
       
+<?php
+          $lettres = array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','V','W');
+          shuffle($lettres);
+?>
 <img src="http://creation.funizi.com/images-theme-perso/1508682267.jpg" id="background">
-<div id="titre" class="titre">Der Name, der dein Leben verändert hat:</div>
-<img src="<?php echo urldecode($_GET['url_img_profile_user']); ?>" class="img_profile" id="fb_id_user">
-<div class="name texte" id="name_friend_1" ><?php echo urldecode($_GET['friend_first_name_1']); ?></div>
+<div id="titre" class="titre">Der Name, der dein Leben verändert hat, beginnt mit:</div>
+<img src="https://graph.facebook.com/<?php echo $_GET['fb_id_user']; ?>/picture/?width=275&height=275" class="img_profile" id="fb_id_user">
+<div class="name texte" id="name_friend_1" ><?=$lettres[0]; ?>...</div>
 
 
         </div>
