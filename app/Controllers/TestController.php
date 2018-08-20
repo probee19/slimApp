@@ -94,7 +94,12 @@ class TestController extends Controller
           $ab_testing = $this->helper->getAB();
 
         $all_lang = $this->helper->getActivatedLanguages();
-        return $this->view->render($response, 'single.twig', compact('no_ads','ab_testing', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
+
+        if($ab_testing == "b")
+          if($test['id_theme'] == 4)
+            $img_preview = $this->helper->getImgPreview($request, $lang, $id);
+
+        return $this->view->render($response, 'single.twig', compact('img_preview', 'no_ads','ab_testing', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
         }
 
     public function indexChunk($request, $response, $args){
