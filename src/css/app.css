@@ -359,6 +359,9 @@ a:hover{
 .t__title {
     font-size: 3rem;
 }
+.label_preview{
+  font-size: 1.5rem;
+}
 .navbar-inverse {
     background-color: #1C304F;
     border-color: #15243c;
@@ -476,6 +479,9 @@ a:hover{
     }
     .t__title {
         font-size: 2rem;
+    }
+    .label_preview{
+      font-size: 1rem;
     }
     .info-test {
         font-size:1.1rem;
