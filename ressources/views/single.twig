@@ -69,7 +69,7 @@
             </div>
         {% endif %}
         <div class="col-sm-12" style="margin-bottom:2em;">
-            <div  id="div_test" class="col-xs-12 col-sm-10 col-sm-offset-1 back_layer">
+          <div  id="div_test" class="col-xs-12  {% if ab_testing == 'a' %}back_layer {% else %}back_layer_yellow{% endif %}">
                 <h1 class="t__title text-center">{{ test.titre_test }}</h1>
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12" style=" margin-top: 1em;">
 
@@ -101,7 +101,7 @@
 
                 </div>
                 {% if ab_testing == 'b' and test.id_theme == 4 %}
-                  <div class="text-center col-xs-12">
+                  <div class="text-center col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                     <h3 class="label_preview text-center" style="margin-top: 0; margin-bottom: 1.7em; ">{{ interface_ui.label_preview_result }}</h3>
                     <img src="{{ img_preview }}" alt="" class="img-responsive" id="preview_img" style=" width: 100%; margin: 0;">
                   </div>
