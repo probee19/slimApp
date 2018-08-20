@@ -590,10 +590,12 @@ class Helper
       $alltests= []; $besttests= []; $new_tests = []; $tests_with_add_info = [];
 
       $related_tests = array(); $alltests_total = array();
-      $related_tests = self::getRelatedTest($id, $countryCode, $exclude, $lang);
-      if(count($related_tests) >= 1)
-        foreach ($related_tests as $test)
-          $exclude[] = $test['id_test'];
+      if($id != 0){
+        $related_tests = self::getRelatedTest($id, $countryCode, $exclude, $lang);
+        if(count($related_tests) >= 1)
+          foreach ($related_tests as $test)
+            $exclude[] = $test['id_test'];
+      }
 
       if(in_array($countryCode, ['SN','CI','FR','CD','BE','CM'], true)){
         $choosen_some_tests = array();

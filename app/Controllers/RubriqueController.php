@@ -128,4 +128,32 @@ class RubriqueController extends Controller
 
         return $this->view->render($response, 'rubrique.twig', compact('lang','ab_testing', 'tests', 'rubrique', 'rubrique_name', 'pagecount', 'pageid', 'mode','interface_ui','all_lang'));
     }
+
+    public function discover($request, $response, $arg)
+    {
+      $url = $this->helper->detectLang($request, $response);
+      if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
+
+      $sandbox = new Helper();
+      $lang = $this->helper->getLangSubdomain($request);
+      $interface_ui = $this->helper->getUiLabels($lang);
+      $baseDomain = "https://" . $lang . ".".$this->base_domain;
+      $id = 0;
+
+      $country_code = $sandbox->getCountryCode();
+
+      $exclude = $this->helper->getTestsDone(0);
+
+      $tests = $this->helper->relatedTests($id, $country_code, $exclude, $lang, 39);
+
+      $all_lang = $this->helper->getActivatedLanguages();
+      $interface_ui = $this->helper->getUiLabels($lang);
+
+      if(isset($_GET['ab']))
+        $ab_testing =$_GET['ab'];
+      else
+        $ab_testing = $this->helper->getAB();
+
+      return $this->view->render($response, 'discover.twig', compact('lang','ab_testing', 'tests','interface_ui','all_lang'));
+    }
 }
