@@ -95,7 +95,7 @@ class NotificationPushController extends Controller
     // Get subscribers to send campaign
 
     if($_POST['mode_admin'] == 1){
-      if($_POST['test'] != 0)
+      if($_POST['test'] != 0 && $_POST['test'] != -1)
         $url = 'https://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'];
       elseif($_POST['test'] == 0)
         $url = 'https://fr.funizi.com/games?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=game';
@@ -170,7 +170,7 @@ class NotificationPushController extends Controller
           'updated_at'    =>  \date("Y-m-d H:i:s")
         ]);
       }
-      if($_POST['test'] != 0)
+      if($_POST['test'] != 0 && $_POST['test'] != -1)
         $new_url = 'http://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'_'.$notif.'&utm_content=test_'.$_POST['test'];
       elseif($_POST['test'] == 0)
         $new_url = 'https://fr.funizi.com/games?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=game';
@@ -203,7 +203,7 @@ class NotificationPushController extends Controller
 
   public function sendCampaign($request, $response, $arg)
   {
-    if($_POST['test'] != 0)
+    if($_POST['test'] != 0 && $_POST['test'] != -1)
       $url = 'http://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=test_'.$_POST['test'];
     elseif($_POST['test'] == 0)
       $url = 'https://fr.funizi.com/games?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=game';
@@ -283,13 +283,12 @@ class NotificationPushController extends Controller
         'updated_at'    =>  \date("Y-m-d H:i:s")
       ]);
     }
-    if($_POST['test'] != 0)
+    if($_POST['test'] != 0 && $_POST['test'] != -1)
       $new_url = 'http://fr.funizi.com/test/'.Helper::cleanUrl($_POST['title']).'/'.$_POST['test'].'?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'_'.$notif.'&utm_content=test_'.$_POST['test'];
     elseif($_POST['test'] == 0)
       $new_url = 'https://fr.funizi.com/games?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=game';
     elseif($_POST['test'] == -1)
       $new_url = 'https://fr.funizi.com/discover?utm_source=notification&utm_medium=push&utm_campaign=funizi_push_notifitication_'.date("Y-m-d").'&utm_content=discover_page';
-
 
     NotificationCampaigns::where('id','=',$notif)->update(['url'=>$new_url]);
 
@@ -303,7 +302,6 @@ class NotificationPushController extends Controller
     $result = curl_exec($ch );
     curl_close( $ch );
 
-
     $stats = json_decode($result, true);
     $data_result = [
       'id_campaign'   => $notif,
@@ -311,7 +309,6 @@ class NotificationPushController extends Controller
       'failure'       => $stats['failure'],
     ];
     return json_encode($data_result);
-
   }
 
 
@@ -326,9 +323,7 @@ class NotificationPushController extends Controller
       ];
       Helper::debug($data_update);
 
-
       NotificationCampaigns::where('id','=',$stats['id_campaign'])->update($data_update);
-
   }
 
 
