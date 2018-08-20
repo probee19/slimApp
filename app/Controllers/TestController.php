@@ -175,10 +175,10 @@ class TestController extends Controller
         $all_lang = $this->helper->getActivatedLanguages();
 
 
-        $name = "...";
+        $name = "Lucien";
         $full_name = '...';
         $nb_friends_fb = 0;
-        $url = '?v='.mt_rand(1,30).'&user_gender=male&fb_id_user=0&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
+        $url = '?v='.mt_rand(1,30).'&user_gender=male&fb_id_user=101647973947108&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
         //
         $url_img_profile = 'https://funizi.com/src/img/default_profile.jpg';
 
