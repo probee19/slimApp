@@ -1476,7 +1476,7 @@ class Helper
        return $result;
     }
 
-    public function getImgPreview($request, $id, $theme)
+    public function getImgPreview($request, $lang, $id, $theme = 4)
     {
         $img_preview = "";
         if($theme == 4){
