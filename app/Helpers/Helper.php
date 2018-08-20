@@ -1485,7 +1485,7 @@ class Helper
             $name = "Lucien";
           $full_name = '...';
           $nb_friends_fb = 0;
-          $url = '?v=1&user_gender=male&fb_id_user=101647973947108&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
+          $url = '?v=2&user_gender=male&fb_id_user=101647973947108&user_name='.urlencode($name).'&full_user_name='.urlencode($full_name).'&nb_friends='.$nb_friends_fb;
           //
           $url_img_profile = 'https://funizi.com/src/img/default_profile.jpg';
 

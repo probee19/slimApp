@@ -33,11 +33,14 @@ class TestController extends Controller
         $code = "";
         if(isset($args['code'])){
           $code = $args['code'];
+          /*
           $user_test = UserTest::where('uuid', '=', "$code")->first();
           if($user_test->img_url != $user_test->url_thum_io)
             $img_url = $this->storage_base."/uploads/$code.jpg";
           else
             $img_url = $user_test->img_url;
+          **/
+          $img_url = $this->storage_base."/uploads/$code.jpg";
         }
 
         //$user_test = UserTest::where('uuid', '=', "$code")->first();
