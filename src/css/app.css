@@ -472,7 +472,7 @@ a:hover{
         height:50px;
     }
     .back_layer {
-        padding:0 9px;
+        padding:0 9px 9px;
         text-align: center;
         margin: 0 -15px;
         width: calc(100% + 30px);
