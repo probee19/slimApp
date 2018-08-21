@@ -1129,7 +1129,6 @@ class Helper
        // converts json data into array
        $arr_data = json_decode($jsondata);
        $allstories = array();
-       self::debug($arr_data);
        foreach ($arr_data as $story)
          if($get_all == false )
            if($story->statut == 1)

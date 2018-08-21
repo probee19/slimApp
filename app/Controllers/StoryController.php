@@ -117,10 +117,7 @@ class StoryController extends Controller
 
       //$all_stories = Story::where([['id_story', '=', $id],['default_lang','=',$lang]])->first();
       $all_stories = $this->helper->getAllStoriesJson($lang);
-      $this->helper->debug($all_stories);
       $story  = $all_stories[$id];
-      $this->helper->debug($story);
-
 
       $exclude = [];
       if(!empty($_COOKIE['uid'])){
