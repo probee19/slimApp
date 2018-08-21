@@ -274,7 +274,7 @@ class JsonController extends Controller
   public function setPlayBuzzJSON($request, $response, $arg){
     $langs = Language::where([['status','=','1'],['translated','=','1']])->get();
     foreach ($langs as $lang) {
-      $citations_col = PlayBuzz::where('default_lang', '=',$lang->code)->get();
+      $playbuzz_col = PlayBuzz::where('default_lang', '=',$lang->code)->get();
       $all_playbuzz = [];
       foreach ($playbuzz_col as $playbuzz) {
         if($playbuzz->statut == 1)
@@ -294,7 +294,7 @@ class JsonController extends Controller
 
       $filepath = "../ressources/views/json_files/all_playbuzz/".$lang->code."_all_playbuzz.json";
       $json = fopen($filepath, "w+");
-      fputs($json, $all_quotes);
+      fputs($json, $all_playbuzz);
       $this->helper->uploadToS3($filepath, 'json_files/all_playbuzz/');
     }
   }
