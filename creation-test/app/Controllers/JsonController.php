@@ -21,7 +21,7 @@ use App\Models\Share;
 use App\Models\Highlights;
 use App\Models\InterfaceUi;
 use App\Models\InterfaceUiTranslations;
-use App\Models\story;
+use App\Models\Story;
 use Psr7Middlewares\Middleware\ClientIp;
 use GrabzItImageOptions;
 
