@@ -299,6 +299,76 @@ $(document).ready(function(){
             return false;
         }
     });
+
+    $( "#ajout_playbuzz_form" ).validate( {
+        ignore: "not:hidden",
+        rules: {
+            titre: "required",
+            rubrique: "required",
+        },
+        messages: {
+            titre: "Le titre du contenu est manquant",
+            rubrique: "Veulliez choisir une rubrique pour le contenu"
+        },
+        errorElement: "em",
+        errorPlacement: function ( error, element ) {
+            // Ajout de la classe help-block pour les érreurs
+            error.addClass( "help-block" );
+            if ( element.prop( "type" ) === "checkbox" ) {
+                error.insertAfter( element.parent( "label" ) );
+            } else {
+                error.insertAfter( element );
+            }
+        },
+        highlight: function ( element, errorClass, validClass ) {
+            $( element ).parents( ".form-group" ).addClass( "has-error" ).removeClass( "has-success" );
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $( element ).parents( ".form-group" ).addClass( "has-success" ).removeClass( "has-error" );
+        },
+        submitHandler: function(e) {
+
+            //e.preventDefault(); // Le navigateur ne peut pas envoyer le formulaire
+            var ajaxData = new FormData();
+
+            // Ajout des autres données dans ajaxData
+            var other_data = $('form').serializeArray();
+            $.each(other_data,function(key,input){
+                ajaxData.append(input.name,input.value);
+            });
+            //saveCitation(data);
+
+            var codePHPHTML = editorHTML.getSession().getValue();
+
+
+            ajaxData.append('codePHPHTML', codePHPHTML);
+            $.ajax({
+                url: "save",
+                type: "POST",
+                data : ajaxData,
+                processData: false,
+                contentType: false,
+                beforeSend: function(){
+                    // Bouton désactivé en attendant le traitement
+                    $('#btn_save_citation').prop( "disabled", true ).html("Traitement en cours...").css("color","#000");
+                    $('#btn_cancel').prop( "disabled", true );
+                    $("html, body").animate({ scrollTop: 0 }, 600);
+                    loadingProgress ('0%', 'Création de la citation en cours...');
+                }
+                }).done(function( data ) {
+                    // Bouton réactivé, formulaire réinitialisé
+                    console.log(data);
+                    setTimeout(function(){
+                      loadingProgress ('100%', 'Citation enrégistrée avec succès.');
+                      $(".alert-success").fadeIn("slow");
+                    },2000);
+
+                    $("html, body").animate({ scrollTop: 0 }, 600);
+                    setTimeout(function(){ window.location = "https://creation.funizi.com/citations"; }, 4000);
+                });
+            return false;
+        }
+    });
     // Fin validation
 
 });

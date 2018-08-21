@@ -19,6 +19,11 @@ $app->get('/test/load/stats', 'LoadStatsController:loadStatDetail');
 $app->get('/citations/new', 'CreateCitationController:createCitation');
 $app->get('/citations/{citation}/edit', 'CreateCitationController:editCitation');
 
+
+$app->get('/playbuzz/new', 'CreateTestController:createPlayBuzz');
+$app->get('/playbuzz/{playbuzz}/edit', 'CreateTestController:editPlayBuzz');
+
+
 $app->get('/load/loadstatforthisrange', 'LoadStatsController:loadstatforthisrange');
 $app->get('/load/loadTopTests', 'LoadStatsController:loadTopTests');
 $app->get('/load/loadStatsForSomeTests', 'LoadStatsController:loadStatsForSomeTests');
@@ -84,6 +89,13 @@ $app->post('/citations/{citation}/action/executephp', 'ActionTestController:Exec
 $app->post('/citations/action/uploadImageThemePerso', 'ActionTestController:uploadImageThemePerso');
 $app->post('/citations/{citation}/action/uploadImageThemePerso', 'ActionTestController:uploadImageThemePerso');
 $app->post('/citations/{citation}/action/loadInfoCitation', 'ActionTestController:loadInfoCitation');
+
+
+$app->post('/playbuzz/save', 'CreateTestController:addPlaybuzz');
+$app->post('/playbuzz/edit/save', 'CreateTestController:updatePlaybuzz');
+$app->post('/playbuzz/{citation}/edit/save', 'CreateTestController:updatePlaybuzz');
+$app->post('/playbuzz/action/executephp', 'ActionTestController:ExecutePhpForPreviewTest');
+
 
 $app->post('/config/lang/update', 'LangController:updateLangConfig');
 $app->post('/config/lang/translations/update', 'LangController:updateTranslations');

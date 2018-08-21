@@ -19,6 +19,7 @@ use App\Models\Language;
 use App\Models\ThemePerso;
 use App\Models\AdditionnalInfos;
 use App\Models\TestAdditionnalInfos;
+use App\Models\PlayBuzz;
 use Psr7Middlewares\Middleware\ClientIp;
 use GrabzItImageOptions;
 
@@ -542,5 +543,62 @@ class CreateTestController extends Controller
 
   }
 
+
+  public function createPlayBuzz($request, $response, $arg)
+  {
+    if(!isset($_COOKIE['id_user']) || $_COOKIE['id_user'] == NULL){
+      return $response->withStatus(302)->withHeader('Location', "http://creation.funizi.com" );
+    }
+    $theme = $arg['theme'];
+    $rubriques = Rubrique::all();
+
+    $countries = Countries::all();
+    $langs = Language::selectRaw('code, name, fr_name')->where('status',1)->orderByRaw('fr_name')->get();
+
+    return $this->view->render($response, 'createPlaybuzz.twig', compact('theme', 'rubriques', 'countries', 'langs'));
+
+  }
+
+  public function addPlayBuzz($request, $response, $arg){
+    $test_owner = $_COOKIE['id_user'];
+    $id_theme = $_POST['theme'];
+    $titre = ' ';
+    $statut = 0; $save_done = true;
+    $error_message = ''; $target_dir = './images-tests/'; $target_file = ""; $end = false;
+    $localite = ""; $id_test = 0;
+    // Enregitrement des informations générales du test
+    $name = 'test_'.$test_owner.str_replace(' ','_',time().'_'.$_POST['rubrique'].'.jpeg');
+    $uploadPath = $target_dir. $name;
+
+    if(self::decode($_POST['img_playbuzz'], $uploadPath)){
+      $this->helper->uploadToS3($uploadPath, 'images/images-playbuzz/');
+      // Récuperation de la liste des zones sélectionnées pour le test
+      if(isset($_POST['localite'])){
+        foreach ($_POST['localite'] as $code_localite) {
+          $localite .= " ".$code_localite;
+        }
+      }
+      else
+        $localite = "";
+
+      $data = [
+        "id_rubrique"         =>  $_POST['rubrique'],
+        "titre"               =>  $_POST['titre'],
+        'code'                =>  $_POST['codePHPHTML'],
+        "url_image"           =>  $uploadPath,
+        "statut"              =>  $statut,
+        "default_lang"        =>  $_POST['default_lang'],
+        "codes_countries"     =>  $localite,
+        "created_at"          =>  \date("Y-m-d H:i:s"), # \Datetime()
+        "updated_at"          =>  \date("Y-m-d H:i:s")  # \Datetime()
+      ];
+
+      // Sauvegarde des informations générales du test (titre, rubrique, image, zones sélectionnées)
+      $id_playbuzz = PlayBuzz::insertGetId($data);
+      //if($id_playbuzz)
+        //  Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonalltests",[]);
+    }
+
+  }
 
 }

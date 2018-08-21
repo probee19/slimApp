@@ -14,6 +14,7 @@ use App\Controllers\RubriqueController;
 use App\Controllers\NotificationPushController;
 use App\Controllers\AdditionnalInfoController;
 use App\Controllers\CitationsController;
+use App\Controllers\PlayBuzzController;
 
 use App\Helpers\Helper;
 use Bes\Twig\Extension\MobileDetectExtension;
@@ -81,6 +82,7 @@ $config = [
     ],
     'test_per_page'     =>  15,
     'citation_per_page' =>  12,
+    'playbuzz_per_page' =>  12,
     'storage_base'      =>  "https://funiziuploads.s3.us-east-2.amazonaws.com",
     'default_lang'      =>  "en",
 ];
@@ -226,6 +228,9 @@ $container['DevtestController'] = function ($container) {
 };
 $container['CitationsController'] = function ($container) {
     return new CitationsController($container);
+};
+$container['PlayBuzzController'] = function ($container) {
+    return new PlayBuzzController($container);
 };
 $container['grabzit'] = function ($container) {
     return new GrabzItClient(GZIT_KEY, GZIT_SECRET);

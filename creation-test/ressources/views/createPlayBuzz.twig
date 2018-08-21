@@ -1,0 +1,205 @@
+{% extends 'templates/layoutCreationTest.twig' %}
+{% block title %} Créer un contenu Playbuzz {% endblock %}
+{% block additionalstyle %}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+  <style>
+      #theme-perso{position: relative; width: 804px; height: 424px; overflow:hidden;}
+      #theme-perso img{position:absolute; max-height:420px; max-width:800px; }
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+{% endblock %}
+
+
+{%block content%}
+<header class="row">
+    <div class=" col-lg-12 col-md-12">
+        <h4 style="text-align:center">Créer une nouvelle citation</h4>
+    </div>
+</header>
+
+<div class="row">
+    <div class="col-lg-offset-2 col-lg-8 col-md-offset-2 col-md-8">
+       <div class="alert alert-success alert-dismissable " style="display:none;">
+         <button type="button" class="close" data-dismiss="alert">&times;</button>
+         Votre contenu Playbuzz a été enregistré avec succès !
+       </div>
+     </div>
+    </div>
+
+
+      <form class="col-lg-12 " id="ajout_playbuzz_form" name="ajout_citation_form" enctype="multipart/form-data">
+        <!-- Informations générales sur le test  -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">1. Entrer les informations générales du contenu</h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <section class="col-sm-6">
+                <legend>Tous les champs sont requis</legend>
+                <div class="form-group ">
+                  <label class="control-label" for="titre">Titre:</label>
+                  <input type="text" id="titre" name="titre" value="" placeholder="Veuillez entrer un titre sympa pour votre citation!" class="form-control">
+                </div>
+                <div class="form-group">
+                  	<label class="control-label" for="rubrique">Rubrique :</label>
+                  	<select type="text" id="rubrique" name="rubrique" value="" class="form-control">
+                      {% for rubrique in rubriques %}
+                        <option value="{{rubrique.id_rubrique}}">{{rubrique.titre_rubrique}}</option>
+                      {% endfor %}
+					          </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="langs">Langue :</label>
+                    <select class="select-langs form-control" id="default_lang" name="default_lang" >
+                        {% for lang in langs %}
+                          <option value="{{lang.code}}"  {% if lang.code == 'fr' %}selected{% endif %}> {{lang.name}} ({{lang.fr_name}})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="localtite">Localité :</label>
+                    <select class="select-pays form-control" multiple="multiple" id="localite" name="localite[]">
+                        {% for country in countries %}
+                          <option value="{{country.alpha2}}"> {{country.alpha2}} - {{country.langFR}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+              </section>
+
+              <section class="col-sm-6">
+                  <div class="form-group nopaddingleft col-lg-12 col-md-12 col-sm-12 col-xs-12 img-resulat">
+                      <div class="col-lg-12 nopaddingleft">
+                          <label class="control-label" for="titre">Image du test :</label>
+                      </div>
+                      <div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 nopaddingleft">
+                          <img src="{{ domain_url }}/src/img//preview.jpg" id="img_resultat_preview_1" name="img_resultat_preview_1" class="img_resulat " data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor(1);"/>
+                          <input type="button" id="btn_crop_1" class="btn btn-primary btn-md btn_add_image_resultat center-block" value="Choisissez une image" data-toggle="modal"  data-target="#modalOpenImage" onclick="initialisationCropEditor(1);" />
+                          <input type="hidden" name="img_playbuzz" id="img_playbuzz" class="img_base_64" value="" />
+                      </div>
+                  </div>
+              </section>
+
+              <section class="col-sm-12">
+                  <legend>Code du contenu Playbuzz</legend>
+                  <div class="form-group nopaddingleft nopaddingright col-lg-12 col-sm-12 col-xs-12 ">
+                      <div class="panel panel-default">
+                          <div class="panel-heading">
+                               Options
+                              <button type="button" id="" title="Prévisualier le résultat" onclick="preview()" class="btn btn-default btn-xs pull-right" > <i class="fas fa-eye" ></i></button>
+                              <button type="button" id="" title="Initialiser l'éditeur"  class="btn btn-default btn-xs pull-right" > <i class="fa fa-file" aria-hidden="true"></i> </button>
+                          </div>
+                          <div class="panel-body">
+              	  			<div role="tabpanel">
+                  	  			  <!-- Nav tabs -->
+      	  			            <ul id="editor-theme" class="nav nav-tabs" role="tablist" style="margin-bottom: 15px;">
+                  	  			    <li role="presentation" class="active">
+                                    <a href="#tab_html" aria-controls="tab_html" role="tab" data-toggle="tab">
+                                        <span class="pull-left"> PHP/HTML </span>
+                                        <button type="button" id="" title="Répeter" onclick="editorHTML.redo();" class="btn btn-default btn-xs pull-right"> <i class="fa fa-repeat" aria-hidden="true"></i> </button>
+                                        <button type="button" id="" title="Annuler" onclick="editorHTML.undo();" class="btn btn-default btn-xs pull-right"> <i class="fa fa-undo" aria-hidden="true"></i> </button>
+                                    </a>
+                                </li>
+                  	  			</ul>
+                  	  			  <!-- Tab panes -->
+                  	  			<div class="tab-content">
+                  	  			    <div role="tabpanel" class="tab-pane active" id="tab_html">
+                                    <textarea id="editor_html"  name="" value=""  placeholder="Code HTML"   class="form-control noresize">
+
+                                    </textarea>
+                                </div>
+                  	  			</div>
+                          </div>
+                        </div>
+                      </div>
+                        <div class="form-group">
+                        </div>
+                  </div>
+                  <script>
+                  </script>
+                  <legend>Aperçu du contenu</legend>
+                  <div class="form-group col-md-12 col-sm-12 col-xs-12 " >
+                      <div id="theme-perso" class="main" style="padding-top:10px; overflow:scroll;">
+                          <span style="text-align:center; margin-top:50%"> L'aperçu du thème personnalisé sera visible ici </span>
+                      </div>
+                  </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-lg-12 center">
+                <button type="submit"  id="btn_save_playbuzz" class="form-control btn btn-success" style="width: auto;"><span class="glyphicon glyphicon-ok-sign"></span> Sauvegarder le contenu </button>
+            </div>
+        </div>
+    </form>
+
+{%endblock%}
+
+
+{% block additionalfooter %}
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/jquery.validation/1.14.0/jquery.validate.min.js"></script>
+  <script src="{{ domain_url }}/src/js/cropit/jquery.cropit.js" ></script>
+
+  <script>
+      $(".select-pays").select2();
+      $(".select-langs").select2();
+      $(".select-addionnalt-info").select2();
+
+
+      function showAddInfo(){
+        if($('#add_additionnal_infos_test').is(':checked')){
+          $(".select-addionnalt-info").select2();
+          $('#box_add_info').fadeIn('slow');
+          $('.select-addionnalt-info').select2({
+               placeholder: 'Choissisez une ou plusieurs options',
+               width: '100%'
+          });
+          showAddInfoLabel();
+        }
+        else{
+          $('#box_add_info').fadeOut('slow');
+          showAddInfoLabel();
+        }
+      }
+
+      function showAddInfoLabel(){
+        if($('#additional_infos').val() != 0){
+          $('#box_add_info_label').fadeIn('slow');
+        }
+        else{
+          $('#box_add_info_label').fadeOut('slow');
+        }
+      }
+
+
+
+      function showImgTreatment(){
+        if($('#add_img_treatment').is(':checked')){
+          $(".select-addionnal-treatment").select2();
+          $('#box_add_treatment').fadeIn('slow');
+          $('.select-addionnal-treatment').select2({
+               placeholder: 'Choissisez une transformation',
+               width: '100%'
+          });
+        }
+        else{
+          $('#box_add_treatment').fadeOut('slow');
+        }
+      }
+
+
+
+  </script>
+
+  <script src="{{ domain_url }}/src/js/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+  <script id="{{ domain_url }}/src/apercu_js"></script>
+  <script src="{{ domain_url }}/src/js/script-theme-perso.js?v=1.946"></script>
+
+  <script src="{{ domain_url }}/src/js/added-scripts.js?v=2.11"></script>
+  <script src="{{ domain_url }}/src/js/added-default-script.js?v=1.283"></script>
+  <script src="{{ domain_url }}/src/js/bootstrap.min.js"></script>
+{% endblock %}
