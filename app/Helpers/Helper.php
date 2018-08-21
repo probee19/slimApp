@@ -1127,7 +1127,7 @@ class Helper
 
       $jsondata = file_get_contents($file);
        // converts json data into array
-       $arr_data = json_decode($jsondata);
+       $arr_data = json_decode($jsondata, true);
        $allstories = array();
        foreach ($arr_data as $allstories)
          if($get_all == false )

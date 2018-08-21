@@ -119,6 +119,8 @@ class StoryController extends Controller
       $all_stories = $this->helper->getAllStoriesJson($lang, true);
       $this->helper->debug($all_stories);
       $story  = $all_stories[$id];
+      $this->helper->debug($story);
+
 
       $exclude = [];
       if(!empty($_COOKIE['uid'])){
