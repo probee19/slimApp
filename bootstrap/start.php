@@ -14,7 +14,7 @@ use App\Controllers\RubriqueController;
 use App\Controllers\NotificationPushController;
 use App\Controllers\AdditionnalInfoController;
 use App\Controllers\CitationsController;
-use App\Controllers\PlayBuzzController;
+use App\Controllers\StoryController;
 
 use App\Helpers\Helper;
 use Bes\Twig\Extension\MobileDetectExtension;
@@ -229,8 +229,8 @@ $container['DevtestController'] = function ($container) {
 $container['CitationsController'] = function ($container) {
     return new CitationsController($container);
 };
-$container['PlayBuzzController'] = function ($container) {
-    return new PlayBuzzController($container);
+$container['StoryController'] = function ($container) {
+    return new StoryController($container);
 };
 $container['grabzit'] = function ($container) {
     return new GrabzItClient(GZIT_KEY, GZIT_SECRET);

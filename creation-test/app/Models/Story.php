@@ -3,16 +3,16 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
-class PlayBuzz extends Eloquent
+class Story extends Eloquent
 {
 
-    protected $table = 'playbuzz';
+    protected $table = 'stories';
 
     protected $fillable = [
         'id_rubrique',
-        'titre_playbuzz',
-        'code_playbuzz',
-        'url_image_playbuzz',
+        'titre_story',
+        'code_story',
+        'url_image_story',
         'statut',
         'codes_countries',
         'default_lang',

@@ -52,7 +52,7 @@ $app->get('/action/updatejsonalltests', 'JsonController:setTestsJSON');
 $app->get('/action/updatejsonallquotes', 'JsonController:setQuotesJSON');
 $app->get('/action/updatejsonhighlightedtests', 'JsonController:setHighlightsJSON');
 $app->get('/action/updatejsonlanguages', 'JsonController:setLangsJson');
-$app->get('/action/updatejsonallplaybuzz', 'JsonController:setPlayBuzzJSON');
+$app->get('/action/updatejsonallstories', 'JsonController:setStoriesJSON');
 
 
 $app->get('/load/days', 'LoadStatsController:loadStatForDays');
@@ -64,7 +64,6 @@ $app->get('/config/lang/showUi', 'LangController:showUi');
 
 $app->get('/maj/jsonlovedtests', 'JsonController:setLovedTestJSON');
 $app->get('/maj/jsonhighlightedtests', 'JsonController:setHighlightsJSON');
-
 
 
 //post
@@ -92,10 +91,10 @@ $app->post('/citations/{citation}/action/uploadImageThemePerso', 'ActionTestCont
 $app->post('/citations/{citation}/action/loadInfoCitation', 'ActionTestController:loadInfoCitation');
 
 
-$app->post('/playbuzz/save', 'CreateTestController:addPlaybuzz');
-$app->post('/playbuzz/edit/save', 'CreateTestController:updatePlaybuzz');
-$app->post('/playbuzz/{citation}/edit/save', 'CreateTestController:updatePlaybuzz');
-$app->post('/playbuzz/action/executephp', 'ActionTestController:ExecutePhpForPreviewTest');
+$app->post('/stories/save', 'CreateTestController:addStory');
+$app->post('/stories/edit/save', 'CreateTestController:updateStory');
+$app->post('/stories/{citation}/edit/save', 'CreateTestController:updateStory');
+$app->post('/stories/action/executephp', 'ActionTestController:ExecutePhpForPreviewTest');
 
 
 $app->post('/config/lang/update', 'LangController:updateLangConfig');

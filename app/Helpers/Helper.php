@@ -1121,29 +1121,29 @@ class Helper
        return $alltest;
     }
 
-    public static function getAllPlayBuzzJson($lang, $get_all = false){
+    public static function getAllStoriesJson($lang, $get_all = false){
       //Get data from existing json file
-      $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_playbuzz/" . $lang . "_all_playbuzz.json";
+      $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_stories/" . $lang . "_all_stories.json";
 
       $jsondata = file_get_contents($file);
        // converts json data into array
        $arr_data = json_decode($jsondata);
-       $allplaybuzz = array();
-       foreach ($arr_data as $allplaybuzz)
+       $allstories = array();
+       foreach ($arr_data as $allstories)
          if($get_all == false )
            if($test->statut == 1)
-             $allplaybuzz [$playbuzz->id_playbuzz] = [
-               'id_playbuzz'           =>  $playbuzz->id_playbuzz,
-               'titre_playbuzz'        =>  stripslashes((string)$playbuzz->titre_playbuzz),
-               'url_image_playbuzz'    =>  $playbuzz->url_image_playbuzz,
-               "default_lang"          =>  $playbuzz->default_lang,
-               "statut"                =>  $playbuzz->statut,
-               "codes_countries"       =>  $playbuzz->codes_countries,
-               "code_playbuzz"         =>  $playbuzz->code_playbuzz,
-               "id_rubrique"           =>  $playbuzz->id_rubrique,
+             $allstories [$playbuzz->id_story] = [
+               'id_story'           =>  $story->id_story,
+               'titre_story'        =>  $story->titre_story,
+               'url_image_story'    =>  $story->url_image_story,
+               "default_lang"       =>  $story->default_lang,
+               "statut"             =>  $story->statut,
+               "codes_countries"    =>  $story->codes_countries,
+               "code_story"         =>  $story->code_story,
+               "id_rubrique"        =>  $story->id_rubrique,
              ];
 
-       return $allplaybuzz;
+       return $allstories;
     }
 
     public static function getAllTestJson2($lang){

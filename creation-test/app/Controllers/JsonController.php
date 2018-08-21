@@ -21,7 +21,7 @@ use App\Models\Share;
 use App\Models\Highlights;
 use App\Models\InterfaceUi;
 use App\Models\InterfaceUiTranslations;
-use App\Models\PlayBuzz;
+use App\Models\story;
 use Psr7Middlewares\Middleware\ClientIp;
 use GrabzItImageOptions;
 
@@ -271,31 +271,31 @@ class JsonController extends Controller
     }
   }
 
-  public function setPlayBuzzJSON($request, $response, $arg){
+  public function setStoriesJSON($request, $response, $arg){
     $langs = Language::where([['status','=','1'],['translated','=','1']])->get();
     foreach ($langs as $lang) {
-      $playbuzz_col = PlayBuzz::where('default_lang', '=',$lang->code)->get();
-      $all_playbuzz = [];
-      foreach ($playbuzz_col as $playbuzz) {
-        if($playbuzz->statut == 1)
-          $all_playbuzz[] = [
-            'id_playbuzz'           =>  $playbuzz->id_playbuzz,
-            'titre_playbuzz'        =>  $playbuzz->titre_playbuzz,
-            'url_image_playbuzz'    =>  $playbuzz->url_image_playbuzz,
-            "default_lang"          =>  $playbuzz->default_lang,
-            "statut"                =>  $playbuzz->statut,
-            "codes_countries"       =>  $playbuzz->codes_countries,
-            "code_playbuzz"         =>  $playbuzz->code_playbuzz,
-            "id_rubrique"           =>  $playbuzz->id_rubrique,
+      $story_col = Story::where('default_lang', '=',$lang->code)->get();
+      $all_story = [];
+      foreach ($story_col as $story) {
+        if($story->statut == 1)
+          $all_story[] = [
+            'id_story'           =>  $story->id_story,
+            'titre_story'        =>  $story->titre_story,
+            'url_image_story'    =>  $story->url_image_story,
+            "default_lang"       =>  $story->default_lang,
+            "statut"             =>  $story->statut,
+            "codes_countries"    =>  $story->codes_countries,
+            "code_story"         =>  $story->code_story,
+            "id_rubrique"        =>  $story->id_rubrique,
           ];
       }
-      $all_playbuzz = json_encode($all_playbuzz, JSON_PRETTY_PRINT);
-      $this->helper->debug($all_playbuzz);
+      $all_story = json_encode($all_story, JSON_PRETTY_PRINT);
+      $this->helper->debug($all_story);
 
-      $filepath = "../ressources/views/json_files/all_playbuzz/".$lang->code."_all_playbuzz.json";
+      $filepath = "../ressources/views/json_files/all_stories/".$lang->code."_all_stories.json";
       $json = fopen($filepath, "w+");
-      fputs($json, $all_playbuzz);
-      $this->helper->uploadToS3($filepath, 'json_files/all_playbuzz/');
+      fputs($json, $all_story);
+      $this->helper->uploadToS3($filepath, 'json_files/all_stories/');
     }
   }
 

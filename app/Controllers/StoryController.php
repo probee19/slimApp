@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Models\UserTest;
 use App\Models\Language;
 use App\Models\PlayBuzz;
-class PlayBuzzController extends Controller
+class StoryController extends Controller
 {
 
     public function index($request, $response, $arg){
