@@ -1125,13 +1125,13 @@ class Helper
       //Get data from existing json file
       $file = $_SERVER['STORAGE_BASE'] . "/json_files/all_stories/" . $lang . "_all_stories.json";
 
-      $jsondata = file_get_contents($file);
+      $jsondata = file_get_contents($file, true);
        // converts json data into array
-       $arr_data = json_decode($jsondata, true);
+       $arr_data = json_decode($jsondata);
        $allstories = array();
        foreach ($arr_data as $allstories)
          if($get_all == false )
-           if($test->statut == 1)
+           if($story->statut == 1)
              $allstories [$story->id_story] = [
                'id_story'           =>  $story->id_story,
                'titre_story'        =>  $story->titre_story,
