@@ -1132,7 +1132,7 @@ class Helper
        foreach ($arr_data as $allstories)
          if($get_all == false )
            if($test->statut == 1)
-             $allstories [$playbuzz->id_story] = [
+             $allstories [$story->id_story] = [
                'id_story'           =>  $story->id_story,
                'titre_story'        =>  $story->titre_story,
                'url_image_story'    =>  $story->url_image_story,
