@@ -114,15 +114,10 @@ class StoryController extends Controller
       $id = (int) $args['id'];
       $country_code = $sandbox->getCountryCode();
 
-      $story_col = Story::where([['id_story', '=', $id],['default_lang','=',$lang]])->first();
 
-      $story =[
-        "id_story"             =>  $story_col->id_story,
-        "titre_story"          =>  $story_col->titre_story,
-        "code_story"            =>  $story_col->code_story,
-        "url_image_story"      =>  '/images/'.$story_col->url_image_story
-      ];
-
+      //$all_stories = Story::where([['id_story', '=', $id],['default_lang','=',$lang]])->first();
+      $all_stories = $this->helper->getAllStoriesJson($lang, true);
+      $story  = $all_stories[$id];
 
       $exclude = [];
       if(!empty($_COOKIE['uid'])){
@@ -137,7 +132,7 @@ class StoryController extends Controller
       $all_test = $sandbox->relatedTests($id_test, $country_code, $exclude, $lang);
 
       $all_lang = $this->helper->getActivatedLanguages();
-      return $this->view->render($response, 'singlecitation.twig', compact('story', 'id_user', 'all_test', 'interface_ui', 'lang', 'all_lang'));
+      return $this->view->render($response, 'story.twig', compact('story', 'id_user', 'all_test', 'interface_ui', 'lang', 'all_lang'));
 
     }
 
