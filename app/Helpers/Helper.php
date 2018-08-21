@@ -1129,7 +1129,7 @@ class Helper
        // converts json data into array
        $arr_data = json_decode($jsondata);
        $allstories = array();
-       foreach ($arr_data as $allstories)
+       foreach ($arr_data as $story)
          if($get_all == false )
            if($story->statut == 1)
              $allstories [$story->id_story] = [
