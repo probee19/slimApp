@@ -55,15 +55,10 @@ class PlayBuzzController extends Controller
         $include = $_SESSION[$name_session_page];
         foreach ($playbuzz_from_json as $playbuzz) {
           if(in_array($playbuzz['id_playbuzz'], $include, true)){
-
             $playbuzzzzz[$playbuzz['id_playbuzz']] = [
               'url_image_playbuzz'      => $playbuzz['url_image_playbuzz'],
               'id_playbuzz'             => $playbuzz['id_playbuzz'],
-              'titre_playbuzz'          => $playbuzz['titre_playbuzz'],
-              'redirect_uri'            => urlencode($request->getUri()->getBaseUrl()."/citations/"),
-              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'titre_playbuzz'          => $playbuzz['titre_playbuzz']
             ];
           }
         }
@@ -83,10 +78,7 @@ class PlayBuzzController extends Controller
             $playbuzzzzz[$playbuzz['id_playbuzz']] = [
               'url_image_playbuzz'      => $playbuzz['url_image_playbuzz'],
               'id_playbuzz'             => $playbuzz['id_playbuzz'],
-              'titre_playbuzz'          => $playbuzz['titre_playbuzz'],
-              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$playbuzz['titre_citation']."/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$playbuzz['id_citation']),
-              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$playbuzz['titre_citation']."/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$playbuzz['id_citation']),
-              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citation/".$playbuzz['titre_citation']."/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$playbuzz['id_citation'])
+              'titre_playbuzz'          => $playbuzz['titre_playbuzz']
             ];
             if(!in_array($playbuzz['id_playbuzz'], $exclude, true)) $exclude[] = $playbuzz['id_citation'];
             $page_playbuzz[] = $playbuzz['id_playbuzz'];
@@ -102,7 +94,8 @@ class PlayBuzzController extends Controller
       $tests = $sandbox->relatedTests(0, $country_code, [], $lang);
 
       $all_lang = $this->helper->getActivatedLanguages();
-      return $this->view->render($response, 'playbuzz.twig', compact('playbuzzzzz', 'tests', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
+      $data_playbuzz = $playbuzzzzz;
+      return $this->view->render($response, 'playbuzz.twig', compact('data_playbuzz', 'tests', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
 
 
     }

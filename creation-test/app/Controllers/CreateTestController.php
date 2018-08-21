@@ -555,7 +555,7 @@ class CreateTestController extends Controller
     $countries = Countries::all();
     $langs = Language::selectRaw('code, name, fr_name')->where('status',1)->orderByRaw('fr_name')->get();
 
-    return $this->view->render($response, 'createPlaybuzz.twig', compact('rubriques', 'countries', 'langs'));
+    return $this->view->render($response, 'createQuizz.twig', compact('rubriques', 'countries', 'langs'));
 
   }
 
