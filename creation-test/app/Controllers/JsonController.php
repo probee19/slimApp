@@ -21,6 +21,7 @@ use App\Models\Share;
 use App\Models\Highlights;
 use App\Models\InterfaceUi;
 use App\Models\InterfaceUiTranslations;
+use App\Models\PlayBuzz;
 use Psr7Middlewares\Middleware\ClientIp;
 use GrabzItImageOptions;
 
@@ -269,6 +270,35 @@ class JsonController extends Controller
       $this->helper->uploadToS3($filepath, 'json_files/all_quotes/');
     }
   }
+
+  public function setPlayBuzzJSON($request, $response, $arg){
+    $langs = Language::where([['status','=','1'],['translated','=','1']])->get();
+    foreach ($langs as $lang) {
+      $citations_col = PlayBuzz::where('default_lang', '=',$lang->code)->get();
+      $all_playbuzz = [];
+      foreach ($playbuzz_col as $playbuzz) {
+        if($playbuzz->statut == 1)
+          $all_playbuzz[] = [
+            'id_playbuzz'           =>  $playbuzz->id_playbuzz,
+            'titre_playbuzz'        =>  $playbuzz->titre_playbuzz,
+            'url_image_playbuzz'    =>  $playbuzz->url_image_playbuzz,
+            "default_lang"          =>  $playbuzz->default_lang,
+            "statut"                =>  $playbuzz->statut,
+            "codes_countries"       =>  $playbuzz->codes_countries,
+            "code_playbuzz"         =>  $playbuzz->code_playbuzz,
+            "id_rubrique"           =>  $playbuzz->id_rubrique,
+          ];
+      }
+      $all_playbuzz = json_encode($all_playbuzz, JSON_PRETTY_PRINT);
+      $this->helper->debug($all_playbuzz);
+
+      $filepath = "../ressources/views/json_files/all_playbuzz/".$lang->code."_all_playbuzz.json";
+      $json = fopen($filepath, "w+");
+      fputs($json, $all_quotes);
+      $this->helper->uploadToS3($filepath, 'json_files/all_playbuzz/');
+    }
+  }
+
 
   public function setLangsJson($request, $response, $arg)
   {

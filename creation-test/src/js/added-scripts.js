@@ -353,13 +353,13 @@ $(document).ready(function(){
                     $('#btn_save_citation').prop( "disabled", true ).html("Traitement en cours...").css("color","#000");
                     $('#btn_cancel').prop( "disabled", true );
                     $("html, body").animate({ scrollTop: 0 }, 600);
-                    loadingProgress ('0%', 'Création de la citation en cours...');
+                    loadingProgress ('0%', 'Création du contenu en cours...');
                 }
                 }).done(function( data ) {
                     // Bouton réactivé, formulaire réinitialisé
                     console.log(data);
                     setTimeout(function(){
-                      loadingProgress ('100%', 'Citation enrégistrée avec succès.');
+                      loadingProgress ('100%', 'PlayBuzz enrégistré avec succès.');
                       $(".alert-success").fadeIn("slow");
                     },2000);
 

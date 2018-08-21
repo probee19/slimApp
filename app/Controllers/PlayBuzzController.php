@@ -24,94 +24,87 @@ class PlayBuzzController extends Controller
 
       $country_code = $sandbox->getCountryCode();
       $pagecount = $this->playbuzz_per_page;
-      $citations_from_json = $this->helper->getAllPlayBuzzJson($lang);
+      $playbuzz_from_json = $this->helper->getAllPlayBuzzJson($lang);
 
 
-      // Calcul du nombre total de ciataions
-      foreach ($citations_from_json as $citation) {
-        if($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ){
-          $citations_json[] = [
-            'url_image_citation'      => $citation['url_image_citation'],
-            'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
-            'id_citation'             => $citation['id_citation'],
-            'titre_citation'          => $citation['titre_citation']
+      // Calcul du nombre total de contenus
+      foreach ($playbuzz_from_json as $playbuzz) {
+        if($playbuzz['codes_countries'] == "" || strpos($playbuzz['codes_countries'], $country_code) != false ){
+          $playbuzz_json[] = [
+            'url_image_citation'      => $playbuzz['url_image_citation'],
+            'url_thumb_img_citation'  => $playbuzz['url_thumb_img_citation'],
+            'id_citation'             => $playbuzz['id_citation'],
+            'titre_citation'          => $playbuzz['titre_citation']
           ];
         }
       }
 
-      $allcitation = count($citations_json);
+      $allplaybuzz = count($playbuzz_json);
 
       // Nombre de pages
-      $pagecount = (int)ceil($allcitation / $pagecount);
+      $pagecount = (int)ceil($allplaybuzz / $pagecount);
 
       if(!empty($arg['pageid']))
         $pageid = $arg['pageid'];
       else
         $pageid = 1;
-      $name_session_page = $lang.'_citations_page_'.$pageid;
+      $name_session_page = $lang.'_playbuzz_page_'.$pageid;
 
       //
       // Si cette page a été déjà ouverte et en session
       if(isset($_SESSION[$name_session_page]) && !empty($_SESSION[$name_session_page]) ){
         $include = $_SESSION[$name_session_page];
-        foreach ($citations_from_json as $citation) {
-          if(in_array($citation['id_citation'], $include, true)){
-            //$url_to_share =      urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
-            //$url_to_share_msg =  urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
-            //$url_to_share_wtsp = urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']);
+        foreach ($playbuzz_from_json as $playbuzz) {
+          if(in_array($playbuzz['id_citation'], $include, true)){
 
-            $citations[$citation['id_citation']] = [
-              'url_image_citation'      => $citation['url_image_citation'],
-              'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
-              'id_citation'             => $citation['id_citation'],
-              'titre_citation'          => $citation['titre_citation'],
+            $playbuzzzzz[$playbuzz['id_citation']] = [
+              'url_image_citation'      => $playbuzz['url_image_citation'],
+              'url_thumb_img_citation'  => $playbuzz['url_thumb_img_citation'],
+              'id_citation'             => $playbuzz['id_citation'],
+              'titre_citation'          => $playbuzz['titre_citation'],
               'redirect_uri'            => urlencode($request->getUri()->getBaseUrl()."/citations/"),
-              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              //'redirect_uri'            => urlencode($request->getUri()->getBaseUrl()."/citations/?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              //'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              //'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              //'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation'])
+              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
+              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citations/ref/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
             ];
           }
         }
-        $citations = array_replace(array_flip($include), $citations);
+        $playbuzzzzz = array_replace(array_flip($include), $playbuzzzzz);
       }
       else {// Si cette page n'est pas en session
 
-        if(isset($_SESSION["citations_seen"]) && $allcitation <= count($_SESSION["citations_seen"]))
+        if(isset($_SESSION["citations_seen"]) && $allplaybuzz <= count($_SESSION["citations_seen"]))
           $_SESSION["citations_seen"] = array();
         $exclude = array();
         if(isset($_SESSION['citations_seen'])) $exclude = $_SESSION['citations_seen'];
-        shuffle($citations_from_json);
+        shuffle($playbuzz_from_json);
         $nb_taken = 0;
-        $page_citations = array();
-        foreach ($citations_from_json as $citation) {
-          if(($citation['codes_countries'] == "" || strpos($citation['codes_countries'], $country_code) != false ) && !in_array($citation['id_citation'], $exclude, true) && ++$nb_taken <= $this->citation_per_page){
-            $citations[$citation['id_citation']] = [
-              'url_image_citation'      => $citation['url_image_citation'],
-              'url_thumb_img_citation'  => $citation['url_thumb_img_citation'],
-              'id_citation'             => $citation['id_citation'],
-              'titre_citation'          => $citation['titre_citation'],
-              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation']),
-              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citation/".$citation['titre_citation']."/".$citation['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$citation['id_citation'])
+        $page_playbuzz = array();
+        foreach ($playbuzz_from_json as $playbuzz) {
+          if(($playbuzz['codes_countries'] == "" || strpos($playbuzz['codes_countries'], $country_code) != false ) && !in_array($citation['id_citation'], $exclude, true) && ++$nb_taken <= $this->playbuzz_per_page){
+            $playbuzzzzz[$playbuzz['id_citation']] = [
+              'url_image_citation'      => $playbuzz['url_image_citation'],
+              'url_thumb_img_citation'  => $playbuzz['url_thumb_img_citation'],
+              'id_citation'             => $playbuzz['id_citation'],
+              'titre_citation'          => $playbuzz['titre_citation'],
+              'url_to_share'            => urlencode($request->getUri()->getBaseUrl()."/citation/".$playbuzz['titre_citation']."/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=share&utm_campaign=funizi_quote_".date('Y-m-d')."&utm_content=citation_".$playbuzz['id_citation']),
+              'url_to_share_msg'        => urlencode($request->getUri()->getBaseUrl()."/citation/".$playbuzz['titre_citation']."/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share_quote_".date('Y-m-d')."&utm_content=citation_".$playbuzz['id_citation']),
+              'url_to_share_wtsp'       => urlencode($request->getUri()->getBaseUrl()."/citation/".$playbuzz['titre_citation']."/".$playbuzz['id_citation']."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share_quote_".date('Y-m-d')."&utm_content=citation_".$playbuzz['id_citation'])
             ];
-            if(!in_array($citation['id_citation'], $exclude, true)) $exclude[] = $citation['id_citation'];
-            $page_citations[] = $citation['id_citation'];
+            if(!in_array($playbuzz['id_citation'], $exclude, true)) $exclude[] = $playbuzz['id_citation'];
+            $page_playbuzz[] = $playbuzz['id_citation'];
           }
         }
 
           $_SESSION['citations_seen'] = $exclude;
-          $_SESSION[$name_session_page] = $page_citations;
+          $_SESSION[$name_session_page] = $page_playbuzz;
       }
 
       //
       $tests = $sandbox->relatedTests(0, $country_code, [], $lang);
 
       $all_lang = $this->helper->getActivatedLanguages();
-      return $this->view->render($response, 'citations.twig', compact('citations', 'id_shared_citation','img_shared_citation', 'tests', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
+      return $this->view->render($response, 'citations.twig', compact('playbuzzzzz', 'id_shared_citation','img_shared_citation', 'tests', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
 
 
     }

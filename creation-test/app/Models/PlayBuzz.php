@@ -10,9 +10,9 @@ class PlayBuzz extends Eloquent
 
     protected $fillable = [
         'id_rubrique',
-        'titre',
-        'code',
-        'url_image',
+        'titre_playbuzz',
+        'code_playbuzz',
+        'url_image_playbuzz',
         'statut',
         'codes_countries',
         'default_lang',

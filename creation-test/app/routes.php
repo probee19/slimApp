@@ -52,6 +52,7 @@ $app->get('/action/updatejsonalltests', 'JsonController:setTestsJSON');
 $app->get('/action/updatejsonallquotes', 'JsonController:setQuotesJSON');
 $app->get('/action/updatejsonhighlightedtests', 'JsonController:setHighlightsJSON');
 $app->get('/action/updatejsonlanguages', 'JsonController:setLangsJson');
+$app->get('/action/updatejsonallplaybuzz', 'JsonController:setPlayBuzzJSON');
 
 
 $app->get('/load/days', 'LoadStatsController:loadStatForDays');

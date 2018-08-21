@@ -555,7 +555,7 @@ class CreateTestController extends Controller
     $countries = Countries::all();
     $langs = Language::selectRaw('code, name, fr_name')->where('status',1)->orderByRaw('fr_name')->get();
 
-    return $this->view->render($response, 'createPlaybuzz.twig', compact('theme', 'rubriques', 'countries', 'langs'));
+    return $this->view->render($response, 'createPlaybuzz.twig', compact('rubriques', 'countries', 'langs'));
 
   }
 
@@ -583,9 +583,9 @@ class CreateTestController extends Controller
 
       $data = [
         "id_rubrique"         =>  $_POST['rubrique'],
-        "titre"               =>  $_POST['titre'],
-        'code'                =>  $_POST['codePHPHTML'],
-        "url_image"           =>  $uploadPath,
+        "titre_playbuzz"      =>  $_POST['titre'],
+        'code_playbuzz'       =>  $_POST['codePHPHTML'],
+        "url_image_playbuzz"  =>  $uploadPath,
         "statut"              =>  $statut,
         "default_lang"        =>  $_POST['default_lang'],
         "codes_countries"     =>  $localite,
@@ -595,8 +595,8 @@ class CreateTestController extends Controller
 
       // Sauvegarde des informations générales du test (titre, rubrique, image, zones sélectionnées)
       $id_playbuzz = PlayBuzz::insertGetId($data);
-      //if($id_playbuzz)
-        //  Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonalltests",[]);
+      if($id_playbuzz)
+         Helper::curl_get_fields("https://creation.funizi.com/action/updatejsonallplaybuzz",[]);
     }
 
   }
