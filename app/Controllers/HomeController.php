@@ -290,12 +290,51 @@ class HomeController extends Controller
       return $this->view->render($response, 'game.twig', compact( 'lang', 'url','id_user', 'all_test', 'interface_ui','lang','all_lang'));
 
     }
-    public function chunkData($request, $response, $args)
+
+    public function chunkData($request, $response, $arg)
     {
-      // code...
       $helper->debug($_SESSION);
       $helper->debug($_COOKIE);
     }
+
+    public function playbuzz($request, $response, $arg)
+    {
+      $url = $this->helper->detectLang($request, $response);
+      if($url != "") return $response->withStatus(302)->withHeader('Location', $url );
+
+      $sandbox = new Helper();
+      $lang = $this->helper->getLangSubdomain($request);
+      $interface_ui = $this->helper->getUiLabels($lang);
+      $baseDomain = "https://" . $lang . ".".$this->base_domain;
+      $country_code = $sandbox->getCountryCode();
+
+      if(isset($_GET['p']) && $_GET['p'] == 1)
+        $no_ads = true;
+
+      if(isset($_GET['utm']) && $_GET['utm'] !='')
+          $sandbox->setUTM($_GET['utm'], "test", $id);
+
+      $exclude = $this->helper->getTestsDone(0);
+      $id = 0;
+
+      $all_test = $sandbox->relatedTests($id, $country_code, $exclude, $lang);
+
+      $id_user = 0;
+
+      if(isset($_COOKIE['uid']))
+          $id_user = $_COOKIE['uid'];
+
+      if(isset($_GET['ab']))
+        $ab_testing =$_GET['ab'];
+      else
+        $ab_testing = $this->helper->getAB();
+
+      $all_lang = $this->helper->getActivatedLanguages();
+
+      return $this->view->render($response, 'playbuzz.twig', compact('no_ads','ab_testing', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
+
+    }
+
     public function chunk($request, $response, $args){
 
               $url = $this->helper->detectLang($request, $response);
