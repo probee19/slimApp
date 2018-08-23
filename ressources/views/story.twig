@@ -2,7 +2,6 @@
 {% block title %}{{ story.titre_story }}{% endblock %}
 
     {% block graph %}
-        {% if code !='' %}
             <!--FACEBOOK-->
             <link rel="canonical" href="{{ domain_url }}/story/{{ story.titre_story | twig_title_url(story.id_story, lang) }}/{{ story.id_story }}/ref/{{ code }}">
             <meta property="og:title" content="{{ story.titre_story }}" />
@@ -17,18 +16,6 @@
             <meta property="og:type" content="website">
             <meta property="fb:app_id" content="348809548888116">
 
-        {% else %}
-            <!--FACEBOOK-->
-            <link rel="canonical" href="{{ domain_url }}/story/{{ story.titre_story | twig_title_url(story.id_story, lang) }}/{{ story.id_story }}">
-            <meta property="og:title" content="{{ story.titre_story }}" />
-            <meta property="og:site_name" content="Funizi.com" />
-            <meta property="og:url" content="{{ domain_url }}/story/{{ story.titre_story | twig_title_url(story.id_story, lang) }}/{{ story.id_story }}" >
-            <meta property="og:description" content="{{interface_ui.label_share_prefixe2 | capitalize}}" />
-            <meta property="og:type" content="website">
-
-            <meta property="fb:app_id" content="348809548888116">
-
-        {% endif %}
     {% endblock %}
 {% block googletagmanager %}
     <script>
