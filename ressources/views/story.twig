@@ -48,7 +48,7 @@
             {% endif %}
         </div>
 
-        <div class="col-sm-12" style="margin-bottom:2em;">
+        <div class="col-sm-12" style="">
           <div  id="div_test" class="col-xs-12 back_layer " style="background-color:#fff">
                 <div class="col-sm-8 col-sm-offset-2 col-xs-12" style=" margin-top: 1em;">
                   <script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src='https://embed.playbuzz.com/sdk.js';fjs.parentNode.insertBefore(js,fjs);}(document,'script','playbuzz-sdk'));</script>
@@ -57,8 +57,7 @@
             </div>
         </div>
 
-        <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center"
-          {% if is_mobile() or is_tablet() %} style="margin-top:.8em; padding:0;" {% endif %}>
+        <div class="col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0 text-center" style="margin-bottom:2em;{% if is_mobile() or is_tablet() %} margin-top:.8em; padding:0; {% endif %}">
             <a class="btn btn-lg btn_to_track btn_share" href="https://www.facebook.com/dialog/share?app_id={{ fb_app_id }}&hashtag=%23funizi&display=popup&href={{ url_to_share }}&redirect_uri={{ url_redirect_share }}" onclick='partage("{{ story.id_story }}", "{{ lang }}", "bottom")' style="cursor:pointer;"  data-btn="share-bottom"><i class="fab fa-facebook-square"></i> {{interface_ui.btn_share}}</a>
             {% if is_mobile() or is_tablet() %}
                 <a href="fb-messenger://share/?link={{ url_to_share_msg }}&app_id={{ fb_app_id }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partage("{{ story.id_story }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i></a>
