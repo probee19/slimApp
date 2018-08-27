@@ -127,12 +127,24 @@ class StoryController extends Controller
                 $exclude [] = $user->test_id;
       }
 
+      $titre_url = $this->helper->cleanUrl($story['titre_story']);
+      $story_id = $story['id_story'];
+
+      $url_to_share = urlencode($request->getUri()->getBaseUrl()."/story/".$titre_url."/".$story_id."/?utm_source=facebook&utm_medium=share&utm_campaign=funizi_".date('Y-m-d')."&utm_content=story_".$story_id);
+      $url_to_share_msg = urlencode($request->getUri()->getBaseUrl()."/story/".$titre_url."/".$story_id."/?utm_source=facebook&utm_medium=messenger&utm_campaign=funizi_messenger_share".date('Y-m-d')."&utm_content=story_".$story_id);
+      $url_to_share_wtsp = urlencode($this->helper->bitly_shorten($request->getUri()->getBaseUrl()."/story/".$titre_url."/".$story_id."/?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share".date('Y-m-d')."&utm_content=story_".$story_id));
+
+      //$this->helper->bitly_shorten($request->getUri()->getBaseUrl()."/test/".$titre_url."/".$test_id."/ref/".$code."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share".date('Y-m-d')."&utm_content=test_".$test_id);
+      //$url_redirect_share = urlencode("http://www.funizi.com/result/".$titre_url."/".$code."/new");
+      $url_redirect_share = urlencode($request->getUri()->getBaseUrl()."/story/".$titre_url."/".$story_id);
+
+
 
       $id_test = 0;
       $all_test = $sandbox->relatedTests($id_test, $country_code, $exclude, $lang);
 
       $all_lang = $this->helper->getActivatedLanguages();
-      return $this->view->render($response, 'story.twig', compact('story', 'id_user', 'all_test', 'interface_ui', 'lang', 'all_lang'));
+      return $this->view->render($response, 'story.twig', compact('story', 'id_user', 'all_test', 'interface_ui', 'lang', 'all_lang', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share'));
 
     }
 
