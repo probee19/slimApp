@@ -201,6 +201,21 @@ function partageCitation(id, lang, btn){
           }
       });
 }
+
+function partageStory(id, lang, btn){
+      $.ajax({
+          url: domain+'/shareStory/'+btn+'/'+lang,
+          type: 'post',
+          data: {'code': id},
+          success:function(data){
+              console.log(data);
+          },
+          error:function(response){
+              console.log(response);
+          }
+      });
+}
+
 function openModal(id){
     var mymodal = $('#facebook-login-modal');
     $('#btn_log_fb').attr('onClick', 'seConnecterFacebook('+id+', '+ 0 + ')');
@@ -212,7 +227,6 @@ function openModalDiscovery(){
     if($('#discovery-tests-modal').length > 0)
         $('#discovery-tests-modal').modal('show');
 }
-
 
 function openModalShare(){
     //var mymodal = $('#discovery-tests-modal');
@@ -235,8 +249,6 @@ function clickButton(btn) {
         console.log(msg);
 	});
 }
-
-
 
 
 

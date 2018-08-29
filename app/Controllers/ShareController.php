@@ -9,7 +9,9 @@ use App\Models\UserTest;
 use App\Models\Test;
 use App\Models\BotTests;
 use App\Models\Citation;
+use App\Models\Story;
 use App\Models\ShareCitation;
+use App\Models\ShareStory;
 
 class ShareController extends Controller
 {
@@ -92,4 +94,30 @@ class ShareController extends Controller
           ->withHeader('Content-Type', 'application/json')
           ->write(json_encode($share));
     }
+
+    public function shareStory($request, $response, $args)
+    {
+      $id = $request->getParam('code');
+      $btn_share = $args['btn'];
+      $lang = $args['lang'];
+      $date = date('Y-m-d');
+      $is_quote = Story::where('id_story','=', $id)->first();
+
+      $share = 1;
+      if($is_quote) {
+          $uid = 0;
+          if(isset($_COOKIE['uid'])) $uid = $_COOKIE['uid'];
+          $share = shareStory::create([
+              'user_id'       => $uid,
+              'story_id'      => $id,
+              'btn_share'     => "$btn_share",
+              'lang'          => "$lang",
+              'ab_testing'    =>  $this->helper->getAB(),
+          ]);
+      }
+      return $response->withStatus(200)
+          ->withHeader('Content-Type', 'application/json')
+          ->write(json_encode($share));
+    }
+
 }

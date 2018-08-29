@@ -44,6 +44,8 @@ $app->post('/share/{btn}', 'ShareController:index');
 $app->post('/share/{btn}/{lang}', 'ShareController:index');
 $app->post('/shareCitation/{btn}', 'ShareController:shareQuote');
 $app->post('/shareCitation/{btn}/{lang}', 'ShareController:shareQuote');
+$app->post('/shareStory/{btn}', 'ShareController:shareStory');
+$app->post('/shareStory/{btn}/{lang}', 'ShareController:shareStory');
 $app->post('/grabimage', 'GrabzitController:getImageFromUrl');
 $app->post('/setsession', 'HomeController:createSession');
 $app->post('/connect_user', 'ConnectController:index');

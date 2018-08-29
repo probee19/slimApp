@@ -3,8 +3,6 @@ namespace App\Controllers;
 use App\Helpers\RandomStringGenerator;
 use App\Helpers\Helper;
 use App\Models\Test;
-use App\Models\Citation;
-use App\Models\CitationInfo;
 use App\Models\User;
 use App\Models\UserTest;
 use App\Models\Language;
