@@ -276,7 +276,7 @@ a:hover{
     text-align: center;
     *font-size: 1.6em;
 }
-.test-title-gallery{
+.test-title-gallery, .story-title-gallery {
   width: 100%;
   height: 45px;
   margin-bottom: 0;
@@ -286,10 +286,14 @@ a:hover{
   background-color: #FFF;
   color: #333;
   text-align: left;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 700;
   line-height: 16px;
   display: flex;
   align-items: center;
+}
+.story-title-gallery{
+  height: 65px;
 }
 .test-title-top{
     position: absolute;

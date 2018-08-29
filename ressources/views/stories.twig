@@ -39,21 +39,21 @@
         <ul class="text-center pager" style="">
             {% if pageid == 1 %}
                 <li class="btn-next">
-                    <a href="{{ domain_url }}/quizz/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                    <a href="{{ domain_url }}/stories/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
                 </li>
             {% elseif pageid == pagecount %}
                 <li class="btn-prev">
-                    <a href="{{ domain_url }}/quizz/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                    <a href="{{ domain_url }}/stories/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
                 </li>
                 <li>
-                    <a href="{{ domain_url }}/quizz/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                    <a href="{{ domain_url }}/stories/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
                 </li>
             {% else %}
                 <li class="btn-prev">
-                    <a href="{{ domain_url }}/quizz/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                    <a href="{{ domain_url }}/stories/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
                 </li>
                 <li>
-                    <a href="{{ domain_url }}/quizz/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                    <a href="{{ domain_url }}/stories/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
                 </li>
             {% endif %}
         </ul>
@@ -70,10 +70,10 @@
                   <div class="border_gallery_responsive" data-story-id="{{story.id_story}}">
                       <img class="img-responsive" src="{{ storage_base }}/images{{ story.url_image_story |trim('.', 'left') }}" alt="image du story" style="">
                       <span class="mobile-layer"></span>
-                    <a href="{{ domain_url }}/quizz/{{story.titre_story | twig_title_url(story.id_story, lang)}}/{{story.id_story}}" data-btn="btn-test" class="test__link"></a>
+                    <a href="{{ domain_url }}/story/{{story.titre_story | twig_title_url(story.id_story, lang)}}/{{story.id_story}}" data-btn="btn-test" class="test__link"></a>
                   </div>
-                  <div  class="test-title-gallery">
-                    <a href="{{ domain_url }}/quizz/{{story.titre_story | twig_title_url(story.id_story, lang)}}/{{story.id_story}}" class="" ><span style="font-size:15px;">{{ story.titre_story }}</span></a>
+                  <div  class="story-title-gallery">
+                    <a href="{{ domain_url }}/story/{{story.titre_story | twig_title_url(story.id_story, lang)}}/{{story.id_story}}" class="" ><span style="font-size:15px;">{{ story.titre_story }}</span></a>
                   </div>
             </div>
 
@@ -83,11 +83,11 @@
                     <img class="img-responsive" src="{{ storage_base }}/images{{ story.url_image_story |trim('.', 'left') }}" alt="image du story" style="width: 100%; height: 100%; object-fit: cover; object-position: 0 30%;">
                     <span class="mobile-layer"></span>
                     <!-- <a href="{{ path_for('single', { 'id': story.id_story, 'name': story.titre_story | twig_clean_url }) }}" class="test__link" data-btn="btn-test"></a> -->
-                    <a href="{{ domain_url }}/quizz/{{story.titre_story | twig_title_url(story.id_story, lang)}}/{{story.id_story}}" class="test__link" data-btn="btn-test"></a>
+                    <a href="{{ domain_url }}/story/{{story.titre_story | twig_title_url(story.id_story, lang)}}/{{story.id_story}}" class="test__link" data-btn="btn-test"></a>
 
                 </div>
-                <div  class="test-title-gallery">
-                  <a href="{{ domain_url }}/quizz/{{story.titre_story | twig_title_url(story.id_story, lang)}}/{{story.id_story}}" ><span style="font-size:14px;">{{ story.titre_story }}</span></a>
+                <div  class="story-title-gallery">
+                  <a href="{{ domain_url }}/story/{{story.titre_story | twig_title_url(story.id_story, lang)}}/{{story.id_story}}" ><span style="font-size:14px;">{{ story.titre_story }}</span></a>
                 </div>
           </div>
           {% set i = i+1 %}
@@ -104,21 +104,21 @@
           <ul class="text-center pager" style="margin-top:10px;">
               {% if pageid == 1 %}
                   <li class="btn-next">
-                      <a href="{{ domain_url }}/quizz/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                      <a href="{{ domain_url }}/stories/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
                   </li>
               {% elseif pageid == pagecount %}
                   <li class="btn-prev">
-                      <a href="{{ domain_url }}/quizz/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                      <a href="{{ domain_url }}/stories/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
                   </li>
                   <li>
-                      <a href="{{ domain_url }}/quizz/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                      <a href="{{ domain_url }}/stories/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
                   </li>
               {% else %}
                   <li class="btn-prev">
-                      <a href="{{ domain_url }}/quizz/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
+                      <a href="{{ domain_url }}/stories/page/{{ pageid - 1 }}"  class="btn_to_track" data-btn="previous"><i class="fa fa-arrow-left"></i> {{interface_ui.btn_previous | capitalize}}</a>
                   </li>
                   <li>
-                      <a href="{{ domain_url }}/quizz/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
+                      <a href="{{ domain_url }}/stories/page/{{ pageid + 1 }}"  class="btn_to_track" data-btn="next">{{interface_ui.btn_next | capitalize}} <i class="fa fa-arrow-right"></i></a>
                   </li>
               {% endif %}
           </ul>
