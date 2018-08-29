@@ -107,7 +107,7 @@ class ShareController extends Controller
       if($is_quote) {
           $uid = 0;
           if(isset($_COOKIE['uid'])) $uid = $_COOKIE['uid'];
-          $share = shareStory::create([
+          $share = ShareStory::create([
               'user_id'       => $uid,
               'story_id'      => $id,
               'btn_share'     => "$btn_share",
