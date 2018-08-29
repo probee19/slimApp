@@ -6,7 +6,6 @@ use App\Models\Test;
 use App\Models\User;
 use App\Models\UserTest;
 use App\Models\Language;
-use App\Models\Story;
 class StoryController extends Controller
 {
 

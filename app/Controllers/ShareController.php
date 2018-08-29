@@ -9,7 +9,6 @@ use App\Models\UserTest;
 use App\Models\Test;
 use App\Models\BotTests;
 use App\Models\Citation;
-use App\Models\Story;
 use App\Models\ShareCitation;
 use App\Models\ShareStory;
 
@@ -82,7 +81,7 @@ class ShareController extends Controller
       if($is_quote) {
           $uid = 0;
           if(isset($_COOKIE['uid'])) $uid = $_COOKIE['uid'];
-          $share = shareCitation::create([
+          $share = ShareCitation::create([
               'user_id'       => $uid,
               'citation_id'   => $id,
               'btn_share'     => "$btn_share",
@@ -101,20 +100,20 @@ class ShareController extends Controller
       $btn_share = $args['btn'];
       $lang = $args['lang'];
       $date = date('Y-m-d');
-      $is_quote = Story::where('id_story','=', $id)->first();
-
+      //$is_story = Story::where('id_story','=', $id)->first();
+      $uid = 0;
+      if(isset($_COOKIE['uid'])) $uid = $_COOKIE['uid'];
+      $share = ShareStory::create([
+          'user_id'       => $uid,
+          'story_id'      => $id,
+          'btn_share'     => "$btn_share",
+          'lang'          => "$lang",
+          'ab_testing'    =>  $this->helper->getAB(),
+      ]);
       $share = 1;
-      if($is_quote) {
-          $uid = 0;
-          if(isset($_COOKIE['uid'])) $uid = $_COOKIE['uid'];
-          $share = ShareStory::create([
-              'user_id'       => $uid,
-              'story_id'      => $id,
-              'btn_share'     => "$btn_share",
-              'lang'          => "$lang",
-              'ab_testing'    =>  $this->helper->getAB(),
-          ]);
-      }
+      //if($is_story) {
+
+      //}
       return $response->withStatus(200)
           ->withHeader('Content-Type', 'application/json')
           ->write(json_encode($share));
