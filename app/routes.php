@@ -6,7 +6,7 @@ $app->get('/dev', 'HomeController:devEnv')->setName('dev');
 $app->get('/games', 'HomeController:games')->setName('games');
 $app->get('/discover', 'RubriqueController:discover')->setName('discover');
 $app->get('/stories', 'StoryController:index');
-$app->get('/story/page/{pageid}', 'StoryController:index');
+$app->get('/stories/page/{pageid}', 'StoryController:index');
 $app->get('/story/{name}/{id}', 'StoryController:story')->setName('singlestory');
 $app->get('/privacy-policy', 'HomeController:privacyPolicy')->setName('privacypolicy');
 $app->get('/page/{pageid}', 'HomeController:index')->setName('paginatation');

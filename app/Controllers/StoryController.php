@@ -27,7 +27,6 @@ class StoryController extends Controller
       $stories_from_json = $this->helper->getAllStoriesJson($lang);
 
 
-
       // Calcul du nombre total de ciataions
       foreach ($stories_from_json as $story) {
         if($story['codes_countries'] == "" || strpos($story['codes_countries'], $country_code) != false ){
@@ -93,10 +92,10 @@ class StoryController extends Controller
       }
 
       //
-      $tests = $sandbox->relatedTests(0, $country_code, [], $lang);
+      //$tests = $sandbox->relatedTests(0, $country_code, [], $lang);
 
       $all_lang = $this->helper->getActivatedLanguages();
-      return $this->view->render($response, 'stories.twig', compact('stories', 'id_shared_story','img_shared_story', 'tests', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
+      return $this->view->render($response, 'stories.twig', compact('stories', 'id_shared_story','img_shared_story', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
 
 
 
