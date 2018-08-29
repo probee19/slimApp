@@ -65,7 +65,9 @@ class TestController extends Controller
 
 
         $all_test = $sandbox->relatedTests($id, $country_code, $exclude, $lang);
-
+        $all_stories = $sandbox->getAllStoriesJson($lang);
+        shuffle($all_stories);
+        
         // For Facebook connect
         $helper = $this->fb->getRedirectLoginHelper();
         $pdata = $helper->getPersistentDataHandler();
@@ -102,7 +104,7 @@ class TestController extends Controller
           if($test['id_theme'] == 4)
             $img_preview = $this->helper->getImgPreview($request, $lang, $id);
 
-        return $this->view->render($response, 'single.twig', compact('img_preview', 'no_ads','ab_testing', 'lang', 'url','id_user','test', 'code', 'all_test', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
+        return $this->view->render($response, 'single.twig', compact('img_preview', 'no_ads','ab_testing', 'lang', 'url','id_user','test', 'code', 'all_test', 'all_stories', 'permission', 'loginUrl', 'loginUrl2' , 'img_url', 'interface_ui','lang','all_lang'));
         }
 
     public function indexChunk($request, $response, $args){
