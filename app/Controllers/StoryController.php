@@ -95,7 +95,7 @@ class StoryController extends Controller
       //$tests = $sandbox->relatedTests(0, $country_code, [], $lang);
 
       $all_lang = $this->helper->getActivatedLanguages();
-      return $this->view->render($response, 'stories.twig', compact('stories', 'id_shared_story','img_shared_story', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
+      return $this->view->render($response, 'stories.twig', compact('stories', 'interface_ui', 'pagecount', 'pageid', 'lang', 'all_lang'));
 
 
 
@@ -135,7 +135,7 @@ class StoryController extends Controller
 
       //$this->helper->bitly_shorten($request->getUri()->getBaseUrl()."/test/".$titre_url."/".$test_id."/ref/".$code."?utm_source=facebook&utm_medium=whatsapp&utm_campaign=funizi_whatsapp_share".date('Y-m-d')."&utm_content=test_".$test_id);
       //$url_redirect_share = urlencode("http://www.funizi.com/result/".$titre_url."/".$code."/new");
-      $url_redirect_share = urlencode($request->getUri()->getBaseUrl()."/story/".$titre_url."/".$story_id);
+      $url_redirect_share = urlencode($request->getUri()->getBaseUrl()."/stories");
 
 
 

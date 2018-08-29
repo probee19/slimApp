@@ -94,6 +94,9 @@ class ResultController extends Controller
               $exclude [] = $top_test["id_test"];
             }
             $all_test = $helper->relatedTests($test->test_id, $country_code, $exclude, $lang);
+            $all_stories = $helper->getAllStoriesJson($lang);
+            shuffle($all_stories);
+
 
             $testId = $test->test_id;
             $unique_result = $test->testInfo->unique_result;
@@ -102,7 +105,7 @@ class ResultController extends Controller
 
             $interface_ui = $this->helper->getUiLabels($lang);
             $all_lang = $this->helper->getActivatedLanguages();
-            return $this->view->render($response, 'result.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'id_rubrique', 'img_url', 'result_description', 'ab_testing', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
+            return $this->view->render($response, 'result.twig', compact('lang', 'code', 'titre_test', 'is_result', 'all_test', 'all_stories', 'titre_url', 'new', 'testId', 'unique_result', 'if_additionnal_info', 'id_rubrique', 'img_url', 'result_description', 'ab_testing', 'url_to_share','url_to_share_msg', 'url_to_share_wtsp', 'url_redirect_share', 'top_tests', 'interface_ui','lang','all_lang'));
         }
     }
 }
