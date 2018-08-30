@@ -52,7 +52,7 @@
                   {% endif %}
               </div>
 
-              <div class="col-sm-8 col-sm-offset-2 col-xs-12" style=" margin-top: 1em;">
+              <div class="col-sm-10 col-sm-offset-1 col-xs-12" style=" margin-top: 1em;">
                 <script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id))return;js=d.createElement(s);js.id=id;js.src='https://embed.playbuzz.com/sdk.js';fjs.parentNode.insertBefore(js,fjs);}(document,'script','playbuzz-sdk'));</script>
                 <div class="playbuzz" data-id="{{story.code_story}}" data-show-info="false" data-show-share="false"></div>
               </div>
@@ -66,11 +66,11 @@
                     <a href="https://www.facebook.com/dialog/send?app_id={{ fb_app_id }}&amp;link={{ url_to_share_msg }}&amp;redirect_uri={{ url_redirect_share }}" class="btn btn-lg btn_to_track btn_share" style="background-color:#0084ff;" onclick='partageStory("{{ story.id_story }}", "{{ lang }}", "bottom_messenger")'><i class="fab fa-facebook-messenger"></i></a>
                   {% endif %}
               </div>
+              <div class="col-sm-10 col-sm-offset-1 col-xs-12 text-center">
+                <div class="fb-comments" data-href="{{ domain_url }}/story/{{ story.titre_story | twig_title_url(story.id_story, lang) }}/{{ story.id_story }}" data-width="100%" data-numposts="3"></div>
+              </div>
+            </div>
 
-            </div>
-            <div class="col-xs-12 text-center">
-              <div class="fb-comments" data-href="{{ domain_url }}/story/{{ story.titre_story | twig_title_url(story.id_story, lang) }}/{{ story.id_story }}" data-width="100%" data-numposts="3"></div>
-            </div>
         </div>
 
 
