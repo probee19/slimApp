@@ -70,10 +70,14 @@ class ConnectController extends Controller
         $state = json_decode($_GET['state']);
         $permission_test = $state->permission;
         $id = $state->id;
+        $this->helper->debug($state);
+        $this->helper->debug($permission_test);
+        $this->helper->debug($id);
         //$lang = $request->getParam('lang');
         $lang = Helper::getLangSubdomain($request);
 
         $helper = $this->fb->getRedirectLoginHelper();
+        $this->helper->debug($helper);
 
         $_SESSION['FBRLH_state'] = $_GET['state'];
 
@@ -88,6 +92,7 @@ class ConnectController extends Controller
         $result_url = $this->router->pathFor('single', [ 'id' => $test->id_test, 'name' => Helper::cleanUrl($test->titre_test)  ] );
         try {
           $accessToken = $helper->getAccessToken();
+          $this->helper->debug($accessToken);
 
         } catch(FacebookResponseException $e) {
           // When Graph returns an error
