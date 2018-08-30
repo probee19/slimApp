@@ -65,8 +65,11 @@ class TestController extends Controller
 
 
         $all_test = $sandbox->relatedTests($id, $country_code, $exclude, $lang);
-        $all_stories = $sandbox->getAllStoriesJson($lang);
-        shuffle($all_stories);
+        if($lang == 'fr'){
+          $all_stories = $sandbox->getAllStoriesJson($lang);
+          shuffle($all_stories);
+        }
+
 
         // For Facebook connect
         $helper = $this->fb->getRedirectLoginHelper();
