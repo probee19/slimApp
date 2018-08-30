@@ -65,7 +65,7 @@ class TestController extends Controller
 
 
         $all_test = $sandbox->relatedTests($id, $country_code, $exclude, $lang);
-        $all_stories = $helper->getAllStoriesJson($lang);
+        $all_stories = $sandbox->getAllStoriesJson($lang);
         shuffle($all_stories);
 
         // For Facebook connect
