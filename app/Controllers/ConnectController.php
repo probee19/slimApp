@@ -107,6 +107,7 @@ class ConnectController extends Controller
           $data_log = "Erreur : ".$error."\n";
           fputs($log, $data_log);
         }
+
         if(isset($accessToken)) {
             //$help->debug($accessToken->getValue());
 
